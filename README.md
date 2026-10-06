@@ -1,4 +1,4 @@
-# SHIBUYA CAPITAL 0.4.8
+# SHIBUYA CAPITAL 0.4.9
 
 [ブラウザーで遊ぶ](https://shirai0765.github.io/-/)
 
@@ -8,4 +8,4 @@
 
 会社設立、カフェ出店、週次決算、拡大・資金調達を遊べる開発途中版です。週末にブラウザー内へ自動保存します。ログインやクラウド同期はありません。別端末へはゲーム内の保存ファイル書き出し・読み込みを使ってください。
 
-公開元コミット: `acdc4dd049afb49365f00b303354ae1bd222c85f`。ビルド照合情報: [release.json](release.json)。
+公開元コミット: `8877dd3d7c3a9bfea826b920a9455f9c96f79054`。ビルド照合情報: [release.json](release.json)。
