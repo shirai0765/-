@@ -2,7 +2,7 @@
 
 このリポジトリでは、`game-source` を開発用、`main` をビルド済みサイトの公開用として分けます。公開URLは `https://shirai0765.github.io/-/` です。GitHub Pages は既存の「Deploy from a branch」設定を使い、`main` のルートを配信します。
 
-0.4.3は公開済みです。公開コミットと公開サイトでの出店・週次保存・再読み込みの検証結果は [published-playtest.md](published-playtest.md) を参照してください。
+0.4.5は公開済みです。公開コミットと公開サイトでの出店・週次保存・再読み込みの検証結果は [published-playtest.md](published-playtest.md) を参照してください。
 
 | ブランチ | 内容 |
 |---|---|
@@ -14,7 +14,7 @@
 ## 公開手順
 
 1. `game-source` の変更を確認し、公開するソースコミットを確定する。
-2. Node.js 24 とリポジトリの `package-lock.json` を使い、`npm ci --include=dev`、`npm test`、`npm run build` を実行する。
+2. Node.js 24 とリポジトリの `package-lock.json` を使い、`npm ci --include=dev`、`npm test -- --maxWorkers=2`、`npm run build` を実行する。
 3. 生成した `dist` に対して本番CSP・保存復元・資産読込など必要な検証を行う。検査後にソースや `dist` を変更した場合は、その変更に必要な検証をやり直す。
 4. ソースコミットIDと配布ファイルの対応を記録し、`dist` の内容を変更せず公開treeへまとめる。追加するのは `.nojekyll`、ソースID・版・HTMLハッシュを持つ `release.json`、公開用 `README.md` のみ。`dist` ディレクトリ自体ではなく、その中身を公開ルートへ配置する。
 5. リモート `main` の現在の先端を親とする新しい公開コミットを作成し、通常の fast-forward push で更新する。別の公開が先に進んだ場合は停止して再確認し、force push で上書きしない。
@@ -24,8 +24,8 @@
 
 ```sh
 python3 scripts/package-web.py
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.3-web-report.json
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.3-web-report.json --publish
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.5-web-report.json
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.5-web-report.json --publish
 ```
 
 版と保存場所が異なる場合は、検証した当該版のreportを指定します。作業ツリーが未commit、ソースのremote先端が異なる、配布ファイルがreportと異なる場合は停止します。

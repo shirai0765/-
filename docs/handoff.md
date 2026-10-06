@@ -4,9 +4,9 @@
 
 利用枠・リセット券・ファストモードを操作するツールはない。操作したと装わない。ユーザーの停止を無視したり、セッションをまたぐ自動開発を保証したりしない。現在までのソースと成果物を保持して続きを進める。
 
-## 0.4.5：試遊を受けた全面街UIと週末実績（公開準備）
+## 0.4.5：試遊を受けた全面街UIと週末実績（公開済み）
 
-ユーザーが公開版を試遊し、常時の左右・下部パネル、施設を選んでも詳細が開いたと分からないこと、可操作建物の不明瞭さ、週前に利益が確定していることを強く指摘した。「Coffee Inc/2を大きくしたもの」が体験の軸。0.4.4までのダッシュボードを小さくする案で済ませず、街をviewport全面に維持し、施設・財務・株式などは選択時だけnative GameDialogへ表示する構成に変更した。現在はsource0.4.5、公開は0.4.4。
+ユーザーが公開版を試遊し、常時の左右・下部パネル、施設を選んでも詳細が開いたと分からないこと、可操作建物の不明瞭さ、週前に利益が確定していることを強く指摘した。「Coffee Inc/2を大きくしたもの」が体験の軸。0.4.4までのダッシュボードを小さくする案で済ませず、街をviewport全面に維持し、施設・財務・株式などは選択時だけnative GameDialogへ表示する構成に変更した。0.4.5は公開済み。source a32d92fc2915eb58b67ef670d21c50f07af83788、pages 4138eff953030563e5aad832d2be336cbbe644a1、Pages run37534939396成功。公開HTTP18/主要16SHA、実Firefox8カテゴリも成功した。
 
 rootはApp/全体UI、salesは32区画の常時目印とpointer gesture、capitalはnative dialog/資本と買収の幅表示、immersiveは実測街の開閉メニュー/店舗情報の折畳み/開発営業確認、acquisitionは出店画面の短縮と幅/文書/梱包、railは経済境界・長期検証・配信監査、campaignは公式画面調査と実App検証を分担。完了した担当は次の独立仕事へ移した。Astraの7同時枠（root含む）を使い、GPU browserだけ1本に制限。
 
@@ -16,7 +16,7 @@ rootはApp/全体UI、salesは32区画の常時目印とpointer gesture、capita
 
 単週は危険の可能性を警告し、借入中の実利益0以下/現金不足という既存終了条件を維持。4/13週の委任は見込み下限に危険があれば実行前停止し、実際の決算を保存する。事前数値は主に閉じた詳細、出店時は千円単位の見込み幅、週末は実績を表示。旧出店記録の基準見込みは後から書換えない。
 
-254テスト/29ファイルと最終build成功。dist game-BKBlvv5Y / game-C_zEWnTB / RealCityScene-BQwCb4fu、276ファイル94,254,310 bytes。DEV実App GPU5カテゴリ成功（32markerの実click・開業・同scene/camera復帰・初決算・保存再読込）。3seed×12週の初店は36決算すべて幅内/再現/無破綻。通常campaign原版2seedは1006/894週で完遂、双方IPO21週、終端save往復一致。人間の30時間体験の実測ではない。公式Coffee画像20取得/10目視、YouTube403・動画視聴0を研究資料へ明記。最終DOM9カテゴリ（1280/390・描画stub）、本番CSP9カテゴリ（native RAF・実描画・旧0.3.2保存完全復元）も成功。検証時にJavaScript/console/外部要求/CSP違反は0。旧880成果物を保持してWeb/Windows ZIPを生成、全CRC/SHA一致。公開後の確認はこれから。
+254テスト/29ファイルと最終build成功。dist game-BKBlvv5Y / game-C_zEWnTB / RealCityScene-BQwCb4fu、276ファイル94,254,310 bytes。DEV実App GPU5カテゴリ成功（32markerの実click・開業・同scene/camera復帰・初決算・保存再読込）。3seed×12週の初店は36決算すべて幅内/再現/無破綻。通常campaign原版2seedは1006/894週で完遂、双方IPO21週、終端save往復一致。人間の30時間体験の実測ではない。公式Coffee画像20取得/10目視、YouTube403・動画視聴0を研究資料へ明記。最終DOM9カテゴリ（1280/390・描画stub）、本番CSP9カテゴリ（native RAF・実描画・旧0.3.2保存完全復元）も成功。検証時にJavaScript/console/外部要求/CSP違反は0。旧880成果物を保持してWeb/Windows ZIPを生成、全CRC/SHA一致。公開後の実操作8カテゴリも成功し、同会社の保存・実測街往復を確認した。
 
 証跡：`shared/shibuya-artifacts/immersive-v045`、`weekly-outcomes-v045`、`integration-v045/pages-prefix`。再実行の入口は `scripts/smoke-immersive.py`（Firefox/private Xorg runner、URL指定可、製品RAFを置換しない）。旧 `smoke-production.py` などは旧UI selectorsを含むため、この版の新導線検証と混同しない。GPU実行環境の制限とゲーム不具合を分けて記録する。
 

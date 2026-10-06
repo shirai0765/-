@@ -1,5 +1,13 @@
 # 最終本番成果物の検証
 
+## 0.4.5 全面街UI・週末実績の本番確認
+
+最終distを `scripts/smoke-immersive.py --production-csp` で検証し、9カテゴリが成功しました。desktop/main.cjsと同じCSP、Firefox/Mesa、製品のRAFを変更しない実描画です。出店・週末実績と現金の整合・保存復元、同App実測街と単体viewer、20建物/72地表/Draco、写真明るさ・idle/resize、旧0.3.2保存の完全一致を確認。エラー・警告・外部要求・CSP違反・HTTP失敗は0件でした。
+
+index SHA256は `21eb92ee9545afeeada2d9270ca992978f17a6060fefda4ea29ad32aa670cb85`。証跡は `/workspace/shared/shibuya-artifacts/production-0.4.5/{results.json,README.md}`。詳細と再現手順は [immersive-qa.md](immersive-qa.md)。この版はnative dialogの施設一覧から操作し、DEV版で別途行ったcanvas上の施設クリックとは区別しています。Windows実機性能の確認ではありません。
+
+## 0.3.0 当時の検証記録
+
 対象はversion 0.3.0の最終distとdesktopです。`scripts/smoke-production.py` がdesktop/main.cjsからCSPを直接読み、Linux Chromiumで外部通信を拒否して検証します。Windows実行検証とは区別します。
 
 - 日本語Noto Sans JP Variable、欧文Manrope Variableが実際に読み込まれたことを確認。

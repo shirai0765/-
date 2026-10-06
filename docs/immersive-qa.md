@@ -32,3 +32,9 @@ DOM: 1280/390のfullscreen host、常設sidebar/footerなし、32区画一覧→
 ## 最終distの確認結果
 
 本番CSP確認は9カテゴリ成功。共有 `/workspace/shared/shibuya-artifacts/production-0.4.5/README.md` / `results.json` に最終dist SHA、CSP、同App実測と単独viewer、旧0.3.2保存の完全一致、通信/エラー記録を保存しています。ブラウザでの会社開始から初週actual・保存・再読込を通し、公開と同じ施設一覧の入口を使用しました。公開Pagesへの反映と公開URLでの操作は別の確認です。
+
+## 公開0.4.5の確認結果
+
+2026-10-06、Pages run37534939396の成功後、公開URLで8カテゴリを確認しました。release version0.4.5 / source `a32d92fc2915eb58b67ef670d21c50f07af83788` を照合。全面街から施設一覧・開業・外観、管理overlay、初週actual・保存/reload、同App実測街、単独viewerと復帰まで成功。error/warning/外部request/HTTP失敗0。一時Firefox profileとXorgを削除しGPUを解放しています。
+
+公開の施設入口はHUDの32区画一覧を使い、DEVの実markerclick検証とは分けます。公開の実績例は利益433,408円、来店1,142人、週2現金8,833,408円。未来の中立見込みとの一致を要求せず、保存されたactual reportで現金を照合しています。証拠は共有 `deploy-0.4.5/public-playtest/README.md` / `results.json`。旧保存は本番CSPで確認、公開でのJSON書出しは今回未実行です。

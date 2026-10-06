@@ -1,4 +1,29 @@
-# GitHub Pages 0.4.3 の公開記録
+# GitHub Pages 0.4.5 の公開記録
+
+2026-10-06、[全面街UIのゲーム](https://shirai0765.github.io/-/?v=0.4.5)を公開しました。既存のURL・ブラウザー保存を維持する通常のfast-forward更新です。
+
+| 項目 | 値 |
+|---|---|
+| ソースコミット | `a32d92fc2915eb58b67ef670d21c50f07af83788`（game-source） |
+| 配布コミット | `4138eff953030563e5aad832d2be336cbbe644a1`（main） |
+| Pages 実行 | [37534939396](https://github.com/shirai0765/-/actions/runs/37534939396)、completed / success |
+| index.html SHA256 | `21eb92ee9545afeeada2d9270ca992978f17a6060fefda4ea29ad32aa670cb85` |
+
+検証済みdist276ファイルに公開用3ファイルを追加。公開HTTP18件はすべて200、主要16ファイルのSHAはdistと一致しました。releaseのversion/source/ファイル数/indexも一致。公開全276件の再取得と混同しません。記録は `/workspace/shared/shibuya-artifacts/deploy-0.4.5/http-audit.json`。
+
+公開HTTPSのFirefox/Mesa実操作は8カテゴリ成功。全面街から物件一覧を開き、施設詳細→カフェ開業→外観→経営画面の開閉→週末の実績→自動保存→再読込を確認しました。施設の入口は本番に存在する一覧を使い、DEV版で別途確認したcanvas上の目印クリックとは区別します。経営画面を閉じても同じcanvasを維持し、実際の決算と現金が整合、IndexedDBのprimary/envelope/payloadは再読込後も完全一致。
+
+同じAppの実測街（20建物/72地表）でcenter-01を選び、ゲーム街へ戻って保存不変を確認。独立viewerのDraco復号、写真材質の明るさ、idle/resize、ゲームへ戻る導線も確認しました。実画像・結果は `/workspace/shared/shibuya-artifacts/deploy-0.4.5/public-playtest/`。エラー・警告・外部要求・HTTP失敗は0件です。
+
+通常TLSとホスト名検証を維持し、既存CAは使い捨てFirefox profileだけで使用。ブラウザーsandboxや永続の証明書設定は変更していません。Windows実機・人間の30時間プレイの検証とは別です。旧会社の過去実績を維持し、次週から新しい客足・運営状況による変動を使います。
+
+再現手順は [immersive-qa.md](immersive-qa.md)、実装範囲は [immersive-playtest.md](immersive-playtest.md)、CSP/旧保存は [production-playtest.md](production-playtest.md) を参照してください。Web/Windows ZIPは別名で保持し、旧880成果物はSHA/size/mtime不変です。
+
+## 0.4.4 の公開記録
+
+source `c1651686076c7ef0d85cab162379758f8cb2c9a6`、pages `db436b50de2e165132d0a2a640e2072eca772456`、Pages run37532392337成功。公開8カテゴリとHTTP18/主要16SHA照合も成功しました。記録は `deploy-0.4.4/`。この版の常設パネルと確定予測のUIは、0.4.5で置き換えました。
+
+## GitHub Pages 0.4.3 の公開記録
 
 2026-10-06、[ゲーム本体](https://shirai0765.github.io/-/) を0.4.3へ更新しました。ユーザーの公開依頼に基づく通常のfast-forward更新です。
 
