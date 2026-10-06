@@ -10,6 +10,10 @@ export interface ManagedWeekHooks {
   onCommit?: (next: GameState, report: WeeklyReport) => void;
   shouldCancel?: () => boolean;
 }
+export interface ManagedWeekOptions {
+  /** Per-run choice only. Financial risks and growth milestones always stop. */
+  stopOnNewOffers?: boolean;
+}
 export interface ManagedWeekResult {
   state: GameState;
   reports: WeeklyReport[];
@@ -20,7 +24,8 @@ const detail = (error: unknown) => error instanceof Error ? error.message : '不
 
 /** Advance delegated weeks with one durable commit per week. No rescue financing,
  * automatic investment, or skipped debt/default rules. Input is never mutated. */
-export async function runManagedWeeks(initial: GameState, requested: 4 | 13, hooks: ManagedWeekHooks): Promise<ManagedWeekResult> {
+export async function runManagedWeeks(initial: GameState, requested: 4 | 13, hooks: ManagedWeekHooks, options: ManagedWeekOptions = {}): Promise<ManagedWeekResult> {
+  const stopOnNewOffers = options.stopOnNewOffers !== false;
   let state = initial;
   const reports: WeeklyReport[] = [];
   const stop = (stopReason: string | null): ManagedWeekResult => ({ state, reports, stopReason });
@@ -67,7 +72,7 @@ export async function runManagedWeeks(initial: GameState, requested: 4 | 13, hoo
       if (railCompletedNow > railCompletedBefore) return stop('沿線の共同開発が完成しました。今週からの効果と店舗の運営を確認してください。');
       if (getMarketGroupFinancials(state).operating > getMarketGroupFinancials(initial).operating) return stop('買収した事業の運営準備が完了しました。収益と次の投資を確認してください。');
       if (!beforeIPO && getSummary(state).ipoEligible) return stop('新たにIPOの条件を満たしました。上場の判断をしてください。');
-      if (getOffers(state).some(offer => !beforeOffers.has(offer.id))) return stop('新しい営業提案が届きました。内容を確認してください。');
+      if (stopOnNewOffers && getOffers(state).some(offer => !beforeOffers.has(offer.id))) return stop('新しい営業提案が届きました。内容を確認してください。');
     } catch (error) {
       return stop(`この週の保存は完了しましたが、表示・確認処理で停止しました。${detail(error)}`);
     }

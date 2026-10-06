@@ -1,4 +1,5 @@
 .store-controls .store-plan-feedback{margin:0 0 14px;padding:7px 0;color:var(--muted);min-width:0}
+.store-controls .store-plan-feedback-period{font-size:10px;line-height:1.7;margin:0 0 3px;overflow-wrap:anywhere}
 .store-controls .store-plan-feedback-profit{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;margin:0;font-size:11px;line-height:1.7}
 .store-plan-feedback-range{font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink);overflow-wrap:anywhere}
 .store-controls .store-plan-feedback-scope{font-size:10px;line-height:1.7;color:var(--muted);margin:3px 0 0}

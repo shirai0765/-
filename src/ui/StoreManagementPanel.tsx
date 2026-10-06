@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowUpRight, Coffee, Megaphone, Users, ReceiptText } from '
 import type { GameAction, GameState, Store, StoreStyle } from '../model';
 import { getStoreOperatingInsight, operatingConditions } from '../sim/engine';
 import { StoreOperatingInsightPanel } from './StoreOperatingInsightPanel';
-import { StoreStaffCapacityNote } from './StorePlanFeedback';
+import { StorePlanFeedback, StoreStaffCapacityNote } from './StorePlanFeedback';
 import StoreSettlementBreakdown from './StoreSettlementBreakdown';
 import './store-management.css';
 
@@ -127,7 +127,10 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
     </> : <>
       <button type="button" className="store-management-back" onClick={() => changePurpose('home')}><ArrowLeft size={15}/> 店舗トップへ</button>
       <h3 className="store-management-heading" ref={heading} tabIndex={-1}>{purposeTitles[purpose]}</h3>
-      {purpose !== 'results' && <p className="store-management-hint">入力を終えると設定に反映されます。実績は週末に確定します。</p>}
+      {purpose !== 'results' && <>
+        <p className="store-management-hint">入力を終えると設定に反映されます。</p>
+        <StorePlanFeedback insight={insight} storeName={store.name} reasonsId={reasonsId} group={purpose}/>
+      </>}
       {purpose === 'product' && <>
         <DraftField label="販売価格（円）" value={store.price} min={200} max={2500} step={50} disabled={locked} onCommit={price => update({ price: numeric(price) })}/>
         <label>品質 <span>{store.quality}</span><input type="range" min={20} max={100} step={5} value={store.quality} disabled={locked} onChange={event => update({ quality: Number(event.target.value) })}/></label>

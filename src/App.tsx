@@ -83,6 +83,7 @@ export default function App() {
   const busyRef = useRef(false);
   const setBusy = (value: boolean) => { busyRef.current = value; setBusyState(value); };
   const [runWeeks, setRunWeeks] = useState<1|4|13>(1);
+  const [stopOnNewOffers, setStopOnNewOffers] = useState(true);
   const [batchResult, setBatchResult] = useState<Awaited<ReturnType<typeof runManagedWeeks>> | null>(null);
   const [batchDone, setBatchDone] = useState(0);
   const stopRun = useRef(false);
@@ -112,7 +113,7 @@ export default function App() {
       if (runWeeks===1) {
         const next=advanceWeek(state); await saveGame(next); setState(next); stateRef.current=next; setSaved(next); setModal('report');
       } else {
-        const result=await runManagedWeeks(state,runWeeks,{commit:saveGame,shouldCancel:()=>stopRun.current,onCommit:(next)=>{setState(next);stateRef.current=next;setSaved(next);setBatchDone(n=>n+1);}});
+        const result=await runManagedWeeks(state,runWeeks,{commit:saveGame,shouldCancel:()=>stopRun.current,onCommit:(next)=>{setState(next);stateRef.current=next;setSaved(next);setBatchDone(n=>n+1);}},{stopOnNewOffers});
         setBatchResult(result); setState(result.state); stateRef.current=result.state; setSaved(result.state); setRunWeeks(1);
         if(result.reports.length) setModal('batch'); else if(result.stopReason)setMessage(result.stopReason);
       }
@@ -189,7 +190,7 @@ export default function App() {
       {focusStoreLotId&&mapMode==='game'&&<p className="store-scene-caption">直近の営業をもとにした街の様子</p>}
       <div className="hud-context-actions">{cameraMode==='explore'&&<button className="hud-button" onClick={()=>setCameraMode('manage')}>俯瞰で経営に戻る</button>}<button className="hud-button" onClick={()=>setHudPanel('sites')}><MapPin size={18}/><span>{state.stores.length?'物件を探す':'出店場所を探す'}</span></button>{selectedLotId&&lot&&<button className="hud-button" onClick={()=>selectLot(lot.id)}><Coffee size={18}/><span>{store?'この店を経営':'選んだ建物'}</span></button>}{(focusRailDistrict||focusStoreLotId||realFocusLotId)&&<button className="hud-button" onClick={showOverview}>街全体に戻る</button>}</div>
     </div>
-    <button className="hud-next-week" disabled={busy||state.gameOver} onClick={()=>setModal('week')}><span>第 {state.week} 週<small>週を終了する</small></span><ArrowUpRight size={22}/></button>
+    <button className="hud-next-week" disabled={busy||state.gameOver} onClick={()=>{setStopOnNewOffers(true);setModal('week');}}><span>第 {state.week} 週<small>週を終了する</small></span><ArrowUpRight size={22}/></button>
     {hudPanel==='menu'&&<Modal notice={message} onClearNotice={()=>setMessage('')} title="経営" close={()=>setHudPanel(null)}><nav className="game-menu" aria-label="経営メニュー">{state.lastReport&&<button onClick={()=>{setHudPanel(null);setModal('report');}}><ReceiptText size={18}/><span>直近の営業結果</span><ChevronRight size={16}/></button>}{tabs.filter(t=>t.id!=='city').map(t=><button key={t.id} onClick={()=>{if(t.id==='stocks')setMarketEntry('investment');setHudPanel(null);setPage(t.id);}}>{t.icon}<span>{t.label}{t.id==='deals'&&availableOfferCount>0?` ${availableOfferCount}件`:''}</span><ChevronRight size={16}/></button>)}<button onClick={()=>{setHudPanel(null);setModal('settings');}}><Settings size={18}/><span>設定・保存</span><ChevronRight size={16}/></button><button onClick={()=>{setHudPanel(null);setGuideOpen(true);}}><HelpCircle size={18}/><span>遊び方</span><ChevronRight size={16}/></button></nav></Modal>}
     {hudPanel==='sites'&&<Modal notice={message} onClearNotice={()=>setMessage('')} title="物件を探す" close={()=>setHudPanel(null)}><SiteBrowser state={state} selectedLotId={selectedLotId} onSelectLot={selectLot} mapMode={mapMode}/></Modal>}
     {hudPanel==='map'&&<Modal notice={message} onClearNotice={()=>setMessage('')} title="地図" close={()=>setHudPanel(null)}><div className="map-choice" role="group" aria-label="地図の表示"><button aria-pressed={mapMode==='game'} onClick={()=>{changeMap('game');setHudPanel(null);}}>ゲーム街<small>32区画に出店・投資</small></button><button aria-pressed={mapMode==='real'} onClick={()=>{changeMap('real');setHudPanel(null);}}>実測の渋谷<small>写真からつくられた街 · 4地点対応</small></button></div>{mapMode==='game'&&<><h3>街の見方</h3><div className="map-layer-choice">{(['normal','demand','ownership'] as const).map((v,i)=><button key={v} aria-pressed={viewMode===v} onClick={()=>{setViewMode(v);setHudPanel(null);}}>{['街並み','需要分布','自社の施設'][i]}</button>)}</div></>}<button className="secondary map-overview" onClick={showOverview}>街全体に戻る</button><h3>カメラ操作</h3><div className="map-layer-choice" role="group" aria-label="カメラ操作">{(['manage','explore'] as const).map(mode=><button key={mode} aria-pressed={cameraMode===mode} onClick={()=>{setCameraMode(mode);setHudPanel(null);}}>{mode==='manage'?'俯瞰で経営':'街を眺める'}</button>)}</div><p className="muted">{cameraMode==='manage'?'ドラッグで街を移動、ホイールで拡大します。角度は変わりません。':'ドラッグで回転、ホイールで拡大します。「俯瞰で経営」で元の角度に戻れます。'} {mapMode==='game'&&viewMode==='ownership'?'自社の店舗・保有物件の目印を表示しています。出店先は「物件を探す」で探せます。':'＋ の目印から出店できます。'}</p></Modal>}
@@ -212,7 +213,7 @@ export default function App() {
   {message&&!modal&&page==='city'&&!hudPanel&&!facilityOpen && <div className="toast" role="alert">{message}<button aria-label="閉じる" onClick={()=>setMessage('')}><X size={16}/></button></div>}
   {state.gameOver && modal!=='settings' && <div className="game-over-banner"><strong>経営を終了しました</strong><span>{state.gameOverReason}</span><button onClick={()=>setModal('settings')}>記録の保存・新しい会社</button></div>}
   {modal==='week' && <Modal notice={message} onClearNotice={()=>setMessage('')} title={`第${state.week}週を営業する`} close={()=>!busy&&setModal(null)}>
-    <p className="week-intro">この1週間をお店に任せて、営業結果を待ちましょう。</p>
+    <p className="week-intro">お店に営業を任せて、結果を待ちましょう。</p>
     <p className="muted">客足や店舗のコンディションは週ごとに変わります。収益が確定するのは営業後です。</p>
     {weekRisk&&<p className="warning danger" role="alert">{outlook.risk.debtLossPossible?'借入中の利益が0以下になる可能性があります。':'週末の支払い資金が不足する可能性があります。'}{runWeeks===1?(weekEndsCompany?'今の計画では、見込みの上限でも経営を続けられません。':'結果によっては経営終了になります。'):'連続営業は決算前に停止します。'} 設定や資金を見直せます。</p>}
     <details className="week-outlook" open={weekRisk||undefined}><summary>営業前の見込みを確認</summary>
@@ -221,7 +222,11 @@ export default function App() {
       <details><summary>支払いの内訳</summary><dl className="cost-list"><div><dt>本部・グループ運営費</dt><dd>{money(economy.overhead)}</dd></div><div><dt>支払利息</dt><dd>{money(forecast.interest)}</dd></div><div><dt>元本返済</dt><dd>{money(forecast.loanRepayment)}</dd></div><div><dt>受取配当の目安</dt><dd>{money(forecast.dividendsReceived)}</dd></div></dl></details>
     </details>
     {state.profitableWeeks>=12&&<label>営業を進める期間<select disabled={busy} value={runWeeks} onChange={e=>setRunWeeks(Number(e.target.value) as 1|4|13)}><option value="1">1週間 · 結果を確認</option><option value="4">最大4週間 · 店舗に任せる</option><option value="13">最大13週間 · 店舗に任せる</option></select></label>}
-    {runWeeks>1&&<p className="muted">毎週保存し、新しい提案や成長機会、赤字・資金不足の可能性がある週の手前で止まります。</p>}
+    {runWeeks>1&&<>
+      <label className="toggle"><input type="checkbox" checked={stopOnNewOffers} disabled={busy} onChange={e=>setStopOnNewOffers(e.target.checked)} aria-describedby="managed-offer-policy"/><span>新しい営業提案で停止</span></label>
+      <p className="muted" id="managed-offer-policy">{stopOnNewOffers?'新しい提案が届くと、内容を確認するため停止します。':'停止しない場合、途中で提案の期限が過ぎることがあります。'}</p>
+      <p className="muted">毎週保存します。上場条件の達成や事業の完成で停止し、借入中の利益不足・資金不足の恐れがある週は進めません。</p>
+    </>}
     {busy&&runWeeks>1&&<div className="batch-progress" role="status"><p>{batchDone} / {runWeeks} 週間の営業・保存が完了</p><button className="secondary" onClick={()=>{stopRun.current=true;}}>ここで停止</button></div>}
     <div className="button-row"><button className="secondary" disabled={busy} onClick={()=>setModal(null)}>街に戻る</button><button className={weekRisk&&runWeeks===1?'primary week-confirm-danger':'primary'} disabled={busy} onClick={()=>void finishWeek()}>{busy?'営業・保存中…':runWeeks===1?(weekRisk?'リスクを承知して営業する':'営業して週を進める'):`最大${runWeeks}週間の営業を始める`}<ArrowUpRight size={18}/></button></div>
   </Modal>}

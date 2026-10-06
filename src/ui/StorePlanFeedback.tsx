@@ -5,8 +5,10 @@ interface Props {
   insight: StoreOperatingInsight | null;
   storeName: string;
   reasonsId: string;
-  group: 'price-staff' | 'operations';
+  group: 'product' | 'people' | 'promotion';
 }
+
+const groupLabels = { product: '商品・価格', people: '人員・店長', promotion: '広告・改装' };
 
 /** Outward rounding keeps a forecast a readable interval, including near zero. */
 export function formatStoreEstimateRange(range: { min: number; max: number }, unit = 1) {
@@ -44,12 +46,13 @@ export function StorePlanFeedback({ insight, storeName, reasonsId, group }: Prop
   };
 
   return <div className="store-plan-feedback" data-store-id={insight.storeId} data-feedback-group={group}
-    role="group" aria-label={`${storeName}の${group === 'price-staff' ? '価格・人員' : '品質・広告・店長'}設定の見込み`}>
+    role="group" aria-label={`${storeName}の${groupLabels[group]}設定の店舗利益見込み`}>
+    <p className="store-plan-feedback-period">第{insight.week}週 · 反映済みの設定{insight.effectiveSettings.manager && 'からの店長案'}</p>
     <p className="store-plan-feedback-profit">
-      <span>利益見込み</span>
+      <span>店舗利益見込み／週</span>
       <span className="store-plan-feedback-range">{formatStoreEstimateRange(insight.resultRange.profit, 1000)}円</span>
     </p>
-    <p className="store-plan-feedback-scope">実績は週末に確定します。{insight.effectiveSettings.manager && '店長の調整案を反映。'}</p>
+    <p className="store-plan-feedback-scope">実績は週末に確定。本部費・利息などは含みません。</p>
     <button type="button" aria-controls={reasonsId} onPointerDown={event => {
       if (event.button === 0) event.preventDefault();
     }} onClick={showReasons}>見込みの理由</button>
