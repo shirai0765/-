@@ -4,13 +4,27 @@
 
 利用枠・リセット券・ファストモードを操作するツールはない。操作したと装わない。ユーザーの停止を無視したり、セッションをまたぐ自動開発を保証したりしない。現在までのソースと成果物を保持して続きを進める。
 
+## 0.4.3：実測街と同じ会社の経営
+
+作業版は0.4.3。既存の公開URLは下記の0.4.2で、0.4.3の公開前検証を進めている。公開確認後にこの段落を更新する。6担当でcontroller・表示対応・React操作・32区画一覧・独立レビュー・QAを分担した。
+
+同じAppに「ゲーム街」「実測の渋谷」の切替を追加。実測対応はcenter-01 / dogenzaka-01 / miyashita-01 / sakuragaoka-01の4地点。元batch/gml/頂点から屋上中心を取得し、6m上にゲーム内目印を表示。注釈の文字だけは読めるよう前面に描き、地点の球と建物は通常の奥行き判定を保つ。入口やカフェGLBを実建物へ設置したわけではない。全32区画を地区・営業・物件保有で選べ、未対応地点を選ぶと同じlotIdのゲーム街へ移る。財務の戻り先・出店形態・入力メモを保つ。
+
+`src/realcity/RealCityScene.ts` は独立viewerとReactの共通controller。`gameSites.ts` は表示だけの4地点対応と所有状態の導出。GameState・経済18ファイル・元105画像/建物ファイルは変更していない。controllerは世代のabort、遅いDraco/image結果の解放、要求時描画、非表示時停止、最後のfocus要求、同期初期化例外時の解放に対応する。`src/city/sceneLifecycle.ts` は両地図の生成から非同期解放終了までを直列化。`LoadedAssetPool.dispose()` は遅いGLB解放まで待つPromiseを返す。CityViewは遅延生成後に最新の会社状態と視点を適用する。
+
+最終ビルドと226テスト/25ファイルが通過。独立viewerのGPU9項目、controllerのGPU6項目、4地点の実クリックと別担当の目視を確認した。0.4.2とgeometry/index/normal/UV/world matrix/bounds一致。DOM検査は描画差替えの範囲を明記し、通常の4社創業・週決算、旧32店舗の未対応28地点、財務帰路、スマホ末尾選択、wrapper失敗時再試行を確認。自然なスマホ操作で見つけた一覧末尾からの詳細スクロールと、地点/出典メニューのクリック遮蔽を修正した。
+
+実App統合GPU5項目とHTTP503/WebGL初期化失敗時の通常開業・週保存2項目がFirefox/Mesaで成功。実App GPUはnative RAF。最終distの本番CSP9項目も成功し、旧0.3.2保存を完全復元、DEV hook不在、地図往復で保存不変、エラー/CSP違反/外部要求0を確認した。本番CSPだけQA側App RAF200ms遅延でありWindows実機・性能の確認ではない。ドキュメントは `docs/real-city-controller.md`、`docs/real-city-ui-playtest.md`、`docs/real-city-integration-lifecycle.md`、`docs/design/real-city-integration-review-v043.md`。保存先は `/workspace/shared/shibuya-artifacts/integration-v043/`、`realcity-v043/`、正式単体HTMLは `offline-0.4.3/`。`realcity-v043/real-shibuya-viewer.html` は途中の仮出力なので正式配布と混同しない。旧0.4.2配布物は保持。
+
+次の設計資料はリポジトリ外 `/workspace/shared/shibuya-artifacts/research-next/growth-standard-economics.md`。Basefood・Liberaware・エリアリンクの公式決算3例で成長・利益・資金調達を比較し、現市場の共通価格anchor/driftの限界を記録した。実数をそのままゲーム係数に移さず、capital/rail/acquisitionの3担当が次版の選択肢と旧保存互換を検討し、同directoryの design-capital-growth.md / design-acquisition-growth.md / design-rail-opportunity.md に集約済み。3仮想企業の元帳から検証し新会社opt-inを判断する案で、買収時に開発赤字が消える裁定の解決が採用条件。係数変更はまだない。色調のreadonly調査は `/tmp/realcity-color-preflight.md`。元写真自体の青寄りと照明/トーン処理の影響を分離した比較が次の候補で、色改善を実装済みとは扱わない。
+
 ## 公開版0.4.2とブランチの役割
 
 ユーザーがGitHub Pagesでの公開を明示依頼し、`https://shirai0765.github.io/-/` へ公開済み。実測ビューアは同URL配下の `real-shibuya.html`。開発ソースは `game-source`、`main` は検証済みビルドの配布専用で、package.jsonはない。今のローカル `work` はソースのチェックアウト。`main` へ開発ソースを直接push/mergeしない。通常のコード変更・ドキュメント更新は `game-source` へ、次の公開は [deployment.md](deployment.md) の検証と補助スクリプトを使う。
 
 公開元ソース `5f48a6b806c509e0505690f5588ef3c2c6d66dc3`、配布コミット `61002026eaf5d50a80de20d06e5338cf8477ad2d`、Pages run `37522617185` 成功。公開URLの主要16ファイルはdistのSHAと一致。公開本番で新会社・実3D・出店・初決算・自動保存・再読み込み・JSON書き出しの6項目成功。詳細とクラウドブラウザーの一時検証設定は [published-playtest.md](published-playtest.md)。公開サイト自体の証明書不備と、クラウドChromiumの環境CA不足を混同しない。
 
-実測街と経営の接続は次の候補。`docs/design/real-city-integration.md` と担当間の提案を確認する。0.4.3のcontroller・4地点マーカーを実装済みとは扱わない。公開版を変更する前に、新版の互換性と操作を検証する。
+この節は0.4.2公開当時の記録。次版0.4.3の実装・検証状況は先頭の節を優先する。
 
 ## 0.4.2と最新の並列化依頼
 

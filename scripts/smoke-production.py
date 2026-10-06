@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Linux Chromium verification of final dist under the exact desktop CSP.
+"""Linux browser verification of final dist under the exact desktop CSP.
 An ephemeral internal server and same-origin-only network route simulate the
 packaged policy; this is not a Windows/Electron runtime test.
+PRODUCTION_BROWSER=firefox uses a temporary graphical display supplied by the
+caller; Chromium with SwiftShader remains the default.
 """
 import functools, hashlib, json, os, re, threading
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -32,6 +34,8 @@ origin = f'http://127.0.0.1:{server.server_port}'
 checks, errors, blocked, responses, violations = [], [], [], [], []
 legacy_result = None
 legacy_path = os.environ.get('PRODUCTION_LEGACY_SAVE')
+browser_name = os.environ.get('PRODUCTION_BROWSER', 'chromium')
+assert browser_name in {'chromium', 'firefox'}, browser_name
 def passed(name): checks.append(name); print('PASS', name, flush=True)
 def button(root, name): return root.get_by_role('button', name=name, exact=True)
 def snapshot(page):
@@ -48,7 +52,8 @@ def route(request_route):
 
 try:
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--enable-unsafe-swiftshader'])
+        browser = (playwright.firefox.launch(headless=False) if browser_name == 'firefox'
+                   else playwright.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--enable-unsafe-swiftshader']))
         context = browser.new_context(viewport={'width':1280,'height':900}, reduced_motion='reduce')
         context.route('**/*', route)
         context.add_init_script("window.__cspViolations=[];addEventListener('securitypolicyviolation',e=>window.__cspViolations.push({directive:e.effectiveDirective,blocked:e.blockedURI}));")
@@ -116,6 +121,22 @@ try:
         passed('Authored109 and premium cafe GLBs return HTTP200 under desktop CSP')
         violations.extend(page.evaluate('window.__cspViolations'))
         page.screenshot(path=str(OUT / 'game.png'))
+        # Same App, same saved company: production-only build has no DEV controller hook.
+        page.locator('.site-list button[data-lot-id="center-01"]').click()
+        button(page, '実測の渋谷').click()
+        integrated = page.locator('.real-city-view')
+        expect(integrated).to_have_attribute('data-status', 'ready', timeout=180000)
+        expect(integrated).to_have_attribute('data-focus-lot', 'center-01')
+        expect(integrated).to_have_attribute('data-focus-status', 'focused')
+        expect(integrated.locator('canvas')).to_be_visible()
+        assert page.evaluate('!window.__realCityIntegrationQA && !window.__sceneLifecycleSnapshot')
+        assert snapshot(page) == saved, 'Integrated map selection changed the saved company'
+        page.screenshot(path=str(OUT / 'integrated-real-city.png'))
+        button(page, 'ゲーム街').click()
+        expect(page.locator('.city-world canvas')).to_be_visible()
+        expect(page.locator('.inspector')).to_have_attribute('data-selected-lot-id', 'center-01')
+        assert snapshot(page) == saved
+        passed('Production same-App real-city map loads under CSP, focuses center-01 and returns to game map without changing the saved company; DEV hooks absent')
         page.locator('.rail-settings').click()
         print('STEP settings opened', flush=True)
         settings = page.get_by_role('dialog', name='設定と会社データ')
@@ -185,7 +206,7 @@ try:
         assert not blocked, blocked
         assert not [r for r in responses if r['status'] >= 400], [r for r in responses if r['status'] >= 400]
         passed('No JavaScript/console errors, CSP violations, failed HTTP assets or external requests')
-        result = {'platform':'Linux Chromium; Windows/Electron runtime NOT tested','qaGameRAFDelayMs':200,'realViewerRAFModified':False,'csp':CSP,'checks':checks,'fonts':fonts,'realCity':metrics,'authoredAssets':authored,'wasm':wasm,'errors':errors,'cspViolations':violations,'blockedExternalRequests':blocked,'legacySave':legacy_result,'distIndexSHA256':hashlib.sha256((DIST/'index.html').read_bytes()).hexdigest()}
+        result = {'platform':f'Linux {browser_name}; Windows/Electron runtime NOT tested','qaGameRAFDelayMs':200,'realViewerRAFModified':False,'csp':CSP,'checks':checks,'fonts':fonts,'realCity':metrics,'authoredAssets':authored,'wasm':wasm,'errors':errors,'cspViolations':violations,'blockedExternalRequests':blocked,'legacySave':legacy_result,'distIndexSHA256':hashlib.sha256((DIST/'index.html').read_bytes()).hexdigest()}
         (OUT/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
         print(json.dumps(result,ensure_ascii=False),flush=True)
         browser.close()

@@ -18,7 +18,11 @@ export async function createPhotoGround(centerLonLat:[number,number],onProgress?
     const [west,southLat,eastLon,north]=tile.boundsLonLat;
     const positions:number[]=[];
     for(const [lon,lat]of [[west,north],[eastLon,north],[west,southLat],[eastLon,southLat]]){const p=ecef(lon,lat).sub(origin);positions.push(p.dot(east),0,p.dot(south));}
-    const texture=await loader.loadAsync(assetURL(`./models/real-shibuya-ground/${tile.file}`));
+    const imageResponse=await fetch(assetURL(`./models/real-shibuya-ground/${tile.file}`),{signal});
+    if(!imageResponse.ok)throw new Error(`${tile.file}: HTTP ${imageResponse.status}`);
+    const blob=await imageResponse.blob();checkAbort(signal);
+    const url=URL.createObjectURL(blob);let texture:THREE.Texture;
+    try{texture=await loader.loadAsync(url);}finally{URL.revokeObjectURL(url);}
     if(signal?.aborted){texture.dispose();checkAbort(signal);}
     const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new THREE.Float32BufferAttribute([0,1,1,1,0,0,1,0],2));geometry.setIndex([0,2,1,2,3,1]);geometry.computeVertexNormals();
     texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=8;

@@ -60,8 +60,10 @@ describe('scene-owned Blender asset lifecycle', () => {
     let signal!: AbortSignal;
     const pool = new LoadedAssetPool(scene, (_url, currentSignal) => { signal = currentSignal; return pending.promise; });
     const handle = pool.mount('108.glb', fallback.group); scene.add(handle.group); await Promise.resolve();
-    const ready = pool.ready(); pool.dispose(); disposeScene(scene); expect(signal.aborted).toBe(true);
-    pending.resolve(loaded.group); await ready;
+    const ready = pool.ready(); const disposed = pool.dispose(); disposeScene(scene); expect(signal.aborted).toBe(true);
+    let released = false; void disposed.then(() => { released = true; });
+    await Promise.resolve(); expect(released).toBe(false); expect(pool.dispose()).toBe(disposed);
+    pending.resolve(loaded.group); await ready; await disposed; expect(released).toBe(true);
     expect(handle.group.children).toHaveLength(0);
     loaded.disposed.forEach(dispose => expect(dispose).toHaveBeenCalledTimes(1));
     fallback.disposed.forEach(dispose => expect(dispose).toHaveBeenCalledTimes(1));

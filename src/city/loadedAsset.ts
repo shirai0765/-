@@ -39,6 +39,7 @@ export class LoadedAssetPool {
   private instances = new Set<Instance>();
   private controller = new AbortController();
   private closed = false;
+  private disposal?: Promise<void>;
   constructor(private owner: THREE.Object3D, private load: AssetLoad = loadGLB) {
     (owner as AssetOwner)[readyKey] = () => this.ready();
   }
@@ -120,14 +121,17 @@ export class LoadedAssetPool {
   }
 
   /** Must run BEFORE disposeScene(owner), including when changing rendering quality. */
-  dispose(): void {
-    if (this.closed) return;
+  dispose(): Promise<void> {
+    if (this.disposal) return this.disposal;
+    const pending = [...this.entries.values()].map(entry => entry.promise);
     this.closed = true; this.controller.abort();
     for (const instance of [...this.instances]) this.release(instance.handle);
     // All template resources are deduplicated together; never dispose each borrowed clone.
     const resources = new THREE.Group();
     for (const entry of this.entries.values()) if (entry.template) resources.add(entry.template);
     disposeScene(resources); resources.clear(); this.entries.clear(); delete (this.owner as AssetOwner)[readyKey];
+    this.disposal = Promise.allSettled(pending).then(() => undefined);
+    return this.disposal;
   }
 }
 

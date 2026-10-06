@@ -21,7 +21,7 @@ export function closeImage(image: unknown) {
 export function objectTextures(root: THREE.Object3D): Set<THREE.Texture> {
   const textures = new Set<THREE.Texture>();
   root.traverse(object => {
-    if (!(object instanceof THREE.Mesh)) return;
+    if (!(object instanceof THREE.Mesh) && !(object instanceof THREE.Sprite)) return;
     for (const material of Array.isArray(object.material) ? object.material : [object.material]) {
       for (const value of Object.values(material)) if (value instanceof THREE.Texture) textures.add(value);
     }
@@ -75,8 +75,8 @@ export function disposeRealObject(root: THREE.Object3D) {
   const geometries = new Set<THREE.BufferGeometry>(), materials = new Set<THREE.Material>();
   const textures = objectTextures(root);
   root.traverse(object => {
-    if (!(object instanceof THREE.Mesh)) return;
-    geometries.add(object.geometry);
+    if (!(object instanceof THREE.Mesh) && !(object instanceof THREE.Sprite)) return;
+    if (object instanceof THREE.Mesh) geometries.add(object.geometry);
     for (const material of Array.isArray(object.material) ? object.material : [object.material]) materials.add(material);
   });
   for (const texture of textures) { texture.dispose(); closeImage(texture.image); texture.source.data = null; }

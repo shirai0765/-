@@ -96,3 +96,21 @@ CityViewを置換せず、desktop/main.cjsと同じCSP・外部要求拒否のLi
 結果と画像は `/workspace/shared/shibuya-artifacts/production-0.4.2/{result.json,game.png,real-shibuya.png}`。dist index SHA-256は `adf4336fe9d29dd39e0740f6cda83d31429cb5a4c7a028dab41685341ee4d7c9` で、Windows梱包後にも不変でした。旧Windows/本番検証成果物43ファイルのSHA-256・サイズ・更新時刻も保持されています。
 
 従来通り経営画面だけQA側で200msのRAF遅延を入れています。実測ビューと製品コードには加えていません。Windows実機や性能ベンチマークではありません。店舗診断の操作と旧版経済一致は [店舗診断DOM検証](store-insight-playtest.md) を参照してください。
+
+## 0.4.3 本番回帰（2026-10-06）
+
+最終dist（`game-DhF3B8Cb.js`、`RealCityScene-CA6uvnDJ.js`、`game-CXGxXcOj.css`）をdesktopと同じCSPで配信し、9項目が成功しました。今回の実行はLinux FirefoxとMesa、一時Xorg画面です。ローカルHTTPのみを使用し、CA・TLS設定は変更していません。Firefoxのsandboxも有効のままです。
+
+既存のフォント、会社作成、premium開業、初週の自動保存・再読込、109/cafe GLB、独立実測ビューと復帰に加え、同じAppの「実測の渋谷」へ切り替え、center-01への移動とゲーム街への帰還を確認しました。地図切替前後の保存stateは完全一致し、本番ではDEV診断hookが存在しません。独立実測ビューは20建物・72地表・Draco WASM、写真map20枚を読み込み、待機時24frameで停止、明るさで25、resizeで26へ進みました。
+
+旧0.3.2保存をUIから読み込み、再読込後も全stateが一致しました。存在しなかった出店記録・沿線開発を後付けしていません。JS/consoleエラー、CSP違反、失敗HTTP、外部要求は0件でした。検証結果・3枚の画面は `/workspace/shared/shibuya-artifacts/production-0.4.3/`。index SHA256は `f5d0e9b639329c5f3e810f2bab0cce3f1ad2ed0afb82b0d5633e0e8e48f48e28` です。
+
+```sh
+# Firefoxは呼出元で一時的な画面とPlaywright browser pathを用意する
+PRODUCTION_BROWSER=firefox \
+PRODUCTION_SMOKE_OUT=/workspace/shared/shibuya-artifacts/production-0.4.3 \
+PRODUCTION_LEGACY_SAVE=/workspace/shared/shibuya-artifacts/opening-0.3.2/legacy-fixture.json \
+python3 scripts/smoke-production.py
+```
+
+QA側だけAppのRAFを200ms遅延させています。独立ビューのRAFは変更しておらず、製品・性能の制限ではありません。実App統合のnative RAF・idle・破棄は別のFirefox検査5項目で確認済みです。Windows実機・30時間の通しプレイを検証したとは扱いません。

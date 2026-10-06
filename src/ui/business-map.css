@@ -1,0 +1,13 @@
+.business-map{display:flex;flex-direction:column;min-height:0;height:100%;width:100%}
+.business-map-switch{flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:6px 12px;background:var(--surface);border-bottom:1px solid var(--line)}
+.business-map-switch>div{display:flex;gap:4px}
+.business-map-switch button{padding:8px 12px;background:var(--surface-soft);color:var(--ink);border:1px solid transparent;border-radius:7px;font-size:11px;white-space:nowrap}
+.business-map-switch button[aria-pressed=true]{background:var(--accent,#2459eb);color:white}
+.business-map-switch button:focus-visible{outline:2px solid var(--accent,#2459eb);outline-offset:2px}
+.business-map-switch>span{font-size:10px;color:var(--muted);text-align:right}
+.business-map-body{flex:1;min-height:0;position:relative;overflow:hidden}
+.business-map-body>.city-world{height:100%;width:100%}
+.inspector .all-sites-back{font-size:11px;margin:0 0 10px;padding-left:0}
+.inspector .real-lot-note{font-size:10px;line-height:1.7;color:var(--muted);border-left:2px solid var(--line);padding-left:9px}
+@media(max-width:850px){.business-map-switch{padding:5px 8px;gap:6px}.business-map-switch button{padding:8px;font-size:10px}.business-map-switch>span{font-size:9px;max-width:85px}}
+@media(max-width:620px){.business-map-switch{min-height:42px}.business-map-switch>span{font-size:9px;max-width:none}.business-map-body .city-heading{padding:8px 10px}}

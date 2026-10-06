@@ -12,6 +12,13 @@ function fixture(width=4096,height=2048) {
   return {root,geometry,texture,clone,image};
 }
 describe('real-city pre-upload texture budget',()=>{
+  it('also releases sprite label textures when marker groups are rebuilt',()=>{
+    const image={width:512,height:128,close:vi.fn()},texture=new THREE.Texture(image as unknown as TexImageSource),group=new THREE.Group();
+    group.add(new THREE.Sprite(new THREE.SpriteMaterial({map:texture})));
+    const release=vi.spyOn(texture,'dispose');disposeRealObject(group);
+    expect(release).toHaveBeenCalledTimes(1);expect(image.close).toHaveBeenCalledTimes(1);expect(group.children).toHaveLength(0);
+  });
+
   it('caps the longest side without enlarging images and defaults unknown preferences to1024',()=>{
     expect(limitedImageSize(4096,2048,'1024')).toEqual([1024,512]);
     expect(limitedImageSize(2048,4096,'2048')).toEqual([1024,2048]);
