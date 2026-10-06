@@ -1,0 +1,1033 @@
+{
+  "status": "downloaded",
+  "retrievedAt": "2026-10-06T17:15:03.379351+00:00",
+  "source": "国土地理院 シームレス空中写真",
+  "attribution": "地理院タイル（シームレス空中写真）を使用",
+  "sourceInfo": "https://maps.gsi.go.jp/development/ichiran.html#seamlessphoto",
+  "terms": "https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html",
+  "zoom": 18,
+  "requestedBboxLonLat": [
+    139.6952,
+    35.6552,
+    139.706,
+    35.6638
+  ],
+  "centerLonLat": [
+    139.7006,
+    35.6595
+  ],
+  "imageryModified": false,
+  "terrain": "Flat display approximation. Imagery is georeferenced with Web Mercator tile bounds into local ENU; no DEM or geoid correction is claimed.",
+  "captureDate": "Varies across source mosaic; publication dataset year is not an imagery capture date.",
+  "tiles": [
+    {
+      "file": "18-232794-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103242.jpg",
+      "x": 232794,
+      "y": 103242,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.66287517311727,
+        139.69528198242188,
+        35.66399091134811
+      ],
+      "bytes": 21794,
+      "sha256": "68da7f33d555b2dabe19bf15f0bf995b07e87157b1b04b6b59600f712003da7b"
+    },
+    {
+      "file": "18-232795-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103242.jpg",
+      "x": 232795,
+      "y": 103242,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.66287517311727,
+        139.6966552734375,
+        35.66399091134811
+      ],
+      "bytes": 19327,
+      "sha256": "7c8a8d26a75a76abcddd6095d9a6c18e4966f1093dc9943656e95130dc98ca06"
+    },
+    {
+      "file": "18-232796-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103242.jpg",
+      "x": 232796,
+      "y": 103242,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.66287517311727,
+        139.69802856445312,
+        35.66399091134811
+      ],
+      "bytes": 18552,
+      "sha256": "99c4f9b15ffad6a169a3d6eba352992052fe791973ae2ecf04476f964165bee1"
+    },
+    {
+      "file": "18-232797-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103242.jpg",
+      "x": 232797,
+      "y": 103242,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.66287517311727,
+        139.69940185546875,
+        35.66399091134811
+      ],
+      "bytes": 18164,
+      "sha256": "a85cae4564745291ca4cb54df25496068f73da462b3b9bb8868965b1c12e00b1"
+    },
+    {
+      "file": "18-232798-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103242.jpg",
+      "x": 232798,
+      "y": 103242,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.66287517311727,
+        139.70077514648438,
+        35.66399091134811
+      ],
+      "bytes": 19184,
+      "sha256": "7fdaa7484dda0df9597bbb7febbe14accfbc70c33798998625912dc89088f991"
+    },
+    {
+      "file": "18-232799-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103242.jpg",
+      "x": 232799,
+      "y": 103242,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.66287517311727,
+        139.7021484375,
+        35.66399091134811
+      ],
+      "bytes": 17362,
+      "sha256": "c5ee4064f8f3f59edccf5adc21d2fe5319616c7a2d7e396f3b96d1b89c03c574"
+    },
+    {
+      "file": "18-232800-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103242.jpg",
+      "x": 232800,
+      "y": 103242,
+      "boundsLonLat": [
+        139.7021484375,
+        35.66287517311727,
+        139.70352172851562,
+        35.66399091134811
+      ],
+      "bytes": 18802,
+      "sha256": "1edf69fce3baf24e9c5d16cba615a0064f58fbc20ace25d6c11d21f189ad9c93"
+    },
+    {
+      "file": "18-232801-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103242.jpg",
+      "x": 232801,
+      "y": 103242,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.66287517311727,
+        139.70489501953125,
+        35.66399091134811
+      ],
+      "bytes": 19179,
+      "sha256": "88197882ab28df2d0b4b578550a0c73f34b5ed012815c5561658b1d02b5fa069"
+    },
+    {
+      "file": "18-232802-103242.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103242.jpg",
+      "x": 232802,
+      "y": 103242,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.66287517311727,
+        139.70626831054688,
+        35.66399091134811
+      ],
+      "bytes": 21384,
+      "sha256": "49e4b2e7f1aac8bfe37e6173744622bb113c37ac856cb9a0e6e215e7b82214c7"
+    },
+    {
+      "file": "18-232794-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103243.jpg",
+      "x": 232794,
+      "y": 103243,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.66175941929504,
+        139.69528198242188,
+        35.66287517311727
+      ],
+      "bytes": 21765,
+      "sha256": "16a99f0026a5ad8b143e35e4143120b7d87aaf3e57b43b21e3ffaf85d749a75a"
+    },
+    {
+      "file": "18-232795-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103243.jpg",
+      "x": 232795,
+      "y": 103243,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.66175941929504,
+        139.6966552734375,
+        35.66287517311727
+      ],
+      "bytes": 20754,
+      "sha256": "6e3a6f6aa857df8a793ae074f5d2fd0bb521607a0ed0d771f90404a6cc3591bf"
+    },
+    {
+      "file": "18-232796-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103243.jpg",
+      "x": 232796,
+      "y": 103243,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.66175941929504,
+        139.69802856445312,
+        35.66287517311727
+      ],
+      "bytes": 21332,
+      "sha256": "377118f03d849b6d72ffd496722bf399c9f0c070c3f2cc5d30f6e45b385e3fbe"
+    },
+    {
+      "file": "18-232797-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103243.jpg",
+      "x": 232797,
+      "y": 103243,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.66175941929504,
+        139.69940185546875,
+        35.66287517311727
+      ],
+      "bytes": 18729,
+      "sha256": "fe84b2ce6ae052530fa70dcacca6c71366e84edb5ae896beacf92d281d2d5630"
+    },
+    {
+      "file": "18-232798-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103243.jpg",
+      "x": 232798,
+      "y": 103243,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.66175941929504,
+        139.70077514648438,
+        35.66287517311727
+      ],
+      "bytes": 19247,
+      "sha256": "093f47badef4d905884dc2ece6d5a428e4b4783c4d8df782199b182e5405bf20"
+    },
+    {
+      "file": "18-232799-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103243.jpg",
+      "x": 232799,
+      "y": 103243,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.66175941929504,
+        139.7021484375,
+        35.66287517311727
+      ],
+      "bytes": 19005,
+      "sha256": "d7ba1874046f77c82735d4c6433f7d527fad531debfaf4526376682bfc8a3476"
+    },
+    {
+      "file": "18-232800-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103243.jpg",
+      "x": 232800,
+      "y": 103243,
+      "boundsLonLat": [
+        139.7021484375,
+        35.66175941929504,
+        139.70352172851562,
+        35.66287517311727
+      ],
+      "bytes": 17379,
+      "sha256": "c16a7b4f04e1ca8cde16520e6231b05f0385a2f8357227e3029f81bc7b8f51c5"
+    },
+    {
+      "file": "18-232801-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103243.jpg",
+      "x": 232801,
+      "y": 103243,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.66175941929504,
+        139.70489501953125,
+        35.66287517311727
+      ],
+      "bytes": 16972,
+      "sha256": "eb4b540f3d85028b16690c86f871880ab310925a566bac262c6871aeaa9fd5f9"
+    },
+    {
+      "file": "18-232802-103243.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103243.jpg",
+      "x": 232802,
+      "y": 103243,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.66175941929504,
+        139.70626831054688,
+        35.66287517311727
+      ],
+      "bytes": 20832,
+      "sha256": "196eab9294d5204d140e6f5d1c366cd534f43b36ec6b1ecd6020a5ec3a912d9b"
+    },
+    {
+      "file": "18-232794-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103244.jpg",
+      "x": 232794,
+      "y": 103244,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.66064364988162,
+        139.69528198242188,
+        35.66175941929504
+      ],
+      "bytes": 20014,
+      "sha256": "2812779515abb5bcd8de9a65d681176b24c9360c4b5d9ad9d3b40f272c538bc4"
+    },
+    {
+      "file": "18-232795-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103244.jpg",
+      "x": 232795,
+      "y": 103244,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.66064364988162,
+        139.6966552734375,
+        35.66175941929504
+      ],
+      "bytes": 20474,
+      "sha256": "74c2a2cbfd168285167755fcae37bc3a0a61ae5fd3974590592dc70fc64c2492"
+    },
+    {
+      "file": "18-232796-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103244.jpg",
+      "x": 232796,
+      "y": 103244,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.66064364988162,
+        139.69802856445312,
+        35.66175941929504
+      ],
+      "bytes": 20686,
+      "sha256": "42c3164ce23f1a5e99a05070b219f97adeeab4c3fd5cd45f44d9fdcaa0d4de67"
+    },
+    {
+      "file": "18-232797-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103244.jpg",
+      "x": 232797,
+      "y": 103244,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.66064364988162,
+        139.69940185546875,
+        35.66175941929504
+      ],
+      "bytes": 21227,
+      "sha256": "4d0b3e4c378b97bbeb773e861c7f5c02b755a7fe274005877d71c9671f83f229"
+    },
+    {
+      "file": "18-232798-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103244.jpg",
+      "x": 232798,
+      "y": 103244,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.66064364988162,
+        139.70077514648438,
+        35.66175941929504
+      ],
+      "bytes": 19382,
+      "sha256": "e44b7726d2deb2fb0389129ab9800846ac3092a7655fb4b0d3724f1f604c1616"
+    },
+    {
+      "file": "18-232799-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103244.jpg",
+      "x": 232799,
+      "y": 103244,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.66064364988162,
+        139.7021484375,
+        35.66175941929504
+      ],
+      "bytes": 19022,
+      "sha256": "c4fd7d13309fbc050e530d41a0cb891f50659e45e1edabf80647e492759e243c"
+    },
+    {
+      "file": "18-232800-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103244.jpg",
+      "x": 232800,
+      "y": 103244,
+      "boundsLonLat": [
+        139.7021484375,
+        35.66064364988162,
+        139.70352172851562,
+        35.66175941929504
+      ],
+      "bytes": 17043,
+      "sha256": "09dfb5396a0c7bde1d4f3d45445f8796862de070d1c94e389bfd0d3312e3174b"
+    },
+    {
+      "file": "18-232801-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103244.jpg",
+      "x": 232801,
+      "y": 103244,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.66064364988162,
+        139.70489501953125,
+        35.66175941929504
+      ],
+      "bytes": 19264,
+      "sha256": "acb20c908b384ca199f4f574f0cb7e937f8adbb9c97004d2dc792145d2e212fd"
+    },
+    {
+      "file": "18-232802-103244.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103244.jpg",
+      "x": 232802,
+      "y": 103244,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.66064364988162,
+        139.70626831054688,
+        35.66175941929504
+      ],
+      "bytes": 21882,
+      "sha256": "91686c72f27d43ef98db90b00cd563ab5c8e63d6a60646d51fd73f914a357eb2"
+    },
+    {
+      "file": "18-232794-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103245.jpg",
+      "x": 232794,
+      "y": 103245,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.65952786487721,
+        139.69528198242188,
+        35.66064364988162
+      ],
+      "bytes": 19872,
+      "sha256": "494df37b813eaca050b2c5fbc03fc42dd3777c7c2db08fe328dc770a501ac1da"
+    },
+    {
+      "file": "18-232795-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103245.jpg",
+      "x": 232795,
+      "y": 103245,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.65952786487721,
+        139.6966552734375,
+        35.66064364988162
+      ],
+      "bytes": 20498,
+      "sha256": "8eeb7f29a350ac7c03e24128da892a419516175c3459e3403e5ca47d7efd3ec2"
+    },
+    {
+      "file": "18-232796-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103245.jpg",
+      "x": 232796,
+      "y": 103245,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.65952786487721,
+        139.69802856445312,
+        35.66064364988162
+      ],
+      "bytes": 19534,
+      "sha256": "52669ffeae1d8703c1e709f88d5e272c84cd46320d19f3a9c57dc00e26986643"
+    },
+    {
+      "file": "18-232797-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103245.jpg",
+      "x": 232797,
+      "y": 103245,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.65952786487721,
+        139.69940185546875,
+        35.66064364988162
+      ],
+      "bytes": 21205,
+      "sha256": "c276d7559ecf16d7839442b974cc8f71dbb2af7ab5b1c29cde8186bfc2ea9b72"
+    },
+    {
+      "file": "18-232798-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103245.jpg",
+      "x": 232798,
+      "y": 103245,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.65952786487721,
+        139.70077514648438,
+        35.66064364988162
+      ],
+      "bytes": 19225,
+      "sha256": "83694534d52e1c2b12e7fb56d30717a9c4c23770fb6cf67b1f77e0618330062e"
+    },
+    {
+      "file": "18-232799-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103245.jpg",
+      "x": 232799,
+      "y": 103245,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.65952786487721,
+        139.7021484375,
+        35.66064364988162
+      ],
+      "bytes": 17336,
+      "sha256": "1734e604c46f5b91f478a90324255a40d88b6eb67d62b9007752de628ac868db"
+    },
+    {
+      "file": "18-232800-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103245.jpg",
+      "x": 232800,
+      "y": 103245,
+      "boundsLonLat": [
+        139.7021484375,
+        35.65952786487721,
+        139.70352172851562,
+        35.66064364988162
+      ],
+      "bytes": 17264,
+      "sha256": "8c07aca75d4fa59268a5fb0d48aa4be3edbed65496a0e98fee4f14eea724e18e"
+    },
+    {
+      "file": "18-232801-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103245.jpg",
+      "x": 232801,
+      "y": 103245,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.65952786487721,
+        139.70489501953125,
+        35.66064364988162
+      ],
+      "bytes": 18307,
+      "sha256": "c858da7d963603d75a7b990f856cbfb3f9a573574b0e85afd4eaaea7232116b7"
+    },
+    {
+      "file": "18-232802-103245.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103245.jpg",
+      "x": 232802,
+      "y": 103245,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.65952786487721,
+        139.70626831054688,
+        35.66064364988162
+      ],
+      "bytes": 18898,
+      "sha256": "41ebe020e38864c9e923db0dde50f68da372a0699b4cb9c0e0829ca43eaa0e02"
+    },
+    {
+      "file": "18-232794-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103246.jpg",
+      "x": 232794,
+      "y": 103246,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.65841206428203,
+        139.69528198242188,
+        35.65952786487721
+      ],
+      "bytes": 21091,
+      "sha256": "376150f4d3a48a7b7693778d15aef7d4d42d5ef666c495a46d5d8de256a19481"
+    },
+    {
+      "file": "18-232795-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103246.jpg",
+      "x": 232795,
+      "y": 103246,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.65841206428203,
+        139.6966552734375,
+        35.65952786487721
+      ],
+      "bytes": 20738,
+      "sha256": "0b23e4a175c3461e48d3c3feb698057048ec4906e5076ebf0ab95a061b4d811f"
+    },
+    {
+      "file": "18-232796-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103246.jpg",
+      "x": 232796,
+      "y": 103246,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.65841206428203,
+        139.69802856445312,
+        35.65952786487721
+      ],
+      "bytes": 19705,
+      "sha256": "20c675bc790ca9c43386d3440c22f14a4cad0cc671ab3fa6c4a350bc71e2ee84"
+    },
+    {
+      "file": "18-232797-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103246.jpg",
+      "x": 232797,
+      "y": 103246,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.65841206428203,
+        139.69940185546875,
+        35.65952786487721
+      ],
+      "bytes": 18976,
+      "sha256": "f6156eaa336a9bfa60979f91e7b3b4365786a9e03a48bc3a9651b5e61aeb4ceb"
+    },
+    {
+      "file": "18-232798-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103246.jpg",
+      "x": 232798,
+      "y": 103246,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.65841206428203,
+        139.70077514648438,
+        35.65952786487721
+      ],
+      "bytes": 16383,
+      "sha256": "0befd4df2d69060d07a8190f18cff380792803e861dcc2a73926fc4a2d0919b0"
+    },
+    {
+      "file": "18-232799-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103246.jpg",
+      "x": 232799,
+      "y": 103246,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.65841206428203,
+        139.7021484375,
+        35.65952786487721
+      ],
+      "bytes": 17202,
+      "sha256": "47cfa6d0bbd35bff11adccda9039d4cf0d61ce65233c067659b8408d3538e6ff"
+    },
+    {
+      "file": "18-232800-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103246.jpg",
+      "x": 232800,
+      "y": 103246,
+      "boundsLonLat": [
+        139.7021484375,
+        35.65841206428203,
+        139.70352172851562,
+        35.65952786487721
+      ],
+      "bytes": 15556,
+      "sha256": "3a177d459f66d826e94327a07c94c11f73ffdead1e6beca28861028426b996d0"
+    },
+    {
+      "file": "18-232801-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103246.jpg",
+      "x": 232801,
+      "y": 103246,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.65841206428203,
+        139.70489501953125,
+        35.65952786487721
+      ],
+      "bytes": 19640,
+      "sha256": "285b8cb686b20cf5284abf73f5b571705b7267af1387ccc65cb19b257660cff0"
+    },
+    {
+      "file": "18-232802-103246.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103246.jpg",
+      "x": 232802,
+      "y": 103246,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.65841206428203,
+        139.70626831054688,
+        35.65952786487721
+      ],
+      "bytes": 17900,
+      "sha256": "987b6f15c32ed618820462c28e1e44cbc20589430d6edf48bce4298c5674328c"
+    },
+    {
+      "file": "18-232794-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103247.jpg",
+      "x": 232794,
+      "y": 103247,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.65729624809628,
+        139.69528198242188,
+        35.65841206428203
+      ],
+      "bytes": 21364,
+      "sha256": "2d792bca3c47c4f0f170fa4b2db0d1b56f9ac44b5945baa61d8d50aae02fde40"
+    },
+    {
+      "file": "18-232795-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103247.jpg",
+      "x": 232795,
+      "y": 103247,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.65729624809628,
+        139.6966552734375,
+        35.65841206428203
+      ],
+      "bytes": 19666,
+      "sha256": "4954faa4ae296d465eac8883a4038e10d439076bc50d6fdeec2746f30107b83c"
+    },
+    {
+      "file": "18-232796-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103247.jpg",
+      "x": 232796,
+      "y": 103247,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.65729624809628,
+        139.69802856445312,
+        35.65841206428203
+      ],
+      "bytes": 18193,
+      "sha256": "c52f687eb525aaf208584e0b50e21a4ce61d3466dac77d0aed537d5acc31adc3"
+    },
+    {
+      "file": "18-232797-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103247.jpg",
+      "x": 232797,
+      "y": 103247,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.65729624809628,
+        139.69940185546875,
+        35.65841206428203
+      ],
+      "bytes": 18242,
+      "sha256": "c160a9980a5e0454fe6dc2a90c8079744e44a5d94ead3fefff0d5ecc7bbc5a5f"
+    },
+    {
+      "file": "18-232798-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103247.jpg",
+      "x": 232798,
+      "y": 103247,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.65729624809628,
+        139.70077514648438,
+        35.65841206428203
+      ],
+      "bytes": 18550,
+      "sha256": "813c9758b72f1363e30f197129a29ed4bd9158f08f57630389fa9914946e4842"
+    },
+    {
+      "file": "18-232799-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103247.jpg",
+      "x": 232799,
+      "y": 103247,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.65729624809628,
+        139.7021484375,
+        35.65841206428203
+      ],
+      "bytes": 20541,
+      "sha256": "e9b7d429b4cd41ca74b65c047171196f6b4f65e0cfcd670b170dfbf96b6c6817"
+    },
+    {
+      "file": "18-232800-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103247.jpg",
+      "x": 232800,
+      "y": 103247,
+      "boundsLonLat": [
+        139.7021484375,
+        35.65729624809628,
+        139.70352172851562,
+        35.65841206428203
+      ],
+      "bytes": 17997,
+      "sha256": "9d0ffc1468090f48b3dd97c9dbb99966bbc2f1eaa91cb85705860a7504137b73"
+    },
+    {
+      "file": "18-232801-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103247.jpg",
+      "x": 232801,
+      "y": 103247,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.65729624809628,
+        139.70489501953125,
+        35.65841206428203
+      ],
+      "bytes": 18227,
+      "sha256": "602f2c3a5599062d2c9d37487e3430b6fdf952b2c203660dc40d358382a90440"
+    },
+    {
+      "file": "18-232802-103247.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103247.jpg",
+      "x": 232802,
+      "y": 103247,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.65729624809628,
+        139.70626831054688,
+        35.65841206428203
+      ],
+      "bytes": 18382,
+      "sha256": "d216a86965498445ef654506636e3ddcaead7a12be897a88e49230e08c6e49c0"
+    },
+    {
+      "file": "18-232794-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103248.jpg",
+      "x": 232794,
+      "y": 103248,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.656180416320154,
+        139.69528198242188,
+        35.65729624809628
+      ],
+      "bytes": 19527,
+      "sha256": "b12580ee2a7a26eb16449283b40e96c134b61e5975cc377a296c2be9026e335a"
+    },
+    {
+      "file": "18-232795-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103248.jpg",
+      "x": 232795,
+      "y": 103248,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.656180416320154,
+        139.6966552734375,
+        35.65729624809628
+      ],
+      "bytes": 18890,
+      "sha256": "7bdabf45b8c6bf6439c8795e05d1fb669370cb77cdcc0702ff9860e45ca1632b"
+    },
+    {
+      "file": "18-232796-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103248.jpg",
+      "x": 232796,
+      "y": 103248,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.656180416320154,
+        139.69802856445312,
+        35.65729624809628
+      ],
+      "bytes": 19552,
+      "sha256": "81e8cd78291a5522ec99877f8bebbf0b82829f57051c67aab7e1a2022e8b59ba"
+    },
+    {
+      "file": "18-232797-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103248.jpg",
+      "x": 232797,
+      "y": 103248,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.656180416320154,
+        139.69940185546875,
+        35.65729624809628
+      ],
+      "bytes": 19209,
+      "sha256": "105a3ba94ecd2f30b8a7ec5a696a5dff08b7c3f028888a0335541f53bc74152a"
+    },
+    {
+      "file": "18-232798-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103248.jpg",
+      "x": 232798,
+      "y": 103248,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.656180416320154,
+        139.70077514648438,
+        35.65729624809628
+      ],
+      "bytes": 17555,
+      "sha256": "79a18ab5add84407617282de62336cb47ec2fa8523efa1cf1459817dd1869bca"
+    },
+    {
+      "file": "18-232799-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103248.jpg",
+      "x": 232799,
+      "y": 103248,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.656180416320154,
+        139.7021484375,
+        35.65729624809628
+      ],
+      "bytes": 18230,
+      "sha256": "264f94a011031cc04da998a9c070bc0be639d65c2233977be6e08bb304a95d6c"
+    },
+    {
+      "file": "18-232800-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103248.jpg",
+      "x": 232800,
+      "y": 103248,
+      "boundsLonLat": [
+        139.7021484375,
+        35.656180416320154,
+        139.70352172851562,
+        35.65729624809628
+      ],
+      "bytes": 19380,
+      "sha256": "6886a568f4872456f20627b152cfba7d44244e620e5359a4302b0de0f045cc8b"
+    },
+    {
+      "file": "18-232801-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103248.jpg",
+      "x": 232801,
+      "y": 103248,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.656180416320154,
+        139.70489501953125,
+        35.65729624809628
+      ],
+      "bytes": 19512,
+      "sha256": "c4d0407766dd1a62a721c74a04ec3daef6ef52943fe668f8b790a20b383b9069"
+    },
+    {
+      "file": "18-232802-103248.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103248.jpg",
+      "x": 232802,
+      "y": 103248,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.656180416320154,
+        139.70626831054688,
+        35.65729624809628
+      ],
+      "bytes": 20984,
+      "sha256": "09fe4bc3e1b08b90d27ef42cd7c1a117cd6552c0292dc5fdc082583f82844db9"
+    },
+    {
+      "file": "18-232794-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232794/103249.jpg",
+      "x": 232794,
+      "y": 103249,
+      "boundsLonLat": [
+        139.69390869140625,
+        35.655064568953875,
+        139.69528198242188,
+        35.656180416320154
+      ],
+      "bytes": 20337,
+      "sha256": "a1c3451ea02a7bf90bdd80490e23e8795ea3b07c6e3b0fc81fb97753ba5099ab"
+    },
+    {
+      "file": "18-232795-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232795/103249.jpg",
+      "x": 232795,
+      "y": 103249,
+      "boundsLonLat": [
+        139.69528198242188,
+        35.655064568953875,
+        139.6966552734375,
+        35.656180416320154
+      ],
+      "bytes": 20310,
+      "sha256": "890a71e60dbcf0fbceb1aa2948e9b00bb368f1c858f53b2c01ae5d7372fdb1a5"
+    },
+    {
+      "file": "18-232796-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232796/103249.jpg",
+      "x": 232796,
+      "y": 103249,
+      "boundsLonLat": [
+        139.6966552734375,
+        35.655064568953875,
+        139.69802856445312,
+        35.656180416320154
+      ],
+      "bytes": 20097,
+      "sha256": "8f0703dd33317cae0b08ac0a568a49a4f8357f1f3675a4dae6446fc37cc88970"
+    },
+    {
+      "file": "18-232797-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232797/103249.jpg",
+      "x": 232797,
+      "y": 103249,
+      "boundsLonLat": [
+        139.69802856445312,
+        35.655064568953875,
+        139.69940185546875,
+        35.656180416320154
+      ],
+      "bytes": 20548,
+      "sha256": "d134326fc59cc80ca60bbd5908d307c9bd514d93b83b19cd9b95bffc1f10f41f"
+    },
+    {
+      "file": "18-232798-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232798/103249.jpg",
+      "x": 232798,
+      "y": 103249,
+      "boundsLonLat": [
+        139.69940185546875,
+        35.655064568953875,
+        139.70077514648438,
+        35.656180416320154
+      ],
+      "bytes": 17555,
+      "sha256": "afe8f1b81705bc40c838f20c7b31d51deb11ae74fe5c19ef1f35f75699d9fa7c"
+    },
+    {
+      "file": "18-232799-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232799/103249.jpg",
+      "x": 232799,
+      "y": 103249,
+      "boundsLonLat": [
+        139.70077514648438,
+        35.655064568953875,
+        139.7021484375,
+        35.656180416320154
+      ],
+      "bytes": 18945,
+      "sha256": "0db35c0d2d940547cbef73efaf5904719ff7c8868d1b6df868ff1fb1a51d63e9"
+    },
+    {
+      "file": "18-232800-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232800/103249.jpg",
+      "x": 232800,
+      "y": 103249,
+      "boundsLonLat": [
+        139.7021484375,
+        35.655064568953875,
+        139.70352172851562,
+        35.656180416320154
+      ],
+      "bytes": 17830,
+      "sha256": "d6e12cbf8f166e2dc12ea430b117d312e7a8645f6190e7aad49e38ef0bf6d1fd"
+    },
+    {
+      "file": "18-232801-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232801/103249.jpg",
+      "x": 232801,
+      "y": 103249,
+      "boundsLonLat": [
+        139.70352172851562,
+        35.655064568953875,
+        139.70489501953125,
+        35.656180416320154
+      ],
+      "bytes": 18876,
+      "sha256": "eeeca683ab7a1fef89cc69ce0f6191246d9220074a577420aba5f394b175f298"
+    },
+    {
+      "file": "18-232802-103249.jpg",
+      "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232802/103249.jpg",
+      "x": 232802,
+      "y": 103249,
+      "boundsLonLat": [
+        139.70489501953125,
+        35.655064568953875,
+        139.70626831054688,
+        35.656180416320154
+      ],
+      "bytes": 21162,
+      "sha256": "28e7788ce69d514dd79feb07617200fe06b88d63ffe915fadedc0442a257df03"
+    }
+  ],
+  "totalBytes": 1387748
+}

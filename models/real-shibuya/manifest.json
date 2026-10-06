@@ -1,0 +1,262 @@
+{
+  "status": "downloaded",
+  "retrievedAt": "2026-10-06T16:59:51.431916+00:00",
+  "centerLonLat": [
+    139.7006,
+    35.6595
+  ],
+  "requestedBboxLonLat": [
+    139.69755,
+    35.65702,
+    139.70365,
+    35.66198
+  ],
+  "sourceCatalog": "https://api.plateauview.mlit.go.jp/datacatalog/plateau-datasets",
+  "attribution": "東京都・国土交通省 Project PLATEAU 建築物モデル（渋谷区）2025年度公開データを部分抽出・座標変換",
+  "license": "Official PLATEAU open-data licensing confirmed generally; dataset-specific license field remains unread (CKAN HTTP403). See licenseEvidence.",
+  "coordinateSystem": "3D Tiles ECEF EPSG:4978; preserve hierarchy transforms. Region bounds are WGS84 radians. Translate/rotate to local ENU for gameplay.",
+  "scope": "Complete tiles intersecting requested bounds; not clipped individual buildings. Dataset year is survey publication vintage, not live scenery.",
+  "dataset": {
+    "id": "13113_bldg_lod2",
+    "name": "建築物モデル（渋谷区）",
+    "pref": "東京都",
+    "pref_code": "13",
+    "city": "渋谷区",
+    "city_code": "13113",
+    "ward": null,
+    "ward_code": null,
+    "type": "建築物モデル",
+    "type_en": "bldg",
+    "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/tileset.json",
+    "file_size": 143645400,
+    "composite_url": "https://api.plateauview.mlit.go.jp/datacatalog/3dtiles/13113-bldg-lod2-texture-2025/tileset.json",
+    "layers": null,
+    "year": 2025,
+    "registration_year": 2025,
+    "spec": "5.0",
+    "format": "3D Tiles",
+    "format_version": "1.0",
+    "lod": "2",
+    "texture": true
+  },
+  "entrypoint": "tileset.json",
+  "totalBytes": 81671690,
+  "receipts": [
+    {
+      "url": "https://api.plateauview.mlit.go.jp/datacatalog/plateau-datasets",
+      "bytes": 9121829,
+      "sha256": "f81de93adfb2c62bb04f1df36213a625a7055e68b2fc991a9fc2aedf39cb7ebc"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/tileset.json",
+      "bytes": 434029,
+      "sha256": "9c8515faec797352de024c70d6ea720a0dff40366f3302781954f5e9e7a8e383"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data470.b3dm",
+      "bytes": 2049324,
+      "sha256": "8494328f941fbf32fa02739a9c762d4f88f268c739f1004d49fc3db6ea36053a"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data471.b3dm",
+      "bytes": 1569528,
+      "sha256": "6faccc739dca6aa0f2dcae3549815228b100a10dee5365dfeca7a7c7bb78ed34"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data472.b3dm",
+      "bytes": 2601392,
+      "sha256": "68b878236973a83228c57591f192fa0eb13bc9266c556962696ff01da9c588ce"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data473.b3dm",
+      "bytes": 2382692,
+      "sha256": "2909ffc004c4059da645c5e95d4cee0178d39a66540a7c1d6bae6ef76a4d515e"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data474.b3dm",
+      "bytes": 1031944,
+      "sha256": "ff8a7baa25acf23383ee2ba4a243ba2279e46bb918071718fe86e7f1c45e94e9"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data475.b3dm",
+      "bytes": 622448,
+      "sha256": "f55e09a3b67c0f75f0bc04551a32de1e0bb2e0fe0ca561705b952b6c0e7267f9"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data486.b3dm",
+      "bytes": 3545952,
+      "sha256": "e50a7967e60cd56f484a4ec54e36728712e8506b69ee7f5ec0c24b665fb5267e"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data487.b3dm",
+      "bytes": 1769196,
+      "sha256": "958e7932baca075acee7a45c8d6e056ddca8d31d7ea825454e55810fee330ec5"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data488.b3dm",
+      "bytes": 4230576,
+      "sha256": "e4f6e27c5cef4eab35e6dd046b3775d359f95aa374031aab7703a6ae72e78770"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data489.b3dm",
+      "bytes": 4575780,
+      "sha256": "54b512a40f2ee675468af25d15507369cb173ff19beb381550ebff1b03468918"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data490.b3dm",
+      "bytes": 1119708,
+      "sha256": "ecdccbc65b60451974a463483f2cda42f9d518c9058a2fc25ae147c4d0754229"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data496.b3dm",
+      "bytes": 611336,
+      "sha256": "e85580e23b74f49dfa98dfa054336544801ccaff2045273390058a4bec7804fb"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data502.b3dm",
+      "bytes": 2549048,
+      "sha256": "c757ce1ed31525cf324a86cea0feae6ec34bf48b7c9d657f8fb3fa0ba10556b0"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data503.b3dm",
+      "bytes": 1322924,
+      "sha256": "2bac24489b5f8ec93a2cfc86a1093b4b466615e9938800b8c9e0cdf98de51d59"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data504.b3dm",
+      "bytes": 2917568,
+      "sha256": "d65ed440cfeebd913276d9932c642a535b239362f40e1fd129cfeb3971760fff"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data505.b3dm",
+      "bytes": 2334824,
+      "sha256": "34c40e2f4376637276a58990181f0df92855b83970aa636e6922c838161d6e89"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data506.b3dm",
+      "bytes": 1580472,
+      "sha256": "3353fdc5b2318780889a058ebd66a6db3248836ecf83cce20d6abfd0bfcef31e"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data512.b3dm",
+      "bytes": 2451520,
+      "sha256": "8c691e8bd00246a950268617ae296dcd6aa3876c078c4b958552d2ee25e60744"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data513.b3dm",
+      "bytes": 2895488,
+      "sha256": "60a735fef4fb8d51ab1de4e3ef2328c7b0056f400e32803cd5eb67a54f1614d7"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data516.b3dm",
+      "bytes": 1071088,
+      "sha256": "dec05237d70eca057efce13b28f28580ca9b1822f6d8537aea9a8258b1a0d8a9"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data517.b3dm",
+      "bytes": 872056,
+      "sha256": "9b1063d783e9d2cf4ad05a09bce90e064905909d6c671f0ce35d8aa6d14de7af"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data518.b3dm",
+      "bytes": 4973696,
+      "sha256": "26e32b079dce7119f2c1be285156ddc11dd2168c997bb16fb927df1056d02b8f"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data519.b3dm",
+      "bytes": 4503056,
+      "sha256": "e2cf9c519af6b02e2a78463595791fb57f1b518cb73ed038c39261aefb6def44"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data520.b3dm",
+      "bytes": 4226904,
+      "sha256": "f49cf7f80e8b25a63b26643838ec7b8937bb16e77340e702fea54c5951d7cd61"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data521.b3dm",
+      "bytes": 3023668,
+      "sha256": "010a5b782016d8087a67653254794254952cb5c6476320a881138d9964644e11"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data522.b3dm",
+      "bytes": 1563580,
+      "sha256": "2547a9c1e00361594e6824f672a316faa1e6b2ad2f7d3b895d6ed0f1d214caee"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data528.b3dm",
+      "bytes": 3010252,
+      "sha256": "b299b52f9ccca421a546d4b22eda28765a4ed7843c014f1aa80e9731b02df821"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data529.b3dm",
+      "bytes": 3301796,
+      "sha256": "af0d340d38695cbdcf50da9f82a0f1e5093c29bca30e241bed8687d94c2e321b"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data532.b3dm",
+      "bytes": 1502080,
+      "sha256": "b806afbcfc5e307b54bf54ace36a462f2feee3243741cf6cbcd8544566941fd6"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data538.b3dm",
+      "bytes": 876960,
+      "sha256": "7046a1fc26347455c2bc6f7872fcd7b41915984c0f61ec6161e322b9d4771119"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data539.b3dm",
+      "bytes": 587280,
+      "sha256": "fe995291879266584ec66f0dcebb2df268350ae01f449e8991d7ad53a381b418"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data675.b3dm",
+      "bytes": 281048,
+      "sha256": "b3a2099d13430ef1969117a77a47fe76d103e556db24e9bfd9b383e25b552be4"
+    },
+    {
+      "url": "https://assets.cms.plateau.reearth.io/assets/16/b016d3-42ef-4428-ad99-d229310b39fd/13113_shibuya-ku_pref_2025_citygml_1_op_bldg_3dtiles_13113_shibuya-ku_lod2/data/data729.b3dm",
+      "bytes": 160648,
+      "sha256": "920706996d80bc3c197370703b85bd2bec54cecfaf0c5a24a96103659266b8a5"
+    }
+  ],
+  "validation": {
+    "b3dmCount": 33,
+    "leafTileCount": 20,
+    "embeddedImageCount": 33,
+    "allLodTriangles": 282033,
+    "extensions": [
+      "CESIUM_RTC",
+      "EXT_texture_webp",
+      "KHR_draco_mesh_compression"
+    ],
+    "externalReferences": [],
+    "namedBuildings": [
+      "NHK放送センター",
+      "セルリアンタワー東急ホテル",
+      "マークシティ",
+      "区立神南小学校",
+      "恵比寿ガーデンプレイス",
+      "新宿ミライナタワー",
+      "東京オペラシティ",
+      "渋谷ストリーム",
+      "渋谷ヒカリエ",
+      "渋谷中央街郵便局",
+      "渋谷区役所",
+      "渋谷警察署",
+      "渋谷警察署宇田川交番",
+      "渋谷警察署渋谷駅前交番",
+      "渋谷警察署美竹交番",
+      "渋谷駅",
+      "特別養護老人ホーム「渋谷区美竹の丘・しぶや」",
+      "ＮＴＴドコモ代々木ビル"
+    ],
+    "viewerIntegration": "Separate real-shibuya.html; compressed gameplay map is unchanged",
+    "verification": "Container and reference audit; browser coordinate/texture verification recorded separately"
+  },
+  "licenseEvidence": {
+    "officialFaq": "https://www.mlit.go.jp/plateau/faq/",
+    "officialPolicy": "https://www.mlit.go.jp/plateau/site-policy/",
+    "verifiedGeneralTerms": "PLATEAU FAQ explicitly permits downloading its open-licensed city models; official site policy uses Public Data License 1.0 compatible with CC BY 4.0.",
+    "datasetPage": "https://www.geospatial.jp/ckan/dataset/plateau-13113-shibuya-ku-2025",
+    "datasetPageStatus": "HTTP 403; package-specific license identifier not independently read"
+  }
+}
