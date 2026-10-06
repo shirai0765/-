@@ -1,4 +1,25 @@
-# GitHub Pages 0.4.2 の公開記録
+# GitHub Pages 0.4.3 の公開記録
+
+2026-10-06、[ゲーム本体](https://shirai0765.github.io/-/) を0.4.3へ更新しました。ユーザーの公開依頼に基づく通常のfast-forward更新です。
+
+| 項目 | 値 |
+|---|---|
+| ソースコミット | `42005ed91fd7820aefa7130d550880a1305ed9a4`（game-source） |
+| 配布コミット | `bc72ca76e195b34b4750062e9abe10c902688301`（main） |
+| Pages 実行 | [37528596336](https://github.com/shirai0765/-/actions/runs/37528596336)、completed / success |
+| index.html SHA256 | `f5d0e9b639329c5f3e810f2bab0cce3f1ad2ed0afb82b0d5633e0e8e48f48e28` |
+
+検証済みdist276ファイルに公開用3ファイルだけを追加しました。公開後の通常TLS・ホスト名検証を有効にした監査は18件すべてHTTP200、主要16ファイルのSHAはdistと一致。release.jsonの版・ソース・ファイル数・indexも一致しました。全276件を公開URLから再取得したという意味ではありません。記録は `/workspace/shared/shibuya-artifacts/deploy-0.4.3/{deployment.json,http-audit.json}`。
+
+公開HTTPSの実アプリをFirefox/Mesaで操作し、7項目が成功しました。新会社から宇田川の角店へ街角カフェを開業し、価格950円・初週決算・第2週自動保存まで通常操作で進めました。同じAppの実測街で20建物タイル・72地表写真を読み込み、center-01の営業店への移動とゲーム街への帰還、再読込・JSON書出しを確認。IndexedDB primary行・envelope・payload全値は復帰後も一致しました。保存の注入やrendererの差替えはありません。
+
+page/console errorと通信失敗は0件。警告は旧CityViewのtransparent未定義9件とGLTFLoaderのCESIUM_RTC20件で、エラーとは分けて記録しています。実測の配置・形状・UVは別の旧版比較で一致しています。通常TLS検証を有効にし、この環境の既存CAは使い捨てFirefox profileだけへ登録、Xorgも一時起動して終了後に削除しました。既定の証明書ストアやブラウザーsandboxを変更していません。
+
+実行結果、保存書出し、画面画像は `/workspace/shared/shibuya-artifacts/deploy-0.4.3/public-playtest/`。本番CSP・旧保存9項目は [production-playtest.md](production-playtest.md)、Windows/Webの梱包はそれぞれ [windows.md](windows.md)・[web.md](web.md) を参照してください。WindowsのRelease添付はHTTP400で完了せず、今回作った空の下書きだけを削除しました。ブラウザー公開は成功しており、検証済みZIPもローカルに保持しています。
+
+以下は前版の公開記録です。
+
+# 0.4.2 の公開記録
 
 2026-10-06、ユーザーの依頼により [ゲーム本体](https://shirai0765.github.io/-/) と [実測渋谷ビューアー](https://shirai0765.github.io/-/real-shibuya.html) を公開した。
 

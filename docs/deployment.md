@@ -2,7 +2,7 @@
 
 このリポジトリでは、`game-source` を開発用、`main` をビルド済みサイトの公開用として分けます。公開URLは `https://shirai0765.github.io/-/` です。GitHub Pages は既存の「Deploy from a branch」設定を使い、`main` のルートを配信します。
 
-0.4.2は公開済みです。公開コミットと公開サイトでの出店・週次保存・再読み込みの検証結果は [published-playtest.md](published-playtest.md) を参照してください。
+0.4.3は公開済みです。公開コミットと公開サイトでの出店・週次保存・再読み込みの検証結果は [published-playtest.md](published-playtest.md) を参照してください。
 
 | ブランチ | 内容 |
 |---|---|
@@ -24,8 +24,8 @@
 
 ```sh
 python3 scripts/package-web.py
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.2-web-report.json
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.2-web-report.json --publish
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.3-web-report.json
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.3-web-report.json --publish
 ```
 
 版と保存場所が異なる場合は、検証した当該版のreportを指定します。作業ツリーが未commit、ソースのremote先端が異なる、配布ファイルがreportと異なる場合は停止します。

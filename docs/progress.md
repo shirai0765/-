@@ -1,12 +1,14 @@
-# SHIBUYA CAPITAL — 開発進捗 0.4.3（検証中）
+# SHIBUYA CAPITAL — 開発進捗 0.4.3（公開済み）
 
 2026-10-07（日本時間）。これは項目ごとの実装・検証状況で、完成率や30時間の実プレイ証明ではありません。
 
 ## ブラウザー公開
 
-[GitHub Pagesで遊べます](https://shirai0765.github.io/-/)。0.4.2の検証済み配布物を公開し、公開サイトで新会社・カフェ開業・実3D・初決算・自動保存・再読み込み・JSON書き出しを確認しました。保存先はプレイヤーのブラウザーで、クラウド同期ではありません。公開中の0.4.2では、実測街は [別ビューアー](https://shirai0765.github.io/-/real-shibuya.html) です。証跡と公開元コミットは [published-playtest.md](published-playtest.md)、次の更新手順は [deployment.md](deployment.md)。
+[GitHub Pagesで0.4.3を遊べます](https://shirai0765.github.io/-/)。公開サイトの実Firefox検証7項目が成功し、新会社・通常カフェ開業・実店舗3D・同じApp内の実測街往復・初決算・自動保存・再読み込み・JSON書き出しを確認しました。JavaScript/console例外・通信失敗は0件。保存先はプレイヤーのブラウザーで、クラウド同期ではありません。[独立した実測ビューアー](https://shirai0765.github.io/-/real-shibuya.html)も利用できます。
 
-## 0.4.3：実測4地点と同じ会社の経営を接続（公開前）
+Pages run `37528596336` は成功。HTTP監査は18/18件成功、主要16ファイルのSHAが配布元と一致しました。公開サイトのコミットは `bc72ca76e195b34b4750062e9abe10c902688301`、対応ソースは `42005ed91fd7820aefa7130d550880a1305ed9a4`。証跡は [published-playtest.md](published-playtest.md)、更新手順は [deployment.md](deployment.md)。
+
+## 0.4.3：実測4地点と同じ会社の経営を接続
 
 経営画面内でゲーム街と実測街を切り替える実装を追加しました。センター街・道玄坂・宮下・桜丘の各1地点を既存のゲーム区画へ対応付け、実測建物の屋上に目印を表示します。地点選択から同じ会社の出店・運営・物件保有へ進め、目印は未出店／店舗のみ／物件のみ／両方と店名を反映します。実在の物件募集・権利取得を示すものではなく、地点の価格・賃料・人流はゲーム設定です。
 
@@ -30,7 +32,7 @@ rendererの構築・破棄を直列化し、前の画像decodeの解放完了を
 
 正式オフライン版もChromium/SwiftShaderで9項目成功しました。初回HTMLのHTTP1件だけを許可し、外部アセット要求なしで20建物・72地表、3視点、明るさ、ホイール操作、取得記録のblobを確認。console/page errorは0件です。管理ブラウザーのfile制限を変えず、同じHTMLをlocalhostで提供して検証しました。正式HTMLは83,272,262 bytes、SHA-256は `533a5eef0ffcb01c253ac1e93ca06f455a8eda584b500af4356e287f5addab54`。詳しくは [正式単体HTMLの記録](real-city-controller.md#正式な単体html) を参照してください。
 
-配布物の準備は進行中です。0.4.3の公開はまだ完了しておらず、上の公開URLは引き続き0.4.2です。証拠と確認範囲は [実測統合の独立レビュー](design/real-city-integration-review-v043.md)、[地図のlifecycleレビュー](real-city-integration-lifecycle.md)、[統合設計](design/real-city-integration.md) を参照してください。
+ブラウザー版0.4.3は公開済みです。Windows ZIPは生成・梱包検証まで完了しましたが、GitHub Releaseへの添付がHTTP400で失敗し、公開ダウンロードは未提供です。ブラウザー公開には影響しません。Windows実機での起動・性能は未検証です。証拠と確認範囲は [実測統合の独立レビュー](design/real-city-integration-review-v043.md)、[地図のlifecycleレビュー](real-city-integration-lifecycle.md)、[統合設計](design/real-city-integration.md) を参照してください。
 
 ## 0.4.2：利益の理由・実測街の表示負荷・株式の端数修正
 
@@ -42,7 +44,7 @@ rendererの構築・破棄を直列化し、前の画像decodeの解放完了を
 
 最終ビルドと212ユニットテスト（23ファイル）が成功。実測3D9項目と単一HTMLオフライン4項目、本番CSPと旧保存互換8項目も成功しました。Web ZIPは65,758,142 bytes、Windows ZIPは223,790,507 bytesでCRC・全配布ファイルSHA一致を確認。旧成果物43ファイルも不変です。本番では画像の既定1024と描画の停止・再開も確認しました。記録は `docs/windows.md`、`docs/production-playtest.md`、`docs/store-insight-api.md`、`docs/store-insight-playtest.md`、`docs/stock-rounding-playtest.md`、`docs/realcity-texture-budget.md`。
 
-0.4.2公開版では経営ゲームの街と実測ビューアは別画面です。0.4.3の4地点接続は上記の検証中の範囲を参照してください。実測街への店舗外観配置、自由な道路・鉄道敷設、人間による約30時間の楽しさの検証は未完了です。
+0.4.2の公開時点では経営ゲームの街と実測ビューアは別画面でした。0.4.3の4地点接続は上記の範囲を参照してください。実測街への店舗外観配置、自由な道路・鉄道敷設、人間による約30時間の楽しさの検証は未完了です。
 
 ## 0.4.1：投資の文脈と、成果を見る操作
 
