@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { ArrowDownLeft, ArrowUpRight, Building2, ChevronRight, Coffee, Landmark, Layers, MapPin, Menu, Palette, Flag, Settings, TrendingUp, HelpCircle, ReceiptText, X } from 'lucide-react';
 import CityView from './city/CityView';
@@ -25,6 +25,7 @@ import RailProjectsPanel from './ui/RailProjectsPanel';
 import GrowthMilestonePanel from './ui/GrowthMilestonePanel';
 import { getInvestmentMemo, type InvestmentIntent, type InvestmentVisit, type InvestmentMemo } from './ui/investmentPlanning';
 import { runManagedWeeks } from './sim/managedWeeks';
+import { getOffers } from './sim/deals';
 import { loadGame, saveGame, exportGame, importGame, listBackups, restoreBackup, SaveError, type DamagedPrimaryToken } from './persistence';
 import type { GameState, GameAction, StoreStyle, DistrictId } from './model';
 
@@ -56,6 +57,7 @@ export default function App() {
   }, [state?.id]);
   const closeGuide = () => { setGuideOpen(false); try { localStorage.setItem('shibuya-first-play-guide-v1', 'seen'); } catch { /* Help remains available without storage. */ } };
   const [hudPanel, setHudPanel] = useState<'menu'|'sites'|'map'|null>(null);
+  const availableOfferCount = useMemo(() => state && hudPanel === 'menu' && !state.gameOver ? getOffers(state).length : 0, [state, hudPanel]);
   useEffect(() => { if (page !== 'city') setFacilityOpen(false); }, [page]);
   const [marketEntry, setMarketEntry] = useState<'investment'|'acquisitions'>('investment');
   const [selectedLotId, setSelectedLotId] = useState<string | null>(null);
@@ -188,7 +190,7 @@ export default function App() {
       <div className="hud-context-actions">{cameraMode==='explore'&&<button className="hud-button" onClick={()=>setCameraMode('manage')}>俯瞰で経営に戻る</button>}<button className="hud-button" onClick={()=>setHudPanel('sites')}><MapPin size={18}/><span>{state.stores.length?'物件を探す':'出店場所を探す'}</span></button>{selectedLotId&&lot&&<button className="hud-button" onClick={()=>selectLot(lot.id)}><Coffee size={18}/><span>{store?'この店を経営':'選んだ建物'}</span></button>}{(focusRailDistrict||focusStoreLotId||realFocusLotId)&&<button className="hud-button" onClick={showOverview}>街全体に戻る</button>}</div>
     </div>
     <button className="hud-next-week" disabled={busy||state.gameOver} onClick={()=>setModal('week')}><span>第 {state.week} 週<small>週を終了する</small></span><ArrowUpRight size={22}/></button>
-    {hudPanel==='menu'&&<Modal notice={message} onClearNotice={()=>setMessage('')} title="経営" close={()=>setHudPanel(null)}><nav className="game-menu" aria-label="経営メニュー">{state.lastReport&&<button onClick={()=>{setHudPanel(null);setModal('report');}}><ReceiptText size={18}/><span>直近の営業結果</span><ChevronRight size={16}/></button>}{tabs.filter(t=>t.id!=='city').map(t=><button key={t.id} onClick={()=>{if(t.id==='stocks')setMarketEntry('investment');setHudPanel(null);setPage(t.id);}}>{t.icon}<span>{t.label}</span><ChevronRight size={16}/></button>)}<button onClick={()=>{setHudPanel(null);setModal('settings');}}><Settings size={18}/><span>設定・保存</span><ChevronRight size={16}/></button><button onClick={()=>{setHudPanel(null);setGuideOpen(true);}}><HelpCircle size={18}/><span>遊び方</span><ChevronRight size={16}/></button></nav></Modal>}
+    {hudPanel==='menu'&&<Modal notice={message} onClearNotice={()=>setMessage('')} title="経営" close={()=>setHudPanel(null)}><nav className="game-menu" aria-label="経営メニュー">{state.lastReport&&<button onClick={()=>{setHudPanel(null);setModal('report');}}><ReceiptText size={18}/><span>直近の営業結果</span><ChevronRight size={16}/></button>}{tabs.filter(t=>t.id!=='city').map(t=><button key={t.id} onClick={()=>{if(t.id==='stocks')setMarketEntry('investment');setHudPanel(null);setPage(t.id);}}>{t.icon}<span>{t.label}{t.id==='deals'&&availableOfferCount>0?` ${availableOfferCount}件`:''}</span><ChevronRight size={16}/></button>)}<button onClick={()=>{setHudPanel(null);setModal('settings');}}><Settings size={18}/><span>設定・保存</span><ChevronRight size={16}/></button><button onClick={()=>{setHudPanel(null);setGuideOpen(true);}}><HelpCircle size={18}/><span>遊び方</span><ChevronRight size={16}/></button></nav></Modal>}
     {hudPanel==='sites'&&<Modal notice={message} onClearNotice={()=>setMessage('')} title="物件を探す" close={()=>setHudPanel(null)}><SiteBrowser state={state} selectedLotId={selectedLotId} onSelectLot={selectLot} mapMode={mapMode}/></Modal>}
     {hudPanel==='map'&&<Modal notice={message} onClearNotice={()=>setMessage('')} title="地図" close={()=>setHudPanel(null)}><div className="map-choice" role="group" aria-label="地図の表示"><button aria-pressed={mapMode==='game'} onClick={()=>{changeMap('game');setHudPanel(null);}}>ゲーム街<small>32区画に出店・投資</small></button><button aria-pressed={mapMode==='real'} onClick={()=>{changeMap('real');setHudPanel(null);}}>実測の渋谷<small>写真からつくられた街 · 4地点対応</small></button></div>{mapMode==='game'&&<><h3>街の見方</h3><div className="map-layer-choice">{(['normal','demand','ownership'] as const).map((v,i)=><button key={v} aria-pressed={viewMode===v} onClick={()=>{setViewMode(v);setHudPanel(null);}}>{['街並み','需要分布','自社の施設'][i]}</button>)}</div></>}<button className="secondary map-overview" onClick={showOverview}>街全体に戻る</button><h3>カメラ操作</h3><div className="map-layer-choice" role="group" aria-label="カメラ操作">{(['manage','explore'] as const).map(mode=><button key={mode} aria-pressed={cameraMode===mode} onClick={()=>{setCameraMode(mode);setHudPanel(null);}}>{mode==='manage'?'俯瞰で経営':'街を眺める'}</button>)}</div><p className="muted">{cameraMode==='manage'?'ドラッグで街を移動、ホイールで拡大します。角度は変わりません。':'ドラッグで回転、ホイールで拡大します。「俯瞰で経営」で元の角度に戻れます。'} {mapMode==='game'&&viewMode==='ownership'?'自社の店舗・保有物件の目印を表示しています。出店先は「物件を探す」で探せます。':'＋ の目印から出店できます。'}</p></Modal>}
     {page!=='city'&&<Modal key={page} notice={message} onClearNotice={()=>setMessage('')} title={tabs.find(t=>t.id===page)?.label??'経営'} close={()=>setPage('city')} wide className="management-dialog"><div className="page-content">

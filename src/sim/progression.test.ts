@@ -15,6 +15,14 @@ function marginalCafe() {
   return applyAction(state, { type: 'updateStore', storeId: state.stores[0].id, changes: { marketing: 55_000 } });
 }
 
+function threeStoreCompany() {
+  let state = createGame();
+  state.cash = 50_000_000;
+  const sites = LOTS.filter(l => l.available).sort((a, b) => a.rent - b.rent).slice(0, 3);
+  for (const site of sites) state = applyAction(state, { type: 'openStore', lotId: site.id, style: 'standard' });
+  return state;
+}
+
 // Synthetic ownership fixture isolates the final campaign conditions.
 function campaignCompany() {
   const state = createGame();
@@ -36,8 +44,10 @@ describe('live progression', () => {
     expect(result.roadmap.every(s => !s.achieved)).toBe(true);
     const ipoRequirements = result.roadmap.find(s => s.id === 'ipo')!.requirements;
     expect(ipoRequirements.map(r => r.met)).toEqual(getSummary(state).ipoRequirements.map(r => r.met));
-    expect(ipoRequirements.slice(0, 3)).toEqual(getSummary(state).ipoRequirements.slice(0, 3));
-    expect(ipoRequirements.at(-1)!.label).toContain('達成判定は基準見込み');
+    expect(ipoRequirements.slice(0, 3).map(r => r.label)).toEqual([
+      '店舗数 0 / 3 店', '累計黒字 0 / 12 週', '純資産 ¥2,000,000,000 / ¥20,000,000',
+    ]);
+    expect(ipoRequirements.at(-1)!.label).toContain('基準見込み：損益ゼロ');
     expect(state).toEqual(before);
     expect(result.next?.id).toBe('cafe');
   });
@@ -68,6 +78,10 @@ describe('live progression', () => {
     expect(result.recommendations[0]).toMatchObject({ title: '借入中の利益不足に注意', urgent: true, tab: 'finance' });
     expect(result.recommendations[0].body).toContain('可能性');
     expect(result.recommendations[0].body).toContain('実績利益がゼロ以下');
+    const ipoProfit = result.roadmap.find(s => s.id === 'ipo')!.requirements.at(-1)!;
+    expect(ipoProfit.met).toBe(true);
+    expect(ipoProfit.label).toContain('〜');
+    expect(ipoProfit.label).toContain('基準見込み：黒字');
     expect(state).toEqual(before);
   });
   it('uses downside cash burn when the neutral plan adds cash and displays rounded ranges', () => {
@@ -90,18 +104,74 @@ describe('live progression', () => {
     expect(state).toEqual(before);
   });
   it('keeps IPO eligibility independent of optional property ownership and managers', () => {
-    let state = createGame();
-    state.cash = 50_000_000;
-    const sites = LOTS.filter(l => l.available).sort((a, b) => a.rent - b.rent).slice(0, 3);
-    for (const site of sites) state = applyAction(state, { type: 'openStore', lotId: site.id, style: 'standard' });
+    const state = threeStoreCompany();
     state.profitableWeeks = 12;
+    const before = structuredClone(state);
     const result = getProgression(state);
     expect(state.properties).toHaveLength(0);
     expect(state.stores.every(s => !s.manager)).toBe(true);
     expect(result.summary.ipoEligible).toBe(true);
+    expect(result.next?.id).toBe('ipo');
+    expect(result.capital).toEqual({ kind: 'ipo', title: '上場の条件と調達案を確認', eligible: true, tab: 'finance' });
+    expect(result.capital).not.toHaveProperty('cost');
+    expect(result.roadmap.find(s => s.id === 'property')!.optionalBeforeIPO).toBe(true);
     expect(result.roadmap.find(s => s.id === 'property')!.description).toContain('任意の投資');
+    expect(result.roadmap.find(s => s.id === 'property')!.description).toContain('地区開発には対象地区の直接保有物件が必要');
     expect(result.roadmap.find(s => s.id === 'ipo')!.requirements.map(r => r.met)).toEqual(getSummary(state).ipoRequirements.map(r => r.met));
     expect(applyAction(state, { type: 'ipo' }).listed).toBe(true);
+    expect(state).toEqual(before);
+  });
+  it.each([false, true])('keeps the unmet IPO goal visible with optional property ownership=%s', ownsProperty => {
+    let state = threeStoreCompany();
+    state.profitableWeeks = 11;
+    if (ownsProperty) {
+      const site = LOTS.filter(l => l.available).sort((a, b) => a.purchasePrice - b.purchasePrice)[0];
+      state = applyAction(state, { type: 'buyProperty', lotId: site.id });
+    }
+    const before = structuredClone(state);
+    const result = getProgression(state);
+    expect(result.next?.id).toBe('ipo');
+    expect(result.capital).toMatchObject({ kind: 'ipo', eligible: false, tab: 'finance' });
+    expect(result.capital).not.toHaveProperty('cost');
+    const ipo = result.roadmap.find(s => s.id === 'ipo')!;
+    expect(ipo.requirements[1]).toEqual({ label: '累計黒字 11 / 12 週', met: false });
+    expect(ipo.requirements.map(r => r.met)).toEqual(getSummary(state).ipoRequirements.map(r => r.met));
+    expect(result.roadmap.find(s => s.id === 'property')!.achieved).toBe(ownsProperty);
+    expect(() => applyAction(state, { type: 'ipo' })).toThrow('上場条件');
+    expect(state).toEqual(before);
+  });
+  it.each([19_999_999, 20_000_000, 20_000_001])('shows exact IPO net worth at the ¥%i boundary without changing eligibility', netWorth => {
+    const state = threeStoreCompany();
+    state.profitableWeeks = 12;
+    state.cash += netWorth - getSummary(state).netWorth;
+    const result = getProgression(state);
+    expect(result.summary.netWorth).toBe(netWorth);
+    const ipo = result.roadmap.find(s => s.id === 'ipo')!;
+    expect(ipo.requirements[2]).toEqual({ label: `純資産 ¥${netWorth.toLocaleString('ja-JP')} / ¥20,000,000`, met: netWorth >= 20_000_000 });
+    expect(ipo.requirements.map(r => r.met)).toEqual(getSummary(state).ipoRequirements.map(r => r.met));
+    expect(result.capital).toMatchObject({ kind: 'ipo', eligible: getSummary(state).ipoEligible });
+  });
+  it('describes a negative neutral IPO profit as loss and retains the engine predicate', () => {
+    const state = applyAction(createGame(), { type: 'borrow', amount: 100_000, weeks: 52 });
+    const result = getProgression(state);
+    const requirement = result.roadmap.find(s => s.id === 'ipo')!.requirements.at(-1)!;
+    expect(result.summary.weeklyProfit).toBeLessThan(0);
+    expect(requirement.met).toBe(false);
+    expect(requirement.label).toContain('基準見込み：赤字');
+    expect(requirement.label).toContain('〜');
+    expect(result.recommendations[0]).toMatchObject({ urgent: true, tab: 'finance' });
+  });
+  it('does not make unowned optional property the next goal or capital default after IPO', () => {
+    const beforeIPO = threeStoreCompany();
+    beforeIPO.profitableWeeks = 12;
+    const state = applyAction(beforeIPO, { type: 'ipo' });
+    const before = structuredClone(state);
+    const result = getProgression(state);
+    expect(result.roadmap.find(s => s.id === 'property')).toMatchObject({ achieved: false, optionalBeforeIPO: true });
+    expect(result.next?.id).toBe('group');
+    expect(result.capital).toMatchObject({ kind: 'investment', tab: 'group' });
+    expect(result.roadmap.find(s => s.id === 'ipo')!.achieved).toBe(true);
+    expect(state).toEqual(before);
   });
   it('retains neutral-based campaign completion even with a possible downside loss', () => {
     const state = campaignCompany();
