@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "research_date": "2026-10-06",
+  "scope": "Two official consolidated annual issuers; factual extracts and design cautions only. No source coefficients modified.",
+  "raw_retention": "/tmp/rail-economics; temporary local evidence, not bundled source PDFs",
+  "sources": [
+    {
+      "id": "tokyu-tanshin",
+      "url": "https://data.swcms.net/file/tokyu-ir/dam/jcr:46a8f5e0-b234-4835-bce9-67470c2c22cf/140120260507517486.pdf",
+      "final_url": "https://data.swcms.net/file/tokyu-ir/dam/jcr:46a8f5e0-b234-4835-bce9-67470c2c22cf/140120260507517486.pdf",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:17:17.225592+00:00",
+      "sha256": "92c063e5eb58717171976e6de031f2ad44bbda25a144bc977d55d7c11658162d",
+      "local_file": "/tmp/rail-economics/tokyu-tanshin.pdf",
+      "bytes": 440849,
+      "issuer": "東急株式会社",
+      "document_date": "2026-05-12",
+      "title": "2026年3月期 決算短信〔日本基準〕（連結）",
+      "landing_source_id": "tokyu-results",
+      "corrected_version_listed": false,
+      "reviewed_pdf_pages_1_based": [
+        1,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "review_method": "pdftotext -layout; selected tables and notes read; not a complete audit"
+    },
+    {
+      "id": "tokyu-overview",
+      "url": "https://data.swcms.net/file/tokyu-ir/dam/jcr:7f1c4e57-aa91-4794-8617-0e0ec356c17d/140120260507517492.pdf",
+      "final_url": "https://data.swcms.net/file/tokyu-ir/dam/jcr:7f1c4e57-aa91-4794-8617-0e0ec356c17d/140120260507517492.pdf",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:17:17.080769+00:00",
+      "sha256": "c41b440272f3791375ce026103befe991428cdb4f86be41662a547acb1804da3",
+      "local_file": "/tmp/rail-economics/tokyu-overview.pdf",
+      "bytes": 910936,
+      "issuer": "東急株式会社",
+      "document_date": "2026-05-12",
+      "title": "2026年3月期 決算概況資料",
+      "landing_source_id": "tokyu-results",
+      "corrected_version_listed": false,
+      "reviewed_pdf_pages_1_based": [
+        1,
+        19,
+        29,
+        31,
+        32,
+        38,
+        39,
+        50,
+        51
+      ],
+      "review_method": "pdftotext -layout; selected tables and notes read; not a complete audit"
+    },
+    {
+      "id": "odakyu-tanshin",
+      "url": "https://www.odakyu.jp/ir/financial/h3de76000000770s-att/2025.4Q_tanshin_rev.pdf",
+      "final_url": "https://www.odakyu.jp/ir/financial/h3de76000000770s-att/2025.4Q_tanshin_rev.pdf",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:17:16.368894+00:00",
+      "sha256": "cbb10c2434225249bba45ce852c0ce67a8f361645da21c305b92946caf90a0fa",
+      "local_file": "/tmp/rail-economics/odakyu-tanshin.pdf",
+      "bytes": 443442,
+      "issuer": "小田急電鉄株式会社",
+      "document_date": "2026-05-13",
+      "title": "2026年3月期 決算短信〔日本基準〕（連結）",
+      "landing_source_id": "odakyu-results",
+      "corrected_version_listed": true,
+      "reviewed_pdf_pages_1_based": [
+        1,
+        14,
+        15,
+        17,
+        18
+      ],
+      "review_method": "pdftotext -layout; selected tables and notes read; not a complete audit"
+    },
+    {
+      "id": "odakyu-overview",
+      "url": "https://www.odakyu.jp/ir/financial/h3de76000000770s-att/2025.4Q_PPT_rev.pdf",
+      "final_url": "https://www.odakyu.jp/ir/financial/h3de76000000770s-att/2025.4Q_PPT_rev.pdf",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:17:15.865978+00:00",
+      "sha256": "c7c3aa64400b80c0986eccf0a68d2e737387524caab618affb3a14eb6c358971",
+      "local_file": "/tmp/rail-economics/odakyu-overview.pdf",
+      "bytes": 1390821,
+      "issuer": "小田急電鉄株式会社",
+      "document_date": "2026-05-13",
+      "title": "2026年3月期 決算説明資料",
+      "landing_source_id": "odakyu-results",
+      "corrected_version_listed": true,
+      "reviewed_pdf_pages_1_based": [
+        1,
+        3,
+        8
+      ],
+      "review_method": "pdftotext -layout; selected tables and notes read; not a complete audit"
+    }
+  ],
+  "navigation_sources": [
+    {
+      "url": "https://ir.tokyu.co.jp/ja/ir.html",
+      "final_url": "https://ir.tokyu.co.jp/ja/ir.html",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:16:44.648882+00:00",
+      "sha256": "622a3a93fb6a88d61ee381dcf4ec2baa7ca38b3413fb0da4a944d934cd7f763f",
+      "local_file": "/tmp/rail-economics/tokyu-ir.html",
+      "bytes": 61844
+    },
+    {
+      "url": "https://ir.tokyu.co.jp/ja/ir/library/result.html",
+      "final_url": "https://ir.tokyu.co.jp/ja/ir/library/result.html",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:16:57.641363+00:00",
+      "sha256": "e555ff3b02a2e794a476efb095c87cae4b95a41fc37c3f7f0da33c766502b47a",
+      "local_file": "/tmp/rail-economics/tokyu-results.html",
+      "bytes": 139885
+    },
+    {
+      "url": "https://www.odakyu.jp/ir/",
+      "final_url": "https://www.odakyu.jp/ir/",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:16:45.404015+00:00",
+      "sha256": "7e85eab1f4c59c17c491bd398794cbb9734901703e9d85028d1a6789ae591e9f",
+      "local_file": "/tmp/rail-economics/odakyu-ir.html",
+      "bytes": 31070
+    },
+    {
+      "url": "https://www.odakyu.jp/ir/financial/",
+      "final_url": "https://www.odakyu.jp/ir/financial/",
+      "status": 200,
+      "retrieved_utc": "2026-10-06T19:16:58.442472+00:00",
+      "sha256": "7ecd915c3c2fe26f8073f0ef5e63f07d53d1fe6fdef2b0a247c7c9b9370db9d3",
+      "local_file": "/tmp/rail-economics/odakyu-results.html",
+      "bytes": 111088
+    }
+  ],
+  "failed_requests": [
+    {
+      "url": "https://ir.tokyu.co.jp/ja/ir/library/financial.html",
+      "status": 404,
+      "reason": "initial guessed path; corrected using official IR top"
+    },
+    {
+      "url": "https://www.jreast.co.jp/investor/financial/",
+      "status": 403,
+      "reason": "stopped; no bypass or alternate identity used; no JR East figures asserted"
+    }
+  ],
+  "observations": [
+    {
+      "issuer": "東急株式会社",
+      "period_start": "2025-04-01",
+      "period_end": "2026-03-31",
+      "period_type": "annual_actual",
+      "unit": "JPY million",
+      "source_id": "tokyu-tanshin",
+      "segment_pdf_page": 17,
+      "segment_profit_basis": "operating profit; reconciled to consolidated operating profit",
+      "segments": [
+        {
+          "name": "交通",
+          "external_customer_revenue": 223130,
+          "revenue_including_intersegment": 226946,
+          "segment_operating_profit": 27341
+        },
+        {
+          "name": "不動産",
+          "external_customer_revenue": 212736,
+          "revenue_including_intersegment": 262995,
+          "segment_operating_profit": 43595
+        },
+        {
+          "name": "生活サービス",
+          "external_customer_revenue": 511523,
+          "revenue_including_intersegment": 533271,
+          "segment_operating_profit": 21868
+        },
+        {
+          "name": "ホテル・リゾート",
+          "external_customer_revenue": 138789,
+          "revenue_including_intersegment": 139346,
+          "segment_operating_profit": 9710
+        }
+      ],
+      "consolidated_revenue": 1086179,
+      "consolidated_operating_profit": 103193,
+      "operating_cash_flow": 127747,
+      "investing_cash_flow": -174984,
+      "financing_cash_flow": 68386,
+      "asset_additions": {
+        "value": 179996,
+        "source_label": "有形固定資産及び無形固定資産の増加額",
+        "basis": "segment asset additions; not cash expenditure"
+      },
+      "fixed_asset_acquisition_cash_outflow": {
+        "value": -159324,
+        "source_label": "固定資産の取得による支出",
+        "basis": "cash outflow, negative sign"
+      },
+      "weekly_game_coefficient": null,
+      "cashflow_pdf_pages": [
+        13,
+        14
+      ],
+      "segment_definitions_pdf_page": 15
+    },
+    {
+      "issuer": "小田急電鉄株式会社",
+      "period_start": "2025-04-01",
+      "period_end": "2026-03-31",
+      "period_type": "annual_actual",
+      "unit": "JPY million",
+      "source_id": "odakyu-tanshin",
+      "segment_pdf_page": 18,
+      "segment_profit_basis": "operating profit; reconciled to consolidated operating profit",
+      "segments": [
+        {
+          "name": "交通業",
+          "external_customer_revenue": 178787,
+          "revenue_including_intersegment": 181261,
+          "segment_operating_profit": 29517
+        },
+        {
+          "name": "不動産業",
+          "external_customer_revenue": 84844,
+          "revenue_including_intersegment": 96226,
+          "segment_operating_profit": 15473
+        },
+        {
+          "name": "生活サービス業",
+          "external_customer_revenue": 155100,
+          "revenue_including_intersegment": 158606,
+          "segment_operating_profit": 7658
+        }
+      ],
+      "consolidated_revenue": 418732,
+      "consolidated_operating_profit": 52659,
+      "operating_cash_flow": 59915,
+      "investing_cash_flow": -84274,
+      "financing_cash_flow": 29270,
+      "asset_additions": {
+        "value": 81385,
+        "source_label": "有形固定資産および無形固定資産の増加額（長期前払費用含む）",
+        "basis": "segment asset additions; not cash expenditure"
+      },
+      "fixed_asset_acquisition_cash_outflow": {
+        "value": -84618,
+        "source_label": "有形固定資産の取得による支出",
+        "basis": "cash outflow, negative sign"
+      },
+      "weekly_game_coefficient": null,
+      "cashflow_pdf_pages": [
+        14,
+        15
+      ],
+      "segment_definitions_pdf_page": 17
+    }
+  ],
+  "additional_verified_facts": [
+    {
+      "source_id": "tokyu-overview",
+      "pdf_page": 39,
+      "fact": "Equipment investment is on segment implementation basis and differs from cash flow statement which accounts for year-end unpaid amounts."
+    },
+    {
+      "source_id": "tokyu-overview",
+      "pdf_page": 19,
+      "fact": "Three-year investment/CF plan is partially reclassified for explanation and explicitly differs from statutory cash flow statement; not used as annual actual."
+    },
+    {
+      "source_id": "tokyu-overview",
+      "pdf_page": 32,
+      "unit": "JPY 100 million",
+      "scope": "東急電鉄等, not all transportation and not full consolidated group",
+      "revenue": 1660,
+      "operating_profit": 228,
+      "note": "Transport passengers +3.1%; transport segment operating profit -5.7% YoY; no causal elasticity inferred."
+    },
+    {
+      "source_id": "odakyu-overview",
+      "pdf_page": 8,
+      "unit": "JPY million",
+      "scope": "鉄道業 subsegment, not whole transportation segment",
+      "revenue": 132621,
+      "operating_profit": 23350
+    },
+    {
+      "source_id": "odakyu-overview",
+      "pdf_page": 3,
+      "unit": "JPY million",
+      "equipment_investment": 81385
+    }
+  ],
+  "limitations": [
+    "Both issuers use different segment scopes, especially hotels and life services.",
+    "Million-yen values are source-truncated; rows can differ from arithmetic sums by rounding/truncation.",
+    "No station, property, route-level ROI or maintenance-versus-growth investment split verified.",
+    "No weekly conversion, acquisition price calibration, causal rider-to-rent estimate, or human playtime test.",
+    "Only selected pages reviewed; acquisition target names and values in the game remain fictional."
+  ]
+}

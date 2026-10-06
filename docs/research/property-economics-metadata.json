@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "researched_on": "2026-10-06",
+  "purpose": "公開REIT資料による不動産収益構造の設計参考。ゲーム係数への校正・導入は未実施。",
+  "sources": [
+    {
+      "id": "jmf-results",
+      "url": "https://contents.xj-storage.jp/xcontents/89530/c8dde3a5/eec4/4fd8/bd3e/650822a9f3e7/140120260420507023.pdf",
+      "http_status": 200,
+      "bytes": 689235,
+      "sha256": "e902104556bd503e063fa13e049aaeb00e3fbde597d5ec6550e9411109c71151",
+      "raw_pdf": "/tmp/property-economics/jmf-results.pdf",
+      "issuer": "日本都市ファンド投資法人",
+      "title": "2026年2月期 決算短信(REIT)",
+      "publication_date": "2026-04-21",
+      "period_start": "2025-09-01",
+      "period_end": "2026-02-28",
+      "accessed_on": "2026-10-06",
+      "source_type": "issuer_primary_pdf",
+      "extraction": "pdftotext -layout",
+      "raw_text": "/tmp/property-economics/jmf-results.txt"
+    },
+    {
+      "id": "jmf-presentation",
+      "url": "https://contents.xj-storage.jp/xcontents/89530/5799a87c/d8ae/4c4b/a1db/bb00402f3e9e/20260414114718247s.pdf",
+      "http_status": 200,
+      "bytes": 5147472,
+      "sha256": "46ac01682e44fe623df737d4ce925af76c7e68c406ff83ac3d9a40708dbe279d",
+      "raw_pdf": "/tmp/property-economics/jmf-presentation.pdf",
+      "issuer": "日本都市ファンド投資法人",
+      "title": "2026年2月期 決算説明会資料",
+      "publication_date": null,
+      "period_start": "2025-09-01",
+      "period_end": "2026-02-28",
+      "accessed_on": "2026-10-06",
+      "source_type": "issuer_primary_pdf",
+      "extraction": "pdftotext -layout",
+      "raw_text": "/tmp/property-economics/jmf-presentation.txt"
+    },
+    {
+      "id": "adr-results",
+      "url": "https://www.adr-reit.com/files/optionallink/00003483_file.pdf",
+      "http_status": 200,
+      "bytes": 1424487,
+      "sha256": "cede2df489e3d6891fea1d631a19e8f5e0b272f15daf1b307e796e97dfff6fa6",
+      "raw_pdf": "/tmp/property-economics/adr-results.pdf",
+      "issuer": "アドバンス・レジデンス投資法人",
+      "title": "2026年7月期 決算短信(REIT)",
+      "publication_date": "2026-09-17",
+      "period_start": "2026-02-01",
+      "period_end": "2026-07-31",
+      "accessed_on": "2026-10-06",
+      "source_type": "issuer_primary_pdf",
+      "extraction": "pdftotext -layout",
+      "raw_text": "/tmp/property-economics/adr-results.txt"
+    },
+    {
+      "id": "adr-presentation",
+      "url": "https://www.adr-reit.com/files/optionallink/00003484_file.pdf",
+      "http_status": 200,
+      "bytes": 6975432,
+      "sha256": "93cb64b1ddef16a4150f29f4974c21434778909a6ef3b979736bce10ce589b51",
+      "raw_pdf": "/tmp/property-economics/adr-presentation.pdf",
+      "issuer": "アドバンス・レジデンス投資法人",
+      "title": "2026年7月期 決算説明資料",
+      "publication_date": "2026-09-17",
+      "period_start": "2026-02-01",
+      "period_end": "2026-07-31",
+      "accessed_on": "2026-10-06",
+      "source_type": "issuer_primary_pdf",
+      "extraction": "pdftotext -layout",
+      "raw_text": "/tmp/property-economics/adr-presentation.txt"
+    },
+    {
+      "id": "nbf-results",
+      "url": "https://www.nbf-m.com/file/ir_library_term-23fd603fc6486d57bcba0c3b84530636d9acee69.pdf",
+      "http_status": 200,
+      "bytes": 440753,
+      "sha256": "e277ed3ae86e8bd6167a45bacd1250849df71961fe9184fc036461cde8fa990b",
+      "raw_pdf": "/tmp/property-economics/nbf-results.pdf",
+      "issuer": "日本ビルファンド投資法人",
+      "title": "2026年6月期 決算短信(REIT)",
+      "publication_date": "2026-08-17",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "accessed_on": "2026-10-06",
+      "source_type": "issuer_primary_pdf",
+      "extraction": "pdftotext -layout",
+      "raw_text": "/tmp/property-economics/nbf-results.txt"
+    },
+    {
+      "id": "nbf-presentation",
+      "url": "https://www.nbf-m.com/file/ir_library_term-99dd100a27fcc037af2489bb3321e271506f5d83.pdf",
+      "http_status": 200,
+      "bytes": 2714355,
+      "sha256": "32fadcf98cae5a66acbde34abfec2cf7be04e52737df71a45ef04180d2401e48",
+      "raw_pdf": "/tmp/property-economics/nbf-presentation.pdf",
+      "issuer": "日本ビルファンド投資法人",
+      "title": "2026年6月期（第50期）決算説明資料",
+      "publication_date": null,
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "accessed_on": "2026-10-06",
+      "source_type": "issuer_primary_pdf",
+      "extraction": "pdftotext -layout",
+      "raw_text": "/tmp/property-economics/nbf-presentation.txt"
+    },
+    {
+      "id": "jmf-correction",
+      "url": "https://contents.xj-storage.jp/xcontents/89530/f00778dd/9075/447c/941c/18421f838799/140120260422507912.pdf",
+      "http_status": 200,
+      "bytes": 227502,
+      "sha256": "909b231ff435bddfebcf76787f744d666f6d6f4b2d51e8c4c3e40c72e1fd7f32",
+      "raw_pdf": "/tmp/property-economics/jmf-correction.pdf",
+      "issuer": "日本都市ファンド投資法人",
+      "title": "（訂正）2026年2月期 決算短信(REIT)の一部訂正に関するお知らせ",
+      "publication_date": "2026-04-22",
+      "period_start": "2025-09-01",
+      "period_end": "2026-02-28",
+      "accessed_on": "2026-10-06",
+      "source_type": "issuer_primary_pdf",
+      "extraction": "pdftotext -layout",
+      "raw_text": "/tmp/property-economics/jmf-correction.txt"
+    }
+  ],
+  "metrics": [
+    {
+      "issuer_id": "jmf",
+      "metric": "operating_revenue",
+      "value": 52075,
+      "unit": "JPY_million",
+      "scope": "entity",
+      "source_id": "jmf-results",
+      "pdf_page": 1,
+      "basis": "period_actual",
+      "notes": "百万円未満切捨て。売却益等を含み、全額を賃料と扱わない。"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "rental_business_revenue",
+      "value": 44941566,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "jmf-results",
+      "pdf_page": 25,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "rental_business_expenses_including_depreciation",
+      "value": 19988189,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "jmf-results",
+      "pdf_page": 25,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "rental_depreciation",
+      "value": 5660991,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "jmf-results",
+      "pdf_page": 25,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "rental_revenue_minus_expenses_plus_depreciation",
+      "value": 30614368,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "jmf-results",
+      "pdf_page": 25,
+      "basis": "researcher_calculation",
+      "notes": "公表千円値による算術。発行体定義のNOIと一致するとは限らず、減価償却以外の非現金項目は戻していない。"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "operating_revenue",
+      "value": 20560,
+      "unit": "JPY_million",
+      "scope": "entity",
+      "source_id": "adr-results",
+      "pdf_page": 1,
+      "basis": "period_actual",
+      "notes": "百万円未満切捨て。売却益等を含み、全額を賃料と扱わない。"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "rental_business_revenue",
+      "value": 19547259,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "adr-results",
+      "pdf_page": 25,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "rental_business_expenses_including_depreciation",
+      "value": 8448397,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "adr-results",
+      "pdf_page": 25,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "rental_depreciation",
+      "value": 3757263,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "adr-results",
+      "pdf_page": 25,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "rental_revenue_minus_expenses_plus_depreciation",
+      "value": 14856125,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "adr-results",
+      "pdf_page": 25,
+      "basis": "researcher_calculation",
+      "notes": "公表千円値による算術。発行体定義のNOIと一致するとは限らず、減価償却以外の非現金項目は戻していない。"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "operating_revenue",
+      "value": 53858,
+      "unit": "JPY_million",
+      "scope": "entity",
+      "source_id": "nbf-results",
+      "pdf_page": 1,
+      "basis": "period_actual",
+      "notes": "百万円未満切捨て。売却益等を含み、全額を賃料と扱わない。"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "rental_business_revenue",
+      "value": 48665348,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "nbf-results",
+      "pdf_page": 18,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "rental_business_expenses_including_depreciation",
+      "value": 24890159,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "nbf-results",
+      "pdf_page": 18,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "rental_depreciation",
+      "value": 8033826,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "nbf-results",
+      "pdf_page": 18,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "rental_revenue_minus_expenses_plus_depreciation",
+      "value": 31809015,
+      "unit": "JPY_thousand",
+      "scope": "entity_rental_business",
+      "source_id": "nbf-results",
+      "pdf_page": 18,
+      "basis": "researcher_calculation",
+      "notes": "公表千円値による算術。発行体定義のNOIと一致するとは限らず、減価償却以外の非現金項目は戻していない。"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "reported_rental_NOI_including_dividends",
+      "value": 31107,
+      "unit": "JPY_million",
+      "scope": "entity_portfolio",
+      "source_id": "jmf-presentation",
+      "pdf_page": 40,
+      "basis": "period_actual",
+      "notes": "資料脚注で受取配当金を含む。"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "reported_NOI",
+      "value": 14856,
+      "unit": "JPY_million",
+      "scope": "entity_portfolio",
+      "source_id": "adr-presentation",
+      "pdf_page": 11,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "reported_rental_NOI",
+      "value": 31809,
+      "unit": "JPY_million",
+      "scope": "entity_portfolio",
+      "source_id": "nbf-presentation",
+      "pdf_page": 5,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "occupancy_period_end",
+      "value": 99.2,
+      "unit": "percent",
+      "scope": "entity_portfolio",
+      "source_id": "jmf-presentation",
+      "pdf_page": 39,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "occupancy_commercial_period_end",
+      "value": 99.9,
+      "unit": "percent",
+      "scope": "commercial_subportfolio_77_properties",
+      "source_id": "jmf-presentation",
+      "pdf_page": 39,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "average_occupancy",
+      "value": 95.9,
+      "unit": "percent",
+      "scope": "entity_portfolio",
+      "source_id": "adr-presentation",
+      "pdf_page": 20,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "average_occupancy",
+      "value": 98.2,
+      "unit": "percent",
+      "scope": "entity_portfolio",
+      "source_id": "nbf-presentation",
+      "pdf_page": 5,
+      "basis": "period_actual",
+      "notes": "各月末稼働率を面積ベースで加重平均。定義はPDF p.28。"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "interest_bearing_debt",
+      "value": 629645,
+      "unit": "JPY_million",
+      "scope": "entity",
+      "source_id": "jmf-results",
+      "pdf_page": 8,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "debt_to_total_assets",
+      "value": 46.2,
+      "unit": "percent",
+      "scope": "entity",
+      "source_id": "jmf-results",
+      "pdf_page": 5,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "issuer_LTV_including_unrealized_gains_in_denominator",
+      "value": 37.9,
+      "unit": "percent",
+      "scope": "entity",
+      "source_id": "jmf-results",
+      "pdf_page": 5,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "borrowings",
+      "value": 2338,
+      "unit": "JPY_100million",
+      "scope": "entity",
+      "source_id": "adr-presentation",
+      "pdf_page": 33,
+      "basis": "period_end",
+      "notes": "資料表示精度。投資法人債を含まない。"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "investment_corporation_bonds",
+      "value": 186,
+      "unit": "JPY_100million",
+      "scope": "entity",
+      "source_id": "adr-presentation",
+      "pdf_page": 33,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "interest_bearing_debt",
+      "value": 2524,
+      "unit": "JPY_100million",
+      "scope": "entity",
+      "source_id": "adr-presentation",
+      "pdf_page": 33,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "debt_to_total_assets",
+      "value": 49.8,
+      "unit": "percent",
+      "scope": "entity",
+      "source_id": "adr-presentation",
+      "pdf_page": 33,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "interest_bearing_debt",
+      "value": 629000,
+      "unit": "JPY_million",
+      "scope": "entity",
+      "source_id": "nbf-presentation",
+      "pdf_page": 10,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "debt_to_total_assets",
+      "value": 42.6,
+      "unit": "percent",
+      "scope": "entity",
+      "source_id": "nbf-presentation",
+      "pdf_page": 10,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "annualized_actual_NOI_to_acquisition_cost",
+      "value": 5.9,
+      "unit": "percent",
+      "scope": "entity_portfolio",
+      "source_id": "adr-presentation",
+      "pdf_page": 40,
+      "basis": "annualized_actual"
+    },
+    {
+      "issuer_id": "adr",
+      "metric": "appraisal_direct_capitalization_rate",
+      "value": 3.56,
+      "unit": "percent",
+      "scope": "portfolio_aggregate",
+      "source_id": "adr-presentation",
+      "pdf_page": 54,
+      "basis": "appraisal_period_end",
+      "notes": "NOI取得価格利回りとは異なる指標。個別物件値ではない。"
+    },
+    {
+      "issuer_id": "nbf",
+      "metric": "annualized_NOI_yield",
+      "value": 4.48,
+      "unit": "percent",
+      "scope": "full_period_operating_properties",
+      "source_id": "nbf-presentation",
+      "pdf_page": 33,
+      "basis": "annualized_actual",
+      "notes": "資料定義: 通期稼働物件のNOI / 当該物件の期末簿価 × 2。ADRの取得価格分母と異なる。"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "rental_revenue",
+      "value": 58,
+      "unit": "JPY_million",
+      "scope": "property_10016_Gビル神宮前06",
+      "source_id": "jmf-results",
+      "pdf_page": 48,
+      "basis": "period_actual"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "occupancy",
+      "value": 100.0,
+      "unit": "percent",
+      "scope": "property_10016_Gビル神宮前06",
+      "source_id": "jmf-results",
+      "pdf_page": 48,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "tenants",
+      "value": 4,
+      "unit": "count",
+      "scope": "property_10016_Gビル神宮前06",
+      "source_id": "jmf-results",
+      "pdf_page": 48,
+      "basis": "period_end"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "acquisition_price",
+      "value": 2360,
+      "unit": "JPY_million",
+      "scope": "property_10016_Gビル神宮前06",
+      "source_id": "jmf-presentation",
+      "pdf_page": 41,
+      "basis": "historical_acquisition"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "appraisal_value",
+      "value": 3290,
+      "unit": "JPY_million",
+      "scope": "property_10016_Gビル神宮前06",
+      "source_id": "jmf-presentation",
+      "pdf_page": 48,
+      "basis": "appraisal_period_end"
+    },
+    {
+      "issuer_id": "jmf",
+      "metric": "direct_capitalization_rate",
+      "value": 2.9,
+      "unit": "percent",
+      "scope": "property_10016_Gビル神宮前06",
+      "source_id": "jmf-presentation",
+      "pdf_page": 48,
+      "basis": "appraisal_period_end"
+    }
+  ],
+  "access_log": [
+    {
+      "url": "https://www.jmf-reit.com/ir/library.html",
+      "status": 200
+    },
+    {
+      "url": "https://www.adr-reit.com/ir/library",
+      "status": 404,
+      "resolution": "公式トップページ内の開示PDFリンクを利用。認証回避・403回避なし。"
+    },
+    {
+      "url": "https://www.adr-reit.com/",
+      "status": 200
+    },
+    {
+      "url": "https://www.nbf-m.com/nbf/ir/library.html",
+      "status": 200
+    }
+  ],
+  "limitations": [
+    "3法人は統計的な代表標本ではない。",
+    "決算期間が一致せず、最新を網羅する検索ではない。取得日に公式サイトで確認できた掲載資料を選択。",
+    "PDF原本と抽出全文は/tmpのみ。再配布しない。",
+    "JMF訂正PDFを確認。将来予想欄の訂正であり本調査の当期実績値は変更対象外。",
+    "同名NOI/LTVでも定義が異なる。",
+    "現実の半年・年換算指標をゲーム週と同じ時間として扱わない。",
+    "取得資料から鉄道整備の賃料・需要増加の因果効果や本作の厳しい借入敗北ルールは立証できない。"
+  ]
+}

@@ -1,0 +1,93 @@
+[
+  {
+    "strategy": "cash",
+    "seeds": 32,
+    "weeks": 104,
+    "medianNetWorth": 12000000,
+    "medianStores": 0,
+    "medianWeeklyProfit": 0,
+    "minNetWorth": 12000000,
+    "maxNetWorth": 12000000,
+    "meanMaxDrawdown": 0,
+    "ruinRate": 0,
+    "ipoWeeks": [
+      null
+    ]
+  },
+  {
+    "strategy": "basket",
+    "seeds": 32,
+    "weeks": 104,
+    "medianNetWorth": 12737796,
+    "medianStores": 0,
+    "medianWeeklyProfit": 0,
+    "minNetWorth": 8817576,
+    "maxNetWorth": 17849262,
+    "meanMaxDrawdown": 0.15672147082624052,
+    "ruinRate": 0,
+    "ipoWeeks": [
+      null
+    ]
+  },
+  {
+    "strategy": "growth",
+    "seeds": 32,
+    "weeks": 104,
+    "medianNetWorth": 11871286,
+    "medianStores": 0,
+    "medianWeeklyProfit": 0,
+    "minNetWorth": 5865684,
+    "maxNetWorth": 23576864,
+    "meanMaxDrawdown": 0.32340202526276407,
+    "ruinRate": 0,
+    "ipoWeeks": [
+      null
+    ]
+  },
+  {
+    "strategy": "cafes",
+    "seeds": 32,
+    "weeks": 104,
+    "medianNetWorth": 30176627,
+    "medianStores": 3,
+    "medianWeeklyProfit": 202568,
+    "minNetWorth": 30176627,
+    "maxNetWorth": 30176627,
+    "meanMaxDrawdown": 0.36014108333333344,
+    "ruinRate": 0,
+    "ipoWeeks": [
+      59
+    ]
+  },
+  {
+    "strategy": "managed-cafes",
+    "seeds": 32,
+    "weeks": 104,
+    "medianNetWorth": 103797080,
+    "medianStores": 8,
+    "medianWeeklyProfit": 994699,
+    "minNetWorth": 101962493,
+    "maxNetWorth": 104151522,
+    "meanMaxDrawdown": 0.2791872005208334,
+    "ruinRate": 0,
+    "ipoWeeks": [
+      24,
+      22
+    ]
+  },
+  {
+    "strategy": "overstaffed-debt",
+    "seeds": 32,
+    "weeks": 104,
+    "medianNetWorth": 8693045,
+    "medianStores": 1,
+    "medianWeeklyProfit": -1690414,
+    "minNetWorth": 8693045,
+    "maxNetWorth": 8693045,
+    "meanMaxDrawdown": 0.2755795833333333,
+    "ruinRate": 1,
+    "ipoWeeks": [
+      null
+    ]
+  }
+]

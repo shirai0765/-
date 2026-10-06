@@ -1,0 +1,46 @@
+{
+  "name": "shibuya-capital",
+  "private": true,
+  "version": "0.4.2",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "test:browser": "python3 scripts/smoke-browser.py",
+    "balance": "vite-node scripts/balance-report.ts",
+    "model:export": "python3 scripts/export-city.py",
+    "package:windows": "npm run build && python3 scripts/package-windows.py",
+    "model:viewer": "node scripts/package-model-viewer.mjs",
+    "test:design": "python3 scripts/smoke-design.py",
+    "test:sales": "python3 scripts/smoke-sales.py",
+    "campaign": "vite-node scripts/campaign-report.ts",
+    "model:assets": "python3 scripts/export-architecture.py --asset all",
+    "test:development": "python3 scripts/smoke-development.py",
+    "test:architecture": "python3 scripts/smoke-architecture.py",
+    "test:models": "python3 scripts/smoke-model-viewers.py",
+    "model:real-viewer": "node scripts/package-real-city.mjs",
+    "test:real-city": "python3 scripts/smoke-real-city.py",
+    "test:acquisitions": "python3 scripts/smoke-market-acquisitions.py"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/noto-sans-jp": "^5.3.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "fake-indexeddb": "^6.2.5",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.0",
+    "vitest": "^3.2.4"
+  }
+}

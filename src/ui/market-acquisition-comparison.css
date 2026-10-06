@@ -1,0 +1,35 @@
+.ma-comparison.ma-comparison--compact{border:1px solid var(--line);background:var(--surface-soft);padding:20px;margin:24px 0}
+.ma-comparison--compact>header,.ma-comparison--compact .ma-comparison-card>header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ma-comparison--compact h3{font-size:17px;margin:5px 0}.ma-comparison--compact h4{font-size:14px;margin:0;overflow-wrap:anywhere}
+.ma-comparison--compact>header>.secondary,.ma-comparison--compact .icon-button{flex-shrink:0}
+.ma-comparison--compact .ma-comparison-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+.ma-comparison--compact .ma-comparison-card{min-width:0;padding:15px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column}
+.ma-comparison--compact .ma-comparison-status{font-size:11px;margin:8px 0 14px}
+.ma-comparison--compact .ma-comparison-mode{display:grid;gap:7px;font-size:11px;color:var(--muted);min-width:0}
+.ma-comparison--compact .ma-comparison-mode select{width:100%;min-width:0;font-size:12px}
+.ma-comparison--compact .ma-comparison-priorities{display:grid;gap:14px;margin:16px 0 0}
+.ma-comparison--compact .ma-comparison-priorities>div{display:grid;gap:5px}
+.ma-comparison--compact .ma-comparison-priorities dt{font-size:11px;color:var(--muted)}
+.ma-comparison--compact .ma-comparison-priorities dt>span{margin-left:6px;font-size:10px}
+.ma-comparison--compact .ma-comparison-priorities dd{margin:0;font-size:22px;font-weight:700;line-height:1.35;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.ma-comparison--compact .ma-comparison-priorities small{font-size:10px;color:var(--muted);line-height:1.7;font-weight:400}
+.ma-comparison--compact .ma-comparison-priorities dd>small{margin-left:5px;font-size:12px}
+.ma-comparison--compact .ma-comparison-cash dd{color:var(--ink)}
+.ma-comparison--compact .ma-comparison-priorities .ma-comparison-profit-range{font-size:16px;display:flex;flex-wrap:wrap;gap:3px 5px}
+.ma-comparison--compact .ma-comparison-headroom{font-size:10px;margin:10px 0 15px}
+.ma-comparison--compact .ma-comparison-forecast{padding:12px;background:var(--surface-soft);border-left:3px solid var(--line);font-size:11px;margin:0 0 10px}
+.ma-comparison--compact .ma-comparison-forecast p{font-size:11px;margin:7px 0;overflow-wrap:anywhere}
+.ma-comparison--compact .ma-comparison-forecast .ma-comparison-time-note{font-size:10px}
+.ma-comparison--compact .ma-comparison-cash-warning,.ma-comparison--compact .ma-comparison-risk{font-size:11px;color:var(--red);border-left:3px solid var(--red);padding:8px 10px;background:var(--surface-soft);margin:10px 0}
+.ma-comparison--compact .ma-comparison-commit-note{font-size:10px;line-height:1.7;margin:4px 0 12px;color:var(--ink)}
+.ma-comparison--compact .ma-comparison-actions{display:grid;gap:8px}.ma-comparison--compact .ma-comparison-actions>.secondary{width:100%}
+.ma-comparison--compact .ma-comparison-details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.ma-comparison--compact .ma-comparison-details summary{font-size:11px;font-weight:600;cursor:pointer;line-height:1.8;color:var(--ink)}
+.ma-comparison--compact .ma-comparison-details summary:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.ma-comparison--compact .ma-comparison-details>p{font-size:10px;line-height:1.7}
+.ma-comparison--compact .ma-comparison-metrics{font-size:11px;margin:10px 0}
+.ma-comparison--compact .ma-comparison-metrics>div{display:grid;grid-template-columns:1fr;gap:4px;border-bottom:1px solid var(--line);padding:8px 0}
+.ma-comparison--compact .ma-comparison-metrics dt{color:var(--muted)}
+.ma-comparison--compact .ma-comparison-metrics dd{margin:0;text-align:left;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+@media(max-width:1000px){.ma-comparison--compact .ma-comparison-grid{grid-template-columns:1fr}.ma-comparison--compact .ma-comparison-priorities{grid-template-columns:1fr 1fr}.ma-comparison--compact .ma-comparison-cash{grid-column:1/-1}}
+@media(max-width:520px){.ma-comparison.ma-comparison--compact{padding:14px}.ma-comparison--compact>header{align-items:flex-start;flex-direction:column}.ma-comparison--compact .ma-comparison-priorities{grid-template-columns:1fr}.ma-comparison--compact .ma-comparison-priorities dd{font-size:21px}}

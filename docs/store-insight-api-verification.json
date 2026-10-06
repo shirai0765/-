@@ -1,0 +1,485 @@
+{
+  "sourceVersion": "0.4.1",
+  "implementationVersion": "0.4.2 development",
+  "verifiedAt": "2026-10-06T19:28:50.764Z",
+  "baselineFile": "/tmp/store-insight-v041-baseline.json",
+  "baselineSha256": "6d25fa9a9944e2e691c6f54214df209ca7d4f8c0cfa5d93eaa41f57c15b97699",
+  "baselineEngineSha256": "6bae2495b511791c45f94d50f996fb10a6cf06df174d23ed5f16aeeb09c5b406",
+  "implementationEngineSha256": "e54b8cc07bcaec462aa7cffe6b055f639ec117acb419473170304b789a54a6d5",
+  "cases": 29,
+  "allPassed": true,
+  "excludedFields": [
+    "envelope.savedAt",
+    "nextEnvelope.savedAt"
+  ],
+  "limitations": [
+    "Representative 29 public-action fixtures, not all possible states.",
+    "No browser or human-comprehension evidence."
+  ],
+  "results": [
+    {
+      "id": "initial-center-01-standard",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-center-01-premium",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-center-01-takeaway",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-dogenzaka-02-standard",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-dogenzaka-02-premium",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-dogenzaka-02-takeaway",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-miyashita-04-standard",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-miyashita-04-premium",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-miyashita-04-takeaway",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-sakuragaoka-06-standard",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-sakuragaoka-06-premium",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "initial-sakuragaoka-06-takeaway",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "saturated-quality85",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "saturated-quality100",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "demand-limited",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "high-profit-low-satisfaction",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "manager-normal",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "manager-keeps-low-satisfaction-fallback",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "staff-above-capacity-limit",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "level2",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "chain-2",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "chain-3",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "chain-4",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "chain4-one-manager",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "week87-rented",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "week87-owned",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "borrowed-profitable",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "borrowed-loss",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    },
+    {
+      "id": "empty",
+      "checks": {
+        "forecast": true,
+        "advance": true,
+        "effectivePlans": true,
+        "evaluateSite": true,
+        "envelope": true,
+        "nextEnvelope": true,
+        "roundtrip": true,
+        "insightReport": true,
+        "reportKeys": true,
+        "stateUnchanged": true
+      },
+      "passed": true
+    }
+  ]
+}

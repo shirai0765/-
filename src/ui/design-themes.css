@@ -1,0 +1,23 @@
+/* Product palettes share semantic roles, so every view follows the chosen design. */
+:root,html[data-design='daylight'] {
+  color-scheme:light;
+  --ink:#172137;--muted:#667085;--surface:#ffffff;--surface-soft:#f3f5f9;--line:#e3e7ef;
+  --accent:#2563eb;--accent-soft:#edf3ff;--accent-ink:#ffffff;--green:#13815f;--red:#c23c48;
+  --rail:#ffffff;--rail-ink:#697386;--rail-active:#edf3ff;--rail-selected:#245bda;
+  --warning-bg:#fff7e6;--warning-ink:#936015;--danger-bg:#fff0f1;--success-bg:#eaf8f1;
+  --radius:10px;--paper:var(--surface);--gold:var(--accent);
+  font-family:'Manrope Variable','Noto Sans JP Variable',sans-serif;font-synthesis:none;font-size:13px;font-weight:450;
+  color:var(--ink);background:var(--surface-soft);
+}
+html[data-design='metro'] {
+  --ink:#202124;--muted:#66686e;--surface:#ffffff;--surface-soft:#f5f5f5;--line:#dedfe1;
+  --accent:#c94312;--accent-soft:#fff0e9;--accent-ink:#ffffff;--green:#147646;--red:#c6373d;
+  --rail:#202124;--rail-ink:#b9bcc4;--rail-active:#c94312;--rail-selected:#ffffff;--radius:3px;
+}
+html[data-design='night'] {
+  color-scheme:dark;
+  --ink:#ecf0f7;--muted:#a1aab9;--surface:#191e27;--surface-soft:#11161e;--line:#303745;
+  --accent:#62d5f5;--accent-soft:#203541;--accent-ink:#101c26;--green:#67deb0;--red:#ff8996;
+  --rail:#11161e;--rail-ink:#969faf;--rail-active:#203541;--rail-selected:#8de5ff;
+  --warning-bg:#33291a;--warning-ink:#f4c77c;--danger-bg:#392128;--success-bg:#17352e;--radius:8px;
+}

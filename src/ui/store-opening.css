@@ -1,0 +1,19 @@
+.store-opening { min-width: 0; }
+.store-opening .opening-note { color: var(--muted); font-size: 12px; line-height: 1.7; margin: 10px 0; }
+.opening-options { display: grid; gap: 8px; }
+.store-opening .opening-option { display: grid; gap: 7px; width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 8px; text-align: left; color: var(--ink); background: var(--surface); white-space: normal; }
+.store-opening .opening-option.selected { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.store-opening .opening-option:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.opening-option-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; font-size: 13px; }
+.opening-option small, .opening-unavailable { display: block; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.opening-option-profit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; font-size: 12px; }
+.store-opening h4 { margin: 18px 0 8px; font-size: 14px; }
+.opening-comparison { margin: 0; font-size: 12px; }
+.opening-comparison > div { display: grid; gap: 5px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.opening-comparison dt { color: var(--muted); }
+.opening-comparison dd { margin: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 8px; font-variant-numeric: tabular-nums; }
+.opening-comparison dd span { color: var(--muted); }
+.opening-detail { margin: 12px 0; }
+.opening-detail summary { padding: 8px 0; cursor: pointer; font-size: 12px; font-weight: 600; line-height: 1.6; }
+.store-opening .opening-warning { padding: 10px; border: 1px solid var(--line); border-left: 3px solid var(--red, #b43c30); border-radius: 4px; font-size: 12px; line-height: 1.7; }
+.store-opening .opening-submit { width: 100%; min-height: 44px; margin-top: 8px; }

@@ -1,0 +1,902 @@
+[
+  {
+    "code": "9432",
+    "realName": "ＮＴＴ",
+    "market": "Prime",
+    "jpxSector": "情報・通信業",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "3543",
+    "realName": "コメダホールディングス",
+    "market": "Prime",
+    "jpxSector": "卸売業",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "3087",
+    "realName": "ドトール・日レスホールディングス",
+    "market": "Prime",
+    "jpxSector": "小売業",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "9005",
+    "realName": "東急",
+    "market": "Prime",
+    "jpxSector": "陸運業",
+    "jpxSizeClass": "TOPIX Mid400",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "9020",
+    "realName": "東日本旅客鉄道",
+    "market": "Prime",
+    "jpxSector": "陸運業",
+    "jpxSizeClass": "TOPIX Large70",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8801",
+    "realName": "三井不動産",
+    "market": "Prime",
+    "jpxSector": "不動産業",
+    "jpxSizeClass": "TOPIX Large70",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8802",
+    "realName": "三菱地所",
+    "market": "Prime",
+    "jpxSector": "不動産業",
+    "jpxSizeClass": "TOPIX Large70",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "7203",
+    "realName": "トヨタ自動車",
+    "market": "Prime",
+    "jpxSector": "輸送用機器",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8306",
+    "realName": "三菱ＵＦＪフィナンシャル・グループ",
+    "market": "Prime",
+    "jpxSector": "銀行業",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8316",
+    "realName": "三井住友フィナンシャルグループ",
+    "market": "Prime",
+    "jpxSector": "銀行業",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8591",
+    "realName": "オリックス",
+    "market": "Prime",
+    "jpxSector": "その他金融業",
+    "jpxSizeClass": "TOPIX Large70",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "2502",
+    "realName": "アサヒグループホールディングス",
+    "market": "Prime",
+    "jpxSector": "食料品",
+    "jpxSizeClass": "TOPIX Large70",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "2802",
+    "realName": "味の素",
+    "market": "Prime",
+    "jpxSector": "食料品",
+    "jpxSizeClass": "TOPIX Large70",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "9984",
+    "realName": "ソフトバンクグループ",
+    "market": "Prime",
+    "jpxSector": "情報・通信業",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "6758",
+    "realName": "ソニーグループ",
+    "market": "Prime",
+    "jpxSector": "電気機器",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "7974",
+    "realName": "任天堂",
+    "market": "Prime",
+    "jpxSector": "その他製品",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "9433",
+    "realName": "ＫＤＤＩ",
+    "market": "Prime",
+    "jpxSector": "情報・通信業",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "9501",
+    "realName": "東京電力ホールディングス",
+    "market": "Prime",
+    "jpxSector": "電気・ガス業",
+    "jpxSizeClass": "TOPIX Mid400",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "5020",
+    "realName": "ＥＮＥＯＳホールディングス",
+    "market": "Prime",
+    "jpxSector": "石油・石炭製品",
+    "jpxSizeClass": "TOPIX Large70",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8411",
+    "realName": "みずほフィナンシャルグループ",
+    "market": "Prime",
+    "jpxSector": "銀行業",
+    "jpxSizeClass": "TOPIX Core30",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "7944",
+    "realName": "ローランド",
+    "market": "Prime",
+    "jpxSector": "その他製品",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "8793",
+    "realName": "ＮＥＣキャピタルソリューション",
+    "market": "Prime",
+    "jpxSector": "その他金融業",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5331",
+    "realName": "ノリタケ",
+    "market": "Prime",
+    "jpxSector": "ガラス・土石製品",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5185",
+    "realName": "フコク",
+    "market": "Prime",
+    "jpxSector": "ゴム製品",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9336",
+    "realName": "大栄環境",
+    "market": "Prime",
+    "jpxSector": "サービス業",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3880",
+    "realName": "大王製紙",
+    "market": "Prime",
+    "jpxSector": "パルプ・紙",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3232",
+    "realName": "三重交通グループホールディングス",
+    "market": "Prime",
+    "jpxSector": "不動産業",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7388",
+    "realName": "ＦＰパートナー",
+    "market": "Prime",
+    "jpxSector": "保険業",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9319",
+    "realName": "中央倉庫",
+    "market": "Prime",
+    "jpxSector": "倉庫・運輸関連業",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4968",
+    "realName": "荒川化学工業",
+    "market": "Prime",
+    "jpxSector": "化学",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4554",
+    "realName": "富士製薬工業",
+    "market": "Prime",
+    "jpxSector": "医薬品",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3036",
+    "realName": "アルコニックス",
+    "market": "Prime",
+    "jpxSector": "卸売業",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3387",
+    "realName": "クリエイト・レストランツ・ホールディングス",
+    "market": "Prime",
+    "jpxSector": "小売業",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "1833",
+    "realName": "奥村組",
+    "market": "Prime",
+    "jpxSector": "建設業",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4481",
+    "realName": "ベース",
+    "market": "Prime",
+    "jpxSector": "情報・通信業",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "6310",
+    "realName": "井関農機",
+    "market": "Prime",
+    "jpxSector": "機械",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "1375",
+    "realName": "ユキグニファクトリー",
+    "market": "Prime",
+    "jpxSector": "水産・農林業",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9119",
+    "realName": "飯野海運",
+    "market": "Prime",
+    "jpxSector": "海運業",
+    "jpxSizeClass": "TOPIX Small 1",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5011",
+    "realName": "ニチレキグループ",
+    "market": "Prime",
+    "jpxSector": "石油・石炭製品",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7715",
+    "realName": "長野計器",
+    "market": "Prime",
+    "jpxSector": "精密機器",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "6731",
+    "realName": "ピクセラ",
+    "market": "Standard",
+    "jpxSector": "電気機器",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "6993",
+    "realName": "大黒屋ホールディングス",
+    "market": "Standard",
+    "jpxSector": "小売業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8107",
+    "realName": "キムラタン",
+    "market": "Standard",
+    "jpxSector": "繊維製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "7897",
+    "realName": "ホクシン",
+    "market": "Standard",
+    "jpxSector": "その他製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4346",
+    "realName": "ＮＥＸＹＺ．Ｇｒｏｕｐ",
+    "market": "Standard",
+    "jpxSector": "その他金融業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5279",
+    "realName": "日本興業",
+    "market": "Standard",
+    "jpxSector": "ガラス・土石製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5199",
+    "realName": "不二ラテックス",
+    "market": "Standard",
+    "jpxSector": "ゴム製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9639",
+    "realName": "三協フロンテア",
+    "market": "Standard",
+    "jpxSector": "サービス業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3951",
+    "realName": "朝日印刷",
+    "market": "Standard",
+    "jpxSector": "パルプ・紙",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "8914",
+    "realName": "エリアリンク",
+    "market": "Standard",
+    "jpxSector": "不動産業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9361",
+    "realName": "伏木海陸運送",
+    "market": "Standard",
+    "jpxSector": "倉庫・運輸関連業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4360",
+    "realName": "マナック・ケミカル・パートナーズ",
+    "market": "Standard",
+    "jpxSector": "化学",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4524",
+    "realName": "森下仁丹",
+    "market": "Standard",
+    "jpxSector": "医薬品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "8076",
+    "realName": "カノークス",
+    "market": "Standard",
+    "jpxSector": "卸売業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3175",
+    "realName": "エー・ピーホールディングス",
+    "market": "Standard",
+    "jpxSector": "小売業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "1921",
+    "realName": "巴コーポレーション",
+    "market": "Standard",
+    "jpxSector": "建設業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3933",
+    "realName": "チエル",
+    "market": "Standard",
+    "jpxSector": "情報・通信業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "6408",
+    "realName": "小倉クラッチ",
+    "market": "Standard",
+    "jpxSector": "機械",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "1381",
+    "realName": "アクシーズ",
+    "market": "Standard",
+    "jpxSector": "水産・農林業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9173",
+    "realName": "東海汽船",
+    "market": "Standard",
+    "jpxSector": "海運業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5010",
+    "realName": "日本精蝋",
+    "market": "Standard",
+    "jpxSector": "石油・石炭製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9206",
+    "realName": "スターフライヤー",
+    "market": "Standard",
+    "jpxSector": "空運業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7713",
+    "realName": "シグマ光機",
+    "market": "Standard",
+    "jpxSector": "精密機器",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3529",
+    "realName": "アツギ",
+    "market": "Standard",
+    "jpxSector": "繊維製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "8704",
+    "realName": "トレイダーズホールディングス",
+    "market": "Standard",
+    "jpxSector": "証券、商品先物取引業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7264",
+    "realName": "ムロコーポレーション",
+    "market": "Standard",
+    "jpxSector": "輸送用機器",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5922",
+    "realName": "那須電機鉄工",
+    "market": "Standard",
+    "jpxSector": "金属製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5609",
+    "realName": "日本鋳造",
+    "market": "Standard",
+    "jpxSector": "鉄鋼",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "1514",
+    "realName": "住石ホールディングス",
+    "market": "Standard",
+    "jpxSector": "鉱業",
+    "jpxSizeClass": "TOPIX Small 2",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7161",
+    "realName": "じもとホールディングス",
+    "market": "Standard",
+    "jpxSector": "銀行業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4564",
+    "realName": "オンコセラピー・サイエンス",
+    "market": "Growth",
+    "jpxSector": "医薬品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "4597",
+    "realName": "ソレイジア・ファーマ",
+    "market": "Growth",
+    "jpxSector": "医薬品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "7806",
+    "realName": "ＭＴＧ",
+    "market": "Growth",
+    "jpxSector": "その他製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7320",
+    "realName": "Ｓｏｌｖｖｙ",
+    "market": "Growth",
+    "jpxSector": "その他金融業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9158",
+    "realName": "シーユーシー",
+    "market": "Growth",
+    "jpxSector": "サービス業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "2978",
+    "realName": "ツクルバ",
+    "market": "Growth",
+    "jpxSector": "不動産業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7343",
+    "realName": "ブロードマインド",
+    "market": "Growth",
+    "jpxSector": "保険業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9326",
+    "realName": "関通ホールディングス",
+    "market": "Growth",
+    "jpxSector": "倉庫・運輸関連業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "247A",
+    "realName": "Ａｉロボティクス",
+    "market": "Growth",
+    "jpxSector": "化学",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "4889",
+    "realName": "レナサイエンス",
+    "market": "Growth",
+    "jpxSector": "医薬品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "7689",
+    "realName": "コパ・コーポレーション",
+    "market": "Growth",
+    "jpxSector": "卸売業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "3550",
+    "realName": "スタジオアタオ",
+    "market": "Growth",
+    "jpxSector": "小売業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "1401",
+    "realName": "エムビーエス",
+    "market": "Growth",
+    "jpxSector": "建設業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5252",
+    "realName": "日本ナレッジ",
+    "market": "Growth",
+    "jpxSector": "情報・通信業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "6224",
+    "realName": "ＪＲＣ",
+    "market": "Growth",
+    "jpxSector": "機械",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "9204",
+    "realName": "スカイマーク",
+    "market": "Growth",
+    "jpxSector": "空運業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "218A",
+    "realName": "Ｌｉｂｅｒａｗａｒｅ",
+    "market": "Growth",
+    "jpxSector": "精密機器",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "325A",
+    "realName": "ＴＥＮＴＩＡＬ",
+    "market": "Growth",
+    "jpxSector": "繊維製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5842",
+    "realName": "インテグラル",
+    "market": "Growth",
+    "jpxSector": "証券、商品先物取引業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "402A",
+    "realName": "アクセルスペースホールディングス",
+    "market": "Growth",
+    "jpxSector": "輸送用機器",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "523A",
+    "realName": "セイワホールディングス",
+    "market": "Growth",
+    "jpxSector": "金属製品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "350A",
+    "realName": "デジタルグリッド",
+    "market": "Growth",
+    "jpxSector": "電気・ガス業",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "6521",
+    "realName": "オキサイド",
+    "market": "Growth",
+    "jpxSector": "電気機器",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "5858",
+    "realName": "ＳＴＧ",
+    "market": "Growth",
+    "jpxSector": "非鉄金属",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "2936",
+    "realName": "ベースフード",
+    "market": "Growth",
+    "jpxSector": "食料品",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "seeded-sector-round-robin"
+  },
+  {
+    "code": "8951",
+    "realName": "日本ビルファンド投資法人",
+    "market": "REIT",
+    "jpxSector": "-",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8952",
+    "realName": "ジャパンリアルエステイト投資法人",
+    "market": "REIT",
+    "jpxSector": "-",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "3281",
+    "realName": "ＧＬＰ投資法人",
+    "market": "REIT",
+    "jpxSector": "-",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "3466",
+    "realName": "ラサールロジポート投資法人",
+    "market": "REIT",
+    "jpxSector": "-",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  },
+  {
+    "code": "8972",
+    "realName": "ＫＤＸ不動産投資法人",
+    "market": "REIT",
+    "jpxSector": "-",
+    "jpxSizeClass": "-",
+    "jpxAsOf": "20260930",
+    "selection": "anchor"
+  }
+]

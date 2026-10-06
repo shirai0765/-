@@ -1,0 +1,22 @@
+{
+  "version": "0.3.1",
+  "createdWith": "Blender 4.3.2",
+  "sourceModel": "Authored photo-guided studies; estimated dimensions, not survey models",
+  "coordinateSystem": "glTF metres, Y up, +Z frontage; pavement origin",
+  "assets": [
+    {
+      "file": "108-polished.glb",
+      "sha256": "c7b9403add4314a877000cb634d5404b6ed39f2a2854195a7cacf251e6d68f79",
+      "bytes": 10097196,
+      "pipeline": "scripts/polish-109.py",
+      "identity": "Fictional SHIBUYA108"
+    },
+    {
+      "file": "cafe-polished.glb",
+      "sha256": "2b56f0f3f8f7266b329da9e2100ab30a293af27cd8fb4ad38cc1f0ecaef57104",
+      "bytes": 1040656,
+      "pipeline": "scripts/polish-cafe.py",
+      "identity": "Fictional HOSHI cafe; static horizontal wordmark omitted; dynamic player sign is separate"
+    }
+  ]
+}

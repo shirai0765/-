@@ -1,0 +1,98 @@
+# 最終本番成果物の検証
+
+対象はversion 0.3.0の最終distとdesktopです。`scripts/smoke-production.py` がdesktop/main.cjsからCSPを直接読み、Linux Chromiumで外部通信を拒否して検証します。Windows実行検証とは区別します。
+
+- 日本語Noto Sans JP Variable、欧文Manrope Variableが実際に読み込まれたことを確認。
+- 本番の新会社を設立し、会社名と経営画面のcanvas表示を確認。
+- カフェ開業→1週間営業→自動保存→再読込→続行で状態が完全一致。
+- 別画面の実測ビューで建物20タイル、写真テクスチャ20枚、地表写真72枚を読み込み。Draco WASMはapplication/wasmで応答。
+- 実測ビューからゲームへ戻って同じ会社・週・資金・店舗を復元。
+- 最終実行のJS/consoleエラー、CSP違反、HTTPエラー、外部HTTP要求は0。
+
+初回のCSPではfont-srcがViteの埋込data:フォントを、connect-srcがGLTFLoaderのblob:写真を拒否していました。font-srcはselfとdata:、connect-srcはselfとblob:に限定して修正。unsafe-evalも外部HTTPも追加していません。検証スクリプト自身のevalを使う待機処理もDOM完了待ちへ変更しました。
+
+経営画面のみQA側でRAFへ200ms遅延を入れています。実測ビューのRAFは変更せず、製品にこの制限はありません。ブラウザー結果は性能測定を意味しません。
+
+Windows ZIPは215,224,043バイト、SHA-256 `8479b6e78ca52693d576c8c873ca2cdbdc780c5b4e258219dcdd49364b61506a`。ZIP全件CRC、276件のアプリマニフェスト、現在のdist/desktopの275ファイル、x64 PEヘッダーが一致しています。公式Electron 44.5.1の配布物ハッシュも照合済み。Windows上の起動・保存・描画は未検証です。
+
+機械可読の結果は共有成果物のproduction/result.jsonとwindows/verification-0.3.0.json。対応する画面画像もproductionに保存しています。
+
+## 0.3.1 本番回帰（2026-10-06）
+
+最終ビルドを同じデスクトップCSPで配信し、`PRODUCTION_SMOKE_OUT=/workspace/shared/shibuya-artifacts/production-0.3.1 python3 scripts/smoke-production.py` で7項目すべて合格しました。日本語・欧文フォント、会社作成、premiumカフェ開業、週次自動保存と再読込後の全state一致、Blender仕上げの109/cafe GLB両方のHTTP200、実測ビュー、ゲーム復帰、ブラウザーエラー・CSP違反・失敗HTTP・外部要求ゼロを確認しています。
+
+実測ビューは建物20タイル、写真material map20枚、地理院画像72枚、Draco WASMを読み込み、183,721三角形・62 draw calls・46 texturesでした。109/cafeのHTTP200は取得確認であり、実ゲーム内の共有clone・改装・閉店・再開・品質切替の検証記録は別途 `blender-polish/game/` にあります。
+
+結果と画像は `/workspace/shared/shibuya-artifacts/production-0.3.1/{result.json,game.png,real-shibuya.png}`。dist index SHA-256は `e7708de0e07dfea0f23bfb4c3a17eb89db7a03b321ae8818ec31f7f463aa15d0`。0.3.0の結果は保持しています。
+
+今回もQA側のみ経営画面のRAFを200ms遅延させています。製品コードと実測ビューのRAFは変更しておらず、性能ベンチマーク・Windows実機確認ではありません。Windows0.3.1 ZIPのCRC・マニフェスト・現行dist/desktopとの全hash照合は別途合格し、詳細は `docs/windows.md` に記録しました。
+
+## 0.3.2 本番回帰（2026-10-06）
+
+`PRODUCTION_SMOKE_OUT=/workspace/shared/shibuya-artifacts/production-0.3.2 python3 scripts/smoke-production.py` を最終ビルドに対して実行し、7項目すべて合格しました。今回もCityViewの置換はなく、本番3Dを含む実アプリのCSP検証です。
+
+新しい比較カードでpremium形態を選び、開業直後に実UIから保存した出店記録が1件かつ未決算であることを確認。初週決算の自動保存では同じ記録IDに第1週の実績が追記され、全社利益がlastReportと一致しました。再読込と実測ビューからの復帰後にも、出店記録を含む全stateが一致しています。
+
+同梱フォント、109/cafe GLB両HTTP200、建物20タイル・写真map20枚・地理院画像72枚・WASM、183,721三角形の描画を確認。console/page error、CSP違反、失敗HTTP、外部要求はゼロでした。
+
+記録と画像は `/workspace/shared/shibuya-artifacts/production-0.3.2/{result.json,game.png,real-shibuya.png}`。dist index SHA-256は `4709b37c94bf831ba91af17dd5d3307df3b48848d2ed0ca696829b3445b4990a`。0.3.0と0.3.1の成果物は保持しています。従来同様、経営画面だけQA側で200ms RAF遅延を使用したため、性能ベンチマークではありません。Windows実機動作は未検証です。
+
+## 0.4.0 本番回帰（2026-10-06）
+
+最終ビルド（`game-2zeCc4xh.js` / `game-D4i7rWPz.css`）に対し、次のコマンドで既存7項目と旧保存互換1項目、計8項目すべて合格しました。
+
+```sh
+PRODUCTION_SMOKE_OUT=/workspace/shared/shibuya-artifacts/production-0.4.0 \
+PRODUCTION_LEGACY_SAVE=/workspace/shared/shibuya-artifacts/opening-0.3.2/legacy-fixture.json \
+python3 scripts/smoke-production.py
+```
+
+CityViewを置換せず、desktop/main.cjsと同じCSP、外部通信拒否のLinux Chromiumで実行しています。同梱日本語・欧文フォント、実街のcanvas、プレミアムカフェ開業、未決算の出店記録から初決算への追記、週次自動保存、再読込の全state一致を確認しました。109/cafe GLBは両方HTTP200です。
+
+実測ビューでは建物20タイル・写真map20枚・地理院写真72枚、Draco WASM（application/wasm）を読み込み、183,721三角形・62 draw calls・46 texturesを確認しました。ビューからゲームへ戻って全stateが一致し、console/page error、CSP違反、失敗HTTP、外部要求はゼロです。
+
+さらに0.3.2検証時に作成した既存店舗ありの旧保存ファイル（`openingRecords`と`railProjects`なし）を、そのまま実UIから読み込みました。インポート直後と再読込後の全stateが旧ファイルと完全一致し、経営記録に過去の出店予測を捏造しないことを確認しています。`PRODUCTION_LEGACY_SAVE`を指定した場合だけ実施する追加検査で、元ファイルのSHA-256も結果へ記録しています。
+
+結果と画像は `/workspace/shared/shibuya-artifacts/production-0.4.0/{result.json,game.png,real-shibuya.png}`。dist index SHA-256は `288c65d3ad6a80150bc3397193a2f0055e915b74920c8acbe83fceab35ff1db6`。0.3.0・0.3.1・0.3.2の成果物は保持しています。
+
+従来同様、QA側だけ経営画面のRAFに200msの遅延を加えました。実測ビューと製品のRAFは変更しておらず、性能ベンチマークやWindows実機動作の検証ではありません。新しい戦略パネルの詳細操作は `docs/strategy-v4-playtest.md` の別検証を参照してください。
+
+## 0.4.1 本番回帰（2026-10-06）
+
+最終ビルド（`game-DIkUOxEf.js` / `game-BrmulJ6W.css`）を本番デスクトップCSPで配信し、8項目すべてに合格しました。
+
+```sh
+PRODUCTION_SMOKE_OUT=/workspace/shared/shibuya-artifacts/production-0.4.1 \
+PRODUCTION_LEGACY_SAVE=/workspace/shared/shibuya-artifacts/opening-0.3.2/legacy-fixture.json \
+python3 scripts/smoke-production.py
+```
+
+実際のCityViewを使い、同梱日本語・欧文フォント、プレミアムカフェ開業、未決算の出店記録から初決算への追記、週次保存、再読込後の全state一致を確認しました。109/cafe GLBの両HTTP200も確認しています。
+
+実測ビューは建物20タイル・写真map20枚・地理院写真72枚・Draco WASMを読み込み、183,721三角形、62 draw calls、46 texturesでした。ゲームへ戻って保存を完全復元し、さらに0.3.2で作成した旧保存ファイルを実UIから読み込み、再読込後も全stateが旧ファイルと一致しました。過去の出店予測や沿線プロジェクトの追加はありません。console/page error、CSP違反、失敗HTTP、外部要求はすべて0件です。
+
+結果と画像は `/workspace/shared/shibuya-artifacts/production-0.4.1/{result.json,game.png,real-shibuya.png}`。dist index SHA-256は `f953254e0577b49acc48166cc8f4da97eb2121e3b0e5d4ebc1b70bd73c262c79`。0.4.0以前の本番検証結果は保持しました。
+
+この検査はLinux Chromiumによる本番資産・CSP・保存互換の確認です。QA側だけ経営画面のRAFに200ms遅延を入れ、実測ビューと製品コードのRAFは変更していません。Windows実機や描画性能の検証ではありません。0.4.1の段階表示・財務往復・実行結果の詳細は `docs/strategy-v4-playtest.md` の11カテゴリ回帰を参照してください。
+
+## 0.4.2 本番回帰（2026-10-06）
+
+最終ビルド（`game-DcDJK267.js` / `game-ApOuCHWG.css`）で8項目すべて合格しました。
+
+```sh
+PRODUCTION_SMOKE_OUT=/workspace/shared/shibuya-artifacts/production-0.4.2 \
+PRODUCTION_LEGACY_SAVE=/workspace/shared/shibuya-artifacts/opening-0.3.2/legacy-fixture.json \
+python3 scripts/smoke-production.py
+```
+
+CityViewを置換せず、desktop/main.cjsと同じCSP・外部要求拒否のLinux Chromiumで確認しました。同梱日本語/欧文フォント、実都市、プレミアムカフェ開業、未決算記録から初週実績への追記、週次保存、再読込の全state一致、109/cafe GLBのHTTP200が通過しています。
+
+実測ビューでは既定の「軽量・1024」を実UIで確認し、20建物タイル・20写真map・72地表画像・Draco WASMをすべて読み込みました。建物画像の長辺はすべて1024以下、RGBA基礎画像量は79,691,776バイト（76MiB）、地表は18,874,368バイト（18MiB）。これは画像寸法から算出した基礎量であり、ミップマップやデコード中の一時領域を含む実GPU/プロセスメモリ測定ではありません。描画は183,721三角形、62 draw calls、46 texturesです。
+
+新しい必要時描画は、待機中750msでframeが24のまま増えず、明るさをキーボード操作すると25へ、1000×760へリサイズすると26へ進むことで確認しました。camera.aspectも1000/760に一致しています。実測ビューのRAFは置換せず、これらの操作前後で保存した会社stateが完全一致しました。元の1280×900へ戻して画像を取得し、ゲームへ復帰した後も同じ保存を再開できています。2048/原寸の切替・単一HTMLの検査は別担当の `/workspace/shared/shibuya-artifacts/realcity-v042/` にあり、この本番回帰で繰り返したとは数えていません。
+
+0.3.2検証時の旧保存ファイルを実UIからインポートし、再読込後も全stateが完全一致しました。過去の出店記録・沿線プロジェクトを後付けしていません。JS/consoleエラー、CSP違反、失敗HTTP、外部要求はすべて0件です。
+
+結果と画像は `/workspace/shared/shibuya-artifacts/production-0.4.2/{result.json,game.png,real-shibuya.png}`。dist index SHA-256は `adf4336fe9d29dd39e0740f6cda83d31429cb5a4c7a028dab41685341ee4d7c9` で、Windows梱包後にも不変でした。旧Windows/本番検証成果物43ファイルのSHA-256・サイズ・更新時刻も保持されています。
+
+従来通り経営画面だけQA側で200msのRAF遅延を入れています。実測ビューと製品コードには加えていません。Windows実機や性能ベンチマークではありません。店舗診断の操作と旧版経済一致は [店舗診断DOM検証](store-insight-playtest.md) を参照してください。
