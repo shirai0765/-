@@ -1,6 +1,6 @@
 # 0.4.8：会社に合わせた遊び方と保存の復旧
 
-開発版検証済み・未公開の記録です。現在の公開版は0.4.7です。全体テスト・ビルド、目印と保存復旧・ガイドの実ブラウザー検査は成功しました。梱包・公開の検証は未完了です。
+0.4.8公開・検証済みの記録です。全体テスト・ビルド、目印と保存復旧・ガイドの実ブラウザー検査、Web/Windows梱包、公開HTTPと公開ガイドの検査は成功しました。
 
 ## 会社の今の状態から確認する
 
@@ -39,6 +39,21 @@
 
 初回も6つの機能検査は完了しましたが、素早い再読込に伴うGLTFのblobテクスチャ読込エラー16件でコンソール検査が失敗しました。元結果は `targeted-0.4.8/production-initial/results.json` に保持しています。製品ソース・distを変更せず、検査側で予定した再読込の前に資産読込完了を待って再実行し、上記の全6カテゴリとコンソール検査が成功しました。390pxの復旧説明と報告ありのガイド画像も確認しました。
 
-梱包SHA/旧成果物保持、source/pages/run、公開HTTP・実操作は検証待ちです。最終証拠はこのページへ集約します。今回の本番CSP検査は変更した6導線で、実測街・音声などの広い再検査ではありません。
+今回の本番CSP検査は変更した6導線で、実測街・音声などの広い再検査ではありません。
+
+## 梱包と公開
+
+同じ凍結distの276ファイル・94,304,852 bytesを再ビルドせず梱包しました。Web/WindowsのCRC・全収録SHA・凍結入力との一致、Windowsの279マニフェスト/278入力項目・x64 PE・既存Electronキャッシュの公式チェックサム照合が成功しました。
+
+| ZIP | bytes | SHA256 |
+| --- | ---: | --- |
+| Shibuya-Capital-0.4.8-web.zip | 65,788,762 | `ddd1475b0fabfeb9491bf0c9a0f0fbd1284e3c047e48c4be793bcac5acc0fab2` |
+| Shibuya-Capital-0.4.8-win32-x64.zip | 223,818,662 | `f0407a2e687bcdb854df9a458614347321428d14f1673b88bbff448276bc5685` |
+
+旧1,309ファイル・5,718,166,545 bytesのサイズと更新時刻は不変です。今回は旧成果物のSHAを再走査せず、以前のSHA記録を保持しています。証拠は `packaging-0.4.8.json`、`preservation-0.4.8.json`。この配布検査の記録はZIP作成後に文書へ追加しました。Windowsは未署名で、実機起動は未確認です。
+
+公開runtime sourceは `acdc4dd049afb49365f00b303354ae1bd222c85f`、pagesは `90db8184c5e1e2da68be6ba2f3aecd819c9ae0e4`、Pages run [37544926892](https://github.com/shirai0765/-/actions/runs/37544926892) はcompleted/successです。[公開版0.4.8](https://shirai0765.github.io/-/?v=0.4.8) のHTTP25/25と選択23資産のSHAが一致し、release version/source/indexも照合しました。証拠は `deploy-0.4.8/http-audit.json`。全276資産を公開URLから再取得した検査ではありません。
+
+公開実Firefoxのguide-only 1カテゴリは単一実行で成功しました。通常の旧保存を正確に取り込み、報告ありのガイドから結果へ移動、global読了設定の保持、再読込、手動Help、会社データ不変を確認しています。errors/warnings・request failures・外部要求・観測したCSP違反は0。証拠は `deploy-0.4.8/public-playtest/results.json` と `verification-summary.json`。公開runに破損保存の注入やdesktop CSPを追加せず、DEV目印の精密検査も再実行していません。
 
 根拠は既存の報酬設計レビューと0.4.7の会社状態を読んだ限定提案です。人間の理解・面白さ・30時間の進行を証明しません。新しい動画調査・視聴は行っていません。実音声・Windows実機・端末性能も未確認です。

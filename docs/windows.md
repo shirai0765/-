@@ -10,6 +10,12 @@
 
 この開発版はコード署名されていません。Windows 実機での起動・描画・保存復元・性能は未確認です。Linux 上での梱包、ZIP 整合性、同梱ファイル検査と、Windows 上での動作確認は別です。
 
+ブラウザー版0.4.8の公開とガイド操作は検証済みです。Web公開の成功はWindows実機の検証とは別で、実施範囲は [interaction-v048.md](interaction-v048.md) に記録しています。
+
+## 0.4.8の梱包検証
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.4.8-win32-x64.zip` は223,818,662 bytes、SHA256 `f0407a2e687bcdb854df9a458614347321428d14f1673b88bbff448276bc5685`。Web版と同じ最終276 distファイル・94,304,852 bytesを再ビルドせず収録し、CRC・全SHA・279マニフェスト/278入力項目・x64 PEと既存Electronキャッシュの公式チェックサムを確認しました。旧1,309成果物のサイズ/更新時刻を照合し、以前のSHA記録を保持しています。旧SHAの再走査は行っていません。証拠は `windows/verification-0.4.8.json`、`packaging-0.4.8.json`、`preservation-0.4.8.json`。この段落はZIP作成後の記録です。未署名でWindows実機の動作は未確認です。
+
 ## 0.4.7の梱包検証
 
 `/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.4.7-win32-x64.zip` は223,817,079 bytes、SHA256 `8b3c5b0ac980e6a881f57f2a29f469630e8952c82a9981d51c803bc8f5020a59`。Web版と同じ最終276 distファイル・94,299,609 bytesを再ビルドせず収録し、CRC・全収録SHAと凍結入力の一致を確認しました。既存の公式Electronキャッシュを照合し、旧1,103成果物のSHA/サイズ/更新時刻を保持。記録は `windows/verification-0.4.7.json`、`packaging-0.4.7.json`、`preservation-0.4.7.json`。

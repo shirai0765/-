@@ -1,4 +1,10 @@
-# GitHub Pages 0.4.7 の公開記録
+# GitHub Pages 0.4.8 の公開記録
+
+[ゲーム本体0.4.8](https://shirai0765.github.io/-/?v=0.4.8) は公開・検証済みです。Pages run [37544926892](https://github.com/shirai0765/-/actions/runs/37544926892) はcompleted/success。公開HTTP25/25・選択23資産SHAとrelease version/source/indexが一致しました。完全なsource/pages/indexとローカル検査・梱包記録は [interaction-v048.md](interaction-v048.md) に集約しています。
+
+公開実Firefoxのguide-only 1カテゴリは単一実行で成功。通常の旧保存を正確に取り込み、報告ありのガイドから結果へ移動、global読了設定・再読込・手動Help・会社データ不変を確認しました。エラー・警告・request failures・外部要求・観測CSP違反0。証拠は `deploy-0.4.8/http-audit.json` と `public-playtest/results.json`、`verification-summary.json`。破損保存注入・desktop CSP・DEV目印の精密検査を公開runへ追加していません。実音声・Windows実機・端末性能・人間の30時間は未確認です。
+
+## GitHub Pages 0.4.7 当時の公開記録
 
 [ゲーム本体0.4.7](https://shirai0765.github.io/-/?v=0.4.7)は公開済みです。runtime source `2b7790f7207e6c12fd9c46003c0ce6fb6a8cfff5`、pages `aadd8f43f8c3c494e1d708244279d0ff141fd8ef`、Pages run [37541973393](https://github.com/shirai0765/-/actions/runs/37541973393) は成功。index SHA256は `79564699acfae0a8f3ecf4128fe00e9830c7379774336b1a4b029c230f775c97`。
 

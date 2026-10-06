@@ -4,6 +4,12 @@
 
 0.4.8では「遊び方」が現在の会社に合わせた確認先を示します。現在のセーブを読み取れないときは、保存履歴・保存ファイル・新しい会社の入口を表示し、置換を確定するまで元のデータを保持します。ゲーム街の「自社の施設」は店舗と保有物件の目印を表示し、店舗近景では目印を隠します。変更範囲と検証記録は [interaction-v048.md](interaction-v048.md) を参照してください。
 
+## 0.4.8の配布記録
+
+`/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.8-web.zip` は65,788,762 bytes、SHA256 `ddd1475b0fabfeb9491bf0c9a0f0fbd1284e3c047e48c4be793bcac5acc0fab2`。最終dist276ファイル・94,304,852 bytesを再ビルドせず収録し、CRC・全収録SHA・凍結入力との一致を確認しました。旧1,309成果物のサイズ/更新時刻を照合し、以前のSHA記録を保持しています。旧SHAの再走査は行っていません。証拠は `Shibuya-Capital-0.4.8-web-report.json`、`packaging-0.4.8.json`、`preservation-0.4.8.json`。この段落はZIP作成後の記録です。公開検証は [interaction-v048.md](interaction-v048.md) で確認してください。
+
+[ブラウザー版0.4.8](https://shirai0765.github.io/-/?v=0.4.8) は公開済みです。公開HTTP25件・選択23資産SHAと、公開ガイドの実Firefox1カテゴリが成功しました。通常の旧保存取込・ガイド操作の確認で、公開での破損保存注入や全資産の再取得ではありません。
+
 ## 0.4.7の配布記録
 
 `/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.7-web.zip` は65,786,796 bytes、SHA256 `4ae714be55d349074d99c553439fdb815f57621b74b6e6ad74d2117b5b689df3`。同じ最終dist276ファイル・94,299,609 bytesを再ビルドせず梱包し、全CRC・収録SHA・梱包前後のdist不変を確認しました。ローカルprefixの276 HTTP/SHAと257参照も成功。旧1,103成果物のSHA/サイズ/更新時刻を保持しています。報告は `Shibuya-Capital-0.4.7-web-report.json`、`packaging-0.4.7.json`、`preservation-0.4.7.json`。
