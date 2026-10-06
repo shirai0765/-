@@ -1,6 +1,6 @@
 # 0.4.6：操作の入口と、短い週末結果
 
-開発中・未公開の記録です。現在の公開版は0.4.5です。確認時点の全体266テスト・ビルドと、描画を差し替えた実AppのDOM14カテゴリが成功しました。実3Dと0.4.6の公開検証は未完了で、GPUの指摘による追加修正もあり得ます。0.4.5の合格や以下の単体確認を、今回の実3D・公開確認へ転用しません。
+0.4.6の実装・検証記録です。最終267テスト・ビルド、描画を差し替えた実AppのDOM14カテゴリ、開発実GPU11カテゴリが成功しました。最終distの本番CSPは主要9カテゴリと旧保存の再検査2カテゴリを別実行で確認しました。Pagesへの公開、公開HTTP18件・主要16SHA照合、公開実Firefox10カテゴリも成功しました。以下ではそれぞれの実行範囲とBGMの未確認部分を分けます。
 
 ## 街を動かす操作と、店へ入る操作
 
@@ -32,9 +32,9 @@ native dialogを開いている間とタブ非表示中は、両街の描画ル�
 
 初めて会社を開いたときは、出店→店舗設定→週終了の3段階を示す短いガイドを表示します。読了は会社の保存データと別のブラウザー設定へ記録し、経営メニューの「遊び方」から再表示できます。店長は人員・広告の配分枠内で価格・人員・品質・広告を調整し、出店や改装はプレイヤーが選ぶことも説明します。
 
-街のHUDは「手元資金」を明記し、1億円未満は円の金額を表示します。ダイアログを読んでいる間は通知を自動消去しません。利益と現金は別の値として週報へ表示し、成長戦略の見込み幅と借入・資金不足の危険は既存の `getWeekOutlook` から取得する方針です。
+街のHUDは「手元資金」を明記し、1億円未満は円の金額を表示します。ダイアログを読んでいる間は通知を自動消去しません。利益と現金は別の値として週報へ表示し、成長戦略の見込み幅と借入・資金不足の危険は既存の `getWeekOutlook` から取得します。
 
-「音楽」から再生を押すと、Web Audioによるオリジナル8小節の街BGMを開始します。自動再生はせず、再生・一時停止・消音・音量を選べます。音量と消音だけを会社保存と別に記憶し、ページを開き直した際の再生は再び手動です。非表示タブでは一時停止します。外部音源の取得はありません。今回のコード読取は音の聴感・実端末の再生確認ではありません。
+「音楽」から再生を押すと、Web Audioによるオリジナル8小節の街BGMの開始を要求します。自動再生はせず、再生・一時停止・消音・音量を選べます。開始が確認されるまでは「開始中」と表示し、8秒で開始しない場合はcontextを閉じて再試行できます。待機中の取消と遅れて返る開始結果も扱います。音量と消音だけを会社保存と別に記憶し、ページを開き直した際の再生は再び手動です。非表示タブでは一時停止します。外部音源の取得はありません。今回のクラウドFirefoxではnativeの音声backendが開始せず、音の出力・再生時計・人間による聴感は未確認です。
 
 ## 数字と演出の境界
 
@@ -46,18 +46,22 @@ native dialogを開いている間とタブ非表示中は、両街の描画ル�
 
 利益係数や終了条件を変える更新ではありません。独立した赤字・回復確認では、初期標準店32区画の見込み赤字が12区画、通常操作の38決算と18回復経路の保存往復一致を確認しました。店長による黒字保証も利益のゼロ丸めもありません。これは現行の赤字と回復が成立する証拠で、UIの分かりにくさを人間のプレイで確定した結果ではありません。研究は `/workspace/shared/shibuya-artifacts/research-v046/loss-recovery-review.md` にあり、係数や保存を変更していません。
 
-## App統合時点の確認（公開前）
+## 最終Appと公開の確認
 
 | 確認 | 結果と範囲 |
 | --- | --- |
-| 全体テスト・ビルド | 266テスト／32ファイル成功、`npm run build` 成功。ログは `/tmp/shibuya-test-0.4.6-final.log` と `/tmp/shibuya-build-0.4.6-final.log`。この確認後のソース修正は、改めて影響範囲を確認します。 |
+| 全体テスト・ビルド | 最終267テスト／32ファイル成功、`npm run build` 成功。ログは `/tmp/shibuya-test-0.4.6-final.log` と `/tmp/shibuya-build-0.4.6-final.log`。最終index SHA256は `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5`、ゲームchunkは `game-DwYDWwyQ.js`。配布時に再ビルドしていません。 |
 | 実AppのDOM | 1280×960／390×844の14カテゴリ成功、page error 0件。両CityViewはstubです。実際のApp・経済・native dialogを使い、状態注入をせず通常操作を行いました。 |
 | 操作と保存 | 初回ガイドの読了・再表示・再読込、32区画と出店・財務帰路の入力維持、4目的の入口、Escapeでの有効入力反映、無効入力の明示、子注文だけのEscape、週決算と実績の正確な保存、再閲覧で確定現金・利益を保ち再演出しないことを確認。390pxでは通知の時間経過後も同じダイアログ内で通知・位置・高さを維持しました。 |
 | 通常操作の赤字表示 | 390×844で、通常の店舗設定から得た実績純利益 `¥-710,526` の週報をrootが目視しました。決算後資金が記録と一致し、閉じた詳細を含め一画面に収まります。この値は人工の表示用注入ではありません。 |
 | 危険表示 | 店舗なしの通常借入から、見込み幅と明示的な危険確認を表示する経路を確認しました。 |
-| 実3D | 未完了。初回GPU browserは既定sandboxの制約でApp起動前に失敗し、通常のFirefox sandboxを保つ経路で再実行中です。現時点ではGPU成功・カメラ動作・実描画の証拠にしません。 |
+| 開発実GPU | Firefox/Mesaの11カテゴリ成功、エラー・警告0件。renderer・state・RAFを置換せず、実marker click、選択・開業時の視点維持、44px自社marker、手動近景、dialog中の描画停止・resize保留、管理時のpan/zoomと明示回転、週決算・保存復元、決算後の人影、同App実測街・単独viewerを確認。BGMは操作と設定を確認し、native再生・時計は記録付きskipです。 |
+| 最終distの本番CSP | 元runnerは主要9カテゴリ成功後、旧HUDの会社名を要求する検査側assertで停止しました。元results.jsonは `passed:false` のまま保持。旧保存検査を修正し、`--legacy-only` の別実行2カテゴリで0.3.2保存の完全import/reload、後付け履歴なし、CSP違反・外部要求・HTTP失敗0件を確認しました。単一runの全項目成功ではありません。 |
+| BGM局所確認 | 通常sandboxのFirefoxで5件成功・page error0。native contextが待機し続ける環境で開始表示・8秒timeout・取消・context解放の2件、明示的なpromise fixtureで遅延完了・非表示・再試行の3件。fixtureの再生成功はnative音声出力の証拠ではありません。 |
+| 配布 | 同じ最終distからWeb ZIP 65,784,617 bytes、Windows ZIP 223,815,380 bytesを生成し、収録内容を照合。旧962成果物を保持。Windows実機は未確認。詳細は [Web版](web.md)・[Windows版](windows.md)。 |
+| Pages公開 | source `69a10ac4ff0815f3255822e22a245144cd751e8f`、pages `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`、run `37539018321` は completed/success。公開HTTP18/主要16SHAと実Firefox/Mesa10カテゴリ成功、error/warning/CSP/外部要求/HTTP失敗0。通常TLSとFirefox sandbox、実renderer/state/RAFを維持しました。native音声の再生/時計は明示skipです。公開の施設入口は一覧で、camera/markerの正確な計測はDEVの証拠です。 |
 
-DOM証跡は `/workspace/shared/shibuya-artifacts/immersive-v046/dom/results.json`。stubのfocus propが自動近景を要求しないことと、stub instanceが保たれることは確認しましたが、実カメラの位置・角度・rendererの維持の証明ではありません。音楽の聴感、端末性能、人間の30時間プレイ、配布物と公開サイトはこの検査の範囲外です。
+DOM証跡は `/workspace/shared/shibuya-artifacts/immersive-v046/dom/results.json`、実GPUは `immersive-v046/gpu/results.json`。最終CSPの総合記録は `production-0.4.6/verification-summary.json` と `legacy-focused/results.json`、BGMは `interaction-v046/audio/start-status-results.json` とREADME、公開は `deploy-0.4.6/public-playtest/verification-summary.json` です。DOMのstub結果と実GPUは別実行です。先行の30秒offline音声renderは非ゼロ・非clippingの数値確認で、人間の聴感や製品native backendの成功とは扱いません。端末性能、人間の30時間プレイ、Windows実機は未確認です。
 
 ## 先行して実施した局所確認
 

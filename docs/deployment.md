@@ -2,7 +2,7 @@
 
 このリポジトリでは、`game-source` を開発用、`main` をビルド済みサイトの公開用として分けます。公開URLは `https://shirai0765.github.io/-/` です。GitHub Pages は既存の「Deploy from a branch」設定を使い、`main` のルートを配信します。
 
-0.4.5は公開済みです。公開コミットと公開サイトでの出店・週次保存・再読み込みの検証結果は [published-playtest.md](published-playtest.md) を参照してください。
+0.4.6は公開済みです。公開元ソースは `69a10ac4ff0815f3255822e22a245144cd751e8f`、公開コミットは `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`。Pages run `37539018321` の成功と、通常のTLS検証を使った公開HTTPS 18件のHTTP 200、主要16配布ファイルのSHA一致を確認しました。公開の記録は `/workspace/shared/shibuya-artifacts/deploy-0.4.6/deployment.json`、HTTP監査は同じ場所の `http-audit.json` です。実操作の検証記録は [published-playtest.md](published-playtest.md) を参照してください。
 
 | ブランチ | 内容 |
 |---|---|

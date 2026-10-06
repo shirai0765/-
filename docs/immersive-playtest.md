@@ -1,4 +1,20 @@
-# 0.4.5：全面街UIと週末の営業結果
+# 0.4.6：店舗の操作と短い週末結果
+
+0.4.6は公開済みです。施設選択と開業からの自動近景をやめ、通常の街は角度固定のpan/zoomとしました。回転は地図から明示的に選びます。自社markerの44px表示、4目的の店舗管理、手動店舗近景、短い決算と再閲覧、初回3段階ガイド、手元資金表示、手動BGMを統合しました。modal中は街とカメラを止めます。経済係数・終了条件は変更していません。実装の詳細は [操作と週末結果](interaction-v046.md) を参照してください。
+
+| 対象 | 0.4.6の確認範囲 |
+| --- | --- |
+| 全体テスト・ビルド | 最終267テスト／32ファイル成功。最終distはindex SHA256 `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5`、`game-DwYDWwyQ.js`。配布時の再ビルドなし。 |
+| 統合DOM | 1280×960／390×844の14カテゴリ、error0。両city stub。通常操作の決算・正確な保存、ガイド、目的選択、入力の反映/拒否、通知の維持、決算後資金と再閲覧を確認。通常設定の赤字 `¥-710,526` の390px週報も目視し、一画面に収まりました。 |
+| 開発実GPU | 通常sandboxのFirefox/Mesaで11カテゴリ、error/warning0。実marker click、44px自社表示、選択/開業時の視点維持、明示近景、modal描画停止とresize保留、管理pan/zoom・回転切替、実績由来の人影、決算/保存/実測街を確認。renderer/state/RAFの置換なし。 |
+| 本番CSP | 主要9カテゴリ後に旧HUDを前提とするQA assertで停止。元resultsのpassed:falseは保持。修正したlegacy-only別実行2カテゴリで0.3.2完全import/reload・後付け履歴なし・CSP/外部/HTTP失敗0を確認。単一runの全項目成功ではありません。 |
+| BGM | opt-in・音量/消音・保存不変を確認。native backendはクラウドFirefoxでsuspendedのため再生/時計は明示skip。通常Firefoxの局所5件はnative待機/timeout/取消2件とpromise fixture3件。音声出力・人間の聴感は未確認。 |
+| 梱包 | 同じ最終distのWeb ZIP 65,784,617 bytes、Windows ZIP 223,815,380 bytesを照合、旧962成果物を保持。Windows実機未確認。 |
+| 公開 | Pages run37539018321成功、HTTP18/主要16SHA成功、公開実Firefox10カテゴリ成功。error/warning/CSP違反/外部要求/HTTP失敗0。公開は施設一覧から操作し、DEVのexact camera/marker計測と区別します。 |
+
+共有証跡は `immersive-v046/{dom,gpu}/results.json`、`production-0.4.6/verification-summary.json` と `legacy-focused/results.json`、`interaction-v046/audio/`、`deploy-0.4.6/public-playtest/verification-summary.json`。公開source `69a10ac4ff0815f3255822e22a245144cd751e8f`、pages `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`。再現条件は [immersive-qa.md](immersive-qa.md)、公開の詳細は [published-playtest.md](published-playtest.md)。人間の初回理解・30時間・Windows/実PC性能をこれらの自動検査から保証しません。
+
+## 0.4.5当時の全面街UIと週末の営業結果
 
 0.4.5の実装・検証記録です。最終全体テスト・ビルド・統合ブラウザー・本番CSP・梱包検証を終え、0.4.5を公開しました。局所検証、描画を置換したDOM検証、実GPUの確認範囲を分けて記録します。人間の初回プレイの合格とは扱いません。
 
@@ -42,7 +58,7 @@ Coffee Inc / 2の公式ストア画像20枚を取得し、うち10枚を目視�
 
 YouTubeは通常取得が403で止まり、動画視聴は0本です。研究記録は共有成果物 `research-next/coffee-ui-v045.md` と画像別の `coffee-ui-v045-sources.json`。画像はゲーム素材へ転載していません。人による初回操作の直感性や30時間の楽しさは未検証です。
 
-## 現在の公開版
+## 0.4.5当時の公開記録
 
 公開0.4.5のソースは `a32d92fc2915eb58b67ef670d21c50f07af83788`、公開treeは `4138eff953030563e5aad832d2be336cbbe644a1`、Pages runは `37534939396`（成功）です。HTTP18件と主要16ファイルのSHA照合が成功しています。
 

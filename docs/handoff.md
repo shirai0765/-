@@ -2,9 +2,9 @@
 
 最新の目的は、実写真に忠実な渋谷の見た目と、約30時間で上場・全企業取得・街区開発を完遂できる経営ゲーム。以前の100〜1000時間目標は置き換え済み。ユーザーはインターネット無制限設定を反映し、実写真の収集と模型への反映を明示的に依頼。旧ゲーム削除と新規制作も承認済み。
 
-## 現在0.4.6：追加試遊から操作と週報を修正（開発中・未公開）
+## 現在0.4.6：追加試遊から操作と週報を修正（公開済み）
 
-現在の公開版は0.4.5。ユーザーの追加試遊を受け、通常ドラッグで街が回転すること、店を選ぶだけでカメラが寄ること、操作の効果を判断しにくいこと、週報の長さと数字の突然の表示を修正している。Appへ統合済みだが、0.4.6の最終テスト・実App QA・配布・公開検証は未完了。過去の合格数を今回へ転用しない。
+0.4.6を公開済み。ユーザーの追加試遊を受け、通常ドラッグで街が回転すること、店を選ぶだけでカメラが寄ること、操作の効果を判断しにくいこと、週報の長さと数字の突然の表示を修正した。公開HTTP18/主要16SHAと実Firefox10カテゴリ成功、error/warning/CSP/外部要求/HTTP失敗0。native BGM再生/時計はクラウドbackendの制約で明示skip、opt-in/preferences確認。source `69a10ac4ff0815f3255822e22a245144cd751e8f`、pages `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`、Pages run `37539018321` completed/success。runtimeは凍結済みで今後buildしない。index SHA `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5`、game chunk `game-DwYDWwyQ.js`。文書の最終commitとsource archiveの更新はrootが行う。過去の合格数を今回へ転用しない。
 
 通常は `cameraMode=manage` で平行移動・拡大縮小と角度固定。明示的なexploreだけ回転でき、中心と距離を保って経営角度へ戻る。selectLotとopenStoreからの自動近景は廃止。店舗管理・週報のviewStoreだけが近景を要求し、街全体へ戻れる。自社markerは44px相当と「自社」、候補34px相当。native dialogとタブ非表示で両scene・controlsを停止し、ゲーム街の歩行clockから停止時間を除外する。近景の最大8人は直近の決算客数の印象で、現在の行列や新しい予測ではない。
 
@@ -14,9 +14,11 @@
 
 rootはApp統合・最終チェック・公開、interaction_qa_solはCPU/GPUの実App操作、scene_review_solはclock/marker、progression_solは成長戦略の幅と危険、release_solは配布、docs_solはREADME/progress/handoff/interaction文書。ユーザー指定のGPT-6.1 Sol xhighを定型作業に使用し、GPUは一本ずつ調整する。文書の既存履歴と旧成果物を保持する。
 
-現時点の証拠は週報局所型検査、SSR11状態、GPU無効の単体ブラウザー6項目（390/1280、page error0）。`interaction-v046/weekly-results/` のsource SHAに紐付く当時の単体検査で、最終Appの保存・カメラ・実3D・音楽を検証した結果ではない。独立研究 `research-v046/loss-recovery-review.md` は公開actionだけで38決算・18回復経路の保存一致、初期32標準店中12区画の見込み赤字を確認。店長の黒字保証はなく、赤字と回復は既存係数で成立。人間の初回理解・30時間の実測ではない。
+最終267unit/32filesとbuild、DOM14（両city stub）、DEV実Firefox11カテゴリが成功、error/warning0。最終CSPは主要9カテゴリ成功後に旧HUDを要求するQA assertで停止し、元results.jsonのpassed:falseを保持した。legacy-only別実行2カテゴリは0.3.2完全import/reload・後付け履歴なし・CSP/外部/HTTP失敗0。正確な総合結果は `production-0.4.6/verification-summary.json`。BGMはopt-in/preferencesを確認、native backendがsuspendedなので再生/timelineは記録付きskip。局所normal Firefox5件はnative開始待ち/8秒timeout/取消/context close2件とpromise fixture3件で、実音声出力や聴感は未確認。`interaction-v046/audio/` を参照。
 
-最終ソースが固まった後の全体テスト・build・DOM/GPU・配布整合性・公開コミットと公開URL検証の実結果を、[操作と週末結果](interaction-v046.md) と [進捗](progress.md) の0.4.6節へ追記する。現在の公開source/pages/runは下の0.4.5節を参照。
+Web65,784,617 bytes / SHA147781e40079df0ca8995428b2ea93b681c274e9b6cd87c3eeed96f386930708、Windows223,815,380 bytes / SHA3b980a1d5fd37974b85af9c01c54a5780aa4cbf9e58ef4517b6f0e879afe2396。同じ最終distの全収録内容を照合し旧962成果物を保持。Windows実機・人間の30時間は未確認。先行の週報局所型検査/SSR11/単体browser6は `interaction-v046/weekly-results/` の当時source SHAへ紐付く別実行。独立研究 `research-v046/loss-recovery-review.md` は通常action38決算・18回復経路の保存一致、初期32標準店中12区画の見込み赤字を確認し、係数変更はない。
+
+公開の証跡は `deploy-0.4.6/public-playtest/verification-summary.json` と `http-audit.json`。公開は実UI・canvas維持・保存等の確認で、正確なcamera/44px marker測定はDEVだけ。実renderer/state/RAFと通常TLS/Firefox sandboxを維持した。文書とsource archiveの最終確定をrootへ引き継ぎ、runtimeを再ビルドしない。0.4.5以下は当時の履歴として保持する。
 
 ## 0.4.5：試遊を受けた全面街UIと週末実績（公開済み）
 

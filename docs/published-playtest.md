@@ -1,4 +1,23 @@
-# GitHub Pages 0.4.5 の公開記録
+# GitHub Pages 0.4.6 の公開記録
+
+2026-10-06 UTC（日本時間10月7日）、[ゲーム本体0.4.6](https://shirai0765.github.io/-/?v=0.4.6)を公開し、公開HTTPSでHTTP監査と実ブラウザー操作を確認しました。
+
+| 項目 | 値 |
+| --- | --- |
+| runtimeのソースコミット | `69a10ac4ff0815f3255822e22a245144cd751e8f`（game-source） |
+| 配布コミット | `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`（main） |
+| Pages実行 | [37539018321](https://github.com/shirai0765/-/actions/runs/37539018321)、completed / success |
+| index.html SHA256 | `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5` |
+
+最終dist276ファイルに公開用3ファイルを加え、再ビルドせず配信しました。通常TLS・ホスト名検証を有効にしたHTTP監査は18件成功、主要16ファイルのSHAが最終distと一致し、release.jsonの版・source・indexとPages runも一致しました。全276件を公開URLから再取得した結果ではありません。証跡は `/workspace/shared/shibuya-artifacts/deploy-0.4.6/http-audit.json`。
+
+公開Firefox/Mesaの実操作は10カテゴリ成功。初回ガイド、一覧から施設・開業と自動近景なし、4目的の店舗設定とfocused入力の反映、明示店舗近景、管理画面と同じcanvas、週実績・確定資金・正確な自動保存と再読込、同App実測街、単独viewerの20建物/72地表/Draco・写真材質の明るさ・idle/resizeと保存復帰を確認しました。error/warning/CSP違反/外部要求/HTTP失敗は0件。公開は施設一覧を入口とし、camera/44px markerの正確な計測は開発GPUの証拠です。
+
+renderer・state・RAFを差し替えず、通常Firefox sandboxとTLS検証を維持しました。既存の環境CAは使い捨てNSS profileだけへ登録し、一時XorgはTCPを無効にしています。BGMはopt-in・音量/消音を確認しましたが、クラウドFirefoxのnative音声backendでresumeが待機したため、native再生と時計は理由付きskipです。音の出力・人間の聴感、Windows実機、端末性能、人間の30時間プレイは未確認です。
+
+公開結果は `/workspace/shared/shibuya-artifacts/deploy-0.4.6/public-playtest/verification-summary.json` と `results.json`。旧保存互換は公開とは別の本番CSP再検査で確認し、元runnerの検査側assert停止とlegacy-only成功を [production-playtest.md](production-playtest.md) に保持しています。再現手順は [immersive-qa.md](immersive-qa.md)、実装は [interaction-v046.md](interaction-v046.md)。Web/Windows ZIPは同じ最終distから生成・照合し、旧962成果物を保持しました。
+
+## GitHub Pages 0.4.5 当時の公開記録
 
 2026-10-06、[全面街UIのゲーム](https://shirai0765.github.io/-/?v=0.4.5)を公開しました。既存のURL・ブラウザー保存を維持する通常のfast-forward更新です。
 

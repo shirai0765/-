@@ -1,5 +1,15 @@
 # 最終本番成果物の検証
 
+## 0.4.6 店舗操作・週末結果の本番確認
+
+最終distを `scripts/smoke-immersive.py --production-csp --legacy-save <旧保存>` で検証しました。desktop/main.cjsと同じCSP、通常sandboxのFirefox/Mesa、製品RAFのまま実描画です。主要9カテゴリが成功し、選択・開業時の視点維持、manual近景、目的別店舗設定、管理画面と同じcanvas、実績・現金・保存再読込、同App実測街と単独viewerを確認しました。
+
+元runnerは旧保存のimport後、旧HUDに会社名があることを要求する検査側assertで停止しました。元 `production-0.4.6/results.json` の `passed:false` は保持しています。成功通知と保存stateを使うassertへ修正し、`--legacy-only` の別実行2カテゴリで旧0.3.2保存の完全import/reload、後付け出店・沿線記録がないこと、フォント・資産とCSP違反/外部要求/HTTP失敗0を確認しました。旧保存SHAは `eec3a7a10708f8d143f8d6b12db2710cd103425b5f3c99ddf28a3e2fe2e8dd8b`。9カテゴリと2カテゴリは別runで、元runnerの全項目成功へ書き換えていません。
+
+index SHA256は `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5`、ゲームchunkは `game-DwYDWwyQ.js`。正確な総合記録は `/workspace/shared/shibuya-artifacts/production-0.4.6/verification-summary.json`、再検査は `legacy-focused/results.json` です。最終267テスト／32ファイル、DOM14（描画stub）、開発実GPU11カテゴリは別の検査として成功しました。
+
+BGMはopt-in・音量/消音・会社保存不変を確認しましたが、このクラウドFirefoxではnative audio backendがtrusted click後もsuspendedで、native再生・時計は `--audio-backend-limitation` の明示理由付きskipです。局所の通常Firefox5件は開始待ち・timeout・取消のnative2件とpromise fixture3件で、音の出力や人間の聴感の証拠ではありません。Windows実機・端末性能・人間の30時間プレイも未確認です。公開URLの確認は [公開検証記録](published-playtest.md)、再現条件は [immersive-qa.md](immersive-qa.md) を参照してください。
+
 ## 0.4.5 全面街UI・週末実績の本番確認
 
 最終distを `scripts/smoke-immersive.py --production-csp` で検証し、9カテゴリが成功しました。desktop/main.cjsと同じCSP、Firefox/Mesa、製品のRAFを変更しない実描画です。出店・週末実績と現金の整合・保存復元、同App実測街と単体viewer、20建物/72地表/Draco、写真明るさ・idle/resize、旧0.3.2保存の完全一致を確認。エラー・警告・外部要求・CSP違反・HTTP失敗は0件でした。

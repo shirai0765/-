@@ -1,16 +1,20 @@
-# SHIBUYA CAPITAL — 開発進捗 0.4.6（開発中、公開版0.4.5）
+# SHIBUYA CAPITAL — 開発進捗 0.4.6（公開済み）
 
 2026-10-07（日本時間）。これは項目ごとの実装・検証状況で、完成率や30時間の実プレイ証明ではありません。
 
-## ブラウザー公開
+## ブラウザー公開0.4.6
+
+[0.4.6を遊べます](https://shirai0765.github.io/-/?v=0.4.6)。source `69a10ac4ff0815f3255822e22a245144cd751e8f`、pages `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`、Pages run `37539018321` は completed/success。公開HTTP18件・主要16ファイルSHA照合と、公開実Firefox/Mesa10カテゴリが成功しました。error/warning/CSP違反/外部要求/HTTP失敗は0件。renderer/state/RAFを置換せず、通常TLSとFirefox sandboxを維持。施設入口は一覧で、camera/markerの正確な計測は開発GPUと区別します。BGMのnative再生・時計はクラウドbackendの制約で理由付きskip、opt-in/preferencesは確認済みです。最終distのindex SHA256は `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5`。証跡は `deploy-0.4.6/http-audit.json` と `public-playtest/verification-summary.json`、詳細は [公開検証記録](published-playtest.md)。
+
+## 前版0.4.5のブラウザー公開記録
 
 [GitHub Pagesで0.4.5を遊べます](https://shirai0765.github.io/-/)。公開ブラウザー検証8項目、HTTP監査18件、主要16ファイルのSHA照合が成功しました。保存先はプレイヤーのブラウザーで、クラウド同期ではありません。[独立した実測ビューアー](https://shirai0765.github.io/-/real-shibuya.html)も利用できます。
 
 Pages run `37534939396` は成功。公開サイトのコミットは `4138eff953030563e5aad832d2be336cbbe644a1`、対応ソースは `a32d92fc2915eb58b67ef670d21c50f07af83788`。公開実Firefox8カテゴリが成功し、エラー0件。一覧から施設を開く操作、同App実測街・単独ビューア、保存再読込を確認しました。公開検証の施設入口は一覧で、開発GPUでのcanvas実クリックとは区別します。証跡は共有成果物 `deploy-0.4.5/public-playtest/results.json`。更新手順は [deployment.md](deployment.md)、公開検証記録は [published-playtest.md](published-playtest.md)。
 
-## 0.4.6：操作の入口と短い週末結果（開発中・未公開）
+## 0.4.6：操作の入口と短い週末結果（公開済み）
 
-公開版の追加試遊を受け、施設を開いたときのカメラ移動と、長い週報・並んだ店舗設定を整理しています。以下はAppへ統合したコードの内容です。最終Appの通し操作・保存・実3Dと全体テストは未完了で、公開版0.4.5の成功記録は今回の合格ではありません。
+公開版の追加試遊を受け、施設を開いたときのカメラ移動と、長い週報・並んだ店舗設定を整理しました。以下は最終Appの実装と検証の内容です。公開版0.4.5の成功記録は今回の合格数へ転用していません。
 
 ゲーム街とApp内の実測街は、通常のドラッグ・一指操作を平行移動とし、角度を固定します。「街を眺める」は明示的に選ぶ回転モードです。施設選択・開業では自動的に店へ寄らず、店舗・週報の「街でこの店を見る」から近景へ進み、「街全体に戻る」で戻れます。ゲーム街の自社目印は44px相当と「自社」表示へ変更。native dialog中とタブ非表示中は両街の描画・カメラ操作を停止し、再開時の歩行時計から停止時間を除外します。近景の人影は直近の決算客数を使う印象表現です。
 
@@ -20,7 +24,11 @@ Pages run `37534939396` は成功。公開サイトのコミットは `4138eff95
 
 経済の利益係数・終了条件は変更しません。成長戦略の利益・現金の見込み幅と危険表示も、既存の `getWeekOutlook` へ合わせる表示変更です。独立研究では、32初期標準店の12区画が見込み赤字、38決算と18回復経路の保存往復一致を確認しました。店長の黒字保証はなく、既存の赤字・回復が成立します。これは人間の理解や難易度の検証ではありません。
 
-週報の局所strict型検査、SSR11状態、実製品GameDialog・CSS・フォントを使うGPU無効Chromiumの6項目は成功し、page errorは0件でした。390×844では通常のパネルが幅362px・高さ約555pxで収まりました。これは単体ページの証拠で、Appの週決算・保存・native dialog間遷移・実3D・BGMの聴感の証明ではありません。証跡と未検証範囲は [操作と週末結果](interaction-v046.md)、共有成果物 `interaction-v046/weekly-results/`、`research-v046/loss-recovery-review.md` を参照してください。
+最終267テスト／32ファイルとビルド、1280×960／390×844の実App DOM14カテゴリ（両街stub）、開発実Firefox/Mesaの11カテゴリが成功しました。DOMはガイド・4目的・入力の反映と拒否・通知の維持・決算後資金・実保存を確認。390pxの通常設定による赤字 `¥-710,526` は一画面に収まり、決算後資金は7,689,474円でした。実GPUは固定角度pan/zoom・明示回転、実marker click、44px自社marker、選択と開業の視点維持、dialog中のscene停止とresize保留、週決算後の人影・実測街・保存復元を確認。エラー・警告は0件です。
+
+最終distの本番CSPは主要9カテゴリ成功後、旧HUDへ会社名を要求する検査側assertで停止しました。元results.jsonの `passed:false` を保持し、検査を修正した `--legacy-only` の2カテゴリで旧0.3.2保存の完全import/reload、後付け履歴なし、CSP違反・外部要求・HTTP失敗0を確認しました。総合記録は共有成果物 `production-0.4.6/verification-summary.json`。BGMのnative再生・時計はクラウドFirefoxのbackendが待機したためskipです。通常sandboxの局所Firefox5件ではnative開始待ち・失敗・取消の2件と明示promise fixture3件を確認しました。音の出力や人間の聴感の証拠ではありません。
+
+同じ最終distからWeb ZIP 65,784,617 bytes（SHA256 `147781e40079df0ca8995428b2ea93b681c274e9b6cd87c3eeed96f386930708`）とWindows ZIP 223,815,380 bytes（`3b980a1d5fd37974b85af9c01c54a5780aa4cbf9e58ef4517b6f0e879afe2396`）を生成し、収録ファイルを照合しました。旧962成果物は保持。Windows実機・端末性能・人間の30時間は未確認です。証跡と先行単体検査の範囲は [操作と週末結果](interaction-v046.md)、[再現手順](immersive-qa.md)、[Web版](web.md)・[Windows版](windows.md) を参照してください。
 
 ## 0.4.5：街を主役にし、営業結果を週末に返す（公開済み）
 
