@@ -1,8 +1,8 @@
 {
-  "version": "0.4.7",
-  "sourceCommit": "2b7790f7207e6c12fd9c46003c0ce6fb6a8cfff5",
+  "version": "0.4.8",
+  "sourceCommit": "acdc4dd049afb49365f00b303354ae1bd222c85f",
   "sourceBranch": "game-source",
-  "publishedAt": "2026-10-06T22:39:32.710958+00:00",
+  "publishedAt": "2026-10-06T23:09:05.346657+00:00",
   "verifiedFiles": 276,
-  "verifiedIndexSHA256": "79564699acfae0a8f3ecf4128fe00e9830c7379774336b1a4b029c230f775c97"
+  "verifiedIndexSHA256": "5c9d68bfaf2198b075dfd89576663df4ff91582e1f7080cf285883b03865baa9"
 }
