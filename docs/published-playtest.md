@@ -1,4 +1,10 @@
-# GitHub Pages 0.4.8 の公開記録
+# GitHub Pages 0.4.9 の公開記録
+
+[ゲーム本体0.4.9](https://shirai0765.github.io/-/?v=0.4.9) は公開・検証済みです。Pages run [37546458918](https://github.com/shirai0765/-/actions/runs/37546458918) はcompleted/success。公開HTTP25/25・選択23資産SHAとrelease version/source/indexが一致しました。完全なsource/pages/index、ローカル検査と梱包記録は [interaction-v049.md](interaction-v049.md) に集約しています。
+
+公開実Firefoxの変更2導線は初回の単一実行で成功。390pxの上場現在値と任意の物件、保存しない上場比較、提案件数一致と明示的な辞退2件→1件を確認しました。エラー・警告・request failures・console error events・外部要求・観測CSP違反0。証拠は `deploy-0.4.9/http-audit.json` と `public-playtest/results.json`、`verification-summary.json`。検査用会社は通常の3店開業/12決算後に現金/累計黒字週を調整した合成データで、自然な経営進行の証拠ではありません。上場アクションは実行せず、デスクトップCSPは別のローカル2導線の記録です。検証用ブラウザー等の終了・除去は `cleanup.json` に記録済み。実音声・Windows実機・端末性能・人間の30時間は未確認です。
+
+## GitHub Pages 0.4.8 当時の公開記録
 
 [ゲーム本体0.4.8](https://shirai0765.github.io/-/?v=0.4.8) は公開・検証済みです。Pages run [37544926892](https://github.com/shirai0765/-/actions/runs/37544926892) はcompleted/success。公開HTTP25/25・選択23資産SHAとrelease version/source/indexが一致しました。完全なsource/pages/indexとローカル検査・梱包記録は [interaction-v048.md](interaction-v048.md) に集約しています。
 

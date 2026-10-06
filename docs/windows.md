@@ -2,7 +2,7 @@
 
 配布ファイル名は `Shibuya-Capital-0.4.9-win32-x64.zip` です。ZIP全体を展開し、以下の手順で起動してください。
 
-0.4.9は成長戦略の任意の投資と現在の上場条件を整理し、既存メニューに有効な提案件数を添える版です。上場の費用や条件を新たに作らず、現在値から増店・待機・調整を選べます。変更範囲と検証状況は [interaction-v049.md](interaction-v049.md) を参照してください。公開版は現在0.4.8です。
+0.4.9は成長戦略の任意の投資と現在の上場条件を整理し、既存メニューに有効な提案件数を添える版です。上場の費用や条件を新たに作らず、現在値から増店・待機・調整を選べます。変更範囲と検証状況は [interaction-v049.md](interaction-v049.md) を参照してください。
 
 ## 使用方法
 
@@ -10,7 +10,11 @@
 
 この開発版はコード署名されていません。Windows 実機での起動・描画・保存復元・性能は未確認です。Linux 上での梱包、ZIP 整合性、同梱ファイル検査と、Windows 上での動作確認は別です。
 
-ブラウザー版0.4.8の公開とガイド操作は検証済みです。Web公開の成功はWindows実機の検証とは別で、実施範囲は [interaction-v048.md](interaction-v048.md) に記録しています。
+[ブラウザー版0.4.9](https://shirai0765.github.io/-/?v=0.4.9) の公開検査は成功しました。Web公開の成功はWindows実機の検証とは別で、今回の実施範囲は [interaction-v049.md](interaction-v049.md) に記録しています。
+
+## 0.4.9の梱包検証
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.4.9-win32-x64.zip` は223,819,072 bytes、SHA256 `56f6bf1eb96d3bdc7d7bee789e4e50a2db167e81e7eba55c173bda70b7dee38e`。Web版と同じ最終276 distファイル・94,305,976 bytesを再ビルドせず収録し、CRC・全SHA・279マニフェスト/278入力項目・x64 PEと既存Electronキャッシュの公式チェックサムを確認しました。旧1,360成果物のサイズ/更新時刻を照合し、以前のSHA記録を保持しています。旧SHAの再走査は行っていません。証拠は `windows/verification-0.4.9.json`、`packaging-0.4.9.json`、`preservation-0.4.9.json`。この段落はZIP作成後の記録です。未署名でWindows実機の動作は未確認です。
 
 ## 0.4.8の梱包検証
 
