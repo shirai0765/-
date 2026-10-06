@@ -2,13 +2,15 @@
 
 最新の目的は、実写真に忠実な渋谷の見た目と、約30時間で上場・全企業取得・街区開発を完遂できる経営ゲーム。以前の100〜1000時間目標は置き換え済み。ユーザーはインターネット無制限設定を反映し、実写真の収集と模型への反映を明示的に依頼。旧ゲーム削除と新規制作も承認済み。
 
-## 現在0.4.7：店舗費用の記録と近景の修正（開発中・未公開）
+## 現在0.4.7：店舗費用の記録と近景の修正（公開済み）
 
-ソース版は0.4.7、公開は0.4.6。今回の範囲は任意の確定7費用ledger・丸め調整・旧決算未記録表示、出店の本部費増を主値近くに示す1行、同店refocus/style変更の姿勢保持/別店close guard/portrait aspect fit。通常選択・開業からの自動近景は復活させず、利益係数・終了条件は変更しない。`report.storeAccounts` は任意記録でresultのstore IDへ対応させ、旧費用を現在設定から作らない。現在の計画と過去実績、店舗利益と本部費・利息・投資支出を分ける。
+任意の確定7費用ledger・丸め調整・旧決算未記録表示、出店の本部費増1行、同店refocus/style変更の姿勢保持/別店close guard/portrait aspect fitを公開した。通常選択・開業からの自動近景は復活させない。費用は任意のreport.storeAccountsをstore IDへ結び、現在設定から旧費用を作らない。店舗利益と本部費・利息・投資支出を分ける。
 
-最終315テスト/34filesとbuild成功、runtime凍結。ログは `/tmp/shibuya-test-0.4.7-final.log` と `/tmp/shibuya-build-0.4.7-final.log`。費用記録だけを除く旧基点51全状態比較は一致（`research-v047/accounting-baseline.json`）。UI局所SSR8、視点5テスト/192符号組合せも成功。実App/GPU・Web/Windows ZIP・公開は検証待ち。文書は梱包前に確定し、rootのcommitまでは以後の編集を止める。梱包のSHA/サイズと公開実結果は後から記録する。0.4.6の合格を今回へ転用しない。
+最終315テスト/34filesとbuild成功、費用記録だけを除く旧基点51全状態比較一致。局所SSR8、視点5テスト内の区画・店舗形態・画面サイズ192組合せも成功。開発native5はcamera1+tail3+legacy1の別runで、検査側selector停止の元結果を保持する。公開5は単一complete run成功。最終distのCSPはlegacy-only2成功で、広い0.4.7 CSP/BGM/独立viewerの再検査ではない。証跡の入口は [interaction-v047.md](interaction-v047.md)。
 
-3seed/18対照/204決算の第1〜20週研究は `research-v047/early-store-decisions-review.md`。研究の第5/11/15週を解禁条件や推奨順序にせず、950円を一般解、店長を増益保証としない。新規動画視聴なし。実音声・Windows実機・人間の30時間は今回確認しない限り未確認を維持。
+runtime source2b7790f7207e6c12fd9c46003c0ce6fb6a8cfff5、pagesaadd8f43f8c3c494e1d708244279d0ff141fd8ef、Pages run37541973393成功。HTTP25/25・選択23SHA一致、公開5のerror/warning/HTTP失敗/外部要求/観測CSP違反0。publicは精密なpose/UUID/看板projectionをassertせずdesktop CSPを付加しない。Web65,786,796 bytes、Windows223,817,079 bytesを同じ最終276filesから照合、旧1,103files SHA/size/mtime保持。SHAと報告は [web.md](web.md)・[windows.md](windows.md)。文書の最終commitとそのHEADのsource archiveは、公開buildsourceと区別する。変更なしの再buildは不要。次のコード変更後は適切な検証とbuildを行う。
+
+portraitの実測は明示表示後の看板4隅。resizeはpose/FOVを保持し、再適合は次の明示表示。外壁/テラス全体・遮蔽・resize直後のfitは保証しない。実音声、未署名Windowsの実機、端末性能、人間の30時間は未確認。次の改善は短い初見プレイで増店/待機/調整/委任の選択理由を確認してから絞る。3seed/18対照/204決算の第1〜20週研究を固定手順や950円の最適解へ転用しない。新規動画視聴なし。以降の定型作業はユーザー指定のGPT-6.1 Sol xhighを使い、利用枠・リセット操作を追加タスクにしない。
 
 ## 0.4.6：追加試遊から操作と週報を修正（公開済みの記録）
 

@@ -1,5 +1,15 @@
 # 全面街 UI の再現可能な検証
 
+## 0.4.7の変更導線
+
+`scripts/smoke-v047-targeted.py` は、明示近景・スタイル変更・同店再表示、390pxの実赤字と確定費用、編集後の過去費用/保存再読込、別店/対象店の閉店と同区画再出店、旧0.3.2保存と未記録費用の5カテゴリを扱います。`--url` / `--out` で対象と証跡を選び、DEVの読み取り計測には `--dev-diagnostics`、既確認の視点prefixを省く費用検査には `--ledger-only`、旧保存だけには `--legacy-only` を使います。
+
+開発nativeは視点1・費用等3・旧保存1の別runで5カテゴリを確認し、検査側selectorで停止した元の失敗結果を保持しました。総合は `targeted-0.4.7/verification-summary.json`。公開は同じ新導線5カテゴリを単一complete runで成功し、`deploy-0.4.7/public-playtest/verification-summary.json` に記録。両者のエラー・警告・HTTP失敗・外部要求・観測したCSP違反は0です。
+
+実App/actions/renderer/IndexedDB、製品RAF、通常TLS/Firefox sandboxを使用します。精密なpose/UUID/看板projection測定はDEVだけで、公開bundleではassertしません。縦長の明示表示後は看板4隅を測定し、resizeはpose/FOVを保持して次の明示表示まで再適合しません。外壁/テラス全体・遮蔽・resize直後のfitの保証ではありません。公開検査はdesktop CSPを付加せず、最終distのCSPは `smoke-immersive.py --production-csp --legacy-only` の別2カテゴリだけです。BGM・独立実測街の広い検査、Windows実機、30時間の人間プレイは0.4.7で再実行していません。
+
+以下は0.4.6以前の手順と当時の結果です。
+
 `smoke-immersive.py` が0.4.6の実App操作を担当します。旧 `smoke-browser.py` / `smoke-production.py` の常設sidebar前提のselectorを、新UIの合格根拠へ転用しません。Firefox/Mesaのsoftware rendering結果であり、Windows/Electron実行や実PC性能、人間の理解度を保証しません。0.4.5以下の結果は後半の履歴として保持します。
 
 ## 0.4.6の最終確認

@@ -1,10 +1,16 @@
 # Windows ポータブル版
 
-0.4.7の配布ファイル名は `Shibuya-Capital-0.4.7-win32-x64.zip` です。ZIP全体を展開し、以下の手順で起動してください。SHA・サイズ・梱包検証の実結果は生成後の配布記録へ記載します。0.4.6以下のSHAと検証結果は当時の記録として保持し、今回へ転用しません。変更範囲は [interaction-v047.md](interaction-v047.md) を参照してください。
+0.4.7の配布ファイル名は `Shibuya-Capital-0.4.7-win32-x64.zip` です。ZIP全体を展開し、以下の手順で起動してください。0.4.6以下のSHAと検証結果は当時の記録として保持し、今回へ転用しません。変更範囲は [interaction-v047.md](interaction-v047.md) を参照してください。
 
 対象は Windows 10 / 11 の x64（AMD Ryzen / Intel）。ZIP 全体を展開して、フォルダー内の `Shibuya Capital.exe` を開きます。Node.js のインストールは不要です。EXE だけ移動せず、DLL、resources、locales など同梱ファイルを一緒に保管してください。
 
 この開発版はコード署名されていません。Windows 実機での起動・描画・保存復元・性能は未確認です。Linux 上での梱包、ZIP 整合性、同梱ファイル検査と、Windows 上での動作確認は別です。
+
+## 0.4.7の梱包検証
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.4.7-win32-x64.zip` は223,817,079 bytes、SHA256 `8b3c5b0ac980e6a881f57f2a29f469630e8952c82a9981d51c803bc8f5020a59`。Web版と同じ最終276 distファイル・94,299,609 bytesを再ビルドせず収録し、CRC・全収録SHAと凍結入力の一致を確認しました。既存の公式Electronキャッシュを照合し、旧1,103成果物のSHA/サイズ/更新時刻を保持。記録は `windows/verification-0.4.7.json`、`packaging-0.4.7.json`、`preservation-0.4.7.json`。
+
+最終distをdesktopと同じCSPで配信した旧保存/資産の2カテゴリは成功しました。これはLinux Firefoxのlegacy-only検査で、0.4.7全導線のCSP再検査やWindows起動ではありません。Windows版は未署名、実機起動・保存・性能は未確認です。
 
 ## 再作成
 

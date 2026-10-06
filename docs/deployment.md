@@ -2,7 +2,9 @@
 
 このリポジトリでは、`game-source` を開発用、`main` をビルド済みサイトの公開用として分けます。公開URLは `https://shirai0765.github.io/-/` です。GitHub Pages は既存の「Deploy from a branch」設定を使い、`main` のルートを配信します。
 
-0.4.6は公開済みです。公開元ソースは `69a10ac4ff0815f3255822e22a245144cd751e8f`、公開コミットは `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`。Pages run `37539018321` の成功と、通常のTLS検証を使った公開HTTPS 18件のHTTP 200、主要16配布ファイルのSHA一致を確認しました。公開の記録は `/workspace/shared/shibuya-artifacts/deploy-0.4.6/deployment.json`、HTTP監査は同じ場所の `http-audit.json` です。実操作の検証記録は [published-playtest.md](published-playtest.md) を参照してください。
+0.4.7は公開済みです。公開元runtimeソースは `2b7790f7207e6c12fd9c46003c0ce6fb6a8cfff5`、公開コミットは `aadd8f43f8c3c494e1d708244279d0ff141fd8ef`。Pages run `37541973393` 成功、通常TLSの公開HTTP25/25・選択23資産SHA一致、公開実Firefoxの変更導線5カテゴリの単一complete run成功を確認しました。記録は `/workspace/shared/shibuya-artifacts/deploy-0.4.7/{deployment.json,http-audit.json,public-playtest/verification-summary.json}`。全276資産の公開再取得や広いCSP/BGM再検査ではありません。実操作と範囲は [published-playtest.md](published-playtest.md) を参照してください。
+
+0.4.6当時の公開元ソースは `69a10ac4ff0815f3255822e22a245144cd751e8f`、公開コミットは `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`。Pages run `37539018321` 成功、公開HTTP18/主要16SHA一致の記録は `deploy-0.4.6/` に保持しています。
 
 | ブランチ | 内容 |
 |---|---|
@@ -24,8 +26,8 @@
 
 ```sh
 python3 scripts/package-web.py
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.6-web-report.json
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.6-web-report.json --publish
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.7-web-report.json
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.7-web-report.json --publish
 ```
 
 版と保存場所が異なる場合は、検証した当該版のreportを指定します。作業ツリーが未commit、ソースのremote先端が異なる、配布ファイルがreportと異なる場合は停止します。

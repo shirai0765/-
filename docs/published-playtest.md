@@ -1,4 +1,16 @@
-# GitHub Pages 0.4.6 の公開記録
+# GitHub Pages 0.4.7 の公開記録
+
+[ゲーム本体0.4.7](https://shirai0765.github.io/-/?v=0.4.7)は公開済みです。runtime source `2b7790f7207e6c12fd9c46003c0ce6fb6a8cfff5`、pages `aadd8f43f8c3c494e1d708244279d0ff141fd8ef`、Pages run [37541973393](https://github.com/shirai0765/-/actions/runs/37541973393) は成功。index SHA256は `79564699acfae0a8f3ecf4128fe00e9830c7379774336b1a4b029c230f775c97`。
+
+通常TLS/ホスト名検証の公開HTTP監査は25/25成功、選択23資産のSHAがdistと一致し、releaseの版/source/indexとPages runも一致しました。全276資産を公開URLから再取得した記録ではありません。証跡は `deploy-0.4.7/http-audit.json`。
+
+公開実Firefox/Mesaは、新しい変更導線5カテゴリを単一complete runで成功しました。明示近景/店舗操作、通常入力30人店の390px赤字報告と確定費用、編集後も過去の費用を保つ管理/週報と正確な再読込、別店/対象店の閉店と同区画再出店、旧0.3.2保存と費用未記録表示を確認。エラー・警告・HTTP失敗・外部要求・観測したCSP違反0。結果は `deploy-0.4.7/public-playtest/verification-summary.json` と `results.json`。
+
+実App/UI/actions/renderer/IndexedDBと通常Firefox sandbox/TLSを維持し、renderer/state/RAFを置換していません。pose/UUID/看板projectionの精密測定はDEVだけで、公開bundleへはassertしません。公開runにdesktop CSPは付加せず、最終CSPは別のlegacy-only2カテゴリです。BGM/実測街の広い検査を今回再実行したとは扱いません。owned Firefox/Xorg/一時profileは終了・削除済み。実音声・Windows実機・端末性能・人間の30時間は未確認です。
+
+縦長画面の看板fitはDEVの明示表示後の範囲です。resizeはpose/FOVを保ち、次の明示表示で合わせ直します。外壁/テラス全体・遮蔽・resize直後のfitは保証しません。手順と以前の途中失敗を保持した開発runは [immersive-qa.md](immersive-qa.md)、最終distのCSPは [production-playtest.md](production-playtest.md) を参照してください。
+
+## GitHub Pages 0.4.6 当時の公開記録
 
 2026-10-06 UTC（日本時間10月7日）、[ゲーム本体0.4.6](https://shirai0765.github.io/-/?v=0.4.6)を公開し、公開HTTPSでHTTP監査と実ブラウザー操作を確認しました。
 

@@ -1,5 +1,11 @@
 # 最終本番成果物の検証
 
+## 0.4.7の最終dist：旧保存と資産のCSP検査
+
+`scripts/smoke-immersive.py --production-csp --legacy-only` の2カテゴリが成功しました。desktop/main.cjsと同じCSPを付加した最終distで、旧0.3.2保存の完全import/reload・後付け履歴なし、フォント/資産・通信を確認。エラー・警告・CSP違反・外部要求・HTTP失敗0。証跡は `/workspace/shared/shibuya-artifacts/production-0.4.7/results.json`。index SHA256は `79564699acfae0a8f3ecf4128fe00e9830c7379774336b1a4b029c230f775c97`。
+
+これはlegacy-onlyの対象検査で、0.4.7全導線のCSP検査ではありません。変更導線native5は複数開発run、公開5は単一complete runの別検査です。公開runにはdesktop CSPを付加していません。BGM/独立実測街の広い0.4.6検査を再実行した結果へ数えず、Windows実機・実音声・30時間の人間プレイも未確認です。詳細は [interaction-v047.md](interaction-v047.md)、[公開検証](published-playtest.md)。
+
 ## 0.4.6 店舗操作・週末結果の本番確認
 
 最終distを `scripts/smoke-immersive.py --production-csp --legacy-save <旧保存>` で検証しました。desktop/main.cjsと同じCSP、通常sandboxのFirefox/Mesa、製品RAFのまま実描画です。主要9カテゴリが成功し、選択・開業時の視点維持、manual近景、目的別店舗設定、管理画面と同じcanvas、実績・現金・保存再読込、同App実測街と単独viewerを確認しました。

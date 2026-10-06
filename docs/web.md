@@ -1,6 +1,12 @@
 # Shibuya Capital 0.4.7 Web版
 
-配布ファイル名は `Shibuya-Capital-0.4.7-web.zip` です。ZIP全体を展開し、以下の方法で開いてください。0.4.7では任意の確定店舗費用、本部費増の説明、店舗近景の再操作と縦長画面の収まりを追加しています。詳細は [interaction-v047.md](interaction-v047.md)。SHA・サイズ・梱包検証の実結果は生成後の配布記録へ記載し、0.4.6以下の検証値は当時の履歴として保持します。
+配布ファイル名は `Shibuya-Capital-0.4.7-web.zip` です。ZIP全体を展開し、以下の方法で開いてください。0.4.7では任意の確定店舗費用、本部費増の説明、店舗近景の再操作と縦長画面の収まりを追加しています。詳細は [interaction-v047.md](interaction-v047.md)。0.4.6以下の検証値は当時の履歴として保持します。
+
+## 0.4.7の配布記録
+
+`/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.7-web.zip` は65,786,796 bytes、SHA256 `4ae714be55d349074d99c553439fdb815f57621b74b6e6ad74d2117b5b689df3`。同じ最終dist276ファイル・94,299,609 bytesを再ビルドせず梱包し、全CRC・収録SHA・梱包前後のdist不変を確認しました。ローカルprefixの276 HTTP/SHAと257参照も成功。旧1,103成果物のSHA/サイズ/更新時刻を保持しています。報告は `Shibuya-Capital-0.4.7-web-report.json`、`packaging-0.4.7.json`、`preservation-0.4.7.json`。
+
+ブラウザー版0.4.7は公開済みです。公開HTTP25/選択23SHAと変更導線の実Firefox5カテゴリが成功しました。梱包の検査と公開操作は別の記録で、公開全276資産の再取得や広い0.4.6検査の再実行ではありません。[公開検証記録](published-playtest.md) を参照してください。
 
 ## 使用方法と以前の配布記録
 
