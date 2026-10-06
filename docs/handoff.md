@@ -4,6 +4,14 @@
 
 利用枠・リセット券・ファストモードを操作するツールはない。操作したと装わない。ユーザーの停止を無視したり、セッションをまたぐ自動開発を保証したりしない。現在までのソースと成果物を保持して続きを進める。
 
+## 公開版0.4.2とブランチの役割
+
+ユーザーがGitHub Pagesでの公開を明示依頼し、`https://shirai0765.github.io/-/` へ公開済み。実測ビューアは同URL配下の `real-shibuya.html`。開発ソースは `game-source`、`main` は検証済みビルドの配布専用で、package.jsonはない。今のローカル `work` はソースのチェックアウト。`main` へ開発ソースを直接push/mergeしない。通常のコード変更・ドキュメント更新は `game-source` へ、次の公開は [deployment.md](deployment.md) の検証と補助スクリプトを使う。
+
+公開元ソース `5f48a6b806c509e0505690f5588ef3c2c6d66dc3`、配布コミット `61002026eaf5d50a80de20d06e5338cf8477ad2d`、Pages run `37522617185` 成功。公開URLの主要16ファイルはdistのSHAと一致。公開本番で新会社・実3D・出店・初決算・自動保存・再読み込み・JSON書き出しの6項目成功。詳細とクラウドブラウザーの一時検証設定は [published-playtest.md](published-playtest.md)。公開サイト自体の証明書不備と、クラウドChromiumの環境CA不足を混同しない。
+
+実測街と経営の接続は次の候補。`docs/design/real-city-integration.md` と担当間の提案を確認する。0.4.3のcontroller・4地点マーカーを実装済みとは扱わない。公開版を変更する前に、新版の互換性と操作を検証する。
+
 ## 0.4.2と最新の並列化依頼
 
 ユーザーは追加で「Unreal Agent経由でさらに担当を増やせないか」と依頼した。ツール台帳、実行ファイル、ローカルplugin/skill/MCP設定、環境capabilitiesを確認したが該当接続は見つからない。起動コマンド・導入先・公式URLを非同期で質問済み。返信が来たらその経路を確認する。現在の組込み協働はroot＋6担当が上限。Codex CLI自体はログイン済みだが、通常のread-only/ephemeral起動でも管理領域 `/run/codex-environment/codex-home` のstate SQLiteとinstallation_idへ書けず、モデルの追加担当は起動前に失敗した。診断は `/tmp/shibuya-codex-startup-diagnostic.log` と `shibuya-codex-startup-paths.log`。資格情報やCODEX_HOMEを移動せず、制約を迂回していない。この補助経路の制約で制作全体をブロック扱いにしない。

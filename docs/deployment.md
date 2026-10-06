@@ -2,6 +2,8 @@
 
 このリポジトリでは、`game-source` を開発用、`main` をビルド済みサイトの公開用として分けます。公開URLは `https://shirai0765.github.io/-/` です。GitHub Pages は既存の「Deploy from a branch」設定を使い、`main` のルートを配信します。
 
+0.4.2は公開済みです。公開コミットと公開サイトでの出店・週次保存・再読み込みの検証結果は [published-playtest.md](published-playtest.md) を参照してください。
+
 | ブランチ | 内容 |
 |---|---|
 | `game-source` | `src`、テスト、設定、ロックファイル、ドキュメントなどの開発ソース |
