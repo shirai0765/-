@@ -25,6 +25,14 @@ export default function GameDialog({ title, children, close, wide, className, no
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
   const backdropPress = useRef<{ id: number; x: number; y: number } | null>(null);
+  const requestClose = () => {
+    const dialog = dialogRef.current;
+    const active = dialog?.ownerDocument.activeElement;
+    // Closing has the same commit-on-blur contract as clicking the header.
+    // A nested dialog owns its own draft; never blur an underlying page input.
+    if (active instanceof HTMLElement && active.closest('dialog') === dialog) active.blur();
+    close();
+  };
 
   useLayoutEffect(() => {
     const dialog = dialogRef.current;
@@ -49,7 +57,7 @@ export default function GameDialog({ title, children, close, wide, className, no
       // Existing feature confirmations live inside this native dialog. Their
       // own Escape handler/close button must win over dismissing the whole page.
       if (event.currentTarget.querySelector('.modal-shade')) return;
-      close();
+      requestClose();
     }}
     onPointerDown={event => {
       backdropPress.current = event.target === event.currentTarget && event.button === 0
@@ -65,11 +73,11 @@ export default function GameDialog({ title, children, close, wide, className, no
       backdropPress.current = null;
       if (press && press.id === event.pointerId && event.button === 0
         && event.target === event.currentTarget
-        && Math.hypot(event.clientX - press.x, event.clientY - press.y) <= 8) close();
+        && Math.hypot(event.clientX - press.x, event.clientY - press.y) <= 8) requestClose();
     }}>
     <section className={['modal', wide && 'wide', className].filter(Boolean).join(' ')}>
       <header><div><span className="eyebrow">SHIBUYA CAPITAL</span><h2 id={titleId}>{title}</h2></div>
-        <button ref={closeButtonRef} type="button" className="icon-button" onClick={close} aria-label="閉じる"><X size={20}/></button>
+        <button ref={closeButtonRef} type="button" className="icon-button" onClick={requestClose} aria-label="閉じる"><X size={20}/></button>
       </header>
       {shownNotice && <div className="game-dialog-notice" role="alert"><span>{shownNotice}</span>{clearNotice && <button type="button" className="icon-button" onClick={() => { closeButtonRef.current?.focus(); clearNotice(); }} aria-label="通知を閉じる"><X size={16}/></button>}</div>}
       {children}

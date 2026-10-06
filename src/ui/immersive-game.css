@@ -68,3 +68,12 @@
  .map-choice{gap:8px}.map-choice button{padding:12px;font-size:12px}
  .immersive-game>.toast{bottom:170px}
 }
+
+/* Keep cash and optional controls legible without covering the city. */
+.hud-company{min-width:142px;max-width:min(48vw,320px)}
+.hud-company>strong{font-size:22px}
+.store-scene-caption{margin:0 0 8px;padding:5px 9px;width:fit-content;background:var(--surface);border-radius:8px;color:var(--muted);font-size:10px;box-shadow:0 2px 8px #14294212}
+.game-dialog>.weekly-results-dialog>.save-confirm{margin:14px 0 0;font-size:10px!important;text-align:center}
+@media(max-width:620px){.hud-company{min-width:142px;max-width:48vw}.hud-company>strong{font-size:19px}.hud-tools>.hud-button{width:44px;height:44px;padding:10px}.hud-tools>.hud-button>span{display:none}.store-scene-caption{font-size:9px;max-width:210px}}
+
+.map-overview{margin-bottom:20px}

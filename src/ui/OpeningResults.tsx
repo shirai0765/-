@@ -14,6 +14,7 @@ interface Props {
   onSelectStore?: (lotId: string) => void;
   onViewStore?: (lotId: string) => void;
   onNavigate?: (tab: 'city' | 'stores' | 'finance') => void;
+  onBrowseSites?: () => void;
   onContinue?: () => void;
 }
 
@@ -75,7 +76,7 @@ function OpeningResult({ record, state, onSelectStore, onViewStore }: {
   </article>;
 }
 
-export default function OpeningResults({ state, mode = 'latest', reportWeeks, onSelectStore, onViewStore, onNavigate, onContinue }: Props) {
+export default function OpeningResults({ state, mode = 'latest', reportWeeks, onSelectStore, onViewStore, onNavigate, onBrowseSites, onContinue }: Props) {
   const includedWeeks = new Set(reportWeeks ?? (state.lastReport ? [state.lastReport.week] : []));
   const records = [...(state.openingRecords ?? [])].reverse().filter(record => mode === 'history' || record.result !== undefined && includedWeeks.has(record.result.week));
   if (!records.length && mode === 'latest') return null;
@@ -83,8 +84,8 @@ export default function OpeningResults({ state, mode = 'latest', reportWeeks, on
   return <section className="opening-results" aria-label={mode === 'latest' ? '開店後の初決算' : '最近の出店記録'}>
     <div className="opening-results-heading"><Coffee size={22}/><div><h3>{mode === 'latest' ? '開店後の初決算' : '最近の出店記録'}</h3><p>{mode === 'latest' ? '最初の営業で、この店にどんな結果が出たかを確認しましょう。' : `最近${OPENING_RECORD_LIMIT}件までの出店と初決算。出店時点の記録です。`}</p></div></div>
     {!records.length ? <p className="opening-result-empty">出店記録はまだありません。記録機能の追加前に開いた店の見込み・初決算は、後から作成しません。</p> : <div className="opening-results-list">{records.map(record => <OpeningResult key={record.id} record={record} state={state} onSelectStore={onSelectStore} onViewStore={onViewStore}/>)}</div>}
-    {records.length > 0 && !state.gameOver && (onNavigate || onContinue) && <div className="opening-result-actions">
-      {onNavigate && <button className="secondary" onClick={() => onNavigate('city')}>次の出店候補を見る <ArrowUpRight size={15}/></button>}
+    {records.length > 0 && !state.gameOver && (onBrowseSites || onNavigate || onContinue) && <div className="opening-result-actions">
+      {(onBrowseSites || onNavigate) && <button className="secondary" onClick={() => onBrowseSites ? onBrowseSites() : onNavigate?.('city')}>次の出店候補を見る <ArrowUpRight size={15}/></button>}
       {onContinue && <button className="text-button" onClick={onContinue}>今の運営を続ける</button>}
     </div>}
   </section>;

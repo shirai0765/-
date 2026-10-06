@@ -139,3 +139,15 @@ Windows実機での起動・描画・保存復元・性能は未検証で、コ�
 検証記録は同ディレクトリの `verification-0.4.5.json`、`app-files-0.4.5.sha256.json`、ZIPの `.sha256` です。0.4.4を含む旧配布・旧検証成果物880件のSHA-256・サイズ・更新時刻は不変でした。保全記録は `/workspace/shared/shibuya-artifacts/preservation-0.4.5.json`。進行中の研究・0.4.5検証資料122件は活動中の資料として区別しています。梱包前後のdist index SHA-256は `21eb92ee9545afeeada2d9270ca992978f17a6060fefda4ea29ad32aa670cb85` で一致しました。
 
 Windows実機での起動・描画・保存復元・性能は未検証で、コード署名はありません。これはLinuxでの梱包・内容照合の記録であり、公開URLやWindows/Electronの実動作確認ではありません。Windows版は上記ローカルZIPとして保持し、GitHub Releaseへの添付は再試行していません。
+
+## 0.4.6 の梱包検証
+
+最初の操作案内、目的別の店舗管理、短い週末結果、街の音と表示の応答を含む0.4.6を、旧版と別のZIPへ梱包しました。演出は確定済み決算の表示に使い、保存値や経済計算は変更しません。
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.4.6-win32-x64.zip` は223,815,380バイト、SHA-256は `3b980a1d5fd37974b85af9c01c54a5780aa4cbf9e58ef4517b6f0e879afe2396`。公式Electron 44.5.1のキャッシュを公式チェックサムへ再照合し、ZIP全件CRC、アプリマニフェスト279件、最終dist/desktop全278ファイルとのSHA-256一致、x64 PE実行形式を確認しました。追加ダウンロードや再ビルドは行っていません。
+
+Web版と同じ最終distの276ファイル（94,292,963バイト）が入っていることを、ローカル `/-/` 配下のHTTP監査と梱包後のSHA比較で確認しました。梱包前後のindex SHA-256は `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5` で不変です。旧配布・旧検証成果物962件のSHA-256・サイズ・更新時刻も不変でした。
+
+検証記録は同ディレクトリの `verification-0.4.6.json`、`app-files-0.4.6.sha256.json`、ZIPの `.sha256` です。Web/Windowsと最終distの相互照合は `/workspace/shared/shibuya-artifacts/packaging-0.4.6.json`、旧成果物の保全は `preservation-0.4.6.json` に記録しています。
+
+Windows実機での起動・描画・保存復元・性能は未検証で、コード署名はありません。上記はLinuxでの梱包・内容照合の結果です。Windows版はローカルZIPとして保持し、GitHub Releaseへの添付は再試行していません。

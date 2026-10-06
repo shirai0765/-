@@ -24,11 +24,13 @@
 
 ```sh
 python3 scripts/package-web.py
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.5-web-report.json
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.5-web-report.json --publish
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.6-web-report.json
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.6-web-report.json --publish
 ```
 
 版と保存場所が異なる場合は、検証した当該版のreportを指定します。作業ツリーが未commit、ソースのremote先端が異なる、配布ファイルがreportと異なる場合は停止します。
+
+0.4.6のWeb/Windows ZIPは同じ最終distから再ビルドせず生成済みです。全276配布ファイルのSHA一致・全ZIP CRC・梱包後のdist不変と、ローカル `/-/` 配下の全ファイルHTTP監査を確認しました。記録は `/workspace/shared/shibuya-artifacts/packaging-0.4.6.json` と `integration-v046/pages-prefix/result.json`。旧成果物962件の保全結果は `preservation-0.4.6.json` にあります。このローカル検査は、公開後のサイト確認やWindows実機の動作確認を代替しません。
 
 ## Actions ワークフローを使わない理由
 

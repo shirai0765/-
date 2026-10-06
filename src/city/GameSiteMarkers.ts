@@ -20,6 +20,7 @@ export class GameSiteMarkers {
       const sprite = new THREE.Sprite(this.material('candidate', false));
       sprite.name = `Game_site_marker_${lot.id}`;
       sprite.userData.lotId = lot.id;
+      sprite.userData.siteStatus = 'candidate';
       sprite.position.set(lot.x, lot.height + 3, lot.z);
       sprite.center.set(.5, 0);
       sprite.renderOrder = 30;
@@ -36,14 +37,30 @@ export class GameSiteMarkers {
       const status: SiteStatus = stores.has(id) ? properties.has(id) ? 'both' : 'store' : properties.has(id) ? 'property' : 'candidate';
       sprite.material = this.material(status, selectedLotId === id);
       sprite.userData.siteStatus = status;
+      sprite.renderOrder = selectedLotId === id ? 32 : status === 'candidate' ? 30 : 31;
+      // Opening/buying/closing can change ownership without a viewport resize.
+      this.scale(sprite, status);
     }
   }
 
   resize(camera: THREE.PerspectiveCamera, height: number) {
     if (height <= 0 || (height === this.height && camera.fov === this.fov)) return;
     this.height = height; this.fov = camera.fov;
-    const width = 34 * 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / height;
-    for (const sprite of this.entries.values()) sprite.scale.set(width, width * 112 / 96, 1);
+    for (const sprite of this.entries.values()) this.scale(sprite, sprite.userData.siteStatus as SiteStatus);
+  }
+
+  /** Match the drawing order when screen-sized annotations overlap. */
+  pick(raycaster: THREE.Raycaster): THREE.Intersection<THREE.Sprite> | undefined {
+    const hits = raycaster.intersectObjects<THREE.Sprite>(this.pickables, false);
+    hits.sort((a, b) => b.object.renderOrder - a.object.renderOrder || a.distance - b.distance);
+    return hits[0];
+  }
+
+  private scale(sprite: THREE.Sprite, status: SiteStatus) {
+    if (this.height <= 0) return;
+    const pixels = status === 'candidate' ? 34 : 44;
+    const width = pixels * 2 * Math.tan(THREE.MathUtils.degToRad(this.fov / 2)) / this.height;
+    sprite.scale.set(width, width * 112 / 96, 1);
   }
 
   private material(status: SiteStatus, selected: boolean) {
@@ -54,25 +71,31 @@ export class GameSiteMarkers {
     const context = canvas.getContext('2d');
     if (!context) throw new Error('施設の目印を描画できません');
     const color = colors[status];
-    context.fillStyle = selected ? '#fff0b8' : '#ffffff';
+    const owned = status !== 'candidate';
+    context.fillStyle = owned ? color : selected ? '#fff0b8' : '#ffffff';
     context.strokeStyle = selected ? '#946300' : status === 'both' ? '#7652b1' : color;
     context.lineWidth = selected ? 7 : 5;
     context.beginPath(); context.moveTo(34, 84); context.lineTo(48, 106); context.lineTo(62, 84); context.closePath(); context.fill(); context.stroke();
     context.beginPath(); context.arc(48, 46, 40, 0, Math.PI * 2); context.fill(); context.stroke();
-    context.strokeStyle = color; context.lineWidth = 5; context.lineJoin = 'round'; context.lineCap = 'round';
+    context.strokeStyle = owned ? '#ffffff' : color; context.lineWidth = 5; context.lineJoin = 'round'; context.lineCap = 'round';
     if (status === 'store' || status === 'both') {
-      context.beginPath(); context.moveTo(27, 33); context.lineTo(27, 58); context.quadraticCurveTo(46, 71, 63, 58); context.lineTo(63, 33); context.closePath(); context.stroke();
-      context.beginPath(); context.moveTo(64, 37); context.bezierCurveTo(83, 34, 83, 58, 64, 54); context.stroke();
-      context.beginPath(); context.moveTo(24, 72); context.lineTo(68, 72); context.stroke();
+      context.beginPath(); context.moveTo(30, 21); context.lineTo(30, 39); context.quadraticCurveTo(46, 49, 61, 39); context.lineTo(61, 21); context.closePath(); context.stroke();
+      context.beginPath(); context.moveTo(62, 24); context.bezierCurveTo(78, 21, 78, 41, 62, 38); context.stroke();
+      context.beginPath(); context.moveTo(28, 49); context.lineTo(65, 49); context.stroke();
     } else if (status === 'property') {
-      context.strokeRect(28, 23, 40, 49);
-      context.fillStyle = color;
-      for (const x of [36, 51]) for (const y of [32, 46]) context.fillRect(x, y, 8, 7);
-      context.fillRect(43, 61, 10, 11);
+      context.strokeRect(32, 17, 32, 33);
+      context.fillStyle = '#ffffff';
+      for (const x of [38, 51]) for (const y of [24, 35]) context.fillRect(x, y, 6, 6);
+      context.fillRect(44, 43, 8, 7);
     } else {
       context.strokeRect(25, 40, 46, 31);
       context.beginPath(); context.moveTo(22, 40); context.lineTo(29, 24); context.lineTo(67, 24); context.lineTo(74, 40); context.closePath(); context.stroke();
       context.beginPath(); context.moveTo(48, 48); context.lineTo(48, 63); context.moveTo(40, 55.5); context.lineTo(56, 55.5); context.stroke();
+    }
+    if (owned) {
+      context.fillStyle = '#ffffff'; context.font = '700 25px system-ui, sans-serif';
+      context.textAlign = 'center'; context.textBaseline = 'alphabetic';
+      context.fillText('自社', 48, 77);
     }
     const map = new THREE.CanvasTexture(canvas); map.colorSpace = THREE.SRGBColorSpace;
     const material = new THREE.SpriteMaterial({ map, sizeAttenuation: false, depthTest: false, depthWrite: false, toneMapped: false });

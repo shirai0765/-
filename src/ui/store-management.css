@@ -1,0 +1,34 @@
+.store-controls.store-management{border:0;margin:0;padding:0;min-width:0}
+.store-management .store-management-status{font-size:11px;line-height:1.7;color:var(--muted);margin:0 0 14px}
+.store-management-latest{padding:14px 16px;background:var(--surface-soft);border-radius:10px;margin-bottom:22px}
+.store-management-latest>p{font-size:10px;color:var(--muted);margin:0 0 8px}
+.store-management-latest dl,.store-management-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0}
+.store-management dt{font-size:11px;line-height:1.7;color:var(--muted)}
+.store-management dd{font-size:18px;line-height:1.5;margin:3px 0 0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.store-management .store-management-heading{font-size:15px;font-weight:500;line-height:1.6;margin:0 0 14px}
+.store-management-heading:focus{outline:none}
+.store-management-purposes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.store-management-purposes>button{display:flex;align-items:flex-start;gap:9px;padding:16px 12px;min-width:0;min-height:92px;text-align:left;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-size:12px;line-height:1.6}
+.store-management-purposes>button>svg:first-child{margin-top:2px;color:var(--accent)}
+.store-management-purposes>button>svg:last-child{margin-left:auto;margin-top:3px;color:var(--muted)}
+.store-management-purposes>button>span{min-width:0}
+.store-management-purposes small{display:block;margin-top:4px;font-size:10px;font-weight:400;color:var(--muted)}
+.store-management-view{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:10px;font-size:11px}
+.store-management-admin{border-top:1px solid var(--line);margin-top:12px;padding-top:4px}
+.store-management-admin>summary{padding:12px 0;min-height:44px;font-size:11px;color:var(--muted);cursor:pointer}
+.store-management-admin .danger-link{min-height:44px}
+.store-management-back{display:flex;align-items:center;gap:5px;min-height:44px;padding:8px 0;background:none;color:var(--muted);font-size:11px;margin-bottom:8px}
+.store-management .store-management-hint{font-size:11px;line-height:1.8;color:var(--muted);margin:8px 0 16px}
+.store-management .store-management-empty{font-size:12px;line-height:1.9;color:var(--muted);padding:14px;background:var(--surface-soft);border-radius:8px;margin:0 0 20px}
+.store-management .store-management-field{position:relative}
+.store-management-draft,.store-management-cost{display:block;margin-top:6px;font-size:10px;font-weight:400;line-height:1.7;color:var(--muted)}
+.store-management-draft[role='alert']{color:var(--red)}
+.store-management input[aria-invalid='true']{border-color:var(--red)}
+.store-management-upgrade{padding:14px 0 20px}
+.store-management-upgrade>p{font-size:12px;margin:0 0 8px}
+.store-management-upgrade>.secondary{width:100%}
+.store-management-results{padding:12px 0 18px}
+.store-management .store-operating-insight{margin-top:24px;margin-bottom:0}
+.store-management input[type='range']{min-height:32px}
+.store-management summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:420px){.store-management-purposes{gap:8px}.store-management-purposes>button{padding:12px 9px;gap:7px;min-height:96px}.store-management-purposes>button>svg:last-child{display:none}.store-management dd{font-size:16px}.store-management-latest{padding:12px}}

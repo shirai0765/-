@@ -19,9 +19,13 @@ import { LoadedAssetPool, AUTHORED_ASSETS } from './loadedAsset';
 import { scheduleScene } from './sceneLifecycle';
 import { PointerSelectionGesture } from './pointerSelection';
 import { GameSiteMarkers } from './GameSiteMarkers';
+import { StoreActivityVisuals } from './StoreActivityVisuals';
+import { configureCameraInteraction, restoreOverviewDirection, type CameraMode } from './cameraInteraction';
+import { observeModalPause } from './modalPause';
+import { ActiveAnimationClock } from './animationClock';
 
-interface Props { state:GameState; selectedLotId:string|null; onSelectLot:(id:string)=>void; quality:QualityLevel; viewMode?:'normal'|'demand'|'ownership'; focusLotId?:string|null; focusRailDistrict?:DistrictId|null; focusStoreLotId?:string|null }
-interface Runtime { siteMarkers:GameSiteMarkers; storeFrame?:{lot:Lot;style:StoreStyle}; railProjectVisuals:RailProjectVisuals; staticTerraces:Map<string,THREE.Group>; developmentVisuals:DevelopmentVisuals; originalFronts:Map<string,THREE.Group>; growth:CityGrowth; selection:THREE.Mesh; hover:THREE.Mesh; accents:Map<string,THREE.Group>; overlays:Map<string,THREE.Mesh>; controls:OrbitControls; camera:THREE.PerspectiveCamera; focus?:THREE.Vector3 }
+interface Props { cameraMode?:CameraMode; overviewRequestId?:number; state:GameState; selectedLotId:string|null; onSelectLot:(id:string)=>void; quality:QualityLevel; viewMode?:'normal'|'demand'|'ownership'; focusLotId?:string|null; focusRailDistrict?:DistrictId|null; focusStoreLotId?:string|null }
+interface Runtime { storeActivity:StoreActivityVisuals; siteMarkers:GameSiteMarkers; storeFrame?:{lot:Lot;style:StoreStyle}; railProjectVisuals:RailProjectVisuals; staticTerraces:Map<string,THREE.Group>; developmentVisuals:DevelopmentVisuals; originalFronts:Map<string,THREE.Group>; growth:CityGrowth; selection:THREE.Mesh; hover:THREE.Mesh; accents:Map<string,THREE.Group>; overlays:Map<string,THREE.Mesh>; controls:OrbitControls; camera:THREE.PerspectiveCamera; focus?:THREE.Vector3 }
 declare global { interface Window { __cityScene?:THREE.Scene; __cityCamera?:THREE.PerspectiveCamera; __cityRenderer?:THREE.WebGLRenderer } }
 const GOLD='#e9c276';
 const SHOPS=[['星珈琲','HOSHI COFFEE'],['渋谷書房','BOOKS & CULTURE'],['麺屋 八十八','NOODLES • SHIBUYA'],['茶の庭','TEA & BOTANICAL'],['喫茶 月','KISSA TSUKI'],['TOKYO RECORDS','MUSIC FOR THE CITY'],['花と暮らし','FLOWERS & LIVING']];
@@ -170,10 +174,12 @@ function makeLandmarks(art:CityArt,assets:LoadedAssetPool) {
   }
 }
 
-export default function CityView({state,selectedLotId,onSelectLot,quality,viewMode='normal',focusLotId,focusRailDistrict,focusStoreLotId}:Props) {
+export default function CityView({state,selectedLotId,onSelectLot,quality,viewMode='normal',focusLotId,focusRailDistrict,focusStoreLotId,cameraMode='manage',overviewRequestId=0}:Props) {
+  const cameraModeRef=useRef(cameraMode);cameraModeRef.current=cameraMode;
   const host=useRef<HTMLDivElement>(null);const runtime=useRef<Runtime|null>(null);
   const previousCloseFocus=useRef<string|null>(null);
   const previousLotFocus=useRef<string|null|undefined>(undefined);
+  const previousOverviewRequest=useRef(overviewRequestId);
   const focusedStore=state.stores.find(store=>store.lotId===focusStoreLotId);
   const focusedStoreStyle=focusedStore?.style;
   const onSelect=useRef(onSelectLot);onSelect.current=onSelectLot;
@@ -193,11 +199,11 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     renderer.shadowMap.enabled=quality!=='low';renderer.shadowMap.type=THREE.PCFSoftShadowMap;
     renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.08;
     container.appendChild(renderer.domElement);
-    renderer.domElement.setAttribute('aria-label','渋谷の3D街区。ドラッグで回転、ホイールで拡大。物件をクリックして選択。');
+    renderer.domElement.setAttribute('aria-label','渋谷の3D街区。ドラッグで移動、ホイールで拡大。物件をクリックして選択。');
     const scene=new THREE.Scene();rollback.push(()=>disposeScene(scene));scene.background=new THREE.Color('#a9d9f5');scene.fog=new THREE.Fog('#a9d9f5',590,1250);
     const daylightEnvironment=createDaylightEnvironment(renderer);rollback.push(()=>daylightEnvironment.dispose());scene.environment=daylightEnvironment.texture;scene.environmentIntensity=.28;
     const camera=new THREE.PerspectiveCamera(36,1,.5,1800);camera.position.set(-290,255,325);
-    const controls=new OrbitControls(camera,renderer.domElement);rollback.push(()=>controls.dispose());controls.target.set(0,8,0);controls.enableDamping=true;controls.dampingFactor=.065;controls.maxPolarAngle=Math.PI*.46;controls.minDistance=55;controls.maxDistance=730;controls.maxTargetRadius=230;controls.panSpeed=.65;controls.rotateSpeed=.55;
+    const controls=new OrbitControls(camera,renderer.domElement);rollback.push(()=>controls.dispose());controls.target.set(0,8,0);controls.enableDamping=true;controls.dampingFactor=.065;controls.maxPolarAngle=Math.PI*.46;controls.minDistance=55;controls.maxDistance=730;controls.maxTargetRadius=230;controls.panSpeed=.65;controls.rotateSpeed=.55;configureCameraInteraction(controls,cameraModeRef.current);
     const hemi=new THREE.HemisphereLight('#d8eeff','#899094',1.5);scene.add(hemi);
     const sun=new THREE.DirectionalLight('#fffaf0',3.0);sun.position.set(-180,330,-140);sun.castShadow=quality!=='low';sun.shadow.mapSize.setScalar(quality==='high'?4096:2048);sun.shadow.camera.left=-270;sun.shadow.camera.right=270;sun.shadow.camera.top=270;sun.shadow.camera.bottom=-270;sun.shadow.camera.far=750;sun.shadow.normalBias=.7;sun.shadow.bias=-.0002;scene.add(sun);
     const art=new CityArt();scene.add(art.group);
@@ -290,23 +296,59 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     const developmentVisuals=new DevelopmentVisuals(art.group);
     const railProjectVisuals=new RailProjectVisuals(art.group);
     const siteMarkers=new GameSiteMarkers(LOTS);scene.add(siteMarkers.group);rollback.push(()=>siteMarkers.dispose());
-    runtime.current={siteMarkers,railProjectVisuals,staticTerraces,developmentVisuals,originalFronts,growth,selection,hover,accents,overlays,controls,camera};
+    const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const storeActivity=new StoreActivityVisuals(LOTS,reduceMotion);scene.add(storeActivity.group);rollback.push(()=>storeActivity.dispose());
+    runtime.current={storeActivity,siteMarkers,railProjectVisuals,staticTerraces,developmentVisuals,originalFronts,growth,selection,hover,accents,overlays,controls,camera};
     const dev=(import.meta as ImportMeta & {env?:{DEV?:boolean}}).env?.DEV;
     if(dev){window.__cityScene=scene;window.__cityCamera=camera;window.__cityRenderer=renderer;}
     rollback.push(()=>{runtime.current=null;if(dev&&window.__cityScene===scene){delete window.__cityScene;delete window.__cityCamera;delete window.__cityRenderer;}});
     const raycaster=new THREE.Raycaster();const pointer=new THREE.Vector2();const selectionGesture=new PointerSelectionGesture();let lastHover='';
-    const hit=(e:PointerEvent)=>{const rect=renderer.domElement.getBoundingClientRect();pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);raycaster.setFromCamera(pointer,camera);const target=raycaster.intersectObjects(siteMarkers.pickables,false)[0]??raycaster.intersectObjects(pickables,false)[0];return target?.object.userData.lotId as string|undefined;};
+    const hit=(e:PointerEvent)=>{const rect=renderer.domElement.getBoundingClientRect();pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);raycaster.setFromCamera(pointer,camera);const target=siteMarkers.pick(raycaster)??raycaster.intersectObjects(pickables,false)[0];return target?.object.userData.lotId as string|undefined;};
     const move=(e:PointerEvent)=>{selectionGesture.move(e);if(selectionGesture.active)return;const id=hit(e)??'';if(id===lastHover)return;lastHover=id;const lot=LOTS.find(l=>l.id===id);setHovered(lot??null);renderer.domElement.style.cursor=lot?'pointer':'grab';hover.visible=!!lot&&!runtime.current?.storeFrame;if(lot){hover.position.set(lot.x,lot.height/2+.8,lot.z);hover.scale.set(lot.width+.8,lot.height+1,lot.depth+.8);}};
     const pointerDown=(e:PointerEvent)=>selectionGesture.start(e);
     const pointerUp=(e:PointerEvent)=>{if(selectionGesture.end(e)){const id=hit(e);if(id)onSelect.current(id);}};
     const leave=(e:PointerEvent)=>{selectionGesture.cancel(e.pointerId);hover.visible=false;lastHover='';setHovered(null);renderer.domElement.style.cursor='grab';};
     renderer.domElement.addEventListener('pointermove',move);renderer.domElement.addEventListener('pointerdown',pointerDown);renderer.domElement.addEventListener('pointerup',pointerUp);renderer.domElement.addEventListener('pointerleave',leave);renderer.domElement.addEventListener('pointercancel',leave);
     const removeSelectionEvents=()=>{selectionGesture.reset();renderer.domElement.removeEventListener('pointermove',move);renderer.domElement.removeEventListener('pointerdown',pointerDown);renderer.domElement.removeEventListener('pointerup',pointerUp);renderer.domElement.removeEventListener('pointerleave',leave);renderer.domElement.removeEventListener('pointercancel',leave);};rollback.push(removeSelectionEvents);
-    const resize=new ResizeObserver(()=>{const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;const frame=runtime.current?.storeFrame;if(frame){const view=getStoreViewpoint(frame.lot,frame.style,w/h);if(view)camera.fov=view.fov;}camera.updateProjectionMatrix();});rollback.push(()=>resize.disconnect());resize.observe(container);
-    const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;let raf=0,lastTime=0;rollback.push(()=>cancelAnimationFrame(raf));
-    const animate=(time:number)=>{raf=requestAnimationFrame(animate);if(document.hidden||time-lastTime<(quality==='low'?32:16))return;lastTime=time;if(!reduceMotion){trains.forEach((train,n)=>{train.position.z=((time*.009*(n?-1:1)+n*180+10000)%460)-230;});traffic.forEach((car,i)=>{car.position.x=((time*.005*(i%2?1:-1)+i*43+10000)%390)-195;});}walkers.forEach((p,i)=>{const offset=reduceMotion?0:time*.00045*p.speed;const x=p.cross?((p.x+20+offset)%40)-20:((p.x+195+offset)%390)-195,z=p.cross?p.z+Math.sin(offset*.05+i)*.7:p.z;personMatrix.makeTranslation(x,1.03,z);bodies.setMatrixAt(i,personMatrix);personMatrix.makeTranslation(x,1.72,z);heads.setMatrixAt(i,personMatrix);});bodies.instanceMatrix.needsUpdate=true;heads.instanceMatrix.needsUpdate=true;if(runtime.current?.focus){const delta=runtime.current.focus.clone().sub(controls.target).multiplyScalar(.065);controls.target.add(delta);camera.position.add(delta);if(delta.length()<.04)runtime.current.focus=undefined;}controls.update();siteMarkers.resize(camera,container.clientHeight);renderer.render(scene,camera);};raf=requestAnimationFrame(animate);
+    let raf=0,lastTime:number|undefined,modalPaused=false,animationDisposed=false;
+    let pendingSize:{width:number;height:number}|undefined;
+    const animationClock=new ActiveAnimationClock();
+    const animationVisible=()=>!animationDisposed&&!document.hidden&&!modalPaused;
+    const applyPendingSize=()=>{
+      if(!pendingSize)return;
+      const {width,height}=pendingSize;pendingSize=undefined;
+      renderer.setSize(width,height);camera.aspect=width/height;
+      const frame=runtime.current?.storeFrame;
+      if(frame){const view=getStoreViewpoint(frame.lot,frame.style,width/height);if(view)camera.fov=view.fov;}
+      camera.updateProjectionMatrix();
+    };
+    const resize=new ResizeObserver(()=>{
+      const width=container.clientWidth,height=container.clientHeight;
+      if(!width||!height||animationDisposed)return;
+      pendingSize={width,height};if(animationVisible())applyPendingSize();
+    });rollback.push(()=>resize.disconnect());resize.observe(container);
+    const requestAnimation=()=>{if(!raf&&animationVisible())raf=requestAnimationFrame(animate);};
+    const visibilityChanged=()=>{
+      controls.enabled=animationVisible();
+      if(!controls.enabled){cancelAnimationFrame(raf);raf=0;animationClock.pause();lastTime=undefined;}
+      else {applyPendingSize();requestAnimation();}
+    };
+    const stopAnimation=()=>{animationDisposed=true;cancelAnimationFrame(raf);raf=0;document.removeEventListener('visibilitychange',visibilityChanged);};
+    document.addEventListener('visibilitychange',visibilityChanged);rollback.push(stopAnimation);
+    const animate=(timestamp:number)=>{
+      raf=0;if(!animationVisible()){animationClock.pause();return;}requestAnimation();
+      const time=animationClock.sample(timestamp);
+      if(lastTime!==undefined&&time-lastTime<(quality==='low'?32:16))return;
+      lastTime=time;
+      if(!reduceMotion){trains.forEach((train,n)=>{train.position.z=((time*.009*(n?-1:1)+n*180+10000)%460)-230;});traffic.forEach((car,i)=>{car.position.x=((time*.005*(i%2?1:-1)+i*43+10000)%390)-195;});}
+      walkers.forEach((p,i)=>{const offset=reduceMotion?0:time*.00045*p.speed;const x=p.cross?((p.x+20+offset)%40)-20:((p.x+195+offset)%390)-195,z=p.cross?p.z+Math.sin(offset*.05+i)*.7:p.z;personMatrix.makeTranslation(x,1.03,z);bodies.setMatrixAt(i,personMatrix);personMatrix.makeTranslation(x,1.72,z);heads.setMatrixAt(i,personMatrix);});
+      bodies.instanceMatrix.needsUpdate=true;heads.instanceMatrix.needsUpdate=true;
+      if(runtime.current?.focus){const delta=runtime.current.focus.clone().sub(controls.target).multiplyScalar(.065);controls.target.add(delta);camera.position.add(delta);if(delta.length()<.04)runtime.current.focus=undefined;}
+      controls.update();storeActivity.animate(time);siteMarkers.resize(camera,container.clientHeight);renderer.render(scene,camera);
+    };
+    const stopModalObserver=observeModalPause(paused=>{modalPaused=paused;visibilityChanged();});rollback.push(stopModalObserver);
     setSceneRevision(value=>value+1);
-    return()=>{cancelAnimationFrame(raf);resize.disconnect();removeSelectionEvents();controls.dispose();const done=loadedAssets.dispose();siteMarkers.dispose();disposeScene(scene);daylightEnvironment.dispose();renderer.dispose();renderer.domElement.remove();runtime.current=null;if(dev){delete window.__cityScene;delete window.__cityCamera;delete window.__cityRenderer;}return done;};
+    return()=>{stopAnimation();stopModalObserver();resize.disconnect();removeSelectionEvents();controls.dispose();const done=loadedAssets.dispose();siteMarkers.dispose();storeActivity.dispose();disposeScene(scene);daylightEnvironment.dispose();renderer.dispose();renderer.domElement.remove();runtime.current=null;if(dev){delete window.__cityScene;delete window.__cityCamera;delete window.__cityRenderer;}return done;};
     } catch {
       if(!cancelled)setError(true);
       const settled=Promise.allSettled(rollback.reverse().map(dispose=>{try{return dispose();}catch(error){return Promise.reject(error);}})).then(()=>undefined);
@@ -315,7 +357,13 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     },()=>{if(!cancelled)setError(true);});
     return()=>{cancelled=true;void retire();};
   },[quality]);
-  useEffect(()=>{const rt=runtime.current;if(!rt)return;rt.siteMarkers.update(state,selectedLotId);rt.growth.update(state);rt.developmentVisuals.update(state);rt.railProjectVisuals.update(state);for(const [id,terrace] of rt.staticTerraces){const store=state.stores.find(s=>s.lotId===id);terrace.visible=!store||!(store.level>=2||(store.style==='premium'&&id!=='center-03'));}const lot=LOTS.find(l=>l.id===selectedLotId);rt.selection.visible=!!lot&&!rt.storeFrame;if(lot){rt.selection.position.set(lot.x,lot.height/2+.8,lot.z);rt.selection.scale.set(lot.width+1.3,lot.height+1.5,lot.depth+1.3);rt.selection.rotation.y=lot.rotation??0;}const owned=new Set([...state.stores.map(s=>s.lotId),...state.properties.map(p=>p.lotId)]);for(const [id,group] of rt.accents){const originalFront=rt.originalFronts.get(id);if(originalFront)originalFront.visible=!state.stores.some(store=>store.lotId===id);group.visible=owned.has(id);const level=state.properties.find(p=>p.lotId===id)?.level??1;for(const child of group.children)if(child.userData.propertyLevel)child.visible=child.userData.propertyLevel<=level;}for(const lot of LOTS){const mesh=rt.overlays.get(lot.id)!;mesh.visible=(viewMode==='demand'&&lot.available)||(viewMode==='ownership'&&owned.has(lot.id));(mesh.material as THREE.MeshBasicMaterial).color.set(viewMode==='demand'?new THREE.Color().setHSL(.42-Math.min(1,lot.footfall/80000)*.32,.55,.56):GOLD);}},[selectedLotId,focusedStoreStyle,state.railProjects,state.development,state.week,state.stores,state.properties,state.subsidiaries,state.companyName,state.listed,viewMode,quality,sceneRevision]);
+  useEffect(()=>{
+    const rt=runtime.current;if(!rt)return;
+    configureCameraInteraction(rt.controls,cameraMode);
+    if(cameraMode==='manage')restoreOverviewDirection(rt.controls,new THREE.Vector3(-290,247,325));
+    host.current?.querySelector('canvas')?.setAttribute('aria-label',cameraMode==='manage'?'渋谷の3D街区。ドラッグで移動、ホイールで拡大。物件をクリックして選択。':'渋谷の3D街区。ドラッグで回転、ホイールで拡大。物件をクリックして選択。');
+  },[cameraMode,sceneRevision]);
+  useEffect(()=>{const rt=runtime.current;if(!rt)return;rt.siteMarkers.update(state,selectedLotId);rt.storeActivity.update(state,rt.storeFrame?.lot.id);rt.growth.update(state);rt.developmentVisuals.update(state);rt.railProjectVisuals.update(state);for(const [id,terrace] of rt.staticTerraces){const store=state.stores.find(s=>s.lotId===id);terrace.visible=!store||!(store.level>=2||(store.style==='premium'&&id!=='center-03'));}const lot=LOTS.find(l=>l.id===selectedLotId);rt.selection.visible=!!lot&&!rt.storeFrame;if(lot){rt.selection.position.set(lot.x,lot.height/2+.8,lot.z);rt.selection.scale.set(lot.width+1.3,lot.height+1.5,lot.depth+1.3);rt.selection.rotation.y=lot.rotation??0;}const owned=new Set([...state.stores.map(s=>s.lotId),...state.properties.map(p=>p.lotId)]);for(const [id,group] of rt.accents){const originalFront=rt.originalFronts.get(id);if(originalFront)originalFront.visible=!state.stores.some(store=>store.lotId===id);group.visible=owned.has(id);const level=state.properties.find(p=>p.lotId===id)?.level??1;for(const child of group.children)if(child.userData.propertyLevel)child.visible=child.userData.propertyLevel<=level;}for(const lot of LOTS){const mesh=rt.overlays.get(lot.id)!;mesh.visible=(viewMode==='demand'&&lot.available)||(viewMode==='ownership'&&owned.has(lot.id));(mesh.material as THREE.MeshBasicMaterial).color.set(viewMode==='demand'?new THREE.Color().setHSL(.42-Math.min(1,lot.footfall/80000)*.32,.55,.56):GOLD);}},[selectedLotId,focusedStoreStyle,state.railProjects,state.development,state.week,state.stores,state.properties,state.subsidiaries,state.companyName,state.listed,viewMode,quality,sceneRevision]);
   useEffect(()=>{
     const rt=runtime.current;if(!rt)return;
     const ordinaryChanged=previousLotFocus.current!==focusLotId;previousLotFocus.current=focusLotId;
@@ -325,6 +373,7 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     const view=storeView??(focusRailDistrict?{...RAIL_PROJECT_VIEWPOINTS[focusRailDistrict],fov:36}:null);
     if(view){
       rt.storeFrame=storeView&&lot&&focusedStoreStyle?{lot,style:focusedStoreStyle}:undefined;
+      rt.storeActivity.update(state,rt.storeFrame?.lot.id);
       rt.focus=undefined;rt.hover.visible=false;rt.controls.minDistance=storeView?5:18;
       rt.camera.fov=view.fov;rt.camera.updateProjectionMatrix();
       rt.camera.position.fromArray(view.position);rt.controls.target.fromArray(view.target);rt.controls.update();
@@ -332,6 +381,7 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
       return;
     }
     rt.storeFrame=undefined;
+    rt.storeActivity.update(state,null);
     if(previousCloseFocus.current){
       rt.focus=undefined;rt.controls.minDistance=55;
       rt.camera.fov=36;rt.camera.updateProjectionMatrix();
@@ -344,5 +394,15 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     const selected=LOTS.find(l=>l.id===focusLotId);
     if(selected){rt.controls.minDistance=55;rt.focus=new THREE.Vector3(selected.x,Math.min(selected.height*.35,20),selected.z);}
   },[focusStoreLotId,focusedStoreStyle,focusRailDistrict,focusLotId,quality,sceneRevision]);
+  useEffect(()=>{
+    if(previousOverviewRequest.current===overviewRequestId)return;
+    previousOverviewRequest.current=overviewRequestId;
+    const rt=runtime.current;if(!rt)return;
+    rt.focus=undefined;rt.storeFrame=undefined;rt.storeActivity.update(state,null);
+    rt.hover.visible=false;rt.selection.visible=!!LOTS.find(lot=>lot.id===selectedLotId);
+    previousCloseFocus.current=null;rt.controls.minDistance=55;
+    rt.camera.fov=36;rt.camera.updateProjectionMatrix();
+    rt.camera.position.set(-290,255,325);rt.controls.target.set(0,8,0);rt.controls.update();
+  },[overviewRequestId,sceneRevision,state,selectedLotId]);
   return <div className="city-world" ref={host}>{error&&<div className="city-webgl-error">3D表示を開始できませんでした。ブラウザのハードウェアアクセラレーションをご確認ください。物件一覧から経営操作を続けられます。</div>}<div className="city-location"><span className="city-location-dot"/>TOKYO / SHIBUYA <span>35°39′ N · 139°42′ E</span></div><div className="city-compass"><span>N</span><i>↑</i></div>{hovered&&<div className="city-hover"><span>{state.stores.some(s=>s.lotId===hovered.id)?'営業中':state.properties.some(p=>p.lotId===hovered.id)?'物件保有':'出店・購入'}</span><strong>{hovered.name}</strong><small>タップで詳細・経営</small></div>}<div className="city-attribution">SHIBUYA DISTRICT · 実在地形を参考にした創作街区</div></div>;
 }

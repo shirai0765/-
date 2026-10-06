@@ -1,0 +1,36 @@
+.weekly-results{min-width:0}
+.weekly-results-company{padding:6px 0 12px}
+.weekly-results-profit{display:flex;flex-direction:column;gap:8px;text-align:center;padding:10px 0 20px}
+.weekly-results-profit>span{font-size:12px;color:var(--muted)}
+.weekly-results-profit>strong{font-size:clamp(30px,8vw,48px);line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.weekly-results-profit>small{font-size:12px;color:var(--muted)}
+.weekly-results-cash{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft)}
+.weekly-results-cash dd{font-size:18px}
+.weekly-results-customers{font-size:12px;text-align:center;color:var(--muted);margin:12px 0 0}
+.weekly-results-customers strong{font-weight:600;color:var(--ink)}
+.weekly-results dt{font-size:11px;color:var(--muted);line-height:1.5}
+.weekly-results dd{margin:4px 0 0;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.weekly-results dl>div{min-width:0}
+.weekly-stores{margin:0;padding:12px 0;border-top:1px solid var(--line)}
+.weekly-results .weekly-results-note{font-size:11px;line-height:1.6;color:var(--muted);margin:0 0 12px}
+.weekly-store-list{display:grid;gap:12px}
+.weekly-store{padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft);min-width:0}
+.weekly-store>header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.weekly-store h4{margin:0;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.weekly-store-badge{font-size:11px;white-space:nowrap;color:var(--muted);line-height:1.8}
+.weekly-store-metrics{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;margin:14px 0}
+.weekly-store-metrics dd{font-size:18px;line-height:1.5}
+.weekly-store-metrics dd small{font-size:11px;font-weight:400}
+.weekly-store-actions,.weekly-results-actions{display:flex;flex-wrap:wrap;gap:8px}
+.weekly-store-actions>button{font-size:12px;min-height:40px;white-space:normal}
+.weekly-results-actions{margin-top:20px}
+.weekly-results-actions>button{max-width:100%;white-space:normal}
+.weekly-opening-comparison,.weekly-results-detail{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.weekly-results summary{font-size:12px;line-height:1.6;cursor:pointer;color:var(--muted)}
+.weekly-results summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.weekly-results details[open]>summary{margin-bottom:12px;color:var(--ink)}
+.weekly-results details dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.weekly-results details p{font-size:12px;line-height:1.7;color:var(--muted);margin:10px 0}
+.weekly-results-headlines{font-size:12px;line-height:1.7;color:var(--muted);padding-left:18px}
+.weekly-results-headlines li+li{margin-top:6px}
+@media(max-width:480px){.weekly-results-profit{padding-top:4px}.weekly-results-cash{gap:10px;padding:12px}.weekly-results-cash dd{font-size:16px}.weekly-store{padding:12px}.weekly-store-metrics{gap:8px}.weekly-store-metrics dd{font-size:16px}.weekly-results details dl{grid-template-columns:1fr}.weekly-results-actions{margin-top:14px}.weekly-results-actions>button{font-size:12px}}

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { GameState } from '../model';
 import { scheduleScene } from '../city/sceneLifecycle';
+import type { CameraMode } from '../city/cameraInteraction';
 import { createRealCityScene } from '../realcity/RealCityScene';
 import type { RealCityProgress } from '../realcity/RealCityScene';
 import { getRealCitySites } from '../realcity/gameSites';
@@ -9,6 +10,7 @@ import { DEFAULT_PHOTO_GAIN } from '../realcity/photoAppearance';
 import './real-city-view.css';
 
 interface Props {
+  cameraMode?: CameraMode;
   state: GameState;
   selectedLotId: string | null;
   focusLotId: string | null;
@@ -73,6 +75,7 @@ export function RealCityView(props: Props) {
       if (!active || !host.current) return () => {};
       const instance = createRealCityScene(host.current, {
         textureQuality: qualityRef.current,
+        cameraMode: latest.current.props.cameraMode ?? 'manage',
         onSelectLot: id => { if (active) latest.current.props.onSelectLot(id); },
         onProgress: next => {
           if (!active) return;
@@ -136,18 +139,20 @@ export function RealCityView(props: Props) {
   }, [attempt]);
 
   useEffect(() => { controller.current?.updateSites(sites); }, [sites, runtimeReady]);
+  useEffect(() => { controller.current?.setCameraMode(props.cameraMode ?? 'manage'); }, [props.cameraMode, runtimeReady]);
 
   useEffect(() => {
     const instance = controller.current;
     if (!instance) return;
-    if (!selectedLotId || !focusLotId || selectedLotId !== focusLotId) {
+    // Selecting a building only changes its marker; moving the camera is explicit.
+    if (!focusLotId) {
       instance.overview();
       setFocus({ lotId: null, status: 'idle' });
       return;
     }
     const status = instance.focusLot(focusLotId);
     setFocus({ lotId: focusLotId, status });
-  }, [selectedLotId, focusLotId, focusRequestId, runtimeReady]);
+  }, [focusLotId, focusRequestId, runtimeReady]);
 
   useEffect(() => { controller.current?.setExposure(brightness); }, [brightness, runtimeReady]);
   // Run after the focus effect so clearing the app selection cannot overwrite a preset.

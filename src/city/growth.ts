@@ -33,7 +33,7 @@ class BusinessSign {
     this.texture.needsUpdate=true;this.mesh.userData.displayedText=title;this.mesh.userData.subtitle=subtitle;
   }
 }
-interface BusinessFront { cafeAsset?:LoadedAssetHandle; group:THREE.Group; sign:BusinessSign; styles:Map<StoreStyle,THREE.Group>; upgrades:THREE.Group[]; headquarters:THREE.Group; headquartersSign:BusinessSign }
+interface BusinessFront { cafeAsset?:LoadedAssetHandle; group:THREE.Group; sign:BusinessSign; styles:Map<StoreStyle,THREE.Group>; upgrades:THREE.Group[]; premiumLevel2:THREE.Group; headquarters:THREE.Group; headquartersSign:BusinessSign }
 const palette={standard:{color:'#70252c',label:'喫茶 · COFFEE & CAKE'},premium:{color:'#294d41',label:'SPECIALTY COFFEE · ROASTERY'},takeaway:{color:'#135aa8',label:'COFFEE TO GO · TAKEAWAY'}};
 
 /** Owns only state-dependent groups; static city geometry is never rebuilt on a week tick. */
@@ -124,12 +124,22 @@ export class CityGrowth {
       }
       compactRigidGroup(upgrade);group.add(upgrade);upgrades.push(upgrade);
     }
+    // Detailed cafés already have a terrace at level 1. Their first upgrade gets
+    // a separate service stand beside the façade rather than duplicate tables.
+    const premiumLevel2=new THREE.Group();premiumLevel2.name='Premium level 2 service stand';
+    premiumLevel2.userData.storeLevel=2;
+    const standX=Math.min(w-.8,12)/2+.48,standZ=d/2+1.2;
+    art.box(standX,.65,standZ,.78,1.3,.72,'#46645a',0,premiumLevel2);
+    art.box(standX,1.34,standZ,.9,.12,.8,'#ddd4bd',0,premiumLevel2);
+    art.box(standX,1.53,standZ-.22,.74,.24,.09,'#a87943',0,premiumLevel2);
+    for(const dx of [-.22,.08])art.box(standX+dx,1.52,standZ+.08,.16,.24,.16,'#f2eee1',0,premiumLevel2);
+    compactRigidGroup(premiumLevel2);premiumLevel2.visible=false;group.add(premiumLevel2);
     const headquarters=new THREE.Group();headquarters.name='Listed company headquarters';
     art.box(0,lot.height+3.2,0,w*.65,.25,d*.45,'#e9e9e3',0,headquarters);
     for(const x of [-w*.25,w*.25])art.box(x,lot.height+5,0,.18,3.4,.18,'#a87943',0,headquarters);
     compactRigidGroup(headquarters);
     const headquartersSign=new BusinessSign(Math.min(w*.7,15),3.2);headquartersSign.mesh.position.set(0,lot.height+5.3,.15);headquarters.add(headquartersSign.mesh);group.add(headquarters);
-    return {group,sign,styles,upgrades,headquarters,headquartersSign,cafeAsset};
+    return {group,sign,styles,upgrades,premiumLevel2,headquarters,headquartersSign,cafeAsset};
   }
   update(state:GameState) {
     const owned=new Set([...state.stores.map(s=>s.lotId),...state.properties.map(p=>p.lotId)]);
@@ -153,6 +163,7 @@ export class CityGrowth {
       front.sign.update(store?.name??state.companyName,store?`${design.label}  /  LEVEL ${store.level}`:`OWNED PROPERTY  /  LEVEL ${property?.level??1}`,detailedCafe?'#a7a59e':design.color,detailedCafe?'#293b34':style==='standard'?'#fff0d9':'#ffffff');
       for(const [key,group] of front.styles)group.visible=!!store&&key===style;
       for(const group of front.upgrades)group.visible=!!store&&store.level>=group.userData.storeLevel&&!(detailedCafe&&group.userData.storeLevel===2);
+      front.premiumLevel2.visible=detailedCafe&&store.level>=2;
       front.headquarters.visible=state.listed&&id===headquartersId;
       if(front.headquarters.visible)front.headquartersSign.update(state.companyName,'LISTED COMPANY · SHIBUYA HQ','#135aa8');
       front.group.userData={lotId:id,storeName:store?.name,style:store?.style,storeLevel:store?.level,propertyLevel:property?.level};

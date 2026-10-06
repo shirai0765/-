@@ -24,7 +24,7 @@ function onProgress(progress:RealCityProgress){
   else {delete debug.__realCity;if(progress.status==='loading')status.textContent=progress.buildingTiles<20?`実際の建物データ ${progress.buildingTiles} / 20`:`実際の街路写真 ${progress.groundTiles} / 72`;}
 }
 function start(){
-  try{controller=createRealCityScene(host,{textureQuality:quality,onProgress,onError:error=>{status.textContent=`読み込みに失敗しました：${error.message}`;retry.hidden=false;}});}
+  try{controller=createRealCityScene(host,{textureQuality:quality,cameraMode:'explore',onProgress,onError:error=>{status.textContent=`読み込みに失敗しました：${error.message}`;retry.hidden=false;}});}
   catch(error){status.textContent=`3D表示を開始できませんでした：${error instanceof Error?error.message:String(error)}`;retry.hidden=false;}
 }
 qualitySelect.onchange=()=>{quality=parseTextureQuality(qualitySelect.value);describeQuality();const url=new URL(location.href);url.searchParams.set('texture',quality);history.replaceState(null,'',url);controller?.setQuality(quality);};

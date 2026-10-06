@@ -6,7 +6,7 @@ import { applyAction, createGame } from '../src/sim/engine';
 
 beforeEach(() => {
   // CPU geometry/raycast check only; this canvas stub is not rendering evidence.
-  const context = Object.fromEntries(['beginPath', 'moveTo', 'lineTo', 'closePath', 'fill', 'stroke', 'arc', 'quadraticCurveTo', 'bezierCurveTo', 'fillRect', 'strokeRect'].map(name => [name, () => {}]));
+  const context = Object.fromEntries(['beginPath', 'moveTo', 'lineTo', 'closePath', 'fill', 'stroke', 'arc', 'quadraticCurveTo', 'bezierCurveTo', 'fillRect', 'strokeRect', 'fillText'].map(name => [name, () => {}]));
   vi.stubGlobal('document', { createElement: () => ({ width: 0, height: 0, getContext: () => context }) });
 });
 afterEach(() => vi.unstubAllGlobals());
@@ -42,5 +42,76 @@ describe('game site marker targets', () => {
       expect(ray.intersectObjects(markers.pickables)).toHaveLength(0);
     }
     markers.dispose();
+  });
+
+  it('picks the visibly foremost owned or selected marker when actual overview lots overlap', () => {
+    const markers = new GameSiteMarkers(LOTS);
+    const state = applyAction({ ...createGame('marker overlap QA'), cash: 1_000_000_000 }, { type: 'openStore', lotId: 'center-05', style: 'standard' });
+    markers.update(state, null);
+    const camera = new THREE.PerspectiveCamera(36, 1.6, .5, 1800);
+    camera.position.set(-290, 255, 325);
+    camera.lookAt(0, 8, 0);
+    camera.updateMatrixWorld();
+    markers.resize(camera, 320);
+    markers.group.updateMatrixWorld(true);
+    const owned = markers.pickables.find(marker => marker.userData.lotId === 'center-05')!;
+    const base = owned.position.clone().project(camera);
+    const ray = new THREE.Raycaster();
+    // The owned pin's filled tip overlaps a closer candidate in this overview.
+    ray.setFromCamera(new THREE.Vector2(base.x, base.y + 2 * 10 / 320), camera);
+    const hits = ray.intersectObjects(markers.pickables);
+    expect(hits[0].object.userData.lotId).toBe('center-01');
+    expect(hits.some(hit => hit.object === owned)).toBe(true);
+    expect(markers.pick(ray)?.object.userData.lotId).toBe('center-05');
+    markers.update(state, 'center-01');
+    expect(markers.pick(ray)?.object.userData.lotId).toBe('center-01');
+    markers.update(createGame('all candidates'), null);
+    expect(markers.pick(ray)?.object.userData.lotId).toBe('center-01');
+    markers.dispose();
+  });
+
+  it.each([320, 960])('updates the owned target size immediately through ownership changes at a %ipx viewport', height => {
+    const lot = LOTS.find(lot => lot.id === 'center-01')!;
+    const markers = new GameSiteMarkers([lot]);
+    const marker = markers.pickables[0];
+    const camera = new THREE.PerspectiveCamera(36, 1, .5, 1800);
+    camera.position.set(lot.x, lot.height + 3, lot.z + 200);
+    camera.lookAt(lot.x, lot.height + 3, lot.z);
+    camera.updateMatrixWorld();
+    markers.resize(camera, height);
+    const pixelsPerScale = height / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
+    const hitAt = (x: number) => {
+      markers.group.updateMatrixWorld(true);
+      const ray = new THREE.Raycaster();
+      ray.setFromCamera(new THREE.Vector2(2 * x / height, 2 * 22 / height), camera);
+      return ray.intersectObjects(markers.pickables)[0]?.object.userData.lotId;
+    };
+    let state = { ...createGame('marker ownership QA'), cash: 1_000_000_000 };
+    const check = (status: string, owned: boolean) => {
+      const before = JSON.stringify(state);
+      // Deliberately do not resize: business actions must update an existing target.
+      markers.update(state, lot.id);
+      expect(marker.userData.siteStatus).toBe(status);
+      expect(marker.scale.x * pixelsPerScale).toBeCloseTo(owned ? 44 : 34);
+      expect(marker.scale.y * pixelsPerScale).toBeCloseTo((owned ? 44 : 34) * 112 / 96);
+      expect(hitAt(0)).toBe(lot.id);
+      expect(hitAt(20)).toBe(owned ? lot.id : undefined);
+      expect(hitAt(25)).toBeUndefined();
+      expect(JSON.stringify(state)).toBe(before);
+    };
+    check('candidate', false);
+    const candidateMaterial = marker.material;
+    state = applyAction(state, { type: 'openStore', lotId: lot.id, style: 'standard' });
+    check('store', true);
+    expect(marker.material).not.toBe(candidateMaterial);
+    state = applyAction(state, { type: 'buyProperty', lotId: lot.id });
+    check('both', true);
+    state = applyAction(state, { type: 'closeStore', storeId: state.stores[0].id });
+    check('property', true);
+    state = applyAction(state, { type: 'sellProperty', propertyId: state.properties[0].id });
+    check('candidate', false);
+    expect(marker.material).toBe(candidateMaterial);
+    markers.dispose();
+    expect(markers.pickables).toHaveLength(0);
   });
 });
