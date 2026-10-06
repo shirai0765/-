@@ -1,6 +1,10 @@
-# Windows ポータブル版
+# Windows ポータブル版0.4.8
 
-0.4.7の配布ファイル名は `Shibuya-Capital-0.4.7-win32-x64.zip` です。ZIP全体を展開し、以下の手順で起動してください。0.4.6以下のSHAと検証結果は当時の記録として保持し、今回へ転用しません。変更範囲は [interaction-v047.md](interaction-v047.md) を参照してください。
+配布ファイル名は `Shibuya-Capital-0.4.8-win32-x64.zip` です。ZIP全体を展開し、以下の手順で起動してください。
+
+0.4.8では会社の状態に応じた「遊び方」、読み取れないセーブの復旧入口、ゲーム街の自社施設の目印表示を整えました。保存の置換は復元・ファイル読込・新会社を明示的に選んで行います。変更範囲と検証記録は [interaction-v048.md](interaction-v048.md) を参照してください。
+
+## 使用方法
 
 対象は Windows 10 / 11 の x64（AMD Ryzen / Intel）。ZIP 全体を展開して、フォルダー内の `Shibuya Capital.exe` を開きます。Node.js のインストールは不要です。EXE だけ移動せず、DLL、resources、locales など同梱ファイルを一緒に保管してください。
 

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import type { GameState, Lot } from '../model';
 
 type SiteStatus = 'candidate' | 'store' | 'property' | 'both';
+export type SiteMarkerVisibility = 'all' | 'owned' | 'none';
 const colors: Record<SiteStatus, string> = { candidate: '#2563eb', store: '#13815f', property: '#7652b1', both: '#13815f' };
 
 /** Small, screen-sized annotations only for the game's economic parcels. */
@@ -12,6 +13,7 @@ export class GameSiteMarkers {
   private materials = new Map<string, THREE.SpriteMaterial>();
   private height = 0;
   private fov = 0;
+  private visibility: SiteMarkerVisibility = 'all';
 
   constructor(lots: readonly Lot[]) {
     this.group.name = 'Game_economic_site_markers';
@@ -37,6 +39,7 @@ export class GameSiteMarkers {
       const status: SiteStatus = stores.has(id) ? properties.has(id) ? 'both' : 'store' : properties.has(id) ? 'property' : 'candidate';
       sprite.material = this.material(status, selectedLotId === id);
       sprite.userData.siteStatus = status;
+      this.applyVisibility(sprite);
       sprite.renderOrder = selectedLotId === id ? 32 : status === 'candidate' ? 30 : 31;
       // Opening/buying/closing can change ownership without a viewport resize.
       this.scale(sprite, status);
@@ -49,9 +52,21 @@ export class GameSiteMarkers {
     for (const sprite of this.entries.values()) this.scale(sprite, sprite.userData.siteStatus as SiteStatus);
   }
 
+  /** Presentation only: retain every economic target and its resources. */
+  setVisibility(visibility: SiteMarkerVisibility) {
+    this.visibility = visibility;
+    for (const sprite of this.entries.values()) this.applyVisibility(sprite);
+  }
+
+  private applyVisibility(sprite: THREE.Sprite) {
+    sprite.visible = this.visibility === 'all' || (this.visibility === 'owned' && sprite.userData.siteStatus !== 'candidate');
+  }
+
   /** Match the drawing order when screen-sized annotations overlap. */
   pick(raycaster: THREE.Raycaster): THREE.Intersection<THREE.Sprite> | undefined {
-    const hits = raycaster.intersectObjects<THREE.Sprite>(this.pickables, false);
+    if (!this.group.visible) return undefined;
+    // Three raycasts invisible sprites too; hidden annotations must not consume clicks.
+    const hits = raycaster.intersectObjects<THREE.Sprite>(this.pickables.filter(sprite => sprite.visible), false);
     hits.sort((a, b) => b.object.renderOrder - a.object.renderOrder || a.distance - b.distance);
     return hits[0];
   }

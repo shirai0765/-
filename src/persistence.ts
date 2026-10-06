@@ -13,9 +13,16 @@ const subsidiaryIds = new Set(ACQUISITION_TARGETS.map(t => t.id));
 const DATABASE = 'shibuya-capital-v1';
 const MAX_BYTES = 8 * 1024 * 1024;
 let expectedRevision: number | null = null;
-export class SaveError extends Error { constructor(message: string) { super(message); this.name = 'SaveError'; } }
+declare const damagedPrimaryTokenBrand: unique symbol;
+export type DamagedPrimaryToken = { readonly [damagedPrimaryTokenBrand]: true };
+export type SaveErrorKind = 'save' | 'invalid-data' | 'damaged-primary' | 'unavailable' | 'conflict';
+export class SaveError extends Error {
+  constructor(message: string, public readonly kind: SaveErrorKind = 'save', public readonly replacementToken?: DamagedPrimaryToken) { super(message); this.name = 'SaveError'; }
+}
+export interface SaveGameOptions { replaceDamagedPrimary?: DamagedPrimaryToken }
+let damagedPrimary: { token: DamagedPrimaryToken; revision: number } | null = null;
 type Obj = Record<string, unknown>;
-function fail(): never { throw new SaveError('セーブデータの形式・数値・参照が不正です。'); }
+function fail(): never { throw new SaveError('セーブデータの形式・数値・参照が不正です。', 'invalid-data'); }
 function obj(v: unknown): Obj { if (!v || typeof v !== 'object' || Array.isArray(v)) fail(); const o = v as Obj; if (Object.keys(o).some(k => ['__proto__', 'constructor', 'prototype'].includes(k))) fail(); return o; }
 function str(v: unknown, max = 160): string { if (typeof v !== 'string' || !v.trim() || v.length > max) fail(); return v; }
 function num(v: unknown, min = -1e18, max = 1e18, integer = false): number { if (typeof v !== 'number' || !Number.isFinite(v) || v < min || v > max || (integer && !Number.isSafeInteger(v))) fail(); return v; }
@@ -89,7 +96,7 @@ function validateStoreAccounts(value: unknown, results: Obj[]) {
 }
 /** Validate before either serialization or use: imports are untrusted data. */
 export function validateGame(value: unknown): GameState {
-  const s = obj(value); if (s.version !== 1) throw new SaveError('このセーブのバージョンには対応していません。');
+  const s = obj(value); if (s.version !== 1) throw new SaveError('このセーブのバージョンには対応していません。', 'invalid-data');
   str(s.id, 120); str(s.companyName, 120); num(s.seed, 0, 0xffffffff, true); num(s.week, 0, 1000000, true);
   fields(s, ['cash']); fields(s, ['reputation'], 0, 100); fields(s, ['sharesOutstanding', 'founderShares', 'profitableWeeks', 'totalCustomers'], 0, 1e18, true);
   num(s.sharePrice, 0); num(s.dividendPayout, 0, 1); if (Number(s.founderShares) > Number(s.sharesOutstanding)) fail();
@@ -198,28 +205,53 @@ export function validateGame(value: unknown): GameState {
   if (s.deals !== undefined) validateDeals(s.deals, s);
   void stores;
   // Clone severs imported object references and rejects oversized saves before IndexedDB work.
-  const json = JSON.stringify(s); if (new TextEncoder().encode(json).length > MAX_BYTES) throw new SaveError('セーブが上限の8MBを超えています。');
+  const json = JSON.stringify(s); if (new TextEncoder().encode(json).length > MAX_BYTES) throw new SaveError('セーブが上限の8MBを超えています。', 'invalid-data');
   return JSON.parse(json) as GameState;
 }
 interface Envelope { format: 'shibuya-capital'; schema: 1; savedAt: string; checksum: string; payload: string }
 interface Stored { key: string; revision: number; week: number; companyName: string; envelope: Envelope }
-async function hash(payload: string) { if (!globalThis.crypto?.subtle) throw new SaveError('安全な保存にはHTTPSまたはlocalhostが必要です。'); const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(payload)); return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join(''); }
+async function hash(payload: string) { if (!globalThis.crypto?.subtle) throw new SaveError('安全な保存にはHTTPSまたはlocalhostが必要です。', 'unavailable'); const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(payload)); return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join(''); }
 export async function createEnvelope(state: GameState): Promise<Envelope> { const payload = JSON.stringify(validateGame(state)); return { format: 'shibuya-capital', schema: 1, savedAt: new Date().toISOString(), checksum: await hash(payload), payload }; }
-export async function decodeEnvelope(value: unknown): Promise<GameState> { const e = obj(value); if (e.format !== 'shibuya-capital' || e.schema !== 1 || typeof e.payload !== 'string' || e.payload.length > MAX_BYTES || typeof e.checksum !== 'string' || !/^[a-f0-9]{64}$/.test(e.checksum) || typeof e.savedAt !== 'string' || !Number.isFinite(Date.parse(e.savedAt))) fail(); if (await hash(e.payload) !== e.checksum) throw new SaveError('セーブの破損を検出しました。別のバックアップを選んでください。'); try { return validateGame(JSON.parse(e.payload)); } catch (error) { if (error instanceof SaveError) throw error; throw new SaveError('セーブを読み取れません。'); } }
+export async function decodeEnvelope(value: unknown): Promise<GameState> { const e = obj(value); if (e.format !== 'shibuya-capital' || e.schema !== 1 || typeof e.payload !== 'string' || e.payload.length > MAX_BYTES || typeof e.checksum !== 'string' || !/^[a-f0-9]{64}$/.test(e.checksum) || typeof e.savedAt !== 'string' || !Number.isFinite(Date.parse(e.savedAt))) fail(); if (await hash(e.payload) !== e.checksum) throw new SaveError('セーブの破損を検出しました。別のバックアップを選んでください。', 'invalid-data'); try { return validateGame(JSON.parse(e.payload)); } catch (error) { if (error instanceof SaveError) throw error; throw new SaveError('セーブを読み取れません。', 'invalid-data'); } }
 function openDB(): Promise<IDBDatabase> { return new Promise((resolve, reject) => { if (!globalThis.indexedDB) return reject(new SaveError('この環境ではIndexedDB保存を使用できません。')); const r = indexedDB.open(DATABASE, 1); r.onupgradeneeded = () => r.result.createObjectStore('saves', { keyPath: 'key' }); r.onsuccess = () => resolve(r.result); r.onerror = () => reject(new SaveError('保存領域を開けません。ブラウザの設定と空き容量を確認してください。')); r.onblocked = () => reject(new SaveError('別タブを閉じてから再試行してください。')); }); }
 async function readAll(): Promise<Stored[]> { const db = await openDB(); return new Promise((resolve, reject) => { const tx = db.transaction('saves', 'readonly'); const r = tx.objectStore('saves').getAll(); tx.oncomplete = () => { db.close(); resolve(r.result as Stored[]); }; tx.onabort = tx.onerror = () => { db.close(); reject(new SaveError('保存データを読み取れません。')); }; }); }
-export async function loadGame(): Promise<GameState | null> { const row = (await readAll()).find(r => r.key === 'primary'); if (!row) { expectedRevision = null; return null; } const state = await decodeEnvelope(row.envelope); expectedRevision = row.revision; return state; }
-export async function saveGame(state: GameState): Promise<void> {
-  const revisionAtStart = expectedRevision;
+export async function loadGame(): Promise<GameState | null> {
+  const row = (await readAll()).find(r => r.key === 'primary');
+  // Capture the revision with the row, before async decoding. An unavailable
+  // crypto/storage environment must not grant permission to replace that row.
+  const observedRevision = row?.revision ?? null;
+  if (!row) { expectedRevision = null; damagedPrimary = null; return null; }
+  try {
+    const state = await decodeEnvelope(row.envelope);
+    expectedRevision = observedRevision;
+    damagedPrimary = null;
+    return state;
+  }
+  catch (error) {
+    if (!(error instanceof SaveError) || error.kind !== 'invalid-data') throw error;
+    const token = Object.freeze({}) as DamagedPrimaryToken;
+    expectedRevision = observedRevision;
+    damagedPrimary = { token, revision: row.revision };
+    throw new SaveError(error.message, 'damaged-primary', token);
+  }
+}
+export async function saveGame(state: GameState, options: SaveGameOptions = {}): Promise<void> {
+  if (damagedPrimary) {
+    if (options.replaceDamagedPrimary !== damagedPrimary.token) throw new SaveError('読み込めない保存データを置き換えるには、復元・読み込み・新しい会社の設立を選び、置き換えを確認してください。', 'damaged-primary', damagedPrimary.token);
+    if (expectedRevision !== damagedPrimary.revision) throw new SaveError('保存データの状態が変わりました。このタブを再読み込みしてください。', 'conflict');
+  } else if (options.replaceDamagedPrimary) throw new SaveError('保存データの状態が変わりました。このタブを再読み込みしてください。', 'conflict');
+  return writeGame(state, expectedRevision);
+}
+async function writeGame(state: GameState, revisionAtStart: number | null): Promise<void> {
   const envelope = await createEnvelope(state); const snapshot = JSON.parse(envelope.payload) as GameState; const db = await openDB();
   await new Promise<void>((resolve, reject) => { const tx = db.transaction('saves', 'readwrite'); const store = tx.objectStore('saves'); let conflict = false; let nextRevision = 0; const r = store.getAll();
     r.onsuccess = () => { const rows = r.result as Stored[]; const current = rows.find(v => v.key === 'primary'); if ((current?.revision ?? null) !== revisionAtStart) { conflict = true; tx.abort(); return; } nextRevision = (current?.revision ?? 0) + 1; const record: Stored = { key: 'primary', revision: nextRevision, week: snapshot.week, companyName: snapshot.companyName, envelope }; store.put(record); const backupKey = `backup:${snapshot.id}:${snapshot.week}`; store.put({ ...record, key: backupKey }); const backups = rows.filter(v => v.key.startsWith('backup:') && v.key !== backupKey).sort((a, b) => b.revision - a.revision); backups.slice(11).forEach(v => store.delete(v.key)); };
-    tx.oncomplete = () => { expectedRevision = nextRevision; db.close(); resolve(); }; tx.onabort = tx.onerror = () => { db.close(); reject(new SaveError(conflict ? '別のタブがセーブを更新しました。このタブを再読み込みしてください。' : '保存できませんでした。空き容量とブラウザ設定を確認し、セーブを書き出してください。')); };
+    tx.oncomplete = () => { expectedRevision = nextRevision; damagedPrimary = null; db.close(); resolve(); }; tx.onabort = tx.onerror = () => { db.close(); reject(new SaveError(conflict ? '別のタブがセーブを更新しました。このタブを再読み込みしてください。' : '保存できませんでした。空き容量とブラウザ設定を確認し、セーブを書き出してください。', conflict ? 'conflict' : 'save')); };
   });
 }
 export async function exportGame(state: GameState): Promise<void> { const envelope = await createEnvelope(state); const url = URL.createObjectURL(new Blob([JSON.stringify(envelope, null, 2)], { type: 'application/json' })); const anchor = document.createElement('a'); anchor.href = url; anchor.download = `shibuya-capital-week-${state.week}.json`; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 60000); }
 export async function importGame(file: File): Promise<GameState> { if (file.size > MAX_BYTES * 2) throw new SaveError('セーブファイルが大きすぎます。'); try { return await decodeEnvelope(JSON.parse(await file.text())); } catch (error) { if (error instanceof SaveError) throw error; throw new SaveError('有効なセーブJSONを選んでください。'); } }
 export async function listBackups() { return (await readAll()).filter(r => r.key.startsWith('backup:')).sort((a, b) => b.revision - a.revision).map(r => ({ key: r.key, week: r.week, companyName: r.companyName, savedAt: r.envelope.savedAt })); }
 export async function restoreBackup(key: string): Promise<GameState> { if (!key.startsWith('backup:')) fail(); const rows = await readAll(); const backup = rows.find(r => r.key === key); if (!backup) throw new SaveError('バックアップが見つかりません。'); const state = await decodeEnvelope(backup.envelope); // Explicit recovery can replace a corrupt primary, but still compares its revision atomically.
-  expectedRevision = rows.find(r => r.key === 'primary')?.revision ?? null; await saveGame(state); return state; }
-export async function deleteSave(): Promise<void> { const db = await openDB(); await new Promise<void>((resolve, reject) => { const tx = db.transaction('saves', 'readwrite'); const store = tx.objectStore('saves'); const r = store.get('primary'); let conflict = false; r.onsuccess = () => { if ((r.result?.revision ?? null) !== expectedRevision) { conflict = true; tx.abort(); return; } store.clear(); }; tx.oncomplete = () => { expectedRevision = null; db.close(); resolve(); }; tx.onabort = tx.onerror = () => { db.close(); reject(new SaveError(conflict ? '別タブが更新しました。再読み込みしてください。' : 'セーブを削除できません。')); }; }); }
+  await writeGame(state, rows.find(r => r.key === 'primary')?.revision ?? null); return state; }
+export async function deleteSave(): Promise<void> { const db = await openDB(); await new Promise<void>((resolve, reject) => { const tx = db.transaction('saves', 'readwrite'); const store = tx.objectStore('saves'); const r = store.get('primary'); let conflict = false; r.onsuccess = () => { if ((r.result?.revision ?? null) !== expectedRevision) { conflict = true; tx.abort(); return; } store.clear(); }; tx.oncomplete = () => { expectedRevision = null; damagedPrimary = null; db.close(); resolve(); }; tx.onabort = tx.onerror = () => { db.close(); reject(new SaveError(conflict ? '別タブが更新しました。再読み込みしてください。' : 'セーブを削除できません。')); }; }); }

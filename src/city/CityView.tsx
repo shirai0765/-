@@ -409,5 +409,9 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     rt.camera.fov=36;rt.camera.updateProjectionMatrix();
     rt.camera.position.set(-290,255,325);rt.controls.target.set(0,8,0);rt.controls.update();
   },[overviewRequestId,sceneRevision,state,selectedLotId]);
+  useEffect(()=>{
+    const rt=runtime.current;if(!rt)return;
+    rt.siteMarkers.setVisibility(rt.storeFrame?'none':viewMode==='ownership'?'owned':'all');
+  },[viewMode,focusStoreLotId,storeFocusRequestId,focusedStoreStyle,focusRailDistrict,overviewRequestId,quality,sceneRevision]);
   return <div className="city-world" ref={host}>{error&&<div className="city-webgl-error">3D表示を開始できませんでした。ブラウザのハードウェアアクセラレーションをご確認ください。物件一覧から経営操作を続けられます。</div>}<div className="city-location"><span className="city-location-dot"/>TOKYO / SHIBUYA <span>35°39′ N · 139°42′ E</span></div><div className="city-compass"><span>N</span><i>↑</i></div>{hovered&&<div className="city-hover"><span>{state.stores.some(s=>s.lotId===hovered.id)?'営業中':state.properties.some(p=>p.lotId===hovered.id)?'物件保有':'出店・購入'}</span><strong>{hovered.name}</strong><small>タップで詳細・経営</small></div>}<div className="city-attribution">SHIBUYA DISTRICT · 実在地形を参考にした創作街区</div></div>;
 }
