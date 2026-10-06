@@ -117,3 +117,15 @@ python3 scripts/verify-windows.py --output /workspace/shared/shibuya-artifacts/w
 同じdistの本番CSP回帰9項目はLinux Firefoxで合格しました。経営画面内の実測切替・地点選択・ゲーム街復帰、単独実測ビューの20建物タイル/20写真map/72地表画像とDraco、既定1024の画像縮小、待機時停止と必要時再描画、開業・決算・再読込、0.3.2旧保存の完全復元を確認しています。JS/consoleエラー、CSP違反、失敗HTTP、外部要求は0件。結果は `/workspace/shared/shibuya-artifacts/production-0.4.3/result.json` です。QA専用の経営画面RAF遅延200msを用いた機能確認で、性能測定ではありません。
 
 本番検証後から梱包完了までのdist index SHA-256は `f5d0e9b639329c5f3e810f2bab0cce3f1ad2ed0afb82b0d5633e0e8e48f48e28` で不変でした。Windows実機での起動・描画・保存復元・GPU性能は未検証で、コード署名もありません。Linuxでの整合性検査とブラウザー検証を、Windows/Electron実機の動作確認とは扱いません。
+
+## 0.4.4 の梱包検証
+
+店舗設定変更後の予測フィードバックと案内文、実測写真の表示、保存/モデル書き出しの回帰修正を含む0.4.4を、旧版と別のZIPへ梱包しました。研究中の経済v2は含まず、経済ルールと旧保存の扱いを維持しています。
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.4.4-win32-x64.zip` は223,800,778バイト、SHA-256は `ab63949a33f32941fb5424435d65950166724cbf162426406f70451d47f1a9d5`。公式Electron 44.5.1キャッシュのSHA-256、ZIP全件CRC、アプリマニフェスト279件、最終dist/desktop全278ファイルとのSHA-256一致、x64 PE実行形式を確認しました。最終ビルドの276配布ファイル（94,239,103バイト）を再ビルドせず収録しています。
+
+検証記録は同じディレクトリの `verification-0.4.4.json`、`app-files-0.4.4.sha256.json`、ZIPの `.sha256` です。0.4.3を含む旧配布と旧検証成果物746件のSHA-256・サイズ・更新時刻は不変で、保全記録は `/workspace/shared/shibuya-artifacts/preservation-0.4.4.json` に保存しています。進行中の研究と0.4.4用QA成果物は旧配布とは区別して記録しました。
+
+同じ最終distは231テストと本番CSP回帰9項目を通過しました。本番確認はLinux Firefoxで行い、ゲーム/実測表示の往復・地点選択・開業/週次保存/再読込・0.3.2旧保存の完全復元、20建物タイル/20写真map/72地表画像・Draco・必要時再描画を確認しています。JS/consoleエラー・CSP違反・失敗HTTP・外部要求は0件です。結果は `/workspace/shared/shibuya-artifacts/production-0.4.4/result.json`。CSP検証後から梱包完了までのdist index SHA-256は `917c98205973ede12ae7961d076888c292df7ba30322cb1fb27753e979034bb6` で不変でした。
+
+Windows実機での起動・描画・保存復元・性能は未検証で、コード署名はありません。Linuxブラウザーの検査をWindows/Electronの動作保証とは扱いません。Windows版は上記ローカルZIPとして保持し、GitHubへの配布添付は成功済みとは記載しません。

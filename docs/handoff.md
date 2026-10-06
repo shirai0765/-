@@ -4,6 +4,20 @@
 
 利用枠・リセット券・ファストモードを操作するツールはない。操作したと装わない。ユーザーの停止を無視したり、セッションをまたぐ自動開発を保証したりしない。現在までのソースと成果物を保持して続きを進める。
 
+## 0.4.4：写真の明るさと設定の手応え（公開準備）
+
+sourceは0.4.4、公開URLはまだ0.4.3。公開許可は継続。6 Astraで都市・UX/検査・資本/買収/設備の研究を並行した。buildはgame-BNaTI7Wi / RealCityScene-Db72F0XZ / game-xMFJ-JA1、231unit/26filesと本番CSP9が成功。公開まで同distを再buildしない。
+
+`photoAppearance.ts`で写真の焼込陰影を使うMeshBasicMaterial/toneMapped=falseへ移行。元linear color×gain1.15、slider1〜1.8は非累積。写真なし材質も比較と同じ方式。元105アセット・全品質geometry/index/normal/UV/worldmatrix/boundsは0.4.3と一致。下半球中性化だけの案は差が小さく不採用。元写真の青さと1024のぼけ、平面地表の制約は残る。marker候補文字だけ濃色化。CESIUM_RTCは専用pluginで既存手動変換を認識し二重適用なし、MediaRetailのundefined transparentは既定falseへ。
+
+単体viewer11/controller6 GPU成功。新cloneModelForExportはgeometry/texture共有・materialだけ複製して元colorへ戻し、export後clone材質だけ解放する。これでdisplay gain>1をGLB baseColorFactorへ書く退行を防ぐ。実40mesh/20map cloneと小GLBの実browser roundtripは成功、全原寸GLBの再書出しは未実施。旧成果物を上書きしない。詳細docs/real-city-photo-appearance.md。
+
+StorePlanFeedbackは価格/人員、品質/広告/店長の入力付近2か所に既存insight利益と理由buttonを表示。staff過剰を入力付近と既存detailsに説明。pointerdownではfocusを維持、click時の既存blurで確定してからdetailsへ移動し、警告出現によるclick喪失を修正。28位置/390touch/1280mouse/理由focus/保存一致、週危険→改善・危険確定・4/13週開始前停止の3経路も成功。単週の確定ボタンには経営終了を明記、batchは事前停止と区別。src/sim・data・model・persistence18ファイル完全不変。
+
+次期株式の研究はshared/research-next/ledger/valuation.mdほか。3社元帳・EV/cash/debt/share分離・配当落ち・取得後の継続を3者独立検算。会計一致だけでは市場の合理性を保証せず、任意10円増資がモデル1.7163円の株主へ価値移転を生むことを検出した。現条件ship不可、0.4.4には未実装。将来は合理的な発行/換金、週次の資金順序、旧save同seedの維持を解決する。
+
+新証拠はverification-0.4.4 / production-0.4.4 / next-color/runtime / store-feedback-v044。正式offline-0.4.4は83,273,567 bytes、99埋込asset一致、追加HTTPなし実ブラウザ9項目成功。都市担当は最後の画像閲覧で入力画像量の上限に達しただけで、rootがJSONと109画像を確認し処理終了を確認した。Web ZIP 65,769,325 bytes、Windows ZIP 223,800,778 bytesを生成し全CRC/SHA一致。dist276ファイルと旧746成果物の不変を確認。各SHAはdocs/web.mdとwindows.md、旧成果物の保全manifestは /tmp/shibuya-preservation-before-0.4.4.json。公開後検証はこれから。WindowsRelease uploadは0.4.3でHTTP400、空draftは削除済み。今回は再試行せずローカルZIPを保持。
+
 ## 0.4.3：実測街と同じ会社の経営
 
 0.4.3を既存の公開URLへ公開済み。source 42005ed91fd7820aefa7130d550880a1305ed9a4、pages bc72ca76e195b34b4750062e9abe10c902688301、Pages run37528596336成功。公開HTTPSの実Firefox操作7項目、HTTP18/18と主要16SHA照合も成功。6担当でcontroller・表示対応・React操作・32区画一覧・独立レビュー・QAを分担した。

@@ -1,9 +1,11 @@
 import type { StoreOperatingInsight } from '../sim/engine';
+import { StoreStaffCapacityNote } from './StorePlanFeedback';
 import './store-operating-insight.css';
 
 interface Props {
   insight: StoreOperatingInsight | null;
   storeName: string;
+  reasonsId?: string;
 }
 
 const number = (value: number) => Math.round(value).toLocaleString('ja-JP');
@@ -19,7 +21,7 @@ const costLabels: Record<keyof StoreOperatingInsight['costs'], string> = {
 };
 
 /** Read-only explanation of the current plan; never stores a previous forecast or runs an action. */
-export function StoreOperatingInsightPanel({ insight, storeName }: Props) {
+export function StoreOperatingInsightPanel({ insight, storeName, reasonsId }: Props) {
   if (!insight) return null;
   const { flow, result, costs, effectiveSettings: effective, context } = insight;
   const nearDisplayedFlow = Math.round(flow.demand) === Math.round(flow.capacity) || Math.round(Math.abs(flow.demand - flow.capacity)) === 0;
@@ -75,8 +77,9 @@ export function StoreOperatingInsightPanel({ insight, storeName }: Props) {
       </dl>
     </div>}
 
-    <details className="store-insight-costs">
+    <details className="store-insight-costs" id={reasonsId}>
       <summary>利益・客数の理由と費用</summary>
+      <StoreStaffCapacityNote insight={insight}/>
       {!nearDisplayedFlow && <p className="store-insight-note store-insight-flow-note">
         {capacityLimited
           ? `上限を超える需要の目安は約${number(flow.unservedDemand)}人です。集客が増えても、今の上限では客数が増えない場合があります。`

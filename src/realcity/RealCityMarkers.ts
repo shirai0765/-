@@ -22,7 +22,7 @@ export class RealCityMarkers {
         const context=canvas.getContext('2d');if(!context)throw new Error('地点名の描画を開始できません');
         context.fillStyle='#fffdf1';context.fillRect(0,0,512,128);context.fillStyle=color;context.fillRect(0,0,12,128);
         context.fillStyle='#273e3a';context.font='600 28px system-ui';context.fillText([...site.label].slice(0,16).join(''),26,48);
-        context.fillStyle=color;context.font='22px system-ui';context.fillText(`ゲーム内 ${status}`,26,93);
+        context.fillStyle=site.status==='empty'?'#7d5717':color;context.font='22px system-ui';context.fillText(`ゲーム内 ${status}`,26,93);
         const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
         const label=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,depthWrite:false,depthTest:false,toneMapped:false}));label.renderOrder=20;label.position.y=11;label.scale.set(40,10,1);group.add(label);
         group.traverse(object=>object.userData.lotId=site.lotId);this.group.add(group);entry={key,group,ring};this.entries.set(site.lotId,entry);

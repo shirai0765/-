@@ -114,3 +114,13 @@ python3 scripts/smoke-production.py
 ```
 
 QA側だけAppのRAFを200ms遅延させています。独立ビューのRAFは変更しておらず、製品・性能の制限ではありません。実App統合のnative RAF・idle・破棄は別のFirefox検査5項目で確認済みです。Windows実機・30時間の通しプレイを検証したとは扱いません。
+
+## 0.4.4 本番回帰（2026-10-06）
+
+最終dist（`game-BNaTI7Wi.js`、`RealCityScene-Db72F0XZ.js`、`game-xMFJ-JA1.css`）に対し、Linux Firefox/Mesaで9項目が成功しました。desktop/main.cjsのCSPをそのまま適用し、同梱フォント、通常開業・週次保存・復帰、実測街への切替、旧0.3.2保存の実インポートと完全一致を確認しました。JS/console/CSP/失敗HTTP/外部要求は0件です。
+
+写真表示への変更では、20個の写真材質が照明を重ねない表示になり、初期のlinear gainは1.15です。明るさsliderを1段階動かすと、rendererの値だけでなく実際の20材質も1.2へ更新することを確認しました。写真map20・建物20タイル・地表72枚・Draco WASM、idle停止と明るさ/resize後の描画も維持しています。元画像や経済の変更ではありません。
+
+結果と画面は `/workspace/shared/shibuya-artifacts/production-0.4.4/`。index SHA256は `917c98205973ede12ae7961d076888c292df7ba30322cb1fb27753e979034bb6`。全231unit/26filesとbuildも成功しています。単一HTML、書出しcloneの原色維持、geometry/UV保持の個別検査は [写真表示の記録](real-city-photo-appearance.md)、入力導線と危険な週終了の検査は [設定の予測表示](store-plan-feedback.md) と共有 `store-feedback-v044/README.md` を参照してください。
+
+検査のAppだけQA側RAF200ms遅延、独立ビューはnative RAFです。Windows実機性能・人間の30時間体験の確認ではありません。FirefoxはローカルHTTP用の一時Xorg画面で実行し、ブラウザーsandboxやTLS設定は変更していません。再実行は0.4.3節の `PRODUCTION_SMOKE_OUT` を0.4.4へ変更します。

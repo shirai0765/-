@@ -57,7 +57,7 @@ export function createMediaRetail(width: number, depth: number, height: number) 
     }
   }
   function graphic(text: string, sub: string, options: { transparent?: boolean; screen?: boolean; green?: boolean } = {}) {
-    const mat = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: .53, transparent: options.transparent, alphaTest: options.transparent ? .03 : 0 });
+    const mat = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: .53, transparent: options.transparent ?? false, alphaTest: options.transparent ? .03 : 0 });
     mat.name = `original_${text.replaceAll(' ', '_')}`;
     if (typeof document === 'undefined') return mat;
     const c = document.createElement('canvas'); c.width = options.green ? 1024 : 1536; c.height = options.green ? 640 : options.screen ? 1024 : 256; const ctx = c.getContext('2d'); if (!ctx) return mat;

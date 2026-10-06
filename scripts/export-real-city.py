@@ -16,10 +16,11 @@ with sync_playwright()as p:
  with page.expect_download(timeout=240000)as download:
   page.evaluate('''async () => {
     const {GLTFExporter}=await import('/node_modules/three/examples/jsm/exporters/GLTFExporter.js');
+    const {disposePhotoExportMaterials}=await import('/src/realcity/photoAppearance.ts');
     const runtime=window.__realCity;const scene=new runtime.scene.constructor();scene.name='Official_Shibuya_PLATEAU_2025_with_GSI_ground';
-    scene.userData={title:'Actual Shibuya buildings and aerial street imagery',attribution:['東京都・国土交通省 Project PLATEAU 建築物モデル（渋谷区）2025年度公開','地理院タイル（シームレス空中写真）を使用'],modifications:'Bounded leaf-tile subset, ECEF to local ENU, glTF Y-up, photographic material made non-metallic; raw GSI imagery on flat approximation',originLonLat:[139.7006,35.6595],originEllipsoidHeight:50,units:'metres',axes:'X east, Y up, Z south',terrain:'Flat approximation; no DEM. Buildings retain source elevations.',sourceUrls:['https://www.mlit.go.jp/plateau/opendata/','https://maps.gsi.go.jp/development/ichiran.html#seamlessphoto'],licenseReferences:['https://www.mlit.go.jp/plateau/site-policy/','https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html'],notGameMap:true};
-    scene.add(runtime.model.clone(true));const ground=runtime.scene.getObjectByName('GSI_seamless_aerial_flat_ground');if(!ground||ground.children.length<20)throw Error('Ground not ready');scene.add(ground.clone(true));
-    const data=await new GLTFExporter().parseAsync(scene,{binary:true,onlyVisible:true});
+    scene.userData={title:'Actual Shibuya buildings and aerial street imagery',attribution:['東京都・国土交通省 Project PLATEAU 建築物モデル（渋谷区）2025年度公開','地理院タイル（シームレス空中写真）を使用'],modifications:'Bounded leaf-tile subset, ECEF to local ENU, glTF Y-up; baked photographic appearance via KHR_materials_unlit with original linear color factors; raw GSI imagery on flat approximation',photographicAppearance:{material:'KHR_materials_unlit',exportPhotoGain:1,displayPhotoGain:runtime.renderer.toneMappingExposure,sourceFilesModified:false,displayGainBakedIntoPixels:false},originLonLat:[139.7006,35.6595],originEllipsoidHeight:50,units:'metres',axes:'X east, Y up, Z south',terrain:'Flat approximation; no DEM. Buildings retain source elevations.',sourceUrls:['https://www.mlit.go.jp/plateau/opendata/','https://maps.gsi.go.jp/development/ichiran.html#seamlessphoto'],licenseReferences:['https://www.mlit.go.jp/plateau/site-policy/','https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html'],notGameMap:true};
+    const ground=runtime.scene.getObjectByName('GSI_seamless_aerial_flat_ground');if(!ground||ground.children.length<20)throw Error('Ground not ready');const exportModel=runtime.cloneModelForExport();scene.add(exportModel);scene.add(ground.clone(true));
+    let data;try{data=await new GLTFExporter().parseAsync(scene,{binary:true,onlyVisible:true});}finally{disposePhotoExportMaterials(exportModel);}
     const url=URL.createObjectURL(new Blob([data],{type:'model/gltf-binary'}));const a=document.createElement('a');a.href=url;a.download='real-shibuya.glb';a.click();
   }''')
  download.value.save_as(DEST);print('GLB saved',DEST.stat().st_size,flush=True)
@@ -44,6 +45,8 @@ with DEST.open('rb')as f:
  header=f.read(20);length=struct.unpack_from('<I',header,12)[0];doc=json.loads(f.read(length))
 external=[x['uri']for kind in ('buffers','images')for x in doc.get(kind,[])if x.get('uri')and not x['uri'].startswith('data:')]
 assert not external,external
+assert 'KHR_materials_unlit' in doc.get('extensionsUsed',[]), 'Export must preserve baked photographic appearance'
+assert all(0<=factor<=1 for material in doc.get('materials',[]) for factor in material.get('pbrMetallicRoughness',{}).get('baseColorFactor',[1,1,1,1])), 'Display gain must not leak into exported baseColorFactor'
 verification.update(compression=compression,glbBytes=DEST.stat().st_size,externalUris=external,sourceBounds=before,images=len(doc.get('images',[])),asset=doc.get('asset'),status='passed')
 (OUT/'real-shibuya-glb-qa.json').write_text(json.dumps(verification,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps(verification,ensure_ascii=False),flush=True)

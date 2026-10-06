@@ -9,6 +9,7 @@ import type { TextureQuality } from './textureBudget';
 import { REAL_CITY_ANCHORS } from './gameSites';
 import type { RealCitySiteState } from './gameSites';
 import { RealCityMarkers } from './RealCityMarkers';
+import { clonePhotoModelForExport, DEFAULT_PHOTO_GAIN, photoGain, setPhotoBrightness, usePhotoAppearance } from './photoAppearance';
 export type { TextureQuality, RealCitySiteState };
 export interface RealCityProgress { status:'loading'|'ready'|'failed'|'disposed'; quality:TextureQuality; buildingTiles:number; groundTiles:number; generation:number }
 export interface RealCityFocus { lotId:string|null; status:'queued'|'focused'|'cleared'|'unknown' }
@@ -23,6 +24,7 @@ export interface RealCitySnapshot {
   scene:THREE.Scene;camera:THREE.PerspectiveCamera;renderer:THREE.WebGLRenderer;model:THREE.Group;
   bounds:{min:number[];max:number[]};tiles:number;groundTiles:number;textureQuality:TextureQuality;
   textureStats:{buildings:ReturnType<typeof texturePixels>;ground:ReturnType<typeof texturePixels>};
+  cloneModelForExport:()=>THREE.Group;
   dispose:()=>Promise<void>;
 }
 export interface RealCityController {
@@ -49,7 +51,8 @@ export function createRealCityScene(host:HTMLElement,options:RealCityOptions={})
   const rollback:(()=>void)[]=[()=>{renderer.dispose();renderer.domElement.remove();}];
   let initializedDispose:(()=>Promise<void>)|undefined;
   try {
-  renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.15;
+  let brightness=DEFAULT_PHOTO_GAIN;
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=brightness;
   host.prepend(renderer.domElement);
   const scene=new THREE.Scene();rollback.push(()=>disposeRealObject(scene));scene.background=new THREE.Color('#dce3e7');
   const camera=new THREE.PerspectiveCamera(43,1,.4,4000);
@@ -66,6 +69,9 @@ export function createRealCityScene(host:HTMLElement,options:RealCityOptions={})
   let photoGround:THREE.Group|undefined,snapshot:RealCitySnapshot|null=null;
   const progress:RealCityProgress={status:'loading',quality,buildingTiles:0,groundTiles:0,generation:0};
   const draco=new DRACOLoader(new THREE.LoadingManager().setURLModifier(assetURL));rollback.push(()=>draco.dispose());draco.setDecoderPath('./decoders/draco/');draco.setWorkerLimit(2);const loader=new GLTFLoader();loader.setDRACOLoader(draco);
+  // loadTile applies CESIUM_RTC in its ECEF→ENU transform exactly once.
+  // Acknowledge only this externally handled extension; other warnings remain visible.
+  loader.register(()=>({name:'CESIUM_RTC'}));
   const lon=139.7006*Math.PI/180,lat=35.6595*Math.PI/180,altitude=50,n=6378137/Math.sqrt(1-.00669437999014*Math.sin(lat)**2);
   const origin=new THREE.Vector3((n+altitude)*Math.cos(lat)*Math.cos(lon),(n+altitude)*Math.cos(lat)*Math.sin(lon),(n*(1-.00669437999014)+altitude)*Math.sin(lat));
   const east=new THREE.Vector3(-Math.sin(lon),Math.cos(lon),0),up=new THREE.Vector3(Math.cos(lat)*Math.cos(lon),Math.cos(lat)*Math.sin(lon),Math.sin(lat)),south=new THREE.Vector3(Math.sin(lat)*Math.cos(lon),Math.sin(lat)*Math.sin(lon),-Math.cos(lat));
@@ -133,7 +139,7 @@ export function createRealCityScene(host:HTMLElement,options:RealCityOptions={})
       checkAbort(signal);await fitTextureBudget(gltf.scene,selectedQuality,signal);
       if(texturePixels(gltf.scene).images!==json.images.length)throw new Error(`${item.uri}: 建物写真を完全に読み込めませんでした`);
       const transform=enu.clone().multiply(item.transform).multiply(new THREE.Matrix4().makeTranslation(...center as [number,number,number])).multiply(yToZ);
-      gltf.scene.traverse(object=>{if(object instanceof THREE.Mesh)for(const material of Array.isArray(object.material)?object.material:[object.material])if(material instanceof THREE.MeshStandardMaterial){material.metalness=0;material.roughness=1;}});
+      usePhotoAppearance(gltf.scene,brightness);
       gltf.scene.applyMatrix4(transform);gltf.scene.updateMatrixWorld(true);checkAbort(signal);
       locateSites(gltf.scene,item.uri,batch);model.add(gltf.scene);requestRender();
     }catch(error){disposeRealObject(gltf.scene);throw error;}
@@ -152,7 +158,7 @@ export function createRealCityScene(host:HTMLElement,options:RealCityOptions={})
     if(signal.aborted||disposed){disposeRealObject(loadedGround);checkAbort(signal);return;}
     photoGround=loadedGround;photoGround.position.y=ground.position.y+.015;scene.add(photoGround);ground.visible=false;
     markers.update(sites,positions);markers.group.visible=true;
-    progress.status='ready';snapshot={scene,camera,renderer,model,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()},tiles:tiles.length,groundTiles:photoGround.userData.tileCount,textureQuality:selectedQuality,textureStats:{buildings:texturePixels(model),ground:texturePixels(photoGround)},dispose};
+    progress.status='ready';snapshot={scene,camera,renderer,model,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()},tiles:tiles.length,groundTiles:photoGround.userData.tileCount,textureQuality:selectedQuality,textureStats:{buildings:texturePixels(model),ground:texturePixels(photoGround)},cloneModelForExport:()=>clonePhotoModelForExport(model),dispose};
     if(queued){const requested=queued;queued=null;focusLot(requested);}emitProgress();requestRender();
   }
   async function pump(){
@@ -192,7 +198,9 @@ export function createRealCityScene(host:HTMLElement,options:RealCityOptions={})
   initializedDispose=dispose;
   setPreset('crossing');resize();startLoad();
   return {updateSites,focusLot,overview:()=>setPreset('overhead'),setPreset,setQuality,
-    setExposure:(value)=>{if(disposed)return;renderer.toneMappingExposure=Math.max(1,Math.min(1.8,value));requestRender();},resize,
+    // The fallback PBR ground still uses renderer exposure while loading. Once
+    // ready, building photos use linear material gain; aerial ground and labels do not.
+    setExposure:(value)=>{if(disposed||!Number.isFinite(value))return;brightness=photoGain(value);renderer.toneMappingExposure=brightness;setPhotoBrightness(model,brightness);requestRender();},resize,
     setVisible:(value)=>{explicitVisible=value;visibilityChanged();},dispose,getSnapshot:()=>snapshot,
     getDiagnostics:()=>({instanceId,status:progress.status,disposed,renderCount,visible:visible(),focusLotId:focused,queuedFocusLotId:queued,buildingTiles:progress.buildingTiles,groundTiles:progress.groundTiles,pendingJobs:pumpTask?1:0,sitePositions:Object.fromEntries([...positions].map(([id,point])=>[id,point.toArray()]))})};
   }catch(error){

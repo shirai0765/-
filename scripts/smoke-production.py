@@ -149,6 +149,8 @@ try:
         metrics = page.evaluate('''() => {const c=window.__realCity;c.renderer.render(c.scene,c.camera);const maps=new Set();c.model.traverse(o=>{if(o.material)for(const m of Array.isArray(o.material)?o.material:[o.material])if(m.map?.image?.width>0)maps.add(m.map.uuid)});return {modelImageMaps:maps.size,tiles:c.tiles,ground:c.groundTiles,calls:c.renderer.info.render.calls,triangles:c.renderer.info.render.triangles,textures:c.renderer.info.memory.textures,bounds:c.bounds,textureQuality:c.textureQuality,textureStats:c.textureStats}}''')
         assert metrics['tiles'] == 20 and metrics['ground'] == 72 and metrics['modelImageMaps'] >= 20 and metrics['triangles'] > 10000 and metrics['calls'] > 20, metrics
         assert metrics['textureQuality'] == '1024'
+        photo_materials = page.evaluate('''() => {const materials=new Set();window.__realCity.model.traverse(o=>{if(o.isMesh)for(const m of Array.isArray(o.material)?o.material:[o.material])if(m.map)materials.add(m)});return [...materials].map(m=>({basic:m.isMeshBasicMaterial===true,toneMapped:m.toneMapped,color:m.color.toArray()}))}''')
+        assert len(photo_materials) == 20 and all(m['basic'] and not m['toneMapped'] and all(abs(v-1.15)<.000001 for v in m['color']) for m in photo_materials), photo_materials
         buildings = metrics['textureStats']['buildings']
         assert buildings['images'] == 20 and all(max(size) <= 1024 for size in buildings['dimensions']), buildings
         assert buildings['rgbaBaseBytes'] < 80 * 1024 * 1024, buildings
@@ -165,6 +167,8 @@ try:
         page.wait_for_function('(before)=>window.__realCity.renderer.info.render.frame > before', arg=idle_before)
         brightness_frame = page.evaluate('window.__realCity.renderer.info.render.frame')
         assert abs(page.evaluate('window.__realCity.renderer.toneMappingExposure') - 1.2) < .001
+        assert page.evaluate('''() => {let count=0,valid=true;window.__realCity.model.traverse(o=>{if(o.isMesh)for(const m of Array.isArray(o.material)?o.material:[o.material])if(m.map){count++;valid &&= m.color.toArray().every(v=>Math.abs(v-1.2)<.000001)}});return count>=20 && valid}'''), 'Brightness changed renderer metadata but not the building photo materials'
+        metrics['photographicAppearance'] = {'uniqueMaterials':len(photo_materials),'unlit':True,'initialLinearGain':1.15,'gainAfterBrightnessKey':1.2}
         page.set_viewport_size({'width':1000,'height':760})
         page.wait_for_function('(before)=>window.__realCity.renderer.info.render.frame > before && Math.abs(window.__realCity.camera.aspect-1000/760)<.000001', arg=brightness_frame)
         metrics['onDemand'] = {'idleFrame':idle_before,'brightnessFrame':brightness_frame,'resizeFrame':page.evaluate('window.__realCity.renderer.info.render.frame'),'resizedAspect':page.evaluate('window.__realCity.camera.aspect')}
