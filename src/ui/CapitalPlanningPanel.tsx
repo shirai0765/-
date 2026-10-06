@@ -5,6 +5,8 @@ import { capitalBudgetError, getCapitalPlans, type CapitalPlanId } from '../sim/
 import './capital-planning.css';
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
+
+const rangeYen = (range: { min: number; max: number }) => `約${yen(Math.floor(range.min / 1000) * 1000)}〜${yen(Math.ceil(range.max / 1000) * 1000)}`;
 const percent = (value: number) => `${(value * 100).toFixed(1)}%`;
 const signedYen = (value: number) => `${value > 0 ? '+' : ''}${yen(value)}`;
 
@@ -64,13 +66,13 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
     { label: '調達直後の手元資金', before: yen(before.cash), after: yen(after.cash) },
     { label: '借入残高', before: yen(before.debt), after: yen(after.debt) },
     { label: '創業者持分', before: percent(before.ownership), after: percent(after.ownership) },
-    { label: '営業利益 / 今週', before: yen(before.report.operatingProfit), after: yen(after.report.operatingProfit) },
+    { label: '営業利益の幅 / 今週', before: rangeYen({ min: before.outlook.netProfit.min + before.report.interest, max: before.outlook.netProfit.max + before.report.interest }), after: rangeYen({ min: after.outlook.netProfit.min + after.report.interest, max: after.outlook.netProfit.max + after.report.interest }) },
     { label: '支払利息 / 今週', before: yen(before.report.interest), after: yen(after.report.interest) },
-    { label: '利息控除後の利益 / 今週', before: yen(before.report.netProfit), after: yen(after.report.netProfit) },
+    { label: '利息控除後の利益幅 / 今週', before: rangeYen(before.outlook.netProfit), after: rangeYen(after.outlook.netProfit) },
     { label: '元本返済 / 今週', before: yen(before.report.loanRepayment), after: yen(after.report.loanRepayment) },
-    { label: '支払配当 / 今週', before: yen(before.report.dividendsPaid), after: yen(after.report.dividendsPaid) },
-    { label: '現金増減 / 今週', before: signedYen(before.report.cashChange), after: signedYen(after.report.cashChange) },
-    { label: '週末の手元資金', before: yen(before.weekEndCash), after: yen(after.weekEndCash) },
+    { label: '支払配当の幅 / 今週', before: rangeYen(before.dividendsPaidRange), after: rangeYen(after.dividendsPaidRange) },
+    { label: '現金増減の幅 / 今週', before: rangeYen(before.outlook.cashChange), after: rangeYen(after.outlook.cashChange) },
+    { label: '週末の手元資金の幅', before: rangeYen(before.outlook.cashAfter), after: rangeYen(after.outlook.cashAfter) },
   ] : [];
 
   return <section className="card capital-planning" aria-label="資金調達の比較">
@@ -83,7 +85,7 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
     <div className="capital-options" role="group" aria-label="調達方法を比較">
       {plans.map(plan => <button type="button" key={plan.id} className={'capital-option' + (selectedId === plan.id ? ' selected' : '')} aria-pressed={selectedId === plan.id} onClick={() => setSelectedId(plan.id)}>
         <strong>{labels[plan.id]}</strong>
-        {plan.after ? <><span>得る現金 <b>{signedYen(plan.raisedCash ?? 0)}</b></span><span>持分 {percent(plan.after.ownership)} / 元本 {yen(plan.after.report.loanRepayment)}/週</span>{plan.budgetGap !== null && <span className={plan.budgetGap > 0 ? 'negative' : 'positive'}>計画資金 {plan.budgetGap > 0 ? `${yen(plan.budgetGap)}不足` : '確保できる'}</span>}{plan.after.debtProfitRisk && <span className="negative">この予測のまま週終了で倒産</span>}{plan.after.cashRisk && <span className="negative">週末の資金不足</span>}</> : <span className="capital-unavailable">{plan.reason}</span>}
+        {plan.after ? <><span>得る現金 <b>{signedYen(plan.raisedCash ?? 0)}</b></span><span>持分 {percent(plan.after.ownership)} / 元本 {yen(plan.after.report.loanRepayment)}/週</span>{plan.budgetGap !== null && <span className={plan.budgetGap > 0 ? 'negative' : 'positive'}>計画資金 {plan.budgetGap > 0 ? `${yen(plan.budgetGap)}不足` : '確保できる'}</span>}{plan.after.debtProfitRisk && <span className="negative">借入中の利益不足リスク</span>}{plan.after.cashRisk && <span className="negative">週末の資金不足</span>}</> : <span className="capital-unavailable">{plan.reason}</span>}
       </button>)}
     </div>
     {selectedId === 'borrow' && <div className="capital-borrow-settings">
@@ -99,16 +101,16 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
       <div className="capital-outcome" aria-label="選んだ調達案の主な結果">
         <dl className="capital-key-values">
           <div className="capital-key-main"><dt>得る現金</dt><dd>{signedYen(selected.raisedCash ?? 0)}</dd></div>
-          <div className="capital-key-main"><dt>週末の現金</dt><dd className={after.cashRisk ? 'negative' : undefined}>{yen(after.weekEndCash)}</dd></div>
+          <div className="capital-key-main"><dt>週末の現金の幅</dt><dd className={after.cashRisk ? 'negative' : undefined}>{rangeYen(after.outlook.cashAfter)}</dd></div>
           <div><dt>自分の持分</dt><dd>{percent(after.ownership)}</dd></div>
           <div><dt>元本返済 / 今週</dt><dd>{yen(after.report.loanRepayment)}</dd></div>
-          <div className="capital-key-profit"><dt>今週の利益（利息後）</dt><dd className={after.report.netProfit <= 0 ? 'negative' : undefined}>{yen(after.report.netProfit)}</dd></div>
+          <div className="capital-key-profit"><dt>今週の利益幅（利息後）</dt><dd className={after.outlook.netProfit.min <= 0 ? 'negative' : undefined}>{rangeYen(after.outlook.netProfit)}</dd></div>
         </dl>
-        <p className="capital-note">調達だけの予測です。予定する投資の支出・利益・維持費は含みません。元本は利益ではなく現金から支払います。</p>
+        <p className="capital-note">調達だけを反映した見込み幅です。実績は週末に確定します。予定する投資の支出・利益・維持費は含みません。元本は利益ではなく現金から支払います。</p>
       </div>
       {selected.loanAnnualRate !== null && <p className="capital-note">この新規融資の年利 {(selected.loanAnnualRate * 100).toFixed(2)}% · {borrowWeeks}週返済</p>}
-      {after.debtProfitRisk && <p className="capital-warning" role="alert">借入残高があり、利息控除後利益が0以下です。このまま週を終了すると倒産します。現金や受取配当が十分でも、週末に元本を完済しても回避できません。</p>}
-      {after.cashRisk && <p className="capital-warning" role="alert">この予測では週末の現金が不足します。利益が黒字でも、元本返済などの支払いで倒産します。</p>}
+      {after.debtProfitRisk && <p className="capital-warning" role="alert">借入残高があり、見込み幅の下限で利息控除後利益が0以下になります。週末の実績が0以下なら倒産します。現金や受取配当が十分でも、週末に元本を完済しても回避できません。</p>}
+      {after.cashRisk && <p className="capital-warning" role="alert">見込み幅の下限で週末現金が不足します。実績によっては、利益が黒字でも元本返済などの支払いで倒産するリスクがあります。</p>}
     </> : <p className="capital-warning">{selected.reason}</p>}
     {useBudget && <div className="capital-budget-result">
       {budgetError ? <p className="capital-warning" role="alert">{budgetError}</p> : <>
@@ -136,7 +138,7 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
     {after && <details className="capital-details">
       <summary>現状と比べる・10項目の内訳</summary>
       <div className="capital-table-wrap"><table className="capital-table"><thead><tr><th scope="col">比較項目</th><th scope="col">今のまま</th><th scope="col">選んだ案</th></tr></thead><tbody>{rows.map(row => <tr key={row.label}><th scope="row">{row.label}</th><td>{row.before}</td><td>{row.after}</td></tr>)}</tbody></table></div>
-      <p className="capital-note">現金増減は受取配当や契約満了の回収額も含みます。将来の景況・投資・設定変更で収支は変わり、資金が貯まる時期は保証しません。</p>
+      <p className="capital-note">幅は千円単位の概数で、起こる確率を示すものではありません。リスクは丸め前の下限で判定しています。現金増減は受取配当や契約満了の回収額も含みます。将来の景況・投資・設定変更で収支は変わり、資金が貯まる時期は保証しません。</p>
       {selectedId === 'equity' && <p className="capital-note">IPOは既存株数の25%を新たに発行します。上場後の増資は10%ずつ、創業者持分20%が下限です。持分は会社の株の割合で、創業者個人の現金残高ではありません。</p>}
     </details>}
     {state.listed && <p className="capital-note">現在の配当は会社の現金を減らします。創業者個人の資産には還元されず、会社の成長資金を残す目的では配当0%が有利です。</p>}

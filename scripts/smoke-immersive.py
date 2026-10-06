@@ -1,0 +1,119 @@
+#!/usr/bin/env python3
+"""Immersive App real-render smoke. No scene/state injection or RAF overrides.
+Use a disposable Firefox profile with the existing private Xorg runner; public TLS trust belongs only in that profile.
+DEV diagnostics are read-only and optional; production/public runs use UI plus native IndexedDB only.
+"""
+import argparse,json,os,re,tempfile,shutil,time,traceback,hashlib,functools,threading
+from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+from urllib.parse import urlsplit
+from pathlib import Path
+from playwright.sync_api import sync_playwright,expect
+ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:5173');ap.add_argument('--out',default='/workspace/shared/shibuya-artifacts/immersive-v045/gpu');ap.add_argument('--profile');ap.add_argument('--dev-diagnostics',action='store_true');ap.add_argument('--expected-source');ap.add_argument('--expected-version');ap.add_argument('--production-csp',action='store_true');ap.add_argument('--include-real-city',action='store_true');ap.add_argument('--legacy-save');a=ap.parse_args();OUT=Path(a.out);OUT.mkdir(parents=True,exist_ok=True)
+checks=[];errors=[];warnings=[];complete=False;data={};responses=[];blocked=[];violations=[];server=None;CSP=None
+ROOT=Path(__file__).resolve().parents[1]
+if a.production_csp:
+ CSP=re.search(r'const csp = "([^"]+)";', (ROOT/'desktop/main.cjs').read_text()).group(1)
+ assert "'wasm-unsafe-eval'" in CSP and "'unsafe-eval'" not in CSP
+ class Handler(SimpleHTTPRequestHandler):
+  extensions_map={**SimpleHTTPRequestHandler.extensions_map,'.wasm':'application/wasm','.woff2':'font/woff2','.b3dm':'application/octet-stream'}
+  def end_headers(self):self.send_header('Content-Security-Policy',CSP);self.send_header('X-Content-Type-Options','nosniff');super().end_headers()
+  def log_message(self,*args):pass
+ server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Handler,directory=str(ROOT/'dist')));threading.Thread(target=server.serve_forever,daemon=True).start();a.url=f'http://127.0.0.1:{server.server_port}/index.html';data['csp']=CSP;data['distIndexSHA256']=hashlib.sha256((ROOT/'dist/index.html').read_bytes()).hexdigest()
+if a.dev_diagnostics:assert urlsplit(a.url).hostname in ['localhost','127.0.0.1'],'DEV reads must remain local'
+
+def b(p,n):return p.get_by_role('button',name=n,exact=True)
+def close(d):d.locator(':scope > section > header > button[aria-label="閉じる"]').click()
+def menu(p,n):b(p,'経営').click();d=p.locator('dialog[open]').filter(has=p.get_by_role('heading',name='経営',exact=True));b(d,n).click();return p.locator('dialog[open]').filter(has=p.get_by_role('heading',name=('設定と会社データ' if n=='設定・保存' else n),exact=True))
+def primary(p):return p.evaluate("()=>new Promise((resolve,reject)=>{let q=indexedDB.open('shibuya-capital-v1');q.onsuccess=()=>{let d=q.result,r=d.transaction('saves').objectStore('saves').get('primary');r.onsuccess=()=>{d.close();resolve(r.result)}};q.onerror=reject})")
+def state(p):return json.loads(primary(p)['envelope']['payload'])
+def shot(p,n):p.screenshot(path=str(OUT/(n+'.png')))
+def ok(s):checks.append(s);print('PASS',s,flush=True)
+def scene(p):return p.evaluate("()=>({uuid:window.__cityScene.uuid,camera:window.__cityCamera.position.toArray(),quaternion:window.__cityCamera.quaternion.toArray(),markers:window.__cityScene.getObjectByName('Game_economic_site_markers').children.map(x=>({id:x.userData.lotId,status:x.userData.siteStatus}))})")
+def point(p,id):return p.evaluate("id=>{let o=window.__cityScene.getObjectByName('Game_site_marker_'+id),v=o.getWorldPosition(o.position.clone()).project(window.__cityCamera),r=window.__cityRenderer.domElement.getBoundingClientRect();return {x:r.x+(v.x+1)*r.width/2,y:r.y+(1-v.y)*r.height/2-22}}",id)
+profile=Path(a.profile) if a.profile else Path(tempfile.mkdtemp(prefix='immersive-v045-firefox-',dir='/tmp'));owned=not a.profile
+with sync_playwright() as pw:
+ context=pw.firefox.launch_persistent_context(str(profile),headless=False,timeout=30000,viewport={'width':1000,'height':760},accept_downloads=True,firefox_user_prefs={'webgl.force-enabled':True,'gfx.webrender.software':True})
+ origin=urlsplit(a.url)
+ def route(r):
+  u=urlsplit(r.request.url)
+  if (u.scheme,u.netloc)==(origin.scheme,origin.netloc) or u.scheme in ['blob','data']:r.continue_()
+  else:blocked.append(r.request.url);r.abort('blockedbyclient')
+ context.route('**/*',route);context.add_init_script("window.__cspViolations=[];addEventListener('securitypolicyviolation',e=>window.__cspViolations.push({directive:e.effectiveDirective,blocked:e.blockedURI}));")
+ p=context.new_page();p.on('response',lambda r:responses.append({'url':r.url,'status':r.status,'mime':r.headers.get('content-type','')}));p.set_default_timeout(60000);p.on('pageerror',lambda e:errors.append(str(e)));p.on('console',lambda m:errors.append(m.text) if m.type=='error' else warnings.append(m.text) if m.type=='warning' else None)
+ try:
+  response=p.goto(a.url,wait_until='domcontentloaded');assert response and response.status==200
+  if CSP:assert response.headers.get('content-security-policy')==CSP
+  p.evaluate('document.fonts.ready');fonts=p.evaluate("({noto:document.fonts.check('16px \"Noto Sans JP Variable\"','渋谷珈琲'),manrope:document.fonts.check('16px \"Manrope Variable\"','SHIBUYA')})");assert fonts['noto'] and fonts['manrope'];data['fonts']=fonts
+
+  if a.expected_source or a.expected_version:
+   release=p.evaluate("async()=>await (await fetch(new URL('release.json',location.href))).json()");data['release']=release
+   if a.expected_source:assert release['sourceCommit']==a.expected_source
+   if a.expected_version:assert release['version']==a.expected_version
+  p.get_by_label('会社名',exact=True).fill('全面街の実操作QA');b(p,'新しい会社を設立').click();expect(p.locator('.immersive-game')).to_be_visible();expect(p.locator('.city-world canvas')).to_be_visible();expect(p.locator('.city-webgl-error')).to_have_count(0)
+  canvas=p.locator('.city-world canvas').element_handle();assert canvas is not None
+  rect=p.locator('.immersive-city').bounding_box();assert rect=={'x':0,'y':0,'width':1000,'height':760};assert p.locator('.rail,.bottom-bar,.inspector,.topbar').count()==0
+  if a.dev_diagnostics:
+   p.wait_for_function("window.__cityScene?.getObjectByName('Game_economic_site_markers')?.children.length===32")
+   p.evaluate("async()=>await window.__cityScene[Symbol.for('shibuya.city.loadedAssetsReady')]?.()")
+   data['initialScene']=scene(p);assert len({x['id'] for x in data['initialScene']['markers']})==32
+  p.wait_for_timeout(500);shot(p,'01-fullscreen-real-city');ok('Actual full viewport city, no constant sidebar/footer; native app started')
+  if a.dev_diagnostics:
+   pt=point(p,'center-01');data['markerClick']=pt;assert 0<pt['x']<1000 and 0<pt['y']<760;p.mouse.click(pt['x'],pt['y'])
+  else:
+   b(p,'出店場所を探す').click();sites=p.locator('dialog[open]');expect(sites.locator('.site-list button')).to_have_count(32);sites.locator('[data-lot-id="center-01"]').click()
+  d=p.locator('dialog[open]').filter(has=p.locator('.facility-content'));expect(d.locator('.facility-content')).to_have_attribute('data-selected-lot-id','center-01');assert d.evaluate('(e)=>e.matches(":modal")');shot(p,'02-facility-dialog')
+  b(d,'この場所にカフェを開業').click();expect(p.locator('dialog[open]')).to_have_count(0);expect(p.locator('.toast')).to_contain_text('カフェを開業');expect(b(p,'この店を経営')).to_be_visible()
+  if a.dev_diagnostics:
+   p.wait_for_function("window.__cityScene.getObjectByName('Game_site_marker_center-01').userData.siteStatus==='store'");p.evaluate("async()=>await window.__cityScene[Symbol.for('shibuya.city.loadedAssetsReady')]?.()")
+  p.wait_for_timeout(500);shot(p,'03-opening-store-focus');ok('Facility opens native detail; opening closes detail and focuses exterior with feedback')
+  b(p,'この店を経営').click();d=p.locator('dialog[open]');price=d.get_by_label('販売価格（円）',exact=True);price.fill('950');price.blur();close(d)
+  before=scene(p) if a.dev_diagnostics else None
+  for target in ['財務・不動産','店舗経営','株式市場']:
+   d=menu(p,target);assert d.evaluate('(e)=>e.matches(":modal")');close(d);expect(p.locator('dialog[open]')).to_have_count(0)
+   assert canvas.evaluate("e=>e.isConnected && e===document.querySelector('.city-world canvas')")
+   if a.dev_diagnostics:assert scene(p)==before,'Management navigation reset real camera/scene/markers'
+  shot(p,'04-return-same-city');ok('Finance/stores/market overlays close to same canvas; DEV camera/scene/marker identity preserved when enabled')
+  d=menu(p,'設定・保存');b(d,'今すぐ保存する').click();expect(d.get_by_role('alert')).to_contain_text('保存しました');close(d);beforeState=state(p)
+  outlook=None
+  if a.dev_diagnostics:
+   outlook=p.evaluate("async s=>(await import('/src/sim/engine.ts')).getWeekOutlook(s)",beforeState);data['outlook']=outlook
+  p.locator('.hud-next-week').click();d=p.locator('dialog[open]');expect(d).to_contain_text('第1週を営業する');expect(d.locator('.week-outlook')).not_to_have_attribute('open','');shot(p,'05-week-before-results');b(d,'営業して週を進める').click();report=p.locator('dialog[open]').filter(has=p.get_by_role('heading',name='第1週の経営レポート',exact=True));expect(report).to_be_visible();after=state(p);assert after['week']==2 and not after['gameOver'];assert after['cash']==round(beforeState['cash']+after['lastReport']['cashChange']);assert after['stores'][0]['price']==950
+  if outlook:assert outlook['netProfit']['min']<=after['lastReport']['netProfit']<=outlook['netProfit']['max']
+  data['settledState']=after;shot(p,'06-first-real-result');settled=primary(p);(OUT/'autosaved-primary.json').write_text(json.dumps(settled,ensure_ascii=False,indent=2));ok('First week shows a settled result, cash reconciles actual report, autosave and optional outlook containment')
+  p.reload(wait_until='domcontentloaded');p.get_by_role('button',name=re.compile('全面街の実操作QA を続ける')).click();expect(p.locator('.immersive-game')).to_be_visible();expect(p.locator('.city-world canvas')).to_be_visible();assert primary(p)==settled;shot(p,'07-reloaded-city');ok('Reload continues exact saved primary/envelope/payload')
+  if a.include_real_city or a.production_csp:
+   b(p,'物件を探す').click();p.locator('.site-list button[data-lot-id="center-01"]').click();close(p.locator('dialog[open]'));b(p,'地図').click();p.locator('dialog[open]').get_by_role('button',name=re.compile('実測の渋谷')).click();real=p.locator('.real-city-view');expect(real).to_have_attribute('data-status','ready',timeout=180000);expect(real).to_have_attribute('data-focus-lot','center-01');expect(real).to_have_attribute('data-focus-status','focused');assert primary(p)==settled
+   if not a.dev_diagnostics:assert p.evaluate('!window.__cityScene && !window.__realCityIntegrationQA && !window.__sceneLifecycleSnapshot')
+   shot(p,'08-integrated-real-city');b(p,'地図').click();p.locator('dialog[open]').get_by_role('button',name=re.compile('ゲーム街')).click();expect(p.locator('.city-world canvas')).to_be_visible();assert primary(p)==settled;ok('Same-App real city ready/focus center-01 and game return preserve exact primary; production DEV hooks absent')
+   settings=menu(p,'設定・保存');b(settings,'保存して実際の渋谷を3Dで見る').click();p.wait_for_url('**/real-shibuya.html');expect(p.locator('#loading.loaded')).to_be_visible(timeout=180000);p.wait_for_function('window.__realCity?.renderer.info.render.triangles>10000');assert state(p)==after
+   metrics=p.evaluate("()=>{let c=window.__realCity;let materials=new Set();c.model.traverse(o=>{if(o.material)for(let m of Array.isArray(o.material)?o.material:[o.material])if(m.map)materials.add(m)});return {tiles:c.tiles,ground:c.groundTiles,textureQuality:c.textureQuality,textureStats:c.textureStats,triangles:c.renderer.info.render.triangles,materials:[...materials].map(m=>({basic:m.isMeshBasicMaterial===true,toneMapped:m.toneMapped,color:m.color.toArray()}))}}")
+   assert metrics['tiles']==20 and metrics['ground']==72 and metrics['textureQuality']=='1024';assert len(metrics['materials'])==20 and all(m['basic'] and not m['toneMapped'] and all(abs(x-1.15)<.000001 for x in m['color']) for m in metrics['materials']);assert all(max(x)<=1024 for x in metrics['textureStats']['buildings']['dimensions']);data['viewer']=metrics
+   idle=None
+   for _ in range(12):
+    frame=p.evaluate('window.__realCity.renderer.info.render.frame');p.wait_for_timeout(750)
+    if p.evaluate('window.__realCity.renderer.info.render.frame')==frame:idle=frame;break
+   assert idle is not None,'Viewer did not stop rendering at idle'
+   brightness=p.get_by_label('建物の明るさ');brightness.focus();brightness.press('ArrowRight');p.wait_for_function('f=>window.__realCity.renderer.info.render.frame>f',arg=idle);assert abs(p.evaluate('window.__realCity.renderer.toneMappingExposure')-1.2)<.001
+   assert p.evaluate("()=>{let good=true,n=0;window.__realCity.model.traverse(o=>{if(o.isMesh)for(let m of Array.isArray(o.material)?o.material:[o.material])if(m.map){n++;good&&=m.color.toArray().every(v=>Math.abs(v-1.2)<.000001)}});return good&&n>=20}")
+   p.set_viewport_size({'width':1100,'height':800});p.wait_for_function('Math.abs(window.__realCity.camera.aspect-1100/800)<.00001');assert state(p)==after;shot(p,'09-standalone-real-city');violations.extend(p.evaluate('window.__cspViolations'))
+   p.get_by_role('link',name='ゲームへ戻る').click();p.wait_for_url('**/index.html');p.get_by_role('button',name=re.compile('全面街の実操作QA を続ける')).click();expect(p.locator('.immersive-game')).to_be_visible();assert state(p)==after
+   assert len({r['url'] for r in responses if '.b3dm' in r['url'] and r['status']==200})==20;assert len({r['url'] for r in responses if '/real-shibuya-ground/' in r['url'] and r['url'].endswith('.jpg') and r['status']==200})==72
+   wasm=[r for r in responses if r['url'].endswith('.wasm')];assert wasm and all(r['status']==200 and r['mime'].startswith('application/wasm') for r in wasm)
+   ok('Standalone 20 tiles/72 ground/Draco, Basic photo gain1.15→1.2,1024 textures,idle/resize and return preserve saved company')
+  if a.legacy_save:
+   path=Path(a.legacy_save).resolve();legacy=json.loads(json.loads(path.read_text())['payload']);assert legacy['stores'] and 'openingRecords' not in legacy and 'railProjects' not in legacy
+   d=menu(p,'設定・保存');p.locator('input[type=file]').set_input_files(str(path));expect(p.locator('.hud-company')).to_contain_text(legacy['companyName']);assert state(p)==legacy;d=menu(p,'経営記録');expect(d.locator('.opening-result-empty')).to_contain_text('後から作成しません');expect(d.locator('.opening-result')).to_have_count(0);p.reload();p.get_by_role('button',name=re.compile(re.escape(legacy['companyName'])+' を続ける')).click();expect(p.locator('.immersive-game')).to_be_visible();assert state(p)==legacy;data['legacy']={'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'importAndReloadExact':True,'historyNotInvented':True};ok('Legacy save import/reload exact, no fabricated opening or rail records')
+  violations.extend(p.evaluate('window.__cspViolations'));assert not violations,violations;assert not blocked,blocked;assert not [r for r in responses if r['status']>=400]
+  assert any('.glb' in r['url'] and r['status']==200 for r in responses);assert any('.woff2' in r['url'] and r['status']==200 for r in responses)
+  data['cspViolations']=violations;data['blockedExternal']=blocked;data['responses']=responses
+  ok('Fonts and authored assets load with no CSP violations or external/HTTP failures')
+  assert not errors,errors;complete=True
+ except Exception:
+  data['failure']=traceback.format_exc()
+  try:shot(p,'failure')
+  except:pass
+  raise
+ finally:
+  (OUT/'results.json').write_text(json.dumps({'passed':complete,'checks':checks,'errors':errors,'warnings':warnings,'data':data,'url':a.url,'devDiagnostics':a.dev_diagnostics,'method':'real Firefox/Mesa app; no asset stubs, no state injection, no RAF modification; optional DEV object reads only'},ensure_ascii=False,indent=2));context.close()
+  if owned:shutil.rmtree(profile,ignore_errors=True)
+  if server:server.shutdown();server.server_close()

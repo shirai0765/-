@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { runScenario } from '../scripts/balance-report';
-import { createGame, advanceWeek, applyAction, previewWeek, managerPlan } from '../src/sim/engine';
+import { createGame, advanceWeek, applyAction, previewWeek, getWeekOutlook, managerPlan } from '../src/sim/engine';
 import { LOTS } from '../src/data/district';
 import { STOCKS } from '../src/data/stocks';
 
@@ -9,7 +9,7 @@ it('delegation changes poor decisions without expanding payroll/advertising or c
   s = applyAction(s, { type: 'updateStore', storeId: s.stores[0].id, changes: { manager: true, staff: 6, price: 2500, marketing: 30000 } });
   const old = s.stores[0], plan = managerPlan(s, old), r = previewWeek(s), next = advanceWeek(s);
   expect(plan.price).toBeLessThan(old.price); expect(plan.staff * 52000 + plan.marketing).toBeLessThanOrEqual(old.staff * 52000 + old.marketing);
-  expect(next.stores[0].price).toBe(plan.price); expect(next.stores[0].name).toBe(old.name); expect(next.lastReport).toEqual(r);
+  expect(next.stores[0].price).toBe(plan.price); expect(next.stores[0].name).toBe(old.name); expect(next.lastReport!.netProfit).toBeGreaterThanOrEqual(getWeekOutlook(s).netProfit.min); expect(next.lastReport!.netProfit).toBeLessThanOrEqual(getWeekOutlook(s).netProfit.max); expect(previewWeek(s)).toEqual(r); expect(next.cash).toBe(s.cash + next.lastReport!.cashChange);
 });
 it('dividends depend on fundamentals rather than speculative quote changes', () => {
   const s = createGame(); const stock = STOCKS.find(x => x.dividendYield > 0)!;
@@ -34,7 +34,7 @@ it('distinguishes capital investment from mismanaged debt-funded operations', ()
 });
 it('reports an explicit failure warning before committing a borrowed loss', () => {
   const s = applyAction(createGame(), { type: 'borrow', amount: 1000000, weeks: 52 });
-  expect(previewWeek(s).headlines.some(x => x.includes('ゲームオーバー'))).toBe(true);
+  expect(getWeekOutlook(s).risk.debtLossPossible).toBe(true);
   expect(s.gameOver).toBe(false); expect(advanceWeek(s).gameOver).toBe(true);
 });
 it('delegation supports a larger profitable group while unmanaged expansion stops at its economic limit', () => {

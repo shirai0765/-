@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search } from 'lucide-react';
 import type { GameState, GameAction, StockDefinition } from '../model';
 import { STOCKS } from '../data/stocks';
 import { previewWeek } from '../sim/engine';
 import { quoteStockTrade, settleStockTradeCash } from '../sim/stockTrading';
 import MarketAcquisitionsPanel from './MarketAcquisitionsPanel';
 import type { InvestmentIntent, InvestmentVisit } from './investmentPlanning';
+import GameDialog from './GameDialog';
 import './market.css';
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
@@ -93,13 +94,13 @@ export default function MarketPanel({ state, onAction, busy = false, onPlanInves
       return <tr key={stock.id}><td><strong>{stock.name}</strong><small>{stock.code} · {stock.market ? markets[stock.market] : 'その他'} · {stock.sector}</small><span className={`investment-tag ${stock.profile ?? ''}`}>{stock.profile ? profiles[stock.profile] : '一般'}</span></td><td><strong>{stockYen(price)}</strong><small>設定配当利回り {(stock.dividendYield * 100).toFixed(1)}%</small><small>{stock.priceKind === 'market-reference' ? '初期参考値' : '仮設定価格'} {stockYen(stock.basePrice)}{stock.priceDate ? ` / ${stock.priceDate}` : ' / 取得日なし'}</small></td><td>{held ? <><strong>{held.shares.toLocaleString()} 株</strong><small className={price >= held.averageCost ? 'positive' : 'negative'}>{yen((price - held.averageCost) * held.shares)}</small><small>取得単価 {stockYen(held.averageCost)}</small></> : <span className="muted">未保有</span>}</td><td><div className="button-row"><button className="secondary" disabled={busy || state.gameOver || acquired.has(stock.id)} onClick={() => openOrder(stock.id, 'buyStock')}>買う</button>{held && <button className="secondary" disabled={busy || state.gameOver || acquired.has(stock.id)} onClick={() => openOrder(stock.id, 'sellStock')}>売る</button>}</div>{acquired.has(stock.id) && <small className="positive">グループ傘下・通常売買終了</small>}</td></tr>;
     })}</tbody></table>{visible.length === 0 && <div className="empty small"><p>条件に合う銘柄がありません。</p><button className="secondary" onClick={() => { setQuery(''); setMarket('all'); setProfile('all'); setBudget('all'); setOwnedOnly(false); }}>絞り込みを解除</button></div>}</div>
     <p className="market-note">株価は週ごとに変動するシミュレーションです。初期参考値は取得日時点の値で、現在の実市場価格ではありません。配当利回り・投資タイプはゲーム用の設定です。受取配当は毎週計上され、借入中の倒産判定に使う事業利益には含まれません。</p>
-    {selected && <div className="modal-shade" onMouseDown={e => { if (e.target === e.currentTarget) setSelectedId(null); }}><section className="modal investment-order" role="dialog" aria-modal="true" aria-label={`${selected.name}の${side === 'buyStock' ? '購入' : '売却'}`}><header><div><span className="eyebrow">{side === 'buyStock' ? 'BUY SHARES' : 'SELL SHARES'}</span><h2>{selected.name}</h2><small>{selected.code} · {selected.market ? markets[selected.market] : ''}</small></div><button className="icon-button" aria-label="取引を閉じる" onClick={() => setSelectedId(null)}><X size={20}/></button></header>
+    {selected && <GameDialog title={`${selected.name}の${side === 'buyStock' ? '購入' : '売却'}`} className="investment-order" close={() => { if (!busy) setSelectedId(null); }}><p className="market-note">{selected.code} · {selected.market ? markets[selected.market] : ''}</p>
       <p>{selected.profile ? riskNotes[selected.profile] : '株価は週ごとに変動します。'}</p><dl className="cost-list"><div><dt>ゲーム内株価 / 第{state.week}週</dt><dd>{stockYen(priceOf(selected))}</dd></div><div><dt>保有株数</dt><dd>{position?.shares.toLocaleString() ?? 0} 株</dd></div><div><dt>手元資金</dt><dd>{yen(state.cash)}</dd></div></dl>
       <label>{side === 'buyStock' ? '購入株数' : '売却株数'}<input autoFocus type="number" min={1} max={1_000_000_000} step={1} value={quantity} onChange={e => setQuantity(e.target.value)}/></label><div className="button-row">{[1, 10, 100].map(n => <button key={n} className="secondary" onClick={() => setQuantity(String(n))}>{n} 株</button>)}{side === 'sellStock' && position && <button className="secondary" onClick={() => setQuantity(String(position.shares))}>全株</button>}</div>
       <dl className="cost-list"><div><dt>{side === 'buyStock' ? '購入総額' : '売却総額'}</dt><dd>{!validShares ? '株数を入力してください' : total === null ? '見積もり不可' : yen(total)}</dd></div>{validShares && <div><dt>取引後の手元資金</dt><dd>{cashAfter === null ? '取引できません' : yen(cashAfter)}</dd></div>}</dl>
       {!validShares ? <p className="warning">1以上の整数で株数を入力してください。</p> : tradeError ? <p className="warning">{side === 'buyStock' && total !== null && total > state.cash ? '購入総額が手元資金を超えています。' : tradeError}</p> : side === 'sellStock' && shares > (position?.shares ?? 0) ? <p className="warning">売却株数が保有株数を超えています。</p> : null}
       <p className="market-note">取引総額の1円未満は、購入時に切り上げ、売却時に切り捨てます。</p><p className="market-note">{selected.priceKind === 'market-reference' ? '初期参考値' : '仮設定価格'} {stockYen(selected.basePrice)} · {selected.priceDate ?? '取得日なし（仮設定）'}<br/>参考企業：{selected.realName} {selected.sourceUrl && <a href={selected.sourceUrl} target="_blank" rel="noreferrer">参考データを見る</a>}</p><button className="primary" disabled={!canTrade} onClick={() => { if (canTrade) { void Promise.resolve(onAction({ type: side, stockId: selected.id, shares })).then(result => { if (result !== false) setSelectedId(null); }); } }}>{!validShares ? '株数を入力してください' : total === null ? '取引金額を確認できません' : `${shares.toLocaleString()}株を${side === 'buyStock' ? '購入' : '売却'}する · ${yen(total)}`}</button>
-    </section></div>}
+    </GameDialog>}
   </>}
   </div>;
 }

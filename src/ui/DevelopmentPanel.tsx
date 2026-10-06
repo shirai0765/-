@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { Building2, Check, X } from 'lucide-react';
+import { useState } from 'react';
+import { Building2, Check } from 'lucide-react';
 import type { DistrictId, GameAction, GameState } from '../model';
 import { getDevelopmentPrograms } from '../sim/development';
-import { applyAction, previewWeek } from '../sim/engine';
+import { applyAction, getWeekOutlook } from '../sim/engine';
+import GameDialog from './GameDialog';
 import './development.css';
 const yen = (n: number) => `¥${Math.round(n).toLocaleString('ja-JP')}`;
+const estimate = ({ min, max }: { min: number; max: number }) => `${yen(Math.floor(min / 1000) * 1000)}〜${yen(Math.ceil(max / 1000) * 1000)}`;
 const percent = (n: number) => `${n >= 0 ? '+' : ''}${(n * 100).toFixed(0)}%`;
 const statusLabel = { available: '計画を選べます', locked: '着工条件を確認', building: '工事中', complete: '全工程完了', suspended: '地区の保有物件なし・稼働停止' };
 const phases = ['街の基盤', '回遊と収益', '地区の未来'];
@@ -12,7 +14,6 @@ export default function DevelopmentPanel({ state, onAction, busy = false }: { st
   const [selected, setSelected] = useState<{ districtId: DistrictId; choiceId: string } | null>(null);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const dialogRef = useRef<HTMLElement>(null);
   const programs = getDevelopmentPrograms(state);
   const program = programs.find(p => p.districtId === selected?.districtId);
   const choice = program?.choices.find(c => c.id === selected?.choiceId);
@@ -23,14 +24,8 @@ export default function DevelopmentPanel({ state, onAction, busy = false }: { st
     try { after = applyAction(state, { type: 'startDevelopment', ...selected }); }
     catch (e) { previewError = e instanceof Error ? e.message : '現在の条件では着工できません。'; }
   }
-  const forecast = after ? previewWeek(after) : null;
-  const debtRisk = !!after && after.loans.some(l => l.remaining > 0) && !!forecast && forecast.netProfit <= 0;
-  useEffect(() => {
-    if (!selected) return;
-    const previous = document.activeElement as HTMLElement | null;
-    dialogRef.current?.focus();
-    return () => previous?.focus();
-  }, [selected]);
+  const forecast = after ? getWeekOutlook(after) : null;
+  const debtRisk = forecast?.risk.debtLossPossible ?? false;
   const confirm = async () => {
     if (!selected || disabled || !after) return;
     setSubmitting(true); setError('');
@@ -51,9 +46,6 @@ export default function DevelopmentPanel({ state, onAction, busy = false }: { st
       {p.status === 'building' ? <div className="development-construction"><strong>{p.remainingWeeks > 0 ? `完成まで、あと ${p.remainingWeeks} 週` : '今週の決算で完成'}</strong><p>{p.choices.find(c => c.id === state.development?.programs.find(row => row.districtId === p.districtId)?.construction?.choiceId)?.name}</p><p>{p.remainingWeeks > 0 ? '完成前は、この工程の効果は反映されません。' : p.active ? '今週の予測には、新しい効果と維持費を反映しています。' : '今週完成しますが、保有物件がないため稼働は停止します。'}次の工程は決算後に選べます。</p><small>現在の工程：{p.phase + 1} / 3</small></div> : p.phase < 3 ? <div className="development-choices">{p.choices.map(c => <article className="development-choice" key={c.id}><span className="eyebrow">PHASE {p.phase + 1} / PLAN</span><h4>{c.name}</h4><p>{c.description}</p><dl><div><dt>着工時の支払</dt><dd>{yen(c.cost)}</dd></div><div><dt>工期</dt><dd>{c.weeks} 週</dd></div><div><dt>完成後の追加維持費 / 週</dt><dd>{yen(c.weeklyUpkeep)}</dd></div><div><dt>地区内の自社店舗需要</dt><dd>{percent(c.cafeDemandBonus)}</dd></div><div><dt>地区内の保有物件賃貸収入</dt><dd>{percent(c.propertyYieldBonus)}</dd></div></dl><p className="development-note">{c.unlocked ? '着工条件を満たしています。' : c.reason}</p><button className="secondary" disabled={disabled || !c.unlocked} onClick={() => { setError(''); setSelected({ districtId: p.districtId, choiceId: c.id }); }}>計画と支払を確認</button></article>)}</div> : <p>3段階の開発が完成しました。店舗の運営と不動産の保有を見直し、街への投資を収益につなげましょう。</p>}
       <div className="development-effects"><span>{p.active ? '現在稼働中' : '現在停止中'}の予測反映効果</span><span>店舗需要 {percent(p.active ? p.effects.cafeDemandBonus : 0)}</span><span>賃貸収入 {percent(p.active ? p.effects.propertyYieldBonus : 0)}</span><span>維持費 {yen(p.active ? p.effects.weeklyUpkeep : 0)} / 週</span></div>
     </section>)}
-    {selected && choice && program && <div className="modal-shade" onMouseDown={e => { if (e.target === e.currentTarget && !submitting) setSelected(null); }}><section className="modal development-modal" ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="development-confirm-title" onKeyDown={e => {
-      if (e.key === 'Escape' && !submitting) setSelected(null);
-      if (e.key === 'Tab') { const elements = Array.from(e.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), [tabindex="0"]')); const first = elements[0], last = elements[elements.length - 1]; if (!first) { e.preventDefault(); return; } if (e.shiftKey && (document.activeElement === first || document.activeElement === e.currentTarget)) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
-    }}><header><div><span className="eyebrow">REVIEW THE DEVELOPMENT PLAN</span><h2 id="development-confirm-title">{program.name}の開発計画</h2></div><button className="icon-button" disabled={submitting} aria-label="確認を閉じる" onClick={() => setSelected(null)}><X size={20}/></button></header><h3>{choice.name}</h3><p>{choice.description}</p><dl className="cost-list"><div><dt>着工時の支払</dt><dd>{yen(choice.cost)}</dd></div><div><dt>支払後の手元資金</dt><dd>{yen(state.cash - choice.cost)}</dd></div><div><dt>工期</dt><dd>{choice.weeks} 週</dd></div><div><dt>完成後の追加維持費 / 週</dt><dd>{yen(choice.weeklyUpkeep)}</dd></div>{forecast && <><div><dt>着工後・今週の予想利益</dt><dd>{yen(forecast.netProfit)}</dd></div><div><dt>着工後・週末の予想現金</dt><dd>{yen(after!.cash + forecast.cashChange)}</dd></div></>}</dl><p>完成後の追加効果：店舗需要 {percent(choice.cafeDemandBonus)} ／ 賃貸収入 {percent(choice.propertyYieldBonus)}。</p><p className="development-note">今週の予測は着工費支払後の状態で計算しています。工事完了後の需要・収入・維持費を先取りした予測ではありません。完成時の利益は店舗の稼働状況や景況によって変わります。</p>{debtRisk && <p className="warning" role="alert">借入中の予想利益がゼロ以下です。この予測のまま週を進めると倒産します。</p>}{after && forecast && after.cash + forecast.cashChange < 0 && <p className="warning" role="alert">着工後は週末の資金が不足する見込みです。</p>}<p className="development-note">着工した計画の変更・中止・返金はできません。条件を確認してから着工してください。</p>{(error || previewError) && <p className="development-error" role="alert">{error || previewError}</p>}<div className="button-row"><button className="secondary" disabled={submitting} onClick={() => setSelected(null)}>戻る</button><button className="primary" disabled={disabled || !after} onClick={() => void confirm()}>{submitting ? '着工中…' : `着工する · ${yen(choice.cost)}`}</button></div></section></div>}
+    {selected && choice && program && <GameDialog title={`${program.name}の開発計画`} className="development-modal" close={() => { if (!submitting) setSelected(null); }}><h3>{choice.name}</h3><p>{choice.description}</p><dl className="cost-list"><div><dt>着工時の支払</dt><dd>{yen(choice.cost)}</dd></div><div><dt>支払後の手元資金</dt><dd>{yen(state.cash - choice.cost)}</dd></div><div><dt>工期</dt><dd>{choice.weeks} 週</dd></div><div><dt>完成後の追加維持費 / 週</dt><dd>{yen(choice.weeklyUpkeep)}</dd></div>{forecast && <><div><dt>着工後・今週の利益見込み</dt><dd>{estimate(forecast.netProfit)}</dd></div><div><dt>着工後・週末の現金見込み</dt><dd>{estimate(forecast.cashAfter)}</dd></div></>}</dl><p>完成後の追加効果：店舗需要 {percent(choice.cafeDemandBonus)} ／ 賃貸収入 {percent(choice.propertyYieldBonus)}。</p><p className="development-note">今週の予測は着工費支払後の状態で計算しています。工事完了後の需要・収入・維持費を先取りした予測ではありません。利益は客足・営業状況や景況によって変わり、週末に確定します。</p>{debtRisk && <p className="warning" role="alert">利益見込みの下限がゼロ以下です。借入中に週末の利益がゼロ以下になると倒産します。</p>}{forecast?.risk.cashShortfallPossible && <p className="warning" role="alert">着工後は週末の資金が不足するおそれがあります。</p>}<p className="development-note">着工した計画の変更・中止・返金はできません。条件を確認してから着工してください。</p>{(error || previewError) && <p className="development-error" role="alert">{error || previewError}</p>}<div className="button-row"><button className="secondary" disabled={submitting} onClick={() => setSelected(null)}>戻る</button><button className="primary" disabled={disabled || !after} onClick={() => void confirm()}>{submitting ? '着工中…' : `着工する · ${yen(choice.cost)}`}</button></div></GameDialog>}
   </div>;
 }

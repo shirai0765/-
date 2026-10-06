@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { GameState, RailProjectChoiceId } from '../src/model';
-import { advanceWeek, applyAction, createGame, previewWeek } from '../src/sim/engine';
+import { advanceWeek, applyAction, createGame, getWeekOutlook, previewWeek } from '../src/sim/engine';
 import { getRailProjectEffects, getRailProjectFinancials } from '../src/sim/railProjects';
 import { runManagedWeeks } from '../src/sim/managedWeeks';
 import { createEnvelope, decodeEnvelope, validateGame } from '../src/persistence';
@@ -33,7 +33,7 @@ describe('沿線共同開発の保存・複数週統合', () => {
     if (mutation === 'extra-field') Object.assign(project, { completed: true });
     expect(() => validateGame(s)).toThrow();
   });
-  it('saves the completion-week state before stopping, with its benefit in the next exact forecast', async () => {
+  it('saves the completion-week state before stopping, with its benefit in the next bounded forecast', async () => {
     const initial = start(fixture()), completeWeek = initial.railProjects!.projects[0].completeWeek;
     let durable: GameState | undefined; const order: string[] = [];
     const result = await runManagedWeeks(initial, 13, {
@@ -46,10 +46,11 @@ describe('沿線共同開発の保存・複数週統合', () => {
     expect(order.at(-2)).toBe(`save:${completeWeek}`); expect(order.at(-1)).toBe(`observe:${completeWeek}`);
     const forecast = previewWeek(result.state), without = previewWeek(withoutRail(result.state));
     expect(forecast.customers).toBeGreaterThan(without.customers); expect(forecast.netProfit).toBeGreaterThan(without.netProfit);
-    expect(advanceWeek(result.state).lastReport).toEqual(forecast);
+    const realized = advanceWeek(result.state).lastReport!; const outlook = getWeekOutlook(result.state);
+    expect(realized.netProfit).toBeGreaterThanOrEqual(outlook.netProfit.min); expect(realized.netProfit).toBeLessThanOrEqual(outlook.netProfit.max);
     const resumed = await runManagedWeeks(await roundTrip(result.state), 4, { commit: async next => { await roundTrip(next); } });
     expect(resumed.stopReason).toBeNull(); expect(resumed.reports).toHaveLength(4);
-    expect(resumed.reports[0]).toEqual(forecast);
+    expect(resumed.reports[0]).toEqual(realized);
     expect(resumed.reports.filter(r => r.headlines.some(h => h.includes('共同開発の効果')))).toHaveLength(1);
   });
   it('does not call an unsaved completion durable and can retry it deterministically', async () => {
@@ -67,7 +68,7 @@ describe('沿線共同開発の保存・複数週統合', () => {
     const initial = start(fixture(), 'rental'); let manual = initial;
     const manualReports = [];
     for (let i = 0; i < 10; i++) {
-      const report = previewWeek(manual), baseline = previewWeek(withoutRail(manual)), cash = manual.cash;
+      const report = advanceWeek(manual).lastReport!, baseline = advanceWeek(withoutRail(manual)).lastReport!, cash = manual.cash;
       expect(report.netProfit).toBe(baseline.netProfit - 4_000);
       expect(getRailProjectFinancials(manual).weeklyUpkeep).toBe(4_000);
       manual = await roundTrip(advanceWeek(manual));

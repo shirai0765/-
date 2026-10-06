@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { DistrictId, GameState, RailProjectChoiceId } from '../src/model';
 import { LOTS } from '../src/data/district';
-import { createGame, applyAction, advanceWeek, previewWeek, getSummary } from '../src/sim/engine';
+import { createGame, applyAction, advanceWeek, previewWeek, getWeekOutlook, getSummary } from '../src/sim/engine';
 import { getRailProjects, getRailProjectEffects, getRailProjectFinancials, RAIL_PROJECT_CHOICES } from '../src/sim/railProjects';
 import { getDevelopmentEffects } from '../src/sim/development';
 import { createEnvelope, decodeEnvelope, validateGame } from '../src/persistence';
@@ -17,8 +17,8 @@ const start = (s: GameState, choiceId: RailProjectChoiceId = 'commerce', distric
 function complete(s: GameState) {
   const ready = s.railProjects!.projects[0].completeWeek;
   while (s.week <= ready) {
-    const forecast = previewWeek(s), cash = s.cash;
-    s = advanceWeek(s); expect(s.lastReport).toEqual(forecast); expect(s.cash).toBe(Math.round(cash + forecast.cashChange));
+    const outlook = getWeekOutlook(s), cash = s.cash;
+    s = advanceWeek(s); expect(s.lastReport!.netProfit).toBeGreaterThanOrEqual(outlook.netProfit.min); expect(s.lastReport!.netProfit).toBeLessThanOrEqual(outlook.netProfit.max); expect(s.cash).toBe(Math.round(cash + s.lastReport!.cashChange));
   }
   return s;
 }
@@ -63,12 +63,12 @@ describe('駅周辺共同開発', () => {
     while (s.week < ready) {
       expect(getRailProjectEffects(s, 'sakuragaoka').cafeDemandBonus).toBe(0);
       expect(previewWeek(s).headlines.some(h => h.includes('共同開発の効果'))).toBe(false);
-      const forecast = previewWeek(s); s = advanceWeek(s); expect(s.lastReport).toEqual(forecast);
+      const outlook = getWeekOutlook(s); s = advanceWeek(s); expect(s.lastReport!.netProfit).toBeGreaterThanOrEqual(outlook.netProfit.min); expect(s.lastReport!.netProfit).toBeLessThanOrEqual(outlook.netProfit.max);
     }
     expect(getRailProjectEffects(s, 'sakuragaoka').cafeDemandBonus).toBe(.12);
     expect(getRailProjectFinancials(s).weeklyUpkeep).toBe(6_000);
     expect(previewWeek(s).headlines.some(h => h.includes('共同開発の効果'))).toBe(true);
-    const forecast = previewWeek(s); s = advanceWeek(s); expect(s.lastReport).toEqual(forecast);
+    const outlook = getWeekOutlook(s); s = advanceWeek(s); expect(s.lastReport!.netProfit).toBeGreaterThanOrEqual(outlook.netProfit.min); expect(s.lastReport!.netProfit).toBeLessThanOrEqual(outlook.netProfit.max);
     expect(previewWeek(s).headlines.some(h => h.includes('共同開発の効果'))).toBe(false);
   });
   it.each(['commerce', 'rental'] as const)('suspends %s fees and effects after sale, resuming without a new capital payment', choice => {
@@ -118,13 +118,13 @@ describe('駅周辺共同開発', () => {
   it('includes upkeep in strict borrowed-profit defeat at zero, without hiding principal cash outflow', () => {
     // This busy district remains at capacity as marketing changes, isolating the exact zero boundary.
     let s = fixture('center'); s = applyAction(s, { type: 'borrow', amount: 1_000_000, weeks: 52 });
-    const profit = previewWeek(s).netProfit;
+    const profit = advanceWeek(s).lastReport!.netProfit;
     s = applyAction(s, { type: 'updateStore', storeId: s.stores[0].id, changes: { marketing: s.stores[0].marketing + profit - 6_000 } });
-    expect(previewWeek(s).netProfit).toBe(6_000);
-    s = start(s, 'commerce', 'center'); const forecast = previewWeek(s);
+    expect(advanceWeek(s).lastReport!.netProfit).toBe(6_000);
+    s = start(s, 'commerce', 'center'); const forecast = advanceWeek(s).lastReport!;
     expect(forecast.netProfit).toBe(0); expect(forecast.loanRepayment).toBeGreaterThan(0);
     expect(forecast.cashChange).toBe(-forecast.loanRepayment);
-    expect(forecast.headlines.some(h => h.includes('ゲームオーバー'))).toBe(true);
+    expect(getWeekOutlook(s).risk.debtLossPossible).toBe(true);
     expect(advanceWeek(s).gameOverReason).toContain('借入');
   });
   it('round-trips construction and rejects malformed optional state without changing old saves', async () => {

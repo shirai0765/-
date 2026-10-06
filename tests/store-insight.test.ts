@@ -24,12 +24,15 @@ function freezeDeep(value: object) {
 }
 
 describe('current-week store operating insight', () => {
-  it.each(['standard', 'premium', 'takeaway'] as const)('matches the report and settled result across four districts for %s', style => {
+  it.each(['standard', 'premium', 'takeaway'] as const)('matches the expected report and bounds the settled result across four districts for %s', style => {
     for (const lotId of ['center-01', 'dogenzaka-02', 'miyashita-04', 'sakuragaoka-06']) {
       const s = open(lotId, style), view = insight(s), forecast = previewWeek(s), next = advanceWeek(s);
       expect(view.week).toBe(s.week);
       expect(view.result).toEqual(forecast.storeResults[0]);
-      expect(view.result).toEqual(next.lastReport!.storeResults[0]);
+      for (const key of ['profit', 'revenue', 'customers', 'satisfaction'] as const) {
+        expect(next.lastReport!.storeResults[0][key]).toBeGreaterThanOrEqual(view.resultRange[key].min);
+        expect(next.lastReport!.storeResults[0][key]).toBeLessThanOrEqual(view.resultRange[key].max);
+      }
       expect(view.flow.customers).toBe(view.result.customers);
       expect(view.flow.customers).toBe(Math.round(Math.min(view.flow.demand, view.flow.capacity)));
       expect(Object.keys(forecast.storeResults[0])).toEqual(reportKeys);
@@ -37,10 +40,10 @@ describe('current-week store operating insight', () => {
     }
   });
 
-  it('preserves the captured 0.4.1 quality tradeoff at the processing limit', () => {
+  it('preserves the quality cost tradeoff at the processing limit under neutral footfall', () => {
     const s = saturated(), before = insight(s), after = insight(set(s, { quality: 100 }));
     expect(before.result).toEqual({ id: s.stores[0].id, revenue: 1064000, profit: 402440, customers: 1120, satisfaction: 79 });
-    expect(after.result).toEqual({ id: s.stores[0].id, revenue: 1064000, profit: 383120, customers: 1120, satisfaction: 84 });
+    expect(after.result).toEqual({ id: s.stores[0].id, revenue: 1064000, profit: 383120, customers: 1120, satisfaction: 85 });
     expect(before.flow.demand).toBeGreaterThan(before.flow.capacity);
     expect(before.flow.unservedDemand).toBeGreaterThan(0);
     expect(before.flow.unusedCapacity).toBe(0);
@@ -49,7 +52,7 @@ describe('current-week store operating insight', () => {
 
   it('reports unrounded processing headroom separately from rounded customers', () => {
     const view = insight(set(open('sakuragaoka-06'), { price: 1400, staff: 2, quality: 100, marketing: 10000 }));
-    expect(view.result).toMatchObject({ revenue: 597800, profit: 240069, customers: 427, satisfaction: 71 });
+    expect(view.result).toMatchObject({ revenue: 614600, profit: 252633, customers: 439, satisfaction: 71 });
     expect(view.flow.capacity).toBe(560);
     expect(view.flow.demand).not.toBe(view.flow.customers);
     expect(view.flow.unusedCapacity).toBe(560 - view.flow.demand);
@@ -72,7 +75,7 @@ describe('current-week store operating insight', () => {
     const s = set(open('center-01', 'premium'), { price: 2000, staff: 4, quality: 100, marketing: 10000, manager: true });
     const view = insight(s);
     expect(view.effectiveSettings).toEqual(view.inputSettings);
-    expect(view.result).toMatchObject({ profit: 846175, satisfaction: 53 });
+    expect(view.result).toMatchObject({ profit: 803650, satisfaction: 53 });
     expect(view.result).toEqual(previewWeek(s).storeResults[0]);
   });
 
@@ -165,6 +168,8 @@ describe('current-week store operating insight', () => {
     expect(report.netProfit).toBeLessThanOrEqual(0);
     const next = advanceWeek(s);
     expect(next.gameOver).toBe(true);
-    expect(next.lastReport).toEqual(report);
+    expect(next.lastReport!.netProfit).toBeLessThanOrEqual(0);
+    expect(next.lastReport!.storeResults[0].profit).toBeGreaterThanOrEqual(view.resultRange.profit.min);
+    expect(next.lastReport!.storeResults[0].profit).toBeLessThanOrEqual(view.resultRange.profit.max);
   });
 });

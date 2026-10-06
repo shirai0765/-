@@ -1,6 +1,6 @@
 import type { GameState, MarketAcquisitionMode } from '../model';
 import { STOCKS } from '../data/stocks';
-import { applyAction, previewWeek } from './engine';
+import { applyAction, getWeekOutlook } from './engine';
 import { marketCompanyDefinition, type MarketAcquisitionTargetView } from './marketAcquisitions';
 
 /** Read-only planning figures. Preparation is a reserve, not a second upfront debit. */
@@ -22,13 +22,16 @@ export function previewAcquisitionComparison(state: GameState, target: MarketAcq
   const comparison = getAcquisitionComparison(state, target, mode);
   if (!comparison.ready) return null;
   const after = applyAction(state, { type: 'acquireMarketCompany', stockId: target.stockId, mode });
-  const beforeForecast = previewWeek(state), afterForecast = previewWeek(after);
+  const beforeOutlook = getWeekOutlook(state), outlook = getWeekOutlook(after);
+  const beforeForecast = beforeOutlook.expected, afterForecast = outlook.expected;
   return {
     cashAfter: after.cash,
+    beforeOutlook, outlook,
     weeklyProfit: afterForecast.netProfit,
     weeklyProfitChange: afterForecast.netProfit - beforeForecast.netProfit,
     weekEndCash: after.cash + afterForecast.cashChange,
     lostDividends: beforeForecast.dividendsReceived - afterForecast.dividendsReceived,
-    debtFailure: after.loans.some(l => l.remaining > 0) && afterForecast.netProfit <= 0,
+    debtFailure: outlook.risk.debtLossPossible,
+    cashFailure: outlook.risk.cashShortfallPossible,
   };
 }

@@ -1,5 +1,5 @@
 import type { GameState, WeeklyReport } from '../model';
-import { advanceWeek, getSummary, previewWeek } from './engine';
+import { advanceWeek, getSummary, getWeekOutlook } from './engine';
 import { getOffers } from './deals';
 import { getMarketGroupFinancials } from './marketAcquisitions';
 
@@ -35,13 +35,15 @@ export async function runManagedWeeks(initial: GameState, requested: 4 | 13, hoo
     let beforeIPO: boolean;
     let beforeOffers: Set<string>;
     try {
-      report = previewWeek(state);
+      const outlook = getWeekOutlook(state);
+      report = outlook.expected;
       if (!Number.isFinite(report.netProfit) || !Number.isFinite(report.cashChange)) return stop('週次予測を確認できないため停止しました。');
-      if (state.loans.some(loan => loan.remaining > 0) && report.netProfit <= 0) return stop('借入中の予想利益がゼロ以下です。破綻する週の前で停止しました。経営内容を見直してください。');
-      if (state.cash + report.cashChange < 0) return stop('次の週末に現預金が不足するため、週を進めず停止しました。支出と資金を確認してください。');
+      if (outlook.risk.debtLossPossible) return stop('借入中の利益が見込み範囲の下限でゼロ以下になる可能性があります。決算前に停止しました。経営内容を見直してください。');
+      if (outlook.risk.cashShortfallPossible) return stop('次の週末に見込み範囲の下限で現預金が不足する可能性があるため、週を進めず停止しました。支出と資金を確認してください。');
       beforeIPO = getSummary(state).ipoEligible;
       beforeOffers = new Set(getOffers(state).map(offer => offer.id));
       next = advanceWeek(state);
+      report = next.lastReport!;
     } catch (error) {
       return stop(`週次計算で停止しました。保存済みの週は維持されています。${detail(error)}`);
     }

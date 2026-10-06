@@ -34,6 +34,21 @@ function storeContext(s: GameState, st: Store) {
   const nearby = s.stores.filter(x => x.id !== st.id && Math.hypot(lot(x.lotId).x - l.x, lot(x.lotId).z - l.z) < 70).length;
   return { l, spec, economy, nearby, developmentBonus: getDevelopmentEffects(s, l.district).cafeDemandBonus + getRailProjectEffects(s, l.district).cafeDemandBonus };
 }
+type OutcomeMode = 'expected' | 'low' | 'high' | 'actual';
+export interface EstimateRange { min: number; max: number }
+export interface StoreResultRange { profit: EstimateRange; revenue: EstimateRange; customers: EstimateRange; satisfaction: EstimateRange }
+export interface WeekOutlook {
+  expected: WeeklyReport; netProfit: EstimateRange; cashChange: EstimateRange; cashAfter: EstimateRange; revenue: EstimateRange; customers: EstimateRange;
+  /** Conservative possible outcomes, not probabilities or certain failure. */
+  risk: { debtLossPossible: boolean; cashShortfallPossible: boolean };
+}
+const range = (values: number[]): EstimateRange => ({ min: Math.min(...values), max: Math.max(...values) });
+/** Settlement-only draws: identity/setting changes never reroll the same district/lot/week. */
+function storeOutcome(s: GameState, st: Store) {
+  const district = lot(st.lotId).district;
+  return { demand: 1 + .04 * (2 * noise(s.seed, s.week, 'v045:traffic:district:' + district) - 1) + .04 * (2 * noise(s.seed, s.week, 'v045:traffic:lot:' + st.lotId) - 1),
+    capacity: 1 + (st.manager ? .02 : .04) * (2 * noise(s.seed, s.week, 'v045:condition:' + st.lotId) - 1) };
+}
 export type StoreOperatingSettings = Readonly<Pick<Store, 'price' | 'staff' | 'quality' | 'marketing' | 'manager' | 'style' | 'level'>>;
 /** A detached current-week explanation, never part of a saved weekly report. */
 export interface StoreOperatingInsight {
@@ -44,6 +59,7 @@ export interface StoreOperatingInsight {
   /** Base-payroll + advertising allocation envelope, not actual wage expense. */
   readonly delegationBudget: number | null;
   readonly flow: Readonly<{ demand: number; capacity: number; customers: number; unservedDemand: number; unusedCapacity: number }>;
+  readonly resultRange: Readonly<StoreResultRange>;
   readonly result: Readonly<WeeklyReport['storeResults'][number]>;
   /** Unrounded expense operands used by the authoritative profit calculation. */
   readonly costs: Readonly<{ ingredients: number; fulfilment: number; labor: number; rent: number; equipment: number; marketing: number; manager: number }>;
@@ -51,16 +67,15 @@ export interface StoreOperatingInsight {
   readonly roundedCostAdjustment: number;
   readonly context: Readonly<{ nearbyStores: number; staffCapacityLimit: number; founderCapacity: number; ownsProperty: boolean; currentReputation: number }>;
 }
-function rawStoreCalculation(s: GameState, st: Store, context = storeContext(s, st)) {
+function rawStoreCalculation(s: GameState, st: Store, context = storeContext(s, st), outcome = { demand: 1, capacity: 1 }) {
   const { l, spec, economy, nearby, developmentBonus } = context;
   const affluence = l.affluence > 3 ? l.affluence / 100 : l.affluence;
   const willingness = 390 + 240 * clamp(affluence, .3, 2) + st.quality * 2.3;
   const priceFit = clamp(Math.pow(willingness / st.price, 1.55), .15, 1.7);
   const awareness = 1 + Math.min(.45, Math.sqrt(st.marketing / 100_000) * .22) + s.reputation / 600;
-  const localCycle = .95 + .1 * noise(s.seed, s.week, l.id);
-  const demand = (1 + developmentBonus) * economy.demand * localCycle * l.footfall * .048 * spec.appeal * priceFit * (.65 + st.quality / 150) * awareness / (1 + nearby * .24 + Math.max(0, s.stores.length - 3) * .035);
+  const demand = (1 + developmentBonus) * economy.demand * outcome.demand * l.footfall * .048 * spec.appeal * priceFit * (.65 + st.quality / 150) * awareness / (1 + nearby * .24 + Math.max(0, s.stores.length - 3) * .035);
   const staffCapacityLimit = 5 + (st.level - 1) * 1.4;
-  const capacity = Math.min(st.staff, staffCapacityLimit) * spec.capacity * (1 + (st.level - 1) * .18) * (st.manager ? 1.08 : economy.founderCapacity);
+  const capacity = outcome.capacity * Math.min(st.staff, staffCapacityLimit) * spec.capacity * (1 + (st.level - 1) * .18) * (st.manager ? 1.08 : economy.founderCapacity);
   const customers = round(Math.min(demand, capacity));
   const satisfaction = round(clamp(55 + st.quality * .45 - Math.max(0, st.price / willingness - 1) * 40 - Math.max(0, demand / Math.max(1, capacity) - 1) * 12 + (st.manager ? 6 : 0), 10, 100));
   const revenue = round(customers * st.price);
@@ -77,6 +92,12 @@ function rawStoreCalculation(s: GameState, st: Store, context = storeContext(s, 
     costs: { ingredients: ingredient, fulfilment, labor, rent, equipment, marketing: st.marketing, manager },
     context: { nearbyStores: nearby, staffCapacityLimit, founderCapacity: economy.founderCapacity, ownsProperty, currentReputation: s.reputation },
   };
+}
+/** Full bounded corners; negative per-customer margin can reverse profit order. */
+function storeResultRange(s: GameState, effective: Store): StoreResultRange {
+  const context = storeContext(s, effective), spread = effective.manager ? .02 : .04;
+  const results = [.92, 1.08].flatMap(demand => [1 - spread, 1 + spread].map(capacity => rawStoreCalculation(s, effective, context, { demand, capacity }).result));
+  return { profit: range(results.map(r => r.profit)), revenue: range(results.map(r => r.revenue)), customers: range(results.map(r => r.customers)), satisfaction: range(results.map(r => r.satisfaction)) };
 }
 function rawStoreResult(s: GameState, st: Store, context = storeContext(s, st)) {
   // Keep the five-field report/save contract; diagnostics must not escape into storeResults.
@@ -114,7 +135,7 @@ export function getStoreOperatingInsight(s: GameState, storeId: string): StoreOp
     week: s.week, storeId,
     inputSettings: operatingSettings(input), effectiveSettings: operatingSettings(effective),
     delegationBudget: input.manager ? input.staff * 52_000 + input.marketing : null,
-    ...calculation,
+    ...calculation, resultRange: storeResultRange(s, effective),
     roundedCostAdjustment: revenue - profit - Object.values(calculation.costs).reduce((sum, cost) => sum + round(cost), 0),
   };
 }
@@ -127,19 +148,26 @@ export function createGame(companyName = '渋谷珈琲ホールディングス',
   number(seed, 0, 4294967295, true); requireThat(typeof companyName === 'string' && companyName.trim().length > 0 && companyName.trim().length <= 40, '会社名は1〜40文字で入力してください。');
   return { version: 1, id: `shibuya-${seed}`, companyName: companyName.trim(), seed, week: 1, cash: 12_000_000, reputation: 10, stores: [], loans: [], properties: [], positions: [], stockPrices: Object.fromEntries(STOCKS.map(x => [x.id, x.basePrice])), subsidiaries: [], listed: false, sharesOutstanding: 1_000_000, founderShares: 1_000_000, sharePrice: 12, dividendPayout: 0, profitableWeeks: 0, totalCustomers: 0, history: [], lastReport: null, milestones: [], gameOver: false, gameOverReason: null, settings: { quality: 'medium', sound: false } };
 }
-export function previewWeek(s: GameState): WeeklyReport {
-  const marketGroup = getMarketGroupFinancials(s);
+function calculateWeek(s: GameState, mode: OutcomeMode, plans = s.stores.map(st => managerPlan(s, st))): WeeklyReport {
+  const marketGroup = getMarketGroupFinancials(s, mode);
   const development = getDevelopmentFinancials(s);
   const railProjects = getRailProjectFinancials(s);
-  const deal = getDealFinancials(s, true);
+  const deal = getDealFinancials(s, mode);
   const maturityCash = getDealMaturityCash(s);
-  const storeResults = s.stores.map(st => storeResult(s, st));
+  const storeResults = plans.map(st => {
+    if (mode === 'actual') return rawStoreCalculation(s, st, storeContext(s, st), storeOutcome(s, st)).result;
+    const result = rawStoreResult(s, st);
+    if (mode === 'expected') return result;
+    const limits = storeResultRange(s, st), side = mode === 'low' ? 'min' : 'max';
+    // Independent conservative envelopes, not a jointly realized scenario/report.
+    return { id: st.id, revenue: limits.revenue[side], profit: limits.profit[side], customers: limits.customers[side], satisfaction: limits.satisfaction[side] };
+  });
   const revenue = storeResults.reduce((a, x) => a + x.revenue, 0);
   const economy = operatingConditions(s);
-  const propertyGross = s.properties.reduce((a, p) => a + (s.stores.some(st => st.lotId === p.lotId) ? 0 : p.weeklyIncome * (1 + getDevelopmentEffects(s, lot(p.lotId).district).propertyYieldBonus + getRailProjectEffects(s, lot(p.lotId).district).propertyYieldBonus) * economy.rents * clamp(p.occupancy * (.94 + .06 * noise(s.seed, Math.floor(s.week / 13), p.id)), 0, 1)), 0);
+  const propertyGross = s.properties.reduce((a, p) => a + (s.stores.some(st => st.lotId === p.lotId) ? 0 : p.weeklyIncome * (1 + getDevelopmentEffects(s, lot(p.lotId).district).propertyYieldBonus + getRailProjectEffects(s, lot(p.lotId).district).propertyYieldBonus) * economy.rents * clamp(p.occupancy * (mode === 'actual' ? .94 + .06 * noise(s.seed, Math.floor(s.week / 13), p.id) : mode === 'low' ? .94 : mode === 'high' ? 1 : .97), 0, 1)), 0);
   const propertyCosts = s.properties.reduce((a, p) => a + p.purchasePrice * .006 / 52 * (1 + (p.level - 1) * .1), 0);
   const propertyIncome = propertyGross - propertyCosts;
-  const subsidiaries = s.subsidiaries.reduce((a, p) => a + p.weeklyProfit * (.94 + (noise(s.seed, s.week, p.id) - .5) * p.risk + Math.sin(s.week * Math.PI * 2 / 78) * p.risk * .35), 0);
+  const subsidiaries = s.subsidiaries.reduce((a, p) => a + p.weeklyProfit * (.94 + (mode === 'actual' ? noise(s.seed, s.week, p.id) - .5 : mode === 'low' ? -.5 : mode === 'high' ? .5 : 0) * p.risk + Math.sin(s.week * Math.PI * 2 / 78) * p.risk * .35), 0);
   const operatingProfit = round(storeResults.reduce((a, x) => a + x.profit, 0) + propertyIncome + subsidiaries + deal.weeklyProfit + marketGroup.weeklyProfit - economy.overhead - development.weeklyUpkeep - railProjects.weeklyUpkeep);
   const interest = round(s.loans.reduce((a, l) => a + l.remaining * l.annualRate / 52, 0));
   const loanRepayment = round(s.loans.reduce((a, l) => a + Math.min(l.remaining, l.weeklyPayment), 0));
@@ -147,7 +175,31 @@ export function previewWeek(s: GameState): WeeklyReport {
   // Dividends and investment transactions never disguise an unprofitable operating business.
   const netProfit = operatingProfit - interest;
   const dividendsPaid = s.listed ? round(Math.max(0, netProfit) * s.dividendPayout) : 0;
-  return { week: s.week, revenue: round(revenue + propertyGross + subsidiaries + deal.weeklyRevenue + marketGroup.weeklyRevenue), operatingProfit, interest, netProfit, loanRepayment, dividendsReceived, dividendsPaid, cashChange: netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash, customers: storeResults.reduce((a, x) => a + x.customers, 0), headlines: [...marketGroup.headlines.slice(0, 5), ...(marketGroup.operating || marketGroup.integrating ? [`市場企業グループ：稼働${marketGroup.operating}社・準備${marketGroup.integrating}社、営業利益 ${marketGroup.weeklyProfit.toLocaleString()}円／週。`] : []), ...developmentHeadlines(s), ...railProjectHeadlines(s), ...(railProjects.weeklyUpkeep ? [`沿線共同開発の維持費 ${railProjects.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(development.weeklyUpkeep ? [`地区開発の維持費 ${development.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(economy.overhead ? [`本部・グループ運営費 ${economy.overhead.toLocaleString()}円／週。店長なし店舗の運営能力 ${Math.round(economy.founderCapacity * 100)}%。`] : []), ...(deal.weeklyExpense || deal.weeklyRevenue ? [`営業提案の今週効果 ${deal.weeklyRevenue.toLocaleString()}円／継続費用 ${deal.weeklyExpense.toLocaleString()}円（営業利益に反映）。`] : []), ...(maturityCash ? [`契約満了の残存価値 ${maturityCash.toLocaleString()}円を現金回収（営業利益には含めません）。`] : []), ...(s.loans.some(l => l.remaining > 0) && netProfit <= 0 ? ['警告：この予測のまま週を終了すると、借入中の利益不足でゲームオーバーです。'] : []), ...(s.cash + netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash < 0 ? ['警告：週末の現預金が不足します。'] : []), netProfit > 0 ? '営業利益を確保しました。次の投資機会を検討しましょう。' : '営業収支が低迷しています。価格・立地・人員を見直しましょう。'], storeResults };
+  return { week: s.week, revenue: round(revenue + propertyGross + subsidiaries + deal.weeklyRevenue + marketGroup.weeklyRevenue), operatingProfit, interest, netProfit, loanRepayment, dividendsReceived, dividendsPaid, cashChange: netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash, customers: storeResults.reduce((a, x) => a + x.customers, 0), headlines: [...marketGroup.headlines.slice(0, 5), ...(marketGroup.operating || marketGroup.integrating ? [`市場企業グループ：稼働${marketGroup.operating}社・準備${marketGroup.integrating}社、営業利益 ${marketGroup.weeklyProfit.toLocaleString()}円／週。`] : []), ...developmentHeadlines(s), ...railProjectHeadlines(s), ...(railProjects.weeklyUpkeep ? [`沿線共同開発の維持費 ${railProjects.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(development.weeklyUpkeep ? [`地区開発の維持費 ${development.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(economy.overhead ? [`本部・グループ運営費 ${economy.overhead.toLocaleString()}円／週。店長なし店舗の運営能力 ${Math.round(economy.founderCapacity * 100)}%。`] : []), ...(deal.weeklyExpense || deal.weeklyRevenue ? [`営業提案の今週効果 ${deal.weeklyRevenue.toLocaleString()}円／継続費用 ${deal.weeklyExpense.toLocaleString()}円（営業利益に反映）。`] : []), ...(maturityCash ? [`契約満了の残存価値 ${maturityCash.toLocaleString()}円を現金回収（営業利益には含めません）。`] : []), ...(s.loans.some(l => l.remaining > 0) && netProfit <= 0 ? [mode === 'actual' ? '借入中の利益不足により経営を終了しました。' : '見込み利益がゼロ以下です。実績は週末に確定します。'] : []), ...(s.cash + netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash < 0 ? ['警告：週末の現預金が不足します。'] : []), ...(mode === 'actual' ? settlementCauses(s, plans) : []), netProfit > 0 ? (mode === 'actual' ? '利益を確保しました。次の投資機会を検討しましょう。' : '現在の計画は黒字見込みです。客足・運営状況で実績は変動します。') : '収支を見直す余地があります。価格・立地・人員を確認しましょう。'], storeResults };
+}
+/** Expected operating plan only. Never evaluates settlement-only draws. */
+export function previewWeek(s: GameState): WeeklyReport { return calculateWeek(s, 'expected'); }
+/** Bounded envelopes, not probabilities; all manager plans are chosen before outcomes. */
+export function getWeekOutlook(s: GameState): WeekOutlook {
+  const plans = s.stores.map(st => managerPlan(s, st));
+  const expected = calculateWeek(s, 'expected', plans), low = calculateWeek(s, 'low', plans), high = calculateWeek(s, 'high', plans);
+  const netProfit = range([low.netProfit, high.netProfit]);
+  const cashChange = range([low.cashChange, high.cashChange]);
+  const cashAfter = range([round(s.cash + cashChange.min), round(s.cash + cashChange.max)]);
+  return { expected, netProfit, cashChange, cashAfter, revenue: range([low.revenue, high.revenue]), customers: range([low.customers, high.customers]),
+    risk: { debtLossPossible: s.loans.some(l => l.remaining > 0) && netProfit.min <= 0, cashShortfallPossible: cashAfter.min < 0 } };
+}
+function settlementCauses(s: GameState, plans: Store[]): string[] {
+  if (!plans.length) return [];
+  const impacts = plans.map(st => {
+    const outcome = storeOutcome(s, st), base = rawStoreResult(s, st), result = rawStoreCalculation(s, st, storeContext(s, st), outcome).result;
+    return { st, outcome, result, delta: result.profit - base.profit };
+  }).sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+  return impacts.slice(0, 3).map(({ st, outcome, result }) => {
+    const traffic = outcome.demand > 1.02 ? '客足が普段より多めで' : outcome.demand < .98 ? '客足が普段より落ち着き' : '普段並みの客足で';
+    const operations = outcome.capacity < .98 ? ' 運営に小さな遅れが出ました。' : outcome.capacity > 1.02 ? ' 接客も順調でした。' : '';
+    return `${st.name}：${traffic}、${result.customers.toLocaleString('ja-JP')}人が来店しました。${operations}`;
+  });
 }
 export function getSummary(s: GameState): CompanySummary {
   const debt = round(s.loans.reduce((a, l) => a + l.remaining, 0));
@@ -215,9 +267,9 @@ export function applyAction(state: GameState, action: GameAction): GameState {
   return s;
 }
 export function advanceWeek(state: GameState): GameState {
-  requireThat(!state.gameOver, 'ゲームは終了しています。'); let s = structuredClone(state); const r = previewWeek(s); const hadDebt = s.loans.some(l => l.remaining > 0);
+  requireThat(!state.gameOver, 'ゲームは終了しています。'); let s = structuredClone(state); const plans = state.stores.map(st => managerPlan(state, st)); const r = calculateWeek(s, 'actual', plans); const hadDebt = s.loans.some(l => l.remaining > 0);
   s.cash = round(s.cash + r.cashChange); s.lastReport = r; s.totalCustomers += r.customers; if (r.netProfit > 0) s.profitableWeeks++;
-  for (const st of s.stores) { Object.assign(st, managerPlan(state, st)); const result = r.storeResults.find(x => x.id === st.id)!; Object.assign(st, result); }
+  for (const st of s.stores) { Object.assign(st, plans.find(plan => plan.id === st.id)!); const result = r.storeResults.find(x => x.id === st.id)!; Object.assign(st, result); }
   s.loans = s.loans.map(l => ({ ...l, remaining: Math.max(0, l.remaining - Math.min(l.remaining, l.weeklyPayment)), weeksLeft: l.weeksLeft - 1 })).filter(l => l.remaining > .01 && l.weeksLeft > 0);
   if (hadDebt && r.netProfit <= 0) { s.gameOver = true; s.gameOverReason = '借入がある状態で、今週の営業利益から利息を引いた利益がゼロ以下になりました。'; }
   else if (s.cash < 0) { s.gameOver = true; s.gameOverReason = '週末の支払いに必要な現預金が不足しました。'; }

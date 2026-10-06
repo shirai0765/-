@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { TrainFront, X } from 'lucide-react';
+import { TrainFront } from 'lucide-react';
 import type { DistrictId, GameAction, GameState, RailProjectChoiceId } from '../model';
 import { getRailProjects, getRailProjectFinancials } from '../sim/railProjects';
-import { applyAction, previewWeek } from '../sim/engine';
+import { applyAction, getWeekOutlook } from '../sim/engine';
 import type { InvestmentIntent, InvestmentVisit } from './investmentPlanning';
+import GameDialog from './GameDialog';
 import './rail-projects.css';
 
 const yen = (n: number) => `¥${Math.round(n).toLocaleString('ja-JP')}`;
+
+const rangeYen = (range: { min: number; max: number }) => `約${yen(Math.floor(range.min / 1000) * 1000)}〜${yen(Math.ceil(range.max / 1000) * 1000)}`;
 const percent = (n: number) => `+${(n * 100).toFixed(0)}%`;
 const labels = { available: '計画を選べます', locked: '条件を確認', building: '工事中', operating: '共同開発が稼働中', suspended: '保有物件なし・運営休止' };
 type Selection = { districtId: DistrictId; choiceId: RailProjectChoiceId };
@@ -20,7 +23,7 @@ export default function RailProjectsPanel({ state, onAction, busy = false, onSho
   const [selected, setSelected] = useState<Selection | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-  const inFlight = useRef(false), dialog = useRef<HTMLElement>(null);
+  const inFlight = useRef(false);
   const handledVisit = useRef<string | null>(null);
   const projects = getRailProjects(state), financials = getRailProjectFinancials(state);
   const project = projects.find(p => p.districtId === selected?.districtId);
@@ -30,15 +33,9 @@ export default function RailProjectsPanel({ state, onAction, busy = false, onSho
     try { after = applyAction(state, { type: 'startRailProject', ...selected }); }
     catch (e) { previewError = e instanceof Error ? e.message : 'この条件では着工できません。'; }
   }
-  const beforeReport = selected ? previewWeek(state) : null;
-  const forecast = after ? previewWeek(after) : null;
+  const beforeReport = selected ? getWeekOutlook(state) : null;
+  const forecast = after ? getWeekOutlook(after) : null;
   const disabled = busy || submitting || state.gameOver;
-  useEffect(() => {
-    if (!selected) return;
-    const previous = document.activeElement as HTMLElement | null;
-    dialog.current?.focus();
-    return () => previous?.focus();
-  }, [selected]);
   useEffect(() => {
     if (!investmentVisit || investmentVisit.intent.kind !== 'rail' || handledVisit.current === investmentVisit.id) return;
     handledVisit.current = investmentVisit.id;
@@ -68,24 +65,15 @@ export default function RailProjectsPanel({ state, onAction, busy = false, onSho
       <header><h3>{p.name}</h3><span>{labels[p.status]}</span></header>
       {p.choice ? <div className="rail-projects-current"><h4>{p.choice.name}</h4><p>{p.remainingWeeks > 0 ? `完成まであと${p.remainingWeeks}週。完成前の効果はありません。` : '工事は完了しています。'}{p.status === 'suspended' ? '地区の物件を再取得すると運営が再開します。' : ''}</p><dl><div><dt>今週の追加需要</dt><dd>{percent(p.effects.cafeDemandBonus)}</dd></div><div><dt>今週の追加賃料効果</dt><dd>{percent(p.effects.propertyYieldBonus)}</dd></div><div><dt>今週の維持費</dt><dd>{yen(p.effects.weeklyUpkeep)}</dd></div></dl>{onShowProject && <button className="secondary" onClick={() => onShowProject(p.districtId)}>沿線の様子を見る</button>}</div> : <div className="rail-projects-options">{p.options.map(c => <article key={c.id}><h4>{c.name}</h4><p>{c.description}</p><dl><div><dt>着工時の支払</dt><dd>{yen(c.cost)}</dd></div><div><dt>工期</dt><dd>{c.weeks}週</dd></div><div><dt>工事中・完成後の維持費 / 週</dt><dd>{yen(c.weeklyUpkeep)}</dd></div><div><dt>完成後の店舗需要</dt><dd>{percent(c.cafeDemandBonus)}</dd></div><div><dt>完成後の外部賃料</dt><dd>{percent(c.propertyYieldBonus)}</dd></div></dl><p className="rail-projects-note">{c.reason || '着工条件を満たしています。効果は地区開発との合算上限内で反映されます。'}</p><button className="secondary" disabled={disabled || !c.unlocked} onClick={() => { setError(''); setSelected({ districtId: p.districtId, choiceId: c.id }); }}>支払と今週の予測を確認</button>{onPlanInvestment && <button className="secondary" disabled={disabled} onClick={() => onPlanInvestment({ kind: 'rail', districtId: p.districtId, choiceId: c.id })}>この計画の資金を確認</button>}</article>)}</div>}
     </section>)}
-    {selected && project && choice && <div className="modal-shade" onMouseDown={e => { if (e.target === e.currentTarget && !inFlight.current) setSelected(null); }}><section className="modal rail-projects-modal" ref={dialog} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="rail-projects-confirm-title" onKeyDown={e => {
-      if (e.key === 'Escape' && !inFlight.current) setSelected(null);
-      if (e.key === 'Tab') {
-        const elements = Array.from(e.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), [tabindex="0"]'));
-        const first = elements[0], last = elements[elements.length - 1];
-        if (!first) e.preventDefault();
-        else if (e.shiftKey && (document.activeElement === first || document.activeElement === e.currentTarget)) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    }}><header><h2 id="rail-projects-confirm-title">{project.name}・共同開発の確認</h2><button className="icon-button" aria-label="確認を閉じる" disabled={submitting} onClick={() => setSelected(null)}><X size={20}/></button></header>
-      <h3>{choice.name}</h3><p>{choice.description}</p><dl className="cost-list"><div><dt>着工時の支払</dt><dd>{yen(choice.cost)}</dd></div><div><dt>{after ? '支払後の現金' : '現在の現金'}</dt><dd>{yen(after?.cash ?? state.cash)}</dd></div><div><dt>工期</dt><dd>{choice.weeks}週</dd></div><div><dt>工事中から毎週の維持費</dt><dd>{yen(choice.weeklyUpkeep)}</dd></div>{forecast && beforeReport && after && <><div><dt>今週利益・着工前 → 着工後</dt><dd>{yen(beforeReport.netProfit)} → {yen(forecast.netProfit)}</dd></div><div><dt>着工後・週末の予想現金</dt><dd>{yen(after.cash + forecast.cashChange)}</dd></div><div><dt>今週の元本返済（予想現金に反映）</dt><dd>{yen(forecast.loanRepayment)}</dd></div></>}</dl>
+    {selected && project && choice && <GameDialog title={`${project.name}・共同開発の確認`} className="rail-projects-modal" close={() => { if (!busy && !inFlight.current) setSelected(null); }}>
+      <h3>{choice.name}</h3><p>{choice.description}</p><dl className="cost-list"><div><dt>着工時の支払</dt><dd>{yen(choice.cost)}</dd></div><div><dt>{after ? '支払後の現金' : '現在の現金'}</dt><dd>{yen(after?.cash ?? state.cash)}</dd></div><div><dt>工期</dt><dd>{choice.weeks}週</dd></div><div><dt>工事中から毎週の維持費</dt><dd>{yen(choice.weeklyUpkeep)}</dd></div>{forecast && beforeReport && after && <><div><dt>今週利益幅・着工前 → 着工後</dt><dd>{rangeYen(beforeReport.netProfit)} → {rangeYen(forecast.netProfit)}</dd></div><div><dt>着工後・週末現金の幅</dt><dd>{rangeYen(forecast.cashAfter)}</dd></div><div><dt>今週の元本返済（予想現金に反映）</dt><dd>{yen(forecast.expected.loanRepayment)}</dd></div></>}</dl>
       <p>完成後は店舗需要 {percent(choice.cafeDemandBonus)} ／ 外部賃料 {percent(choice.propertyYieldBonus)}（地区開発との合算上限あり）。自用物件には追加賃料が発生しません。</p>
-      <p className="rail-projects-note">上の比較は同じ今週の予測です。工事中の維持費を含み、完成後の効果は先取りしていません。将来の利益は店舗の空き能力、賃貸物件、景況によって変わります。</p>
-      {after && forecast && after.loans.some(l => l.remaining > 0) && forecast.netProfit <= 0 && <p className="warning" role="alert">借入中の利益がゼロ以下です。この予測のまま週を進めると倒産します。</p>}
-      {after && forecast && after.cash + forecast.cashChange < 0 && <p className="warning" role="alert">着工後の週末現金が不足する見込みです。</p>}
+      <p className="rail-projects-note">上の比較は同じ今週の見込み幅（千円単位の概数）です。実績は週末に確定します。工事中の維持費を含み、完成後の効果は先取りしていません。将来の利益は店舗の空き能力、賃貸物件、景況によって変わります。</p>
+      {forecast?.risk.debtLossPossible && <p className="warning" role="alert">見込み幅の下限で借入中の利益がゼロ以下になります。実績がゼロ以下なら倒産するリスクがあります。</p>}
+      {forecast?.risk.cashShortfallPossible && <p className="warning" role="alert">着工後の見込み幅の下限で週末現金が不足します。実績によって資金不足になるリスクがあります。</p>}
       <p className="rail-projects-note">着工後の変更・中止・返金はできません。この地区でもう一方の計画を選ぶことはできなくなります。</p>
       {(error || previewError) && <p className="rail-projects-error" role="alert">{error || previewError}</p>}
       <div className="button-row"><button className="secondary" disabled={submitting} onClick={() => setSelected(null)}>戻る</button><button className="primary" disabled={disabled || !after} onClick={() => void confirm()}>{submitting ? '着工中…' : `着工する · ${yen(choice.cost)}`}</button></div>
-    </section></div>}
+    </GameDialog>}
   </div>;
 }

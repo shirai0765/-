@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createGame, applyAction, previewWeek, advanceWeek, getSummary, evaluateSite } from '../src/sim/engine';
+import { createGame, applyAction, previewWeek, getWeekOutlook, advanceWeek, getSummary, evaluateSite } from '../src/sim/engine';
 import { LOTS, ACQUISITION_TARGETS } from '../src/data/district';
 import { STOCKS } from '../src/data/stocks';
 
@@ -8,7 +8,7 @@ const open = () => applyAction(createGame(), { type: 'openStore', lotId: sites()
 describe('weekly economy', () => {
   it('starts with enough capital and estimates an attainable profitable cafe', () => { const s = createGame(); const estimate = evaluateSite(s, sites()[0].id); expect(estimate.openingCost).toBeLessThan(s.cash); expect(estimate.expectedProfit).toBeGreaterThan(0); });
   it('is immutable and reproducible, including market prices', () => { const s = open(), before = JSON.stringify(s); expect(advanceWeek(s)).toEqual(advanceWeek(s)); expect(JSON.stringify(s)).toBe(before); expect(previewWeek(s)).toEqual(previewWeek(s)); });
-  it('settles exact operating cash flow and separates capital investment', () => { const initial = createGame(); const s = open(); expect(s.cash).toBeLessThan(initial.cash); const report = previewWeek(s); expect(report.netProfit).toBeGreaterThan(0); const next = advanceWeek(s); expect(next.cash).toBe(s.cash + report.cashChange); expect(next.gameOver).toBe(false); });
+  it('settles exact operating cash flow and separates capital investment', () => { const initial = createGame(); const s = open(); expect(s.cash).toBeLessThan(initial.cash); const report = previewWeek(s); expect(report.netProfit).toBeGreaterThan(0); const next = advanceWeek(s); expect(next.cash).toBe(s.cash + next.lastReport!.cashChange); expect(next.gameOver).toBe(false); });
   it('counts loan interest as profit expense and principal only as cash outflow', () => { const s = applyAction(open(), { type: 'borrow', amount: 1_000_000, weeks: 52 }); const r = previewWeek(s); expect(r.netProfit).toBe(r.operatingProfit - r.interest); expect(r.loanRepayment).toBe(Math.round(1_000_000 / 52)); expect(r.cashChange).toBe(r.netProfit - r.loanRepayment); expect(advanceWeek(s).gameOver).toBe(false); });
   it('ends a debt-funded loss despite a large bank balance', () => { const s = applyAction(createGame(), { type: 'borrow', amount: 1_000_000, weeks: 52 }); expect(s.cash).toBeGreaterThan(10_000_000); expect(advanceWeek(s).gameOverReason).toContain('借入'); });
   it('does not end a debt-free loss until cash runs out', () => { const s = open(); s.stores[0].staff = 30; const r = previewWeek(s); expect(r.netProfit).toBeLessThan(0); expect(advanceWeek(s).gameOver).toBe(false); s.cash = 0; expect(advanceWeek(s).gameOverReason).toContain('現預金'); });
@@ -38,7 +38,7 @@ describe('progression and repayment', () => {
 import { getOffers, getDealFinancials } from '../src/sim/deals';
 import { createEnvelope, decodeEnvelope } from '../src/persistence';
 describe('sales contract integration', () => {
-  it('pays upfront separately, starts fees immediately, and waits for benefits with exact forecasts', () => {
+  it('pays upfront separately, starts fees immediately, and waits for measured benefits with bounded forecasts', () => {
     let s = open(); const offer = getOffers(s).find(o => o.category === 'system')!;
     const before = previewWeek(s), cash = s.cash;
     s = applyAction(s, { type: 'acceptOffer', offerId: offer.id });
@@ -47,7 +47,7 @@ describe('sales contract integration', () => {
     expect(getDealFinancials(s, true).weeklyRevenue).toBe(0);
     for (let i = 0; i <= offer.leadWeeks; i++) {
       const forecast = previewWeek(s), previousCash = s.cash, next = advanceWeek(s);
-      expect(next.lastReport).toEqual(forecast); expect(next.cash).toBe(previousCash + forecast.cashChange); s = next;
+      expect(next.lastReport!.netProfit).toBeGreaterThanOrEqual(getWeekOutlook(s).netProfit.min); expect(next.lastReport!.netProfit).toBeLessThanOrEqual(getWeekOutlook(s).netProfit.max); expect(next.cash).toBe(previousCash + next.lastReport!.cashChange); s = next;
     }
     expect(s.deals!.contracts[0].realizedWeeklyBenefit).toBeGreaterThan(0);
     expect(s.deals!.contracts[0].cumulativeFees).toBe(offer.weeklyFee * (offer.leadWeeks + 1));
@@ -72,7 +72,7 @@ describe('sales contract integration', () => {
     s.week = s.deals!.contracts[0].endWeek - 1;
     const r = previewWeek(s), cash = s.cash;
     expect(r.cashChange - r.netProfit).toBe(offer.residualValue);
-    const next = advanceWeek(s); expect(next.cash).toBe(cash + r.cashChange); expect(next.deals!.contracts[0].status).toBe('completed');
+    const next = advanceWeek(s); expect(next.cash).toBe(cash + next.lastReport!.cashChange); expect(next.lastReport!.cashChange - next.lastReport!.netProfit).toBe(offer.residualValue); expect(next.deals!.contracts[0].status).toBe('completed');
     expect(previewWeek(next).cashChange).toBe(previewWeek(next).netProfit);
   });
 });

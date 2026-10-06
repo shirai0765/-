@@ -18,7 +18,7 @@ export function isMarketCompanyOwned(s: GameState, stockId: string) { return !!s
 const researched = (s: GameState, stockId: string) => !!s.marketAcquisitions?.research.some(r => r.stockId === stockId);
 function baseline(s: GameState, stock: StockDefinition, mode: MarketAcquisitionMode) { const d = marketCompanyDefinition(stock); return d.baseValue * d.annualYield / 52 * quality(s, stock).factor * (mode === 'integrated' ? 1.12 : .92); }
 function integrationWeeklyCost(stock: StockDefinition, mode: MarketAcquisitionMode) { return money(marketCompanyDefinition(stock).baseValue * (mode === 'integrated' ? .00025 : .00008)); }
-export function getMarketGroupFinancials(s: GameState) {
+export function getMarketGroupFinancials(s: GameState, mode: 'expected' | 'low' | 'high' | 'actual' = 'expected') {
   const companies = s.marketAcquisitions?.companies ?? [];
   let weeklyRevenue = 0, weeklyExpense = 0, bookValue = 0, operating = 0, integrating = 0;
   const headlines: string[] = [];
@@ -28,7 +28,7 @@ export function getMarketGroupFinancials(s: GameState) {
     if (s.week < company.readyWeek) { integrating++; weeklyExpense += integrationWeeklyCost(stock, company.mode); continue; }
     operating++;
     const cycle = Math.sin(s.week * Math.PI * 2 / 104 + roll(91, stock.sector) * Math.PI * 2) * .45;
-    const shock = (roll(s.seed, `${s.week}:${stock.id}:operations`) - .5) * 1.1;
+    const shock = mode === 'actual' ? (roll(s.seed, `${s.week}:${stock.id}:operations`) - .5) * 1.1 : mode === 'low' ? -.55 : mode === 'high' ? .55 : 0;
     const revenue = baseline(s, stock, company.mode) * (1 + d.risk * (cycle + shock));
     weeklyRevenue += revenue;
     // Group oversight rises with the acquired group, rather than adding free independent annuities.
@@ -36,6 +36,9 @@ export function getMarketGroupFinancials(s: GameState) {
     if (s.week === company.readyWeek) headlines.push(`${stock.name}の${d.isFund ? '保有資産運用' : '事業運営'}が開始しました。`);
   }
   weeklyRevenue = money(weeklyRevenue); weeklyExpense = money(weeklyExpense); bookValue = money(bookValue);
+  // Separately rounded revenue and expense may move opposite ways by one yen.
+  if (operating && mode === 'low') weeklyExpense++;
+  if (operating && mode === 'high') weeklyExpense = Math.max(0, weeklyExpense - 1);
   return { weeklyRevenue, weeklyExpense, weeklyProfit: weeklyRevenue - weeklyExpense, bookValue, borrowCollateral: money(bookValue * .25), operating, integrating, headlines };
 }
 export interface MarketAcquisitionTargetView {

@@ -4,9 +4,25 @@
 
 利用枠・リセット券・ファストモードを操作するツールはない。操作したと装わない。ユーザーの停止を無視したり、セッションをまたぐ自動開発を保証したりしない。現在までのソースと成果物を保持して続きを進める。
 
-## 0.4.4：写真の明るさと設定の手応え（公開準備）
+## 0.4.5：試遊を受けた全面街UIと週末実績（公開準備）
 
-sourceは0.4.4、公開URLはまだ0.4.3。公開許可は継続。6 Astraで都市・UX/検査・資本/買収/設備の研究を並行した。buildはgame-BNaTI7Wi / RealCityScene-Db72F0XZ / game-xMFJ-JA1、231unit/26filesと本番CSP9が成功。公開まで同distを再buildしない。
+ユーザーが公開版を試遊し、常時の左右・下部パネル、施設を選んでも詳細が開いたと分からないこと、可操作建物の不明瞭さ、週前に利益が確定していることを強く指摘した。「Coffee Inc/2を大きくしたもの」が体験の軸。0.4.4までのダッシュボードを小さくする案で済ませず、街をviewport全面に維持し、施設・財務・株式などは選択時だけnative GameDialogへ表示する構成に変更した。現在はsource0.4.5、公開は0.4.4。
+
+rootはApp/全体UI、salesは32区画の常時目印とpointer gesture、capitalはnative dialog/資本と買収の幅表示、immersiveは実測街の開閉メニュー/店舗情報の折畳み/開発営業確認、acquisitionは出店画面の短縮と幅/文書/梱包、railは経済境界・長期検証・配信監査、campaignは公式画面調査と実App検証を分担。完了した担当は次の独立仕事へ移した。Astraの7同時枠（root含む）を使い、GPU browserだけ1本に制限。
+
+選択→施設の操作、開業→店の外観＋営業アイコン、HUDから再経営、閉じる→同じ街という導線。32候補に青い店舗＋、営業中は緑カップ、保有物件は紫の目印。背景建物に誤った出店案内を出さない。名前はhover/選択時だけ。全32一覧は必要時に開く。ゲーム地図と実測4地点の対応は従来どおりで、実測街へ実カフェGLBを配置したと主張しない。スマホも常設の縦積みinspectorを廃止。native dialogはEscape/背景click/focus復帰/子confirm/送信中guard/最上面通知を共通化した。店舗一覧は各店の設定全展開をやめ、選択して経営する。
+
+`previewWeek`は中立の見込み、`advanceWeek`だけ当週の実現値を使う。店の客足（地区±4%＋地点±4%）と運営状況（自主管理±4%・店長±2%）はseed/週/lot用途キーで一意。再読込・名前/設定の往復で再抽選しない。店長案は実現値を見る前に選ぶ。`getWeekOutlook`/insight.resultRangeは保守的な上下限で、確率区間ではない。未測定の営業提案・市場企業の当週shockも見込みへ漏らさない。固定費・既知の契約成果を無意味に乱数化しない。保存shapeと過去実績は維持するが、旧会社も次の営業から新方式になり、旧版との将来完全一致は今回意図的に保証しない。
+
+単週は危険の可能性を警告し、借入中の実利益0以下/現金不足という既存終了条件を維持。4/13週の委任は見込み下限に危険があれば実行前停止し、実際の決算を保存する。事前数値は主に閉じた詳細、出店時は千円単位の見込み幅、週末は実績を表示。旧出店記録の基準見込みは後から書換えない。
+
+254テスト/29ファイルと最終build成功。dist game-BKBlvv5Y / game-C_zEWnTB / RealCityScene-BQwCb4fu、276ファイル94,254,310 bytes。DEV実App GPU5カテゴリ成功（32markerの実click・開業・同scene/camera復帰・初決算・保存再読込）。3seed×12週の初店は36決算すべて幅内/再現/無破綻。通常campaign原版2seedは1006/894週で完遂、双方IPO21週、終端save往復一致。人間の30時間体験の実測ではない。公式Coffee画像20取得/10目視、YouTube403・動画視聴0を研究資料へ明記。最終DOM9カテゴリ（1280/390・描画stub）、本番CSP9カテゴリ（native RAF・実描画・旧0.3.2保存完全復元）も成功。検証時にJavaScript/console/外部要求/CSP違反は0。旧880成果物を保持してWeb/Windows ZIPを生成、全CRC/SHA一致。公開後の確認はこれから。
+
+証跡：`shared/shibuya-artifacts/immersive-v045`、`weekly-outcomes-v045`、`integration-v045/pages-prefix`。再実行の入口は `scripts/smoke-immersive.py`（Firefox/private Xorg runner、URL指定可、製品RAFを置換しない）。旧 `smoke-production.py` などは旧UI selectorsを含むため、この版の新導線検証と混同しない。GPU実行環境の制限とゲーム不具合を分けて記録する。
+
+## 0.4.4：写真の明るさと設定の手応え（公開済み）
+
+0.4.4はsource c1651686076c7ef0d85cab162379758f8cb2c9a6、pages db436b50de2e165132d0a2a640e2072eca772456、Pages run37532392337成功で公開済み。公開HTTPSの実Firefox8項目とHTTP18/主要16SHA照合も成功した。公開許可は継続。6 Astraで都市・UX/検査・資本/買収/設備の研究を並行した。buildはgame-BNaTI7Wi / RealCityScene-Db72F0XZ / game-xMFJ-JA1、231unit/26filesと本番CSP9が成功。旧0.4.4 ZIPを保持し、0.4.5を別名へ梱包する。
 
 `photoAppearance.ts`で写真の焼込陰影を使うMeshBasicMaterial/toneMapped=falseへ移行。元linear color×gain1.15、slider1〜1.8は非累積。写真なし材質も比較と同じ方式。元105アセット・全品質geometry/index/normal/UV/worldmatrix/boundsは0.4.3と一致。下半球中性化だけの案は差が小さく不採用。元写真の青さと1024のぼけ、平面地表の制約は残る。marker候補文字だけ濃色化。CESIUM_RTCは専用pluginで既存手動変換を認識し二重適用なし、MediaRetailのundefined transparentは既定falseへ。
 

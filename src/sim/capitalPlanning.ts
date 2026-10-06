@@ -1,5 +1,5 @@
 import type { GameAction, GameState, WeeklyReport } from '../model';
-import { applyAction, getSummary, previewWeek } from './engine';
+import { applyAction, getSummary, getWeekOutlook, type WeekOutlook } from './engine';
 
 export type CapitalPlanId = 'hold' | 'borrow' | 'equity';
 export interface CapitalBudget { spending: number; reserve: number }
@@ -12,7 +12,10 @@ export interface CapitalSnapshot {
   cash: number;
   debt: number;
   ownership: number;
+  /** Neutral planning report only; never a settlement result. */
   report: WeeklyReport;
+  outlook: WeekOutlook;
+  dividendsPaidRange: { min: number; max: number };
   weekEndCash: number;
   debtProfitRisk: boolean;
   cashRisk: boolean;
@@ -33,12 +36,15 @@ export interface CapitalPlan {
 
 function snapshot(state: GameState): CapitalSnapshot {
   const summary = getSummary(state);
-  const report = previewWeek(state);
+  const outlook = getWeekOutlook(state);
+  const report = outlook.expected;
+  const paid = (profit: number) => state.listed ? Math.round(Math.max(0, profit) * state.dividendPayout) : 0;
   return {
-    cash: state.cash, debt: summary.debt, ownership: summary.ownership, report,
+    cash: state.cash, debt: summary.debt, ownership: summary.ownership, report, outlook,
+    dividendsPaidRange: { min: paid(outlook.netProfit.min), max: paid(outlook.netProfit.max) },
     weekEndCash: state.cash + report.cashChange,
-    debtProfitRisk: state.loans.some(loan => loan.remaining > 0) && report.netProfit <= 0,
-    cashRisk: state.cash + report.cashChange < 0,
+    debtProfitRisk: outlook.risk.debtLossPossible,
+    cashRisk: outlook.risk.cashShortfallPossible,
   };
 }
 

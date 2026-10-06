@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createGame, applyAction, advanceWeek, previewWeek, getSummary } from '../src/sim/engine';
+import { createGame, applyAction, advanceWeek, previewWeek, getWeekOutlook, getSummary } from '../src/sim/engine';
 import { getDevelopmentPrograms, getDevelopmentEffects, getDevelopmentFinancials } from '../src/sim/development';
 import { createEnvelope, decodeEnvelope, validateGame } from '../src/persistence';
 import { LOTS } from '../src/data/district';
@@ -15,7 +15,7 @@ function fixture(district: DistrictId = 'center') {
 function finish(s: GameState): GameState {
   while (s.development?.programs.some(p => p.construction)) {
     const r = previewWeek(s), cash = s.cash, next = advanceWeek(s);
-    expect(next.lastReport).toEqual(r); expect(next.cash).toBe(cash + r.cashChange); s = next;
+    expect(next.lastReport!.netProfit).toBeGreaterThanOrEqual(getWeekOutlook(s).netProfit.min); expect(next.lastReport!.netProfit).toBeLessThanOrEqual(getWeekOutlook(s).netProfit.max); expect(previewWeek(s)).toEqual(r); expect(next.cash).toBe(cash + next.lastReport!.cashChange); s = next;
   }
   return s;
 }
@@ -94,12 +94,12 @@ it('includes development upkeep in the borrowed-profit failure rule before commi
   s = finish(applyAction(s, { type: 'startDevelopment', districtId: 'center', choiceId: choice.id }));
   const without = structuredClone(s); delete without.development;
   const targetBeforeUpkeep = 3000;
-  const marketing = s.stores[0].marketing + previewWeek(without).netProfit - targetBeforeUpkeep;
+  const marketing = s.stores[0].marketing + advanceWeek(without).lastReport!.netProfit - targetBeforeUpkeep;
   s = applyAction(s, { type: 'updateStore', storeId: s.stores[0].id, changes: { marketing } });
   s = applyAction(s, { type: 'borrow', amount: 1000000, weeks: 52 });
   const withoutUpkeep = structuredClone(s); delete withoutUpkeep.development;
-  expect(previewWeek(withoutUpkeep).netProfit).toBeGreaterThan(0);
-  expect(previewWeek(s).netProfit).toBeLessThanOrEqual(0);
-  expect(previewWeek(s).headlines.some(h => h.includes('ゲームオーバー'))).toBe(true);
+  expect(advanceWeek(withoutUpkeep).lastReport!.netProfit).toBeGreaterThan(0);
+  expect(advanceWeek(s).lastReport!.netProfit).toBeLessThanOrEqual(0);
+  expect(getWeekOutlook(s).risk.debtLossPossible).toBe(true);
   expect(advanceWeek(s).gameOverReason).toContain('借入');
 });

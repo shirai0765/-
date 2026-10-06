@@ -10,6 +10,7 @@ import { REAL_CITY_ANCHORS } from './gameSites';
 import type { RealCitySiteState } from './gameSites';
 import { RealCityMarkers } from './RealCityMarkers';
 import { clonePhotoModelForExport, DEFAULT_PHOTO_GAIN, photoGain, setPhotoBrightness, usePhotoAppearance } from './photoAppearance';
+import { PointerSelectionGesture } from '../city/pointerSelection';
 export type { TextureQuality, RealCitySiteState };
 export interface RealCityProgress { status:'loading'|'ready'|'failed'|'disposed'; quality:TextureQuality; buildingTiles:number; groundTiles:number; generation:number }
 export interface RealCityFocus { lotId:string|null; status:'queued'|'focused'|'cleared'|'unknown' }
@@ -174,24 +175,25 @@ export function createRealCityScene(host:HTMLElement,options:RealCityOptions={})
     if(!pumpTask){const task=pump();pumpTask=task;void task.finally(()=>{if(pumpTask===task)pumpTask=undefined;});}
   }
   function setQuality(next:TextureQuality){if(disposed)return;if(next===quality&&progress.status==='ready')return;quality=next;startLoad();}
-  const raycaster=new THREE.Raycaster();let down:[number,number]|null=null;
-  function pointerDown(event:PointerEvent){down=[event.clientX,event.clientY];}
+  const raycaster=new THREE.Raycaster();const selectionGesture=new PointerSelectionGesture(6);
+  function pointerDown(event:PointerEvent){selectionGesture.start(event);}
+  function pointerMove(event:PointerEvent){selectionGesture.move(event);}
   function pointerUp(event:PointerEvent){
-    const start=down;down=null;if(!start||!visible()||progress.status!=='ready'||Math.hypot(event.clientX-start[0],event.clientY-start[1])>6)return;
+    if(!selectionGesture.end(event)||!visible()||progress.status!=='ready')return;
     const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((event.clientX-rect.left)/rect.width*2-1,-(event.clientY-rect.top)/rect.height*2+1),camera);
     const hit=raycaster.intersectObject(markers.group,true)[0];if(!hit)return;
     // Text is a game UI annotation; only the physical pin obeys building occlusion.
     if(!(hit.object instanceof THREE.Sprite)){const occluder=raycaster.intersectObject(model,true)[0];if(occluder&&occluder.distance<hit.distance-.1)return;}
     const id=hit.object.userData.lotId;if(typeof id==='string')options.onSelectLot?.(id);
   }
-  function pointerCancel(){down=null;}
-  renderer.domElement.addEventListener('pointerdown',pointerDown);renderer.domElement.addEventListener('pointerup',pointerUp);renderer.domElement.addEventListener('pointercancel',pointerCancel);
+  function pointerCancel(event:PointerEvent){selectionGesture.cancel(event.pointerId);}
+  renderer.domElement.addEventListener('pointerdown',pointerDown);renderer.domElement.addEventListener('pointermove',pointerMove);renderer.domElement.addEventListener('pointerup',pointerUp);renderer.domElement.addEventListener('pointercancel',pointerCancel);
   controls.addEventListener('change',requestRender);document.addEventListener('visibilitychange',visibilityChanged);
   function dispose():Promise<void>{
     if(disposePromise)return disposePromise;
     disposed=true;activeAbort?.abort();queued=null;focused=null;cancelAnimationFrame(frame);frame=0;progress.status='disposed';snapshot=null;
     document.removeEventListener('visibilitychange',visibilityChanged);controls.removeEventListener('change',requestRender);controls.dispose();
-    renderer.domElement.removeEventListener('pointerdown',pointerDown);renderer.domElement.removeEventListener('pointerup',pointerUp);renderer.domElement.removeEventListener('pointercancel',pointerCancel);
+    selectionGesture.reset();renderer.domElement.removeEventListener('pointerdown',pointerDown);renderer.domElement.removeEventListener('pointermove',pointerMove);renderer.domElement.removeEventListener('pointerup',pointerUp);renderer.domElement.removeEventListener('pointercancel',pointerCancel);
     resetContent();markers.dispose();disposeRealObject(scene);renderer.dispose();renderer.domElement.remove();
     disposePromise=(pumpTask??Promise.resolve()).catch(()=>undefined).then(()=>{draco.dispose();});return disposePromise;
   }

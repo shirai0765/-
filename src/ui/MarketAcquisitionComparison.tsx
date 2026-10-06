@@ -6,6 +6,9 @@ import './market-acquisition-comparison.css';
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
 
+
+const rangeYen = (range: { min: number; max: number }) => `約${yen(Math.floor(range.min / 1000) * 1000)}〜${yen(Math.ceil(range.max / 1000) * 1000)}`;
+
 export type AcquisitionComparisonRow = ReturnType<typeof getAcquisitionComparison> & {
   forecast: ReturnType<typeof previewAcquisitionComparison>;
 };
@@ -44,10 +47,10 @@ export default function MarketAcquisitionComparison({ comparisons, cash, onClear
         {cashGap > 0 ? <p className="ma-comparison-cash-warning" role="alert">準備費を確保するには、現金が{yen(cashGap)}不足しています。</p> : <p className="ma-comparison-headroom">準備費を確保した後の現金余力：{yen(cash - row.remainingCashBudget)}</p>}
 
         <div className="ma-comparison-forecast">
-          {forecast ? <><strong>今週、取得した場合</strong><p>取得直後の現金：{yen(forecast.cashAfter)}</p><p>今週の利益（利息後）：{yen(forecast.weeklyProfit)}</p><p>会社全体の利益差：{yen(forecast.weeklyProfitChange)} / 週</p><p>週末の現金：{yen(forecast.weekEndCash)}</p>{forecast.lostDividends > 0 && <p>取得で終了する株式配当：{yen(forecast.lostDividends)} / 週</p>}<p className="ma-comparison-time-note">今週は引継ぎ費用を計上し、稼働後の利益を先取りしません。</p></> : <><strong>今週の取得予測は未計算</strong><p>{target.reason || '選択した方式の統合費を含む資金が不足しています。'}</p></>}
+          {forecast ? <><strong>今週、取得した場合</strong><p>取得直後の現金：{yen(forecast.cashAfter)}</p><p>全社の今週利益幅（利息後）：{rangeYen(forecast.outlook.netProfit)}</p><p>取得しない場合の利益幅：{rangeYen(forecast.beforeOutlook.netProfit)}</p><p>週末の現金の幅：{rangeYen(forecast.outlook.cashAfter)}</p>{forecast.lostDividends > 0 && <p>取得で終了する株式配当：{yen(forecast.lostDividends)} / 週</p>}<p className="ma-comparison-time-note">今週は引継ぎ費用を計上し、稼働後の利益を先取りしません。幅は千円単位の概数です。実績は週末に確定します。</p></> : <><strong>今週の取得予測は未計算</strong><p>{target.reason || '選択した方式の統合費を含む資金が不足しています。'}</p></>}
         </div>
-        {forecast?.debtFailure && <p className="ma-comparison-risk" role="alert">借入残高があり、今週の利益（利息後）が0以下です。この予測で週を終了すると倒産します。</p>}
-        {forecast && forecast.weekEndCash < 0 && <p className="ma-comparison-risk" role="alert">週末の現金が不足する見込みです。</p>}
+        {forecast?.debtFailure && <p className="ma-comparison-risk" role="alert">借入残高があり、見込み幅の下限で利益（利息後）が0以下になります。実績が0以下なら倒産するリスクがあります。</p>}
+        {forecast?.cashFailure && <p className="ma-comparison-risk" role="alert">見込み幅の下限で週末現金が不足します。実績によって資金不足になるリスクがあります。</p>}
         <p className="ma-comparison-commit-note">取得後の取消・運営方式の変更・通常売却はできません。株式売買・配当は終了します。</p>
         <div className="ma-comparison-actions">
           <button type="button" className="secondary" onClick={() => onOpenDetails(target.stockId, choice.mode)}>この案の調査・取得を確認</button>

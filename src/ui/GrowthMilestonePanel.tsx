@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { ArrowUpRight, X } from 'lucide-react';
 import type { GameState } from '../model';
 import { LOTS } from '../data/district';
-import { getSummary, previewWeek } from '../sim/engine';
+import { getSummary, getWeekOutlook } from '../sim/engine';
 import { getDevelopmentPrograms } from '../sim/development';
 import { getRailProjects } from '../sim/railProjects';
 import { getMarketAcquisitionTargets } from '../sim/marketAcquisitions';
@@ -17,6 +17,7 @@ export interface GrowthMilestonePanelProps {
   onNavigate: (target: GrowthMilestoneTarget) => void;
 }
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
+const estimate = ({ min, max }: { min: number; max: number }) => `${yen(Math.floor(min / 1000) * 1000)}〜${yen(Math.ceil(max / 1000) * 1000)}`;
 const percent = (value: number) => `${(value * 100).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`;
 
 /** Read-only success receipt. Closing and navigation never execute an investment. */
@@ -31,7 +32,7 @@ export default function GrowthMilestonePanel({ before, after, onClose, onNavigat
   }, [isIPO]);
   if (!isIPO) return null;
 
-  const summary = getSummary(after), forecast = previewWeek(after);
+  const summary = getSummary(after), forecast = getWeekOutlook(after);
   const projects = getRailProjects(after);
   const ownedDistricts = new Set(after.properties.map(p => LOTS.find(l => l.id === p.lotId)?.district));
   const readyRail = projects.find(p => p.options.some(c => c.unlocked));
@@ -62,8 +63,8 @@ export default function GrowthMilestonePanel({ before, after, onClose, onNavigat
         <div><span>自分が持つ会社の株の割合</span><strong>{percent(before.founderShares / before.sharesOutstanding)} → {percent(summary.ownership)}</strong><small>出資を受けた分、創業者持分が変わりました</small></div>
       </div>
       <p className="growth-milestone-note">IPO実行直後の結果です。調達した現金は売上や週の利益ではありません。</p>
-      {(summary.debt > 0 && forecast.netProfit <= 0) && <p className="growth-milestone-warning" role="alert">今週の予想利益は{yen(forecast.netProfit)}です。借入中の利益がゼロ以下のまま週を終えると倒産します。</p>}
-      {after.cash + forecast.cashChange < 0 && <p className="growth-milestone-warning" role="alert">週末の予想現金は{yen(after.cash + forecast.cashChange)}です。次の投資の前に支払いを確認してください。</p>}
+      {forecast.risk.debtLossPossible && <p className="growth-milestone-warning" role="alert">今週の利益見込みは{estimate(forecast.netProfit)}です。下限では借入中の利益条件を満たせず、倒産のおそれがあります。</p>}
+      {forecast.risk.cashShortfallPossible && <p className="growth-milestone-warning" role="alert">週末の現金見込みは{estimate(forecast.cashAfter)}です。資金不足のおそれがあります。次の投資の前に支払いを確認してください。</p>}
       <h3 className="growth-milestone-next-title">次の資金の使い道を、選べます。</h3>
       <div className="growth-milestone-next">
         <article><h4>企業を迎える</h4><p>上場が必要だった企業も、取得の検討対象になります。</p><small>{readyAcquisitions > 0 ? `独立運営で取得可能：${readyAcquisitions}件。` : `${listedCandidates}件の上場要件を満たしました。`}調査・信用・取得資金は企業ごとに必要です。</small><button className="secondary" onClick={() => navigate('market')}>企業取得を検討 <ArrowUpRight size={14}/></button></article>

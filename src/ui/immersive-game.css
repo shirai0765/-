@@ -1,0 +1,70 @@
+/* The city owns the viewport. Management exists only in dialogs opened by the player. */
+.game-shell.immersive-game{position:relative;display:block;width:100%;height:100dvh;min-height:0;overflow:hidden;background:#dce8ef}
+.immersive-city{position:absolute;inset:0;overflow:hidden}
+.immersive-city .business-map,.immersive-city .business-map-body,.immersive-city .city-world{position:absolute;inset:0;width:100%;height:100%;min-height:0}
+.immersive-city canvas{display:block;outline:none}
+.game-hud{position:absolute;top:max(16px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right));display:flex;align-items:flex-start;justify-content:space-between;gap:12px;pointer-events:none;z-index:8}
+.game-hud button,.hud-context button{pointer-events:auto}
+.hud-company,.hud-button{background:var(--surface);color:var(--ink);border:1px solid #d5dee8;border-radius:14px;box-shadow:0 3px 16px #14294218}
+.hud-company{padding:10px 16px;text-align:left;max-width:min(42vw,280px);min-height:56px}
+.hud-company>span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;color:var(--muted);margin-bottom:2px}
+.hud-company>strong{font-family:'Manrope Variable','Noto Sans JP Variable',sans-serif;font-size:19px;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.hud-tools,.hud-context-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hud-button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;padding:10px 14px;font-size:12px;font-weight:650}
+.hud-context{position:absolute;left:max(16px,env(safe-area-inset-left));bottom:max(24px,env(safe-area-inset-bottom));max-width:calc(100% - 205px);pointer-events:none;z-index:8}
+.first-step-hint{display:flex;align-items:center;gap:10px;max-width:390px;padding:10px 12px;margin-bottom:10px;background:var(--surface);color:var(--ink);box-shadow:0 3px 16px #14294218;border:1px solid var(--line);border-radius:12px;font-size:12px;line-height:1.7;pointer-events:auto}
+.first-step-hint .icon-button{flex:none;min-width:34px;min-height:34px}
+.hud-next-week{position:absolute;bottom:max(24px,env(safe-area-inset-bottom));right:max(16px,env(safe-area-inset-right));z-index:8;display:flex;align-items:center;gap:20px;min-height:60px;padding:11px 18px;border-radius:16px;background:var(--accent);color:white;box-shadow:0 6px 24px #134bc438;text-align:left}
+.hud-next-week>span{font-size:11px;font-weight:500;line-height:1.7}
+.hud-next-week small{display:block;font-size:14px;font-weight:700}
+.immersive-city .city-location,.immersive-city .city-compass{display:none}
+.immersive-city .city-attribution{bottom:5px;left:16px;font-size:8px;max-width:calc(100% - 30px);pointer-events:none}
+.immersive-city .city-hover{top:88px;bottom:auto;left:16px;max-width:270px;pointer-events:none}
+.game-menu{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.game-menu>button{display:flex;align-items:center;gap:10px;min-height:60px;padding:14px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-soft);color:var(--ink);font-size:12px;text-align:left}
+.game-menu>button>span{flex:1}
+.game-menu>button>svg:first-child{color:var(--accent)}
+.game-menu>button:last-child{grid-column:1/-1}
+.map-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.map-choice button,.map-layer-choice button{background:var(--surface-soft);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:13px;min-height:46px;text-align:left}
+.map-choice button small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.map-choice button[aria-pressed=true],.map-layer-choice button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.map-layer-choice{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.game-dialog>.management-dialog{width:min(1120px,100%);max-width:1120px}
+.management-dialog>.page-content{padding:0;overflow:visible;max-width:none}
+.game-dialog>.facility-dialog{width:min(620px,100%);max-width:620px}
+.game-dialog>.modal{padding:24px}
+.game-dialog>.modal>header{position:sticky;top:-24px;z-index:5;margin:-24px -24px 20px;padding:16px 24px;background:var(--surface);border-bottom:1px solid var(--line)}
+.game-dialog>.modal>header .eyebrow{display:none}
+.game-dialog>.modal>header h2{font-size:21px;margin:0}
+.game-dialog>.modal>header>.icon-button{min-width:44px;min-height:44px}
+.facility-property-options{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;font-size:12px}
+.facility-property-options>summary{cursor:pointer;min-height:34px}
+.facility-property-options .property-price{margin-top:14px}
+.week-outlook{font-size:12px;margin:18px 0 24px}
+.week-outlook summary{cursor:pointer;min-height:36px}
+.week-outlook .cost-list dd{font-variant-numeric:tabular-nums;text-align:right}
+.facility-content .facility-district{font-size:12px;color:var(--muted);margin:0 0 15px}
+.facility-content .section-rule{margin-top:15px;padding-top:15px}
+.facility-content .store-controls>label{font-size:12px}
+.facility-content .store-controls input,.facility-content .store-controls select{min-height:44px}
+.facility-location-details{margin-top:24px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--muted)}
+.facility-location-details>summary{cursor:pointer;min-height:34px;color:var(--ink)}
+.facility-location-details p{margin-top:12px}
+.immersive-game>.toast{left:50%;bottom:100px;max-width:min(560px,calc(100vw - 32px));z-index:40}
+.immersive-game>.game-over-banner{left:16px;right:16px;bottom:100px;z-index:40}
+@media(max-width:620px){
+ .game-hud{top:max(10px,env(safe-area-inset-top));left:10px;right:10px;gap:8px}
+ .hud-company{padding:8px 11px;min-height:52px;max-width:44vw;border-radius:12px}
+ .hud-company>strong{font-size:17px}.hud-company>span{font-size:9px}
+ .hud-tools{gap:5px}.hud-tools .hud-button{padding:10px;gap:5px;font-size:11px;border-radius:12px}
+ .hud-context{left:10px;bottom:max(25px,env(safe-area-inset-bottom));max-width:calc(100% - 150px)}
+ .hud-context-actions{gap:6px}.hud-context-actions .hud-button{min-height:42px;font-size:10px;padding:8px 10px;gap:5px}
+ .first-step-hint{position:fixed;left:10px;right:10px;bottom:100px;max-width:none;font-size:11px;margin:0;padding:8px 10px}
+ .hud-next-week{right:10px;bottom:max(25px,env(safe-area-inset-bottom));min-height:56px;padding:10px 13px;gap:12px;border-radius:14px}
+ .hud-next-week small{font-size:12px}.hud-next-week>span{font-size:10px}
+ .immersive-city .city-hover{top:77px;left:10px;max-width:230px}
+ .game-menu{gap:7px}.game-menu>button{padding:12px 9px;gap:7px;font-size:11px;min-height:56px}
+ .map-choice{gap:8px}.map-choice button{padding:12px;font-size:12px}
+ .immersive-game>.toast{bottom:170px}
+}

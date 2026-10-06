@@ -1,7 +1,7 @@
 {
   "name": "shibuya-capital",
   "private": true,
-  "version": "0.4.4",
+  "version": "0.4.5",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -10,6 +10,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "test:browser": "python3 scripts/smoke-browser.py",
+    "test:immersive": "python3 scripts/smoke-immersive.py",
     "balance": "vite-node scripts/balance-report.ts",
     "model:export": "python3 scripts/export-city.py",
     "package:windows": "npm run build && python3 scripts/package-windows.py",

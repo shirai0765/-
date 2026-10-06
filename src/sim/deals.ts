@@ -155,11 +155,14 @@ function actual(s: GameState, o: DealOffer) {
 }
 function active(s: GameState, c: DealContract) { return c.status === 'active' && s.week >= c.startWeek && s.week < c.endWeek; }
 /** Conservative forecast before measurement; realized, reproducible result on settlement. Fees start immediately. */
-export function getDealFinancials(s: GameState, settle = false) {
+export function getDealFinancials(s: GameState, settle: boolean | 'expected' | 'low' | 'high' | 'actual' = false) {
  let weeklyRevenue = 0, weeklyExpense = 0;
  for (const c of s.deals?.contracts ?? []) if (active(s, c)) {
   weeklyExpense += c.offer.weeklyFee;
-  if (s.week >= c.revealWeek && (c.offer.category === 'property' || s.stores.length > 0)) weeklyRevenue += c.realizedWeeklyBenefit ?? (settle ? actual(s, c.offer) : Math.round(c.offer.conservativeWeeklyBenefit));
+  if (s.week >= c.revealWeek && (c.offer.category === 'property' || s.stores.length > 0)) {
+   const expected = Math.round((c.offer.conservativeWeeklyBenefit + c.offer.optimisticWeeklyBenefit) / 2);
+   weeklyRevenue += c.realizedWeeklyBenefit ?? (settle === true || settle === 'actual' ? actual(s, c.offer) : settle === 'high' ? Math.round(c.offer.optimisticWeeklyBenefit) : settle === 'expected' ? expected : Math.round(c.offer.conservativeWeeklyBenefit));
+  }
  }
  return { weeklyRevenue, weeklyExpense, weeklyProfit: weeklyRevenue - weeklyExpense };
 }

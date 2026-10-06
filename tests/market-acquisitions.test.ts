@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createGame, applyAction, previewWeek, advanceWeek, getSummary } from '../src/sim/engine';
+import { createGame, applyAction, previewWeek, getWeekOutlook, advanceWeek, getSummary } from '../src/sim/engine';
 import { getMarketAcquisitionTargets, getMarketGroupFinancials, marketCompanyDefinition } from '../src/sim/marketAcquisitions';
 import { STOCKS } from '../src/data/stocks';
 import { createEnvelope, decodeEnvelope, validateGame } from '../src/persistence';
@@ -42,7 +42,7 @@ describe('friendly market-company acquisition', () => {
     expect(() => applyAction(s, { type: 'sellStock', stockId: target.stockId, shares: 1 })).toThrow('グループ傘下');
     expect(() => applyAction(s, { type: 'acquireMarketCompany', stockId: target.stockId, mode: 'autonomous' })).toThrow('既に');
   });
-  it('charges capital once, forecasts integration costs and actual operating profit exactly through completion', () => {
+  it('charges capital once, keeps integration costs fixed and bounds actual operating profit through completion', () => {
     let s = researched(); const target = getMarketAcquisitionTargets(s).find(t => t.stockId === profitableStock.id)!, choice = target.choices.find(c => c.mode === 'integrated')!;
     const cash = s.cash, worth = getSummary(s).netWorth;
     s = applyAction(s, { type: 'acquireMarketCompany', stockId: target.stockId, mode: 'integrated' });
@@ -51,7 +51,7 @@ describe('friendly market-company acquisition', () => {
     expect(previewWeek(s).netProfit).toBe(-choice.weeklyIntegrationCost);
     for (let i = 0; i <= choice.leadWeeks; i++) {
       const before = s.cash, forecast = previewWeek(s), next = advanceWeek(s);
-      expect(next.cash).toBe(before + forecast.cashChange); expect(next.lastReport).toEqual(forecast); s = next;
+      expect(next.cash).toBe(before + next.lastReport!.cashChange); expect(next.lastReport!.netProfit).toBeGreaterThanOrEqual(getWeekOutlook(s).netProfit.min); expect(next.lastReport!.netProfit).toBeLessThanOrEqual(getWeekOutlook(s).netProfit.max); s = next;
     }
     expect(getMarketGroupFinancials(s).integrating).toBe(0); expect(getMarketGroupFinancials(s).operating).toBe(1);
     expect(previewWeek(s).netProfit).toBeGreaterThan(0);
@@ -65,7 +65,7 @@ describe('friendly market-company acquisition', () => {
     expect(getMarketAcquisitionTargets(s).find(t => t.stockId === profitableStock.id)!.quotePrice).toBe(Math.round(d.baseValue * .6));
     s = applyAction(s, { type: 'borrow', amount: 1000000, weeks: 52 });
     s = applyAction(s, { type: 'acquireMarketCompany', stockId: profitableStock.id, mode: 'autonomous' });
-    expect(previewWeek(s).netProfit).toBeLessThan(0); expect(previewWeek(s).headlines.some(h => h.includes('ゲームオーバー'))).toBe(true);
+    expect(previewWeek(s).netProfit).toBeLessThan(0); expect(previewWeek(s).headlines.some(h => h.includes('ゼロ以下'))).toBe(true);
     expect(advanceWeek(s).gameOverReason).toContain('借入');
   });
   it('roundtrips pending companies, accepts oldv1 and rejects forged profits/times/IDs/duplicates/holdings', async () => {
@@ -93,6 +93,6 @@ it('can hold all100 distinct operating businesses without portfolio dividends or
   const financials = getMarketGroupFinancials(s), report = previewWeek(s);
   expect(financials.operating).toBe(100); expect(financials.weeklyProfit).toBeGreaterThan(0);
   expect(report.operatingProfit).toBe(financials.weeklyProfit); expect(report.dividendsReceived).toBe(0);
-  expect(advanceWeek(s).cash).toBe(s.cash + report.cashChange);
+  const next = advanceWeek(s); expect(next.cash).toBe(s.cash + next.lastReport!.cashChange); expect(next.lastReport!.operatingProfit).toBe(getMarketGroupFinancials(s, 'actual').weeklyProfit);
   expect(validateGame(s).marketAcquisitions!.companies).toHaveLength(100);
 });
