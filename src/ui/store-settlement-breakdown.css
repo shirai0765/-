@@ -1,0 +1,10 @@
+.store-settlement-breakdown{margin:14px 0;padding-top:12px;border-top:1px solid var(--line);min-width:0}
+.store-settlement-breakdown>summary{font-size:12px;line-height:1.6;color:var(--muted);cursor:pointer}
+.store-settlement-breakdown>summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.store-settlement-breakdown .store-settlement-note,.store-settlement-breakdown .store-settlement-loss{font-size:11px;line-height:1.7;margin:10px 0;color:var(--muted)}
+.store-settlement-breakdown .store-settlement-loss{color:var(--red)}
+.store-settlement-breakdown .store-settlement-costs{display:block;margin:12px 0}
+.store-settlement-breakdown .store-settlement-costs>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:6px 0}
+.store-settlement-breakdown .store-settlement-costs dt{font-size:11px;line-height:1.7;color:var(--muted)}
+.store-settlement-breakdown .store-settlement-costs dd{font-size:13px;line-height:1.7;font-weight:600;margin:0;text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.store-settlement-breakdown .store-settlement-total{border-top:1px solid var(--line);margin-top:4px}

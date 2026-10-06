@@ -10,7 +10,15 @@ export interface StockDefinition { id: string; code: string; name: string; realN
 export interface StockPosition { stockId: string; shares: number; averageCost: number }
 export interface Subsidiary { id: string; name: string; sector: 'food' | 'property' | 'rail'; purchasePrice: number; weeklyProfit: number; risk: number }
 export interface AcquisitionTarget { id: string; name: string; sector: 'food' | 'property' | 'rail'; price: number; weeklyProfit: number; risk: number; minReputation: number; description: string }
-export interface WeeklyReport { week: number; revenue: number; operatingProfit: number; interest: number; netProfit: number; loanRepayment: number; dividendsReceived: number; dividendsPaid: number; cashChange: number; customers: number; headlines: string[]; storeResults: { id: string; revenue: number; profit: number; customers: number; satisfaction: number }[] }
+/** Individually rounded JPY expenses captured from a settled store calculation. */
+export interface StoreWeeklyCosts { ingredients: number; fulfilment: number; labor: number; rent: number; equipment: number; marketing: number; manager: number }
+export interface StoreAccount {
+  storeId: string;
+  costs: StoreWeeklyCosts;
+  /** Display reconciliation only; never an additional economic charge. */
+  roundingAdjustment: number;
+}
+export interface WeeklyReport { week: number; revenue: number; operatingProfit: number; interest: number; netProfit: number; loanRepayment: number; dividendsReceived: number; dividendsPaid: number; cashChange: number; customers: number; headlines: string[]; storeResults: { id: string; revenue: number; profit: number; customers: number; satisfaction: number }[]; /** Actual settlement only. Missing rows have no recorded expense breakdown. */ storeAccounts?: StoreAccount[] }
 export interface HistoryPoint { week: number; cash: number; profit: number; revenue: number; valuation: number; stores: number }
 /** A bounded decision journal; never used to calculate company finances. */
 export interface OpeningRecord {

@@ -41,6 +41,7 @@ export default function StoreOpeningPanel({ state, lotId, style, onStyleChange, 
         <div><dt>手元資金・開業費支払後</dt><dd><strong>{yen(selected.cashAfter)}</strong></dd></div>
         <div className="opening-profit-range"><dt>今週の全社利益見込み（利息後）</dt><dd><strong className={selected.outlook.netProfit.min > 0 ? 'positive' : selected.outlook.netProfit.max <= 0 ? 'negative' : ''}>{moneyRange(selected.outlook.netProfit)}</strong></dd></div>
       </dl>
+      {(selected.overheadDelta ?? 0) > 0 && <p className="opening-note">本部費が週{yen(selected.overheadDelta!)}増えます（全社利益見込みに反映済み）。</p>}
       {selected.debtProfitRisk && <p className="opening-warning" role="alert">{selected.debtProfitCertain ? '借入があり、利益見込みの上限も0以下です。返済や計画の見直しが必要です。' : '借入があり、営業結果次第で利息後の利益が0以下になる可能性があります。0以下で週を終えると倒産します。'}</p>}
       {selected.cashRisk && <p className="opening-warning" role="alert">{selected.cashShortfallCertain ? '見込みの範囲すべてで週末の手元資金が不足します。資金計画の見直しが必要です。' : '営業結果次第で週末の手元資金が不足する可能性があります。資金に余裕を残してください。'}</p>}
     </> : <p className="opening-warning">{selected.reason}</p>}

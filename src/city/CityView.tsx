@@ -24,7 +24,7 @@ import { configureCameraInteraction, restoreOverviewDirection, type CameraMode }
 import { observeModalPause } from './modalPause';
 import { ActiveAnimationClock } from './animationClock';
 
-interface Props { cameraMode?:CameraMode; overviewRequestId?:number; state:GameState; selectedLotId:string|null; onSelectLot:(id:string)=>void; quality:QualityLevel; viewMode?:'normal'|'demand'|'ownership'; focusLotId?:string|null; focusRailDistrict?:DistrictId|null; focusStoreLotId?:string|null }
+interface Props { cameraMode?:CameraMode; overviewRequestId?:number; storeFocusRequestId?:number; state:GameState; selectedLotId:string|null; onSelectLot:(id:string)=>void; quality:QualityLevel; viewMode?:'normal'|'demand'|'ownership'; focusLotId?:string|null; focusRailDistrict?:DistrictId|null; focusStoreLotId?:string|null }
 interface Runtime { storeActivity:StoreActivityVisuals; siteMarkers:GameSiteMarkers; storeFrame?:{lot:Lot;style:StoreStyle}; railProjectVisuals:RailProjectVisuals; staticTerraces:Map<string,THREE.Group>; developmentVisuals:DevelopmentVisuals; originalFronts:Map<string,THREE.Group>; growth:CityGrowth; selection:THREE.Mesh; hover:THREE.Mesh; accents:Map<string,THREE.Group>; overlays:Map<string,THREE.Mesh>; controls:OrbitControls; camera:THREE.PerspectiveCamera; focus?:THREE.Vector3 }
 declare global { interface Window { __cityScene?:THREE.Scene; __cityCamera?:THREE.PerspectiveCamera; __cityRenderer?:THREE.WebGLRenderer } }
 const GOLD='#e9c276';
@@ -174,12 +174,13 @@ function makeLandmarks(art:CityArt,assets:LoadedAssetPool) {
   }
 }
 
-export default function CityView({state,selectedLotId,onSelectLot,quality,viewMode='normal',focusLotId,focusRailDistrict,focusStoreLotId,cameraMode='manage',overviewRequestId=0}:Props) {
+export default function CityView({state,selectedLotId,onSelectLot,quality,viewMode='normal',focusLotId,focusRailDistrict,focusStoreLotId,cameraMode='manage',overviewRequestId=0,storeFocusRequestId=0}:Props) {
   const cameraModeRef=useRef(cameraMode);cameraModeRef.current=cameraMode;
   const host=useRef<HTMLDivElement>(null);const runtime=useRef<Runtime|null>(null);
   const previousCloseFocus=useRef<string|null>(null);
   const previousLotFocus=useRef<string|null|undefined>(undefined);
   const previousOverviewRequest=useRef(overviewRequestId);
+  const previousStoreRequest=useRef<{lotId:string|null|undefined;requestId:number;sceneRevision:number}>({lotId:undefined,requestId:storeFocusRequestId,sceneRevision:-1});
   const focusedStore=state.stores.find(store=>store.lotId===focusStoreLotId);
   const focusedStoreStyle=focusedStore?.style;
   const onSelect=useRef(onSelectLot);onSelect.current=onSelectLot;
@@ -318,8 +319,7 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
       if(!pendingSize)return;
       const {width,height}=pendingSize;pendingSize=undefined;
       renderer.setSize(width,height);camera.aspect=width/height;
-      const frame=runtime.current?.storeFrame;
-      if(frame){const view=getStoreViewpoint(frame.lot,frame.style,width/height);if(view)camera.fov=view.fov;}
+      // Retain the player's pose and zoom on resize; an explicit store view fits the new viewport.
       camera.updateProjectionMatrix();
     };
     const resize=new ResizeObserver(()=>{
@@ -367,17 +367,22 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
   useEffect(()=>{
     const rt=runtime.current;if(!rt)return;
     const ordinaryChanged=previousLotFocus.current!==focusLotId;previousLotFocus.current=focusLotId;
+    const previousRequest=previousStoreRequest.current;
+    const storeRequestChanged=previousRequest.lotId!==focusStoreLotId||previousRequest.requestId!==storeFocusRequestId||previousRequest.sceneRevision!==sceneRevision;
+    previousStoreRequest.current={lotId:focusStoreLotId,requestId:storeFocusRequestId,sceneRevision};
     const lot=focusedStoreStyle?LOTS.find(l=>l.id===focusStoreLotId):undefined;
-    const storeView=lot&&focusedStoreStyle?getStoreViewpoint(lot,focusedStoreStyle,Math.max(.65,(host.current?.clientWidth??1)/(host.current?.clientHeight||1))):null;
+    const storeView=lot&&focusedStoreStyle?getStoreViewpoint(lot,focusedStoreStyle,(host.current?.clientWidth??1)/(host.current?.clientHeight||1)):null;
     rt.selection.visible=!!LOTS.find(l=>l.id===selectedLotId)&&!storeView;
     const view=storeView??(focusRailDistrict?{...RAIL_PROJECT_VIEWPOINTS[focusRailDistrict],fov:36}:null);
     if(view){
       rt.storeFrame=storeView&&lot&&focusedStoreStyle?{lot,style:focusedStoreStyle}:undefined;
       rt.storeActivity.update(state,rt.storeFrame?.lot.id);
       rt.focus=undefined;rt.hover.visible=false;rt.controls.minDistance=storeView?5:18;
+      previousCloseFocus.current=storeView?`store:${focusStoreLotId}`:`rail:${focusRailDistrict}`;
+      // Changing a business style updates its appearance; only a viewing request reframes it.
+      if(storeView&&!storeRequestChanged)return;
       rt.camera.fov=view.fov;rt.camera.updateProjectionMatrix();
       rt.camera.position.fromArray(view.position);rt.controls.target.fromArray(view.target);rt.controls.update();
-      previousCloseFocus.current=storeView?`store:${focusStoreLotId}`:`rail:${focusRailDistrict}`;
       return;
     }
     rt.storeFrame=undefined;
@@ -393,7 +398,7 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     previousCloseFocus.current=null;
     const selected=LOTS.find(l=>l.id===focusLotId);
     if(selected){rt.controls.minDistance=55;rt.focus=new THREE.Vector3(selected.x,Math.min(selected.height*.35,20),selected.z);}
-  },[focusStoreLotId,focusedStoreStyle,focusRailDistrict,focusLotId,quality,sceneRevision]);
+  },[focusStoreLotId,storeFocusRequestId,focusedStoreStyle,focusRailDistrict,focusLotId,quality,sceneRevision]);
   useEffect(()=>{
     if(previousOverviewRequest.current===overviewRequestId)return;
     previousOverviewRequest.current=overviewRequestId;

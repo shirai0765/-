@@ -60,6 +60,7 @@ export default function App() {
   const [selectedLotId, setSelectedLotId] = useState<string | null>(null);
   const [focusRailDistrict, setFocusRailDistrict] = useState<DistrictId | null>(null);
   const [focusStoreLotId, setFocusStoreLotId] = useState<string | null>(null);
+  const [storeFocusRequestId, setStoreFocusRequestId] = useState(0);
   const [mapMode, setMapMode] = useState<'game'|'real'>('game');
   const [realFocusLotId, setRealFocusLotId] = useState<string | null>(null);
   const [realFocusRequestId, setRealFocusRequestId] = useState(0);
@@ -93,7 +94,7 @@ export default function App() {
   useEffect(() => { if (!message || modal || page !== 'city' || facilityOpen || hudPanel || guideOpen) return; const id = setTimeout(() => setMessage(''), 8000); return () => clearTimeout(id); }, [message, modal, page, facilityOpen, hudPanel, guideOpen]);
   useEffect(() => { if (modal === 'settings' || modal === 'recovery') listBackups().then(setBackups).catch(e => setMessage(String(e))); }, [modal]);
   const fail = (e: unknown) => setMessage(e instanceof Error ? e.message : String(e));
-  const act = (action: GameAction) => { if (!state || busy) return false; try { const before = stateRef.current ?? state; const next = applyAction(before, action); stateRef.current = next; setState(next); if (action.type === 'ipo' && !before.listed && next.listed) { setModal(null); setPage('city'); setFacilityOpen(false); setHudPanel(null); setGrowthMilestone({ before, after: next }); } if (action.type === 'closeStore') setFocusStoreLotId(null); return true; } catch(e) { fail(e); return false; } };
+  const act = (action: GameAction) => { if (!state || busy) return false; try { const before = stateRef.current ?? state; const next = applyAction(before, action); stateRef.current = next; setState(next); if (action.type === 'ipo' && !before.listed && next.listed) { setModal(null); setPage('city'); setFacilityOpen(false); setHudPanel(null); setGrowthMilestone({ before, after: next }); } if (action.type === 'closeStore' && before.stores.find(store => store.id === action.storeId)?.lotId === focusStoreLotId) setFocusStoreLotId(null); return true; } catch(e) { fail(e); return false; } };
   const start = async () => { if (busy) return; setBusy(true); try { const next = createGame(companyName.trim() || '渋谷珈琲株式会社', crypto.getRandomValues(new Uint32Array(1))[0]); await saveGame(next); setState(next); stateRef.current = next; setSaved(next); setModal(null); setRunWeeks(1); setBatchResult(null); setPage('city'); setFacilityOpen(false); setHudPanel(null); setSelectedLotId(null); setFocusRailDistrict(null); setFocusStoreLotId(null); setRealFocusLotId(null); setMapMode('game'); setInvestmentPlan(null); setInvestmentVisit(null); setGrowthMilestone(null); setFinanceDraft(undefined); setOnboarding(true); setCameraMode('manage'); } catch(e) { fail(e); } finally { setBusy(false); } };
   const finishWeek = async () => {
     if (!state || busy) return;
@@ -142,6 +143,7 @@ export default function App() {
     const current = stateRef.current ?? state;
     if (!current.stores.some(candidate => candidate.lotId === id)) { setMessage('この場所の店舗は現在営業していません。'); return; }
     setModal(null); setFocusRailDistrict(null); setSelectedLotId(id); setFocusStoreLotId(id); setPage('city'); setFacilityOpen(false); setHudPanel(null);
+    setStoreFocusRequestId(value => value + 1);
     requestRealFocus(hasRealCityAnchor(id)?id:null);
     if(mapMode==='real'&&!hasRealCityAnchor(id)){setMapMode('game');setMessage('この店舗の外観はゲーム街で表示します。会社や選択した店舗は変わりません。');}
   };
@@ -166,7 +168,7 @@ export default function App() {
   return <GameNoticeContext.Provider value={{notice:message,onClearNotice:()=>setMessage('')}}><main className="game-shell immersive-game">
     <section className="immersive-city" aria-label="渋谷の街">
       <div className="business-map" data-map-mode={mapMode}><div className="business-map-body">
-        {mapMode==='real'?<RealCityView cameraMode={cameraMode} state={state} selectedLotId={selectedLotId} focusLotId={realFocusLotId} focusRequestId={realFocusRequestId} onSelectLot={selectLot} onFallback={()=>changeMap('game')} onOverview={()=>requestRealFocus(null)}/>:<CityView overviewRequestId={overviewRequestId} cameraMode={cameraMode} state={state} selectedLotId={selectedLotId} onSelectLot={selectLot} quality={state.settings.quality} viewMode={viewMode} focusRailDistrict={focusRailDistrict} focusStoreLotId={focusStoreLotId}/>}
+        {mapMode==='real'?<RealCityView cameraMode={cameraMode} state={state} selectedLotId={selectedLotId} focusLotId={realFocusLotId} focusRequestId={realFocusRequestId} onSelectLot={selectLot} onFallback={()=>changeMap('game')} onOverview={()=>requestRealFocus(null)}/>:<CityView storeFocusRequestId={storeFocusRequestId} overviewRequestId={overviewRequestId} cameraMode={cameraMode} state={state} selectedLotId={selectedLotId} onSelectLot={selectLot} quality={state.settings.quality} viewMode={viewMode} focusRailDistrict={focusRailDistrict} focusStoreLotId={focusStoreLotId}/>}
       </div></div>
     </section>
     <div className="game-hud">

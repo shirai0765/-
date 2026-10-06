@@ -71,6 +71,22 @@ function validateDeals(value: unknown, state: Obj) {
   uniqueStrings(deals.dismissed, 10000, 120).forEach(id => { if (!isDealOfferId(id)) fail(); });
   if (deals.lastTickWeek !== undefined) num(deals.lastTickWeek, 1, week, true);
 }
+function validateStoreAccounts(value: unknown, results: Obj[]) {
+  const byId = new Map(results.map(result => [String(result.id), result]));
+  const keys = ['ingredients', 'fulfilment', 'labor', 'rent', 'equipment', 'marketing', 'manager'];
+  uniqueRows(value, 'storeId', account => {
+    if (Object.keys(account).some(key => !['storeId', 'costs', 'roundingAdjustment'].includes(key))) fail();
+    const result = byId.get(String(account.storeId)); if (!result) fail();
+    const costs = obj(account.costs);
+    if (Object.keys(costs).some(key => !keys.includes(key))) fail();
+    let sum = 0;
+    for (const key of keys) sum = num(sum + num(costs[key], 0, Number.MAX_SAFE_INTEGER, true), 0, Number.MAX_SAFE_INTEGER, true);
+    const adjustment = num(account.roundingAdjustment, -4, 4, true);
+    const revenue = num(result.revenue, 0, Number.MAX_SAFE_INTEGER, true), profit = num(result.profit, -Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, true);
+    const total = num(sum + adjustment, 0, Number.MAX_SAFE_INTEGER, true);
+    if (total !== num(revenue - profit, 0, Number.MAX_SAFE_INTEGER, true)) fail();
+  }, results.length);
+}
 /** Validate before either serialization or use: imports are untrusted data. */
 export function validateGame(value: unknown): GameState {
   const s = obj(value); if (s.version !== 1) throw new SaveError('このセーブのバージョンには対応していません。');
@@ -174,7 +190,11 @@ export function validateGame(value: unknown): GameState {
   let previousWeek = -1; array(s.history, 100000).forEach(row => { const o = obj(row); const week = num(o.week, 0, Number(s.week), true); if (week <= previousWeek) fail(); previousWeek = week; fields(o, ['cash', 'profit']); fields(o, ['revenue', 'valuation'], 0); num(o.stores, 0, 10000, true); });
   array(s.milestones, 10000).forEach(v => str(v, 500));
   const settings = obj(s.settings); choice(settings.quality, ['low', 'medium', 'high']); bool(settings.sound);
-  if (s.lastReport !== null) { const r = obj(s.lastReport); num(r.week, 0, Number(s.week), true); fields(r, ['revenue', 'interest', 'loanRepayment', 'dividendsReceived', 'dividendsPaid', 'customers'], 0); fields(r, ['operatingProfit', 'netProfit', 'cashChange']); array(r.headlines, 100).forEach(v => str(v, 1000)); uniqueRows(r.storeResults, 'id', o => { fields(o, ['revenue', 'customers'], 0); num(o.profit); num(o.satisfaction, 0, 100); }); }
+  if (s.lastReport !== null) {
+    const r = obj(s.lastReport); num(r.week, 0, Number(s.week), true); fields(r, ['revenue', 'interest', 'loanRepayment', 'dividendsReceived', 'dividendsPaid', 'customers'], 0); fields(r, ['operatingProfit', 'netProfit', 'cashChange']); array(r.headlines, 100).forEach(v => str(v, 1000));
+    const results = uniqueRows(r.storeResults, 'id', o => { fields(o, ['revenue', 'customers'], 0); num(o.profit); num(o.satisfaction, 0, 100); });
+    if (Object.hasOwn(r, 'storeAccounts')) validateStoreAccounts(r.storeAccounts, results);
+  }
   if (s.deals !== undefined) validateDeals(s.deals, s);
   void stores;
   // Clone severs imported object references and rejects oversized saves before IndexedDB work.

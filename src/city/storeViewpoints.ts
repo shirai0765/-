@@ -1,4 +1,5 @@
 import type { Lot, StoreStyle } from '../model';
+import { Vector3 } from 'three';
 import { LANDMARKS } from '../data/district';
 import { CITY_DISPLAY_LOTS } from './displayLayout';
 
@@ -33,17 +34,34 @@ export function isStoreViewpointClear(lot:Lot,view:StoreViewpoint){
 
 /** A storefront faces local +Z. The premium GLB is 8.14m wide, unlike its host parcel. */
 export function getStoreViewpoint(lot:Lot,style:StoreStyle,aspect=1.3):StoreViewpoint|null {
+  if(!Number.isFinite(aspect)||aspect<=0)return null;
   const detailed=style==='premium'&&lot.id!=='center-03';
   const c=Math.cos(lot.rotation??0),s=Math.sin(lot.rotation??0);
   const world=(x:number,y:number,z:number):[number,number,number]=>[lot.x+x*c+z*s,y,lot.z-x*s+z*c];
   const front=lot.depth/2+.9,aimX=0,aimY=detailed?2.25:3.25;
   const width=detailed?10.8:lot.width+1.8,preferred=detailed?12.5:19;
+  // Match CityGrowth's store name plane. This frames the sign, not the whole building.
+  const cafeWidth=Math.min(lot.width-.8,12),signX=detailed?cafeWidth*.12:0,signY=detailed?3.47:5.1;
+  const signZ=lot.depth/2+(detailed?.54:.82),signHalfWidth=(detailed?cafeWidth*.6:Math.min(lot.width-1,16))/2,signHalfHeight=detailed?.25:1.4;
+  const signCorners=[-1,1].flatMap(x=>[-1,1].map(y=>world(signX+x*signHalfWidth,signY+y*signHalfHeight,signZ)));
+  const signFov=(position:StoreViewpoint['position'],target:StoreViewpoint['target'])=>{
+    const eye=new Vector3(...position),backward=eye.clone().sub(new Vector3(...target)).normalize();
+    const right=new Vector3(0,1,0).cross(backward).normalize(),up=backward.clone().cross(right),offset=new Vector3();
+    let tangent=0;
+    for(const corner of signCorners){
+      offset.set(...corner).sub(eye);const depth=-offset.dot(backward);
+      if(depth<=0)return Infinity;
+      tangent=Math.max(tangent,Math.abs(offset.dot(up))/depth,Math.abs(offset.dot(right))/(depth*aspect));
+    }
+    return 2*Math.atan(tangent/.92)*180/Math.PI;
+  };
   for(const aimShift of [0,.22,-.22,.34,-.34,.4,-.4]){
     const target=world(aimX+lot.width*aimShift,aimY,front);
     for(const distance of [preferred,preferred*.85,preferred*1.15,preferred*.7,preferred*1.35,7]){
     for(const side of [0,.24,-.24,.48,-.48,.75,-.75,1,-1]){
       const position=world(aimX+lot.width*(side+aimShift),Math.max(4.5,aimY+distance*.19),front+distance);
-      const fov=Math.max(40,Math.min(74,2*Math.atan(width/(2*Math.max(.65,aspect)*distance))*180/Math.PI));
+      const needed=signFov(position,target);if(needed>74)continue;
+      const fov=Math.max(40,needed,Math.min(74,2*Math.atan(width/(2*aspect*distance))*180/Math.PI));
       const view={position,target,fov};
       if(isStoreViewpointClear(lot,view))return view;
     }

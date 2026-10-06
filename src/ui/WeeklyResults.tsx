@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { GameState, OpeningRecord } from '../model';
+import StoreSettlementBreakdown from './StoreSettlementBreakdown';
 import './weekly-results.css';
 
 interface Props {
@@ -107,6 +108,7 @@ export default function WeeklyResults({ state, onManageStore, onViewStore, onBro
             <div><dt>来店者数</dt><dd>{result.customers.toLocaleString('ja-JP')}<small>人</small></dd></div>
             <div><dt>満足度</dt><dd>{Math.round(result.satisfaction)}<small> / 100</small></dd></div>
           </dl>
+          <StoreSettlementBreakdown week={report.week} result={result} account={report.storeAccounts?.find(account => account.storeId === result.id)}/>
           <div className="weekly-store-actions">
             {onManageStore && <button type="button" className="secondary" disabled={!store || state.gameOver} onClick={() => store && onManageStore(store.lotId)}>この店を調整</button>}
             {onViewStore && <button type="button" className="text-button" disabled={!store} onClick={() => store && onViewStore(store.lotId)}>店の様子を見る</button>}

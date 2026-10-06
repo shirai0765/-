@@ -4,6 +4,7 @@ import type { GameAction, GameState, Store, StoreStyle } from '../model';
 import { getStoreOperatingInsight, operatingConditions } from '../sim/engine';
 import { StoreOperatingInsightPanel } from './StoreOperatingInsightPanel';
 import { StoreStaffCapacityNote } from './StorePlanFeedback';
+import StoreSettlementBreakdown from './StoreSettlementBreakdown';
 import './store-management.css';
 
 export interface StoreManagementPanelProps {
@@ -130,11 +131,12 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
       {purpose === 'product' && <>
         <DraftField label="販売価格（円）" value={store.price} min={200} max={2500} step={50} disabled={locked} onCommit={price => update({ price: numeric(price) })}/>
         <label>品質 <span>{store.quality}</span><input type="range" min={20} max={100} step={5} value={store.quality} disabled={locked} onChange={event => update({ quality: Number(event.target.value) })}/></label>
-        <p className="store-management-hint">品質は満足度と材料費に関わります。</p>
+        <p className="store-management-hint">値上げは一杯の売上を増やしますが、来店需要が下がることがあります。品質は集客・満足度と材料費に関わります。</p>
         {store.manager && <p className="store-management-hint">店長に委任中です。営業時には価格と品質も必要に応じて調整されます。</p>}
       </>}
       {purpose === 'people' && <>
         <DraftField label="従業員数" value={store.staff} min={1} max={30} step={1} disabled={locked} onCommit={staff => update({ staff: numeric(staff) })}/>
+        {(!insight || insight.effectiveSettings.staff <= insight.context.staffCapacityLimit) && <p className="store-management-hint">増員は人件費を増やし、設備の上限内で受け入れ枠を広げます。</p>}
         <StoreStaffCapacityNote insight={insight}/>
         <label className="toggle"><input type="checkbox" checked={store.manager} disabled={locked} onChange={event => update({ manager: event.target.checked })}/>
           <span>店長に運営を委任<small>店長費 週{yen(72_000 * wages)}</small></span></label>
@@ -142,10 +144,12 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
       </>}
       {purpose === 'promotion' && <>
         <DraftField label="週間広告費（円）" value={store.marketing} min={0} max={500000} step={10000} disabled={locked} onCommit={marketing => update({ marketing: numeric(marketing) })}/>
+        <p className="store-management-hint">広告は来店需要に関わり、毎週費用がかかります。受け入れ枠が埋まると、集客が増えても客数が増えない場合があります。</p>
         <label>内装・営業スタイル<select value={store.style} disabled={locked} onChange={event => update({ style: event.target.value as StoreStyle })}>
           {Object.entries(styles).map(([value, name]) => <option key={value} value={value}>{name}</option>)}
         </select><small className="store-management-cost">変更時に800,000円を支払います。</small></label>
         <div className="store-management-upgrade"><p>設備 Lv.{store.level}</p>
+          <p className="store-management-hint">設備の増強は受け入れ枠と維持費を増やします。</p>
           {store.level < 5 ? <button type="button" className="secondary" disabled={locked} onClick={() => onAction({ type: 'upgradeStore', storeId: store.id })}>設備を増強 · {yen(1_200_000 * store.level)}</button>
             : <span className="owned-label">設備は最大レベルです</span>}
         </div>
@@ -157,6 +161,7 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
           <div><dt>来店者数</dt><dd>{actual.customers.toLocaleString('ja-JP')}人</dd></div>
           <div><dt>満足度</dt><dd>{actual.satisfaction} / 100</dd></div></dl>
         <p className="store-management-hint">店舗利益は本部費・利息などを含みません。</p>
+        <StoreSettlementBreakdown week={report.week} result={actual} account={report.storeAccounts?.find(account => account.storeId === actual.id)}/>
       </> : <p className="store-management-empty">{noResults}</p>)}
       {purpose !== 'results' && <StoreOperatingInsightPanel insight={insight} storeName={store.name} reasonsId={reasonsId}/>} 
     </>}

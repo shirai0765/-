@@ -2,7 +2,15 @@
 
 最新の目的は、実写真に忠実な渋谷の見た目と、約30時間で上場・全企業取得・街区開発を完遂できる経営ゲーム。以前の100〜1000時間目標は置き換え済み。ユーザーはインターネット無制限設定を反映し、実写真の収集と模型への反映を明示的に依頼。旧ゲーム削除と新規制作も承認済み。
 
-## 現在0.4.6：追加試遊から操作と週報を修正（公開済み）
+## 現在0.4.7：店舗費用の記録と近景の修正（開発中・未公開）
+
+ソース版は0.4.7、公開は0.4.6。今回の範囲は任意の確定7費用ledger・丸め調整・旧決算未記録表示、出店の本部費増を主値近くに示す1行、同店refocus/style変更の姿勢保持/別店close guard/portrait aspect fit。通常選択・開業からの自動近景は復活させず、利益係数・終了条件は変更しない。`report.storeAccounts` は任意記録でresultのstore IDへ対応させ、旧費用を現在設定から作らない。現在の計画と過去実績、店舗利益と本部費・利息・投資支出を分ける。
+
+最終315テスト/34filesとbuild成功、runtime凍結。ログは `/tmp/shibuya-test-0.4.7-final.log` と `/tmp/shibuya-build-0.4.7-final.log`。費用記録だけを除く旧基点51全状態比較は一致（`research-v047/accounting-baseline.json`）。UI局所SSR8、視点5テスト/192符号組合せも成功。実App/GPU・Web/Windows ZIP・公開は検証待ち。文書は梱包前に確定し、rootのcommitまでは以後の編集を止める。梱包のSHA/サイズと公開実結果は後から記録する。0.4.6の合格を今回へ転用しない。
+
+3seed/18対照/204決算の第1〜20週研究は `research-v047/early-store-decisions-review.md`。研究の第5/11/15週を解禁条件や推奨順序にせず、950円を一般解、店長を増益保証としない。新規動画視聴なし。実音声・Windows実機・人間の30時間は今回確認しない限り未確認を維持。
+
+## 0.4.6：追加試遊から操作と週報を修正（公開済みの記録）
 
 0.4.6を公開済み。ユーザーの追加試遊を受け、通常ドラッグで街が回転すること、店を選ぶだけでカメラが寄ること、操作の効果を判断しにくいこと、週報の長さと数字の突然の表示を修正した。公開HTTP18/主要16SHAと実Firefox10カテゴリ成功、error/warning/CSP/外部要求/HTTP失敗0。native BGM再生/時計はクラウドbackendの制約で明示skip、opt-in/preferences確認。source `69a10ac4ff0815f3255822e22a245144cd751e8f`、pages `5b64d36e0cad4d11a07d848cef07dd6c0cdd0795`、Pages run `37539018321` completed/success。runtimeは凍結済みで今後buildしない。index SHA `7dcd5a42f396b162fc2edbf6edbb9de4236d8e3b409e2917388192d74bb779a5`、game chunk `game-DwYDWwyQ.js`。文書の最終commitとsource archiveの更新はrootが行う。過去の合格数を今回へ転用しない。
 
