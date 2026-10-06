@@ -4,6 +4,12 @@
 
 0.4.10では、店舗設定のそばで「店舗利益見込み／週」とその理由を確認できます。反映済みの設定や店長案に基づく見込みで、実績は週末に確定します。4週・13週進行は「新しい営業提案で停止」を実行ごとに選べます。OFFでは確認前に提案の期限が過ぎる可能性があります。他の停止理由と週末保存は維持します。変更範囲と検証状況は [interaction-v0410.md](interaction-v0410.md) を参照してください。
 
+## 0.4.10の配布記録
+
+`/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.10-web.zip` は65,790,235 bytes、SHA256 `5adf7f3330c84a3ff465570720cca8517f3b7259c472a154683a802af9e32552`。最終dist276ファイル・94,308,196 bytesを再ビルドせず収録し、CRC・全収録SHA・凍結入力との一致を確認しました。ローカルprefixの276 HTTP/257参照も成功。旧1,446成果物のサイズ/更新時刻を照合し、以前のSHA記録を保持しています。旧SHAの再走査は行っていません。証拠は `Shibuya-Capital-0.4.10-web-report.json`、`packaging-0.4.10.json`、`preservation-0.4.10.json`。この段落はZIP作成後の記録です。公開検証は [interaction-v0410.md](interaction-v0410.md) で確認してください。
+
+[ブラウザー版0.4.10](https://shirai0765.github.io/-/?v=0.4.10) は公開済みで、公開HTTP25件/選択23資産SHAと公開実Firefox2導線も成功しました。13週の保存後の通常再読込を含み、範囲は中央記録へ集約しています。
+
 ## 0.4.9の配布記録
 
 `/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.9-web.zip` は65,789,515 bytes、SHA256 `99c1d5bc87057dd5d9ee6db338523339f5623a68897577ee7486ad1157909a20`。最終dist276ファイル・94,305,976 bytesを再ビルドせず収録し、CRC・全収録SHA・凍結入力との一致を確認しました。ローカルprefixの276 HTTP/257参照も成功。旧1,360成果物のサイズ/更新時刻を照合し、以前のSHA記録を保持しています。旧SHAの再走査は行っていません。証拠は `Shibuya-Capital-0.4.9-web-report.json`、`packaging-0.4.9.json`、`preservation-0.4.9.json`。この段落はZIP作成後の記録です。[公開版0.4.9](https://shirai0765.github.io/-/?v=0.4.9) のHTTP25件/選択23資産SHAと公開実操作2導線は成功し、範囲は [interaction-v049.md](interaction-v049.md) に記録しています。

@@ -10,7 +10,11 @@
 
 この開発版はコード署名されていません。Windows 実機での起動・描画・保存復元・性能は未確認です。Linux 上での梱包、ZIP 整合性、同梱ファイル検査と、Windows 上での動作確認は別です。
 
-Web公開の成功はWindows実機の検証とは別で、今回の実施範囲は [interaction-v0410.md](interaction-v0410.md) に記録します。
+[ブラウザー版0.4.10](https://shirai0765.github.io/-/?v=0.4.10) のPages/HTTP/実操作検査は成功しました。Web公開の成功はWindows実機の検証とは別で、今回の実施範囲は [interaction-v0410.md](interaction-v0410.md) に記録しています。
+
+## 0.4.10の梱包検証
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.4.10-win32-x64.zip` は223,820,356 bytes、SHA256 `6ca18e4cf0f5c5a597c4a90ce00438259e01b9eb0de56e8f8f3b25637a424af8`。Web版と同じ最終276 distファイル・94,308,196 bytesを再ビルドせず収録し、CRC・全SHA・279マニフェスト/278入力項目・x64 PEと既存Electronキャッシュの公式チェックサムを確認しました。旧1,446成果物のサイズ/更新時刻を照合し、以前のSHA記録を保持しています。旧SHAの再走査は行っていません。証拠は `windows/verification-0.4.10.json`、`packaging-0.4.10.json`、`preservation-0.4.10.json`。この段落はZIP作成後の記録です。未署名でWindows実機の動作は未確認です。
 
 ## 0.4.9の梱包検証
 
