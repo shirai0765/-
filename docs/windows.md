@@ -12,6 +12,8 @@ Windows x64 ZIPは223,850,897 bytes、SHA256 `5e46a9a7f75c72965352322a8cf20043f3
 
 公式Electron44.5.1の既存キャッシュを公式チェックサムと照合しました。Windows実機の起動・性能・音声とコード署名は未確認です。
 
+[ブラウザー版0.7.0](https://shirai0765.github.io/-/?v=0.7.0) を公開済みです。runtime source `57e90617f841e8be0a452a949f0d2afd758cdf68`、Pages `9bc6137b2802d41cee4ee02479fc8185fee47aa6`、Pages run `37574472075` 成功。公開HTTP25件／選択23資産SHA、releaseの版・source・indexが一致しました。全276公開資産の再取得ではありません。公開の実操作結果は確認後に追記します。 詳細は [interaction-v070.md](interaction-v070.md)。
+
 ## 0.6.1の梱包検証
 
 Windows x64 ZIPは223,847,310 bytes、SHA256 `fa100e072696073340ccd154b16c031d1ff703936f5aa63a710022e7f3a2f1eb`。検証済みbuild-03の276ファイル・94,413,649 bytesを再ビルドせず収録し、全CRCと全収録SHAが一致しました。旧2,971成果物はサイズ・更新時刻を照合して保持しています。この段落は梱包後に追記した記録です。

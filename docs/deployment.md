@@ -19,6 +19,8 @@
 
 0.6.1も同じmanifest方式で公開済みです。runtime source `b97a64b92b9156ec6efce78c344a711796732854`、Pages `63b0fbabbb03dc71f86cc6b361acaea39a2c2607`、run37570361019成功。公開HTTP25件／選択23資産SHAが一致し、公開WebKitの変更導線5カテゴリも単一実行で成功しました。週末レビュー・音声・銀行の検証範囲は [interaction-v061.md](interaction-v061.md) を参照してください。
 
+0.7.0も同じmanifest方式で公開済みです。[ブラウザー版0.7.0](https://shirai0765.github.io/-/?v=0.7.0) を公開済みです。runtime source `57e90617f841e8be0a452a949f0d2afd758cdf68`、Pages `9bc6137b2802d41cee4ee02479fc8185fee47aa6`、Pages run `37574472075` 成功。公開HTTP25件／選択23資産SHA、releaseの版・source・indexが一致しました。全276公開資産の再取得ではありません。公開の実操作結果は確認後に追記します。 詳細は [interaction-v070.md](interaction-v070.md)。
+
 ## 公開手順
 
 1. `game-source` の変更を確認し、公開するソースコミットを確定する。

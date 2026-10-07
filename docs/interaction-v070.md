@@ -55,4 +55,6 @@ run-01は連続営業の期間選択で検査側のラベル指定が合わず�
 
 記録は `packaging-0.7.0.json`、`integration-v070/pages-prefix/result.json`、`preservation-0.7.0.json`。既存の公式Electron44.5.1を公式チェックサムと照合して使い、再ダウンロードしていません。Windowsは未署名・実機未確認で、GitHub Releaseへのアップロードも行っていません。詳しい起動方法は [Web版](web.md)・[Windows版](windows.md)。
 
-公開の結果は、確認後に追記します。
+## GitHub Pages
+
+[ブラウザー版0.7.0](https://shirai0765.github.io/-/?v=0.7.0) を公開済みです。runtime source `57e90617f841e8be0a452a949f0d2afd758cdf68`、Pages `9bc6137b2802d41cee4ee02479fc8185fee47aa6`、Pages run `37574472075` 成功。公開HTTP25件／選択23資産SHA、releaseの版・source・indexが一致しました。全276公開資産の再取得ではありません。公開の実操作結果は確認後に追記します。

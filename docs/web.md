@@ -10,6 +10,8 @@
 
 Web ZIPは65,822,338 bytes、SHA256 `0dcc974b8ac151184bd3b4dfd422f9e966395c45c47b72bc1ef9bb0497396a99`。検証済みbuild-01の276ファイル・94,431,503 bytesを再ビルドせず収録し、全CRCと全収録SHAが一致しました。旧3,141成果物はサイズ・更新時刻を照合して保持しています。この段落は梱包後に追記した記録です。
 
+[ブラウザー版0.7.0](https://shirai0765.github.io/-/?v=0.7.0) を公開済みです。runtime source `57e90617f841e8be0a452a949f0d2afd758cdf68`、Pages `9bc6137b2802d41cee4ee02479fc8185fee47aa6`、Pages run `37574472075` 成功。公開HTTP25件／選択23資産SHA、releaseの版・source・indexが一致しました。全276公開資産の再取得ではありません。公開の実操作結果は確認後に追記します。 詳細は [interaction-v070.md](interaction-v070.md)。
+
 ## 0.6.1の梱包検証
 
 Web ZIPは65,818,519 bytes、SHA256 `98f7a8c9b5c839c392dc523d9e9258717bc38676840a10dcc283c419d14abce7`。検証済みbuild-03の276ファイル・94,413,649 bytesを再ビルドせず収録し、全CRCと全収録SHAが一致しました。旧2,971成果物はサイズ・更新時刻を照合して保持しています。この段落は梱包後に追記した記録です。
