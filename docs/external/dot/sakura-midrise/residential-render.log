@@ -1,0 +1,175 @@
+14:35:15 | INFO: Data are loaded, start creating Blender stuff
+14:35:15 | INFO: Blender create Mesh node Icosphere
+14:35:15 | INFO: Blender create Mesh node fictional_sign
+14:35:15 | INFO: Blender create Mesh node roof_membrane
+14:35:15 | INFO: Blender create Mesh node charcoal_tile
+14:35:15 | INFO: Blender create Mesh node warm_wood
+14:35:15 | INFO: Blender create Mesh node deep_glazing
+14:35:15 | INFO: Blender create Mesh node silver_metal
+14:35:15 | INFO: Blender create Mesh node frosted_glazing
+14:35:15 | INFO: glTF import finished in 0.03s
+Blender 4.3.2
+Fra:1 Mem:12.97M (Peak 12.97M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_frosted_glazing
+Fra:1 Mem:15.05M (Peak 15.05M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | PREVIEW_ONLY_GROUND
+Fra:1 Mem:15.01M (Peak 15.05M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_silver_metal
+Fra:1 Mem:15.77M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_deep_glazing
+Fra:1 Mem:16.08M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_planted_green
+Fra:1 Mem:16.10M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_mineral_plaster
+Fra:1 Mem:16.15M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_warm_wood
+Fra:1 Mem:16.17M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_charcoal_tile
+Fra:1 Mem:16.24M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_roof_membrane
+Fra:1 Mem:16.21M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:15.47M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:15.47M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:15.47M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:15.47M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:15.56M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:15.66M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:15.90M (Peak 16.75M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:15.90M (Peak 16.75M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:15.90M (Peak 16.75M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:15.90M (Peak 16.75M) | Time:00:00.01 | Mem:0.45M, Peak:0.45M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:15.90M (Peak 16.75M) | Time:00:00.02 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:15.90M (Peak 16.75M) | Time:00:00.02 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.46M, Peak:1.54M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:16.66M (Peak 16.75M) | Time:00:00.02 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Sample 0/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:02.13 | Remaining:02:12.58 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 1/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:19.23 | Remaining:00:53.09 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 17/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:59.47 | Remaining:00:18.19 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 49/64
+Fra:1 Mem:71.97M (Peak 106.00M) | Time:01:15.91 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 64/64
+Fra:1 Mem:71.97M (Peak 106.00M) | Time:01:15.91 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Finished
+Saved: '/workspace/shared/game-dot-assets/repo/public/models/external-v080/sakura-midrise/sakura-residential-front.png'
+Time: 01:16.71 (Saving: 00:00.78)
+
+Fra:1 Mem:15.16M (Peak 15.16M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_frosted_glazing
+Fra:1 Mem:15.18M (Peak 15.18M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_silver_metal
+Fra:1 Mem:16.04M (Peak 16.83M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | PREVIEW_ONLY_GROUND
+Fra:1 Mem:16.04M (Peak 16.83M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_planted_green
+Fra:1 Mem:16.16M (Peak 16.83M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_mineral_plaster
+Fra:1 Mem:16.67M (Peak 16.83M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_roof_membrane
+Fra:1 Mem:16.87M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_charcoal_tile
+Fra:1 Mem:16.10M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_deep_glazing
+Fra:1 Mem:16.23M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_warm_wood
+Fra:1 Mem:16.21M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:15.47M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:15.47M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:15.47M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:15.47M (Peak 16.87M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:15.56M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:15.66M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:15.90M (Peak 16.87M) | Time:00:00.00 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:15.90M (Peak 16.87M) | Time:00:00.00 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:15.90M (Peak 16.87M) | Time:00:00.00 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:15.90M (Peak 16.87M) | Time:00:00.00 | Mem:0.45M, Peak:0.45M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:15.90M (Peak 16.87M) | Time:00:00.01 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:15.90M (Peak 16.87M) | Time:00:00.01 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.46M, Peak:1.54M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:16.66M (Peak 16.87M) | Time:00:00.01 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Sample 0/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:02.37 | Remaining:02:29.08 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 1/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:32.40 | Remaining:01:29.55 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 17/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:53.91 | Remaining:00:50.63 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 33/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:01:13.29 | Remaining:00:22.43 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 49/64
+Fra:1 Mem:71.97M (Peak 106.00M) | Time:01:33.11 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 64/64
+Fra:1 Mem:71.97M (Peak 106.00M) | Time:01:33.11 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Finished
+Saved: '/workspace/shared/game-dot-assets/repo/public/models/external-v080/sakura-midrise/sakura-residential-oblique.png'
+Time: 01:33.66 (Saving: 00:00.53)
+
+Fra:1 Mem:15.16M (Peak 15.16M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_frosted_glazing
+Fra:1 Mem:15.18M (Peak 15.18M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_silver_metal
+Fra:1 Mem:16.44M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | PREVIEW_ONLY_GROUND
+Fra:1 Mem:16.44M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_planted_green
+Fra:1 Mem:16.46M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_mineral_plaster
+Fra:1 Mem:16.61M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_roof_membrane
+Fra:1 Mem:16.61M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_charcoal_tile
+Fra:1 Mem:16.67M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_warm_wood
+Fra:1 Mem:16.70M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | sakura-residential_deep_glazing
+Fra:1 Mem:16.21M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:15.47M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:15.47M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:15.47M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:15.47M (Peak 16.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:15.56M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:15.66M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:15.90M (Peak 16.83M) | Time:00:00.01 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:15.90M (Peak 16.83M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:15.90M (Peak 16.83M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:15.90M (Peak 16.83M) | Time:00:00.01 | Mem:0.45M, Peak:0.45M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:15.90M (Peak 16.83M) | Time:00:00.01 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:15.90M (Peak 16.83M) | Time:00:00.01 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:0.71M, Peak:0.91M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.46M, Peak:1.46M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.54M, Peak:1.54M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.01 | Mem:1.46M, Peak:1.54M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.02 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.02 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:16.66M (Peak 16.83M) | Time:00:00.02 | Mem:1.55M, Peak:1.55M | Scene, ViewLayer | Sample 0/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:02.55 | Remaining:02:39.78 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 1/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:14.23 | Remaining:01:26.88 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 9/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:35.86 | Remaining:00:55.90 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 25/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:00:57.28 | Remaining:00:32.12 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 41/64
+Fra:1 Mem:54.95M (Peak 54.95M) | Time:01:19.04 | Remaining:00:09.70 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 57/64
+Fra:1 Mem:71.97M (Peak 106.00M) | Time:01:27.80 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Sample 64/64
+Fra:1 Mem:71.97M (Peak 106.00M) | Time:01:27.80 | Mem:39.83M, Peak:39.83M | Scene, ViewLayer | Finished
+Saved: '/workspace/shared/game-dot-assets/repo/public/models/external-v080/sakura-midrise/sakura-residential-roof.png'
+Time: 01:28.17 (Saving: 00:00.36)
+
+
+Blender quit

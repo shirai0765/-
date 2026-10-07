@@ -1,0 +1,171 @@
+{
+  "asset": "sakura-office.glb",
+  "sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+  "bytes": 261248,
+  "gltf_asset": {
+    "generator": "Khronos glTF Blender I/O v4.3.47",
+    "version": "2.0"
+  },
+  "errors": [],
+  "warnings": [],
+  "passed": true,
+  "extensions_used": [
+    "KHR_materials_clearcoat"
+  ],
+  "extensions_required": [],
+  "mesh_count": 8,
+  "mesh_instance_count": 8,
+  "node_count": 8,
+  "material_count": 8,
+  "texture_count": 0,
+  "image_count": 0,
+  "vertices": 7218,
+  "triangles": 3599,
+  "primitives": 8,
+  "degenerate_triangles": 0,
+  "normal_winding_disagreements": 0,
+  "scene_instanced_counts": {
+    "vertices": 7218,
+    "triangles": 3599,
+    "primitives": 8
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -5.949999809265137,
+      0.0,
+      -5.300000190734863
+    ],
+    "max": [
+      5.949999809265137,
+      18.8799991607666,
+      5.300000190734863
+    ],
+    "size": [
+      11.899999618530273,
+      18.8799991607666,
+      10.600000381469727
+    ],
+    "center": [
+      0.0,
+      9.4399995803833,
+      0.0
+    ]
+  },
+  "external_uris": [],
+  "images": [],
+  "meshes": [
+    {
+      "index": 0,
+      "name": "fictional_sign",
+      "primitives": 1,
+      "vertices": 1270,
+      "triangles": 689,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 1270,
+      "material_indices": [
+        0
+      ]
+    },
+    {
+      "index": 1,
+      "name": "Icosphere",
+      "primitives": 1,
+      "vertices": 480,
+      "triangles": 160,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 480,
+      "material_indices": [
+        1
+      ]
+    },
+    {
+      "index": 2,
+      "name": "roof_membrane",
+      "primitives": 1,
+      "vertices": 84,
+      "triangles": 42,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 84,
+      "material_indices": [
+        2
+      ]
+    },
+    {
+      "index": 3,
+      "name": "charcoal_tile",
+      "primitives": 1,
+      "vertices": 264,
+      "triangles": 148,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 264,
+      "material_indices": [
+        3
+      ]
+    },
+    {
+      "index": 4,
+      "name": "warm_wood",
+      "primitives": 1,
+      "vertices": 12,
+      "triangles": 6,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 12,
+      "material_indices": [
+        4
+      ]
+    },
+    {
+      "index": 5,
+      "name": "deep_glazing",
+      "primitives": 1,
+      "vertices": 992,
+      "triangles": 496,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 992,
+      "material_indices": [
+        5
+      ]
+    },
+    {
+      "index": 6,
+      "name": "silver_metal",
+      "primitives": 1,
+      "vertices": 3992,
+      "triangles": 1996,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 3992,
+      "material_indices": [
+        6
+      ]
+    },
+    {
+      "index": 7,
+      "name": "frosted_glazing",
+      "primitives": 1,
+      "vertices": 124,
+      "triangles": 62,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 124,
+      "material_indices": [
+        7
+      ]
+    }
+  ],
+  "counting_note": "Vertices and triangles sum accessor counts per stored primitive; scene-instanced counts include repeated mesh nodes. Vertex seams may intentionally duplicate positions."
+}

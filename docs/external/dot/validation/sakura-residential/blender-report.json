@@ -1,0 +1,200 @@
+{
+  "asset": "sakura-residential.glb",
+  "sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+  "blender_version": "4.3.2",
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "import_seconds": 0.3923,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "mesh_objects": 8,
+  "vertices_after_import": 13740,
+  "triangles_after_import": 6844,
+  "world_bounds_blender_z_up_m": {
+    "min": [
+      -6.900000095367432,
+      -5.699999809265137,
+      -5.891460830298456e-08
+    ],
+    "max": [
+      6.900000095367432,
+      5.699999809265137,
+      23.78499984741211
+    ]
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -6.900000095367432,
+      -5.891460830298456e-08,
+      -5.699999809265137
+    ],
+    "max": [
+      6.900000095367432,
+      23.78499984741211,
+      5.699999809265137
+    ],
+    "size": [
+      13.800000190734863,
+      23.784999906326718,
+      11.399999618530273
+    ]
+  },
+  "materials": [
+    {
+      "name": "charcoal_tile",
+      "use_nodes": true
+    },
+    {
+      "name": "deep_glazing",
+      "use_nodes": true
+    },
+    {
+      "name": "frosted_glazing",
+      "use_nodes": true
+    },
+    {
+      "name": "mineral_plaster",
+      "use_nodes": true
+    },
+    {
+      "name": "planted_green",
+      "use_nodes": true
+    },
+    {
+      "name": "roof_membrane",
+      "use_nodes": true
+    },
+    {
+      "name": "silver_metal",
+      "use_nodes": true
+    },
+    {
+      "name": "warm_wood",
+      "use_nodes": true
+    }
+  ],
+  "images": [],
+  "meshes": [
+    {
+      "name": "sakura-residential_planted_green",
+      "vertices": 360,
+      "triangles": 120,
+      "polygons": 120,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-residential_mineral_plaster",
+      "vertices": 1876,
+      "triangles": 956,
+      "polygons": 956,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-residential_roof_membrane",
+      "vertices": 80,
+      "triangles": 40,
+      "polygons": 40,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-residential_charcoal_tile",
+      "vertices": 796,
+      "triangles": 414,
+      "polygons": 414,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-residential_warm_wood",
+      "vertices": 272,
+      "triangles": 136,
+      "polygons": 136,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-residential_deep_glazing",
+      "vertices": 1476,
+      "triangles": 738,
+      "polygons": 738,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-residential_silver_metal",
+      "vertices": 8520,
+      "triangles": 4260,
+      "polygons": 4260,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-residential_frosted_glazing",
+      "vertices": 360,
+      "triangles": 180,
+      "polygons": 180,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    }
+  ],
+  "renders": [
+    {
+      "view": "front",
+      "file": "front.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 19.903
+    },
+    {
+      "view": "three-quarter",
+      "file": "three-quarter.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 29.06
+    },
+    {
+      "view": "roof",
+      "file": "roof.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 20.197
+    }
+  ],
+  "visual_review": "PASS for staged standalone review: final baked-transform hash efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b imported/rendered. Front, three-quarter and roof images inspected. Residential identity is supported by deep balconies with dividers, window/rail rhythm, recessed ground lobby, entry sign/mailbox and roof access/HVAC. No obvious missing/inside-out faces, floating parts or z-fighting. Opaque glass and inferred dimensions/details are limitations; browser integration not tested.",
+  "source_hash_unchanged_after_validation": true
+}
