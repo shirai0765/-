@@ -22,4 +22,3 @@ document.querySelectorAll('article').forEach(card=>card.querySelector('.play').a
   finally{button.disabled=false}
 }));
 window.addEventListener('pagehide',stop);
-
