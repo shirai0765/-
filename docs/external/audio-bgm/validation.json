@@ -1,0 +1,19 @@
+{
+  "task": "A01",
+  "checks": [
+    {
+      "id": "cafe-lounge",
+      "wavOggMp3": "PASS",
+      "perTrackPreviewAssetReferences": "PASS"
+    },
+    {
+      "id": "shibuya-citypop",
+      "wavOggMp3": "PASS",
+      "perTrackPreviewAssetReferences": "PASS"
+    }
+  ],
+  "humanListening": "not-performed",
+  "browserPlayback": "not-performed",
+  "scope": "Header/hash and measured-signal assertions; static HTML/JS only",
+  "playerJavascriptSyntax": "PASS"
+}
