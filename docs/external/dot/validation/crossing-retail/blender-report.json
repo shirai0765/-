@@ -1,0 +1,143 @@
+{
+  "asset": "crossing-retail.glb",
+  "sha256": "abcc001472351218f4f2903dc6d839eea003c63b0f8ed7a9665c0e477f171467",
+  "blender_version": "4.3.2",
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "import_seconds": 0.2365,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "mesh_objects": 1,
+  "vertices_after_import": 11494,
+  "triangles_after_import": 5425,
+  "world_bounds_blender_z_up_m": {
+    "min": [
+      -15.1850004196167,
+      -12.875299453735352,
+      0.0
+    ],
+    "max": [
+      15.1850004196167,
+      12.899999618530273,
+      40.790000915527344
+    ]
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -15.1850004196167,
+      0.0,
+      -12.899999618530273
+    ],
+    "max": [
+      15.1850004196167,
+      40.790000915527344,
+      12.875299453735352
+    ],
+    "size": [
+      30.3700008392334,
+      40.790000915527344,
+      25.775299072265625
+    ]
+  },
+  "materials": [
+    {
+      "name": "brushed_aluminium",
+      "use_nodes": true
+    },
+    {
+      "name": "dark_concrete",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_blue",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_light",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_shadow",
+      "use_nodes": true
+    },
+    {
+      "name": "limestone",
+      "use_nodes": true
+    },
+    {
+      "name": "powdercoat_dark",
+      "use_nodes": true
+    },
+    {
+      "name": "roof_membrane",
+      "use_nodes": true
+    },
+    {
+      "name": "screen_navy",
+      "use_nodes": true
+    },
+    {
+      "name": "signal_coral",
+      "use_nodes": true
+    },
+    {
+      "name": "signal_cyan",
+      "use_nodes": true
+    },
+    {
+      "name": "warm_white",
+      "use_nodes": true
+    },
+    {
+      "name": "wood",
+      "use_nodes": true
+    }
+  ],
+  "images": [],
+  "meshes": [
+    {
+      "name": "AXIS_Culture_House_LOD0",
+      "vertices": 11494,
+      "triangles": 5425,
+      "polygons": 5425,
+      "material_slots": 13,
+      "uv_layer_count": 2,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    }
+  ],
+  "renders": [
+    {
+      "view": "front",
+      "file": "front.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 17.059
+    },
+    {
+      "view": "three-quarter",
+      "file": "three-quarter.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 18.073
+    },
+    {
+      "view": "roof",
+      "file": "roof.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 17.103
+    }
+  ],
+  "visual_review": "PASS for staged asset review: independently inspected front, three-quarter, and roof renders of the exact GLB. Curved/chamfered curtain-wall frontage, large sign/screen composition, street doors/canopies, roof plant and parapets remain legible. No visibly missing faces, floating geometry, inverted surfaces, or obvious z-fighting observed. Opaque glass and simplified side/rear/roof detailing are intentional limitations; in-browser performance and placement not tested.",
+  "source_hash_unchanged_after_validation": true
+}
