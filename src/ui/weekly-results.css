@@ -7,6 +7,10 @@
 .weekly-results-profit-label .game-icon { color: #9df059; }
 .weekly-results-profit > strong { position: relative; z-index: 1; max-width: 100%; font-family: var(--game-numeric, 'Manrope Variable', 'Noto Sans JP Variable', sans-serif); font-size: clamp(48px, 9.5vw, 100px); font-style: italic; font-weight: 900; line-height: 1.08; letter-spacing: -.015em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; color: #ffe64c; -webkit-text-stroke: 1px #fff6af; paint-order: stroke fill; text-shadow: 2px 3px 0 #81530b, 4px 5px 0 #03183b; }
 .weekly-results-profit.is-profitable > strong.positive { color: #ffe64c !important; }
+.weekly-results-profit.is-profitable > strong > span { display: block; color: #ffe64c !important; -webkit-text-stroke: 1px #071b42; paint-order: stroke fill; text-shadow: none; filter: drop-shadow(1px 1px 0 #fff3ab) drop-shadow(3px 4px 0 #020e2c); }
+@supports (-webkit-background-clip: text) {
+  .weekly-results-profit.is-profitable > strong > span { background: linear-gradient(180deg, #fffbc8 0%, #fff16a 24%, #ffdf27 49%, #ffbc10 74%, #ff9813 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; -webkit-text-fill-color: transparent; }
+}
 .weekly-results-profit > small { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 12px; position: relative; z-index: 1; color: #fff; font-size: 13px; font-weight: 750; line-height: 1.7; }
 .weekly-results-outcome { padding: 3px 8px; border-radius: 5px; color: #082348; background: #fff; }
 .weekly-results-previous { font-size: 12px; color: #e0f4ff; }
@@ -69,24 +73,26 @@
 @keyframes weekly-coin-burst { 0% { opacity: 0; transform: translate(0, 0) scale(.6); } 18% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--coin-x), var(--coin-y)) rotate(130deg) scale(.8); } }
 @keyframes weekly-profit-finish { 0% { transform: scale(1); } 42% { transform: scale(1.025); } 100% { transform: scale(1); } }
 @media (max-width: 620px) {
-  .weekly-results-profit { padding: 17px 16px 20px; gap: 9px; border-radius: 15px; }
+  .weekly-results-profit { padding: 12px 14px 14px; gap: 6px; border-radius: 15px; }
   .weekly-results-profit-label { font-size: 15px; padding-right: 48px; gap: 7px; }
   .weekly-results-profit-label > .game-icon { width: 25px; height: 25px; }
-  .weekly-results-profit > strong { font-size: clamp(48px, 16.3vw, 70px); }
+  .weekly-results-profit > strong { font-size: clamp(46px, 15.5vw, 66px); line-height: 1.05; }
   .weekly-results-profit.is-long-amount > strong { font-size: clamp(33px, 10.4vw, 45px); }
   .weekly-results-profit > small { gap: 5px 8px; font-size: 12px; }
+  .weekly-results-outcome { padding: 2px 7px; }
   .weekly-results-previous { font-size: 11px; }
   .weekly-results-reward-art { right: 8px; top: 10px; }
   .weekly-results-reward-art > .game-icon { width: 48px; height: 48px; }
-  .weekly-results-cash { gap: 8px; }
-  .weekly-results-cash > div { padding: 12px 11px; }
-  .weekly-results-cash > div > .game-icon { position: static; width: 27px; height: 27px; margin-bottom: 4px; }
-  .weekly-results-company .weekly-results-cash dt { font-size: 11px; }
+  .weekly-results-cash { gap: 8px; margin-top: 10px; }
+  .weekly-results-cash > div { padding: 10px; }
+  .weekly-results-cash > div > .game-icon { position: absolute; left: 8px; top: 11px; margin-bottom: 0; }
+  .weekly-results-company .weekly-results-cash dt { min-height: 32px; padding-left: 34px; font-size: 12px; line-height: 1.5; }
   .weekly-results-company .weekly-results-cash dd { font-size: clamp(20px, 6.2vw, 28px); }
   .weekly-results-cash.is-long-amount { grid-template-columns: 1fr; }
   .weekly-results-cash.is-long-amount > div { padding-left: 52px; }
   .weekly-results-cash.is-long-amount > div > .game-icon { position: absolute; top: 16px; left: 12px; }
-  .weekly-results-customers { font-size: 12px; padding: 10px 9px; gap: 4px; }
+  .weekly-results-company .weekly-results-cash.is-long-amount dt { min-height: 0; padding-left: 0; }
+  .weekly-results-customers { min-height: 44px; font-size: 12px; padding: 8px 9px; margin-top: 10px; gap: 4px; }
   .weekly-results-customers strong { font-size: 25px; }
   .weekly-results-customers > .game-icon { width: 24px; height: 24px; margin-right: 0; }
   .weekly-store { padding: 12px; }

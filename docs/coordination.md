@@ -2,7 +2,7 @@
 
 更新：2026-10-07。ゲームの開発ソースは `game-source`、公開専用の `main` はビルド済みサイトです。**ソースをmainへpushしないでください。**
 
-[公開サイト](https://shirai0765.github.io/-/)の版とsource commitは `release.json` と親の公開記録で確認します。0.8.0の街拡張を仕上げながら、外部班へ元の仕様に必要な素材とプレイ検証を渡しています。ブラウザー内のセーブは個人の端末にあり、この文書からは見えません。
+[公開サイト](https://shirai0765.github.io/-/)の版とsource commitは `release.json` と親の公開記録で確認します。0.8.0の街拡張は公開済み。0.9.0では選択済みB案のUI・演出を実装し、外部班から元の仕様に必要な素材と知見を受け取っています。ブラウザー内のセーブは個人の端末にあり、この文書からは見えません。
 
 ## このクラウドの担当
 
@@ -10,15 +10,17 @@
 
 | 担当 | 作業 | 専有する範囲 |
 |---|---|---|
-| 親 | 統合、保存互換の確認、公開 | App、版番号、配布・公開記録 |
-| 街側の副統括 | 依存関係、座標契約、独立レビュー | `docs/design/city-expansion-v080.md` |
-| 街 | 外周の景観・道路・カメラ・目印 | `district.ts`、`CityView.tsx`、街の配置・目印 |
-| 経済・物件 | 各地区6件、計24件の新しい候補が目安 | `neighborhoodsV080.ts`、専用テスト |
-| 建物外観 | 雑居ビル・オフィス・集合住宅の違い、描画負荷 | `art.ts`、新しい外観モジュール |
-| 操作 | 候補が増えても選びやすい物件一覧 | `SiteBrowser.tsx`、専用CSS・テスト |
-| 品質 | 既存保存・配置・性能・実ブラウザー回帰 | 合意した専用テスト、検証記録 |
+| 親 | 設計、統合、比較、リリース | 版番号、配布・公開・担当記録、最終Git操作 |
+| 街・出店 | B案の物件画面、外部GLBレビューと配置案 | Appの物件ラッパー、PropertyScene、StoreOpening、SiteContextと専用CSS |
+| 経済UI | 銀行・株式市場・グループ・営業提案・開発・資金計画 | 対応6パネルと専用CSS。金額計算と経済式は維持 |
+| 共通基盤 | フォント・素材アイコン・共通テーマ、外部ニュース独立レビュー | GameIcon、theme、shared dialog、素材manifestと指定資料 |
+| 操作・週次 | 全画面の営業結果・ニュース・達成と短い確定演出 | 対応8UI/CSS、意味のある演出テスト |
+| 音 | 既存AudioContextへの素材・短い操作音の統合 | src/audio、CityAudioControl。外部素材の実到着を待って有効化 |
+| 品質 | native画面・保存・入力・音・prefix・CSP | scripts/smoke-v090-native.pyと検証記録。GPUはこの担当1本のみ |
 
-0.7.0の公開・実操作検査は完了しました。0.8.0は取引物件72件、景観表示候補349棟を実装し、全598テスト、本番ビルド、本番CSPのnative4項目が成功しました。DEV機能6項目と検査脚本の終了処理による総合falseは分けて保持します。既存48物件のID・位置・経済値、旧LOTS全158件の並び、109・実測写真モデルを保持します。件数はデータ上の値で、同時に画面内に見える棟数ではありません。
+0.8.0は72物件／349景観候補、598テスト、本番CSP4カテゴリ、公開WebKitの開業→実決算→完全一致保存を確認して公開済みです。旧LOTS全158件の並びと旧48物件の値、109・実測写真モデルを保持します。[確定記録](interaction-v080.md)を参照してください。
+
+0.9.0はB案を共通フォント・素材アイコン・主要画面へ適用し、最初の621テスト／70ファイルとbuild-02の後、実画面で見つかったicon URLとスマホの収まりを修正。カフェBGMと背景GLB4棟、初営業の案内を統合し、627テスト／71ファイルとbuild-03が成功。最初のUI source候補は `b40f2ba`。build-01の型エラーは記録を保持し、Viteの型宣言と新テストのReact型を直しました。本番native・見本との実画面比較を実施中で、画面を見ずに合格とはしません。
 
 ## 追加のCloud Codexタブ
 
@@ -39,9 +41,11 @@
 | 1：実際のカフェ・小売ニュース | 40件の出典・原事実・独自短文候補 | `docs/external/news-research/candidates/company-news-wave1.json` |
 | 2：不動産・鉄道・調達・M&Aニュース | 小型株も含む異なる事例40件 | `docs/external/news-research/candidates/property-rail-capital-wave1.json` |
 | 3：編集・事実照合・銘柄対応・重複検査 | 既存100stockへの対応候補、検証器、整形原稿。最終catalogは主担当が組み立てる | `docs/external/news-research/edited/`、`scripts/external/news-research/` |
-| 4：BGM | オリジナルのcafé-loungeとTokyo-city-pop、各30〜60秒loopのWAV/OGG、試聴・loop・容量記録 | `public/audio/external-v080/bgm/`、`scripts/external/audio-bgm/`、`docs/external/audio-bgm/` |
+| 4：BGM | オリジナルのcafé-loungeとTokyo-city-pop、各30〜60秒、WAV原盤とAAC-LC配布、試聴・loop・音量・容量記録 | `public/audio/external-v080/bgm/`、`scripts/external/audio-bgm/`、`docs/external/audio-bgm/` |
 | 5：環境音・効果音 | カフェ環境音、UI、週次利益演出の実音声kitと出典/権利manifest | `public/audio/external-v080/sfx/`、`scripts/external/audio-sfx/`、`docs/external/audio-sfx/` |
 | 6：プレイ・判断・バランス | 創業、中盤、終盤の公開actionによる3再現trace、実結果と最小修正案 | `docs/external/gameplay-review/`、`scripts/external/gameplay-review/` |
+
+[PR #7](https://github.com/shirai0765/-/pull/7)の24件pilotを取り込み済み。全短文と4分野の出典sampleを親側で独立レビューし、出典PDFの追記を行います。[PR #8](https://github.com/shirai0765/-/pull/8)は既存6担当への再割当の受領記録として取り込みました。[PR #9](https://github.com/shirai0765/-/pull/9)と[#10](https://github.com/shirai0765/-/pull/10)の2曲も実ファイル・許諾・デコード・ループを独立検査して取り込み、café版を実装へ接続しました。追加56件・SFX・プレイ記録は実納品と検証を追跡し、開始報告を完成扱いにしません。[音源の実装契約](https://github.com/shirai0765/-/pull/8#issuecomment-6032142623)を優先します。
 
 有限の初回成果物は**ニュース80件＋BGM2曲＋SFX kit＋3 play traces**です。初期pilotの採用品は80件に含め、件数を重複計上しません。小PRを出したら、レビュー待ちの間も独立した未完了作業を進めます。既存runtimeへの組込み・最終catalogの採用・source修正・merge・公開は親側が担当します。`src`、App、音声runtime、engine、storage、Vite、package/lockは、親が個別に専有ファイルを委譲するまで変更しません。ユーザーはUI案B（モンスト系）を選択し、各page・font・利用条件を満たすicon・報酬animationの実装を許可しました。この改修は親側が別の専有範囲を割り当てて実施し、外部班の6streamへ無断で追加しません。
 
@@ -55,9 +59,13 @@
 
 ### D00：受け渡し経路の確認（最初の作業）
 
-状態：**受領経路確認済み（2026-10-07、[PR #1](https://github.com/shirai0765/-/pull/1)）**。`c83235d5e1c6284e2faf2e7ae38aae7982620fbc` の受領文書を取り込み済みです。[最新コメント](https://github.com/shirai0765/-/pull/1#issuecomment-6031599447)は、Astraの模型作者4担当＋AstraのBlender品質1担当＋Lunaの参照調査1担当＋主担当の計7体が開始したと報告しています。「全員Astra」とは記録しません。この人数・モデル構成は本人報告であり、親の独立した実行telemetryではありません。制作assetのPRはまだ受領していません。
+状態：**受領経路確認済み（2026-10-07、[PR #1](https://github.com/shirai0765/-/pull/1)）**。`c83235d5e1c6284e2faf2e7ae38aae7982620fbc` の受領文書を取り込み済みです。[最新コメント](https://github.com/shirai0765/-/pull/1#issuecomment-6031599447)は、Astraの模型作者4担当＋AstraのBlender品質1担当＋Lunaの参照調査1担当＋主担当の計7体が開始したと報告しています。「全員Astra」とは記録しません。この人数・モデル構成は本人報告であり、親の独立した実行telemetryではありません。その後、[PR #3](https://github.com/shirai0765/-/pull/3)〜[#6](https://github.com/shirai0765/-/pull/6)の模型4パッケージを受領しました。7 GLBの実値と21枚の提出プレビューを独立確認し、素材として取り込み済みです。小型4棟は[既存背景の範囲へ統合](external/dot/background-integration-v090.md)し、13の対象テストに成功。ゲーム内の実描画と通信失敗時の代替表示をnativeで確認します。大きい2種類は配置待ちです。
 
-**D01の制作を開始してください。** ユーザーの指示により、ドット側はAstraの主担当1体＋制作・調査・品質の6担当、合計7体までの並列を使います。具体的な割当と受入条件は [D01制作指示](external/dot/task-D01-brief.md) を優先してください。D02は最初の独立モデルの提出後、空いた担当で実施できます。こちらのSol担当が街配置・経済・UI・公開を進めるため、ドットは模型と参照分析へ集中します。
+**最新：Dot側は主担当を含め全員Astra。** Lunaの先行成果を保持して切り替え、実際に変更できた構成を報告するよう[指示済み](https://github.com/shirai0765/-/pull/1#issuecomment-6032030987)です。進行中の[PR #3にも連絡](https://github.com/shirai0765/-/pull/3#issuecomment-6032267429)しました。切替の完了報告はまだ未確認です。
+
+主1＋子6の枠内で、模型作者3、Blender品質1、D03見本忠実度1、D04一次ゲーム知見1へ移します。D03は承認済みBと実装キャプチャを比較し、文字・配色・背景・ボタン・情報順を具体的に指摘して修正後を再確認。内部班が[任天堂の一次本文2件](research/mario-onboarding-primary-v090.md)を確認し、4判断をまとめて初営業の案内を限定修正しました。D04はこの資料も踏まえMario導入と任天堂開発者インタビュー、桜井公式動画を実読した範囲で整理し、事実／解釈／本作への適用／検証方法を分けた8〜12項目を最初に提出します。専有先は `docs/external/dot/visual-fidelity/` と `docs/external/dot/game-design-knowledge/`。既存srcは親側が変更します。
+
+**D01の模型制作も継続します。** ユーザーの指示により、ドット側はAstraの主担当1体＋制作・調査・品質の6担当、合計7体までの並列を使います。具体的な割当と受入条件は [D01制作指示](external/dot/task-D01-brief.md) を優先してください。D02は最初の独立モデルの提出後、空いた担当で実施できます。こちらのSol担当が街配置・経済・UI・公開を進めるため、ドットは模型と参照分析へ集中します。
 
 以下は成立した受領手順の記録です。最初に `game-source` を基点に `dot/receipt-v080` ブランチを作り、`docs/external/dot/receipt.md` 一つだけを追加します。コード・モデル・他の担当ファイルは変更しません。記載内容は以下です。
 

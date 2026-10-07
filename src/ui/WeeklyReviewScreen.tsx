@@ -79,7 +79,7 @@ export default function WeeklyReviewScreen(props: Props) {
           <div className="weekly-review-heading">
             <div>
               {phase !== 'summary' && <p className="weekly-review-kicker">{phase === 'news' ? 'SHIBUYA BUSINESS JOURNAL' : 'SETTLED RECORDS'}</p>}
-              <h2 ref={headingRef} id={titleId} tabIndex={-1}>{title}</h2>
+              <h2 ref={headingRef} id={titleId} tabIndex={-1} aria-label={title}>{phase === 'summary' ? <><span>第{report.week}週の</span><em>営業結果</em></> : title}</h2>
             </div>
             {phase === 'summary' && <div className="weekly-review-week-transition" aria-label={state.gameOver ? `第${report.week}週の営業が終了し、会社の経営を終了しました` : `第${report.week}週の営業が終了し、第${nextWeek}週になりました`}>
               <div><small>営業終了</small><strong><span>第</span>{report.week}<span>週</span></strong></div>

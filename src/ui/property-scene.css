@@ -20,10 +20,12 @@
 .game-dialog[open] > .modal.facility-burst-dialog > header h2 {
   color: #fff;
   font-family: var(--game-display, 'Noto Sans JP Variable', sans-serif);
-  font-size: clamp(19px, 4.8vw, 27px);
-  line-height: 1.45;
+  font-size: clamp(24px, 6.4vw, 30px);
+  font-weight: 400;
+  line-height: 1.35;
   letter-spacing: .015em;
-  text-shadow: 2px 2px 0 #0b3577, -1px -1px 0 #0b3577;
+  -webkit-text-stroke: .45px #082348;
+  text-shadow: 2px 2px 0 #082348, -1px -1px 0 #082348, 0 3px 0 #37dcff;
   overflow-wrap: anywhere;
 }
 .game-dialog[open] > .modal.facility-burst-dialog > header > .icon-button {
@@ -64,7 +66,7 @@
 .property-scene-headline { margin: 0; font-family: var(--game-display, sans-serif); font-size: clamp(17px, 3.8vw, 23px); line-height: 1.6; color: #fff; text-shadow: 2px 2px 0 #154077, -1px -1px 0 #154077; }
 .property-scene-body { position: relative; padding: 16px 20px 24px; background: linear-gradient(135deg, #fff 25%, #edf8ff); }
 .property-scene button { white-space: normal; overflow-wrap: anywhere; }
-.property-scene .property-scene-view { width: 100%; min-height: 46px; margin: 0 0 16px; padding: 8px 12px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 2px solid #176ace; border-radius: 11px; background: #e7f7ff; color: #1254a3; font-size: 13px; font-weight: 850; box-shadow: 0 3px 0 #9bc3e5; }
+.property-scene .property-scene-view { width: fit-content; max-width: 100%; min-height: 40px; margin: 0 0 10px; padding: 6px 9px; display: flex; align-items: center; justify-content: flex-start; gap: 6px; border: 1px solid #82bcea; border-radius: 8px; background: #edf8ff; color: #1254a3; font-size: 11px; font-weight: 850; box-shadow: 0 2px 0 #bddced; }
 .property-scene-view > :last-child { margin-left: auto; }
 .property-scene-owned, .property-scene .facility-property-options { margin-top: 22px; padding: 15px; border: 2px solid #9ad7ef; border-radius: 13px; background: #eff9ff; }
 .property-scene-section-title { display: flex; align-items: center; gap: 8px; }
@@ -90,8 +92,8 @@
 @media (max-width: 620px) {
   .game-dialog[open] > .modal.facility-burst-dialog { border-radius: 15px; }
   .game-dialog[open] > .modal.facility-burst-dialog > header { padding: 10px 12px; }
-  .property-scene-hero { min-height: 205px; }
-  .property-scene-hero-copy { padding: 12px 14px 14px; gap: 76px; }
+  .property-scene-hero { min-height: 175px; }
+  .property-scene-hero-copy { padding: 10px 14px 12px; gap: 50px; }
   .property-scene-body { padding: 14px 12px 22px; }
   .property-scene .facility-district { font-size: 11px; padding: 5px 8px; }
   .property-scene-owned, .property-scene .facility-property-options { padding: 11px; }

@@ -35,6 +35,21 @@ describe('reviewed bundled audio assets', () => {
     await expect(loadCityAudioAssets(context, invalid, new AbortController().signal)).rejects.toBeInstanceOf(CityAudioAssetError);
   });
 
+  it('clamps only one sample of 44.1 to 48 kHz end rounding and still rejects an overspecified loop', async () => {
+    const { context, decodeAudioData } = decoder();
+    const originalEnd = 2_016_000 / 44_100;
+    const nativeRate = 48_000;
+    const length = Math.floor(originalEnd * nativeRate);
+    const duration = length / nativeRate;
+    decodeAudioData.mockResolvedValue({ duration, length, numberOfChannels: 2, sampleRate: nativeRate } as AudioBuffer);
+    const accepted: CityAudioAssetConfig = { music: { variants: [{ path: first, loopStart: 0, loopEnd: originalEnd }] } };
+    const loaded = await loadCityAudioAssets(context, accepted, new AbortController().signal);
+    expect(originalEnd - duration).toBeGreaterThan(0);
+    expect(loaded.music.loopEnd).toBe(duration);
+    const rejected: CityAudioAssetConfig = { music: { variants: [{ path: first, loopStart: 0, loopEnd: duration + 1.1 / nativeRate }] } };
+    await expect(loadCityAudioAssets(context, rejected, new AbortController().signal)).rejects.toBeInstanceOf(CityAudioAssetError);
+  });
+
   it('discards an unabortable late decode and does not try another codec after cancellation', async () => {
     const { context, decodeAudioData } = decoder();
     const controller = new AbortController();

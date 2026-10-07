@@ -13,8 +13,16 @@ export interface DecodedCityAudioAssets {
   sounds: Partial<Record<CityAudioSound, DecodedCityAudioAsset>>;
 }
 
-/** Enable only after the bundled files, permission, level and loop points are verified. */
-export const CITY_AUDIO_ASSETS: CityAudioAssetConfig | undefined = undefined;
+/** Reviewed original CC0 track; compressed variants share the verified 44.1 kHz period. */
+export const CITY_AUDIO_ASSETS: CityAudioAssetConfig = {
+  music: {
+    variants: [
+      { path: 'audio/external-v080/bgm/cafe-lounge.mp3', loopStart: 0, loopEnd: 2_016_000 / 44_100 },
+      { path: 'audio/external-v080/bgm/cafe-lounge.ogg', loopStart: 0, loopEnd: 2_016_000 / 44_100 },
+    ],
+    gain: 1,
+  },
+};
 
 export class CityAudioAssetError extends Error {
   constructor() { super('Audio assets could not be loaded'); this.name = 'CityAudioAssetError'; }
@@ -39,11 +47,14 @@ async function loadAsset(context: AudioContext, asset: CityAudioAsset, signal: A
       const buffer = await context.decodeAudioData(bytes);
       checkAbort(signal); // decodeAudioData itself cannot be aborted.
       const loopStart = variant.loopStart ?? 0;
-      const loopEnd = variant.loopEnd ?? buffer.duration;
+      const requestedEnd = variant.loopEnd ?? buffer.duration;
+      // decodeAudioData resamples to the context rate; its length can round down one sample.
+      const sampleTolerance = Number.isFinite(buffer.sampleRate) && buffer.sampleRate > 0 ? 1 / buffer.sampleRate : 0;
+      const loopEnd = Math.min(requestedEnd, buffer.duration);
       if (!Number.isFinite(buffer.duration) || buffer.duration <= 0 || buffer.duration > 120
         || buffer.numberOfChannels < 1 || buffer.numberOfChannels > 2
-        || !Number.isFinite(loopStart) || !Number.isFinite(loopEnd)
-        || loopStart < 0 || loopEnd <= loopStart || loopEnd > buffer.duration) throw new CityAudioAssetError();
+        || !Number.isFinite(loopStart) || !Number.isFinite(requestedEnd)
+        || loopStart < 0 || loopEnd <= loopStart || requestedEnd > buffer.duration + sampleTolerance) throw new CityAudioAssetError();
       const gain = asset.gain ?? 1;
       if (!Number.isFinite(gain) || gain < 0 || gain > 1) throw new CityAudioAssetError();
       return { buffer, loopStart, loopEnd, gain };

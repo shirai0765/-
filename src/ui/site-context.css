@@ -13,7 +13,7 @@
 .site-context .site-context-note { font-size: 11px; line-height: 1.7; color: #49617e; margin: 10px 0 0; }
 @media (max-width: 390px) {
   .site-context-facts { gap: 7px; }
-  .site-context-facts > div { padding: 8px; gap: 5px; }
+  .site-context-facts > div { min-height: 74px; padding: 8px; gap: 5px; }
   .site-context-facts > div > .game-icon { width: 25px; height: 25px; }
   .site-context-facts dt { font-size: 10px; }
   .site-context-facts dd { font-size: 13px; }

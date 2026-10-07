@@ -21,7 +21,7 @@
       "publishedDate": "2024-11-27",
       "publishedDateNote": "ニュース本文上部の2024.11.27 NEWS表記。",
       "accessedDate": "2026-10-07",
-      "sourceLocation": "本文冒頭、価格改定概要、主な価格改定表。",
+      "sourceLocation": "公式記事の本文冒頭と価格改定概要（予定日・改定理由）。税込の新旧価格は同記事からリンクされた公式PDF「新旧価格一覧」の物理1頁（supportingSources）。",
       "sourceRead": {
         "method": "web-open",
         "status": "verified",
@@ -74,6 +74,19 @@
             "method": "web-open",
             "status": "verified",
             "notes": "関係会社一覧を開き、ドトールコーヒーが連結子会社に掲載されることを実読した。商品発表のfactsは主出典に基づき、このページは現時点の企業対応を補足する。"
+          }
+        },
+        {
+          "sourceURL": "https://www.doutor.co.jp/news/2024priceDCS.pdf",
+          "publisher": "株式会社ドトールコーヒー",
+          "publishedDate": null,
+          "publishedDateNote": "PDF自身には公開年月日の明記がない。2024年11月27日付公式記事の価格一覧リンクから取得したが、記事の日付をPDFの公開日とは推定しない。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "全2頁のPDF「ドトールコーヒーショップ 新旧価格一覧」、物理1頁。CoffeeとLatteのSサイズ列、新価格・旧価格の見出し。",
+          "sourceRead": {
+            "method": "https-get/pdf-text",
+            "status": "verified",
+            "notes": "開発親の独立レビューで既存HTTPS proxy/TLSを保持したstdlib urllib GET（HTTP200）とpdftotextのメモリ入出力で実読。物理1頁のS列でブレンドコーヒー旧税込250円→新280円、カフェ・ラテ旧340円→新380円を確認。予定日の根拠は公式記事で、PDFの表は12/12以降と12/11までを区別する。全文・画像は保存していない。"
           }
         }
       ],
@@ -1640,8 +1653,8 @@
       "capital-ma": 6
     },
     "primaryDocumentCount": 24,
-    "supplementalDocumentCount": 9,
-    "allDistinctSourceURLCount": 33,
+    "supplementalDocumentCount": 10,
+    "allDistinctSourceURLCount": 34,
     "qaIndependentlyReadCount": 24,
     "historicalReferenceCount": 24,
     "holdCount": 0,

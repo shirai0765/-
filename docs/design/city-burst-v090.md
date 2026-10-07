@@ -4,7 +4,7 @@ The user selected concept B, approved in [city-burst-approved.png](concepts/city
 
 ## Shared interface
 
-`src/ui/GameIcon.tsx` exports named `GameIcon`, `GameIconName` and `GameIconTone`. Props are `name`, optional numeric `size` (24px default), `className`, and optional `tone` (`blue`, `gold`, `green`, `red`, `navy`, `muted`). Icons inherit text color unless a tone is supplied. They are decorative and `aria-hidden`; the surrounding text or button label supplies their accessible meaning. CSS masks retain the duotone opacity in the original SVG. Static asset URLs use `import.meta.env.BASE_URL`, including deployment under `/-/`.
+`src/ui/GameIcon.tsx` exports named `GameIcon`, `GameIconName` and `GameIconTone`. Props are `name`, optional numeric `size` (24px default), `className`, and optional `tone` (`blue`, `gold`, `green`, `red`, `navy`, `muted`). Icons inherit text color unless a tone is supplied. They are decorative and `aria-hidden`; the surrounding text or button label supplies their accessible meaning. CSS masks retain the duotone opacity in the original SVG. Static asset URLs combine `import.meta.env.BASE_URL` with the page's `document.baseURI` to produce an absolute same-origin URL, including deployment under `/-/`. SSR and non-navigation test documents retain a safe relative fallback.
 
 The 25 names are `wallet`, `trend-up`, `users`, `shop`, `coffee`, `bank`, `chart`, `news`, `check`, `arrow-right`, `arrow-left`, `pin`, `coins`, `settings`, `building`, `train`, `briefcase`, `close`, `search`, `warning`, `celebrate`, `volume`, `play`, `pause`, and `lightning`. Earlier coordination messages counted these as 27; the actual union contains these 25 names.
 
@@ -45,3 +45,5 @@ The icon source files are unmodified. Fonts were converted from pinned TTF files
 Local source checks confirmed all 25 SVGs have the expected view box, no scripts/external embedded images/foreign objects, and exact manifest SHA-256 hashes. Both delivered fonts match their recorded hashes. Whitespace checks passed. Component API consumers were notified directly.
 
 The parent owns the complete TypeScript/test/build check and packaging. Native QA must still verify deployed prefix paths, actual loaded display faces, light/night contrast, 390px wrapping, focus/keyboard and scroll behavior. No browser, GPU run, FPS measurement or performance claim is made by this foundation work.
+
+The first production native run found an actual defect: decorative icons were invisible because relative URLs in the inline custom property were consumed by the mask rule in `/assets/…css`, producing `/assets/icons/…` requests and 404s. The component now resolves its path against `document.baseURI` before passing it to CSS. This changes no interaction or font behavior. Root build and the next native run must confirm the corrected visible icons and successful requests; the initial screenshots are evidence of the defect, not a passing icon check.

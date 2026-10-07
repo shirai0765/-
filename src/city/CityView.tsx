@@ -29,6 +29,7 @@ import { getFootfallBand } from '../sim/siteContext';
 import { getCityService } from '../data/cityServices';
 import { OUTER_SCENERY } from './sceneLayout';
 import { addSceneryBuilding } from './SceneryBuildings';
+import { mountDotScenery } from './dotScenery';
 import { panCameraToSite } from './sitePan';
 
 interface Props { cameraMode?:CameraMode; overviewRequestId?:number; storeFocusRequestId?:number; sitePanRequest?:{lotId:string;nonce:number}; state:GameState; selectedLotId:string|null; onSelectLot:(id:string)=>void; quality:QualityLevel; viewMode?:'normal'|'demand'|'ownership'; focusLotId?:string|null; focusRailDistrict?:DistrictId|null; focusStoreLotId?:string|null }
@@ -269,7 +270,9 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
       compactRigidGroup(terrace);art.group.add(terrace);staticTerraces.set(lot.id,terrace);
     }
     // Outer mixed-use, office and residential fabric shares opaque instanced boxes.
-    for(const building of OUTER_SCENERY) addSceneryBuilding(art,building);
+    for(const [index,building] of OUTER_SCENERY.entries()) {
+      if(!mountDotScenery(art,loadedAssets,building,index))addSceneryBuilding(art,building);
+    }
     art.finish();
     const traffic:THREE.Group[]=[];
     for(let i=0;i<9;i++) {

@@ -13,7 +13,7 @@ export default function SiteContextPanel({ state, lotId, compact = false }: { st
     <h3>この場所の環境</h3>
     {!compact && <p className="site-context-description">{site.description}</p>}
     <dl className="site-context-facts">
-      <div><GameIcon name="users" size={30}/><div><dt>人通り</dt><dd>{site.footfallBand.label}<small>基準の通行量 {site.footfallWeekly.toLocaleString('ja-JP')}人 / 週</small></dd></div></div>
+      <div><GameIcon name="users" size={30}/><div><dt>人通り</dt><dd>{site.footfallBand.label}<small>{!compact && '基準の通行量 '}{site.footfallWeekly.toLocaleString('ja-JP')}人 / 週</small></dd></div></div>
       <div><GameIcon name="coins" size={30} tone="gold"/><div><dt>周辺の購買力</dt><dd>{site.purchasingPowerBand.label}</dd></div></div>
       <div><GameIcon name="building" size={30}/><div><dt>現在の店舗家賃 / 週</dt><dd className={site.ownsProperty ? 'site-context-owned' : 'site-context-amount'}>{site.ownsProperty ? '自社物件・家賃なし' : yen(site.weeklyRent)}</dd></div></div>
       <div><GameIcon name="shop" size={30}/><div><dt>近くの自社店舗</dt><dd>{site.nearbyOwnStores}店</dd></div></div>

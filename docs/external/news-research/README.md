@@ -64,3 +64,7 @@ pilotは各分野6件、計24件を対象とする。全件 `historical-referenc
 最終pilotは候補をIDでshortforms/context-tagsと結合し、原資料・facts・対応候補・補助出典を保持したうえで編集短文とタグを採用する。各recordのeditorialNotes/contextNotes/qaReviewは判断の追跡用。集計と未確認範囲はreviewSummaryに置く。開発親はまずauditの訂正箇所、原資料との範囲、保存にない活動の扱い、候補間の違いを確認し、採用後の追加batchを指示する。
 
 7体の継続活用に関するユーザーの相談は [開発親（Astra）へのコメント](https://github.com/shirai0765/-/pull/2#issuecomment-6031855487) に送信し、[追加割当](https://github.com/shirai0765/-/pull/2#issuecomment-6031934250) を受領した。本pilot24件を先に提出し、次の有限waveはニュース合計80件（N01飲食・小売40件、N02不動産・鉄道・資本政策40件）、BGM2案、環境音/SFX kit、3プレイ検証。原稿と独立再読を並行し、同じ親1＋Sol 6.1/high子6枠で継続する。音源とプレイ検証は追加割当で指定された別namespaceに分離して別PRで渡す。runtime統合・merge・公開は開発親が担当する。
+
+## 開発親の独立レビュー追補（2026-10-07 UTC）
+
+PR #7を過去の参考素材として採用。開発親の別担当は24件の短文・facts・既存銘柄対応・保存文脈を全読し、4分野の代表的な公式本文4件と、ドトール記事がリンクする公式価格一覧PDFを実際に取得・照合した。価格数値の出典を補助資料として明示したため、現在の集計は主資料24＋補助10＝34固有URL。外部作者/QAによる当初33 URL・全24件再読の報告はaudit.mdの当時の記録として保持する。親の4件サンプルとその全件再読報告は同じ検証ではない。全24件の短文とhistorical-reference/runtimeEligible falseは変更しない。

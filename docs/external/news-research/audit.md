@@ -54,3 +54,22 @@ QA担当が作者と独立して、2026-10-07 UTCに原資料をweb-openで再�
 親の最終組立・検証報告を2026-10-07 UTCに受領した。`python3 /tmp/news-research-assemble-20261007T054410Z.py`で各分類6件・計24件を組み立て、主資料24 URL、補助9 URL、合計33 unique URL、hold 0件、runtimeEligible 0件を確認したとの報告。`python3 scripts/external/news-research/validate.py --self-test`は正常/hold保持の受理と8 adversarialケースの拒否でPASS、`python3 scripts/external/news-research/validate.py`は`PASS: 24 candidates; 100 STOCKS match market-universe; mode=final`、いずれもexit 0。これらの最終コマンドは親が実行し、QA担当の再実行と区別する。
 
 QA担当は完成した`pilot.json`のroot/reviewSummaryと全24件の短文・分類を再読した。runId/baseSha、分類別6件、資料数24+9、独立再読24件、全件historical-reference/runtimeEligible false、候補・編集稿の訂正反映が一致する。公開日/実施日不明の理由付きnull、主補助資料の保持、予定と実施の区別に追加の修正事項はない。候補・編集稿・最終pilotの本QA監査を完了し、本監査と検証器を凍結する。開発親の品質レビュー待ちというpilot statusを維持し、runtime統合、merge、公開、実機動作、法的権利クリアランスはこのQAの確認対象外。
+
+## 開発親による独立レビュー追補（2026-10-07 UTC）
+
+**ACCEPT：24件を過去の参考素材として採用。runtimeの今週活動への組込みはHOLD。** 開発親の別担当が、PR #7 head `b5bd20836400e002881daa73609ebfaffcb15bc9` の全24短文・facts・対応候補・保存文脈を読み、現行100銘柄と関連モデル/週次ニュース実装を照合した。対応22件は13既存銘柄に結び付き、無対応2件を架空IDで埋めていない。IPO2例は同じ政策分類で、同社別事例・渋谷別工事は時点と判断が異なる。値上げ予定/実施、FC/直営、連結指標、融資契約/入金、取得契約/完了の区別に新たな事実誤りは見つからなかった。これは下記4代表資料の独立実読と、外部作者/QAが全24件を再読したという上の記録を区別した結論である。
+
+| 独立取得した代表資料 | 親が本文から確認した点 |
+| --- | --- |
+| ドトール2024-11-27公式価格改定記事 | 翌12月12日の予定、一部商品、原材料・人件費・物流・為替などの理由。税込数値はHTML本文にはなく、公式価格一覧PDF物理1頁のS列で250→280、340→380を追加確認した。 |
+| 三井不動産2023-02-08門真発表 | 4月17日開業予定、階別に2業態を組み合わせる構成、153＋98＝251店。初出店数の訂正注記を確認し、短文へ当該数値を付け足していない。 |
+| 東急100年史・南町田 | 2019-10-01改称とダイヤ改正、平日・土休日の全急行停車、11月まちびらきへの先行実施。 |
+| Sony 2022-07-15取得完了PDF物理1頁 | SIEのBungie100%取得完了、約37億USDに従業員インセンティブを含むこと、早期完了による当期買収費用見通しの増加と当時継続中の予想影響評価。 |
+
+取得は既存proxy/CA/TLSを保持したstdlib HTTPS GET。HTMLはHTMLParserの可視本文、PDFはpdftotextのメモリ入出力で確認し、本文・画像をファイルへ保存していない。4主資料＋追加価格表はHTTP200。Sonyの追加確認で標準User-Agentの1回が403になったが、同じHTTPS設定の明示review User-Agentでは初回・再確認とも200で取得できた。字句チェックの`re-evaluating`は原文が「継続して影響を評価」の表現なので一致しないが、実際の本文を読んで短文の意味を確認した。検索snippetだけの確認ではない。
+
+価格PDFをfood候補とpilotのsupportingSourcesへ追記し、sourceLocationを公式記事と添付価格表で分けた。PDF自体の掲載日不明は理由付きnullとし、記事日付で補完しない。現在の導出集計は24主資料＋10補助＝34固有URL。上の当初33 URLという作者/QA報告や当時の実行履歴は書き換えていない。短文24件・runtimeEligible false・保存/株価/経済実装を変更していない。
+
+親のサンプル証拠は `coordination/review-20261007-wave1/news-qa/`、別レビューは `/tmp/shibuya-news-pilot-parent-review.md` に保存。出典全34 URLの親による再取得、法的クリアランス、native動作、数百件の均質性を保証するレビューではない。
+
+追補後に開発親の別担当が1 CPUで `python3 scripts/external/news-research/validate.py --self-test`（正常/hold受理、8不利ケース拒否）と通常final検証（24候補・既存100銘柄一致）を実行し、両方PASS。変更4文書のdiff whitespace checkもPASS。原PRとの比較で全24短文・分類・runtime falseの保持を確認した。

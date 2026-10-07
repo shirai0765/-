@@ -43,6 +43,7 @@
 .store-opening .opening-timing { margin: 10px 0 0; font-size: 11px; line-height: 1.7; }
 .store-opening button:focus-visible, .store-opening summary:focus-visible { outline: 3px solid #f8aa26; outline-offset: 3px; }
 @media (max-width: 620px) {
+  .opening-section-title { margin: 14px 0 10px; }
   .opening-options { gap: 7px; }
   .opening-option-illustration { height: 88px; }
   .opening-option-heading { min-height: 62px; padding: 8px 3px; gap: 6px; }
