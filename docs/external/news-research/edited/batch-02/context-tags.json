@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "candidateId": "nr-capital-ma-jrc-ipo-20230809",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "ipo",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.milestones; GameAction",
+          "rationale": "自社の上場判断と資本構成を比較する過去参考。",
+          "limitation": "listedやIPO達成は現在状態・節目で発生週のjournalではない。GameActionは操作型で保存ログではなく、独立他社の上場・IR公開を今週実績にできない。"
+        }
+      ],
+      "contextNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-capital-ma-liberaware-ipo-20240729",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "ipo",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.milestones; GameAction",
+          "rationale": "自社の上場判断と資本構成を比較する過去参考。",
+          "limitation": "listedやIPO達成は現在状態・節目で発生週のjournalではない。GameActionは操作型で保存ログではなく、独立他社の上場・IR公開を今週実績にできない。"
+        }
+      ],
+      "contextNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-capital-ma-nihon-knowledge-ipo-20230323",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "ipo",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.milestones; GameAction",
+          "rationale": "自社の上場判断と資本構成を比較する過去参考。",
+          "limitation": "listedやIPO達成は現在状態・節目で発生週のjournalではない。GameActionは操作型で保存ログではなく、独立他社の上場・IR公開を今週実績にできない。"
+        }
+      ],
+      "contextNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-capital-ma-digitalgrid-ipo-20250422",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "ipo",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.milestones; GameAction",
+          "rationale": "自社の上場判断と資本構成を比較する過去参考。",
+          "limitation": "listedやIPO達成は現在状態・節目で発生週のjournalではない。GameActionは操作型で保存ログではなく、独立他社の上場・IR公開を今週実績にできない。"
+        }
+      ],
+      "contextNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-capital-ma-axelspace-series-d-announcement-20231221",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "capital-raising",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.sharesOutstanding; GameState.founderShares; GameState.listed; GameAction",
+          "rationale": "新株発行と創業者持分・資金使途を比較する参考。",
+          "limitation": "issueSharesは自社上場後の単純化した増資で相手方・シリーズ・調達日・衛星事業を保存しない。現実の上場前増資を同じ条件の今週イベントにできない。"
+        }
+      ],
+      "contextNotes": "調達報告月と払込日を区別。約143億円の累計を今回額にせず、資金使途は方針として記す。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-capital-ma-liberaware-funding-round-announcement-20230807",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "capital-raising",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.sharesOutstanding; GameState.founderShares; GameState.cash; GameAction",
+          "rationale": "追加増資と持分・資金の関係を比較する参考。",
+          "limitation": "現行保存にラウンド・引受先・個別払込日・累計調達額のfieldはない。現在株式数やcashだけで今週増資を立証せず、調達額から将来利益を計算しない。"
+        }
+      ],
+      "contextNotes": "11.5億円は追加分単独でなく前回込み。報告日を個別払込日に移さず、サービス拡充を実現済み成果にしない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-hakata-limited-shop-20230913",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "OpeningRecord.decisionWeek; OpeningRecord.style; OpeningRecord.openingCost; OpeningRecord.result",
+          "rationale": "常設の出店と期限を設けた地域展開の違いを考える参考。",
+          "limitation": "自社カフェの開業記録には期間限定店・百貨店契約・九州展開のfieldがない。initialStoreProfitは見込みで、開業後は該当storeIdのresultだけが初回確定。"
+        }
+      ],
+      "contextNotes": "同日掲載でも予定形を保持。原表の面積/坪矛盾は候補も短文も採録しない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-ilemer-gallery-plan-20230804",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-format-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "OpeningRecord.style; Store.style; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "出店形態と来店体験の組み合わせを比較する参考。",
+          "limitation": "現行保存はカフェ業態/販促費と決算で、展示・限定グッズ・曜日営業を記録しない。設定や売上からギャラリー開業を補完できない。"
+        }
+      ],
+      "contextNotes": "翌日開業予定を実施報告にしない。体験+限定物販と営業日制限を残し、集客効果は推定しない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-ec-mall-renewal-20220519",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "sales-channel-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "Store.marketing; Store.style; WeeklyReport.revenue; WeeklyReport.storeResults",
+          "rationale": "販路と顧客への案内を変える判断の参考。",
+          "limitation": "ECモール・会員・ポイント・販路移行日を保存するfieldはない。店舗設定や決算を通販更新の記録と扱わず、売上増や将来利益を推定しない。"
+        }
+      ],
+      "contextNotes": "開始基準日と移行完了を区別。旧ポイントが新制度に自動移管されるとは書かない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-kyoto-large-shop-plan-20220423",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.openingCost; OpeningRecord.result",
+          "rationale": "立地・店舗規模・業態を比較して開業費と初回決算を読む参考。",
+          "limitation": "カフェの開業記録はアパレルの売場面積・ブランド併設を保存しない。駅直結だけで来客/利益を確約せず、予定を今週開業へ転用しない。"
+        }
+      ],
+      "contextNotes": "開業予定と店舗設計を記す。神戸本店に次ぐ規模を全社最大にしない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-food-ap-kinoko-umeda-first-fc-opening-20260521",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "franchise-opening-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.decisionWeek; OpeningRecord.result; GameState.stores",
+          "rationale": "閉店区画の再利用と運営形態を比較する参考。",
+          "limitation": "stores/openingRecordsは自社カフェで、FC契約・第三者運営・ブランド転換を保存しない。閉店跡地の再利用を同じstoreIdの継続営業とせず、傘下収益へ別途加算しない。"
+        }
+      ],
+      "contextNotes": "更新本文の実施報告を根拠とする。FC運営者をHD直営/子会社としない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-food-ap-oyadoriya-nakano-new-format-plan-20260428",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-format-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/openingJournal.ts; src/sim/marketAcquisitions.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "OpeningRecord.style; OpeningRecord.decisionWeek; Store.quality; WeeklyReport.storeResults",
+          "rationale": "食材の特徴と業態を組み合わせる判断の参考。",
+          "limitation": "現行fieldはカフェの品質・業態/出店判断と決算で、親鶏・炭火酒場のメニュー/開業ログを持たない。quality変更だけで他社新業態の実施や利益を立証しない。"
+        }
+      ],
+      "contextNotes": "5/4更新後の本文も予定形。別サイトの予約表示から実施や売上を補完しない。 素材取得と今週の条件適合は別で、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-capital-ma-tential-equity-debt-funding-announcement-20230301",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "capital-raising",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "GameState.loans; GameState.sharesOutstanding; GameState.founderShares; GameAction",
+          "rationale": "借入と新株発行を組み合わせる選択と持分を比較する参考。",
+          "limitation": "現行保存は自社借入/上場後増資で、第三者割当相手・デット内訳・製品の証拠拡充・調達日時を記録しない。調達額から未来のカフェ利益を算出しない。"
+        }
+      ],
+      "contextNotes": "10億円を増資単独額にしない。健康効果の確定や入金日、開発成果は追加しない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-capital-ma-tsukuruba-a-tech-alliance-announcement-20220228",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "capital-alliance-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "GameState.positions; MarketAcquisitionState.research; MarketAcquisitionState.companies.mode",
+          "rationale": "少数出資・提携と全事業取得の違いを比較する参考。",
+          "limitation": "positionsは市場株保有で非公開企業との契約を保存せず、companiesは自社傘下の単純化した全事業取得。出資比率・協業契約・施工DXを記録しないためa-tech提携を取得済み収益へ加算できない。"
+        }
+      ],
+      "contextNotes": "出資を完全買収/子会社化としない。品質や効率の向上は狙いとして記し実績化しない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-food-ap-rouman-tavern-renewal-plan-20260120",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-format-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "Store.style; Store.price; Store.quality; WeeklyReport.storeResults",
+          "rationale": "新規出店と既存店の提供内容変更を比較する参考。",
+          "limitation": "Storeは現在のカフェ設定でメニュー改訂日や酒場用途を保存しない。style変更の型は更新履歴ではなく、独立他社のリニューアル実施や増益を立証しない。"
+        }
+      ],
+      "contextNotes": "開業1周年は実施済み、メニュー更新は予定形を保持。居酒屋化の売上効果を断定しない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-food-ap-tsukada-plus-rice-producer-event-plan-20260311",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "marketing-event-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "Store.marketing; WeeklyReport.revenue; WeeklyReport.storeAccounts",
+          "rationale": "費用を伴う販促と顧客への説明を比較する参考。",
+          "limitation": "marketingは自社の設定予算で生産者交流・開催日・購入条件・特典数量のfieldはない。決算だけでイベント実施や販促因果を立証できず、グループ利益へ特典効果を再計上しない。"
+        }
+      ],
+      "contextNotes": "主体は塚田農場プラスでHD本人ではない。イベント予定を実施済みとせず、特典による売上や費用を算出しない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-copa-suguderu-store-portal-announcement-20230213",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operational-information-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "Store.manager; Store.staff; Store.marketing; WeeklyReport.storeAccounts",
+          "rationale": "運営に使う情報と人員の負担を考える背景参考。",
+          "limitation": "現行保存に仕入在庫・物流予定・取引先portal・動画のfieldはない。manager配置は情報サイト導入記録ではなく、省力化額・利益や他社活動を推定できない。"
+        }
+      ],
+      "contextNotes": "掲載2/17と開始日記載2/13が逆順だが本文開始しますを実稼働確認へ補わない。利益拡大の宣伝は採用しない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-copa-rose-bath-product-launch-20231109",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品の特徴と価格・提供形態を比較する参考。",
+          "limitation": "現行Storeはカフェで入浴商品SKU・ノズル・包装・発売日を保存しない。設定品質や他社株価から新商品を今週活動にできず、販売増・利益を推定しない。"
+        }
+      ],
+      "contextNotes": "発売実施日11/9と掲載11/27を分離。広告上の推奨を実際の顧客評価や販売成果にしない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-copa-tiktok-shop-channel-announcement-20260417",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "sales-channel-reference",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "Store.marketing; GameState.deals; DealContract.startWeek; WeeklyReport.storeResults",
+          "rationale": "販促の自力運営と外部支援を比較する参考。",
+          "limitation": "現行dealsは自社ゲーム内の提案契約でTikTok/実演士/共同事業/契約締結日を保存しない。現在マーケティング費や決算は独立他社の提携・初回配信の証拠でなく、利益予測を付けない。"
+        }
+      ],
+      "contextNotes": "業務提携と販売チャネルの方針であり買収完了/配信実績ではない。相手のベクトル子会社と自社を混同しない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-food-ap-tsukada-nagoya-miso-menu-plan-20260311",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "regional-product-strategy",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/marketAcquisitions.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "全店共通の運営と立地に合わせた提供内容を比較する参考。",
+          "limitation": "現行保存に地域限定SKU・外部醸造元・提供期間/販売実績がない。qualityやdistrict設定をこのメニューの履歴にせず、売上/利益増や株価因果を推定しない。"
+        }
+      ],
+      "contextNotes": "翌日開始予定と更新日を分離し実売断定なし。全店舗展開に拡張せず、盛田をHDの子会社としない。 過去の参考資料に限定しruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-kinoko-meat-product-plan-20250218",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-range",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; WeeklyReport.storeResults",
+          "rationale": "商品系列の広げ方を比較し、店舗の価格・品質選択と確定営業結果を考える参考。",
+          "limitation": "SKUや加工食品の開発日・発売日を保存していない。価格・品質は自社店舗の設定で、第三者の商品発売や健康効果、将来利益を立証しない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。PR TIMES本文冒頭L30–38、商品系列。商号対応の公式補助記事L89–99も再読。発売は予定、当時の主体は雪国まいたけ。初回の飲食商品事例とは主原料と加工食品系列の選択が異なる。健康訴求は効果実績にしない。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-mushroom-package-renewal-plan-20260630",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "packaging",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "Store.style; Store.quality; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "商品の見せ方を変更する判断と、自社店舗の内装・品質・販促設定を比較する参考。",
+          "limitation": "包装寸法・ラベル・生鮮食品の発売日は保存対象外。店舗設定から包装更新の実施日、販売増や利幅の改善は分からず、上旬を月初の特定日に変換しない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。公式本文L89–95、仕様L99–118を再読。7月上旬予定でeventDate=null。加工食品発売とは包装の変更という別判断。高級感などの広告表現を価格・利益実績に置き換えない。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-hakkaisan-cafeteria-event-result-20260705",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "sales-event",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "Store.marketing; WeeklyReport.storeResults",
+          "rationale": "共同イベントの実施結果と、自社の販促判断後の確定店舗決算を比較する参考。",
+          "limitation": "確定storeResultsは自社店舗の週の実績で、独立他社の催事ログではない。完売だけでは客数・単価・売上・費用・利益を算出できず、売上をゲーム決算に加算しない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。公式本文L89–96を再読。7/17掲載の7/5開催後報告。完売は企業報告、数量金額なし。商品発売・包装変更と異なり体験販売の実施報告である。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-corporate-brand-site-renewal-20250401",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "corporate-communication",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "Store.marketing; WeeklyReport.news; WeeklyReport.headlines",
+          "rationale": "企業の発信方法を選ぶ事例として、店舗販促と保存された週報見出しの役割を考える参考。",
+          "limitation": "企業名変更・サイト更新・言語別情報量の保存fieldはない。news/headlinesはゲームの保存済み文面で第三者の企業発信の証拠にはならず、販促費から改名や売上を推定しない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。公式本文L89–99を再読。サイト刷新は実施済み記述、商号変更日4/1。食品発売の補助資料として同じURLを利用するが、この候補の主出来事は企業の発信・意匠更新であり二重採録ではない。"
+    },
+    {
+      "candidateId": "nr-retail-property-mitsui-kashiwanoha-grid-plan-20140424",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "area-energy",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; DevelopmentProgram.construction.completeWeek; DevelopmentProgram.completedChoiceIds; WeeklyReport.headlines",
+          "rationale": "街区をまたぐ設備の整備判断と、開発計画・完成週・保存週報の関係を比較する参考。",
+          "limitation": "開発の完成処理はゲームの地区効果で、電源、電力融通、供給許可や曜日別需要を記録しない。完成には同地区の自社直接保有物件等の条件があり、計画の省エネ・金額見込みを実績利益にしない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。公式本文L248–274を再読。7月より段階的運用の予定、許可取得は既遂。初回門真の施設複合とは電力の街区連携という別判断。26%や年1000万円は見込みなので採録短文から除外。"
+    },
+    {
+      "candidateId": "nr-retail-property-mec-otemachigate-completion-20260731",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "district-connection",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; DevelopmentProgram.construction.completeWeek; DevelopmentProgram.completedChoiceIds; WeeklyReport.headlines",
+          "rationale": "建物竣工と公共空間・熱供給接続を一体で進める判断を、開発の完成処理と比較する参考。",
+          "limitation": "developmentは地区のゲーム効果で、人道橋の法的移管や熱供給網を記録しない。completeWeekだけで各商業・支援施設の開業は立証できず、後日の開業予定や需要効果を完成週のカフェ利益に変換しない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。公式L142–159、183–186を再読。竣工7/31、橋の開通式と区への移管、冷暖房網延伸は実施記述。MINORIWA8/31、商業9/7は予定として除外。初回常盤橋の竣工と別建物、接続・公共移管の判断を記す。"
+    },
+    {
+      "candidateId": "nr-retail-property-arealink-halloact-first-contract-20230630",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "property-coownership",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.properties; PropertyAsset; GameState.marketAcquisitions; MarketAcquisitionState",
+          "rationale": "資産を直接買う方法と外部投資家が共同保有する商品を比較する参考。",
+          "limitation": "propertiesは自社の直接保有で小口持分や任意組合を表さず、marketAcquisitionsは自社傘下のゲーム事業で投資商品ではない。契約完了は分配の実施証拠ではなく、外部分配や店舗賃料を自社利益へ重ねて計上しない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。原URL2025/11はweb-open2回Internal Error。公式旧パス2023/08の同hash PDFを独立再読（1頁L0–23）、契約完了6/30と1口1000万円を確認。作者へ正常旧パス通知。初回2024年新規出店室数とは小口化という資産保有方法の別判断。"
+    },
+    {
+      "candidateId": "nr-retail-property-sanco-second-nagoya-office-opening-20240612",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "office-public-space",
+          "sourceFile": "src/model.ts; src/sim/engine.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.properties; PropertyAsset; GameState.development; DevelopmentProgram.construction.completeWeek; WeeklyReport.headlines",
+          "rationale": "賃貸オフィスに共用・公開空間を組み合わせる開発判断を、自社保有と完成処理で比較する参考。",
+          "limitation": "現在保有だけでは取得週や開業週が分からず、ゲーム開発には認証・公開空地制度のfieldがない。開業は親沿革で確認し、事前PDFの開業予定・7月の退避施設指定予定を実績化しない。賃料・カフェ売上の増加は推定しない。"
+        }
+      ],
+      "contextNotes": "歴史比較専用。runtimeEligible=false。親沿革L709–722を再読し開業6/12を確認。子の5/30付PDF1頁と再掲5/8資料3〜4頁L45–92を独立再読。主体は三交不動産、親銘柄のsubsidiary。初回複合商業や鉄道変更と別、オフィス・公開空間・取得済認証に限定。"
+    }
+  ]
+}
