@@ -1,0 +1,79 @@
+{
+  "id": "dogenzaka-sakamichi-a",
+  "asset_version": 1,
+  "style": "original Dogenzaka-inspired mixed-use, not a measured replica",
+  "floors": 6,
+  "path": "public/models/external-v080/dogenzaka-mixed/dogenzaka-sakamichi-a.glb",
+  "sha256": "0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20",
+  "bytes": 802896,
+  "triangles": 10894,
+  "vertices": 20348,
+  "meshes": 1,
+  "primitives": 11,
+  "materials": 11,
+  "textures": [
+    {
+      "image_index": 0,
+      "width": 1024,
+      "height": 1024,
+      "mime_type": "image/png",
+      "embedded_buffer_view": 44,
+      "bytes": 75485
+    }
+  ],
+  "coordinates": {
+    "units": "m",
+    "up": "+Y",
+    "front": "+Z",
+    "ground_y": 0,
+    "origin": "bottom centre of complete geometry footprint envelope",
+    "gltf_bounds_min": [
+      -4.17,
+      0.0,
+      -5.4275
+    ],
+    "gltf_bounds_max": [
+      4.17,
+      22.74,
+      5.4275
+    ],
+    "dimensions_m": {
+      "width": 8.34,
+      "height": 22.74,
+      "depth": 10.855
+    }
+  },
+  "dimensions_provenance": "All dimensions inferred for original game art. Source listing confirms six storeys only for the Odawaraya reference. No survey or floor plan used; rear, roof and stairs are authored design assumptions.",
+  "import_validation": {
+    "software": "4.3.2",
+    "status": "passed",
+    "actual_imported_objects": 1,
+    "mesh_vertices_after_blender_welding": 20348,
+    "triangles_after_import": 10894,
+    "all_uv": true,
+    "finite_coordinates": true,
+    "ground_error_m": 0.0,
+    "external_image_uris": [],
+    "glb_header_bytes_match": true
+  },
+  "lod": "LOD0 browser-ready; no separate LOD yet. One joined mesh with material primitives; no interior rooms or collision mesh.",
+  "generator": "scripts/external-v080/dogenzaka-mixed/generate.py",
+  "renders": [
+    "docs/external/dot/dogenzaka-mixed/dogenzaka-sakamichi-a-front.png",
+    "docs/external/dot/dogenzaka-mixed/dogenzaka-sakamichi-a-oblique.png",
+    "docs/external/dot/dogenzaka-mixed/dogenzaka-sakamichi-a-roof.png"
+  ],
+  "known_limitations": [
+    "Opaque stylized glazing for stable real-time sorting; no interiors.",
+    "Stair and rail geometry is visual scenery, not code-compliant navigation/collision.",
+    "Rear facades, service equipment and roof are inferred original design.",
+    "Signs are original fictional names; no relationship with real businesses.",
+    "Only isolated Blender import/render tested here; game placement, WebGL integration, Windows performance and full build are parent review work."
+  ],
+  "source_reference_urls": [
+    "https://www.oasis-estate.jp/building/36007",
+    "https://birusaku.jp/detail/detail.php/60526772/",
+    "https://en.office-navi.jp/building/02006111/"
+  ],
+  "copyright": "All mesh geometry and signage atlas newly generated. Reference photos are link-only and not redistributed or used as textures."
+}

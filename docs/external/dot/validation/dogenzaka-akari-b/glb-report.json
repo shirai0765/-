@@ -1,0 +1,93 @@
+{
+  "asset": "dogenzaka-akari-b.glb",
+  "sha256": "484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888",
+  "bytes": 543524,
+  "gltf_asset": {
+    "generator": "Khronos glTF Blender I/O v4.3.47",
+    "version": "2.0"
+  },
+  "errors": [],
+  "warnings": [],
+  "passed": true,
+  "extensions_used": [],
+  "extensions_required": [],
+  "mesh_count": 1,
+  "mesh_instance_count": 1,
+  "node_count": 1,
+  "material_count": 11,
+  "texture_count": 1,
+  "image_count": 1,
+  "vertices": 12996,
+  "triangles": 6868,
+  "primitives": 11,
+  "degenerate_triangles": 0,
+  "normal_winding_disagreements": 0,
+  "scene_instanced_counts": {
+    "vertices": 12996,
+    "triangles": 6868,
+    "primitives": 11
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -4.2162580490112305,
+      0.0,
+      -5.662499904632568
+    ],
+    "max": [
+      4.2162580490112305,
+      21.360000610351562,
+      5.662499904632568
+    ],
+    "size": [
+      8.432516098022461,
+      21.360000610351562,
+      11.324999809265137
+    ],
+    "center": [
+      0.0,
+      10.680000305175781,
+      0.0
+    ]
+  },
+  "external_uris": [],
+  "images": [
+    {
+      "index": 0,
+      "name": "fictional-signs",
+      "mimeType": "image/png",
+      "embedded": true,
+      "bytes": 75485,
+      "png_dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "index": 0,
+      "name": "dogenzaka-akari-b",
+      "primitives": 11,
+      "vertices": 12996,
+      "triangles": 6868,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 12996,
+      "material_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "counting_note": "Vertices and triangles sum accessor counts per stored primitive; scene-instanced counts include repeated mesh nodes. Vertex seams may intentionally duplicate positions."
+}

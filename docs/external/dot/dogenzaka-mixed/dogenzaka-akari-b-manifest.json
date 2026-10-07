@@ -1,0 +1,80 @@
+{
+  "id": "dogenzaka-akari-b",
+  "asset_version": 1,
+  "style": "original Dogenzaka-inspired mixed-use, not a measured replica",
+  "floors": 5,
+  "path": "public/models/external-v080/dogenzaka-mixed/dogenzaka-akari-b.glb",
+  "sha256": "484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888",
+  "bytes": 543524,
+  "triangles": 6868,
+  "vertices": 12996,
+  "meshes": 1,
+  "primitives": 11,
+  "materials": 11,
+  "texture_count": 1,
+  "textures": [
+    {
+      "image_index": 0,
+      "width": 1024,
+      "height": 1024,
+      "mime_type": "image/png",
+      "embedded_buffer_view": 44,
+      "bytes": 75485
+    }
+  ],
+  "coordinates": {
+    "units": "m",
+    "up": "+Y",
+    "front": "+Z",
+    "ground_y": 0,
+    "origin": "bottom centre of complete geometry footprint envelope",
+    "gltf_bounds_min": [
+      -4.21626,
+      0.0,
+      -5.6625
+    ],
+    "gltf_bounds_max": [
+      4.21626,
+      21.36,
+      5.6625
+    ],
+    "dimensions_m": {
+      "width": 8.43252,
+      "height": 21.36,
+      "depth": 11.325
+    }
+  },
+  "dimensions_provenance": "All dimensions inferred for original game art. Source listing confirms six storeys only for the Odawaraya reference. No survey or floor plan used; rear, roof and stairs are authored design assumptions.",
+  "import_validation": {
+    "software": "4.3.2",
+    "status": "passed",
+    "actual_imported_objects": 1,
+    "mesh_vertices_after_blender_welding": 12996,
+    "triangles_after_import": 6868,
+    "all_uv": true,
+    "finite_coordinates": true,
+    "ground_error_m": 0.0,
+    "external_image_uris": [],
+    "glb_header_bytes_match": true
+  },
+  "lod": "LOD0 browser-ready; no separate LOD yet. One joined mesh with material primitives; no interior rooms or collision mesh.",
+  "generator": "scripts/external-v080/dogenzaka-mixed/generate.py",
+  "renders": [
+    "docs/external/dot/dogenzaka-mixed/dogenzaka-akari-b-front.png",
+    "docs/external/dot/dogenzaka-mixed/dogenzaka-akari-b-oblique.png",
+    "docs/external/dot/dogenzaka-mixed/dogenzaka-akari-b-roof.png"
+  ],
+  "known_limitations": [
+    "Opaque stylized glazing for stable real-time sorting; no interiors.",
+    "Stair and rail geometry is visual scenery, not code-compliant navigation/collision.",
+    "Rear facades, service equipment and roof are inferred original design.",
+    "Signs are original fictional names; no relationship with real businesses.",
+    "Only isolated Blender import/render tested here; game placement, WebGL integration, Windows performance and full build are parent review work."
+  ],
+  "source_reference_urls": [
+    "https://www.oasis-estate.jp/building/36007",
+    "https://birusaku.jp/detail/detail.php/60526772/",
+    "https://en.office-navi.jp/building/02006111/"
+  ],
+  "copyright": "All mesh geometry and signage atlas newly generated. Reference photos are link-only and not redistributed or used as textures."
+}

@@ -1,0 +1,145 @@
+{
+  "asset": "dogenzaka-akari-b.glb",
+  "sha256": "484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888",
+  "blender_version": "4.3.2",
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "import_seconds": 0.2922,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "mesh_objects": 1,
+  "vertices_after_import": 12996,
+  "triangles_after_import": 6868,
+  "world_bounds_blender_z_up_m": {
+    "min": [
+      -4.2162580490112305,
+      -5.662499904632568,
+      0.0
+    ],
+    "max": [
+      4.2162580490112305,
+      5.662499904632568,
+      21.360000610351562
+    ]
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -4.2162580490112305,
+      0.0,
+      -5.662499904632568
+    ],
+    "max": [
+      4.2162580490112305,
+      21.360000610351562,
+      5.662499904632568
+    ],
+    "size": [
+      8.432516098022461,
+      21.360000610351562,
+      11.324999809265137
+    ]
+  },
+  "materials": [
+    {
+      "name": "brick",
+      "use_nodes": true
+    },
+    {
+      "name": "charcoal",
+      "use_nodes": true
+    },
+    {
+      "name": "concrete",
+      "use_nodes": true
+    },
+    {
+      "name": "cream",
+      "use_nodes": true
+    },
+    {
+      "name": "fictional_tenant_sign_atlas",
+      "use_nodes": true
+    },
+    {
+      "name": "glass",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_light",
+      "use_nodes": true
+    },
+    {
+      "name": "green",
+      "use_nodes": true
+    },
+    {
+      "name": "metal",
+      "use_nodes": true
+    },
+    {
+      "name": "plaster",
+      "use_nodes": true
+    },
+    {
+      "name": "wood",
+      "use_nodes": true
+    }
+  ],
+  "images": [
+    {
+      "name": "fictional-signs",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "source": "FILE"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "dogenzaka-akari-b",
+      "vertices": 12996,
+      "triangles": 6868,
+      "polygons": 6868,
+      "material_slots": 11,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    }
+  ],
+  "renders": [
+    {
+      "view": "front",
+      "file": "front.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 12.154
+    },
+    {
+      "view": "three-quarter",
+      "file": "three-quarter.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 15.58
+    },
+    {
+      "view": "roof",
+      "file": "roof.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 18.22
+    }
+  ],
+  "visual_review": "PASS: final hash484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888 actually imported and rendered. Front/three-quarter/roof inspected. Brown tenant facade, striped storefront awning, external steel stair with side service doors, rooftop setback and water tank distinguish this from Sakamichi A. No obvious missing faces, floating parts, flipped signage or z-fighting. Stairs are scenery, not a functional egress model. Browser integration untested.",
+  "source_hash_unchanged_after_validation": true
+}
