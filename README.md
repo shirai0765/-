@@ -2,7 +2,7 @@
 
 渋谷のカフェから企業グループを育てる、ブラウザー向け3D経営ゲームです。旧カードゲームを置き換えています。
 
-[ブラウザーで遊ぶ](https://shirai0765.github.io/-/?v=0.8.0)。開発用コードは `game-source`、`main` はビルド済み公開サイトです。[公開手順](docs/deployment.md)と各版の検証記録を参照してください。
+[ブラウザーで遊ぶ](https://shirai0765.github.io/-/?v=0.9.0)。開発用コードは `game-source`、`main` はビルド済み公開サイトです。[公開手順](docs/deployment.md)と各版の検証記録を参照してください。
 
 **次の担当は [再開ガイド](docs/RESUME.md) を最初に読み、[引継ぎ用の文章](docs/NEXT_AGENT_PROMPT.md) を使ってください。** 次回は単独担当を想定しています。
 

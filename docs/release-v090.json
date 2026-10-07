@@ -1,12 +1,12 @@
 {
   "version": "0.9.0",
-  "status": "verified-build-awaiting-publication",
+  "status": "published-and-verified",
   "runtimeSourceCommit": "d1481614e1fe180426e59791806504495cbd6655",
   "buildRun": "build-04",
   "indexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae",
   "distFiles": 356,
   "distBytes": 139295575,
-  "liveUrl": "https://shirai0765.github.io/-/?v=0.8.0",
+  "liveUrl": "https://shirai0765.github.io/-/?v=0.9.0",
   "nextAgentMode": "single-agent",
   "gameComplete": false,
   "humanThirtyHoursVerified": false,
@@ -18,5 +18,45 @@
     "windowsArchiveBytes": 262565948,
     "windowsRuntimeTested": false,
     "windowsCodeSigned": false
+  },
+  "publishedSourceCommit": "ff54ecce2622b0bd180437b09c162c45508495e8",
+  "pagesCommit": "fa37c9168ecd9c03678780744f3c588a49343aee",
+  "pagesRunId": 37594713008,
+  "pagesRunConclusion": "success",
+  "verifiedAt": "2026-10-07T08:37:51.661991+00:00",
+  "httpChecks": {
+    "requested": 41,
+    "http200": 41,
+    "localDistCompared": 39,
+    "localDistHashMismatches": [],
+    "failedPaths": [],
+    "releaseChecksPassed": true,
+    "pagesRunChecksPassed": true,
+    "selectedDistUnchanged": true
+  },
+  "publicNative": {
+    "passed": true,
+    "scope": "390px native WebKit fresh company, property search, explicit view/overview, actual opening/weekly settlement, save export/reload; not full campaign or physical Safari",
+    "checks": [
+      "Public version/source/index match the reviewed v090 build; DEV renderer globals absent",
+      "390px search reaches newdogenzaka13; explicit view and overview native taps leave company/save exact",
+      "Ordinary funds pay one300万円opening; actual firstweek auto-saves and exact export/reload preserve durable progress"
+    ],
+    "settlement": {
+      "lotId": "dogenzaka-13",
+      "style": "takeaway",
+      "reportWeek": 1,
+      "stateWeek": 2,
+      "netProfit": 75776,
+      "cash": 9075776
+    },
+    "errors": [],
+    "warnings": [],
+    "requestFailures": [],
+    "cleanup": {
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true
+    }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "retrievedAt": "2026-10-07",
+  "status": "Unreviewed; not integrated into published 0.9.0",
+  "items": [
+    {
+      "number": 20,
+      "title": "A01補完: city-popの24bit原盤・AAC・24秒試聴とnative確認",
+      "head": "7a269f2a7778defa2da069f8a852a0c120b4caf0",
+      "url": "https://github.com/shirai0765/-/pull/20",
+      "base": "game-source"
+    },
+    {
+      "number": 19,
+      "title": "A01補完: café-loungeの24bit原盤・AAC・24秒試聴とnative確認",
+      "head": "85201332d5fbe5b06af4d6b93abbcc53e2967d9c",
+      "url": "https://github.com/shirai0765/-/pull/19",
+      "base": "game-source"
+    },
+    {
+      "number": 18,
+      "title": "D01修正: 住宅バルコニーの隙間と屋根の重なり",
+      "head": "78a26d25044fe3ed876438bf04c2c6932abe6f60",
+      "url": "https://github.com/shirai0765/-/pull/18",
+      "base": "game-source"
+    }
+  ]
+}

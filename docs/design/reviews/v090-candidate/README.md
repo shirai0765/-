@@ -23,3 +23,5 @@
 - [deals-night-390.png](deals-night-390.png)：`production-csp-07-night-final/deals-night-bare-contract-heading.png`
 - [achievement-390.png](achievement-390.png)：`production-csp-06-tail/achievement-390-historical-natural-record.png`
 - [development-390.png](development-390.png)：`production-csp-05-market-group/development-390-natural-project-status.png`
+
+[公開版の実初決算](public-weekly-390.png)：公開0.9.0を390px WebKitの通常操作で開業して一週決算した画像。公開元 `ff54ecce2622b0bd180437b09c162c45508495e8`。

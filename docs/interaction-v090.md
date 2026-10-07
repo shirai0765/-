@@ -37,3 +37,9 @@ DEV模型03では意図的に1GLBを失敗させ、3実GLBと1私有fallback、�
 ニュース80件は過去経営の参照資料として保存。PR13で落ちた公式ドトール価格PDFを復元し統合validator成功。今週の架空他社活動には投入していません。外部API検証3PRは同1seedの連続記録として受入。1400週後の信用不足は、通常の店舗調整と6決算の限定分岐で達成可能と独立確認し、経済のデッドロックとは扱いません。[評価](external/internal-qa/gameplay-wave-v090.md)。
 
 最新のユーザー依頼は現状公開と引継ぎ保存です。新しい実装は追加せず、[RESUME.md](RESUME.md)を次の単独担当の入口にしました。
+
+## 公開と配布の確定
+
+[公開0.9.0](https://shirai0765.github.io/-/?v=0.9.0)。Pages source `ff54ecce2622b0bd180437b09c162c45508495e8`、Pages `fa37c9168ecd9c03678780744f3c588a49343aee`、run `37594713008`成功。公開41 HTTP／選択39資産SHAが一致。390px公開WebKitで通常1200万円会社→物件検索→明示近景／俯瞰→300万円開業→実初決算→保存書出し／再読込が成功、エラー・警告・失敗要求0、cleanup済み。全キャンペーンの公開再検査ではありません。[HTTP](external/internal-qa/public-http-v090.json)、[公開実操作](external/internal-qa/public-native-v090.json)。
+
+同じ最終distのWeb ZIP104,530,080 bytes／Windows ZIP262,565,948 bytesを再ビルドせず梱包、全SHA／CRC成功。公式Electron44.5.1の既存cacheを照合、Windows実機／署名未確認。正確なSHAは[release記録](release-v090.json)。ソースの後続commitはこの公開結果と引継ぎを追加した文書で、Pages sourceと区別します。

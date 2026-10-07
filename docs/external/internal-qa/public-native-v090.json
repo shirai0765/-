@@ -1,0 +1,81 @@
+{
+  "method": "One normal native Linux WebKit software-WebGL session at390px; ordinary fresh company funds; real UI taps; read-only durable rows and release verification; no DEV globals, state injection, camera/RAF/TLS/sandbox changes",
+  "errors": [],
+  "warnings": [],
+  "requestFailures": [],
+  "checks": [
+    "Public version/source/index match the reviewed v090 build; DEV renderer globals absent",
+    "390px search reaches newdogenzaka13; explicit view and overview native taps leave company/save exact",
+    "Ordinary funds pay one300万円opening; actual firstweek auto-saves and exact export/reload preserve durable progress"
+  ],
+  "snapshots": [
+    "02-new-outer-candidate",
+    "03-explicit-outer-view",
+    "06-first-real-week-autosaved",
+    "09-resumed-new-store"
+  ],
+  "exports": {
+    "01-initial": {
+      "file": "01-initial.json",
+      "sha256": "d8c329df5b43b44d16bb293cfce98afa197fa22fd525d0fc2acb41f74c22bf4d",
+      "payloadChecksum": "f688a65c9de5a84c61c5d6ab555396749cecc9046d22659575309728374b798f"
+    },
+    "04-after-view-only": {
+      "file": "04-after-view-only.json",
+      "sha256": "84a64804f12d62a2c37d982696b129e70234e3ef8dd421391dbb0322be468572",
+      "payloadChecksum": "f688a65c9de5a84c61c5d6ab555396749cecc9046d22659575309728374b798f"
+    },
+    "05-opened": {
+      "file": "05-opened.json",
+      "sha256": "106f0675130ca462bce1fe60ca92a12c0282a17c7691313b1d4b150abc06cc83",
+      "payloadChecksum": "5e519a4002f34a9e755c4ef1c78b1a15265255f5b841742328932d301afc85b2"
+    },
+    "07-settled": {
+      "file": "07-settled.json",
+      "sha256": "ee029cc2cc1323a64b29979f4fdc30a72cbc16a58a201ce311053c173d202930",
+      "payloadChecksum": "9f989260bf730c50b8e4eb41c67bdb9c838f24b6c12c2953f6dddac06001cbe5"
+    },
+    "08-reloaded": {
+      "file": "08-reloaded.json",
+      "sha256": "a1dcd1dc47fd48b2d99d58ba59598aac10cf239a4ee60f1c668db8f27315e82a",
+      "payloadChecksum": "9f989260bf730c50b8e4eb41c67bdb9c838f24b6c12c2953f6dddac06001cbe5"
+    }
+  },
+  "limitations": [
+    "Linux WebKit/software GPU, not physical iPhone Safari or Windows hardware"
+  ],
+  "phase": "09-resumed-new-store",
+  "publicIndexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae",
+  "release": {
+    "version": "0.9.0",
+    "sourceCommit": "ff54ecce2622b0bd180437b09c162c45508495e8",
+    "sourceBranch": "game-source",
+    "publishedAt": "2026-10-07T08:34:48.897640+00:00",
+    "verifiedFiles": 356,
+    "verifiedIndexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae"
+  },
+  "settlement": {
+    "lotId": "dogenzaka-13",
+    "style": "takeaway",
+    "reportWeek": 1,
+    "stateWeek": 2,
+    "netProfit": 75776,
+    "cash": 9075776
+  },
+  "reloadedPublicIndexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae",
+  "releaseAfter": {
+    "version": "0.9.0",
+    "sourceCommit": "ff54ecce2622b0bd180437b09c162c45508495e8",
+    "sourceBranch": "game-source",
+    "publishedAt": "2026-10-07T08:34:48.897640+00:00",
+    "verifiedFiles": 356,
+    "verifiedIndexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae"
+  },
+  "sourceStable": true,
+  "cspViolations": [],
+  "contextClosed": true,
+  "driverStopped": true,
+  "profileRemoved": true,
+  "functionalPassed": true,
+  "passed": true
+}
