@@ -7,7 +7,7 @@
 .opening-option-heading { display: flex; flex-direction: column; gap: 5px; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
 .opening-option-heading > span { font-size: 11px; font-variant-numeric: tabular-nums; }
 .opening-option small, .opening-unavailable { display: block; color: var(--muted); font-size: 12px; line-height: 1.6; }
-.opening-option-profit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; font-size: 12px; }
+.store-opening .opening-style-description { margin: 10px 0; font-size: 12px; line-height: 1.7; color: var(--ink); }
 .store-opening h4 { margin: 18px 0 8px; font-size: 14px; }
 .opening-comparison { margin: 0; font-size: 12px; }
 .opening-comparison > div { display: grid; gap: 5px; padding: 9px 0; border-bottom: 1px solid var(--line); }
@@ -17,11 +17,7 @@
 .opening-primary-values > div { grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 9px 0; }
 .opening-primary-values dt { line-height: 1.5; }
 .opening-primary-values dd { font-size: 16px; }
-.opening-primary-values .opening-profit-range { grid-template-columns: 1fr; gap: 4px; }
-.opening-profit-range dd { font-size: 15px; }
-.opening-style-details { display: grid; gap: 10px; }
-.opening-style-details > div { padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 12px; }
-.opening-style-details .opening-note { margin: 4px 0; }
+.opening-defaults > div { grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; }
 .opening-detail { margin: 12px 0; }
 .opening-detail summary { padding: 8px 0; cursor: pointer; font-size: 12px; font-weight: 600; line-height: 1.6; }
 .store-opening .opening-warning { padding: 10px; border: 1px solid var(--line); border-left: 3px solid var(--red, #b43c30); border-radius: 4px; font-size: 12px; line-height: 1.7; }

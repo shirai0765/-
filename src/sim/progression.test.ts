@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import type { DistrictId } from '../model';
-import { createGame, applyAction, getSummary, previewWeek } from './engine';
+import { createGame, applyAction, advanceWeek, getSummary, previewWeek } from './engine';
 import { getProgression } from './progression';
 import { getCampaignCompletion } from './campaign';
 import ProgressionPanel from '../ui/ProgressionPanel';
@@ -47,7 +47,7 @@ describe('live progression', () => {
     expect(ipoRequirements.slice(0, 3).map(r => r.label)).toEqual([
       '店舗数 0 / 3 店', '累計黒字 0 / 12 週', '純資産 ¥2,000,000,000 / ¥20,000,000',
     ]);
-    expect(ipoRequirements.at(-1)!.label).toContain('基準見込み：損益ゼロ');
+    expect(ipoRequirements.at(-1)!.label).toContain('収益条件（基準利益が黒字）：未達');
     expect(state).toEqual(before);
     expect(result.next?.id).toBe('cafe');
   });
@@ -80,11 +80,11 @@ describe('live progression', () => {
     expect(result.recommendations[0].body).toContain('実績利益がゼロ以下');
     const ipoProfit = result.roadmap.find(s => s.id === 'ipo')!.requirements.at(-1)!;
     expect(ipoProfit.met).toBe(true);
-    expect(ipoProfit.label).toContain('〜');
-    expect(ipoProfit.label).toContain('基準見込み：黒字');
+    expect(ipoProfit.label).not.toContain('〜');
+    expect(ipoProfit.label).toContain('収益条件（基準利益が黒字）：充足');
     expect(state).toEqual(before);
   });
-  it('uses downside cash burn when the neutral plan adds cash and displays rounded ranges', () => {
+  it('retains internal downside risk while rendering only a qualitative warning', () => {
     const state = marginalCafe();
     state.cash = 1_000;
     const before = structuredClone(state);
@@ -97,9 +97,9 @@ describe('live progression', () => {
     expect(result.recommendations[0]).toMatchObject({ title: '週末に現金が不足するおそれ', urgent: true });
     expect(result.recommendations[0].body).toContain('可能性');
     const markup = renderToStaticMarkup(createElement(ProgressionPanel, { state, onNavigate: () => undefined }));
-    expect(markup).toContain('今週の現金増減の見込み幅 約¥-8,000〜¥25,000');
-    expect(markup).toContain('保守的なケース');
-    expect(markup).toContain('実績は週末に確定');
+    expect(markup).not.toContain('今週の現金増減の見込み幅');
+    expect(markup).not.toContain('保守的なケース');
+    expect(markup).toContain('現金が不足する可能性');
     expect(markup).not.toContain('見込み幅では減少なし');
     expect(state).toEqual(before);
   });
@@ -157,8 +157,8 @@ describe('live progression', () => {
     const requirement = result.roadmap.find(s => s.id === 'ipo')!.requirements.at(-1)!;
     expect(result.summary.weeklyProfit).toBeLessThan(0);
     expect(requirement.met).toBe(false);
-    expect(requirement.label).toContain('基準見込み：赤字');
-    expect(requirement.label).toContain('〜');
+    expect(requirement.label).toContain('収益条件（基準利益が黒字）：未達');
+    expect(requirement.label).not.toContain('〜');
     expect(result.recommendations[0]).toMatchObject({ urgent: true, tab: 'finance' });
   });
   it('does not make unowned optional property the next goal or capital default after IPO', () => {
@@ -187,8 +187,8 @@ describe('live progression', () => {
     expect(getCampaignCompletion(state, previewWeek(state)).complete).toBe(true);
     expect(campaign.achieved).toBe(true);
     expect(campaign.requirements.at(-1)!.met).toBe(true);
-    expect(campaign.requirements.at(-1)!.label).toContain('〜');
-    expect(campaign.requirements.at(-1)!.label).toContain('達成判定は基準見込み');
+    expect(campaign.requirements.at(-1)!.label).not.toContain('〜');
+    expect(campaign.requirements.at(-1)!.label).toBe('継続収益の条件（基準判定）：充足');
     expect(state).toEqual(before);
   });
   it('requires the complete campaign but does not require a debt-free balance sheet', () => {
@@ -215,6 +215,23 @@ describe('live progression', () => {
     state.marketAcquisitions.companies[0].readyWeek = 3;
     state.development.programs[0].completedChoiceIds.pop();
     expect(getProgression(state).roadmap.find(s => s.id === 'campaign')!.achieved).toBe(false);
+  });
+
+  it('recommends loss review only for currently open stores with an actual recorded loss', () => {
+    const opened = applyAction(createGame(), { type: 'openStore', lotId: 'center-01', style: 'standard' });
+    const costly = applyAction(opened, { type: 'updateStore', storeId: opened.stores[0].id, changes: { staff: 30 } });
+    expect(previewWeek(costly).storeResults[0].profit).toBeLessThan(0);
+    expect(getProgression(costly).recommendations.some(r => r.title.includes('赤字だった'))).toBe(false);
+    const settled = advanceWeek(costly);
+    const corrected = applyAction(settled, { type: 'updateStore', storeId: settled.stores[0].id, changes: { staff: 4, price: 950, quality: 85, marketing: 0 } });
+    expect(previewWeek(corrected).storeResults[0].profit).toBeGreaterThan(0);
+    const before = structuredClone(corrected);
+    const lossAdvice = getProgression(corrected).recommendations.find(r => r.title.includes('赤字だった'));
+    expect(lossAdvice).toMatchObject({ title: '直近の決算で赤字だった1店舗を見直す', tab: 'stores' });
+    expect(lossAdvice!.body).toContain(`第${settled.lastReport!.week}週`);
+    const closed = applyAction(corrected, { type: 'closeStore', storeId: corrected.stores[0].id });
+    expect(getProgression(closed).recommendations.some(r => r.title.includes('赤字だった'))).toBe(false);
+    expect(corrected).toEqual(before);
   });
 
 });

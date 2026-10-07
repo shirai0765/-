@@ -1,0 +1,10 @@
+.site-context{min-width:0;margin:0 0 18px}
+.site-context h3{font-size:15px;margin:0 0 8px}
+.site-context .site-context-description{font-size:13px;line-height:1.7;margin:0 0 10px;color:var(--ink)}
+.site-context-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0}
+.site-context-facts>div{min-width:0;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--surface-soft)}
+.site-context-facts dt{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:5px}
+.site-context-facts dd{font-size:13px;font-weight:600;line-height:1.6;margin:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.site-context-facts dd small{display:block;font-size:10px;font-weight:400;color:var(--muted);line-height:1.6}
+.site-context .site-context-note{font-size:11px;line-height:1.6;color:var(--muted);margin:8px 0 0}
+@media(max-width:360px){.site-context-facts{gap:6px}.site-context-facts>div{padding:8px}}

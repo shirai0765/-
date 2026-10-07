@@ -17,7 +17,6 @@ export interface GrowthMilestonePanelProps {
   onNavigate: (target: GrowthMilestoneTarget) => void;
 }
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
-const estimate = ({ min, max }: { min: number; max: number }) => `${yen(Math.floor(min / 1000) * 1000)}〜${yen(Math.ceil(max / 1000) * 1000)}`;
 const percent = (value: number) => `${(value * 100).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`;
 
 /** Read-only success receipt. Closing and navigation never execute an investment. */
@@ -63,8 +62,8 @@ export default function GrowthMilestonePanel({ before, after, onClose, onNavigat
         <div><span>自分が持つ会社の株の割合</span><strong>{percent(before.founderShares / before.sharesOutstanding)} → {percent(summary.ownership)}</strong><small>出資を受けた分、創業者持分が変わりました</small></div>
       </div>
       <p className="growth-milestone-note">IPO実行直後の結果です。調達した現金は売上や週の利益ではありません。</p>
-      {forecast.risk.debtLossPossible && <p className="growth-milestone-warning" role="alert">今週の利益見込みは{estimate(forecast.netProfit)}です。下限では借入中の利益条件を満たせず、倒産のおそれがあります。</p>}
-      {forecast.risk.cashShortfallPossible && <p className="growth-milestone-warning" role="alert">週末の現金見込みは{estimate(forecast.cashAfter)}です。資金不足のおそれがあります。次の投資の前に支払いを確認してください。</p>}
+      {forecast.risk.debtLossPossible && <p className="growth-milestone-warning" role="alert">借入中に週末の利息後利益がゼロ以下になると倒産します。現在の営業計画では利益不足のおそれがあります。調達した現金だけではこの条件を回避できません。</p>}
+      {forecast.risk.cashShortfallPossible && <p className="growth-milestone-warning" role="alert">週末の支払い資金が不足するおそれがあります。次の投資の前に、手元資金と支払いを確認してください。</p>}
       <h3 className="growth-milestone-next-title">次の資金の使い道を、選べます。</h3>
       <div className="growth-milestone-next">
         <article><h4>企業を迎える</h4><p>上場が必要だった企業も、取得の検討対象になります。</p><small>{readyAcquisitions > 0 ? `独立運営で取得可能：${readyAcquisitions}件。` : `${listedCandidates}件の上場要件を満たしました。`}調査・信用・取得資金は企業ごとに必要です。</small><button className="secondary" onClick={() => navigate('market')}>企業取得を検討 <ArrowUpRight size={14}/></button></article>

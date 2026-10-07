@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, Coffee, Megaphone, Users, ReceiptText } from 'lucide-react';
 import type { GameAction, GameState, Store, StoreStyle } from '../model';
 import { getStoreOperatingInsight, operatingConditions } from '../sim/engine';
+import { getSiteContext } from '../sim/siteContext';
 import { StoreOperatingInsightPanel } from './StoreOperatingInsightPanel';
 import { StorePlanFeedback, StoreStaffCapacityNote } from './StorePlanFeedback';
 import StoreSettlementBreakdown from './StoreSettlementBreakdown';
@@ -71,6 +72,7 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
   const root = useRef<HTMLDivElement>(null);
   const locked = disabled || state.gameOver;
   const insight = state.gameOver ? null : getStoreOperatingInsight(state, store.id);
+  const site = getSiteContext(state, store.lotId);
   const reasonsId = `store-insight-reasons-${store.lotId}`;
   const report = state.lastReport;
   const actual = report?.storeResults.find(result => result.id === store.id);
@@ -111,6 +113,13 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
         <dl><div><dt>店舗利益</dt><dd className={actual.profit < 0 ? 'negative' : undefined}>{yen(actual.profit)}</dd></div>
           <div><dt>来店者数</dt><dd>{actual.customers.toLocaleString('ja-JP')}人</dd></div></dl>
       </section> : <p className="store-management-empty">{noResults}</p>}
+      {site && <details className="store-management-location"><summary>この店の周辺環境</summary>
+        <p>{site.description}</p>
+        <dl><div><dt>週の通行量</dt><dd>{site.footfallWeekly.toLocaleString('ja-JP')}人 · {site.footfallBand.label}</dd></div>
+          <div><dt>客層の購買力</dt><dd>{site.purchasingPowerBand.label}</dd></div>
+          <div><dt>近隣の自社店舗</dt><dd>{site.nearbyOwnStores}店</dd></div></dl>
+        <p>通行量はゲーム内の立地条件で、この店への来店者数ではありません。</p>
+      </details>}
       <h3 className="store-management-heading" ref={heading} tabIndex={-1}>この店で何をしますか？</h3>
       <nav className="store-management-purposes" aria-label="店舗の操作">
         {purposes.map(({ id, title, detail, icon: Icon }) => <button type="button" key={id} onClick={() => changePurpose(id)}>
@@ -129,6 +138,7 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
       <h3 className="store-management-heading" ref={heading} tabIndex={-1}>{purposeTitles[purpose]}</h3>
       {purpose !== 'results' && <>
         <p className="store-management-hint">入力を終えると設定に反映されます。</p>
+        {actual && report && <p className="store-management-prior-result">第{report.week}週の確定実績：店舗利益 {yen(actual.profit)} · 来店者数 {actual.customers.toLocaleString('ja-JP')}人。現在の設定による結果ではありません。</p>}
         <StorePlanFeedback insight={insight} storeName={store.name} reasonsId={reasonsId} group={purpose}/>
       </>}
       {purpose === 'product' && <>
@@ -163,7 +173,7 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
           <div><dt>店舗利益</dt><dd className={actual.profit < 0 ? 'negative' : undefined}>{yen(actual.profit)}</dd></div>
           <div><dt>来店者数</dt><dd>{actual.customers.toLocaleString('ja-JP')}人</dd></div>
           <div><dt>満足度</dt><dd>{actual.satisfaction} / 100</dd></div></dl>
-        <p className="store-management-hint">店舗利益は本部費・利息などを含みません。</p>
+        <p className="store-management-hint">店舗利益は本部費・利息などを含みません。 満足度と全社の黒字・赤字が、毎週のブランド評価に影響します。</p>
         <StoreSettlementBreakdown week={report.week} result={actual} account={report.storeAccounts?.find(account => account.storeId === actual.id)}/>
       </> : <p className="store-management-empty">{noResults}</p>)}
       {purpose !== 'results' && <StoreOperatingInsightPanel insight={insight} storeName={store.name} reasonsId={reasonsId}/>} 

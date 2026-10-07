@@ -54,6 +54,22 @@ describe('sector program planning and settled feedback', () => {
     expect(state).toEqual(before);
   });
 
+  it('keeps the sector plan and known payment independent of an unserved cafe price change', () => {
+    let state = matureCompany();
+    state = applyAction(state, { type: 'openStore', lotId: 'center-01', style: 'standard' });
+    const first = applyAction(state, { type: 'updateStore', storeId: state.stores[0].id, changes: { price: 950, quality: 85, staff: 4, marketing: 0 } });
+    const second = applyAction(first, { type: 'updateStore', storeId: first.stores[0].id, changes: { price: 1050 } });
+    const render = (company: typeof state) => renderToStaticMarkup(createElement(GroupOperationsPanel, { state: company, onAction: () => undefined, investmentVisit: visit('growth') }));
+    const quote = getMarketOperationQuote(first, sector, 'growth'), markup = render(first);
+    expect(markup).toBe(render(second));
+    expect(markup).toContain('現状維持と比べた事業内の資金効果 / 26週');
+    expect(markup).toContain(yen(Math.floor(quote.netContributionRange.min / 1000) * 1000));
+    expect(markup).toContain(yen(Math.ceil(quote.netContributionRange.max / 1000) * 1000));
+    expect(markup).toContain('支払直後の現金');
+    expect(markup).toContain(yen(first.cash - quote.upfrontCost));
+    expect(markup).not.toMatch(/利益幅・利息後|週末の現金幅|今週の会社/);
+  });
+
   it('keeps funding plans available without cash while matching only the action’s initial charge', () => {
     const state = matureCompany();
     const poor = { ...state, cash: 0 }, before = structuredClone(poor);

@@ -6,12 +6,12 @@ import { CITY_DISPLAY_LOTS,OMITTED_SCENERY_LOTS } from '../src/city/displayLayou
 
 describe('store close-up endpoints',()=>{
   it('reserves static storefront space without changing any purchasable parcel',()=>{
-    expect(OMITTED_SCENERY_LOTS).toHaveLength(11);
+    expect(OMITTED_SCENERY_LOTS).toHaveLength(12);
     expect(OMITTED_SCENERY_LOTS.every(l=>!l.available)).toBe(true);
     for(const lot of LOTS.filter(l=>l.available))expect(CITY_DISPLAY_LOTS.find(l=>l.id===lot.id)).toBe(lot);
   });
-  it('keeps all 32 purchasable storefronts clear of neighboring buildings in all styles',()=>{
-    const lots=LOTS.filter(l=>l.available);expect(lots).toHaveLength(32);
+  it('keeps all 48 purchasable storefronts clear of neighboring buildings in all styles',()=>{
+    const lots=LOTS.filter(l=>l.available);expect(lots).toHaveLength(48);
     for(const lot of lots)for(const style of ['standard','premium','takeaway'] as const){
       const view=getStoreViewpoint(lot,style);expect(view,`${lot.id}/${style}`).not.toBeNull();
       expect(isStoreViewpointClear(lot,view!),`${lot.id}/${style} obstruction`).toBe(true);

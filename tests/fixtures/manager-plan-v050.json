@@ -1,0 +1,1442 @@
+[
+  {
+    "lotId": "center-01",
+    "style": "standard",
+    "profit": 223627,
+    "satisfaction": 78,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-01",
+    "style": "premium",
+    "profit": 249615,
+    "satisfaction": 74,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-01",
+    "style": "takeaway",
+    "profit": 193193,
+    "satisfaction": 74,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-02",
+    "style": "standard",
+    "profit": 118627,
+    "satisfaction": 65,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-02",
+    "style": "premium",
+    "profit": -62584,
+    "satisfaction": 46,
+    "effective": {
+      "price": 780,
+      "staff": 4,
+      "quality": 85,
+      "marketing": 10000,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-02",
+    "style": "takeaway",
+    "profit": -124424,
+    "satisfaction": 54,
+    "effective": {
+      "price": 450,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-03",
+    "style": "standard",
+    "profit": -235563,
+    "satisfaction": 26,
+    "effective": {
+      "price": 580,
+      "staff": 4,
+      "quality": 65,
+      "marketing": 10000,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-03",
+    "style": "premium",
+    "profit": -207584,
+    "satisfaction": 27,
+    "effective": {
+      "price": 780,
+      "staff": 4,
+      "quality": 85,
+      "marketing": 10000,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-03",
+    "style": "takeaway",
+    "profit": -269424,
+    "satisfaction": 44,
+    "effective": {
+      "price": 450,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-04",
+    "style": "standard",
+    "profit": 208627,
+    "satisfaction": 78,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-04",
+    "style": "premium",
+    "profit": 234615,
+    "satisfaction": 76,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-04",
+    "style": "takeaway",
+    "profit": 178193,
+    "satisfaction": 74,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-05",
+    "style": "standard",
+    "profit": 251627,
+    "satisfaction": 83,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-05",
+    "style": "premium",
+    "profit": 277615,
+    "satisfaction": 80,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-05",
+    "style": "takeaway",
+    "profit": 221193,
+    "satisfaction": 80,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-06",
+    "style": "standard",
+    "profit": 163627,
+    "satisfaction": 69,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-06",
+    "style": "premium",
+    "profit": 179185,
+    "satisfaction": 66,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 85,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-06",
+    "style": "takeaway",
+    "profit": 133193,
+    "satisfaction": 65,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-07",
+    "style": "standard",
+    "profit": 235627,
+    "satisfaction": 81,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-07",
+    "style": "premium",
+    "profit": 261615,
+    "satisfaction": 79,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-07",
+    "style": "takeaway",
+    "profit": 205193,
+    "satisfaction": 77,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-08",
+    "style": "standard",
+    "profit": 151627,
+    "satisfaction": 71,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-08",
+    "style": "premium",
+    "profit": 177615,
+    "satisfaction": 70,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "center-08",
+    "style": "takeaway",
+    "profit": 121193,
+    "satisfaction": 67,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-01",
+    "style": "standard",
+    "profit": 261627,
+    "satisfaction": 82,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-01",
+    "style": "premium",
+    "profit": 287615,
+    "satisfaction": 79,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-01",
+    "style": "takeaway",
+    "profit": 231193,
+    "satisfaction": 78,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-02",
+    "style": "standard",
+    "profit": 264385,
+    "satisfaction": 84,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-02",
+    "style": "premium",
+    "profit": 294615,
+    "satisfaction": 80,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-02",
+    "style": "takeaway",
+    "profit": 228193,
+    "satisfaction": 81,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-03",
+    "style": "standard",
+    "profit": 178627,
+    "satisfaction": 73,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-03",
+    "style": "premium",
+    "profit": 204615,
+    "satisfaction": 71,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-03",
+    "style": "takeaway",
+    "profit": 148193,
+    "satisfaction": 69,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-04",
+    "style": "standard",
+    "profit": 254627,
+    "satisfaction": 85,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 10000,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-04",
+    "style": "premium",
+    "profit": 290615,
+    "satisfaction": 82,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-04",
+    "style": "takeaway",
+    "profit": 224193,
+    "satisfaction": 81,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-05",
+    "style": "standard",
+    "profit": 204627,
+    "satisfaction": 76,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-05",
+    "style": "premium",
+    "profit": 230615,
+    "satisfaction": 73,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-05",
+    "style": "takeaway",
+    "profit": 174193,
+    "satisfaction": 72,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-06",
+    "style": "standard",
+    "profit": 240627,
+    "satisfaction": 80,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-06",
+    "style": "premium",
+    "profit": 266615,
+    "satisfaction": 76,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-06",
+    "style": "takeaway",
+    "profit": 210193,
+    "satisfaction": 77,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-07",
+    "style": "standard",
+    "profit": 205712,
+    "satisfaction": 90,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 65,
+      "marketing": 10000,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-07",
+    "style": "premium",
+    "profit": 248255,
+    "satisfaction": 89,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-07",
+    "style": "takeaway",
+    "profit": 171310,
+    "satisfaction": 86,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-08",
+    "style": "standard",
+    "profit": 243712,
+    "satisfaction": 90,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 65,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-08",
+    "style": "premium",
+    "profit": 283615,
+    "satisfaction": 84,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "dogenzaka-08",
+    "style": "takeaway",
+    "profit": 209310,
+    "satisfaction": 86,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-01",
+    "style": "standard",
+    "profit": -123563,
+    "satisfaction": 43,
+    "effective": {
+      "price": 580,
+      "staff": 4,
+      "quality": 65,
+      "marketing": 10000,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-01",
+    "style": "premium",
+    "profit": -95584,
+    "satisfaction": 42,
+    "effective": {
+      "price": 780,
+      "staff": 4,
+      "quality": 85,
+      "marketing": 10000,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-01",
+    "style": "takeaway",
+    "profit": -157424,
+    "satisfaction": 56,
+    "effective": {
+      "price": 450,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-02",
+    "style": "standard",
+    "profit": 135627,
+    "satisfaction": 69,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-02",
+    "style": "premium",
+    "profit": 161615,
+    "satisfaction": 66,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-02",
+    "style": "takeaway",
+    "profit": 87310,
+    "satisfaction": 65,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-03",
+    "style": "standard",
+    "profit": 152627,
+    "satisfaction": 71,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-03",
+    "style": "premium",
+    "profit": 178615,
+    "satisfaction": 70,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-03",
+    "style": "takeaway",
+    "profit": 122193,
+    "satisfaction": 67,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-04",
+    "style": "standard",
+    "profit": 162627,
+    "satisfaction": 76,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-04",
+    "style": "premium",
+    "profit": 188615,
+    "satisfaction": 78,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-04",
+    "style": "takeaway",
+    "profit": 132193,
+    "satisfaction": 72,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-05",
+    "style": "standard",
+    "profit": 231627,
+    "satisfaction": 83,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-05",
+    "style": "premium",
+    "profit": 257615,
+    "satisfaction": 80,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-05",
+    "style": "takeaway",
+    "profit": 201193,
+    "satisfaction": 79,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-06",
+    "style": "standard",
+    "profit": 123627,
+    "satisfaction": 72,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-06",
+    "style": "premium",
+    "profit": 149615,
+    "satisfaction": 74,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-06",
+    "style": "takeaway",
+    "profit": 93193,
+    "satisfaction": 69,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-07",
+    "style": "standard",
+    "profit": -265563,
+    "satisfaction": 34,
+    "effective": {
+      "price": 580,
+      "staff": 4,
+      "quality": 65,
+      "marketing": 10000,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-07",
+    "style": "premium",
+    "profit": -237584,
+    "satisfaction": 27,
+    "effective": {
+      "price": 780,
+      "staff": 4,
+      "quality": 85,
+      "marketing": 10000,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-07",
+    "style": "takeaway",
+    "profit": -299424,
+    "satisfaction": 50,
+    "effective": {
+      "price": 450,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-08",
+    "style": "standard",
+    "profit": 206627,
+    "satisfaction": 80,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-08",
+    "style": "premium",
+    "profit": 232615,
+    "satisfaction": 79,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "miyashita-08",
+    "style": "takeaway",
+    "profit": 176193,
+    "satisfaction": 76,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-01",
+    "style": "standard",
+    "profit": 255627,
+    "satisfaction": 83,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-01",
+    "style": "premium",
+    "profit": 281615,
+    "satisfaction": 79,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-01",
+    "style": "takeaway",
+    "profit": 225193,
+    "satisfaction": 79,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-02",
+    "style": "standard",
+    "profit": 245627,
+    "satisfaction": 84,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-02",
+    "style": "premium",
+    "profit": 271615,
+    "satisfaction": 82,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-02",
+    "style": "takeaway",
+    "profit": 215193,
+    "satisfaction": 80,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-03",
+    "style": "standard",
+    "profit": 186627,
+    "satisfaction": 74,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-03",
+    "style": "premium",
+    "profit": 212615,
+    "satisfaction": 73,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-03",
+    "style": "takeaway",
+    "profit": 156193,
+    "satisfaction": 70,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-04",
+    "style": "standard",
+    "profit": 169627,
+    "satisfaction": 70,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-04",
+    "style": "premium",
+    "profit": 195615,
+    "satisfaction": 67,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-04",
+    "style": "takeaway",
+    "profit": 139193,
+    "satisfaction": 66,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-05",
+    "style": "standard",
+    "profit": 238797,
+    "satisfaction": 95,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-05",
+    "style": "premium",
+    "profit": 282185,
+    "satisfaction": 88,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 85,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-05",
+    "style": "takeaway",
+    "profit": 200428,
+    "satisfaction": 90,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 65,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-06",
+    "style": "standard",
+    "profit": 120978,
+    "satisfaction": 95,
+    "effective": {
+      "price": 754,
+      "staff": 3,
+      "quality": 75,
+      "marketing": 10000,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-06",
+    "style": "premium",
+    "profit": 166099,
+    "satisfaction": 99,
+    "effective": {
+      "price": 897,
+      "staff": 4,
+      "quality": 95,
+      "marketing": 10000,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-06",
+    "style": "takeaway",
+    "profit": 90117,
+    "satisfaction": 90,
+    "effective": {
+      "price": 585,
+      "staff": 3,
+      "quality": 65,
+      "marketing": 10000,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-07",
+    "style": "standard",
+    "profit": 195627,
+    "satisfaction": 78,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-07",
+    "style": "premium",
+    "profit": 221615,
+    "satisfaction": 79,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-07",
+    "style": "takeaway",
+    "profit": 165193,
+    "satisfaction": 74,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-08",
+    "style": "standard",
+    "profit": 150627,
+    "satisfaction": 72,
+    "effective": {
+      "price": 754,
+      "staff": 4,
+      "quality": 55,
+      "marketing": 0,
+      "manager": true,
+      "style": "standard",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-08",
+    "style": "premium",
+    "profit": 176615,
+    "satisfaction": 71,
+    "effective": {
+      "price": 1014,
+      "staff": 4,
+      "quality": 75,
+      "marketing": 0,
+      "manager": true,
+      "style": "premium",
+      "level": 1
+    }
+  },
+  {
+    "lotId": "sakuragaoka-08",
+    "style": "takeaway",
+    "profit": 120193,
+    "satisfaction": 68,
+    "effective": {
+      "price": 585,
+      "staff": 4,
+      "quality": 45,
+      "marketing": 0,
+      "manager": true,
+      "style": "takeaway",
+      "level": 1
+    }
+  }
+]

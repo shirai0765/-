@@ -134,6 +134,21 @@ export function managerPlan(s: GameState, st: Store): Store {
           const candidate = { ...st, price, quality, staff, marketing }, result = rawStoreResult(s, candidate, context);
           if (result.satisfaction >= 65 && result.profit > score) { best = candidate; score = result.profit; }
         }
+  // Keep profitable established plans unchanged. An unprofitable plan gets a
+  // bounded recovery search beyond the format's original narrow price band.
+  // This is still a neutral plan within the same payroll/advertising envelope;
+  // it cannot buy capacity, change format, or inspect settlement-only draws.
+  if (score <= 0) {
+    const qualities = [...new Set([spec.quality - 10, spec.quality, Math.min(100, spec.quality + 10), 85, 100])];
+    for (const price of [850, 950, 1050, 1150])
+      for (const quality of qualities)
+        for (const staff of [2, 3, 4, 5, 6, 8])
+          for (const marketing of [0, 10_000, 30_000]) {
+            if (staff * 52_000 + marketing > budget) continue;
+            const candidate = { ...st, price, quality, staff, marketing }, result = rawStoreResult(s, candidate, context);
+            if (result.satisfaction >= 65 && result.profit > score) { best = candidate; score = result.profit; }
+          }
+  }
   return best;
 }
 function storeResult(s: GameState, st: Store) { return rawStoreResult(s, managerPlan(s, st)); }

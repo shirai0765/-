@@ -29,6 +29,14 @@
 .store-management-upgrade>.secondary{width:100%}
 .store-management-results{padding:12px 0 18px}
 .store-management .store-operating-insight{margin-top:24px;margin-bottom:0}
-.store-management input[type='range']{min-height:32px}
+.store-management input[type='range']{min-height:32px;margin-inline:0}
 .store-management summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:420px){.store-management-purposes{gap:8px}.store-management-purposes>button{padding:12px 9px;gap:7px;min-height:96px}.store-management-purposes>button>svg:last-child{display:none}.store-management dd{font-size:16px}.store-management-latest{padding:12px}}
+
+.store-management-location{border-block:1px solid var(--line);margin:14px 0;padding:10px 0;font-size:12px;line-height:1.7}
+.store-management-location summary{cursor:pointer;min-height:32px;color:var(--muted)}
+.store-management-location p{font-size:11px;color:var(--muted)}
+.store-management-location dl>div{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0}
+.store-management-location dt{color:var(--muted)}
+.store-management-location dd{margin:0;font-variant-numeric:tabular-nums}
+.store-controls .store-management-prior-result{font-size:11px;line-height:1.8;color:var(--muted);margin:0 0 12px}

@@ -18,14 +18,14 @@ function freezeDeep(value: object) {
 }
 
 describe('display-only real-city game sites', () => {
-  it('maps one explicit site in each district without reducing the 32 economic lots', () => {
+  it('keeps four measured anchors separate from all 48 economic lots', () => {
     const available = LOTS.filter(l => l.available);
-    expect(available).toHaveLength(32);
+    expect(available).toHaveLength(48);
     expect(REAL_CITY_ANCHORS.map(a => a.lotId)).toEqual(['center-01', 'dogenzaka-01', 'miyashita-01', 'sakuragaoka-01']);
     expect(new Set(REAL_CITY_ANCHORS.map(a => a.lotId)).size).toBe(4);
     expect(new Set(REAL_CITY_ANCHORS.map(a => LOTS.find(l => l.id === a.lotId)!.district)).size).toBe(4);
     expect(available.filter(l => hasRealCityAnchor(l.id))).toHaveLength(4);
-    expect(available.filter(l => !hasRealCityAnchor(l.id))).toHaveLength(28);
+    expect(available.filter(l => !hasRealCityAnchor(l.id))).toHaveLength(44);
     expect(hasRealCityAnchor('missing')).toBe(false);
     expect(hasRealCityAnchor(LOTS.find(l => !l.available)!.id)).toBe(false);
   });
@@ -52,7 +52,7 @@ describe('display-only real-city game sites', () => {
     expect(sites.every(p => p.status === 'empty' && !p.selected)).toBe(true);
     expect(s.stores[0].lotId).toBe('center-02');
     expect(s.properties[0].lotId).toBe('sakuragaoka-06');
-    expect(LOTS.filter(l => l.available)).toHaveLength(32);
+    expect(LOTS.filter(l => l.available)).toHaveLength(48);
   });
 
   it('keeps selection independent from ownership and returns detached view data', () => {

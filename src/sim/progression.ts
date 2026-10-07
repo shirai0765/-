@@ -1,13 +1,13 @@
+import { formatReputation } from '../format';
 import type { GameState } from '../model';
 import { ACQUISITION_TARGETS, DISTRICTS, LOTS } from '../data/district';
 import { STOCKS } from '../data/stocks';
 import { getMarketAcquisitionTargets, getMarketGroupFinancials } from './marketAcquisitions';
 import { getDevelopmentPrograms } from './development';
-import { evaluateSite, getSummary, getWeekOutlook, type EstimateRange } from './engine';
+import { evaluateSite, getSummary, getWeekOutlook } from './engine';
 import { getCampaignCompletion } from './campaign';
 
 const yen = (n: number) => `¥${Math.round(n).toLocaleString('ja-JP')}`;
-const rangeYen = ({ min, max }: EstimateRange) => `約${yen(Math.floor(min / 1000) * 1000)}〜${yen(Math.ceil(max / 1000) * 1000)}`;
 export interface RoadmapStep { id: string; title: string; description: string; achieved: boolean; requirements: { label: string; met: boolean }[]; tab: string; optionalBeforeIPO?: boolean }
 export type CapitalFocus =
   | { kind: 'ipo'; title: string; eligible: boolean; tab: string }
@@ -24,13 +24,12 @@ export function getProgression(state: GameState) {
   const outlook = getWeekOutlook(state);
   const forecast = outlook.expected;
   const completion = getCampaignCompletion(state, forecast);
-  const profitRequirement = `今週の利益見込み：${rangeYen(outlook.netProfit)}（達成判定は基準見込みの黒字）`;
-  const neutralProfit = summary.weeklyProfit > 0 ? '黒字' : summary.weeklyProfit === 0 ? '損益ゼロ' : '赤字';
+  const profitRequirement = `継続収益の条件（基準判定）：${completion.forecastProfitable ? '充足' : '未達'}`;
   const ipoLabels = [
     `店舗数 ${state.stores.length} / 3 店`,
     `累計黒字 ${state.profitableWeeks} / 12 週`,
     `純資産 ${yen(summary.netWorth)} / ${yen(20_000_000)}`,
-    `今週の利益見込み：${rangeYen(outlook.netProfit)}（基準見込み：${neutralProfit}）`,
+    `収益条件（基準利益が黒字）：${summary.weeklyProfit > 0 ? '充足' : '未達'}`,
   ];
   const ipoRequirements = summary.ipoRequirements.map((requirement, index) => ({ ...requirement, label: ipoLabels[index] ?? requirement.label }));
   const availableLots = LOTS.filter(l => l.available);
@@ -43,7 +42,7 @@ export function getProgression(state: GameState) {
   const hasRail = state.subsidiaries.some(s => s.sector === 'rail');
   const hasFood = state.subsidiaries.some(s => s.sector === 'food');
   const hasPropertyCompany = state.subsidiaries.some(s => s.sector === 'property');
-  const requirements = (price: number, reputation?: number) => [{ label: `手元資金 ${yen(state.cash)} / ${yen(price)}`, met: state.cash >= price }, ...(reputation === undefined ? [] : [{ label: `信用 ${state.reputation.toFixed(1)} / ${reputation}`, met: state.reputation >= reputation }])];
+  const requirements = (price: number, reputation?: number) => [{ label: `手元資金 ${yen(state.cash)} / ${yen(price)}`, met: state.cash >= price }, ...(reputation === undefined ? [] : [{ label: `信用 ${formatReputation(state.reputation)} / ${reputation}`, met: state.reputation >= reputation }])];
   const roadmap: RoadmapStep[] = [
     { id: 'cafe', title: '渋谷の一杯から', description: '街で空き区画を選び、最初の店を開きましょう。', achieved: state.stores.length >= 1, requirements: [{ label: `${state.stores.length} / 1 店舗を運営`, met: state.stores.length >= 1 }, ...requirements(openingCost)], tab: 'city' },
     { id: 'chain', title: '3店舗のチェーンへ', description: '収支を整え、立地と客層の異なる店舗を育てます。', achieved: state.stores.length >= 3, requirements: [{ label: `${state.stores.length} / 3 店舗を運営`, met: state.stores.length >= 3 }], tab: 'stores' },
@@ -66,7 +65,7 @@ export function getProgression(state: GameState) {
   const biggest = [...positiveProfits].sort((a, b) => b.profit - a.profit)[0];
   const concentration = biggest && storeProfitTotal > 0 ? biggest.profit / storeProfitTotal : 0;
   const unmanaged = state.stores.filter(s => !s.manager).length;
-  const lossStores = forecast.storeResults.filter(s => s.profit < 0).length;
+  const lossStores = state.lastReport?.storeResults.filter(result => result.profit < 0 && state.stores.some(store => store.id === result.id)).length ?? 0;
   // Suggested milestone order is not an engine gate. Direct ownership remains
   // a district-development condition, without making it a step before IPO.
   const next = roadmap.find(s => !s.achieved && !s.optionalBeforeIPO);
@@ -77,10 +76,10 @@ export function getProgression(state: GameState) {
     : nextMarketTarget ? { kind: 'investment', title: `${nextMarketTarget.name}（自主運営・必要調査込み）`, cost: nextMarketTarget.upfrontCost + (nextMarketTarget.researched ? 0 : nextMarketTarget.researchCost), tab: 'stocks' }
     : null;
   const recommendations: { title: string; body: string; tab: string; urgent?: boolean }[] = [];
-  if (outlook.risk.debtLossPossible) recommendations.push({ title: '借入中の利益不足に注意', body: `今週の利益見込みは ${rangeYen(outlook.netProfit)}。幅の下限では利益がゼロ以下になる可能性があります。借入中に週末の実績利益がゼロ以下になると倒産します。赤字店舗・契約費用・利息を確認し、返済も検討してください。`, tab: 'finance', urgent: true });
-  if (outlook.risk.cashShortfallPossible) recommendations.push({ title: '週末に現金が不足するおそれ', body: `週末の現金見込みは ${rangeYen(outlook.cashAfter)}。幅の下限では資金不足となる可能性があります。支出と返済を確認し、資産売却などで現金を確保しましょう。`, tab: 'finance', urgent: true });
-  if (lossStores > 0) recommendations.push({ title: `基準見込みで赤字の${lossStores}店舗を見直す`, body: '価格・品質・人員・販促を一つずつ調整し、週次の利益見込み幅を比較しましょう。実績は週末に確定します。', tab: 'stores' });
-  if (unmanaged >= 3) recommendations.push({ title: `${unmanaged}店舗を手動で管理中`, body: '手動管理が3店舗を超えると経営者の管理負荷で運営能力（来店対応上限）が下がります。店長は管理負荷を減らし、価格・人員・販促を調整します。週額費用も含めて導入後の利益見込み幅を比較しましょう。', tab: 'stores' });
+  if (outlook.risk.debtLossPossible) recommendations.push({ title: '借入中の利益不足に注意', body: '営業結果によって利益がゼロ以下になる可能性があります。借入中に週末の実績利益がゼロ以下になると倒産します。直近の実績・契約費用・利息を確認し、返済も検討してください。', tab: 'finance', urgent: true });
+  if (outlook.risk.cashShortfallPossible) recommendations.push({ title: '週末に現金が不足するおそれ', body: '週末の支払いで現金が不足する可能性があります。現在の資金と支出・返済を確認し、必要なら投資の見送りや資産売却を検討してください。', tab: 'finance', urgent: true });
+  if (lossStores > 0) recommendations.push({ title: `直近の決算で赤字だった${lossStores}店舗を見直す`, body: `第${state.lastReport!.week}週に赤字だった営業中の店舗です。確定した売上・費用を読み、価格・品質・人員・販促を見直せます。変更後の結果は次の決算で確認しましょう。`, tab: 'stores' });
+  if (unmanaged >= 3) recommendations.push({ title: `${unmanaged}店舗を手動で管理中`, body: '手動管理が3店舗を超えると経営者の管理負荷で運営能力（来店対応上限）が下がります。店長は管理負荷を減らし、価格・人員・販促を調整します。店長の週額費用と対応枠を確認し、導入後は実際の決算を振り返りましょう。', tab: 'stores' });
   if (summary.ipoEligible) recommendations.push({ title: '上場条件を満たしています', body: '公開する場合の調達資金と創業者持分を比較できます。公開せず、今の運営を続けることも選べます。', tab: 'group' });
   const readyDevelopment = programs.find(p => p.choices.some(c => c.unlocked) && p.remainingWeeks === 0 && p.phase < 3);
   if (readyDevelopment && recommendations.length < 2) recommendations.push({ title: `${readyDevelopment.name}の次期開発を比較`, body: '着工できる計画があります。完成後の需要・賃貸収入と維持費を比較し、投資先を選びましょう。', tab: 'development' });

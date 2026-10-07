@@ -7,7 +7,6 @@ import './capital-planning.css';
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
 
-const rangeYen = (range: { min: number; max: number }) => `約${yen(Math.floor(range.min / 1000) * 1000)}〜${yen(Math.ceil(range.max / 1000) * 1000)}`;
 const percent = (value: number) => `${(value * 100).toFixed(1)}%`;
 const signedYen = (value: number) => `${value > 0 ? '+' : ''}${yen(value)}`;
 
@@ -30,13 +29,15 @@ export interface CapitalPlanningPanelProps {
   onReturnToInvestment?: () => void;
   initialDraft?: CapitalPlanningDraft;
   onDraftChange?: (draft: CapitalPlanningDraft) => void;
+  /** A physical city service offers only its relevant financing methods. */
+  service?: 'bank' | 'exchange';
 }
 
-export default function CapitalPlanningPanel({ state, onAction, disabled = false, planningContext, onReturnToInvestment, initialDraft, onDraftChange }: CapitalPlanningPanelProps) {
+export default function CapitalPlanningPanel({ state, onAction, disabled = false, planningContext, onReturnToInvestment, initialDraft, onDraftChange, service }: CapitalPlanningPanelProps) {
   const hasNewContext = planningContext && planningContext.id !== initialDraft?.contextId;
   const [borrowAmount, setBorrowAmount] = useState(initialDraft?.borrowAmount ?? 3_000_000);
   const [borrowWeeks, setBorrowWeeks] = useState(initialDraft?.borrowWeeks ?? 52);
-  const [selectedId, setSelectedId] = useState<CapitalPlanId>(initialDraft?.selectedId ?? 'hold');
+  const [selectedId, setSelectedId] = useState<CapitalPlanId>(service === 'bank' ? 'borrow' : service === 'exchange' ? 'equity' : initialDraft?.selectedId ?? 'hold');
   const [useBudget, setUseBudget] = useState(hasNewContext ? true : initialDraft?.useBudget ?? Boolean(planningContext));
   const [spending, setSpending] = useState(hasNewContext ? planningContext.spending : initialDraft?.spending ?? planningContext?.spending ?? 0);
   const [reserve, setReserve] = useState(initialDraft?.reserve ?? 0);
@@ -67,17 +68,12 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
     { label: '調達直後の手元資金', before: yen(before.cash), after: yen(after.cash) },
     { label: '借入残高', before: yen(before.debt), after: yen(after.debt) },
     { label: '創業者持分', before: percent(before.ownership), after: percent(after.ownership) },
-    { label: '営業利益の幅 / 今週', before: rangeYen({ min: before.outlook.netProfit.min + before.report.interest, max: before.outlook.netProfit.max + before.report.interest }), after: rangeYen({ min: after.outlook.netProfit.min + after.report.interest, max: after.outlook.netProfit.max + after.report.interest }) },
     { label: '支払利息 / 今週', before: yen(before.report.interest), after: yen(after.report.interest) },
-    { label: '利息控除後の利益幅 / 今週', before: rangeYen(before.outlook.netProfit), after: rangeYen(after.outlook.netProfit) },
     { label: '元本返済 / 今週', before: yen(before.report.loanRepayment), after: yen(after.report.loanRepayment) },
-    { label: '支払配当の幅 / 今週', before: rangeYen(before.dividendsPaidRange), after: rangeYen(after.dividendsPaidRange) },
-    { label: '現金増減の幅 / 今週', before: rangeYen(before.outlook.cashChange), after: rangeYen(after.outlook.cashChange) },
-    { label: '週末の手元資金の幅', before: rangeYen(before.outlook.cashAfter), after: rangeYen(after.outlook.cashAfter) },
   ] : [];
 
   return <section className="card capital-planning" aria-label="資金調達の比較">
-    <span className="eyebrow">CAPITAL PLAN</span><h3>次の投資に、どの資金を使う？</h3>
+    <span className="eyebrow">CAPITAL PLAN</span><h3>{service === 'bank' ? '事業資金を借りる' : service === 'exchange' ? state.listed ? '増資で事業を広げる' : '株式を公開する' : '次の投資に、どの資金を使う？'}</h3>
     <p className="capital-note">第{state.week}週の会社に、調達だけを実行した場合の比較です。選ぶだけでは現金も週も変わりません。</p>
     {getActiveMarketOperation(state) && <p className="capital-note">26週間の事業計画による一時的な利益変化は、企業価値と借入枠の収益評価には含めません。支出済みの現金と今週の営業収支には反映しています。</p>}
     {planningContext && <div className="capital-context">
@@ -85,7 +81,7 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
       <p className="capital-note">投資先から受け取った金額は概算メモです。取得済み・価格変更などの条件は反映せず、投資先へ戻って確認します。</p>
     </div>}
     <div className="capital-options" role="group" aria-label="調達方法を比較">
-      {plans.map(plan => <button type="button" key={plan.id} className={'capital-option' + (selectedId === plan.id ? ' selected' : '')} aria-pressed={selectedId === plan.id} onClick={() => setSelectedId(plan.id)}>
+      {plans.filter(plan => !service || plan.id === 'hold' || plan.id === (service === 'bank' ? 'borrow' : 'equity')).map(plan => <button type="button" key={plan.id} className={'capital-option' + (selectedId === plan.id ? ' selected' : '')} aria-pressed={selectedId === plan.id} onClick={() => setSelectedId(plan.id)}>
         <strong>{labels[plan.id]}</strong>
         {plan.after ? <><span>得る現金 <b>{signedYen(plan.raisedCash ?? 0)}</b></span><span>持分 {percent(plan.after.ownership)} / 元本 {yen(plan.after.report.loanRepayment)}/週</span>{plan.budgetGap !== null && <span className={plan.budgetGap > 0 ? 'negative' : 'positive'}>計画資金 {plan.budgetGap > 0 ? `${yen(plan.budgetGap)}不足` : '確保できる'}</span>}{plan.after.debtProfitRisk && <span className="negative">借入中の利益不足リスク</span>}{plan.after.cashRisk && <span className="negative">週末の資金不足</span>}</> : <span className="capital-unavailable">{plan.reason}</span>}
       </button>)}
@@ -103,16 +99,16 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
       <div className="capital-outcome" aria-label="選んだ調達案の主な結果">
         <dl className="capital-key-values">
           <div className="capital-key-main"><dt>得る現金</dt><dd>{signedYen(selected.raisedCash ?? 0)}</dd></div>
-          <div className="capital-key-main"><dt>週末の現金の幅</dt><dd className={after.cashRisk ? 'negative' : undefined}>{rangeYen(after.outlook.cashAfter)}</dd></div>
+          <div className="capital-key-main"><dt>調達直後の手元資金</dt><dd>{yen(after.cash)}</dd></div>
           <div><dt>自分の持分</dt><dd>{percent(after.ownership)}</dd></div>
           <div><dt>元本返済 / 今週</dt><dd>{yen(after.report.loanRepayment)}</dd></div>
-          <div className="capital-key-profit"><dt>今週の利益幅（利息後）</dt><dd className={after.outlook.netProfit.min <= 0 ? 'negative' : undefined}>{rangeYen(after.outlook.netProfit)}</dd></div>
+          <div><dt>支払利息 / 今週</dt><dd>{yen(after.report.interest)}</dd></div>
         </dl>
-        <p className="capital-note">調達だけを反映した見込み幅です。実績は週末に確定します。予定する投資の支出・利益・維持費は含みません。元本は利益ではなく現金から支払います。</p>
+        <p className="capital-note">調達した直後の金額です。この後の投資や営業による増減は含みません。売上と利益は週末に確定します。元本は利益ではなく現金から支払います。</p>
       </div>
       {selected.loanAnnualRate !== null && <p className="capital-note">この新規融資の年利 {(selected.loanAnnualRate * 100).toFixed(2)}% · {borrowWeeks}週返済</p>}
-      {after.debtProfitRisk && <p className="capital-warning" role="alert">借入残高があり、見込み幅の下限で利息控除後利益が0以下になります。週末の実績が0以下なら倒産します。現金や受取配当が十分でも、週末に元本を完済しても回避できません。</p>}
-      {after.cashRisk && <p className="capital-warning" role="alert">見込み幅の下限で週末現金が不足します。実績によっては、利益が黒字でも元本返済などの支払いで倒産するリスクがあります。</p>}
+      {after.debtProfitRisk && <p className="capital-warning" role="alert">現在の営業計画では、借入中の利益不足が懸念されます。週末の利息後利益が0以下なら倒産します。現金や受取配当が十分でも、週末に元本を完済しても回避できません。</p>}
+      {after.cashRisk && <p className="capital-warning" role="alert">週末の支払い資金が不足するおそれがあります。利益が黒字でも元本返済などの支払いで倒産するリスクがあります。</p>}
     </> : <p className="capital-warning">{selected.reason}</p>}
     {useBudget && <div className="capital-budget-result">
       {budgetError ? <p className="capital-warning" role="alert">{budgetError}</p> : <>
@@ -124,7 +120,7 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
       {selected.action ? <button type="button" className="primary capital-submit" disabled={blocked || !selected.available} onClick={() => { if (selected.available && selected.action) onAction(selected.action); }}>{selectedId === 'borrow' ? `${Number.isFinite(borrowAmount) ? yen(borrowAmount) : '指定額'}を借り入れる` : labels.equity}</button> : <p className="capital-hold">調達せず、今の資金を使う方針です。</p>}
       {planningContext && onReturnToInvestment && <button type="button" className="secondary capital-return" disabled={disabled} onClick={onReturnToInvestment}>{planningContext.returnLabel}</button>}
     </div>
-    <p className="capital-rule">借入中の週は「営業利益 − 利息」が0以下で倒産。調達後に投資する場合は、投資後の予測をもう一度確認してください。</p>
+    <p className="capital-rule">借入中の週は「営業利益 − 利息」が0以下で倒産。調達後の投資では、固定費と手元に残す資金も確認してください。</p>
     <details className="capital-budget" open={budgetExpanded} onToggle={event => setBudgetExpanded(event.currentTarget.open)}>
       <summary>計画支出と残す現金を入力・編集</summary>
       <label className="capital-budget-toggle"><input type="checkbox" checked={useBudget} disabled={blocked} onChange={event => setUseBudget(event.target.checked)}/>予定する支出から、調達不足を計算する</label>
@@ -133,14 +129,14 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
           <label>計画する支出（円）<input type="number" min={0} step={100000} value={Number.isFinite(spending) ? spending : ''} disabled={blocked} onChange={event => setSpending(event.target.value === '' ? NaN : Number(event.target.value))}/></label>
           <label>支出後に残す現金（円）<input type="number" min={0} step={100000} value={Number.isFinite(reserve) ? reserve : ''} disabled={blocked} onChange={event => setReserve(event.target.value === '' ? NaN : Number(event.target.value))}/></label>
         </div>
-        {!budgetError && <p className="capital-note">今の現金に対する不足額 <strong>{yen(gap ?? 0)}</strong>。<button type="button" className="secondary" disabled={blocked || gap === null || gap < 100000 || gap > summary.availableCredit} onClick={() => { if (gap !== null) { setBorrowAmount(gap); setSelectedId('borrow'); } }}>不足額を借入希望額へ</button></p>}
+        {!budgetError && <p className="capital-note">今の現金に対する不足額 <strong>{yen(gap ?? 0)}</strong>。{service !== 'exchange' && <button type="button" className="secondary" disabled={blocked || gap === null || gap < 100000 || gap > summary.availableCredit} onClick={() => { if (gap !== null) { setBorrowAmount(gap); setSelectedId('borrow'); } }}>不足額を借入希望額へ</button>}</p>}
       </>}
       <p className="capital-note">比較用のメモです。入力では投資を実行しません。取得条件と投資後の収支は、投資先の画面で再確認してください。</p>
     </details>
     {after && <details className="capital-details">
-      <summary>現状と比べる・10項目の内訳</summary>
+      <summary>調達条件を詳しく比べる</summary>
       <div className="capital-table-wrap"><table className="capital-table"><thead><tr><th scope="col">比較項目</th><th scope="col">今のまま</th><th scope="col">選んだ案</th></tr></thead><tbody>{rows.map(row => <tr key={row.label}><th scope="row">{row.label}</th><td>{row.before}</td><td>{row.after}</td></tr>)}</tbody></table></div>
-      <p className="capital-note">幅は千円単位の概数で、起こる確率を示すものではありません。リスクは丸め前の下限で判定しています。現金増減は受取配当や契約満了の回収額も含みます。将来の景況・投資・設定変更で収支は変わり、資金が貯まる時期は保証しません。</p>
+      <p className="capital-note">調達条件と確定した支払いを比較しています。将来の集客や営業利益は含めません。景況や店の運営で、週末に残る現金は変わります。</p>
       {selectedId === 'equity' && <p className="capital-note">IPOは既存株数の25%を新たに発行します。上場後の増資は10%ずつ、創業者持分20%が下限です。持分は会社の株の割合で、創業者個人の現金残高ではありません。</p>}
     </details>}
     {state.listed && <p className="capital-note">現在の配当は会社の現金を減らします。創業者個人の資産には還元されず、会社の成長資金を残す目的では配当0%が有利です。</p>}

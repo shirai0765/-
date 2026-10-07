@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it, vi } from 'vitest';
 import { LOTS } from '../src/data/district';
 import type { GameState } from '../src/model';
-import { applyAction, createGame, getSummary, previewWeek } from '../src/sim/engine';
+import { advanceWeek, applyAction, createGame, getSummary, previewWeek } from '../src/sim/engine';
 import ProgressionPanel from '../src/ui/ProgressionPanel';
 
 function company(storeCount: number) {
@@ -63,7 +63,7 @@ describe('manual strategy panel', () => {
     { profit: 1, sign: '黒字', met: true },
     { profit: 0, sign: '損益ゼロ', met: false },
     { profit: -1, sign: '赤字', met: false },
-  ])('shows neutral $sign at ¥$profit without treating the historical profit as this week', ({ profit, sign, met }) => {
+  ])('shows neutral $sign at ¥$profit without treating the historical profit as this week', ({ profit, met }) => {
     const state = company(1);
     const debt = (previewWeek(state).operatingProfit - profit) * 52 / .05;
     state.loans = [{ id: 'sign-fixture', principal: debt, remaining: debt, annualRate: .05, weeksLeft: 52, weeklyPayment: 20 }];
@@ -71,8 +71,8 @@ describe('manual strategy panel', () => {
     expect(getSummary(state).weeklyProfit).toBe(profit);
     const row = requirements(markup(state))[3];
     expect(row.met).toBe(met);
-    expect(row.content).toContain(`基準見込み：${sign}`);
-    expect(row.content).toContain('〜');
+    expect(row.content).toContain(`収益条件（基準利益が黒字）：${met ? '充足' : '未達'}`);
+    expect(row.content).not.toContain('〜');
   });
 
   it.each([false, true])('reviews IPO status with eligible=$0 and leaves property optional before IPO', eligible => {
@@ -97,7 +97,8 @@ describe('manual strategy panel', () => {
     const capital = rendered.match(/<section[^>]*data-capital-kind="investment"[^>]*>(.*?)<\/section>/)?.[1];
     expect(capital).toContain('任意の投資例');
     expect(capital).toContain('参考：投資額');
-    expect(capital).toContain('この例の資金目安まで');
+    expect(capital).toContain('現在の手元資金');
+    expect(capital).not.toMatch(/運転資金目安|資金目安まで/);
     expect(capital).toContain('投資先を比較');
     expect(rendered).not.toContain('NEXT CAPITAL GOAL');
     expect(rendered).not.toContain('目標まであと');
@@ -131,4 +132,32 @@ describe('manual strategy panel', () => {
     expect(onNavigate).toHaveBeenCalledExactlyOnceWith(tab);
     expect(state).toEqual(before);
   });
+  it('shows no invented result for an unoperated company and no forecast-derived health or capital figures', () => {
+    const state = company(1), before = structuredClone(state);
+    const rendered = markup(state);
+    const health = rendered.match(/<section[^>]*class="progression-health"[^>]*>(.*?)<\/section>/)?.[1];
+    expect(health).toContain('営業実績はまだありません');
+    expect(health).toContain(`¥${state.cash.toLocaleString('ja-JP')}`);
+    expect(health).not.toMatch(/見込み|持続期間|集中|運転資金|〜/);
+    expect(rendered).not.toMatch(/今週の利益見込み|週末の現金見込み|利益見込み幅|運転資金目安/);
+    expect(state).toEqual(before);
+  });
+
+  it('shows the exact completed week after settings and current cash have changed', () => {
+    const settled = advanceWeek(company(1));
+    const state = applyAction(settled, { type: 'updateStore', storeId: settled.stores[0].id, changes: { price: 1300, quality: 20, staff: 1 } });
+    state.cash += 123456;
+    const before = structuredClone(state);
+    const rendered = markup(state);
+    const health = rendered.match(/<section[^>]*class="progression-health"[^>]*>(.*?)<\/section>/)?.[1];
+    expect(health).toContain(`第${settled.lastReport!.week}週の全社純利益`);
+    expect(health).toContain(`¥${settled.lastReport!.netProfit.toLocaleString('ja-JP')}`);
+    expect(health).toContain(`¥${settled.lastReport!.cashChange.toLocaleString('ja-JP')}`);
+    expect(health).toContain(`¥${state.cash.toLocaleString('ja-JP')}`);
+    expect(health).not.toContain('営業実績はまだありません');
+    expect(state.lastReport).toEqual(settled.lastReport);
+    expect(state.history).toEqual(settled.history);
+    expect(state).toEqual(before);
+  });
+
 });

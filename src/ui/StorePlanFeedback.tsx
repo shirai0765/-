@@ -10,13 +10,6 @@ interface Props {
 
 const groupLabels = { product: '商品・価格', people: '人員・店長', promotion: '広告・改装' };
 
-/** Outward rounding keeps a forecast a readable interval, including near zero. */
-export function formatStoreEstimateRange(range: { min: number; max: number }, unit = 1) {
-  const min = Math.floor(range.min / unit) * unit;
-  const max = Math.ceil(range.max / unit) * unit;
-  return `${min.toLocaleString('ja-JP')}〜${max.toLocaleString('ja-JP')}`;
-}
-
 export function StoreStaffCapacityNote({ insight }: { insight: StoreOperatingInsight | null }) {
   if (!insight || insight.effectiveSettings.staff <= insight.context.staffCapacityLimit) return null;
   return <p className="store-plan-staff-note">
@@ -24,7 +17,7 @@ export function StoreStaffCapacityNote({ insight }: { insight: StoreOperatingIns
   </p>;
 }
 
-/** A compact planning range near the inputs; actual results arrive at week end. */
+/** Applied settings and qualitative tradeoffs; outcomes arrive only after settlement. */
 export function StorePlanFeedback({ insight, storeName, reasonsId, group }: Props) {
   if (!insight) return null;
   const showReasons = () => {
@@ -46,15 +39,15 @@ export function StorePlanFeedback({ insight, storeName, reasonsId, group }: Prop
   };
 
   return <div className="store-plan-feedback" data-store-id={insight.storeId} data-feedback-group={group}
-    role="group" aria-label={`${storeName}の${groupLabels[group]}設定の店舗利益見込み`}>
+    role="group" aria-label={`${storeName}の${groupLabels[group]}設定の確認`}>
     <p className="store-plan-feedback-period">第{insight.week}週 · 反映済みの設定{insight.effectiveSettings.manager && 'からの店長案'}</p>
-    <p className="store-plan-feedback-profit">
-      <span>店舗利益見込み／週</span>
-      <span className="store-plan-feedback-range">{formatStoreEstimateRange(insight.resultRange.profit, 1000)}円</span>
-    </p>
-    <p className="store-plan-feedback-scope">実績は週末に確定。本部費・利息などは含みません。</p>
+    <p className="store-plan-feedback-effect">{group === 'product'
+      ? '価格は一杯の売上と選ばれやすさに、品質は満足度と材料費に関わります。'
+      : group === 'people' ? '人員は対応枠と人件費に関わります。設備の上限を超える増員にも人件費がかかります。'
+      : '広告は店を知るきっかけを増やし、設備は対応枠と維持費に関わります。'}</p>
+    <p className="store-plan-feedback-scope">売上・来店者数・利益は営業を終えてから確認できます。</p>
     <button type="button" aria-controls={reasonsId} onPointerDown={event => {
       if (event.button === 0) event.preventDefault();
-    }} onClick={showReasons}>見込みの理由</button>
+    }} onClick={showReasons}>設定・費用と対応枠</button>
   </div>;
 }

@@ -59,13 +59,12 @@ function ProfitReveal({ reportKey, profit }: { reportKey: string; profit: number
 
 function OpeningComparison({ record }: { record: OpeningRecord }) {
   return <details className="weekly-opening-comparison">
-    <summary>出店時の基準見込み・支払いと比べる</summary>
+    <summary>出店時の支払い</summary>
     <dl>
-      <div><dt>この店の利益・出店時の基準見込み</dt><dd>{yen(record.initialStoreProfit)}</dd></div>
       <div><dt>開業費・支払済み</dt><dd>{yen(record.openingCost)}</dd></div>
-      <div><dt>出店時の全社利益・基準見込み</dt><dd>{yen(record.netProfitBefore)} → {yen(record.netProfitAfter)}</dd></div>
+      <div><dt>開業費支払後の現金</dt><dd>{yen(record.cashAfter)}</dd></div>
     </dl>
-    <p>客足・営業状況や出店後の変更で実績は変わります。開業費をこの週の利益から再び差し引くことはありません。</p>
+    <p>第{record.decisionWeek}週に支払った開業費です。この週の利益から再び差し引くことはありません。</p>
   </details>;
 }
 

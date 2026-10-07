@@ -5,6 +5,8 @@
 .site-browser-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 .site-browser-filters label{margin:0 0 8px;min-width:0;font-size:10px}
 .site-browser-filters select{padding:8px 7px;min-width:0;font-size:11px}
+.site-browser-sort{grid-column:1/-1}
+.site-browser .site-browser-factors{margin-top:4px;color:var(--ink);font-size:11px;line-height:1.7}
 .site-browser .site-browser-note,.site-browser .site-browser-empty{font-size:11px;line-height:1.7;color:var(--muted);margin:4px 0 10px}
 .site-browser-empty{padding:12px;border:1px solid var(--line);border-radius:6px;background:var(--surface-soft)}
 .site-browser-reset{padding:5px 0 9px;background:none;color:var(--accent);font-size:11px;text-decoration:underline;text-underline-offset:3px}

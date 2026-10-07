@@ -23,7 +23,6 @@ const labels: Record<Choice, string> = { retain: '現状を維持', growth: '成
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
 const signedYen = (value: number) => `${value > 0 ? '+' : ''}${yen(value)}`;
 const rangeYen = (range: { min: number; max: number }) => `約${yen(Math.floor(range.min / 1000) * 1000)}〜${yen(Math.ceil(range.max / 1000) * 1000)}`;
-const tableRange = (range: { min: number; max: number }) => <><span className="group-operation-amount">約{yen(Math.floor(range.min / 1000) * 1000)}</span><wbr/><span className="group-operation-amount">〜{yen(Math.ceil(range.max / 1000) * 1000)}</span></>;
 const differenceClass = (value: number) => value < 0 ? 'negative' : value > 0 ? 'positive' : undefined;
 
 function ProgramProgress({ state, project }: { state: GameState; project: MarketOperationProject }) {
@@ -62,11 +61,10 @@ export default function GroupOperationsPanel({ state, onAction, busy = false, in
   const blocked = busy || submitting || state.gameOver;
   const latestCompleted = [...(state.marketOperations?.projects ?? [])].reverse().find(project => project.endWeek <= state.week && (!sector || project.sector === sector));
   const quote = useMemo(() => selected && choice !== 'retain' ? getMarketOperationQuote(state, selected.sector, choice) : null, [state, selected, choice]);
-  const beforeOutlook = useMemo(() => selected ? getWeekOutlook(state) : null, [state, selected]);
   const preview = useMemo(() => {
     if (!quote?.canStart) return null;
     const after = applyAction(state, { type: 'startMarketOperation', sector: quote.sector, policy: quote.policy });
-    return { cash: after.cash, outlook: getWeekOutlook(after) };
+    return { cash: after.cash, risk: getWeekOutlook(after).risk };
   }, [state, quote]);
 
   useEffect(() => {
@@ -135,18 +133,16 @@ export default function GroupOperationsPanel({ state, onAction, busy = false, in
               <div className="group-operation-range"><dt>現状維持と比べた事業内の資金効果 / 26週</dt><dd>{rangeYen(quote.netContributionRange)}</dd></div>
             </dl>
             <p className="group-operation-note">保有事業数が変わらない場合の26週試算。収益・回収を保証する幅ではありません。</p>
-            <table className="group-operation-compare-table"><thead><tr><th scope="col">今週の会社</th><th scope="col">現状を維持</th><th scope="col">{labels[choice]}</th></tr></thead><tbody>
+            <table className="group-operation-compare-table"><thead><tr><th scope="col">開始時の資金</th><th scope="col">現状を維持</th><th scope="col">{labels[choice]}</th></tr></thead><tbody>
               <tr><th scope="row">支払直後の現金</th><td>{yen(state.cash)}</td><td>{preview ? yen(preview.cash) : '実行条件を確認'}</td></tr>
-              <tr><th scope="row">利益幅・利息後</th><td>{beforeOutlook && tableRange(beforeOutlook.netProfit)}</td><td>{preview ? tableRange(preview.outlook.netProfit) : '未計算'}</td></tr>
-              <tr><th scope="row">週末の現金幅</th><td>{beforeOutlook && tableRange(beforeOutlook.cashAfter)}</td><td>{preview ? tableRange(preview.outlook.cashAfter) : '未計算'}</td></tr>
             </tbody></table>
           </section>
           <p className="group-operation-note">第{quote.project.startWeek}週〜第{quote.project.endWeek - 1}週の26週間。途中では終了できません。第{quote.project.endWeek}週から通常運営へ戻り、自動更新しません。</p>
           <p className="group-operation-note">初回支払と運営費の確保目安 <strong data-operation-reserve={quote.reserveRequired}>{yen(quote.reserveRequired)}</strong></p>
           {quote.reserveRequired > state.cash && <p className="group-operation-warning">全期間の運営費を確保するには、現金が {yen(quote.reserveRequired - state.cash)} 不足しています。</p>}
           {!quote.canStart && <p className="group-operation-warning" role="alert">{quote.reason}</p>}
-          {preview?.outlook.risk.debtLossPossible && <p className="group-operation-warning" role="alert">借入残高があり、見込み幅の下限で利息控除後利益が0以下になります。週末の実績が0以下なら倒産します。</p>}
-          {preview?.outlook.risk.cashShortfallPossible && <p className="group-operation-warning" role="alert">見込み幅の下限で週末現金が不足します。実績によって資金不足になるリスクがあります。</p>}
+          {preview?.risk.debtLossPossible && <p className="group-operation-warning" role="alert">借入中の収支にリスクがあります。週末の実際の利益（利息後）が0以下なら倒産します。</p>}
+          {preview?.risk.cashShortfallPossible && <p className="group-operation-warning" role="alert">計画開始後の支払いに備える資金が不足するおそれがあります。計画運営費や返済に備えて現金を残してください。</p>}
           <div className="group-operation-actions">
             {confirming ? <><button type="button" className="secondary" disabled={submitting} onClick={() => setConfirming(false)}>比較に戻る</button><button type="button" className="primary" disabled={blocked || !quote.canStart} onClick={() => void execute()}>{submitting ? '処理中…' : `26週の計画を始める · ${yen(quote.upfrontCost)}`}</button></> : <button type="button" className="primary" disabled={blocked || !quote.canStart} onClick={() => { focusHeading.current = true; setConfirming(true); }}>開始前の支払と収支を確認</button>}
             {onPlanInvestment && quote.eligibleCount > 0 && <button type="button" className="secondary" disabled={blocked} onClick={() => onPlanInvestment({ kind: 'marketOperation', sector: quote.sector, policy: quote.policy })}>この計画の資金調達を比較</button>}
@@ -154,7 +150,7 @@ export default function GroupOperationsPanel({ state, onAction, busy = false, in
           <details className="group-operation-details"><summary>試算と支払の内訳</summary>
             <p className="group-operation-note">開始時点で稼働済みの {quote.eligibleCount}件が対象です。その後の取得や稼働開始では対象が増えません。</p>
             <p className="group-operation-note">26週の資金効果は、同じ景況・個別業績での事業利益差額から初回支払を引いた試算です。計画運営費を含み、配当・借入返済・他事業の現金変動は含みません。他社の取得でグループ管理費が増えると、この幅から外れる場合があります。</p>
-            <p className="group-operation-note">会社の利益と週末現金は今週の状態へ計画を反映した見込みで、実績は週末に確定します。</p>
+            <p className="group-operation-note">店舗を含む全社の実績は、週末の決算で確認します。ここに示す事業内の資金効果は、会社全体の現金増減とは別です。</p>
             <p className="group-operation-note">対象事業のゲーム内基準取得価額合計 {yen(quote.baseValue)} を費用の基準にしています。初回支払 {yen(quote.upfrontCost)} ＋ 運営費 {yen(quote.weeklyCost)} × 26週 ＝ 確保目安 {yen(quote.reserveRequired)}。初回支払は開始時、運営費は毎週の決算に計上します。確保額は全社資金繰りの保証ではありません。</p>
           </details>
         </>}

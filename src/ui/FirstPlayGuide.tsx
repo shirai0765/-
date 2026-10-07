@@ -53,7 +53,7 @@ function guideContent(context: GuideContext): GuideContent {
     stage: 'empty', title: '経営のはじめ方',
     action: { destination: 'sites', label: '出店場所を見る' },
     steps: [
-      { icon: CirclePlus, title: '街から店舗を選ぶ', text: '営業中のカフェはありません。場所・スタイル・費用を比べて出店できます。' },
+      { icon: CirclePlus, title: '街から店舗を選ぶ', text: '通行量・客層・周辺環境と家賃を見て、場所と店舗スタイルを選びます。' },
       { icon: Coffee, title: '店の設定を決める', text: '価格・品質・人員・広告を調整します。今の設定を続けることも選べます。' },
       { icon: CalendarCheck, title: '週末の実績を読む', text: '「週を終了」で利益と現金の増減が確定。結果を見て、次の判断を考えましょう。' },
     ],
@@ -64,7 +64,7 @@ function guideContent(context: GuideContext): GuideContent {
     steps: [
       { icon: Coffee, title: '営業中の店を確認', text: '店舗一覧から店を選び、今の設定を確認できます。' },
       { icon: Settings, title: '設定を選ぶ', text: '価格・品質・人員・広告を調整できます。今の設定を続けることも選べます。' },
-      { icon: CalendarCheck, title: '週を終えて結果を見る', text: '「週を終了」で結果が確定します。営業前に見込みと支払いを確認できます。' },
+      { icon: CalendarCheck, title: '週を終えて結果を見る', text: '営業前に価格・人員と支払いを確認し、「週を終了」で来店者数・売上・利益を確かめます。' },
     ],
   };
 }

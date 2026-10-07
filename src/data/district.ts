@@ -1,4 +1,6 @@
 import type { AcquisitionTarget, DistrictId, Lot } from '../model';
+import { OUTER_NEIGHBORHOOD_LOTS, OUTER_NEIGHBORHOOD_ROADS } from './neighborhoods';
+import { CITY_SERVICES } from './cityServices';
 
 /** An authored, compressed Shibuya-inspired map, not surveyed Tokyo GIS data.
  * Coordinates: metres in game space, +x east, +z south; crossing at (0, 0).
@@ -18,6 +20,7 @@ export const ROADS: Road[] = [
   { id: 'center-street', name: 'センター街通り', points: [[-202, -89], [33, -89]], width: 10 },
   { id: 'sakura-street', name: '桜丘通り', points: [[-202, 88], [33, 88]], width: 12 },
   { id: 'east-street', name: '東口通り', points: [[86, 100], [202, 100]], width: 10 },
+  ...OUTER_NEIGHBORHOOD_ROADS,
 ];
 
 export interface Landmark { id: string; name: string; x: number; z: number; kind: 'station' | 'tower' | 'mall' | 'park' | 'crossing'; height?: number }
@@ -67,6 +70,7 @@ const cafeSites: Lot[] = [
 
 // Keep the scenery off roads, the elevated railway (x=67..83) and landmark plots.
 const landmarkReservations = [
+  ...CITY_SERVICES.map(service => ({ x: service.x, z: service.z + 4, width: service.width + 2, depth: service.depth + 8 })),
   { x: 0, z: 0, width: 50, depth: 50 },
   { x: 75, z: 42, width: 38, depth: 70 },
   { x: 124, z: 43, width: 46, depth: 52 },
@@ -85,7 +89,7 @@ const roadFootprints: Footprint[] = ROADS.map(road => {
     depth: Math.abs(a[1] - b[1]) + road.width };
 });
 const railway = { x: 75, z: 0, width: 16, depth: 410 };
-const blocked = [...roadFootprints, ...landmarkReservations, railway, ...cafeSites];
+const blocked = [...roadFootprints, ...landmarkReservations, railway, ...cafeSites, ...OUTER_NEIGHBORHOOD_LOTS];
 const backgroundLots: Lot[] = [];
 const candidates: { x: number; z: number; order: number }[] = [];
 for (let z = -188; z <= 188; z += 20) {
@@ -111,7 +115,7 @@ for (const candidate of candidates.sort((a, b) => a.order - b.order)) {
   blocked.push(footprint);
   if (backgroundLots.length === 110) break;
 }
-export const LOTS: Lot[] = [...cafeSites, ...backgroundLots];
+export const LOTS: Lot[] = [...cafeSites, ...OUTER_NEIGHBORHOOD_LOTS, ...backgroundLots];
 
 /** Prices and earnings are authored gameplay assumptions, not real company valuations.
  * weeklyProfit is a baseline before simulation shocks; risk is a 0..1 model input.

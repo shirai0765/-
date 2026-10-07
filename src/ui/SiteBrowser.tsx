@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { DistrictId, GameState } from '../model';
 import { DISTRICTS, LOTS } from '../data/district';
+import { getSiteContext } from '../sim/siteContext';
 import { hasRealCityAnchor } from '../realcity/gameSites';
 import './site-browser.css';
 
@@ -12,6 +13,7 @@ export interface SiteBrowserProps {
 }
 
 type StatusFilter = 'all' | 'available' | 'store' | 'property';
+type SiteSort = 'district' | 'footfall' | 'rent';
 const sites = LOTS.filter(lot => lot.available);
 const districts = Object.entries(DISTRICTS) as [DistrictId, (typeof DISTRICTS)[DistrictId]][];
 const compact = (value: number) => value >= 10_000
@@ -22,13 +24,16 @@ const compact = (value: number) => value >= 10_000
 export default function SiteBrowser({ state, selectedLotId, onSelectLot, mapMode }: SiteBrowserProps) {
   const [status, setStatus] = useState<StatusFilter>('all');
   const [district, setDistrict] = useState<DistrictId | 'all'>('all');
+  const [sort, setSort] = useState<SiteSort>('district');
   const stores = new Map(state.stores.map(store => [store.lotId, store]));
   const properties = new Set(state.properties.map(property => property.lotId));
+  const contexts = new Map(sites.map(lot => [lot.id, getSiteContext(state, lot.id)!]));
   const visible = sites.filter(lot => (district === 'all' || lot.district === district)
     && (status === 'all'
       || (status === 'available' && !stores.has(lot.id))
       || (status === 'store' && stores.has(lot.id))
-      || (status === 'property' && properties.has(lot.id))));
+      || (status === 'property' && properties.has(lot.id))))
+    .sort((a, b) => sort === 'footfall' ? b.footfall - a.footfall : sort === 'rent' ? contexts.get(a.id)!.weeklyRent - contexts.get(b.id)!.weeklyRent : 0);
   const filtered = status !== 'all' || district !== 'all';
 
   return <section className="site-browser" aria-label="区画一覧">
@@ -51,6 +56,13 @@ export default function SiteBrowser({ state, selectedLotId, onSelectLot, mapMode
           {districts.map(([id, value]) => <option key={id} value={id}>{value.name}</option>)}
         </select>
       </label>
+      <label className="site-browser-sort">並び順
+        <select aria-label="区画の並び順" value={sort} onChange={event => setSort(event.target.value as SiteSort)}>
+          <option value="district">地区ごと</option>
+          <option value="footfall">人通りが多い順</option>
+          <option value="rent">現在の店舗家賃が低い順</option>
+        </select>
+      </label>
     </div>
     {status === 'available' && <p className="site-browser-note">店舗のない区画です。開業に必要な資金などは区画を選ぶと確認できます。</p>}
     {mapMode === 'real' && <p className="site-browser-note">実測表示は{sites.filter(lot => hasRealCityAnchor(lot.id)).length}地点に対応。全{sites.length}区画の経営操作ができます。</p>}
@@ -61,15 +73,17 @@ export default function SiteBrowser({ state, selectedLotId, onSelectLot, mapMode
         {visible.map(lot => {
           const store = stores.get(lot.id);
           const owned = properties.has(lot.id);
+          const context = contexts.get(lot.id)!;
           const selected = selectedLotId === lot.id;
           const statusLabel = store && owned ? '店舗営業中・物件保有' : store ? '店舗営業中' : owned ? '物件保有' : '店舗なし・未保有';
-          return <button type="button" key={lot.id} data-lot-id={lot.id} aria-pressed={selected} onClick={() => onSelectLot(lot.id)}>
+          return <button type="button" key={lot.id} data-lot-id={lot.id} data-site-footfall={lot.footfall} data-site-rent={context.weeklyRent} aria-pressed={selected} onClick={() => onSelectLot(lot.id)}>
             <span className="site-browser-row">
               <small className="site-browser-district">{DISTRICTS[lot.district].name}{selected && <span className="site-browser-selected">選択中</span>}</small>
               <strong>{lot.name}</strong>
               <span className="site-browser-state">{statusLabel}{hasRealCityAnchor(lot.id) && <span className="site-browser-anchor">実測対応</span>}</span>
               {store && <small className="site-browser-store-name">店舗：{store.name}</small>}
-              <small>週家賃の基準 {compact(lot.rent)}</small>
+              <small className="site-browser-factors">人通り {context.footfallBand.label} · 購買力 {context.purchasingPowerBand.label}</small>
+              <small>{owned ? '自社物件・店舗家賃なし' : `現在の店舗家賃 ${compact(context.weeklyRent)} / 週`}</small>
             </span>
             <span className="site-browser-chevron" aria-hidden="true">›</span>
           </button>;

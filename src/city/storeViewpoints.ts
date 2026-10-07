@@ -3,6 +3,8 @@ import { Vector3 } from 'three';
 import { LANDMARKS } from '../data/district';
 import { CITY_DISPLAY_LOTS } from './displayLayout';
 import { MAX_HEADQUARTERS_EXTRA_HEIGHT } from './businessGrowth';
+import { CITY_SERVICES } from '../data/cityServices';
+import { OUTER_SCENERY } from './sceneLayout';
 
 export interface StoreViewpoint { position:[number,number,number];target:[number,number,number];fov:number }
 type Obstacle={id:string;x:number;z:number;width:number;depth:number;height:number;rotation?:number};
@@ -10,6 +12,8 @@ type Obstacle={id:string;x:number;z:number;width:number;depth:number;height:numb
 const obstacles:Obstacle[]=[
   ...CITY_DISPLAY_LOTS.map(l=>({...l,z:l.z+(l.available?1.2*Math.cos(l.rotation??0):0),x:l.x+(l.available?1.2*Math.sin(l.rotation??0):0),width:l.width+1.6,depth:l.depth+(l.available?4:1.6),height:l.height+MAX_HEADQUARTERS_EXTRA_HEIGHT})),
   ...LANDMARKS.filter(l=>l.kind!=='crossing').map(l=>({id:l.id,x:l.x,z:l.z,width:l.kind==='park'?62:l.kind==='tower'?46:l.kind==='station'?38:40,depth:l.kind==='park'?78:l.kind==='tower'?52:l.kind==='station'?70:42,height:l.kind==='station'?15:l.height??50})),
+  ...CITY_SERVICES.map(service=>({...service,height:service.height+1})),
+  ...OUTER_SCENERY.map((building,index)=>({id:`outer-scenery-${index}`,x:building.x,z:building.z+4.5,width:building.w+2,depth:building.d+11,height:building.h+(building.seed%3===0?6+building.seed%12:0)+3})),
   {id:'rail-corridor',x:75,z:0,width:19,depth:430,height:15},
 ];
 

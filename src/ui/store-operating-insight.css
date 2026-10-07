@@ -7,19 +7,11 @@
 .store-operating-insight dl{margin:0}
 .store-operating-insight dt{font-size:11px;line-height:1.7;color:var(--muted)}
 .store-operating-insight dd{margin:3px 0 0;font-variant-numeric:tabular-nums}
-.store-insight-result.store-forecast{display:block;padding:0;background:none;margin:0;border-radius:0}
-.store-insight-result dd{font-size:14px;line-height:1.6;font-weight:500}
-.store-operating-insight .store-insight-diagnosis{margin:12px 0 8px;color:var(--ink);font-size:12px;line-height:1.7}
 .store-operating-insight .store-insight-note{margin:9px 0;font-size:11px;line-height:1.8;color:var(--muted)}
 .store-insight-flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px;border-radius:6px;background:var(--surface-soft)}
 .store-insight-flow>div{min-width:0}
-.store-insight-flow>div:last-child{grid-column:1/-1}
 .store-insight-flow dd{font-size:14px;font-weight:500;line-height:1.7}
 .store-insight-flow small{font-size:10px;font-weight:400;margin-inline:2px}
-.store-insight-satisfaction{border-top:1px solid var(--line);padding-top:8px;margin-top:10px}
-.store-insight-satisfaction dl>div{display:flex;align-items:baseline;gap:12px}
-.store-insight-satisfaction dd{font-size:14px;font-weight:500;line-height:1.6}
-.store-insight-satisfaction dd>span{font-size:11px;font-weight:400;color:var(--muted)}
 .store-insight-manager{border:1px solid var(--line);border-radius:6px;padding:12px;margin-top:14px}
 .store-insight-manager h5{margin:0;font-size:12px;line-height:1.7}
 .store-insight-manager-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}

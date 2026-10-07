@@ -1,7 +1,6 @@
 .store-controls .store-plan-feedback{margin:0 0 14px;padding:7px 0;color:var(--muted);min-width:0}
 .store-controls .store-plan-feedback-period{font-size:10px;line-height:1.7;margin:0 0 3px;overflow-wrap:anywhere}
-.store-controls .store-plan-feedback-profit{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;margin:0;font-size:11px;line-height:1.7}
-.store-plan-feedback-range{font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink);overflow-wrap:anywhere}
+.store-controls .store-plan-feedback-effect{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;margin:0;font-size:11px;line-height:1.7}
 .store-controls .store-plan-feedback-scope{font-size:10px;line-height:1.7;color:var(--muted);margin:3px 0 0}
 .store-plan-feedback>button{display:block;max-width:100%;min-height:36px;margin-top:2px;padding:7px 0;background:none;color:var(--muted);font:inherit;font-size:11px;line-height:1.6;text-align:left;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .store-plan-feedback>button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
