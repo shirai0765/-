@@ -1,0 +1,133 @@
+{
+  "date_utc": "2026-10-07",
+  "scope": "Independent standalone asset checks only. Not browser, project, city-integration, build or deployment validation.",
+  "assets": [
+    {
+      "asset": "crossing-retail.glb",
+      "path": "public/models/external-v080/crossing-retail/crossing-retail.glb",
+      "sha256": "abcc001472351218f4f2903dc6d839eea003c63b0f8ed7a9665c0e477f171467",
+      "bytes": 506364,
+      "triangles": 5425,
+      "vertices": 11494,
+      "materials": 13,
+      "primitives": 13,
+      "images": [],
+      "review": "docs/external/dot/validation/crossing-retail/review.md",
+      "result": "PASS standalone GLB/Blender/visual review"
+    },
+    {
+      "asset": "dogenzaka-akari-b.glb",
+      "path": "public/models/external-v080/dogenzaka-mixed/dogenzaka-akari-b.glb",
+      "sha256": "484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888",
+      "bytes": 543524,
+      "triangles": 6868,
+      "vertices": 12996,
+      "materials": 11,
+      "primitives": 11,
+      "images": [
+        {
+          "index": 0,
+          "name": "fictional-signs",
+          "mimeType": "image/png",
+          "embedded": true,
+          "bytes": 75485,
+          "png_dimensions": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "review": "docs/external/dot/validation/dogenzaka-akari-b/review.md",
+      "result": "PASS standalone GLB/Blender/visual review"
+    },
+    {
+      "asset": "dogenzaka-sakamichi-a.glb",
+      "path": "public/models/external-v080/dogenzaka-mixed/dogenzaka-sakamichi-a.glb",
+      "sha256": "0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20",
+      "bytes": 802896,
+      "triangles": 10894,
+      "vertices": 20348,
+      "materials": 11,
+      "primitives": 11,
+      "images": [
+        {
+          "index": 0,
+          "name": "fictional-signs",
+          "mimeType": "image/png",
+          "embedded": true,
+          "bytes": 75485,
+          "png_dimensions": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "review": "docs/external/dot/validation/dogenzaka-sakamichi-a/review.md",
+      "result": "PASS standalone GLB/Blender/visual review"
+    },
+    {
+      "asset": "sakura-office.glb",
+      "path": "public/models/external-v080/sakura-midrise/sakura-office.glb",
+      "sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "bytes": 261248,
+      "triangles": 3599,
+      "vertices": 7218,
+      "materials": 8,
+      "primitives": 8,
+      "images": [],
+      "review": "docs/external/dot/validation/sakura-office/review.md",
+      "result": "PASS standalone GLB/Blender/visual review"
+    },
+    {
+      "asset": "sakura-residential.glb",
+      "path": "public/models/external-v080/sakura-midrise/sakura-residential.glb",
+      "sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+      "bytes": 489440,
+      "triangles": 6844,
+      "vertices": 13740,
+      "materials": 8,
+      "primitives": 8,
+      "images": [],
+      "review": "docs/external/dot/validation/sakura-residential/review.md",
+      "result": "PASS standalone GLB/Blender/visual review"
+    },
+    {
+      "asset": "terraced-retail.glb",
+      "path": "public/models/external-v080/terraced-retail/terraced-retail.glb",
+      "sha256": "2e46e672f10eaecdf42fd18c1f82dc90174cc6162d6f4772617843cd80eb0d31",
+      "bytes": 2035052,
+      "triangles": 27446,
+      "vertices": 58018,
+      "materials": 13,
+      "primitives": 13,
+      "images": [],
+      "review": "docs/external/dot/validation/terraced-retail/review.md",
+      "result": "PASS standalone GLB/Blender/visual review"
+    },
+    {
+      "asset": "terraced-retail-lod1.glb",
+      "path": "public/models/external-v080/terraced-retail/terraced-retail-lod1.glb",
+      "sha256": "aa3af99201e0d0f2e4f44a29ccab0d3feb78c766e9ec47c5d25c53781852b93d",
+      "bytes": 736132,
+      "triangles": 10306,
+      "vertices": 20744,
+      "materials": 10,
+      "primitives": 10,
+      "images": [],
+      "review": "docs/external/dot/validation/terraced-retail-lod1/review.md",
+      "result": "PASS standalone GLB/Blender/visual review"
+    }
+  ],
+  "six_full_assets_totals": {
+    "bytes": 4638524,
+    "triangles": 61076,
+    "vertices": 123814,
+    "materials": 64,
+    "primitives": 64
+  },
+  "all_seven_glbs_total_bytes": 5374656,
+  "validator_focused_tests_passed": 11,
+  "actual_blender_version": "4.3.2",
+  "final_render_count": 21,
+  "all_final_hashes_rechecked": true
+}

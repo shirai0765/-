@@ -1,0 +1,119 @@
+{
+  "checked_utc_date": "2026-10-07",
+  "scope": "Author manifest counts and hashes compared against independent byte reports and current actual GLB bytes; not a project test or provenance/rights audit.",
+  "all_passed": true,
+  "assets": [
+    {
+      "asset": "crossing-retail",
+      "manifest": "docs/external/dot/crossing-retail/manifest.json",
+      "sha256": "abcc001472351218f4f2903dc6d839eea003c63b0f8ed7a9665c0e477f171467",
+      "checks": {
+        "current_sha_matches_inspected": true,
+        "sha256": true,
+        "bytes": true,
+        "triangles": true,
+        "vertices": true,
+        "materials": true,
+        "meshes": true,
+        "primitives": true
+      },
+      "passed": true
+    },
+    {
+      "asset": "dogenzaka-akari-b",
+      "manifest": "docs/external/dot/dogenzaka-mixed/dogenzaka-akari-b-manifest.json",
+      "sha256": "484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888",
+      "checks": {
+        "current_sha_matches_inspected": true,
+        "sha256": true,
+        "bytes": true,
+        "triangles": true,
+        "vertices": true,
+        "materials": true,
+        "meshes": true,
+        "primitives": true
+      },
+      "passed": true
+    },
+    {
+      "asset": "dogenzaka-sakamichi-a",
+      "manifest": "docs/external/dot/dogenzaka-mixed/dogenzaka-sakamichi-a-manifest.json",
+      "sha256": "0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20",
+      "checks": {
+        "current_sha_matches_inspected": true,
+        "sha256": true,
+        "bytes": true,
+        "triangles": true,
+        "vertices": true,
+        "materials": true,
+        "meshes": true,
+        "primitives": true
+      },
+      "passed": true
+    },
+    {
+      "asset": "sakura-office",
+      "manifest": "public/models/external-v080/sakura-midrise/sakura-office.manifest.json",
+      "sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "checks": {
+        "current_sha_matches_inspected": true,
+        "sha256": true,
+        "bytes": true,
+        "triangles": true,
+        "vertices": true,
+        "materials": true,
+        "meshes": true,
+        "primitives": true
+      },
+      "passed": true
+    },
+    {
+      "asset": "sakura-residential",
+      "manifest": "public/models/external-v080/sakura-midrise/sakura-residential.manifest.json",
+      "sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+      "checks": {
+        "current_sha_matches_inspected": true,
+        "sha256": true,
+        "bytes": true,
+        "triangles": true,
+        "vertices": true,
+        "materials": true,
+        "meshes": true,
+        "primitives": true
+      },
+      "passed": true
+    },
+    {
+      "asset": "terraced-retail",
+      "manifest": "docs/external/dot/terraced-retail/manifest.json",
+      "sha256": "2e46e672f10eaecdf42fd18c1f82dc90174cc6162d6f4772617843cd80eb0d31",
+      "checks": {
+        "current_sha_matches_inspected": true,
+        "sha256": true,
+        "bytes": true,
+        "triangles": true,
+        "vertices": true,
+        "materials": true,
+        "meshes": true,
+        "meshPrimitives": true
+      },
+      "passed": true
+    },
+    {
+      "asset": "terraced-retail-lod1",
+      "manifest": "docs/external/dot/terraced-retail/manifest.json",
+      "sha256": "aa3af99201e0d0f2e4f44a29ccab0d3feb78c766e9ec47c5d25c53781852b93d",
+      "checks": {
+        "current_sha_matches_inspected": true,
+        "sha256": true,
+        "bytes": true,
+        "triangles": true,
+        "vertices": true,
+        "materials": true,
+        "meshes": true,
+        "meshPrimitives": true
+      },
+      "passed": true
+    }
+  ]
+}
