@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A01 オリジナルBGM試聴</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101722;color:#eef3f7;font:16px/1.65 system-ui,sans-serif}
+main{max-width:960px;margin:auto;padding:32px 24px}h1{font-size:clamp(28px,5vw,42px);line-height:1.25;margin:8px 0 20px}
+p{color:#becbd8}.kicker{font-size:13px;color:#f5c87c;letter-spacing:.12em}article{padding:24px;background:#1b2736;border:1px solid #344355;border-radius:18px;margin:24px 0}
+h2{margin:0;font-size:25px}.meta{color:#a5bfd4;font-size:14px}img{width:100%;height:100px;object-fit:fill;border-radius:10px;margin:16px 0}
+.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}button,select{font:inherit;border:1px solid #62758a;border-radius:8px;padding:9px 14px;color:#edf4fb;background:#263c51}
+button{cursor:pointer}button.play{background:#e6b76d;color:#1e2630;border-color:#e6b76d}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #b3dcff;outline-offset:3px}
+button:disabled{opacity:.45;cursor:wait}label{display:flex;gap:12px;align-items:center}input[type=range]{width:180px}a{color:#f3cd91}.downloads{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px}
+audio{width:min(100%,440px);display:block;margin-top:8px}.small{font-size:14px}#status{min-height:28px;color:#f5d4a0}footer{margin-top:30px;color:#9fb0c1;font-size:14px}
+</style>
+</head>
+<body><main>
+<div class="kicker">SHIBUYA CAPITAL · A01 / ORIGINAL MUSIC</div>
+<h1>窓辺の午後</h1>
+<p>旋律・和声・音色を独自に制作した、16小節のBGM候補です。</p>
+<div class="controls"><label>試聴音量 <input id="volume" type="range" min="0" max="0.7" value="0.25" step="0.01"><output id="volume-value">25%</output></label><button id="stop">停止</button></div>
+<p id="status" role="status" aria-live="polite">曲を選ぶと再生します。</p>
+<article data-track="cafe-lounge">
+<h2>01　窓辺の午後</h2><div class="meta">84 BPM · 4/4 · 16小節 · 45.714秒</div>
+<p>柔らかな電気鍵盤、ゆったり動くベース、控えめなブラシとベル。少し跳ねるリズムに、余白のある旋律を重ねました。</p>
+<img src="cafe-lounge-waveform.svg" alt="窓辺の午後の波形">
+<div class="controls"><button class="play">ループで試聴</button><label>音源 <select aria-label="窓辺の午後の音源形式"><option value="ogg">OGG</option><option value="wav">WAV</option><option value="mp3">MP3</option></select></label></div>
+<div class="downloads"><a href="cafe-lounge.wav" download>WAVを保存</a><a href="cafe-lounge.ogg" download>OGGを保存</a><a href="cafe-lounge.mp3" download>MP3を保存</a></div>
+<p class="small">接続部分だけを確認する4秒の音源（2秒の位置で前周から次周へ）</p><audio controls preload="metadata" src="cafe-lounge-boundary-check.wav"></audio>
+</article>
+
+<footer>操作してから音が出ます。試聴中は選んだ一曲を繰り返します。2案とも外部の曲・録音サンプルを使用していません。</footer>
+</main><script src="preview-player.js"></script></body></html>
