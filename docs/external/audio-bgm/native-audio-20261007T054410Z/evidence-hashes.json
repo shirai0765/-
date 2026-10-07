@@ -1,0 +1,21 @@
+{
+  "basis": "Unedited original combined-author checkout native observation; 19/30 overall, both BGM scopes passed; SFX failures preserved",
+  "files": [
+    {
+      "file": "results.json",
+      "sha256": "1b66e7e4de083b14d3841022358963706dba094c28cbe62f7f40adf89ff2eded"
+    },
+    {
+      "file": "events.jsonl",
+      "sha256": "010be381dc469a72b0455b7127b027a060c95c95ef0e93794a2385e402b09b6f"
+    },
+    {
+      "file": "executed-script.mjs",
+      "sha256": "e15b9837be6b17fe3be1600512ef6116a132721e4077df345aa9adebd22918cb"
+    },
+    {
+      "file": "review.md",
+      "sha256": "5f6aabd84087e9d7183ee3919699896baf6ec4d7e75779f491ad2d0b117b010d"
+    }
+  ]
+}

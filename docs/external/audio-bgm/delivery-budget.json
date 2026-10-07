@@ -1,0 +1,162 @@
+{
+  "compressedBgmTotalBytes": 5437519,
+  "compressedBgmBelow8DecimalMb": true,
+  "runtimeCompressedBgmVariantsBytes": 4426311,
+  "runtimeCompressedScope": "All candidate full-track AAC/OGG/MP3 variants of both songs; runtime chooses one song. Short auditions and WAV are excluded from this compressed total.",
+  "allPublicAudioFilesBytesAtMeasurement": 26407270,
+  "allPublicAudioFileCountAtMeasurement": 30,
+  "publicAudioInventoryAtMeasurement": [
+    {
+      "path": "public/audio/external-v080/bgm/cafe-lounge-audition-24s.m4a",
+      "bytes": 503735,
+      "sha256": "e274e6546cf76770771778b552fff0d0fd771d2486c8206a4b979da531d5e361"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/cafe-lounge-boundary-check.wav",
+      "bytes": 705644,
+      "sha256": "f172c0d0d1913c9ea49813405db5f863aaea4dc5935528bf8ccdceae364d5ba2"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/cafe-lounge.m4a",
+      "bytes": 959203,
+      "sha256": "fea64ef94140d14c5a2707a6d0a389846f94697be70d99d0d53ed9ec0aab78af"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/cafe-lounge.mp3",
+      "bytes": 915374,
+      "sha256": "8de8cc1af6a5eeafb39a444b958e86ca57155d8e833f5c3008a9c713ed14ccae"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/cafe-lounge.ogg",
+      "bytes": 621745,
+      "sha256": "3d9dc319092716f38b5c7c5b989cfcac8ed7f1bf03d522e2296e8ae39e23c86e"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/cafe-lounge.wav",
+      "bytes": 8064044,
+      "sha256": "e0559fa2caa8bd090a61ecef3caaea4d6f5b944de3754effb04a433fe21212b2"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/shibuya-citypop-audition-24s.m4a",
+      "bytes": 507473,
+      "sha256": "7070aab54c95c90570f96c6967613511972e1b7481bc3d6275169f4cf0fc2492"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/shibuya-citypop-boundary-check.wav",
+      "bytes": 705644,
+      "sha256": "65faa857b1f183d0493e2dc80c240fb77bac8b9014e359862c55b237cecf94d2"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/shibuya-citypop.m4a",
+      "bytes": 723022,
+      "sha256": "6668134a6145b54883f9a595cb4cb186ae64f4400aeada076d3b6baf0b21187e"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/shibuya-citypop.mp3",
+      "bytes": 687064,
+      "sha256": "2611751fc254eea3ab14baf82f90fce013a84ab7ffd55d6ab009f623610b74d0"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/shibuya-citypop.ogg",
+      "bytes": 519903,
+      "sha256": "dcbdc4bcdcf73b8ed9819334955396cdbf97a9f1198aaee6866e021c5700edf7"
+    },
+    {
+      "path": "public/audio/external-v080/bgm/shibuya-citypop.wav",
+      "bytes": 6048044,
+      "sha256": "5666103df9512a6c65a1232f060274256e7ed0d6f02bfc97cb57a0ad8e8e89ca"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/cafe-room-loop.m4a",
+      "bytes": 553550,
+      "sha256": "fa68b6917b7e379eefde2abbebbbf949b5b6d75b81b93f741aad3e4f148c8c76"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/cafe-room-loop.ogg",
+      "bytes": 202085,
+      "sha256": "35b2c541636f25a76c8bff02370d57c2e6bfc665d3be7ebde3b05a8ff2490733"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/cafe-room-loop.wav",
+      "bytes": 4320044,
+      "sha256": "94d5e62e38651072a21f75ea49515c5ed39d3b16d17c03962dea721c36aa0398"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/store-opening.m4a",
+      "bytes": 14736,
+      "sha256": "a73e2155d819162bdf7178488bc22767fc891c9dbf28037253d8ccebb1cf0fb6"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/store-opening.ogg",
+      "bytes": 7143,
+      "sha256": "aa7e244ed169c1df34fecf7f16892795fcbe333caf554405d55a4cce30560fc6"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/store-opening.wav",
+      "bytes": 110444,
+      "sha256": "e20b3108b37f95eb3bfc52372216fe7da443402a584f59e9733d653ce970195e"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/ui-cancel.m4a",
+      "bytes": 2794,
+      "sha256": "fee793ddfeab140765e39d1a21cbcbc8ae3edfa5d10ae8ada42ba9410b756a14"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/ui-cancel.ogg",
+      "bytes": 4068,
+      "sha256": "ea018ff8d132638b1aa2c44b34f10309543fdf25b79030975b7b393a9a7c69fa"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/ui-cancel.wav",
+      "bytes": 13484,
+      "sha256": "51a515dd1ff14c224d5bf495025ef3a73bc36c010c5404c4b7ea76edf842b13e"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/ui-click.m4a",
+      "bytes": 2302,
+      "sha256": "35a3e51140ca87ea14dcbe5d22fc7346ed2e8d7c7034b48a633e1eaa99f63ab2"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/ui-click.ogg",
+      "bytes": 4362,
+      "sha256": "8a9083fd409f6b28dc0e54b0d6a243d24bedb7271670bf85c21353ec61f5feb7"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/ui-click.wav",
+      "bytes": 8684,
+      "sha256": "99f8ec9406a420f01708ceed3b0205de67f67671b335112e42bf4a37e3c4279c"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/weekly-loss.m4a",
+      "bytes": 11511,
+      "sha256": "3cc30f0f08707254bc306a58fa0dcb81be5723184e9720a4af32a64f105fc8e6"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/weekly-loss.ogg",
+      "bytes": 6038,
+      "sha256": "1db24f4aa94956f15952c7c0f256e5e6229998100b1e0f68883862a73056ca43"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/weekly-loss.wav",
+      "bytes": 86444,
+      "sha256": "6bcc73ec5c524dc799218e2f759d9e28870f57ade073d7ce85d7d16adebbacba"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/weekly-profit.m4a",
+      "bytes": 11002,
+      "sha256": "7d41841385ef0dc6af6264c012a0796bf8c401d094d78f5602716425a35fca16"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/weekly-profit.ogg",
+      "bytes": 6040,
+      "sha256": "bf58dab47237603e9f458501bb9b131e9da6591d5d20477e2a1ba8480331d501"
+    },
+    {
+      "path": "public/audio/external-v080/sfx/weekly-profit.wav",
+      "bytes": 81644,
+      "sha256": "ac6bbd94dde2cca7ccf5db556014556df8433ec51e6266b940f728584f9979ed"
+    }
+  ],
+  "scope": "compressedBgmTotalBytes includes both full BGM AAC/OGG/MP3 and short AAC auditions. allPublicAudioFilesBytesAtMeasurement separately includes public BGM/SFX WAV and boundary inspections; docs masters, HTML/JS/JSON/SVG excluded. It is not a claim that all public audio is below 8MB.",
+  "humanListening": "not-performed"
+}

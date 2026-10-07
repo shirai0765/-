@@ -1,0 +1,20 @@
+{
+  "variants": [
+    {
+      "path": "audio/external-v080/bgm/cafe-lounge.m4a",
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715
+    },
+    {
+      "path": "audio/external-v080/bgm/cafe-lounge.ogg",
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715
+    },
+    {
+      "path": "audio/external-v080/bgm/cafe-lounge.mp3",
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715
+    }
+  ],
+  "gain": 1
+}
