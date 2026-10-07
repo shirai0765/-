@@ -1,0 +1,27 @@
+{
+  "gltf_json_identical": true,
+  "indices_all_identical": true,
+  "normals_all_identical": true,
+  "materials_all_identical": true,
+  "changed_mesh_attributes": [
+    {
+      "mesh": "fictional_sign",
+      "material": "mineral_plaster",
+      "changed_attribute_records": {
+        "POSITION": 144,
+        "TEXCOORD_0": 120
+      }
+    }
+  ],
+  "office_original_files_byte_identical": [
+    "public/models/external-v080/sakura-midrise/sakura-office.glb",
+    "public/models/external-v080/sakura-midrise/sakura-office.manifest.json",
+    "public/models/external-v080/sakura-midrise/sakura-office.previews.json",
+    "public/models/external-v080/sakura-midrise/sakura-office-oblique.png",
+    "public/models/external-v080/sakura-midrise/sakura-office-roof.png",
+    "public/models/external-v080/sakura-midrise/sakura-office-front.png",
+    "docs/external/dot/sakura-midrise/office-render.log",
+    "docs/external/dot/sakura-midrise/office-build.log"
+  ],
+  "source_change_scope": "Only outer residential end-wall coordinates and residential manifest version changed; all other asset geometry generation unchanged."
+}

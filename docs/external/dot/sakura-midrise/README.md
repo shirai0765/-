@@ -2,14 +2,14 @@
 
 Two original, texture-free, metric models for independent review. No scene placement, game data, existing asset, renderer, application source, build or deployment is changed.
 
-## First staged handoff: HANA COURT residential
+## Current HANA COURT residential: D01.3
 
 - GLB: `public/models/external-v080/sakura-midrise/sakura-residential.glb`
 - Manifest: same basename plus `.manifest.json`
 - Front, oblique and roof PNGs: same basename plus `-front.png`, `-oblique.png`, `-roof.png`
 - Dimensions (X / Y / Z in glTF): **13.800 / 23.785 / 11.400 m**
 - **489,440 bytes; 6,844 triangles; 13,740 exported vertices; 8 materials; 8 primitives; 0 image textures**
-- SHA256: `efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b`
+- SHA256: `8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0`
 - Seven storeys: recessed communal entrance with parcel/mailbox panel, screened bicycle bay and planters; six divided balcony floors; pale/slate privacy variation; separate common stair spine; small side/rear service windows; roof headhouse and equipment.
 
 ## Second handoff: KOHANA WORKS office
@@ -20,6 +20,24 @@ Two original, texture-free, metric models for independent review. No scene place
 - **261,248 bytes; 3,599 triangles; 7,218 exported vertices; 8 materials; 8 primitives; 0 image textures**
 - SHA256: `39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08`
 - Five storeys: shaded common lobby with fictional canopy sign; distinct ribbon windows and chamfered street corner; fifth-floor common terrace; side masonry fins; compact roof access and equipment.
+
+## D01.3 roof-contact cleanup and final acceptance
+
+The current residential model retains the D01.2 balcony-junction correction and also removes the duplicate coplanar strip at the two side parapet/slab contacts. Only the side-parapet bottoms moved, from Y=21.160 m to the existing slab top at Y=21.235 m. Their tops remain Y=21.960 m, and the removed volume was entirely inside the roof slab. The visible silhouette and full model envelope are unchanged.
+
+Actual exported triangles show the positive coplanar overlap reduced from approximately 0.802509 m² per side to zero. Compared with D01.2, only 16 position and 16 generated UV records changed; topology, normals, materials and byte count are identical. The former dark outer roof-edge line is absent in regenerated author and independent same-camera previews. All 24 independent balcony-junction probes still pass.
+
+Current evidence: `roof-scope-D01.3.json`, `reproducibility-D01.3.json`, `correction-D01.3.json` and `residential-D01.3-*.log`. Independent hash-specific QA is under `docs/external/dot/validation/revisions/sakura-residential-8d42f9f83c3a/`. The exact patch against the original submission is in `changed-files-D01.3.txt`; the complete current author file list is `submission-files-D01.3.txt`.
+
+D01.2 hash `1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6` and all its evidence remain historical. Both prior submitted snapshots were preserved outside the repository before revision. No office artifact, runtime source, city placement or deployment changed.
+
+## D01.2 residential junction correction (historical)
+
+Only the twelve outer balcony-end walls changed. Their backs now overlap the main facade by 40 mm, and their tops overlap the next slab/roof underside by 5 mm, closing the unintended 90 mm rear and 185 mm typical / 245 mm roof-level upper seams. Balcony fronts and internal apartment-separator clearances remain open. The dimensions, bytes, vertices, triangles, materials and draw primitives are unchanged.
+
+The previous residential hash was `efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b`. Its original author logs, `final-checks.json`, original reproduction records and prior independent QA remain historical evidence. The current correction uses `residential-D01.2-*.log`, `reproducibility-D01.2.json`, `seam-scope-D01.2.json` and `correction-D01.2.json`. New independent evidence is under `docs/external/dot/validation/revisions/sakura-residential-1b2c14220e48/`; review its status for this exact hash.
+
+Byte comparison confirms identical glTF structure, indices, normals and materials; only 144 position and 120 generated UV records in the plaster primitive changed. Every original office deliverable remains byte-identical. The office proportion/entry/roof suggestions remain unimplemented proposals.
 
 ## Coordinate and integration contract
 
@@ -49,7 +67,7 @@ Verified tool: **Blender 4.3.2**. The available Blender build has no OpenImageDe
 
 ## Validation
 
-Each final GLB was read back by Blender, its geometry bounds calculated, and its mesh faces checked. A fresh combined `--asset all --no-render` run reproduced both standalone GLBs byte-for-byte; see `reproducibility.json`. Each `.previews.json` records the exact GLB and PNG hashes, camera settings and render settings, and all six delivered 1056 × 1056 PNGs were opened and verified against those ledgers. Both own imports succeeded, with finite vertices and zero zero-area triangles. Actual export counts, SHA256, texture absence and import results are recorded in each JSON manifest. Independent validation lives under the shared quality worker's reports; review the report matching the current SHA256, not an earlier candidate hash.
+Each final GLB was read back by Blender, its geometry bounds calculated, and its mesh faces checked. A fresh combined `--asset all --no-render` run reproduced both standalone GLBs byte-for-byte; see `reproducibility-D01.3.json` for the current revision (the original and D01.2 reproduction records are retained as historical evidence). Each `.previews.json` records the exact GLB and PNG hashes, camera settings and render settings, and all six delivered 1056 × 1056 PNGs were opened and verified against those ledgers. Both own imports succeeded, with finite vertices and zero zero-area triangles. Actual export counts, SHA256, texture absence and import results are recorded in each JSON manifest. Independent validation lives under the shared quality worker's reports; review the report matching the current SHA256, not an earlier candidate hash.
 
 The office review caught an unsupported terrace edge and unclosed lobby head; the final hash above includes a continuous structural terrace slab and explicit ground-level envelope closures.
 

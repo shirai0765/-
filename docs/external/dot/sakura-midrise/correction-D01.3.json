@@ -1,0 +1,53 @@
+{
+  "revision": "D01.3 residential roof-contact cleanup, retaining D01.2 balcony correction",
+  "status": "PASS: actual author import, isolated reproduction, full preview ledger, pixel review and independent hash-specific QA.",
+  "sha256": "8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0",
+  "previous_D01_2_sha256": "1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6",
+  "original_submission_sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+  "geometry_cost_change_from_original": {
+    "bytes": 0,
+    "vertices": 0,
+    "triangles": 0,
+    "materials": 0,
+    "primitives": 0,
+    "textures": 0
+  },
+  "geometry_cost": {
+    "bytes": 489440,
+    "vertices": 13740,
+    "triangles": 6844,
+    "materials": 8,
+    "primitives": 8,
+    "textures": 0
+  },
+  "dimensions_m": [
+    13.8,
+    23.785,
+    11.4
+  ],
+  "D01_3_scope": "Only two side parapet bottoms moved up 75 mm, meeting the roof slab top. All exterior extrema and parapet tops preserved.",
+  "D01_3_changed_attribute_records": {
+    "POSITION": 16,
+    "TEXCOORD_0": 16
+  },
+  "actual_export_positive_overlap_area_m2": {
+    "previous_combined_sides": 1.6050170899996368,
+    "current_combined_sides": 0
+  },
+  "independent_junction_probes": "24 of 24 passed; D01.2 closure remains intact.",
+  "independent_visual_check": "Same-camera roof close-up shows the former dark outer roof-edge line removed.",
+  "independent_evidence_directory": "docs/external/dot/validation/revisions/sakura-residential-8d42f9f83c3a/",
+  "office_files_byte_identical": [
+    "public/models/external-v080/sakura-midrise/sakura-office.glb",
+    "public/models/external-v080/sakura-midrise/sakura-office.manifest.json",
+    "public/models/external-v080/sakura-midrise/sakura-office.previews.json",
+    "public/models/external-v080/sakura-midrise/sakura-office-oblique.png",
+    "public/models/external-v080/sakura-midrise/sakura-office-roof.png",
+    "public/models/external-v080/sakura-midrise/sakura-office-front.png",
+    "docs/external/dot/sakura-midrise/office-render.log",
+    "docs/external/dot/sakura-midrise/office-build.log"
+  ],
+  "preview_check": "All three current 1056 by 1056 PNGs opened, visually reviewed, and verified against the exact GLB/PNG SHA256 ledger.",
+  "historical_evidence": "Original and D01.2 author and independent QA retained; submitted artifacts copied to verified outside-repository snapshots before revision.",
+  "scope_exclusions": "No office geometry changes, aesthetic additions, runtime edits, city placement, global tests, git, remote writes, build or deployment."
+}

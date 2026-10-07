@@ -1,6 +1,6 @@
 {
   "asset": "sakura-residential",
-  "rendered_glb_sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+  "rendered_glb_sha256": "8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0",
   "engine": "Cycles CPU",
   "samples": 64,
   "resolution": [
@@ -8,7 +8,6 @@
     1056
   ],
   "rendered_after_actual_glb_import": true,
-  "record_provenance": "Recorded after the completed 64-sample render-only run; the GLB SHA256 was observed unchanged before and after that run.",
   "views": {
     "front": {
       "camera_blender_z_up": [
@@ -23,7 +22,7 @@
       ],
       "ortho_scale_m": 29.25555,
       "png": "sakura-residential-front.png",
-      "sha256": "dd4192eeb3cfa1397c6bdeb0a4cb9e0400f686e0979d3b3665b8c2b415afd0c7"
+      "sha256": "9017ccb4b11327cb4c2dcbe2d97b78e98dcee6b273ff4bf4be2eba812d82bd6c"
     },
     "oblique": {
       "camera_blender_z_up": [
@@ -38,7 +37,7 @@
       ],
       "ortho_scale_m": 33.774699999999996,
       "png": "sakura-residential-oblique.png",
-      "sha256": "08c0af3a8735ffd6b58b16c97d638a5f2393c13986d1b4af69102c5e0553973a"
+      "sha256": "0fb19204e433f9e61e589f786ca0f0ddb9005d73e019769e9a68948361799129"
     },
     "roof": {
       "camera_blender_z_up": [
@@ -53,7 +52,7 @@
       ],
       "ortho_scale_m": 33.299,
       "png": "sakura-residential-roof.png",
-      "sha256": "5ccbf736baf719c1561482cd33afef0fca81f831730aff48925242b112fe8557"
+      "sha256": "8f9023106193f8c2fb007672ef18bc639ad4e9b5fd0ce9cbed1fad6535dd4999"
     }
   }
 }

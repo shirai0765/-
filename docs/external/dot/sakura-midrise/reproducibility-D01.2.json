@@ -1,0 +1,18 @@
+{
+  "revision": "D01.2 residential only",
+  "method": "Copied identical generator to an isolated directory outside the repository and ran --asset all --no-render. Repository office files were not rewritten.",
+  "results": [
+    {
+      "asset": "sakura-residential",
+      "submitted_sha256": "1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6",
+      "isolated_all_generation_sha256": "1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6",
+      "byte_identical": true
+    },
+    {
+      "asset": "sakura-office",
+      "submitted_sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "isolated_all_generation_sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "byte_identical": true
+    }
+  ]
+}

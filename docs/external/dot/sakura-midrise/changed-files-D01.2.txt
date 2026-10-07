@@ -1,0 +1,16 @@
+docs/external/dot/sakura-midrise/README.md
+docs/external/dot/sakura-midrise/changed-files-D01.2.txt
+docs/external/dot/sakura-midrise/correction-D01.2.json
+docs/external/dot/sakura-midrise/reproducibility-D01.2-build.log
+docs/external/dot/sakura-midrise/reproducibility-D01.2.json
+docs/external/dot/sakura-midrise/residential-D01.2-build.log
+docs/external/dot/sakura-midrise/residential-D01.2-render.log
+docs/external/dot/sakura-midrise/seam-scope-D01.2.json
+docs/external/dot/sakura-midrise/submission-files-D01.2.txt
+public/models/external-v080/sakura-midrise/sakura-residential-front.png
+public/models/external-v080/sakura-midrise/sakura-residential-oblique.png
+public/models/external-v080/sakura-midrise/sakura-residential-roof.png
+public/models/external-v080/sakura-midrise/sakura-residential.glb
+public/models/external-v080/sakura-midrise/sakura-residential.manifest.json
+public/models/external-v080/sakura-midrise/sakura-residential.previews.json
+scripts/external-v080/sakura-midrise/generate_sakura.py

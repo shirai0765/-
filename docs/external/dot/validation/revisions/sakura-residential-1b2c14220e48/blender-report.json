@@ -1,11 +1,11 @@
 {
   "asset": "sakura-residential.glb",
-  "sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+  "sha256": "1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6",
   "blender_version": "4.3.2",
   "actual_import_status": [
     "FINISHED"
   ],
-  "import_seconds": 0.3923,
+  "import_seconds": 0.2243,
   "passed": true,
   "errors": [],
   "warnings": [],
@@ -174,7 +174,7 @@
         768,
         768
       ],
-      "seconds": 19.903
+      "seconds": 19.846
     },
     {
       "view": "three-quarter",
@@ -183,7 +183,7 @@
         768,
         768
       ],
-      "seconds": 29.06
+      "seconds": 20.291
     },
     {
       "view": "roof",
@@ -192,16 +192,9 @@
         768,
         768
       ],
-      "seconds": 20.197
+      "seconds": 19.423
     }
   ],
-  "visual_review": "PASS for staged standalone review: final baked-transform hash efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b imported/rendered. Front, three-quarter and roof images inspected. Residential identity is supported by deep balconies with dividers, window/rail rhythm, recessed ground lobby, entry sign/mailbox and roof access/HVAC. No obvious missing/inside-out faces, floating parts or z-fighting. Opaque glass and inferred dimensions/details are limitations; browser integration not tested.",
-  "source_hash_unchanged_after_validation": true,
-  "revision_notice": {
-    "status": "superseded_for_architectural_fidelity",
-    "reason": "A later close architectural review found repeated unintended seams at balcony end-wall/slab and end-wall/sidewall junctions. The historical geometry/import pass remains valid, but the original three-view visual review missed these details.",
-    "replacement_sha256": "8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0",
-    "old_evidence_preserved": true,
-    "intermediate_sha256": "1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6"
-  }
+  "visual_review": "PASS for the targeted end-wall seam correction, with a separate roof-edge observation: all three full-model views and three balcony close-ups inspected. Twenty-four isolated actual-mesh probes pass on revised bytes and zero of twenty-four pass on archived predecessor; upper/back gaps at all twelve end walls close. Internal divider/front openings remain visible. A black line at the existing roof parapet/slab interface is separately noted as likely coplanar overlap; no claim of globally flawless architecture, watertightness or game-runtime acceptance.",
+  "source_hash_unchanged_after_validation": true
 }

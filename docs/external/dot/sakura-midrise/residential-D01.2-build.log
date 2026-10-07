@@ -1,0 +1,40 @@
+Warning: No mesh data to join
+Warning: No mesh data to join
+Warning: No mesh data to join
+Warning: No mesh data to join
+Warning: No mesh data to join
+Warning: No mesh data to join
+ERROR Draco mesh compression is not available because library could not be found at /usr/bin/4.3/python/lib/python3.13/site-packages/libextern_draco.so
+15:29:21 | INFO: Starting glTF 2.0 export
+15:29:21 | INFO: Extracting primitive: Icosphere
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Extracting primitive: fictional_sign
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Extracting primitive: roof_membrane
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Extracting primitive: charcoal_tile
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Extracting primitive: warm_wood
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Extracting primitive: deep_glazing
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Extracting primitive: silver_metal
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Extracting primitive: frosted_glazing
+15:29:21 | INFO: Primitives created: 1
+15:29:21 | INFO: Finished glTF 2.0 export in 0.04845619201660156 s
+
+15:29:21 | INFO: Data are loaded, start creating Blender stuff
+15:29:21 | INFO: Blender create Mesh node Icosphere
+15:29:21 | INFO: Blender create Mesh node fictional_sign
+15:29:21 | INFO: Blender create Mesh node roof_membrane
+15:29:21 | INFO: Blender create Mesh node charcoal_tile
+15:29:21 | INFO: Blender create Mesh node warm_wood
+15:29:21 | INFO: Blender create Mesh node deep_glazing
+15:29:21 | INFO: Blender create Mesh node silver_metal
+15:29:21 | INFO: Blender create Mesh node frosted_glazing
+15:29:21 | INFO: glTF import finished in 0.03s
+SAKURA_RESULT {"asset": "sakura-residential", "bytes": 489440, "sha256": "1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6", "vertices": 13740, "triangles": 6844, "materials": 8, "primitives": 8, "meshes": 8, "textures": 0, "images": 0, "texture_dimensions": [], "texture_bytes": 0, "bounds_m": {"min": [-6.900000095367432, -5.891460830298456e-08, -5.699999809265137], "max": [6.900000095367432, 23.78499984741211, 5.699999809265137]}, "dimensions_m": [13.8, 23.785, 11.4], "external_uris": [], "gltf_version": "2.0", "validation": {"tool": "Blender 4.3.2", "actual_import_succeeded": true, "mesh_objects": 8, "mesh_vertices": 13740, "mesh_triangles": 6844, "blender_z_up_bounds_m": {"min": [-6.900000095367432, -5.699999809265137, -5.891460830298456e-08], "max": [6.900000095367432, 5.699999809265137, 23.78499984741211]}, "finite_vertices": true, "zero_area_triangles": 0, "ground_z_zero": true, "note": "Blender importer maps glTF +Y up to Blender +Z up. Exported glTF bounds are measured separately; authored -Y front maps to glTF +Z front."}}
+Blender 4.3.2
+
+Blender quit
