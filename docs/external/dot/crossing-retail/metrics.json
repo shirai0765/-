@@ -1,0 +1,54 @@
+{
+  "bytes": 506364,
+  "sha256": "abcc001472351218f4f2903dc6d839eea003c63b0f8ed7a9665c0e477f171467",
+  "vertices": 11494,
+  "triangles": 5425,
+  "materials": 13,
+  "primitives": 13,
+  "meshes": 1,
+  "nodes": 1,
+  "texture_count": 0,
+  "image_count": 0,
+  "textures": [],
+  "bounds_m": {
+    "min": [
+      -15.1850004196167,
+      0,
+      -12.899999618530273
+    ],
+    "max": [
+      15.1850004196167,
+      40.790000915527344,
+      12.875299453735352
+    ]
+  },
+  "dimensions_m": {
+    "width_x": 30.3700008392334,
+    "height_y": 40.790000915527344,
+    "depth_z": 25.775299072265625
+  },
+  "extensions_used": [],
+  "blender_import_check": {
+    "version": "4.3.2",
+    "success": true,
+    "mesh_objects": 1,
+    "blender_bounds_min": [
+      -15.1850004196167,
+      -12.875299453735352,
+      0.0
+    ],
+    "blender_bounds_max": [
+      15.1850004196167,
+      12.899999618530273,
+      40.790000915527344
+    ],
+    "axis_conversion_max_error_m": 0.0,
+    "ground_y0_verified": true,
+    "front_positive_z_verified": true,
+    "node_origin": [
+      0,
+      0,
+      0
+    ]
+  }
+}

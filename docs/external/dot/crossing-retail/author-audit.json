@@ -1,0 +1,16 @@
+{
+  "file": "public/models/external-v080/crossing-retail/crossing-retail.glb",
+  "all_position_normal_uv_finite": true,
+  "normal_length_range": [
+    0.9999999326331277,
+    1.0000001374366758
+  ],
+  "degenerate_triangles": 0,
+  "total_triangles": 5425,
+  "screen_normal_z_range": [
+    0.9191450476646423,
+    0.9995909333229065
+  ],
+  "no_external_uris": true,
+  "screen_on_front": true
+}

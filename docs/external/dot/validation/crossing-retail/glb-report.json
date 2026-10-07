@@ -1,0 +1,83 @@
+{
+  "asset": "crossing-retail.glb",
+  "sha256": "abcc001472351218f4f2903dc6d839eea003c63b0f8ed7a9665c0e477f171467",
+  "bytes": 506364,
+  "gltf_asset": {
+    "generator": "Khronos glTF Blender I/O v4.3.47",
+    "version": "2.0"
+  },
+  "errors": [],
+  "warnings": [],
+  "passed": true,
+  "extensions_used": [],
+  "extensions_required": [],
+  "mesh_count": 1,
+  "mesh_instance_count": 1,
+  "node_count": 1,
+  "material_count": 13,
+  "texture_count": 0,
+  "image_count": 0,
+  "vertices": 11494,
+  "triangles": 5425,
+  "primitives": 13,
+  "degenerate_triangles": 0,
+  "normal_winding_disagreements": 0,
+  "scene_instanced_counts": {
+    "vertices": 11494,
+    "triangles": 5425,
+    "primitives": 13
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -15.1850004196167,
+      0.0,
+      -12.899999618530273
+    ],
+    "max": [
+      15.1850004196167,
+      40.790000915527344,
+      12.875299453735352
+    ],
+    "size": [
+      30.3700008392334,
+      40.790000915527344,
+      25.775299072265625
+    ],
+    "center": [
+      0.0,
+      20.395000457763672,
+      -0.012350082397460938
+    ]
+  },
+  "external_uris": [],
+  "images": [],
+  "meshes": [
+    {
+      "index": 0,
+      "name": "01_envelope",
+      "primitives": 13,
+      "vertices": 11494,
+      "triangles": 5425,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 11494,
+      "material_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "counting_note": "Vertices and triangles sum accessor counts per stored primitive; scene-instanced counts include repeated mesh nodes. Vertex seams may intentionally duplicate positions."
+}

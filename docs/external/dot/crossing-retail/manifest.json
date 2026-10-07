@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "asset_id": "crossing-retail-axis-v1",
+  "title": "AXIS Culture House",
+  "status": "draft_independent_qa_passed",
+  "created_utc": "2026-10-07",
+  "category": "corner-commercial / media facade",
+  "reference_inspiration": "QFRONT, Shibuya; original fictional design, not a measured replica",
+  "files": {
+    "glb": "public/models/external-v080/crossing-retail/crossing-retail.glb",
+    "author_blend": "public/models/external-v080/crossing-retail/crossing-retail-author.blend",
+    "generator": "scripts/external-v080/crossing-retail/generate.py",
+    "previews": {
+      "front": "docs/external/dot/crossing-retail/previews/front.png",
+      "oblique": "docs/external/dot/crossing-retail/previews/oblique.png",
+      "roof": "docs/external/dot/crossing-retail/previews/roof.png"
+    },
+    "references": "docs/external/dot/crossing-retail/references.md",
+    "measured_metrics": "docs/external/dot/crossing-retail/metrics.json",
+    "author_audit": "docs/external/dot/crossing-retail/author-audit.json"
+  },
+  "coordinate_contract": {
+    "units": "metres",
+    "up_axis": "+Y",
+    "front_axis": "+Z",
+    "ground_y": 0,
+    "origin": "centre of 28 x 25 m main footprint at ground level",
+    "origin_position_m": [
+      0,
+      0,
+      0
+    ],
+    "native_blender_axes": "+Z up, -Y front; converted by glTF exporter"
+  },
+  "dimensions": {
+    "status": "inferred design, not surveyed",
+    "main_footprint_m": {
+      "width": 28,
+      "depth": 25
+    },
+    "facade_chord_width_m": 28,
+    "facade_curve_sag_m": 3.2,
+    "main_roof_height_m": 38.4,
+    "crown_height_m": 39.4,
+    "ground_storey_height_m": 4.65,
+    "above_ground_levels_suggested": 8,
+    "full_exported_envelope_m": {
+      "width_x": 30.3700008392334,
+      "height_y": 40.790000915527344,
+      "depth_z": 25.775299072265625
+    },
+    "envelope_notes": "Full bounds include curtain-wall caps, side light brackets, sign letters, handles and rooftop equipment."
+  },
+  "lod": {
+    "included": [
+      "LOD0"
+    ],
+    "distant_lod_included": false,
+    "reason": "First independent review asset; 5425 triangles, material batching, no texture memory; assess further LOD after placement distance/performance targets."
+  },
+  "measured_export": {
+    "bytes": 506364,
+    "sha256": "abcc001472351218f4f2903dc6d839eea003c63b0f8ed7a9665c0e477f171467",
+    "vertices": 11494,
+    "triangles": 5425,
+    "materials": 13,
+    "primitives": 13,
+    "meshes": 1,
+    "nodes": 1,
+    "texture_count": 0,
+    "image_count": 0,
+    "textures": [],
+    "bounds_m": {
+      "min": [
+        -15.1850004196167,
+        0,
+        -12.899999618530273
+      ],
+      "max": [
+        15.1850004196167,
+        40.790000915527344,
+        12.875299453735352
+      ]
+    },
+    "dimensions_m": {
+      "width_x": 30.3700008392334,
+      "height_y": 40.790000915527344,
+      "depth_z": 25.775299072265625
+    },
+    "extensions_used": [],
+    "blender_import_check": {
+      "version": "4.3.2",
+      "success": true,
+      "mesh_objects": 1,
+      "blender_bounds_min": [
+        -15.1850004196167,
+        -12.875299453735352,
+        0.0
+      ],
+      "blender_bounds_max": [
+        15.1850004196167,
+        12.899999618530273,
+        40.790000915527344
+      ],
+      "axis_conversion_max_error_m": 0.0,
+      "ground_y0_verified": true,
+      "front_positive_z_verified": true,
+      "node_origin": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "materials": {
+    "workflow": "glTF metallic-roughness PBR",
+    "glass": "opaque blue-grey metal/roughness for stable sorting",
+    "screen": "navy surface with original emissive cyan/coral/white mesh art",
+    "texture_count": 0,
+    "texture_dimensions": [],
+    "external_dependencies": []
+  },
+  "verification": {
+    "generator": "Blender 4.3.2",
+    "actual_glb_exported": true,
+    "actual_glb_reimported": true,
+    "import_result": {
+      "version": "4.3.2",
+      "success": true,
+      "mesh_objects": 1,
+      "blender_bounds_min": [
+        -15.1850004196167,
+        -12.875299453735352,
+        0.0
+      ],
+      "blender_bounds_max": [
+        15.1850004196167,
+        12.899999618530273,
+        40.790000915527344
+      ],
+      "axis_conversion_max_error_m": 0.0,
+      "ground_y0_verified": true,
+      "front_positive_z_verified": true,
+      "node_origin": [
+        0,
+        0,
+        0
+      ]
+    },
+    "previews": "All three 1200x1200, 48-sample Cycles renders completed and pixel-inspected: front, oblique and roof.",
+    "independent_qa": {
+      "result": "PASS for staged draft review",
+      "report": "docs/external/dot/validation/crossing-retail/review.md",
+      "validated_sha256": "abcc001472351218f4f2903dc6d839eea003c63b0f8ed7a9665c0e477f171467"
+    },
+    "browser_runtime": "not tested by author",
+    "game_integration": "not performed",
+    "reproducible_glb": "Two separate generator/export runs produced identical GLB SHA256.",
+    "author_binary_audit": "docs/external/dot/crossing-retail/author-audit.json"
+  },
+  "licensing": {
+    "geometry_and_artwork": "Original procedural model, materials and fictional words created for this task.",
+    "third_party_imagery_included": false,
+    "font": "Blender bundled Bfont converted to geometry; no external font files bundled.",
+    "reference_images": "Link-only visual references; no redistribution right asserted."
+  },
+  "limitations": [
+    "Inferred envelope, floor heights, roof equipment and small details.",
+    "Simplified exterior; no basement, navigable interior, collisions, opening doors or animation.",
+    "Opaque glass; no true transparency or through-window retail views.",
+    "No distant LOD or actual Windows/game render-performance test yet.",
+    "Roof layout is original plausible detail, not verified against QFRONT roof survey."
+  ],
+  "scope_guarantees": [
+    "Only crossing-retail model/script/docs paths are authored.",
+    "Existing models, PLATEAU/photo data, street placement, src, economic data and main/deployment unchanged."
+  ],
+  "preview_files": [
+    {
+      "path": "docs/external/dot/crossing-retail/previews/front.png",
+      "width": 1200,
+      "height": 1200,
+      "bytes": 2098045
+    },
+    {
+      "path": "docs/external/dot/crossing-retail/previews/oblique.png",
+      "width": 1200,
+      "height": 1200,
+      "bytes": 2241950
+    },
+    {
+      "path": "docs/external/dot/crossing-retail/previews/roof.png",
+      "width": 1200,
+      "height": 1200,
+      "bytes": 2273876
+    }
+  ],
+  "author_blend_bytes": 194792
+}
