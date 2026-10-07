@@ -1,0 +1,20 @@
+{
+  "variants": [
+    {
+      "path": "audio/external-v080/bgm/shibuya-citypop.m4a",
+      "loopStart": 0,
+      "loopEnd": 34.285714285714285
+    },
+    {
+      "path": "audio/external-v080/bgm/shibuya-citypop.ogg",
+      "loopStart": 0,
+      "loopEnd": 34.285714285714285
+    },
+    {
+      "path": "audio/external-v080/bgm/shibuya-citypop.mp3",
+      "loopStart": 0,
+      "loopEnd": 34.285714285714285
+    }
+  ],
+  "gain": 1
+}
