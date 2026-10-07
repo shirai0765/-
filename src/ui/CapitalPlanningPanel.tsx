@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { GameAction, GameState } from '../model';
 import { getSummary } from '../sim/engine';
+import { getActiveMarketOperation } from '../sim/marketOperations';
 import { capitalBudgetError, getCapitalPlans, type CapitalPlanId } from '../sim/capitalPlanning';
 import './capital-planning.css';
 
@@ -78,6 +79,7 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
   return <section className="card capital-planning" aria-label="資金調達の比較">
     <span className="eyebrow">CAPITAL PLAN</span><h3>次の投資に、どの資金を使う？</h3>
     <p className="capital-note">第{state.week}週の会社に、調達だけを実行した場合の比較です。選ぶだけでは現金も週も変わりません。</p>
+    {getActiveMarketOperation(state) && <p className="capital-note">26週間の事業計画による一時的な利益変化は、企業価値と借入枠の収益評価には含めません。支出済みの現金と今週の営業収支には反映しています。</p>}
     {planningContext && <div className="capital-context">
       <strong>計画中：{planningContext.label}</strong>
       <p className="capital-note">投資先から受け取った金額は概算メモです。取得済み・価格変更などの条件は反映せず、投資先へ戻って確認します。</p>

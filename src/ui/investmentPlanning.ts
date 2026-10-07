@@ -1,15 +1,17 @@
-import type { DistrictId, GameState, MarketAcquisitionMode, RailProjectChoiceId, StoreStyle } from '../model';
+import type { DistrictId, GameState, MarketAcquisitionMode, MarketOperationPolicy, RailProjectChoiceId, StoreStyle } from '../model';
 import { LOTS } from '../data/district';
 import { getStoreOpeningPlans } from '../sim/storePlanning';
 import { getRailProjects } from '../sim/railProjects';
 import { getMarketAcquisitionTargets } from '../sim/marketAcquisitions';
 import { getAcquisitionComparison } from '../sim/acquisitionComparison';
+import { getActiveMarketOperation, getMarketOperationQuote } from '../sim/marketOperations';
 
 /** Navigation intent only. Neither planning nor returning executes an investment. */
 export type InvestmentIntent =
   | { kind: 'store'; lotId: string; style: StoreStyle }
   | { kind: 'rail'; districtId: DistrictId; choiceId: RailProjectChoiceId }
-  | { kind: 'acquisition'; stockId: string; mode: MarketAcquisitionMode };
+  | { kind: 'acquisition'; stockId: string; mode: MarketAcquisitionMode }
+  | { kind: 'marketOperation'; sector: string; policy: MarketOperationPolicy };
 
 export interface InvestmentVisit { id: string; intent: InvestmentIntent }
 export interface InvestmentMemo {
@@ -26,6 +28,7 @@ export function getInvestmentMemo(state: GameState, visit: InvestmentVisit): Inv
   // A plan survives navigation; visit.id is only the command to reopen its destination.
   const memoId = JSON.stringify(intent.kind === 'store' ? [state.id, intent.kind, intent.lotId, intent.style]
     : intent.kind === 'rail' ? [state.id, intent.kind, intent.districtId, intent.choiceId]
+    : intent.kind === 'marketOperation' ? [state.id, intent.kind, intent.sector, intent.policy]
     : [state.id, intent.kind, intent.stockId, intent.mode]);
   if (intent.kind === 'store') {
     const lot = LOTS.find(candidate => candidate.id === intent.lotId);
@@ -41,6 +44,16 @@ export function getInvestmentMemo(state: GameState, visit: InvestmentVisit): Inv
     return district && choice ? {
       id: memoId, label: `${district.name}・${choice.name}`, spending: choice.cost, returnLabel: 'この共同開発プランに戻る',
     } : null;
+  }
+  if (intent.kind === 'marketOperation') {
+    const quote = getMarketOperationQuote(state, intent.sector, intent.policy);
+    if (!quote.eligibleCount || getActiveMarketOperation(state)) return null;
+    return {
+      id: memoId,
+      label: `${intent.sector}・${intent.policy === 'growth' ? '成長に投資' : '変動を抑える'}（${quote.weeklyCost > 0 ? '初回支払＋26週の運営費の確保額' : '初回支払'}）`,
+      spending: quote.reserveRequired,
+      returnLabel: 'この事業計画に戻る',
+    };
   }
   const target = getMarketAcquisitionTargets(state).find(candidate => candidate.stockId === intent.stockId);
   if (!target || target.status === 'owned' || target.status === 'integrating') return null;

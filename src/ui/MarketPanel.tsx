@@ -15,7 +15,7 @@ const markets = { Prime: 'プライム', Standard: 'スタンダード', Growth:
 const profiles = { defensive: '安定重視', income: '配当重視', growth: '成長期待', cyclical: '景気連動', speculative: '値動き大' };
 const riskNotes = { defensive: '比較的穏やかな値動き。下落する週もあります。', income: '配当を重視した設定。株価下落で配当以上の損失が出ることもあります。', growth: '将来の成長期待で動く銘柄。上昇と下落の幅が大きめです。', cyclical: '景気や業種の波を受けやすい銘柄です。', speculative: '値動きが大きく、短期間に大きく下落する可能性があります。' };
 
-export default function MarketPanel({ state, onAction, busy = false, onPlanInvestment, investmentVisit, initialSection = 'investment' }: { state: GameState; onAction: (action: GameAction) => boolean | void | Promise<boolean | void>; busy?: boolean; onPlanInvestment?: (intent: InvestmentIntent) => void; investmentVisit?: InvestmentVisit | null; initialSection?: 'investment' | 'acquisitions' }) {
+export default function MarketPanel({ state, onAction, busy = false, onPlanInvestment, investmentVisit, initialSection = 'investment', onManageSector }: { state: GameState; onAction: (action: GameAction) => boolean | void | Promise<boolean | void>; busy?: boolean; onPlanInvestment?: (intent: InvestmentIntent) => void; investmentVisit?: InvestmentVisit | null; initialSection?: 'investment' | 'acquisitions'; onManageSector?: (sector:string)=>void }) {
   const [section, setSection] = useState<'investment' | 'acquisitions'>(initialSection);
   const [activeVisit, setActiveVisit] = useState<InvestmentVisit | null>(null);
   const handledVisit = useRef<string | null>(null);
@@ -69,7 +69,7 @@ export default function MarketPanel({ state, onAction, busy = false, onPlanInves
   const openOrder = (id: string, action: 'buyStock' | 'sellStock') => { setSelectedId(id); setSide(action); setQuantity('1'); };
   return <div className="investment-panel">
     <div className="market-tabs market-section-tabs" role="group" aria-label="株式市場の使い方"><button className={section === 'investment' ? 'active' : ''} aria-pressed={section === 'investment'} onClick={() => { setActiveVisit(null); setSection('investment'); }}>株式投資</button><button className={section === 'acquisitions' ? 'active' : ''} aria-pressed={section === 'acquisitions'} onClick={() => { setActiveVisit(null); setSelectedId(null); setSection('acquisitions'); }}>友好的買収</button></div>
-    {section === 'acquisitions' ? <MarketAcquisitionsPanel state={state} onAction={onAction} busy={busy} onPlanInvestment={onPlanInvestment} investmentVisit={activeVisit}/> : <>
+    {section === 'acquisitions' ? <MarketAcquisitionsPanel state={state} onAction={onAction} busy={busy} onPlanInvestment={onPlanInvestment} investmentVisit={activeVisit} onManageSector={onManageSector}/> : <>
     <div className="summary-strip">
       <div className="metric"><span>株式評価額</span><strong>{yen(portfolioValue)}</strong><small>取得総額 {yen(cost)}</small></div>
       <div className="metric"><span>評価損益</span><strong className={portfolioValue >= cost ? 'positive' : 'negative'}>{yen(portfolioValue - cost)}</strong><small>{state.positions.length} 銘柄を保有</small></div>

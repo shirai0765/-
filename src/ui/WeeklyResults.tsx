@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { GameState, OpeningRecord } from '../model';
 import StoreSettlementBreakdown from './StoreSettlementBreakdown';
+import GroupWeeklyResults from './GroupWeeklyResults';
 import './weekly-results.css';
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   onBrowseSites?: () => void;
   onContinue?: () => void;
   onFinance?: () => void;
+  onManageSector?: (sector: string) => void;
 }
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
@@ -68,7 +70,7 @@ function OpeningComparison({ record }: { record: OpeningRecord }) {
 }
 
 /** Settled reports only. Never recalculates a forecast or infers a setting's effect. */
-export default function WeeklyResults({ state, onManageStore, onViewStore, onBrowseSites, onContinue, onFinance }: Props) {
+export default function WeeklyResults({ state, onManageStore, onViewStore, onBrowseSites, onContinue, onFinance, onManageSector }: Props) {
   const report = state.lastReport;
   if (!report) return null;
   const previous = state.history.find(point => point.week === report.week - 1);
@@ -117,6 +119,8 @@ export default function WeeklyResults({ state, onManageStore, onViewStore, onBro
         </article>;
       })}</div>
     </details>}
+
+    <GroupWeeklyResults state={state} onManageSector={onManageSector}/>
 
     <details className="weekly-results-detail">
       <summary>全社の収支・今週の出来事</summary>

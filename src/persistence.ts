@@ -1,13 +1,16 @@
-import type { GameState, DealOffer } from './model';
+import type { GameState, DealOffer, MarketOperationProject } from './model';
 import { getCanonicalDealOffer, getRealizedDealBenefit, isDealOfferId } from './sim/deals';
 import { LOTS, ACQUISITION_TARGETS } from './data/district';
 import { STOCKS } from './data/stocks';
 import { marketIntegrationWeeks } from './sim/marketAcquisitions';
+import { getMarketOperationSettlement, MARKET_OPERATION_PROJECT_LIMIT, MARKET_OPERATION_TERM_WEEKS } from './sim/marketOperations';
+import { marketOperationCohort } from './sim/marketBusinessMath';
 import { DEVELOPMENT_CHOICES } from './sim/development';
 import { OPENING_RECORD_LIMIT } from './sim/openingJournal';
 import { RAIL_PROJECT_CHOICES } from './sim/railProjects';
 const lotIds = new Set(LOTS.map(l => l.id));
 const stockIds = new Set(STOCKS.map(s => s.id));
+const stockSectors = new Set(STOCKS.map(s => s.sector));
 const subsidiaryIds = new Set(ACQUISITION_TARGETS.map(t => t.id));
 
 const DATABASE = 'shibuya-capital-v1';
@@ -94,6 +97,43 @@ function validateStoreAccounts(value: unknown, results: Obj[]) {
     if (total !== num(revenue - profit, 0, Number.MAX_SAFE_INTEGER, true)) fail();
   }, results.length);
 }
+function validateMarketOperations(value: unknown, state: Obj) {
+  const operations = obj(value);
+  if (Object.keys(operations).some(key => key !== 'projects')) fail();
+  let previousEnd = 0;
+  for (const value of array(operations.projects, MARKET_OPERATION_PROJECT_LIMIT)) {
+    const project = obj(value);
+    if (Object.keys(project).some(key => !['sector', 'policy', 'startWeek', 'endWeek'].includes(key))) fail();
+    if (!stockSectors.has(str(project.sector))) fail();
+    choice(project.policy, ['growth', 'stability']);
+    const start = num(project.startWeek, 1, Number(state.week), true);
+    const end = num(project.endWeek, start + 1, 1000000 + MARKET_OPERATION_TERM_WEEKS, true);
+    if (end !== start + MARKET_OPERATION_TERM_WEEKS || start < previousEnd) fail();
+    previousEnd = end;
+    if (!state.listed || !state.marketAcquisitions || !marketOperationCohort(state as unknown as GameState, project as unknown as MarketOperationProject).length) fail();
+  }
+}
+function validateMarketOperationSettlement(value: unknown, report: Obj, state: Obj) {
+  const settlement = obj(value);
+  const keys = ['sector', 'policy', 'startWeek', 'endWeek', 'week', 'baselineProfit', 'operatingProfit', 'weeklyCost', 'profitDelta'];
+  if (Object.keys(settlement).some(key => !keys.includes(key))) fail();
+  if (!stockSectors.has(str(settlement.sector))) fail();
+  choice(settlement.policy, ['growth', 'stability']);
+  const start = num(settlement.startWeek, 1, Number(state.week) - 1, true);
+  const end = num(settlement.endWeek, start + 1, 1000000 + MARKET_OPERATION_TERM_WEEKS, true);
+  const week = num(settlement.week, start, Math.min(end - 1, Number(state.week) - 1), true);
+  if (end !== start + MARKET_OPERATION_TERM_WEEKS || week !== report.week) fail();
+  fields(settlement, ['baselineProfit', 'operatingProfit', 'profitDelta'], -Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, true);
+  num(settlement.weeklyCost, 0, Number.MAX_SAFE_INTEGER, true);
+  if (settlement.profitDelta !== Number(settlement.operatingProfit) - Number(settlement.baselineProfit)) fail();
+  const game = state as unknown as GameState;
+  if (!game.marketOperations?.projects.some(project => project.sector === settlement.sector && project.policy === settlement.policy && project.startWeek === start && project.endWeek === end)) fail();
+  // Current-week acquisitions must not alter a previously closed week's group
+  // overhead or result. Ownership records retain the exact historical cohort.
+  const historical = { ...game, week, marketAcquisitions: game.marketAcquisitions && { ...game.marketAcquisitions, companies: game.marketAcquisitions.companies.filter(company => company.acquiredWeek <= week) } };
+  const expected = getMarketOperationSettlement(historical);
+  if (!expected || Object.entries(expected).some(([key, value]) => settlement[key] !== value)) fail();
+}
 /** Validate before either serialization or use: imports are untrusted data. */
 export function validateGame(value: unknown): GameState {
   const s = obj(value); if (s.version !== 1) throw new SaveError('このセーブのバージョンには対応していません。', 'invalid-data');
@@ -154,6 +194,7 @@ export function validateGame(value: unknown): GameState {
     }, STOCKS.length);
     if (array(s.positions, 10000).some(row => acquiredIds.has(String(obj(row).stockId)))) fail();
   }
+  if (s.marketOperations !== undefined) validateMarketOperations(s.marketOperations, s);
   const storeLots = new Set<string>();
   const stores = uniqueRows(s.stores, 'id', o => { str(o.lotId, 120); if (!lotIds.has(String(o.lotId))) fail(); if (storeLots.has(String(o.lotId))) fail(); storeLots.add(String(o.lotId)); str(o.name); choice(o.style, ['standard', 'premium', 'takeaway']); fields(o, ['price', 'marketing', 'revenue', 'customers'], 0); fields(o, ['quality', 'satisfaction'], 0, 100); num(o.staff, 0, 100000, true); num(o.level, 1, 1000, true); num(o.openedWeek, 0, Number(s.week), true); num(o.profit); bool(o.manager); });
   if (s.openingRecords !== undefined) {
@@ -201,6 +242,7 @@ export function validateGame(value: unknown): GameState {
     const r = obj(s.lastReport); num(r.week, 0, Number(s.week), true); fields(r, ['revenue', 'interest', 'loanRepayment', 'dividendsReceived', 'dividendsPaid', 'customers'], 0); fields(r, ['operatingProfit', 'netProfit', 'cashChange']); array(r.headlines, 100).forEach(v => str(v, 1000));
     const results = uniqueRows(r.storeResults, 'id', o => { fields(o, ['revenue', 'customers'], 0); num(o.profit); num(o.satisfaction, 0, 100); });
     if (Object.hasOwn(r, 'storeAccounts')) validateStoreAccounts(r.storeAccounts, results);
+    if (Object.hasOwn(r, 'marketOperation')) validateMarketOperationSettlement(r.marketOperation, r, s);
   }
   if (s.deals !== undefined) validateDeals(s.deals, s);
   void stores;

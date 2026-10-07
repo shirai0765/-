@@ -1,0 +1,56 @@
+.group-operations{min-width:0;margin:0 0 24px}
+.group-operations h3{margin:8px 0 12px;font-size:20px;line-height:1.5}
+.group-operation-note{font-size:12px;line-height:1.75;color:var(--muted);margin:10px 0}
+.group-sector-list{display:grid;gap:10px;margin:18px 0}
+.group-sector-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft)}
+.group-sector-row h4{font-size:15px;line-height:1.5;margin:0 0 5px}
+.group-sector-row p{font-size:12px;line-height:1.6;margin:4px 0;color:var(--muted)}
+.group-sector-row strong{font-variant-numeric:tabular-nums}
+.group-sector-row button{white-space:normal;font-size:12px;max-width:180px}
+.group-operation-badge{display:inline-block;font-size:11px;color:var(--accent);margin-left:8px}
+.group-operation-back{display:flex;align-items:center;gap:6px;border:0;background:none;padding:8px 0;color:var(--muted);font-size:12px;cursor:pointer}
+.group-operation-heading:focus{outline:none}
+.group-operation-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0}
+.group-operation-choices button{min-height:56px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--surface-soft);color:var(--ink);font-size:13px;cursor:pointer;white-space:normal}
+.group-operation-choices button[aria-pressed=true]{border-color:var(--accent);background:var(--surface)}
+.group-operation-choices button:disabled{opacity:.55;cursor:default}
+.group-operation-comparison{border:1px solid var(--line);border-radius:8px;background:var(--surface-soft);padding:16px;margin:14px 0}
+.group-operation-comparison h4{margin:0 0 12px;font-size:14px;line-height:1.6}
+.group-operation-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0}
+.group-operation-values dt{font-size:11px;line-height:1.6;color:var(--muted)}
+.group-operation-values dd{margin:4px 0 0;font-size:18px;font-weight:600;line-height:1.6;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.group-operation-values>div{min-width:0}
+.group-operation-values .group-operation-range{grid-column:1/-1}
+.group-operation-range dd{font-size:22px}
+.group-operation-compare-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;line-height:1.7}
+.group-operation-compare-table th,.group-operation-compare-table td{padding:10px 6px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;font-variant-numeric:tabular-nums;white-space:normal;overflow-wrap:anywhere}
+.group-operation-compare-table .group-operation-amount{display:inline-block;max-width:100%}
+.group-operation-compare-table th:first-child{text-align:left;font-weight:500;width:32%}
+.group-operation-compare-table thead th{font-size:11px;color:var(--muted);font-weight:400}
+.group-operation-warning{padding:12px 14px;border:1px solid var(--gold);border-radius:8px;font-size:12px;line-height:1.75;color:var(--ink);margin:12px 0}
+.group-operation-actions{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.group-operation-actions>button{white-space:normal;max-width:100%;font-size:12px}
+.group-operation-details{margin:16px 0;border-top:1px solid var(--line);padding-top:12px}
+.group-operation-details summary{font-size:12px;color:var(--muted);cursor:pointer;line-height:1.7}
+.group-operation-details[open]>summary{margin-bottom:12px}
+.group-operation-history{border-top:1px solid var(--line);padding-top:14px;margin:18px 0}
+.group-operation-history h4{margin:0 0 10px;font-size:14px}
+.group-operation-history-row{padding:12px 0;border-top:1px solid var(--line)}
+.group-operation-history-row:first-of-type{border-top:0}
+.group-operation-history-row strong{font-size:13px;line-height:1.7}
+.group-operation-history-row p{font-size:12px;color:var(--muted);line-height:1.7;margin:6px 0}
+.group-operation-history-row>dl{margin:12px 0}
+.weekly-group-operation{border-top:1px solid var(--line);padding-top:12px;margin:14px 0 0}
+.weekly-group-operation>summary{font-size:12px;line-height:1.7;color:var(--muted);cursor:pointer}
+.weekly-group-operation p{font-size:12px;line-height:1.75;color:var(--muted)}
+.weekly-group-operation>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.weekly-group-operation dt{font-size:11px;color:var(--muted);line-height:1.6}
+.weekly-group-operation dd{font-size:15px;font-weight:600;margin:4px 0 0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.group-capital-options,.group-acquisition-options{margin:18px 0;padding-top:14px;border-top:1px solid var(--line)}
+.group-capital-options>summary,.group-acquisition-options>summary{font-size:13px;line-height:1.7;color:var(--muted);cursor:pointer}
+.group-capital-options[open]>summary,.group-acquisition-options[open]>summary{margin-bottom:18px;color:var(--ink)}
+.group-operations button:focus-visible,.group-operations summary:focus-visible,.weekly-group-operation summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:600px){.group-sector-row{grid-template-columns:1fr;gap:10px}.group-sector-row button{max-width:none;justify-self:start}.group-operation-comparison{padding:12px}.group-operation-values dd{font-size:16px}.group-operation-range dd{font-size:19px}.group-operation-compare-table th,.group-operation-compare-table td{padding:9px 3px;font-size:11px}.group-operation-choices{gap:6px}.group-operation-choices button{font-size:12px;padding:9px 5px}.group-operation-actions{flex-direction:column;align-items:stretch}.group-operation-actions>button{min-height:42px}.weekly-group-operation>dl{grid-template-columns:1fr}}
+/* Global market tables keep cells on one line. This comparison must instead
+   wrap exact amounts inside its mobile columns, without hiding any figure. */
+@media(max-width:600px){.group-operation-compare-table{table-layout:fixed;max-width:100%}.group-operation-compare-table th,.group-operation-compare-table td{min-width:0;white-space:normal}}

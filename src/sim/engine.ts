@@ -2,6 +2,7 @@ import type { GameState, GameAction, Store, StoreStyle, WeeklyReport, CompanySum
 import { LOTS, ACQUISITION_TARGETS } from '../data/district';
 import { startDevelopment, getDevelopmentEffects, getDevelopmentFinancials, tickDevelopment, developmentHeadlines } from './development';
 import { applyMarketAcquisitionAction, isMarketCompanyOwned, getMarketGroupFinancials } from './marketAcquisitions';
+import { applyMarketOperationAction, getActiveMarketOperation, getMarketOperationSettlement } from './marketOperations';
 import { STOCKS } from '../data/stocks';
 import { initializeDeals, applyDealAction, getDealFinancials, getDealAssetValue, getDealMaturityCash, tickDeals } from './deals';
 import { recordOpening, settleOpeningRecords, closeOpeningRecords } from './openingJournal';
@@ -165,6 +166,7 @@ export function createGame(companyName = '渋谷珈琲ホールディングス',
 }
 function calculateWeek(s: GameState, mode: OutcomeMode, plans = s.stores.map(st => managerPlan(s, st))): WeeklyReport {
   const marketGroup = getMarketGroupFinancials(s, mode);
+  const marketOperation = mode === 'actual' ? getMarketOperationSettlement(s) : undefined;
   const development = getDevelopmentFinancials(s);
   const railProjects = getRailProjectFinancials(s);
   const deal = getDealFinancials(s, mode);
@@ -195,7 +197,7 @@ function calculateWeek(s: GameState, mode: OutcomeMode, plans = s.stores.map(st 
   // Dividends and investment transactions never disguise an unprofitable operating business.
   const netProfit = operatingProfit - interest;
   const dividendsPaid = s.listed ? round(Math.max(0, netProfit) * s.dividendPayout) : 0;
-  return { week: s.week, revenue: round(revenue + propertyGross + subsidiaries + deal.weeklyRevenue + marketGroup.weeklyRevenue), operatingProfit, interest, netProfit, loanRepayment, dividendsReceived, dividendsPaid, cashChange: netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash, customers: storeResults.reduce((a, x) => a + x.customers, 0), headlines: [...marketGroup.headlines.slice(0, 5), ...(marketGroup.operating || marketGroup.integrating ? [`市場企業グループ：稼働${marketGroup.operating}社・準備${marketGroup.integrating}社、営業利益 ${marketGroup.weeklyProfit.toLocaleString()}円／週。`] : []), ...developmentHeadlines(s), ...railProjectHeadlines(s), ...(railProjects.weeklyUpkeep ? [`沿線共同開発の維持費 ${railProjects.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(development.weeklyUpkeep ? [`地区開発の維持費 ${development.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(economy.overhead ? [`本部・グループ運営費 ${economy.overhead.toLocaleString()}円／週。店長なし店舗の運営能力 ${Math.round(economy.founderCapacity * 100)}%。`] : []), ...(deal.weeklyExpense || deal.weeklyRevenue ? [`営業提案の今週効果 ${deal.weeklyRevenue.toLocaleString()}円／継続費用 ${deal.weeklyExpense.toLocaleString()}円（営業利益に反映）。`] : []), ...(maturityCash ? [`契約満了の残存価値 ${maturityCash.toLocaleString()}円を現金回収（営業利益には含めません）。`] : []), ...(s.loans.some(l => l.remaining > 0) && netProfit <= 0 ? [mode === 'actual' ? '借入中の利益不足により経営を終了しました。' : '見込み利益がゼロ以下です。実績は週末に確定します。'] : []), ...(s.cash + netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash < 0 ? ['警告：週末の現預金が不足します。'] : []), ...(mode === 'actual' ? settlementCauses(s, plans) : []), netProfit > 0 ? (mode === 'actual' ? '利益を確保しました。次の投資機会を検討しましょう。' : '現在の計画は黒字見込みです。客足・運営状況で実績は変動します。') : '収支を見直す余地があります。価格・立地・人員を確認しましょう。'], storeResults, ...(storeAccounts.length ? { storeAccounts } : {}) };
+  return { week: s.week, revenue: round(revenue + propertyGross + subsidiaries + deal.weeklyRevenue + marketGroup.weeklyRevenue), operatingProfit, interest, netProfit, loanRepayment, dividendsReceived, dividendsPaid, cashChange: netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash, customers: storeResults.reduce((a, x) => a + x.customers, 0), headlines: [...marketGroup.headlines.slice(0, 5), ...(marketGroup.operating || marketGroup.integrating ? [`市場企業グループ：稼働${marketGroup.operating}社・準備${marketGroup.integrating}社、営業利益 ${marketGroup.weeklyProfit.toLocaleString()}円／週。`] : []), ...developmentHeadlines(s), ...railProjectHeadlines(s), ...(railProjects.weeklyUpkeep ? [`沿線共同開発の維持費 ${railProjects.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(development.weeklyUpkeep ? [`地区開発の維持費 ${development.weeklyUpkeep.toLocaleString()}円／週を営業利益に反映。`] : []), ...(economy.overhead ? [`本部・グループ運営費 ${economy.overhead.toLocaleString()}円／週。店長なし店舗の運営能力 ${Math.round(economy.founderCapacity * 100)}%。`] : []), ...(deal.weeklyExpense || deal.weeklyRevenue ? [`営業提案の今週効果 ${deal.weeklyRevenue.toLocaleString()}円／継続費用 ${deal.weeklyExpense.toLocaleString()}円（営業利益に反映）。`] : []), ...(maturityCash ? [`契約満了の残存価値 ${maturityCash.toLocaleString()}円を現金回収（営業利益には含めません）。`] : []), ...(s.loans.some(l => l.remaining > 0) && netProfit <= 0 ? [mode === 'actual' ? '借入中の利益不足により経営を終了しました。' : '見込み利益がゼロ以下です。実績は週末に確定します。'] : []), ...(s.cash + netProfit + dividendsReceived - loanRepayment - dividendsPaid + maturityCash < 0 ? ['警告：週末の現預金が不足します。'] : []), ...(mode === 'actual' ? settlementCauses(s, plans) : []), netProfit > 0 ? (mode === 'actual' ? '利益を確保しました。次の投資機会を検討しましょう。' : '現在の計画は黒字見込みです。客足・運営状況で実績は変動します。') : '収支を見直す余地があります。価格・立地・人員を確認しましょう。'], storeResults, ...(storeAccounts.length ? { storeAccounts } : {}), ...(marketOperation ? { marketOperation } : {}) };
 }
 /** Expected operating plan only. Never evaluates settlement-only draws. */
 export function previewWeek(s: GameState): WeeklyReport { return calculateWeek(s, 'expected'); }
@@ -228,8 +230,11 @@ export function getSummary(s: GameState): CompanySummary {
   const operatingAssets = s.stores.reduce((a, st) => a + STYLES[st.style].cost * .55 + (st.level - 1) * 600_000, 0) + s.subsidiaries.reduce((a, x) => a + x.purchasePrice, 0);
   const netWorth = round(s.cash + portfolioValue + propertyValue + operatingAssets + getDevelopmentFinancials(s).bookValue + getRailProjectFinancials(s).bookValue + getMarketGroupFinancials(s).bookValue - debt);
   const weeklyProfit = previewWeek(s).netProfit;
-  const valuation = round(Math.max(1_000_000, netWorth + Math.max(0, weeklyProfit) * 104));
-  const borrowingLimit = round(Math.max(0, 5_000_000 + propertyValue * .5 + operatingAssets * .4 + getMarketGroupFinancials(s).borrowCollateral + Math.max(0, weeklyProfit) * 26));
+  // A 26-week program cannot be capitalized as permanent earnings for financing.
+  // Keep actual cash spent and assets; only remove its temporary earnings effect.
+  const sustainableProfit = getActiveMarketOperation(s) ? previewWeek({ ...s, marketOperations: undefined }).netProfit : weeklyProfit;
+  const valuation = round(Math.max(1_000_000, netWorth + Math.max(0, sustainableProfit) * 104));
+  const borrowingLimit = round(Math.max(0, 5_000_000 + propertyValue * .5 + operatingAssets * .4 + getMarketGroupFinancials(s).borrowCollateral + Math.max(0, sustainableProfit) * 26));
   const ipoRequirements = [{ label: '3店舗以上を運営', met: s.stores.length >= 3 }, { label: '累計12週の黒字', met: s.profitableWeeks >= 12 }, { label: '純資産2,000万円以上', met: netWorth >= 20_000_000 }, { label: '今週の予想利益が黒字', met: weeklyProfit > 0 }];
   return { debt, borrowingLimit, availableCredit: Math.max(0, borrowingLimit - debt), valuation, netWorth, weeklyProfit, portfolioValue, propertyValue, ownership: s.founderShares / s.sharesOutstanding, ipoEligible: !s.listed && ipoRequirements.every(x => x.met), ipoRequirements };
 }
@@ -246,6 +251,7 @@ export function applyAction(state: GameState, action: GameAction): GameState {
   const s = structuredClone(state);
   switch (action.type) {
     case 'researchMarketCompany': case 'acquireMarketCompany': return applyMarketAcquisitionAction(s, action);
+    case 'startMarketOperation': return applyMarketOperationAction(s, action);
     case 'startDevelopment': return startDevelopment(s, action.districtId, action.choiceId);
     case 'startRailProject': return startRailProject(s, action.districtId, action.choiceId);
     case 'acceptOffer': case 'declineOffer': case 'investigateOffer': case 'cancelContract': return applyDealAction(s, action);

@@ -18,7 +18,7 @@ export interface StoreAccount {
   /** Display reconciliation only; never an additional economic charge. */
   roundingAdjustment: number;
 }
-export interface WeeklyReport { week: number; revenue: number; operatingProfit: number; interest: number; netProfit: number; loanRepayment: number; dividendsReceived: number; dividendsPaid: number; cashChange: number; customers: number; headlines: string[]; storeResults: { id: string; revenue: number; profit: number; customers: number; satisfaction: number }[]; /** Actual settlement only. Missing rows have no recorded expense breakdown. */ storeAccounts?: StoreAccount[] }
+export interface WeeklyReport { week: number; revenue: number; operatingProfit: number; interest: number; netProfit: number; loanRepayment: number; dividendsReceived: number; dividendsPaid: number; cashChange: number; customers: number; headlines: string[]; storeResults: { id: string; revenue: number; profit: number; customers: number; satisfaction: number }[]; /** Actual settlement only. Missing rows have no recorded expense breakdown. */ storeAccounts?: StoreAccount[]; /** Recorded actual paired group result, never an economic input. */ marketOperation?: MarketOperationSettlement }
 export interface HistoryPoint { week: number; cash: number; profit: number; revenue: number; valuation: number; stores: number }
 /** A bounded decision journal; never used to calculate company finances. */
 export interface OpeningRecord {
@@ -27,12 +27,13 @@ export interface OpeningRecord {
   result?: { week: number; companyNetProfit: number; cashChange: number; storeProfit: number; customers: number };
   closedWeek?: number;
 }
-export interface GameState { railProjects?: RailProjectState; openingRecords?: OpeningRecord[]; marketAcquisitions?: MarketAcquisitionState; development?: DevelopmentState; deals?: DealState; version: 1; id: string; companyName: string; seed: number; week: number; cash: number; reputation: number; stores: Store[]; loans: Loan[]; properties: PropertyAsset[]; positions: StockPosition[]; stockPrices: Record<string, number>; subsidiaries: Subsidiary[]; listed: boolean; sharesOutstanding: number; founderShares: number; sharePrice: number; dividendPayout: number; profitableWeeks: number; totalCustomers: number; history: HistoryPoint[]; lastReport: WeeklyReport | null; milestones: string[]; gameOver: boolean; gameOverReason: string | null; settings: { quality: QualityLevel; sound: boolean } }
+export interface GameState { marketOperations?: MarketOperationState; railProjects?: RailProjectState; openingRecords?: OpeningRecord[]; marketAcquisitions?: MarketAcquisitionState; development?: DevelopmentState; deals?: DealState; version: 1; id: string; companyName: string; seed: number; week: number; cash: number; reputation: number; stores: Store[]; loans: Loan[]; properties: PropertyAsset[]; positions: StockPosition[]; stockPrices: Record<string, number>; subsidiaries: Subsidiary[]; listed: boolean; sharesOutstanding: number; founderShares: number; sharePrice: number; dividendPayout: number; profitableWeeks: number; totalCustomers: number; history: HistoryPoint[]; lastReport: WeeklyReport | null; milestones: string[]; gameOver: boolean; gameOverReason: string | null; settings: { quality: QualityLevel; sound: boolean } }
 export type DealAction = { type: 'acceptOffer' | 'declineOffer' | 'investigateOffer'; offerId: string } | { type: 'cancelContract'; contractId: string };
 export type GameAction =
   | { type: 'startDevelopment'; districtId: DistrictId; choiceId: string }
   | { type: 'startRailProject'; districtId: DistrictId; choiceId: RailProjectChoiceId }
   | MarketAcquisitionAction
+  | MarketOperationAction
   | DealAction
   | { type: 'openStore'; lotId: string; name?: string; style: StoreStyle }
   | { type: 'updateStore'; storeId: string; changes: Partial<Pick<Store, 'name' | 'price' | 'quality' | 'staff' | 'manager' | 'marketing' | 'style'>> }
@@ -67,3 +68,11 @@ export interface RailProjectState { projects: RailProject[] }
 export type MarketAcquisitionMode = 'autonomous' | 'integrated';
 export type MarketAcquisitionAction = { type: 'researchMarketCompany'; stockId: string } | { type: 'acquireMarketCompany'; stockId: string; mode: MarketAcquisitionMode };
 export interface MarketAcquisitionState { research: { stockId: string; week: number }[]; companies: { stockId: string; mode: MarketAcquisitionMode; acquiredWeek: number; readyWeek: number }[] }
+
+export type MarketOperationPolicy = 'growth' | 'stability';
+/** A finite sector program; its mature acquisition cohort is derived from ownership chronology. */
+export interface MarketOperationProject { sector: string; policy: MarketOperationPolicy; startWeek: number; endWeek: number }
+export interface MarketOperationState { projects: MarketOperationProject[] }
+export type MarketOperationAction = { type: 'startMarketOperation'; sector: string; policy: MarketOperationPolicy };
+/** Actual whole-group profits measured with and without this exact program, including its weekly cost. */
+export interface MarketOperationSettlement extends MarketOperationProject { week: number; baselineProfit: number; operatingProfit: number; weeklyCost: number; profitDelta: number }

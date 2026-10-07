@@ -2,6 +2,7 @@ import type { GameState, WeeklyReport } from '../model';
 import { advanceWeek, getSummary, getWeekOutlook } from './engine';
 import { getOffers } from './deals';
 import { getMarketGroupFinancials } from './marketAcquisitions';
+import { getActiveMarketOperation } from './marketOperations';
 
 export interface ManagedWeekHooks {
   /** Resolve only after this exact week has been durably saved. */
@@ -39,6 +40,7 @@ export async function runManagedWeeks(initial: GameState, requested: 4 | 13, hoo
     let report: WeeklyReport;
     let beforeIPO: boolean;
     let beforeOffers: Set<string>;
+    const operatingProgram = getActiveMarketOperation(state);
     try {
       const outlook = getWeekOutlook(state);
       report = outlook.expected;
@@ -64,6 +66,7 @@ export async function runManagedWeeks(initial: GameState, requested: 4 | 13, hoo
     try {
       hooks.onCommit?.(state, report);
       if (state.gameOver) return stop(state.gameOverReason ?? 'ゲームが終了しました。');
+      if (operatingProgram && state.week >= operatingProgram.endWeek) return stop('事業投資の26週間が終了しました。保存済みの実績を確認し、次の運営方針を判断してください。');
       const completedBefore = initial.development?.programs.reduce((n, p) => n + p.completedChoiceIds.length, 0) ?? 0;
       const completedNow = state.development?.programs.reduce((n, p) => n + p.completedChoiceIds.length, 0) ?? 0;
       if (completedNow > completedBefore) return stop('街区開発が完成しました。次の投資方針を確認してください。');

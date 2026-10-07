@@ -1,45 +1,15 @@
 import type { GameState, MarketAcquisitionMode, MarketAcquisitionAction, StockDefinition } from '../model';
 import { STOCKS } from '../data/stocks';
-function roll(seed: number, key: string) { let h = (seed ^ 2166136261) >>> 0; for (const c of key) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0; h ^= h >>> 16; h = Math.imul(h, 2246822507) >>> 0; h ^= h >>> 13; return (h >>> 0) / 4294967296; }
+import { calculateMarketGroupFinancials, marketCompanyBaseline as baseline, marketCompanyDefinition, marketCompanyQuality as quality, marketIntegrationWeeklyCost as integrationWeeklyCost } from './marketBusinessMath';
+import { getActiveMarketOperation } from './marketOperations';
+export { marketCompanyDefinition } from './marketBusinessMath';
 const clamp = (v: number, low: number, high: number) => Math.min(high, Math.max(low, v));
 const money = Math.round;
-/** Deliberately compressed GAME enterprise values. Not market capitalization or real valuations. */
-export function marketCompanyDefinition(stock: StockDefinition) {
-  const market = stock.market ?? 'Standard';
-  const bounds = market === 'Prime' ? [90000000, 280000000] : market === 'REIT' ? [110000000, 260000000] : market === 'Growth' ? [12000000, 65000000] : [24000000, 90000000];
-  const baseValue = money((bounds[0] + (bounds[1] - bounds[0]) * roll(173, stock.id)) / 100000) * 100000;
-  const risk = stock.profile === 'speculative' ? .5 : stock.profile === 'growth' ? .35 : stock.profile === 'cyclical' ? .28 : .14;
-  const annualYield = market === 'REIT' ? .08 : stock.profile === 'speculative' ? .19 : stock.profile === 'growth' ? .17 : stock.profile === 'cyclical' ? .14 : .105;
-  return { baseValue, risk, annualYield, researchCost: money(Math.max(30000, baseValue * .001)), minReputation: market === 'Prime' ? 70 : market === 'REIT' ? 65 : market === 'Growth' ? 40 : 50, requiresListing: market === 'Prime' || market === 'REIT' || baseValue >= 50000000, isFund: market === 'REIT' };
-}
-function quality(s: GameState, stock: StockDefinition) { const r = roll(s.seed, 'operations:' + stock.id); return r < .23 ? { label: '再建余地' as const, factor: .62 } : r > .77 ? { label: '優良' as const, factor: 1.2 } : { label: '標準' as const, factor: .92 }; }
 export function marketIntegrationWeeks(stock: StockDefinition, mode: MarketAcquisitionMode) { return stock.market === 'REIT' ? (mode === 'autonomous' ? 1 : 4) : (mode === 'autonomous' ? 2 : 6); }
 export function isMarketCompanyOwned(s: GameState, stockId: string) { return !!s.marketAcquisitions?.companies.some(c => c.stockId === stockId); }
 const researched = (s: GameState, stockId: string) => !!s.marketAcquisitions?.research.some(r => r.stockId === stockId);
-function baseline(s: GameState, stock: StockDefinition, mode: MarketAcquisitionMode) { const d = marketCompanyDefinition(stock); return d.baseValue * d.annualYield / 52 * quality(s, stock).factor * (mode === 'integrated' ? 1.12 : .92); }
-function integrationWeeklyCost(stock: StockDefinition, mode: MarketAcquisitionMode) { return money(marketCompanyDefinition(stock).baseValue * (mode === 'integrated' ? .00025 : .00008)); }
 export function getMarketGroupFinancials(s: GameState, mode: 'expected' | 'low' | 'high' | 'actual' = 'expected') {
-  const companies = s.marketAcquisitions?.companies ?? [];
-  let weeklyRevenue = 0, weeklyExpense = 0, bookValue = 0, operating = 0, integrating = 0;
-  const headlines: string[] = [];
-  for (const company of companies) {
-    const stock = STOCKS.find(x => x.id === company.stockId)!;
-    const d = marketCompanyDefinition(stock); bookValue += d.baseValue * .4;
-    if (s.week < company.readyWeek) { integrating++; weeklyExpense += integrationWeeklyCost(stock, company.mode); continue; }
-    operating++;
-    const cycle = Math.sin(s.week * Math.PI * 2 / 104 + roll(91, stock.sector) * Math.PI * 2) * .45;
-    const shock = mode === 'actual' ? (roll(s.seed, `${s.week}:${stock.id}:operations`) - .5) * 1.1 : mode === 'low' ? -.55 : mode === 'high' ? .55 : 0;
-    const revenue = baseline(s, stock, company.mode) * (1 + d.risk * (cycle + shock));
-    weeklyRevenue += revenue;
-    // Group oversight rises with the acquired group, rather than adding free independent annuities.
-    weeklyExpense += revenue * (.04 + Math.min(.14, companies.length * .0014));
-    if (s.week === company.readyWeek) headlines.push(`${stock.name}の${d.isFund ? '保有資産運用' : '事業運営'}が開始しました。`);
-  }
-  weeklyRevenue = money(weeklyRevenue); weeklyExpense = money(weeklyExpense); bookValue = money(bookValue);
-  // Separately rounded revenue and expense may move opposite ways by one yen.
-  if (operating && mode === 'low') weeklyExpense++;
-  if (operating && mode === 'high') weeklyExpense = Math.max(0, weeklyExpense - 1);
-  return { weeklyRevenue, weeklyExpense, weeklyProfit: weeklyRevenue - weeklyExpense, bookValue, borrowCollateral: money(bookValue * .25), operating, integrating, headlines };
+  return calculateMarketGroupFinancials(s, mode, getActiveMarketOperation(s));
 }
 export interface MarketAcquisitionTargetView {
   stockId: string; name: string; market: string; profile: string; isFund: boolean; researched: boolean; researchCost: number; minReputation: number; requiresListing: boolean;

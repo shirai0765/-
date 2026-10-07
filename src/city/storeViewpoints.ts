@@ -2,12 +2,13 @@ import type { Lot, StoreStyle } from '../model';
 import { Vector3 } from 'three';
 import { LANDMARKS } from '../data/district';
 import { CITY_DISPLAY_LOTS } from './displayLayout';
+import { MAX_HEADQUARTERS_EXTRA_HEIGHT } from './businessGrowth';
 
 export interface StoreViewpoint { position:[number,number,number];target:[number,number,number];fov:number }
 type Obstacle={id:string;x:number;z:number;width:number;depth:number;height:number;rotation?:number};
 // Include neighboring shop terraces and the reserved landmark envelopes, not just walls.
 const obstacles:Obstacle[]=[
-  ...CITY_DISPLAY_LOTS.map(l=>({...l,z:l.z+(l.available?1.2*Math.cos(l.rotation??0):0),x:l.x+(l.available?1.2*Math.sin(l.rotation??0):0),width:l.width+1.6,depth:l.depth+(l.available?4:1.6),height:l.height+14})),
+  ...CITY_DISPLAY_LOTS.map(l=>({...l,z:l.z+(l.available?1.2*Math.cos(l.rotation??0):0),x:l.x+(l.available?1.2*Math.sin(l.rotation??0):0),width:l.width+1.6,depth:l.depth+(l.available?4:1.6),height:l.height+MAX_HEADQUARTERS_EXTRA_HEIGHT})),
   ...LANDMARKS.filter(l=>l.kind!=='crossing').map(l=>({id:l.id,x:l.x,z:l.z,width:l.kind==='park'?62:l.kind==='tower'?46:l.kind==='station'?38:40,depth:l.kind==='park'?78:l.kind==='tower'?52:l.kind==='station'?70:42,height:l.kind==='station'?15:l.height??50})),
   {id:'rail-corridor',x:75,z:0,width:19,depth:430,height:15},
 ];

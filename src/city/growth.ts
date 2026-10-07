@@ -4,6 +4,8 @@ import { CityArt, compactRigidGroup } from './art';
 import { createCafeExterior } from './assets/CafeExterior';
 import { AUTHORED_ASSETS } from './loadedAsset';
 import type { LoadedAssetPool, LoadedAssetHandle } from './loadedAsset';
+import { getBusinessGrowth, getHeadquartersRoof, HEADQUARTERS_BAY_THRESHOLDS } from './businessGrowth';
+import type { BusinessGrowthState } from './businessGrowth';
 
 /** A canvas is retained and repainted only when the displayed business changes. */
 class BusinessSign {
@@ -33,16 +35,69 @@ class BusinessSign {
     this.texture.needsUpdate=true;this.mesh.userData.displayedText=title;this.mesh.userData.subtitle=subtitle;
   }
 }
-interface BusinessFront { cafeAsset?:LoadedAssetHandle; group:THREE.Group; sign:BusinessSign; styles:Map<StoreStyle,THREE.Group>; upgrades:THREE.Group[]; premiumLevel2:THREE.Group; headquarters:THREE.Group; headquartersSign:BusinessSign }
+interface BusinessFront { cafeAsset?:LoadedAssetHandle; group:THREE.Group; sign:BusinessSign; styles:Map<StoreStyle,THREE.Group>; upgrades:THREE.Group[]; premiumLevel2:THREE.Group; headquarters:THREE.Group; headquartersSupports:THREE.Mesh[]; headquartersSign:BusinessSign }
 const palette={standard:{color:'#70252c',label:'喫茶 · COFFEE & CAKE'},premium:{color:'#294d41',label:'SPECIALTY COFFEE · ROASTERY'},takeaway:{color:'#135aa8',label:'COFFEE TO GO · TAKEAWAY'}};
+
+/** One fixed pool follows the owned HQ. Bays represent administration, not addresses. */
+class HeadquartersPavilion {
+  readonly group=new THREE.Group();
+  private bays:THREE.InstancedMesh[]=[];
+  private preparation=new THREE.Group();
+  private positions=Array.from({length:HEADQUARTERS_BAY_THRESHOLDS.length},(_,index)=>new THREE.Vector3((index%3-1)*.266,0,index<3?.153:-.153));
+  constructor(art:CityArt) {
+    this.group.name='Group_operations_pavilion';this.group.visible=false;art.group.add(this.group);
+    const bay=new THREE.Group();
+    const box=(x:number,y:number,z:number,w:number,h:number,d:number,color:string)=>art.box(x,y,z,w,h,d,color,0,bay);
+    box(0,1.7,0,.235,3,.24,'#e9e9e3');
+    for(const side of [-1,1]){
+      box(0,1.8,side*.124,.211,2.35,.014,'#21516e');
+      box(side*.121,1.8,0,.014,2.35,.216,'#21516e');
+      for(const x of [-.11,0,.11])box(x,1.8,side*.134,.009,2.6,.012,'#a87943');
+    }
+    box(0,3.3,0,.253,.22,.26,'#135aa8');
+    box(0,.21,0,.245,.18,.25,'#e9c276');
+    compactRigidGroup(bay);
+    for(const child of bay.children){
+      if(!(child instanceof THREE.Mesh)||Array.isArray(child.material))continue;
+      const mesh=new THREE.InstancedMesh(child.geometry,child.material,this.positions.length);
+      mesh.name='Operating_headquarters_bays';mesh.castShadow=true;mesh.receiveShadow=true;
+      this.positions.forEach((position,index)=>mesh.setMatrixAt(index,new THREE.Matrix4().makeTranslation(...position.toArray())));
+      // Bound the complete pool before hiding unused instances; readiness never changes bounds.
+      mesh.computeBoundingSphere();mesh.count=0;this.group.add(mesh);this.bays.push(mesh);
+    }
+    bay.clear();
+    this.preparation.name='Headquarters_integration_frame';
+    for(const x of [-.116,.116])for(const z of [-.125,.125])art.box(x,2.15,z,.012,3.9,.012,'#a87943',0,this.preparation);
+    for(const z of [-.125,.125])for(const y of [.25,1.8,3.6])art.box(0,y,z,.25,.11,.012,'#a87943',0,this.preparation);
+    for(const x of [-.116,.116])art.box(x,3.6,0,.012,.11,.26,'#a87943',0,this.preparation);
+    art.box(0,4.05,.125,.25,.1,.014,'#e9c276',0,this.preparation);
+    compactRigidGroup(this.preparation);this.preparation.visible=false;this.group.add(this.preparation);
+  }
+  update(growth:BusinessGrowthState,headquarters:THREE.Group,lot:Lot) {
+    if(this.group.parent!==headquarters)headquarters.add(this.group);
+    this.group.scale.set(lot.width,1,lot.depth);
+    this.group.visible=growth.visible&&growth.operating+growth.integrating>0;
+    for(const mesh of this.bays)mesh.count=growth.activeBays;
+    this.preparation.visible=growth.integrating>0;
+    if(growth.activeBays<this.positions.length){
+      this.preparation.position.copy(this.positions[growth.activeBays]);this.preparation.scale.set(1,1,1);
+    }else{
+      // A full pavilion uses its rear planning frame without covering an operating office.
+      this.preparation.position.set(0,0,-.303);this.preparation.scale.set(2.8,1,.1);
+    }
+    this.group.userData={lotId:lot.id,source:'owned-group-administration',operating:growth.operating,integrating:growth.integrating,activeBays:growth.activeBays,maxBays:this.positions.length,label:growth.label};
+  }
+}
 
 /** Owns only state-dependent groups; static city geometry is never rebuilt on a week tick. */
 export class CityGrowth {
   private fronts=new Map<string,BusinessFront>();
   private railGroups:THREE.Group[]=[];
-  private railwaySign:BusinessSign;
+  private railwaySign?:BusinessSign;
+  private headquartersPavilion:HeadquartersPavilion;
   constructor(private art:CityArt,trains:THREE.Group[],private lots:Lot[],private assets?:LoadedAssetPool) {
-    this.railwaySign=new BusinessSign(7,.75);
+    this.headquartersPavilion=new HeadquartersPavilion(art);
+    if(trains.length)this.railwaySign=new BusinessSign(7,.75);
     for(const train of trains){
       const livery=new THREE.Group();livery.name='Owned railway livery';livery.visible=false;
       for(let car=0;car<4;car++)for(const side of [-1,1]){
@@ -51,7 +106,7 @@ export class CityGrowth {
       }
       compactRigidGroup(livery);
       for(const side of [-1,1]){
-        const sign=new THREE.Mesh(this.railwaySign.mesh.geometry,this.railwaySign.mesh.material);
+        const sign=new THREE.Mesh(this.railwaySign!.mesh.geometry,this.railwaySign!.mesh.material);
         sign.position.set(side*1.81,-.35,16.5);sign.rotation.y=side*Math.PI/2;livery.add(sign);
       }
       train.add(livery);this.railGroups.push(livery);
@@ -134,12 +189,19 @@ export class CityGrowth {
     art.box(standX,1.53,standZ-.22,.74,.24,.09,'#a87943',0,premiumLevel2);
     for(const dx of [-.22,.08])art.box(standX+dx,1.52,standZ+.08,.16,.24,.16,'#f2eee1',0,premiumLevel2);
     compactRigidGroup(premiumLevel2);premiumLevel2.visible=false;group.add(premiumLevel2);
-    const headquarters=new THREE.Group();headquarters.name='Listed company headquarters';
-    art.box(0,lot.height+3.2,0,w*.65,.25,d*.45,'#e9e9e3',0,headquarters);
-    for(const x of [-w*.25,w*.25])art.box(x,lot.height+5,0,.18,3.4,.18,'#a87943',0,headquarters);
+    const headquarters=new THREE.Group();headquarters.name=`Group headquarters ${lot.id}`;
+    art.box(0,.125,0,w*.82,.25,d*.66,'#e9e9e3',0,headquarters);
+    const signZ=d*.335+.12,postZ=d*.31;
+    for(const x of [-w*.25,w*.25]){
+      art.box(x,2,postZ,.18,3.5,.18,'#a87943',0,headquarters);
+      // Short brackets connect the front sign to posts seated on the pavilion floor.
+      for(const y of [.6,3.6])art.box(x,y,(postZ+signZ)/2,.18,.18,signZ-postZ+.18,'#a87943',0,headquarters);
+    }
     compactRigidGroup(headquarters);
-    const headquartersSign=new BusinessSign(Math.min(w*.7,15),3.2);headquartersSign.mesh.position.set(0,lot.height+5.3,.15);headquarters.add(headquartersSign.mesh);group.add(headquarters);
-    return {group,sign,styles,upgrades,premiumLevel2,headquarters,headquartersSign,cafeAsset};
+    const headquartersSupports:THREE.Mesh[]=[];
+    for(const x of [-w*.4,w*.4])for(const z of [-d*.31,d*.31])headquartersSupports.push(art.box(x,0,z,.14,1,.14,'#a87943',0,headquarters));
+    const headquartersSign=new BusinessSign(Math.min(w*.7,15),3.2);headquartersSign.mesh.position.set(0,2.1,signZ);headquarters.add(headquartersSign.mesh);group.add(headquarters);
+    return {group,sign,styles,upgrades,premiumLevel2,headquarters,headquartersSupports,headquartersSign,cafeAsset};
   }
   update(state:GameState) {
     const owned=new Set([...state.stores.map(s=>s.lotId),...state.properties.map(p=>p.lotId)]);
@@ -147,7 +209,8 @@ export class CityGrowth {
       // Deactivation prevents a late response attaching to a closed or restyled shop.
       front.cafeAsset?.setActive(state.stores.some(store=>store.lotId===id&&store.style==='premium'));
     }
-    const headquartersId=state.properties[0]?.lotId??state.stores[0]?.lotId;
+    const businessGrowth=getBusinessGrowth(state,this.lots);
+    this.headquartersPavilion.group.visible=false;
     for(const id of owned){
       let front=this.fronts.get(id);if(!front){const lot=this.lots.find(l=>l.id===id);if(!lot)continue;front=this.createFront(lot);this.fronts.set(id,front);}
       front.group.visible=true;
@@ -164,12 +227,21 @@ export class CityGrowth {
       for(const [key,group] of front.styles)group.visible=!!store&&key===style;
       for(const group of front.upgrades)group.visible=!!store&&store.level>=group.userData.storeLevel&&!(detailedCafe&&group.userData.storeLevel===2);
       front.premiumLevel2.visible=detailedCafe&&store.level>=2;
-      front.headquarters.visible=state.listed&&id===headquartersId;
-      if(front.headquarters.visible)front.headquartersSign.update(state.companyName,'LISTED COMPANY · SHIBUYA HQ','#135aa8');
+      front.headquarters.visible=businessGrowth.visible&&id===businessGrowth.headquartersLotId;
+      if(front.headquarters.visible){
+        const roof=getHeadquartersRoof(lot,this.lots.indexOf(lot),property?.level);
+        front.headquarters.position.y=roof.platformY;
+        front.headquartersSupports.forEach((support,index)=>{support.position.set((index<2?-1:1)*lot.width*roof.supportXFraction,-roof.supportHeight/2,(index%2===0?-1:1)*lot.depth*.31);support.scale.y=roof.supportHeight;});
+        const label=businessGrowth.operating+businessGrowth.integrating>0?businessGrowth.label:'LISTED COMPANY · SHIBUYA HQ';
+        front.headquartersSign.update(state.companyName,label,'#135aa8');
+        front.headquartersSign.mesh.userData.accessibleLabel=`${state.companyName} · ${label}`;
+        front.headquarters.userData={lotId:id,platformY:roof.platformY,roofSurfaceY:roof.roofSurfaceY,label:businessGrowth.label};
+        this.headquartersPavilion.update(businessGrowth,front.headquarters,lot);
+      }
       front.group.userData={lotId:id,storeName:store?.name,style:store?.style,storeLevel:store?.level,propertyLevel:property?.level};
     }
     const railway=state.subsidiaries.find(s=>s.sector==='rail');
     for(const group of this.railGroups)group.visible=!!railway;
-    if(railway)this.railwaySign.update(railway.name,state.companyName+' GROUP','#135aa8');
+    if(railway)this.railwaySign?.update(railway.name,state.companyName+' GROUP','#135aa8');
   }
 }
