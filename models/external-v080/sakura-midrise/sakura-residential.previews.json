@@ -1,0 +1,59 @@
+{
+  "asset": "sakura-residential",
+  "rendered_glb_sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+  "engine": "Cycles CPU",
+  "samples": 64,
+  "resolution": [
+    1056,
+    1056
+  ],
+  "rendered_after_actual_glb_import": true,
+  "record_provenance": "Recorded after the completed 64-sample render-only run; the GLB SHA256 was observed unchanged before and after that run.",
+  "views": {
+    "front": {
+      "camera_blender_z_up": [
+        0,
+        -48,
+        13.319600000000001
+      ],
+      "target_blender_z_up": [
+        0,
+        0,
+        11.4168
+      ],
+      "ortho_scale_m": 29.25555,
+      "png": "sakura-residential-front.png",
+      "sha256": "dd4192eeb3cfa1397c6bdeb0a4cb9e0400f686e0979d3b3665b8c2b415afd0c7"
+    },
+    "oblique": {
+      "camera_blender_z_up": [
+        30,
+        -40,
+        25.44995
+      ],
+      "target_blender_z_up": [
+        0,
+        0,
+        10.9411
+      ],
+      "ortho_scale_m": 33.774699999999996,
+      "png": "sakura-residential-oblique.png",
+      "sha256": "08c0af3a8735ffd6b58b16c97d638a5f2393c13986d1b4af69102c5e0553973a"
+    },
+    "roof": {
+      "camera_blender_z_up": [
+        24,
+        -27,
+        52.327000000000005
+      ],
+      "target_blender_z_up": [
+        0,
+        0,
+        13.081750000000001
+      ],
+      "ortho_scale_m": 33.299,
+      "png": "sakura-residential-roof.png",
+      "sha256": "5ccbf736baf719c1561482cd33afef0fca81f831730aff48925242b112fe8557"
+    }
+  }
+}

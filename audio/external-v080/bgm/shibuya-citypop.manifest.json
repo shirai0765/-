@@ -1,0 +1,132 @@
+{
+  "id": "shibuya-citypop",
+  "title": "坂道のネオン",
+  "bpm": 112,
+  "bars": 16,
+  "timeSignature": "4/4",
+  "durationSeconds": 34.285714285714285,
+  "loopStartSeconds": 0,
+  "loopEndSeconds": 34.285714285714285,
+  "events": 790,
+  "normalization": "RMS gain with sample peak ceiling -4 dBFS; no clipping limiter",
+  "wav": {
+    "path": "public/audio/external-v080/bgm/shibuya-citypop.wav",
+    "bytes": 6048044,
+    "sha256": "5666103df9512a6c65a1232f060274256e7ed0d6f02bfc97cb57a0ad8e8e89ca",
+    "sampleFrames": 1512000,
+    "durationSeconds": 34.285714285714285,
+    "samplePeakDbfs": -9.361943484115674,
+    "rmsDbfs": -21.000265370108984,
+    "channelDcOffset": [
+      -2.3009285094246033e-09,
+      1.2110150049603175e-09
+    ],
+    "clippedSamples": 0,
+    "loopBoundary": {
+      "lastToFirstDelta": [
+        0.00042724609375,
+        0.0003662109375
+      ],
+      "lastToFirstMaximumDeltaDbfs": -67.3864379856296,
+      "neighboring100msMaximumStepDbfs": -32.61309142021474,
+      "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+      "wrappedTails": true
+    },
+    "integratedLufs": -19.84,
+    "truePeakDbtp": -9.25,
+    "loudnessRangeLu": 0.7,
+    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+  },
+  "mp3": {
+    "path": "public/audio/external-v080/bgm/shibuya-citypop.mp3",
+    "bytes": 687064,
+    "sha256": "2611751fc254eea3ab14baf82f90fce013a84ab7ffd55d6ab009f623610b74d0",
+    "bitrateKbps": 160,
+    "integratedLufs": -20.29,
+    "truePeakDbtp": -9.7,
+    "loudnessRangeLu": 0.7,
+    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+    "decodedSignal": {
+      "sampleFrames": 1512000,
+      "durationSeconds": 34.285714285714285,
+      "samplePeakDbfs": -9.82832074117626,
+      "rmsDbfs": -21.447571954853423,
+      "channelDcOffset": [
+        -1.6726135576843584e-06,
+        -3.451594599971065e-07
+      ],
+      "clippedSamples": 0,
+      "loopBoundary": {
+        "lastToFirstDelta": [
+          -0.000335693359375,
+          0.00164794921875
+        ],
+        "lastToFirstMaximumDeltaDbfs": -55.66112350273499,
+        "neighboring100msMaximumStepDbfs": -36.106651396958036,
+        "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+        "wrappedTails": true
+      }
+    }
+  },
+  "boundaryAudition": {
+    "path": "public/audio/external-v080/bgm/shibuya-citypop-boundary-check.wav",
+    "seconds": 4,
+    "joinAtSeconds": 2,
+    "bytes": 705644
+  },
+  "ogg": {
+    "path": "public/audio/external-v080/bgm/shibuya-citypop.ogg",
+    "bytes": 519903,
+    "sha256": "dcbdc4bcdcf73b8ed9819334955396cdbf97a9f1198aaee6866e021c5700edf7",
+    "codec": "Vorbis",
+    "quality": 5,
+    "integratedLufs": -19.82,
+    "truePeakDbtp": -9.16,
+    "loudnessRangeLu": 0.7,
+    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+    "decodedSignal": {
+      "sampleFrames": 1512000,
+      "durationSeconds": 34.285714285714285,
+      "samplePeakDbfs": -9.24205085580901,
+      "rmsDbfs": -20.97433025935128,
+      "channelDcOffset": [
+        5.529248272931134e-05,
+        0.00010205723999669312
+      ],
+      "clippedSamples": 0,
+      "loopBoundary": {
+        "lastToFirstDelta": [
+          0.000274658203125,
+          0.001434326171875
+        ],
+        "lastToFirstMaximumDeltaDbfs": -56.86704154048001,
+        "neighboring100msMaximumStepDbfs": -33.27160668459903,
+        "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+        "wrappedTails": true
+      }
+    }
+  },
+  "loopStartFrame": 0,
+  "loopEndFrame": 1512000,
+  "sampleRate": 44100,
+  "channels": 2,
+  "purpose": "Tokyo-city-pop",
+  "creator": "Codex A01 audio-bgm author (original synthesis for Shibuya Capital)",
+  "source": {
+    "classification": "original",
+    "thirdPartyMusicOrSamples": [],
+    "evidence": "All melody/chord/rhythm note lists, oscillators and seeded-noise percussion are defined in scripts/external/audio-bgm/render.py; no external asset loads.",
+    "externalSourceUrl": null
+  },
+  "license": {
+    "id": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "scope": "New synthesized sound recordings, compositions and generated waveform SVGs; no attribution required. Runtime/repository code excluded."
+  },
+  "verification": {
+    "humanListening": "not-performed",
+    "browserPlayback": "not-performed",
+    "measured": "WAV/MP3/OGG decoded frames, duration, peak, RMS, LUFS, clipping and loop boundary",
+    "musicalAudition": "Pending parent review using preview.html and boundary-check.wav"
+  }
+}

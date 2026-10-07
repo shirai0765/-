@@ -1,0 +1,38 @@
+{
+  "createdAt": "2026-10-07T06:14:01.051902+00:00",
+  "purpose": "Original text-free artwork based on the user-approved City Burst B concept. Illustrations, not photographs or screenshots of the 3D simulation. Icons and fonts are separately sourced licensed assets.",
+  "method": "Generated with image_gen; original PNG retained. WebP encoding only, no resizing or creative alterations.",
+  "reference": "docs/design/concepts/city-burst-approved.png",
+  "assets": [
+    {
+      "name": "city-hero",
+      "file": "city-hero.webp",
+      "bytes": 625034,
+      "sha256": "9c585f4e4c58f8ba2c21f8086546f8bdf94145a0029e876734d51934850ad68d",
+      "originalFile": "/workspace/generated_images/exec-b527ed88-5b46-485c-b779-40e22f4a91a3.png",
+      "originalSHA256": "a2e8890f4fb5ad7b598fbf23f4deff7334b39b740f4e0b59844d41f616242cec",
+      "width": 940,
+      "height": 1672
+    },
+    {
+      "name": "cafe-hero",
+      "file": "cafe-hero.webp",
+      "bytes": 480970,
+      "sha256": "2af056230e3788f85014b3207fb24f14be39e36f08f6712bafb7e03c0fa41121",
+      "originalFile": "/workspace/generated_images/exec-ce6de42f-b9e1-441f-ba44-7086d61bba71.png",
+      "originalSHA256": "8f56c3053c33f7e214751d5129d97fe15016976252f9f94ab0f2d5c8cc45b3e0",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "cafe-options",
+      "file": "cafe-options.webp",
+      "bytes": 553598,
+      "sha256": "7685546a359278c44fa0a69e6c3bcdf4fd8fb6b05b93d31b6d9a2511fdfc2cf8",
+      "originalFile": "/workspace/generated_images/exec-c8bab911-36c4-4f26-880f-60d517e2a9ce.png",
+      "originalSHA256": "6f661481b87208ddac70bb55e7bfbf89e806aa7377c9819d30e2ec6999e56214",
+      "width": 2172,
+      "height": 724
+    }
+  ]
+}
