@@ -1,0 +1,471 @@
+{
+  "method": "bounded public-action branch from externally submitted validated final save; no 1400-week re-simulation, no native UI/browser, no state-field injection",
+  "original": {
+    "file": "/tmp/shibuya-external-traces-review/pr-16/docs/external/gameplay-review/traces/run-02/save-final-natural-state.json",
+    "checksum": "7bcf9924eb4c44aec3027b69a0c870f6ace62e65b682407a603fa19b6042618d",
+    "week": 1401,
+    "cash": 15309512260,
+    "reputation": 86.79661837775565,
+    "changedStore": {
+      "id": "store-miyashita-11-17",
+      "lotId": "miyashita-11",
+      "name": "東のオフィス街口店",
+      "style": "takeaway",
+      "price": 1150,
+      "quality": 45,
+      "staff": 4,
+      "manager": true,
+      "marketing": 10000,
+      "level": 3,
+      "openedWeek": 17,
+      "revenue": 2397750,
+      "profit": 1157209,
+      "customers": 2085,
+      "satisfaction": 65
+    },
+    "lastActualStoreResult": {
+      "id": "store-miyashita-11-17",
+      "revenue": 2397750,
+      "profit": 1157209,
+      "customers": 2085,
+      "satisfaction": 65
+    },
+    "requirements": {
+      "readyToSettle": false,
+      "lastReportProfitable": true,
+      "continuing": true,
+      "allMarketOperating": true,
+      "acquiredTargets": 7,
+      "activeCompletedDistricts": 4,
+      "complete": false,
+      "currentRequirementsMet": false
+    }
+  },
+  "sourceChecks": [
+    {
+      "file": "data/cityServices.ts",
+      "actual": "79e2442d3864a2c21990f73227697d2e5b51cd97d188181c984a84e581168f33",
+      "expected": "79e2442d3864a2c21990f73227697d2e5b51cd97d188181c984a84e581168f33"
+    },
+    {
+      "file": "data/district.ts",
+      "actual": "e3f09e3f61b1c2971461c10a357650ca9846249adf7d30520eea0ed533b8a53b",
+      "expected": "e3f09e3f61b1c2971461c10a357650ca9846249adf7d30520eea0ed533b8a53b"
+    },
+    {
+      "file": "data/neighborhoods.ts",
+      "actual": "9252e705b58aed6f4d91d129c58615dad3a343b36b8c5ffa95ff0b983ea6fb67",
+      "expected": "9252e705b58aed6f4d91d129c58615dad3a343b36b8c5ffa95ff0b983ea6fb67"
+    },
+    {
+      "file": "data/neighborhoodsV080.ts",
+      "actual": "f287c904ef6021167439d49ca005b9099092f4a768912efacbdd46a7b3beee51",
+      "expected": "f287c904ef6021167439d49ca005b9099092f4a768912efacbdd46a7b3beee51"
+    },
+    {
+      "file": "data/stocks.ts",
+      "actual": "a4c321ee293fbbb426b59f8c684d985bacef2c92f49d00a7ccac8fb046b58f04",
+      "expected": "a4c321ee293fbbb426b59f8c684d985bacef2c92f49d00a7ccac8fb046b58f04"
+    },
+    {
+      "file": "persistence.ts",
+      "actual": "18d517f50c76a515cb71ab3a8e9096adb6c1b5fa6ce3d2b0e41911fbb8a9ae22",
+      "expected": "18d517f50c76a515cb71ab3a8e9096adb6c1b5fa6ce3d2b0e41911fbb8a9ae22"
+    },
+    {
+      "file": "sim/campaign.ts",
+      "actual": "09bd7e83a501e2989d5fc0401da64124943d80a980c5374cac4d7e96426aa186",
+      "expected": "09bd7e83a501e2989d5fc0401da64124943d80a980c5374cac4d7e96426aa186"
+    },
+    {
+      "file": "sim/campaignAchievement.ts",
+      "actual": "43af016a350a3f39a4b57fcb02a190514daf2dc487349e331e6c3eb6a9d07a02",
+      "expected": "43af016a350a3f39a4b57fcb02a190514daf2dc487349e331e6c3eb6a9d07a02"
+    },
+    {
+      "file": "sim/deals.ts",
+      "actual": "889898648ee02b2e9176e961bbeda9a586c6b7641b06a3d538ea4f058838c80f",
+      "expected": "889898648ee02b2e9176e961bbeda9a586c6b7641b06a3d538ea4f058838c80f"
+    },
+    {
+      "file": "sim/development.ts",
+      "actual": "6d675ee00549647b06865ed869736ed58dd5515883409c39c8c10239e7e211be",
+      "expected": "6d675ee00549647b06865ed869736ed58dd5515883409c39c8c10239e7e211be"
+    },
+    {
+      "file": "sim/engine.ts",
+      "actual": "b4230247e2d1cd551e2f6a3c86823f90b4b6a7b04f6dc45a9b5cada6abf9d8fd",
+      "expected": "b4230247e2d1cd551e2f6a3c86823f90b4b6a7b04f6dc45a9b5cada6abf9d8fd"
+    },
+    {
+      "file": "sim/marketAcquisitions.ts",
+      "actual": "ad44102dbcf30750136fcaa5d4b5a2716c5b7f64bfed13ff5d70dfa065b7a487",
+      "expected": "ad44102dbcf30750136fcaa5d4b5a2716c5b7f64bfed13ff5d70dfa065b7a487"
+    },
+    {
+      "file": "sim/marketBusinessMath.ts",
+      "actual": "232b1c9537183b84d2b52ac88e86ed5aaf020b2d00fe8b65a6d8efe825819074",
+      "expected": "232b1c9537183b84d2b52ac88e86ed5aaf020b2d00fe8b65a6d8efe825819074"
+    },
+    {
+      "file": "sim/marketOperations.ts",
+      "actual": "c1d74e08227abdc735c3514319918be10a18efbaf70422a5603ca450cb6f025d",
+      "expected": "c1d74e08227abdc735c3514319918be10a18efbaf70422a5603ca450cb6f025d"
+    },
+    {
+      "file": "sim/openingJournal.ts",
+      "actual": "1a8ee2dc8c6829e00c1b42abe0c07a1a5d1236d75d7324bb95ab081002661ec8",
+      "expected": "1a8ee2dc8c6829e00c1b42abe0c07a1a5d1236d75d7324bb95ab081002661ec8"
+    },
+    {
+      "file": "sim/railProjects.ts",
+      "actual": "248e4a6e44136d3706b20bf986caf1227a076fb818db4fce7a59fd591fa037e3",
+      "expected": "248e4a6e44136d3706b20bf986caf1227a076fb818db4fce7a59fd591fa037e3"
+    },
+    {
+      "file": "sim/stockTrading.ts",
+      "actual": "d0e9c0acf174382b5da0fd2b2502940bfcf943f7da86b4d7be3b1b9f5607ff40",
+      "expected": "d0e9c0acf174382b5da0fd2b2502940bfcf943f7da86b4d7be3b1b9f5607ff40"
+    },
+    {
+      "file": "sim/weeklyNews.ts",
+      "actual": "7186c73eb780f1ca0923c11ebfe67265ca23bc6989c1079e39e59f020644401c",
+      "expected": "7186c73eb780f1ca0923c11ebfe67265ca23bc6989c1079e39e59f020644401c"
+    }
+  ],
+  "saveChecks": [
+    {
+      "file": "save-natural-new-company.json",
+      "week": 1,
+      "checksum": "344e819d8636a5afaceccf79892f41b5fb55fdc6c4270b09ad23eb6ae69dbc98",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-founder-first-settlement.json",
+      "week": 2,
+      "checksum": "8ff52d3ecaa574323e4f165ccb4ff00b6b21539d5ae8fa1350b01557307505d4",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-ipo.json",
+      "week": 17,
+      "checksum": "bef05a730e455044351bf24edc659caa85972ad20fe89fe60adace34fc0a0950",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-first-direct-acquisition.json",
+      "week": 29,
+      "checksum": "b7ff6efc58fc2344d5067c81e021092398ef563153155a599a59f5de33621f1e",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-first-market-acquisition.json",
+      "week": 41,
+      "checksum": "3b2087aca521a10d8c33b02fccadfda6cf8d43b2317ff7f40bd3638417f26f68",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-1.json",
+      "week": 53,
+      "checksum": "84a84dd975d1e62025c65a01ef0d0d383ca5743d51b604cb1c200b93c818ebd5",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-middle-boundary.json",
+      "week": 104,
+      "checksum": "67e5b2ec595a2bc9adb170002b0b4b64ecadb0f8c53fe46f609ced5a7ba8bf9d",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-2.json",
+      "week": 105,
+      "checksum": "d902f276a62ca1281b675f821fd6f3fd96f5227e4524a30fa8848b29df35366f",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-3.json",
+      "week": 157,
+      "checksum": "98b198806bc132475242d7fc8d4bf3ea3ef1710c393a67d82d3909efd1c8ec20",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-4.json",
+      "week": 209,
+      "checksum": "f16f9ee0e45ecca4185236a89bcd592dcb8b7d5e40b386a82fc44a9ad03c952d",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-5.json",
+      "week": 261,
+      "checksum": "33bc9b3ca67cedffe753f20276aca39625ef4e2834cb59e201935cb6c49c2008",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-6.json",
+      "week": 313,
+      "checksum": "3f023ca8eb76a2c2002cb406c1f3a4b9f360e0e2f4a0b0d58e204ca280580ecd",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-7.json",
+      "week": 365,
+      "checksum": "01bb9786fe0fcd4af55d496d43413be4f43d9bf45a6fbe4e10804b3136cc032c",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-8.json",
+      "week": 417,
+      "checksum": "17f671d8f8619607b113e85cc16fc9a6bb6fd1d7e575ec383ed709962734a18f",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-9.json",
+      "week": 469,
+      "checksum": "818d8df265a0d3592d1cfa8df28c572e2d649c72f23e6df672809b9b25822bb5",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-10.json",
+      "week": 521,
+      "checksum": "ad1fa761c831b9b6e331341dd40be033db27bc77f0fc9aa8b8f51da3b499b3fd",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-11.json",
+      "week": 573,
+      "checksum": "b211582fd5cf161778fc91d54829d07196a09c363b07a3fd361857c2596e36a5",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-12.json",
+      "week": 625,
+      "checksum": "d019431eff740dda86b656f17ad9def9644d27df2a5452e3172ad764830048b7",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-13.json",
+      "week": 677,
+      "checksum": "ae16cccf3b2e1d7a55a8c80e29329f1a00b399c00c5c4072969e22b5743022d0",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-14.json",
+      "week": 729,
+      "checksum": "c0a88dc559e4b5826ff38c8797f981541bd7c825f33ae4a50e81de629d3d66ef",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-15.json",
+      "week": 781,
+      "checksum": "2af34dd285b09668f950afff7c474f39a8bb9f369780d0303d1146c853a52a87",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-16.json",
+      "week": 833,
+      "checksum": "b396d6ad5ed6bff9c65294a98023cfc844b3b4cf3e41eb9a03ca8dae57735d56",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-17.json",
+      "week": 885,
+      "checksum": "fb92c5856a0361070fa2e05c15ddba0853692afdcdb0d68b87808b454a197691",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-all-market-acquired.json",
+      "week": 901,
+      "checksum": "b45c1db8e471e1be499cf397095100892b2b43ed079257ee3504a4eb31d7c6ec",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-18.json",
+      "week": 937,
+      "checksum": "26108c1840f18c5284e08eb6bacf271af76e3465822a75fd05edc1b5a35ebcee",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-19.json",
+      "week": 989,
+      "checksum": "c50f17a539fced5257ba585938c6ed3ee46e8266aaa79db7e4f521c8ff0c5124",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-20.json",
+      "week": 1041,
+      "checksum": "06509c35ac2caa2412ca4e83d7492426500c6a4bd8c87fde16fae3e6351ff474",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-21.json",
+      "week": 1093,
+      "checksum": "d1ca1213cf311b7bcc5e7babfb9727ff9e69984cf8bcdcdb82d6889d70a4b9ba",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-22.json",
+      "week": 1145,
+      "checksum": "95e3419f87edd9f95fc1240f4e0d53215627639ace99b6ae49bbcc26256f8961",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-23.json",
+      "week": 1197,
+      "checksum": "c9a3876585d8295342043aa892710bb92b12ad67d966be678f45a8269a367494",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-24.json",
+      "week": 1249,
+      "checksum": "86a5e59ed241f8b8100ace5f1f272237c0b21497b8b5b474f43a3fac5836e60e",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-25.json",
+      "week": 1301,
+      "checksum": "791feee468bbda76f6e8ed174b24fd95da82f1159d35f3e501b87b723fb56dcd",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-year-26.json",
+      "week": 1353,
+      "checksum": "3adaff9620cd1e5ca40cef093c186c6fb4ab7f2d41b4c8374203479861e9aec1",
+      "currentValidationAndRoundTrip": true
+    },
+    {
+      "file": "save-final-natural-state.json",
+      "week": 1401,
+      "checksum": "7bcf9924eb4c44aec3027b69a0c870f6ace62e65b682407a603fa19b6042618d",
+      "currentValidationAndRoundTrip": true
+    }
+  ],
+  "naturalCreateGameMatch": true,
+  "action": {
+    "type": "updateStore",
+    "storeId": "store-miyashita-11-17",
+    "changes": {
+      "manager": false,
+      "quality": 100,
+      "price": 850,
+      "staff": 6,
+      "marketing": 0
+    }
+  },
+  "preview": {
+    "label": "public expected preview, not settled profit",
+    "netProfit": 30442341,
+    "changedStore": {
+      "id": "store-miyashita-11-17",
+      "revenue": 2497300,
+      "profit": 927610,
+      "customers": 2938,
+      "satisfaction": 90
+    }
+  },
+  "settlements": [
+    {
+      "week": 1401,
+      "cash": 15339665308,
+      "reputation": 87.04757006786754,
+      "netProfit": 30153048,
+      "averageSatisfaction": 87.33333333333333,
+      "changedStoreSatisfaction": 90,
+      "stateSHA256": "e83502815847410a789d9a547c5831572fa01318761cb1089bdfff59d872104d"
+    },
+    {
+      "week": 1402,
+      "cash": 15370486264,
+      "reputation": 87.30957178215884,
+      "netProfit": 30820956,
+      "averageSatisfaction": 87.66666666666667,
+      "changedStoreSatisfaction": 92,
+      "stateSHA256": "18b029f35c19fd57c86ccb697d3ae4fcc31960583f5c4e3d5b99b37f1147b201"
+    },
+    {
+      "week": 1403,
+      "cash": 15401483509,
+      "reputation": 87.55248676978329,
+      "netProfit": 30997245,
+      "averageSatisfaction": 87.5,
+      "changedStoreSatisfaction": 91,
+      "stateSHA256": "d210270fecd91886102f6435fbf72aab6d74c172a93dfba3bf7bcc7014022e7b"
+    },
+    {
+      "week": 1404,
+      "cash": 15431810546,
+      "reputation": 87.78689973284087,
+      "netProfit": 30327037,
+      "averageSatisfaction": 87.5,
+      "changedStoreSatisfaction": 91,
+      "stateSHA256": "1358602c40ad83130953ad963e882432e2edf1c3a13da306beb8fff1b6e9f289"
+    },
+    {
+      "week": 1405,
+      "cash": 15461950859,
+      "reputation": 88.00319157552477,
+      "netProfit": 30140313,
+      "averageSatisfaction": 87.33333333333333,
+      "changedStoreSatisfaction": 90,
+      "stateSHA256": "6673cace89cb4f44bf7a1a762602a1958e9370e89c04f1c718f569f75513416c"
+    },
+    {
+      "week": 1406,
+      "cash": 14515124859,
+      "reputation": 88.21191320371473,
+      "netProfit": 33174000,
+      "averageSatisfaction": 87.33333333333333,
+      "changedStoreSatisfaction": 90,
+      "stateSHA256": "54a5145a915932c4cc6727462bdc92a970114f73671edb92532dbddab1237dcc"
+    }
+  ],
+  "beforeAcquisition": {
+    "week": 1406,
+    "cash": 15461950859,
+    "reputation": 88.00319157552477
+  },
+  "acquisition": {
+    "type": "acquire",
+    "targetId": "metropolitan-rail",
+    "price": 980000000
+  },
+  "final": {
+    "week": 1407,
+    "cash": 14515124859,
+    "reputation": 88.21191320371473,
+    "actualNetProfit": 33174000,
+    "requirements": {
+      "readyToSettle": true,
+      "lastReportProfitable": true,
+      "continuing": true,
+      "allMarketOperating": true,
+      "acquiredTargets": 8,
+      "activeCompletedDistricts": 4,
+      "complete": true,
+      "achievement": {
+        "week": 1406,
+        "cash": 14515124859,
+        "netProfit": 33174000,
+        "totalCustomers": 15378242,
+        "storeCount": 6,
+        "propertyCount": 4,
+        "subsidiaries": 8,
+        "marketBusinesses": 100,
+        "districts": 4
+      },
+      "currentRequirementsMet": true
+    },
+    "achievement": {
+      "week": 1406,
+      "cash": 14515124859,
+      "netProfit": 33174000,
+      "totalCustomers": 15378242,
+      "storeCount": 6,
+      "propertyCount": 4,
+      "subsidiaries": 8,
+      "marketBusinesses": 100,
+      "districts": 4
+    },
+    "checksum": "54a5145a915932c4cc6727462bdc92a970114f73671edb92532dbddab1237dcc"
+  },
+  "originalSaveAndLoadedSourceUnchanged": true
+}

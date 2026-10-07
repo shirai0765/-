@@ -129,3 +129,7 @@ Windows最新版の作成手順は [windows.md](windows.md)。0.9.0 Web／Window
 ## 引継ぎ時の未レビューPR
 
 [一覧と固定head](open-pullrequests-at-handoff.json)を保存。PR18は住宅バルコニー／屋根の局所修正、PR19はカフェ音源の24bit原盤／AAC補完、PR20はcity-popの同補完です。今回の現状公開には取り込んでいません。次担当は必要性と実バイナリ・寸法・ライセンス・再生を独立確認してから採用してください。タイトルの「native確認」を親の検証済みとは扱わない。既に検証したMP3/OGGは現行で動いています。
+
+## 環境設定の復元に関する注意
+
+プラン変更後の最終確認でcloud environment draftのreadが「not authorized」で拒否されたため、クラウド設定の開始commit／start skillは今回更新できていません。以前の下書きは0.6.1 checkpointを指していました。**新しいタスクが旧版をcloneしても、その版を最新と扱わない。** GitHub `game-source` から最新引継ぎを読む：https://github.com/shirai0765/-/blob/game-source/docs/RESUME.md 。この公開版と引継ぎはGitHubへpush済みで、環境下書きの権限とは別に保存されています。

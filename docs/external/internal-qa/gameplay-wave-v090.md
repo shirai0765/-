@@ -79,3 +79,7 @@ node --experimental-transform-types /tmp/shibuya-external-traces-review/bounded-
 ```
 
 It reads current source modules, checks all 34 saved payloads and round trips, performs one settings action, six actual weekly settlements and one acquisition, writes only `/tmp` verification JSON, and checks the external final save and loaded source files remain unchanged.
+
+## Persistent handoff copy
+
+The independent bounded branch result is preserved in [gameplay-bounded-credit-v090.json](gameplay-bounded-credit-v090.json). Temporary downloaded files and the /tmp reproduction command above are not assumed to exist in a new cloud task. The reviewed external trace and saves are preserved in the repository; the six-settlement escape is described above for later reproduction.
