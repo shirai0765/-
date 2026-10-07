@@ -1,0 +1,82 @@
+[
+  {
+    "path": "public/models/external-v080/dogenzaka-mixed/dogenzaka-akari-b.glb",
+    "sha256": "484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888",
+    "bytes": 543524,
+    "triangles": 6868,
+    "exported_vertices": 12996,
+    "mesh_count": 1,
+    "primitives": 11,
+    "materials": 11,
+    "bounds_min": [
+      -4.2162580490112305,
+      0.0,
+      -5.662499904632568
+    ],
+    "bounds_max": [
+      4.2162580490112305,
+      21.360000610351562,
+      5.662499904632568
+    ],
+    "dimensions": [
+      8.432516098022461,
+      21.360000610351562,
+      11.324999809265137
+    ],
+    "embedded_images": [
+      {
+        "width": 1024,
+        "height": 1024,
+        "bytes": 75485
+      }
+    ],
+    "degenerate_triangles": 0,
+    "invalid_normals": 0,
+    "finite_uv": true,
+    "ground_y_zero": true,
+    "centred_footprint": true,
+    "identity_nodes": true,
+    "external_uris": false,
+    "passed": true
+  },
+  {
+    "path": "public/models/external-v080/dogenzaka-mixed/dogenzaka-sakamichi-a.glb",
+    "sha256": "0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20",
+    "bytes": 802896,
+    "triangles": 10894,
+    "exported_vertices": 20348,
+    "mesh_count": 1,
+    "primitives": 11,
+    "materials": 11,
+    "bounds_min": [
+      -4.170000076293945,
+      0.0,
+      -5.427499771118164
+    ],
+    "bounds_max": [
+      4.170000076293945,
+      22.739999771118164,
+      5.427499771118164
+    ],
+    "dimensions": [
+      8.34000015258789,
+      22.739999771118164,
+      10.854999542236328
+    ],
+    "embedded_images": [
+      {
+        "width": 1024,
+        "height": 1024,
+        "bytes": 75485
+      }
+    ],
+    "degenerate_triangles": 0,
+    "invalid_normals": 0,
+    "finite_uv": true,
+    "ground_y_zero": true,
+    "centred_footprint": true,
+    "identity_nodes": true,
+    "external_uris": false,
+    "passed": true
+  }
+]

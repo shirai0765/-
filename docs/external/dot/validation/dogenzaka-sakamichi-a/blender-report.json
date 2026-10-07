@@ -1,0 +1,145 @@
+{
+  "asset": "dogenzaka-sakamichi-a.glb",
+  "sha256": "0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20",
+  "blender_version": "4.3.2",
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "import_seconds": 0.2329,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "mesh_objects": 1,
+  "vertices_after_import": 20348,
+  "triangles_after_import": 10894,
+  "world_bounds_blender_z_up_m": {
+    "min": [
+      -4.170000076293945,
+      -5.427499771118164,
+      0.0
+    ],
+    "max": [
+      4.170000076293945,
+      5.427499771118164,
+      22.739999771118164
+    ]
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -4.170000076293945,
+      0.0,
+      -5.427499771118164
+    ],
+    "max": [
+      4.170000076293945,
+      22.739999771118164,
+      5.427499771118164
+    ],
+    "size": [
+      8.34000015258789,
+      22.739999771118164,
+      10.854999542236328
+    ]
+  },
+  "materials": [
+    {
+      "name": "charcoal",
+      "use_nodes": true
+    },
+    {
+      "name": "concrete",
+      "use_nodes": true
+    },
+    {
+      "name": "cream",
+      "use_nodes": true
+    },
+    {
+      "name": "fictional_tenant_sign_atlas",
+      "use_nodes": true
+    },
+    {
+      "name": "glass",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_light",
+      "use_nodes": true
+    },
+    {
+      "name": "green",
+      "use_nodes": true
+    },
+    {
+      "name": "metal",
+      "use_nodes": true
+    },
+    {
+      "name": "plaster",
+      "use_nodes": true
+    },
+    {
+      "name": "sidewall",
+      "use_nodes": true
+    },
+    {
+      "name": "wood",
+      "use_nodes": true
+    }
+  ],
+  "images": [
+    {
+      "name": "fictional-signs",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "source": "FILE"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "dogenzaka-sakamichi-a",
+      "vertices": 20348,
+      "triangles": 10894,
+      "polygons": 10894,
+      "material_slots": 11,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    }
+  ],
+  "renders": [
+    {
+      "view": "front",
+      "file": "front.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 13.938
+    },
+    {
+      "view": "three-quarter",
+      "file": "three-quarter.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 27.463
+    },
+    {
+      "view": "roof",
+      "file": "roof.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 28.019
+    }
+  ],
+  "visual_review": "PASS for staged standalone review: independent front, three-quarter and roof PNGs inspected. Narrow frontage, differentiated tenant signs, separate street shop/stair entrances, external stairs/rails, balcony AC units and roof mechanical equipment remain legible. No obvious missing/inside-out faces, floating parts or z-fighting observed. Stairs are illustrative scenery; opaque glass, simplified party walls and inferred roof/back geometry are intentional. Browser performance and placement remain untested.",
+  "source_hash_unchanged_after_validation": true
+}

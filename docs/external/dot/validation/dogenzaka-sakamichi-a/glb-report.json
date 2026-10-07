@@ -1,0 +1,93 @@
+{
+  "asset": "dogenzaka-sakamichi-a.glb",
+  "sha256": "0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20",
+  "bytes": 802896,
+  "gltf_asset": {
+    "generator": "Khronos glTF Blender I/O v4.3.47",
+    "version": "2.0"
+  },
+  "errors": [],
+  "warnings": [],
+  "passed": true,
+  "extensions_used": [],
+  "extensions_required": [],
+  "mesh_count": 1,
+  "mesh_instance_count": 1,
+  "node_count": 1,
+  "material_count": 11,
+  "texture_count": 1,
+  "image_count": 1,
+  "vertices": 20348,
+  "triangles": 10894,
+  "primitives": 11,
+  "degenerate_triangles": 0,
+  "normal_winding_disagreements": 0,
+  "scene_instanced_counts": {
+    "vertices": 20348,
+    "triangles": 10894,
+    "primitives": 11
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -4.170000076293945,
+      0.0,
+      -5.427499771118164
+    ],
+    "max": [
+      4.170000076293945,
+      22.739999771118164,
+      5.427499771118164
+    ],
+    "size": [
+      8.34000015258789,
+      22.739999771118164,
+      10.854999542236328
+    ],
+    "center": [
+      0.0,
+      11.369999885559082,
+      0.0
+    ]
+  },
+  "external_uris": [],
+  "images": [
+    {
+      "index": 0,
+      "name": "fictional-signs",
+      "mimeType": "image/png",
+      "embedded": true,
+      "bytes": 75485,
+      "png_dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "index": 0,
+      "name": "dogenzaka-sakamichi-a",
+      "primitives": 11,
+      "vertices": 20348,
+      "triangles": 10894,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 20348,
+      "material_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "counting_note": "Vertices and triangles sum accessor counts per stored primitive; scene-instanced counts include repeated mesh nodes. Vertex seams may intentionally duplicate positions."
+}
