@@ -1,0 +1,30 @@
+{
+  "renderedSourceSha256": "2e46e672f10eaecdf42fd18c1f82dc90174cc6162d6f4772617843cd80eb0d31",
+  "method": "Blender 4.3.2 CPU Cycles, 32 samples, actual GLB re-import; no denoising; original authored geometry only; ground/lights/camera preview-only.",
+  "images": [
+    {
+      "view": "front",
+      "file": "public/models/external-v080/terraced-retail/front.png",
+      "width": 1080,
+      "height": 1080,
+      "bytes": 1469852,
+      "sha256": "b843a908f85e9247550dfffd22f731e2b71538219080c2ff9833ea66716007f2"
+    },
+    {
+      "view": "oblique",
+      "file": "public/models/external-v080/terraced-retail/oblique.png",
+      "width": 1080,
+      "height": 1080,
+      "bytes": 1758544,
+      "sha256": "ccb19b2aea021c994b962ec2f44e19548c8a4ca27c550274a0235a10d3bcf1ac"
+    },
+    {
+      "view": "roof",
+      "file": "public/models/external-v080/terraced-retail/roof.png",
+      "width": 1080,
+      "height": 1080,
+      "bytes": 1789722,
+      "sha256": "53e819167cb4e75c7626af670dad89d816e48262ce790eaf0cf8657960183d0e"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "asset": "terraced-retail-lod1.glb",
+  "sha256": "aa3af99201e0d0f2e4f44a29ccab0d3feb78c766e9ec47c5d25c53781852b93d",
+  "blender_version": "4.3.2",
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "import_seconds": 0.2167,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "mesh_objects": 10,
+  "vertices_after_import": 20744,
+  "triangles_after_import": 10306,
+  "world_bounds_blender_z_up_m": {
+    "min": [
+      -30.0,
+      -25.035999298095703,
+      0.0
+    ],
+    "max": [
+      30.0,
+      25.035999298095703,
+      89.80000305175781
+    ]
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -30.0,
+      0.0,
+      -25.035999298095703
+    ],
+    "max": [
+      30.0,
+      89.80000305175781,
+      25.035999298095703
+    ],
+    "size": [
+      60.0,
+      89.80000305175781,
+      50.071998596191406
+    ]
+  },
+  "materials": [
+    {
+      "name": "accent.001",
+      "use_nodes": true
+    },
+    {
+      "name": "aluminium.001",
+      "use_nodes": true
+    },
+    {
+      "name": "charcoal.001",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_blue.001",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_light.001",
+      "use_nodes": true
+    },
+    {
+      "name": "glass_sage.001",
+      "use_nodes": true
+    },
+    {
+      "name": "leaf_dark.001",
+      "use_nodes": true
+    },
+    {
+      "name": "porcelain.001",
+      "use_nodes": true
+    },
+    {
+      "name": "stone.001",
+      "use_nodes": true
+    },
+    {
+      "name": "wood.001",
+      "use_nodes": true
+    }
+  ],
+  "images": [],
+  "meshes": [
+    {
+      "name": "MORI_stone",
+      "vertices": 4248,
+      "triangles": 2124,
+      "polygons": 2124,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_charcoal",
+      "vertices": 1982,
+      "triangles": 1080,
+      "polygons": 1080,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_glass_sage",
+      "vertices": 1584,
+      "triangles": 792,
+      "polygons": 792,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_glass_light",
+      "vertices": 628,
+      "triangles": 314,
+      "polygons": 314,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_aluminium",
+      "vertices": 6530,
+      "triangles": 3264,
+      "polygons": 3264,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_porcelain",
+      "vertices": 1368,
+      "triangles": 684,
+      "polygons": 684,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_glass_blue",
+      "vertices": 2048,
+      "triangles": 1024,
+      "polygons": 1024,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_wood",
+      "vertices": 1132,
+      "triangles": 568,
+      "polygons": 568,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_leaf_dark",
+      "vertices": 1200,
+      "triangles": 444,
+      "polygons": 444,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "MORI_accent",
+      "vertices": 24,
+      "triangles": 12,
+      "polygons": 12,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    }
+  ],
+  "renders": [
+    {
+      "view": "front",
+      "file": "front.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 15.266
+    },
+    {
+      "view": "three-quarter",
+      "file": "three-quarter.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 16.929
+    },
+    {
+      "view": "roof",
+      "file": "roof.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 17.65
+    }
+  ],
+  "visual_review": "PASS as staged distance LOD after stair correction. Exact final LOD1 imported and all three new rendered views inspected against final full-detail model. Stair landings/door openings, stepped silhouette, terraces, planted bands, and street openings remain visible; small facade/roof/foliage details intentionally reduced. No obvious broken surfaces. LOD switching and browser performance are not integrated/tested.",
+  "source_hash_unchanged_after_validation": true
+}

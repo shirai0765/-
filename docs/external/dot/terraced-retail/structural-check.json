@@ -1,0 +1,34 @@
+{
+  "tool": "Python standard library binary GLB verifier",
+  "scope": "Actual binary buffers: header, triangles, indices, finite positions/UVs, unit normals, opaque PBR materials and no external resources. Independent Blender import checks are in manifest.json.",
+  "results": [
+    {
+      "file": "public/models/external-v080/terraced-retail/terraced-retail.glb",
+      "sha256": "2e46e672f10eaecdf42fd18c1f82dc90174cc6162d6f4772617843cd80eb0d31",
+      "bytes": 2035052,
+      "vertices": 58018,
+      "triangles": 27446,
+      "unitNormalErrors": 0,
+      "nonFiniteUvComponents": 0,
+      "outOfRangeIndices": 0,
+      "degenerateTriangles": 0,
+      "externalUris": false,
+      "textureCount": 0,
+      "passed": true
+    },
+    {
+      "file": "public/models/external-v080/terraced-retail/terraced-retail-lod1.glb",
+      "sha256": "aa3af99201e0d0f2e4f44a29ccab0d3feb78c766e9ec47c5d25c53781852b93d",
+      "bytes": 736132,
+      "vertices": 20744,
+      "triangles": 10306,
+      "unitNormalErrors": 0,
+      "nonFiniteUvComponents": 0,
+      "outOfRangeIndices": 0,
+      "degenerateTriangles": 0,
+      "externalUris": false,
+      "textureCount": 0,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "assetId": "terraced-retail",
+  "displayName": "MORI TERRACE",
+  "description": "Original Shibuya PARCO-inspired terraced retail podium and setback office tower. Fictional signage and authored geometry; not a survey model or exact replica.",
+  "units": "metres",
+  "coordinateSystem": {
+    "up": "+Y",
+    "front": "+Z",
+    "groundY": 0,
+    "origin": "Exact horizontal bounding-box centre at ground Y=0; nominal footprint 60 m × 50 m",
+    "authoring": "Blender native Z-up, via an explicit right-handed coordinate transform; glTF exporter Y-up conversion enabled."
+  },
+  "inferredDesignDimensions": {
+    "nominalWidthMetres": 60,
+    "nominalDepthMetres": 50,
+    "heightMetres": 89.8,
+    "podiumRoofMetres": 46.8,
+    "towerStoreys": 9,
+    "commercialLevelsApproximate": 10,
+    "status": "All asset dimensions and facade bay spacing are inferred design choices, not measured dimensions of the referenced building. Small facade seams protrude a few centimetres beyond nominal bounds."
+  },
+  "sourceBuildingFacts": {
+    "aboveGroundStoreys": 19,
+    "basementStoreys": 3,
+    "source": "https://www.takenaka.co.jp/design/works/shibuya-parco-hulic-building/",
+    "usage": "Reference metadata only; original asset proportions intentionally simplified."
+  },
+  "geometryFeatures": [
+    "Interlocking pale podium masses and genuine recessed terrace slots",
+    "Open central ground arcade and recessed shopfront doors",
+    "Illustrative exterior stair flights and slender handrails",
+    "Setback nine-storey glass office tower with mullions and spandrels",
+    "Planter trees, wooden terrace decks, bench-planters and pergola",
+    "Roof crown, screened mechanical enclosure and simplified rooftop HVAC"
+  ],
+  "materialPolicy": {
+    "physicallyBased": true,
+    "glass": "Opaque tinted reflective approximation for browser performance; no alpha-sorting dependency, no interior transmission",
+    "textures": "None. All surface colours, signs and vegetation are original geometry/materials.",
+    "uvs": "Deterministic planar UVs provided; no photo-derived texture atlases."
+  },
+  "lods": [
+    {
+      "file": "public/models/external-v080/terraced-retail/terraced-retail.glb",
+      "bytes": 2035052,
+      "sha256": "2e46e672f10eaecdf42fd18c1f82dc90174cc6162d6f4772617843cd80eb0d31",
+      "triangles": 27446,
+      "vertices": 58018,
+      "materials": 13,
+      "meshPrimitives": 13,
+      "meshes": 13,
+      "nodes": 13,
+      "textureCount": 0,
+      "imageCount": 0,
+      "textureDimensions": [],
+      "externalUris": [],
+      "boundsMin": [
+        -30.019001007080078,
+        0,
+        -25.035999298095703
+      ],
+      "boundsMax": [
+        30.019001007080078,
+        89.80000305175781,
+        25.035999298095703
+      ],
+      "dimensionsMetres": [
+        60.038002014160156,
+        89.80000305175781,
+        50.071998596191406
+      ],
+      "glbHeaderValid": true,
+      "importCheck": {
+        "tool": "Blender 4.3.2",
+        "success": true,
+        "meshObjects": 13,
+        "nonFiniteVertexComponents": 0,
+        "zeroAreaFaces": 0,
+        "blenderBoundsMin": [
+          -30.019001007080078,
+          -25.035999298095703,
+          0.0
+        ],
+        "blenderBoundsMax": [
+          30.019001007080078,
+          25.035999298095703,
+          89.80000305175781
+        ],
+        "convertedGltfBoundsMin": [
+          -30.019001007080078,
+          0.0,
+          -25.035999298095703
+        ],
+        "convertedGltfBoundsMax": [
+          30.019001007080078,
+          89.80000305175781,
+          25.035999298095703
+        ],
+        "groundY": 0.0,
+        "positiveYUp": true,
+        "frontAxis": "+Z",
+        "notes": "Actual exported GLB imported into a new cleared Blender scene. Blender uses Z up; importer converts glTF Y up to Blender Z up."
+      }
+    },
+    {
+      "file": "public/models/external-v080/terraced-retail/terraced-retail-lod1.glb",
+      "bytes": 736132,
+      "sha256": "aa3af99201e0d0f2e4f44a29ccab0d3feb78c766e9ec47c5d25c53781852b93d",
+      "triangles": 10306,
+      "vertices": 20744,
+      "materials": 10,
+      "meshPrimitives": 10,
+      "meshes": 10,
+      "nodes": 10,
+      "textureCount": 0,
+      "imageCount": 0,
+      "textureDimensions": [],
+      "externalUris": [],
+      "boundsMin": [
+        -30,
+        0,
+        -25.035999298095703
+      ],
+      "boundsMax": [
+        30,
+        89.80000305175781,
+        25.035999298095703
+      ],
+      "dimensionsMetres": [
+        60,
+        89.80000305175781,
+        50.071998596191406
+      ],
+      "glbHeaderValid": true,
+      "importCheck": {
+        "tool": "Blender 4.3.2",
+        "success": true,
+        "meshObjects": 10,
+        "nonFiniteVertexComponents": 0,
+        "zeroAreaFaces": 0,
+        "blenderBoundsMin": [
+          -30.0,
+          -25.035999298095703,
+          0.0
+        ],
+        "blenderBoundsMax": [
+          30.0,
+          25.035999298095703,
+          89.80000305175781
+        ],
+        "convertedGltfBoundsMin": [
+          -30.0,
+          0.0,
+          -25.035999298095703
+        ],
+        "convertedGltfBoundsMax": [
+          30.0,
+          89.80000305175781,
+          25.035999298095703
+        ],
+        "groundY": 0.0,
+        "positiveYUp": true,
+        "frontAxis": "+Z",
+        "notes": "Actual exported GLB imported into a new cleared Blender scene. Blender uses Z up; importer converts glTF Y up to Blender Z up."
+      }
+    }
+  ],
+  "reproduce": "blender -b -t 2 --python scripts/external-v080/terraced-retail/generate.py -- --render",
+  "previewMethod": "CPU Cycles renders of the re-imported full-detail GLB; preview-only floor, camera and lighting are not exported.",
+  "knownLimitations": [
+    "Reference photographs are dated 2021, not a claim about the present tenant mix.",
+    "This is an original inspired design, not exact PARCO geometry; inferred dimensions must not be used as survey data.",
+    "No enterable interiors, basement, collision or navigation mesh. Stair circulation is an illustrative exterior feature and has not been certified traversable.",
+    "Opaque glass is intentionally optimized; physically transparent glazing requires integration work.",
+    "Small intersecting architectural solids remain where columns, cladding, mullions or planter foliage meet; hidden core/intersection faces are not all boolean-unioned.",
+    "LOD1 removes fine seams, deck joints, foliage clusters, hardware and small text; it is an optional independently loaded GLB, without automatic LOD extensions.",
+    "No application integration, street placement, global tests, production build or deployment was performed."
+  ],
+  "referencesDocument": "docs/external/dot/terraced-retail/references.md",
+  "generatedWith": "Blender 4.3.2"
+}

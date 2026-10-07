@@ -1,0 +1,239 @@
+{
+  "asset": "terraced-retail.glb",
+  "sha256": "2e46e672f10eaecdf42fd18c1f82dc90174cc6162d6f4772617843cd80eb0d31",
+  "bytes": 2035052,
+  "gltf_asset": {
+    "generator": "Khronos glTF Blender I/O v4.3.47",
+    "version": "2.0"
+  },
+  "errors": [],
+  "warnings": [],
+  "passed": true,
+  "extensions_used": [],
+  "extensions_required": [],
+  "mesh_count": 13,
+  "mesh_instance_count": 13,
+  "node_count": 13,
+  "material_count": 13,
+  "texture_count": 0,
+  "image_count": 0,
+  "vertices": 58018,
+  "triangles": 27446,
+  "primitives": 13,
+  "degenerate_triangles": 0,
+  "normal_winding_disagreements": 0,
+  "scene_instanced_counts": {
+    "vertices": 58018,
+    "triangles": 27446,
+    "primitives": 13
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -30.019001007080078,
+      0.0,
+      -25.035999298095703
+    ],
+    "max": [
+      30.019001007080078,
+      89.80000305175781,
+      25.035999298095703
+    ],
+    "size": [
+      60.038002014160156,
+      89.80000305175781,
+      50.071998596191406
+    ],
+    "center": [
+      0.0,
+      44.900001525878906,
+      0.0
+    ]
+  },
+  "external_uris": [],
+  "images": [],
+  "meshes": [
+    {
+      "index": 0,
+      "name": "stone_geometry",
+      "primitives": 1,
+      "vertices": 4248,
+      "triangles": 2124,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 4248,
+      "material_indices": [
+        0
+      ]
+    },
+    {
+      "index": 1,
+      "name": "charcoal_geometry",
+      "primitives": 1,
+      "vertices": 7092,
+      "triangles": 3676,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 7092,
+      "material_indices": [
+        1
+      ]
+    },
+    {
+      "index": 2,
+      "name": "glass_sage_geometry",
+      "primitives": 1,
+      "vertices": 1584,
+      "triangles": 792,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 1584,
+      "material_indices": [
+        2
+      ]
+    },
+    {
+      "index": 3,
+      "name": "glass_light_geometry",
+      "primitives": 1,
+      "vertices": 628,
+      "triangles": 314,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 628,
+      "material_indices": [
+        3
+      ]
+    },
+    {
+      "index": 4,
+      "name": "aluminium_geometry",
+      "primitives": 1,
+      "vertices": 11802,
+      "triangles": 5868,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 11802,
+      "material_indices": [
+        4
+      ]
+    },
+    {
+      "index": 5,
+      "name": "porcelain_geometry",
+      "primitives": 1,
+      "vertices": 1368,
+      "triangles": 684,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 1368,
+      "material_indices": [
+        5
+      ]
+    },
+    {
+      "index": 6,
+      "name": "glass_blue_geometry",
+      "primitives": 1,
+      "vertices": 2048,
+      "triangles": 1024,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 2048,
+      "material_indices": [
+        6
+      ]
+    },
+    {
+      "index": 7,
+      "name": "warm_light_geometry",
+      "primitives": 1,
+      "vertices": 2410,
+      "triangles": 1220,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 2410,
+      "material_indices": [
+        7
+      ]
+    },
+    {
+      "index": 8,
+      "name": "joint_geometry",
+      "primitives": 1,
+      "vertices": 13728,
+      "triangles": 6864,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 13728,
+      "material_indices": [
+        8
+      ]
+    },
+    {
+      "index": 9,
+      "name": "wood_geometry",
+      "primitives": 1,
+      "vertices": 3006,
+      "triangles": 1396,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 3006,
+      "material_indices": [
+        9
+      ]
+    },
+    {
+      "index": 10,
+      "name": "leaf_dark_geometry",
+      "primitives": 1,
+      "vertices": 5064,
+      "triangles": 1732,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 5064,
+      "material_indices": [
+        10
+      ]
+    },
+    {
+      "index": 11,
+      "name": "leaf_light_geometry",
+      "primitives": 1,
+      "vertices": 5016,
+      "triangles": 1740,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 5016,
+      "material_indices": [
+        11
+      ]
+    },
+    {
+      "index": 12,
+      "name": "accent_geometry",
+      "primitives": 1,
+      "vertices": 24,
+      "triangles": 12,
+      "degenerate_triangles": 0,
+      "normal_nonunit_count": 0,
+      "normal_winding_disagreements": 0,
+      "uv_vertices": 24,
+      "material_indices": [
+        12
+      ]
+    }
+  ],
+  "counting_note": "Vertices and triangles sum accessor counts per stored primitive; scene-instanced counts include repeated mesh nodes. Vertex seams may intentionally duplicate positions."
+}
