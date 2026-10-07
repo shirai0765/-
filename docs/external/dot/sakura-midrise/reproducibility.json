@@ -1,0 +1,17 @@
+{
+  "method": "Blender 4.3.2 standalone asset generation compared with a fresh --asset all --no-render generation.",
+  "results": [
+    {
+      "asset": "sakura-residential",
+      "standalone_sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+      "combined_all_sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+      "byte_identical": true
+    },
+    {
+      "asset": "sakura-office",
+      "standalone_sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "combined_all_sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "byte_identical": true
+    }
+  ]
+}

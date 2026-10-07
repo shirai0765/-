@@ -1,0 +1,200 @@
+{
+  "asset": "sakura-office.glb",
+  "sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+  "blender_version": "4.3.2",
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "import_seconds": 0.2511,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "mesh_objects": 8,
+  "vertices_after_import": 7218,
+  "triangles_after_import": 3599,
+  "world_bounds_blender_z_up_m": {
+    "min": [
+      -5.949999809265137,
+      -5.300000190734863,
+      0.0
+    ],
+    "max": [
+      5.949999809265137,
+      5.300000190734863,
+      18.8799991607666
+    ]
+  },
+  "world_bounds_gltf_y_up_m": {
+    "min": [
+      -5.949999809265137,
+      0.0,
+      -5.300000190734863
+    ],
+    "max": [
+      5.949999809265137,
+      18.8799991607666,
+      5.300000190734863
+    ],
+    "size": [
+      11.899999618530273,
+      18.8799991607666,
+      10.600000381469727
+    ]
+  },
+  "materials": [
+    {
+      "name": "charcoal_tile",
+      "use_nodes": true
+    },
+    {
+      "name": "deep_glazing",
+      "use_nodes": true
+    },
+    {
+      "name": "frosted_glazing",
+      "use_nodes": true
+    },
+    {
+      "name": "mineral_plaster",
+      "use_nodes": true
+    },
+    {
+      "name": "planted_green",
+      "use_nodes": true
+    },
+    {
+      "name": "roof_membrane",
+      "use_nodes": true
+    },
+    {
+      "name": "silver_metal",
+      "use_nodes": true
+    },
+    {
+      "name": "warm_wood",
+      "use_nodes": true
+    }
+  ],
+  "images": [],
+  "meshes": [
+    {
+      "name": "sakura-office_mineral_plaster",
+      "vertices": 1270,
+      "triangles": 689,
+      "polygons": 689,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-office_planted_green",
+      "vertices": 480,
+      "triangles": 160,
+      "polygons": 160,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-office_roof_membrane",
+      "vertices": 84,
+      "triangles": 42,
+      "polygons": 42,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-office_charcoal_tile",
+      "vertices": 264,
+      "triangles": 148,
+      "polygons": 148,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-office_warm_wood",
+      "vertices": 12,
+      "triangles": 6,
+      "polygons": 6,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-office_deep_glazing",
+      "vertices": 992,
+      "triangles": 496,
+      "polygons": 496,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-office_silver_metal",
+      "vertices": 3992,
+      "triangles": 1996,
+      "polygons": 1996,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    },
+    {
+      "name": "sakura-office_frosted_glazing",
+      "vertices": 124,
+      "triangles": 62,
+      "polygons": 62,
+      "material_slots": 1,
+      "uv_layer_count": 1,
+      "degenerate_triangles": 0,
+      "invalid_normals": 0,
+      "negative_transform": false
+    }
+  ],
+  "renders": [
+    {
+      "view": "front",
+      "file": "front.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 15.827
+    },
+    {
+      "view": "three-quarter",
+      "file": "three-quarter.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 17.448
+    },
+    {
+      "view": "roof",
+      "file": "roof.png",
+      "size": [
+        768,
+        768
+      ],
+      "seconds": 19.053
+    }
+  ],
+  "visual_review": "PASS after correction: final hash39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08 actually reimported and rendered. Front/three-quarter/roof pixel inspection confirms the missing terrace support slab and ground-glazing head/corner gaps are corrected. Ribbon glazing, chamfer, shared lobby and common terrace remain legible. No new obvious surface defects. Browser integration untested.",
+  "source_hash_unchanged_after_validation": true
+}

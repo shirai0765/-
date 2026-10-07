@@ -1,0 +1,58 @@
+{
+  "asset": "sakura-office",
+  "rendered_glb_sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+  "engine": "Cycles CPU",
+  "samples": 64,
+  "resolution": [
+    1056,
+    1056
+  ],
+  "rendered_after_actual_glb_import": true,
+  "views": {
+    "front": {
+      "camera_blender_z_up": [
+        0,
+        -48,
+        10.5728
+      ],
+      "target_blender_z_up": [
+        0,
+        0,
+        9.062399999999998
+      ],
+      "ortho_scale_m": 23.222399999999997,
+      "png": "sakura-office-front.png",
+      "sha256": "9973768b377c3f89c6ebb8dd661ca2cb8237a91a13ca09c85331ebb0af626cb1"
+    },
+    "oblique": {
+      "camera_blender_z_up": [
+        30,
+        -40,
+        20.2016
+      ],
+      "target_blender_z_up": [
+        0,
+        0,
+        8.6848
+      ],
+      "ortho_scale_m": 26.809599999999996,
+      "png": "sakura-office-oblique.png",
+      "sha256": "028a6aeb3569050a5401c350bac8fa3bf25ae787330ec1e14df414671905157f"
+    },
+    "roof": {
+      "camera_blender_z_up": [
+        24,
+        -27,
+        41.536
+      ],
+      "target_blender_z_up": [
+        0,
+        0,
+        10.384
+      ],
+      "ortho_scale_m": 26.432,
+      "png": "sakura-office-roof.png",
+      "sha256": "629715cd0c61ea719f2b4534d641f66749f28e544c66a9fbfbdd9a6804277803"
+    }
+  }
+}

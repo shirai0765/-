@@ -1,0 +1,88 @@
+{
+  "asset": "sakura-residential",
+  "display_name": "HANA COURT",
+  "version": "D01.1",
+  "authoring": "Original procedural Blender geometry; no copied models or image textures.",
+  "units": "metres",
+  "up_axis": "+Y",
+  "front_axis": "+Z",
+  "ground_y_m": 0,
+  "origin": "Bottom center of the model footprint; all mesh node origins at [0,0,0].",
+  "floors": 7,
+  "design": "Seven-storey original apartment building with deep divided balconies and a communal entry/bicycle bay.",
+  "dimensions_status": "All model dimensions are author estimates for a fictional synthesis, not a survey or measurements of the referenced properties.",
+  "lod": "LOD0 only, already lightweight; no decimation fallback supplied.",
+  "geometry": {
+    "bytes": 489440,
+    "sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+    "vertices": 13740,
+    "triangles": 6844,
+    "materials": 8,
+    "primitives": 8,
+    "meshes": 8,
+    "textures": 0,
+    "images": 0,
+    "texture_dimensions": [],
+    "texture_bytes": 0,
+    "bounds_m": {
+      "min": [
+        -6.900000095367432,
+        -5.891460830298456e-08,
+        -5.699999809265137
+      ],
+      "max": [
+        6.900000095367432,
+        23.78499984741211,
+        5.699999809265137
+      ]
+    },
+    "dimensions_m": [
+      13.8,
+      23.785,
+      11.4
+    ],
+    "external_uris": [],
+    "gltf_version": "2.0"
+  },
+  "import_validation": {
+    "tool": "Blender 4.3.2",
+    "actual_import_succeeded": true,
+    "mesh_objects": 8,
+    "mesh_vertices": 13740,
+    "mesh_triangles": 6844,
+    "blender_z_up_bounds_m": {
+      "min": [
+        -6.900000095367432,
+        -5.699999809265137,
+        -5.891460830298456e-08
+      ],
+      "max": [
+        6.900000095367432,
+        5.699999809265137,
+        23.78499984741211
+      ]
+    },
+    "finite_vertices": true,
+    "zero_area_triangles": 0,
+    "ground_z_zero": true,
+    "note": "Blender importer maps glTF +Y up to Blender +Z up. Exported glTF bounds are measured separately; authored -Y front maps to glTF +Z front."
+  },
+  "reference_document": "docs/external/dot/sakura-midrise/references.md",
+  "generator": "scripts/external-v080/sakura-midrise/generate_sakura.py",
+  "previews": [
+    "sakura-residential-front.png",
+    "sakura-residential-oblique.png",
+    "sakura-residential-roof.png"
+  ],
+  "preview_note": "Original geometry rendered with studio sky/sun and ground plane. Preview ground, camera, lighting are excluded from GLB.",
+  "limitations": [
+    "Conceptual Sakuragaoka building, not a reconstruction or exact footprint.",
+    "Reference photos do not establish rear elevations, roof services, dimensions or interior layouts. Those are invented plausibly.",
+    "Glazing uses opaque PBR color and coating to avoid transparency sorting and overdraw. No interior rooms.",
+    "Connected structural pieces may intersect; hidden faces are selectively omitted but not a boolean watertight solid.",
+    "Generated UVs are box-projected and untextured; no baked AO, lightmap or image textures.",
+    "No navigation/collision mesh, lot placement, street slopes or scene integration supplied.",
+    "GLB and Blender import validated; final application, Windows GPU and WebGL performance remain integration checks."
+  ],
+  "scope": "Only new external assets, scripts and documentation. Existing models, src, game data and city placements unchanged."
+}

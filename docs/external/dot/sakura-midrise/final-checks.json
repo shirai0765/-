@@ -1,0 +1,12 @@
+{
+  "date_utc": "2026-10-07",
+  "status": "PASS",
+  "generator_syntax": "PASS",
+  "actual_glb_imports": "PASS, Blender 4.3.2",
+  "standalone_vs_combined_generation": "Byte identical for both final assets",
+  "png_checks": "All 6 PNGs opened, verified 1056 by 1056 pixels, SHA256 matched corresponding preview ledger",
+  "visual_review": "All six author previews inspected; both independent GLB validations and three-view pixel reviews passed.",
+  "residential_independent_review": "docs/external/dot/validation/sakura-residential/review.md",
+  "office_independent_review": "docs/external/dot/validation/sakura-office/review.md",
+  "scope_limit": "Asset-local validation only. No application global tests, production build, city placement or deployment run."
+}
