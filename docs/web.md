@@ -4,6 +4,12 @@
 
 0.5.0では、上場後に取得した市場企業へ26週間の成長投資・安定運営を選べます。対象は開始時に稼働済みの一業種で、途中解約・自動更新はありません。グループ画面で費用と見込みを比較し、週報に確定結果を記録します。事業数に応じた本社の増築もゲーム街に反映します。仕様と検証範囲は [interaction-v050.md](interaction-v050.md) を参照してください。
 
+## 0.5.0の配布記録
+
+`/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.5.0-web.zip` は65,798,726 bytes、SHA256 `4bc411b697473743d3e8e3930a6dfe5bc6fec45cfa435342b73930a01d7cb8ad`。最終dist276ファイル・94,340,876 bytesを再ビルドせず収録し、CRC・全収録SHA・凍結入力との一致を確認しました。ローカルのPages相対パスと、梱包直前の1,957成果物のサイズ/更新時刻も照合しました。これは梱包後の記録で、ZIP内文書には含まれません。公開検証は [interaction-v050.md](interaction-v050.md) で確認してください。
+
+[ブラウザー版0.5.0](https://shirai0765.github.io/-/?v=0.5.0) は公開済みで、公開HTTP25件/選択23資産SHAと、実Firefoxによる事業計画の比較・開始・26週営業・保存再開の3カテゴリが成功しました。詳しい範囲は [interaction-v050.md](interaction-v050.md) を参照してください。
+
 ## 0.4.10の配布記録
 
 `/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.10-web.zip` は65,790,235 bytes、SHA256 `5adf7f3330c84a3ff465570720cca8517f3b7259c472a154683a802af9e32552`。最終dist276ファイル・94,308,196 bytesを再ビルドせず収録し、CRC・全収録SHA・凍結入力との一致を確認しました。ローカルprefixの276 HTTP/257参照も成功。旧1,446成果物のサイズ/更新時刻を照合し、以前のSHA記録を保持しています。旧SHAの再走査は行っていません。証拠は `Shibuya-Capital-0.4.10-web-report.json`、`packaging-0.4.10.json`、`preservation-0.4.10.json`。この段落はZIP作成後の記録です。公開検証は [interaction-v0410.md](interaction-v0410.md) で確認してください。

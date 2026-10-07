@@ -4,13 +4,17 @@
 
 0.5.0では、上場後に取得した市場企業へ26週間の成長投資・安定運営を選べます。対象は開始時に稼働済みの一業種で、途中解約・自動更新はありません。グループ画面で費用と見込みを比較し、週報に確定結果を記録します。事業数に応じた本社の増築もゲーム街に反映します。仕様と検証範囲は [interaction-v050.md](interaction-v050.md) を参照してください。
 
+## 0.5.0の配布記録
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.5.0-win32-x64.zip` は223,827,966 bytes、SHA256 `726a55d59e07848d5a20acfdea02a3b9b963d447e317f6500cc2b273d6d39edc`。同じ検証済みdistの276ファイルと全収録SHA・CRCが一致しています。公式Electron44.5.1の既存キャッシュをチェックサム一覧と照合して使用しました。実Windowsでの起動確認・コード署名・GitHub Releaseへのアップロードは行っていません。この段落はZIP作成後の記録です。
+
 ## 使用方法
 
 対象は Windows 10 / 11 の x64（AMD Ryzen / Intel）。ZIP 全体を展開して、フォルダー内の `Shibuya Capital.exe` を開きます。Node.js のインストールは不要です。EXE だけ移動せず、DLL、resources、locales など同梱ファイルを一緒に保管してください。
 
 この開発版はコード署名されていません。Windows 実機での起動・描画・保存復元・性能は未確認です。Linux 上での梱包、ZIP 整合性、同梱ファイル検査と、Windows 上での動作確認は別です。
 
-[ブラウザー版0.4.10](https://shirai0765.github.io/-/?v=0.4.10) のPages/HTTP/実操作検査は成功しました。Web公開の成功はWindows実機の検証とは別で、今回の実施範囲は [interaction-v0410.md](interaction-v0410.md) に記録しています。
+[ブラウザー版0.5.0](https://shirai0765.github.io/-/?v=0.5.0) のPages/HTTP/実操作検査は成功しました。Web公開の成功はWindows実機の検証とは別で、今回の実施範囲は [interaction-v050.md](interaction-v050.md) に記録しています。
 
 ## 0.4.10の梱包検証
 

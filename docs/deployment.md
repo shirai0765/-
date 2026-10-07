@@ -13,7 +13,7 @@
 
 通常の修正・レビューは `game-source` で行います。公開用 `main` でソースを編集したり、そこからビルドしたりしません。Vite の `base: './'` は維持し、リポジトリ配下のURLでもゲームと実測ビューの同梱資産を相対パスで読み込みます。
 
-0.5.0の公開時も同じmanifest方式を使います。最新の配布・公開検証は [interaction-v050.md](interaction-v050.md) に集約し、過去の公開記録を置き換えません。
+最新の0.5.0も同じmanifest方式で公開済みです。Pages run37563180731、公開HTTP25件/選択23資産SHA、公開実Firefox3カテゴリが成功しました。最新の配布・公開検証は [interaction-v050.md](interaction-v050.md) に集約し、過去の公開記録を保持します。
 
 ## 公開手順
 
@@ -28,8 +28,8 @@
 
 ```sh
 python3 scripts/package-web.py
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.7-web-report.json
-python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.4.7-web-report.json --publish
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.5.0-web-report.json
+python3 scripts/deploy-pages.py --manifest /workspace/shared/shibuya-artifacts/Shibuya-Capital-0.5.0-web-report.json --publish
 ```
 
 版と保存場所が異なる場合は、検証した当該版のreportを指定します。作業ツリーが未commit、ソースのremote先端が異なる、配布ファイルがreportと異なる場合は停止します。
