@@ -1,3 +1,5 @@
+import type { CampaignAchievement } from './sim/campaignAchievement';
+export type { CampaignAchievement } from './sim/campaignAchievement';
 import type { WeeklyNewsDigest } from './sim/weeklyNews';
 /** Shared public contracts. Money is JPY; simulation advances only at end-week. */
 export type DistrictId = 'center' | 'dogenzaka' | 'miyashita' | 'sakuragaoka';
@@ -28,7 +30,7 @@ export interface OpeningRecord {
   result?: { week: number; companyNetProfit: number; cashChange: number; storeProfit: number; customers: number };
   closedWeek?: number;
 }
-export interface GameState { marketOperations?: MarketOperationState; railProjects?: RailProjectState; openingRecords?: OpeningRecord[]; marketAcquisitions?: MarketAcquisitionState; development?: DevelopmentState; deals?: DealState; version: 1; id: string; companyName: string; seed: number; week: number; cash: number; reputation: number; stores: Store[]; loans: Loan[]; properties: PropertyAsset[]; positions: StockPosition[]; stockPrices: Record<string, number>; subsidiaries: Subsidiary[]; listed: boolean; sharesOutstanding: number; founderShares: number; sharePrice: number; dividendPayout: number; profitableWeeks: number; totalCustomers: number; history: HistoryPoint[]; lastReport: WeeklyReport | null; milestones: string[]; gameOver: boolean; gameOverReason: string | null; settings: { quality: QualityLevel; sound: boolean } }
+export interface GameState { campaignAchievement?: CampaignAchievement; marketOperations?: MarketOperationState; railProjects?: RailProjectState; openingRecords?: OpeningRecord[]; marketAcquisitions?: MarketAcquisitionState; development?: DevelopmentState; deals?: DealState; version: 1; id: string; companyName: string; seed: number; week: number; cash: number; reputation: number; stores: Store[]; loans: Loan[]; properties: PropertyAsset[]; positions: StockPosition[]; stockPrices: Record<string, number>; subsidiaries: Subsidiary[]; listed: boolean; sharesOutstanding: number; founderShares: number; sharePrice: number; dividendPayout: number; profitableWeeks: number; totalCustomers: number; history: HistoryPoint[]; lastReport: WeeklyReport | null; milestones: string[]; gameOver: boolean; gameOverReason: string | null; settings: { quality: QualityLevel; sound: boolean } }
 export type DealAction = { type: 'acceptOffer' | 'declineOffer' | 'investigateOffer'; offerId: string } | { type: 'cancelContract'; contractId: string };
 export type GameAction =
   | { type: 'startDevelopment'; districtId: DistrictId; choiceId: string }

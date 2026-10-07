@@ -76,6 +76,12 @@
 .weekly-review-back { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 8px 0; color: var(--review-muted); font-size: 11px; background: transparent; white-space: nowrap; }
 .weekly-review-screen button:focus-visible, .weekly-review-screen summary:focus-visible { outline: 2px solid var(--review-blue); outline-offset: 4px; }
 .weekly-review-news, .weekly-review-records { padding-top: 24px; }
+.weekly-review-opportunity { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0 0; margin-top: 24px; border-top: 1px solid var(--review-line); }
+.weekly-review-opportunity > div { min-width: 0; }
+.weekly-review-opportunity span { color: var(--review-muted); font-size: 10px; }
+.weekly-review-opportunity h3 { margin: 6px 0; font-size: 16px; }
+.weekly-review-opportunity p { margin: 0; font-size: 11px; line-height: 1.8; color: var(--review-muted); }
+.weekly-review-opportunity button { display: flex; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0; min-height: 44px; font-size: 11px; }
 .weekly-review-records .weekly-results { padding-bottom: 8px; }
 .weekly-review-records .weekly-results > details:first-child { border-top: 0; padding-top: 0; }
 .weekly-review-notice { display: flex; align-items: flex-start; gap: 14px; justify-content: space-between; background: #f3f6fb; color: var(--review-ink); border: 1px solid var(--review-line); border-radius: 7px; padding: 11px 14px; margin-top: 18px; font-size: 11px; line-height: 1.7; overflow-wrap: anywhere; }
@@ -120,6 +126,8 @@
   .weekly-review-screen .weekly-review-primary { width: 100%; min-width: 0; min-height: 46px; font-size: 12px; padding: 12px 16px; }
   .weekly-review-back { grid-row: 2; min-height: 44px; font-size: 11px; }
   .weekly-review-news, .weekly-review-records { padding-top: 20px; }
+  .weekly-review-opportunity { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 20px; padding-top: 18px; }
+  .weekly-review-opportunity button { align-self: flex-start; }
 }
 @media (max-width: 620px) and (max-height: 700px) {
   .weekly-review-steps { margin-bottom: 16px; }

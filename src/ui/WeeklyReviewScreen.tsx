@@ -3,15 +3,27 @@ import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react';
 import WeeklyResults, { WeeklySettlementSummary } from './WeeklyResults';
 import type { WeeklyResultsProps } from './WeeklyResults';
 import WeeklyNews from './WeeklyNews';
+import { getSummary } from '../sim/engine';
+import type { GameState } from '../model';
 import './weekly-review-screen.css';
 
 interface Props extends Omit<WeeklyResultsProps, 'mode' | 'onContinue'> {
   onClose: () => void;
   notice?: string;
   onClearNotice?: () => void;
+  /** A current opportunity, separate from the saved news for this report. */
+  onExchange?: () => void;
 }
 
 type Phase = 'summary' | 'news' | 'details';
+
+export function CurrentListingOpportunity({ state, onExchange }: { state: GameState; onExchange?: () => void }) {
+  if (!onExchange || state.listed || state.gameOver || !getSummary(state).ipoEligible) return null;
+  return <aside className="weekly-review-opportunity" aria-label="現在の上場機会">
+    <div><span>現在の会社でできること</span><h3>上場の条件を満たしています</h3><p>調達する資金と創業者持分を比較できます。今の経営を続けることも選べます。</p></div>
+    <button type="button" className="secondary" onClick={onExchange}>証券市場で条件を確認<ArrowRight size={15}/></button>
+  </aside>;
+}
 
 /** Presentation only: settlement and autosave have already finished. */
 export default function WeeklyReviewScreen(props: Props) {
@@ -86,12 +98,14 @@ export default function WeeklyReviewScreen(props: Props) {
 
           {phase === 'news' && <section className="weekly-review-news" aria-label="今週の記録から読むニュース">
             <WeeklyNews report={report}/>
+            <CurrentListingOpportunity state={state} onExchange={props.onExchange}/>
           </section>}
 
           {phase === 'details' && <div className="weekly-review-records">
             <WeeklyResults state={state} mode="details"
               onManageStore={props.onManageStore} onViewStore={props.onViewStore}
-              onFinance={props.onFinance} onManageSector={props.onManageSector}/>
+              onFinance={props.onFinance} onManageSector={props.onManageSector}
+              onBrowseSites={props.onBrowseSites}/>
           </div>}
         </div>
       </div>

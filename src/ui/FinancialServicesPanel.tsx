@@ -147,7 +147,7 @@ export default function FinancialServicesPanel({ kind, state, onAction, onMarket
       <h4>上場までの準備</h4>
       <ul>{summary.ipoRequirements.map((requirement, index) => <li key={index} data-met={requirement.met}>
         <span aria-hidden="true">{requirement.met ? '✓' : '○'}</span>
-        <span>{index === 0 ? `営業中 ${state.stores.length} / 3店舗` : index === 1 ? `累計黒字 ${state.profitableWeeks} / 12週` : index === 2 ? `純資産 ${yen(summary.netWorth)} / 2,000万円` : '現在の営業計画が黒字の審査基準を満たす'}</span>
+        <span>{index === 0 ? `営業中 ${state.stores.length} / 3店舗` : index === 1 ? `累計黒字 ${state.profitableWeeks} / 12週` : index === 2 ? `純資産 ${yen(summary.netWorth)} / 2,000万円` : state.lastReport ? `直近の決算が黒字：第${state.lastReport.week}週・利息後 ${yen(state.lastReport.netProfit)}` : '直近の決算が黒字：営業実績は未記録'}</span>
         <small>{requirement.met ? '達成' : '準備中'}</small>
       </li>)}</ul>
       <p>物件の購入や店長の雇用は上場の必須条件ではありません。</p>

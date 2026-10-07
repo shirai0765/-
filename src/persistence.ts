@@ -1,3 +1,4 @@
+import { validateCampaignAchievement } from './sim/campaignAchievement';
 import type { GameState, DealOffer, MarketOperationProject } from './model';
 import { getCanonicalDealOffer, getRealizedDealBenefit, isDealOfferId } from './sim/deals';
 import { LOTS, ACQUISITION_TARGETS } from './data/district';
@@ -238,6 +239,9 @@ export function validateGame(value: unknown): GameState {
   uniqueRows(s.subsidiaries, 'id', o => { if (!subsidiaryIds.has(String(o.id))) fail(); str(o.name); choice(o.sector, ['food', 'property', 'rail']); num(o.purchasePrice, 0); num(o.weeklyProfit); num(o.risk, 0, 1); });
   let previousWeek = -1; array(s.history, 100000).forEach(row => { const o = obj(row); const week = num(o.week, 0, Number(s.week), true); if (week <= previousWeek) fail(); previousWeek = week; fields(o, ['cash', 'profit']); fields(o, ['revenue', 'valuation'], 0); num(o.stores, 0, 10000, true); });
   array(s.milestones, 10000).forEach(v => str(v, 500));
+  if (Object.hasOwn(s, 'campaignAchievement')) {
+    try { validateCampaignAchievement(s.campaignAchievement, { week: Number(s.week), totalCustomers: Number(s.totalCustomers) }); } catch { fail(); }
+  }
   const settings = obj(s.settings); choice(settings.quality, ['low', 'medium', 'high']); bool(settings.sound);
   if (s.lastReport !== null) {
     const r = obj(s.lastReport); num(r.week, 0, Number(s.week), true); fields(r, ['revenue', 'interest', 'loanRepayment', 'dividendsReceived', 'dividendsPaid', 'customers'], 0); fields(r, ['operatingProfit', 'netProfit', 'cashChange']); array(r.headlines, 100).forEach(v => str(v, 1000));

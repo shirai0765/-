@@ -39,6 +39,8 @@ describe('physical financial service destinations', () => {
     expect(html).toContain('営業中 0 / 3店舗');
     expect(html).toContain('累計黒字 0 / 12週');
     expect(html).toContain('上場までの準備');
+    expect(html).toContain('直近の決算が黒字：営業実績は未記録');
+    expect(html).not.toContain('現在の営業計画が黒字');
     expect(html).toContain('他社の株式に投資する');
     expect(html).toContain('企業の買収を検討する');
     expect(html).not.toContain('借入希望額（円）');

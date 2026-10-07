@@ -1,3 +1,4 @@
+import { settleCampaignAchievement } from './campaignAchievement';
 import type { GameState, GameAction, Store, StoreStyle, WeeklyReport, CompanySummary, SiteEstimate, StoreAccount } from '../model';
 import { LOTS, ACQUISITION_TARGETS } from '../data/district';
 import { startDevelopment, getDevelopmentEffects, getDevelopmentFinancials, tickDevelopment, developmentHeadlines } from './development';
@@ -251,8 +252,8 @@ export function getSummary(s: GameState): CompanySummary {
   const sustainableProfit = getActiveMarketOperation(s) ? previewWeek({ ...s, marketOperations: undefined }).netProfit : weeklyProfit;
   const valuation = round(Math.max(1_000_000, netWorth + Math.max(0, sustainableProfit) * 104));
   const borrowingLimit = round(Math.max(0, 5_000_000 + propertyValue * .5 + operatingAssets * .4 + getMarketGroupFinancials(s).borrowCollateral + Math.max(0, sustainableProfit) * 26));
-  const ipoRequirements = [{ label: '3店舗以上を運営', met: s.stores.length >= 3 }, { label: '累計12週の黒字', met: s.profitableWeeks >= 12 }, { label: '純資産2,000万円以上', met: netWorth >= 20_000_000 }, { label: '今週の予想利益が黒字', met: weeklyProfit > 0 }];
-  return { debt, borrowingLimit, availableCredit: Math.max(0, borrowingLimit - debt), valuation, netWorth, weeklyProfit, portfolioValue, propertyValue, ownership: s.founderShares / s.sharesOutstanding, ipoEligible: !s.listed && ipoRequirements.every(x => x.met), ipoRequirements };
+  const ipoRequirements = [{ label: '3店舗以上を運営', met: s.stores.length >= 3 }, { label: '累計12週の黒字', met: s.profitableWeeks >= 12 }, { label: '純資産2,000万円以上', met: netWorth >= 20_000_000 }, { label: '直近の決算が黒字', met: s.lastReport !== null && s.lastReport.netProfit > 0 }];
+  return { debt, borrowingLimit, availableCredit: Math.max(0, borrowingLimit - debt), valuation, netWorth, weeklyProfit, portfolioValue, propertyValue, ownership: s.founderShares / s.sharesOutstanding, ipoEligible: !s.gameOver && !s.listed && ipoRequirements.every(x => x.met), ipoRequirements };
 }
 export function evaluateSite(s: GameState, lotId: string, style: StoreStyle = 'standard', manager = false): SiteEstimate {
   styleCheck(style); const l = lot(lotId), spec = STYLES[style];
@@ -286,7 +287,17 @@ export function applyAction(state: GameState, action: GameAction): GameState {
     }
     case 'upgradeStore': { const st = s.stores.find(x => x.id === action.storeId); requireThat(st && st.level < 5, '店舗がないか、最大レベルです。'); spend(s, 1_200_000 * st.level); st.level++; break; }
     case 'closeStore': { const st = s.stores.find(x => x.id === action.storeId); requireThat(st, '店舗が見つかりません。'); s.cash += round(STYLES[st.style].cost * .15); s.stores = s.stores.filter(x => x.id !== st.id); return closeOpeningRecords(s, st.id); }
-    case 'borrow': { number(action.amount, 100_000, getSummary(s).availableCredit, true); number(action.weeks, 13, 260, true); const annualRate = .045 + Math.min(.055, getSummary(s).debt / Math.max(1, getSummary(s).valuation) * .08); s.loans.push({ id: `loan-${s.week}-${s.loans.length}-${s.cash}`, principal: action.amount, remaining: action.amount, annualRate, weeksLeft: action.weeks, weeklyPayment: action.amount / action.weeks }); s.cash += action.amount; break; }
+    case 'borrow': {
+      number(action.amount, 100_000, getSummary(s).availableCredit, true); number(action.weeks, 13, 260, true);
+      const annualRate = .045 + Math.min(.055, getSummary(s).debt / Math.max(1, getSummary(s).valuation) * .08);
+      const baseId = `loan-${s.week}-${s.loans.length}-${s.cash}`;
+      const existingIds = new Set(s.loans.map(loan => loan.id));
+      let id = baseId;
+      // Repaying a loan can return the count and cash to an earlier same-week
+      // value. Keep existing contract IDs and find an unused ID for this loan.
+      for (let suffix = 1; existingIds.has(id); suffix++) id = `${baseId}-${suffix}`;
+      s.loans.push({ id, principal: action.amount, remaining: action.amount, annualRate, weeksLeft: action.weeks, weeklyPayment: action.amount / action.weeks }); s.cash += action.amount; break;
+    }
     case 'repayLoan': { const l = s.loans.find(x => x.id === action.loanId); requireThat(l, '借入が見つかりません。'); spend(s, l.remaining); s.loans = s.loans.filter(x => x.id !== l.id); break; }
     case 'buyProperty': { const l = lot(action.lotId); requireThat(l.available && !s.properties.some(x => x.lotId === l.id), 'この物件は購入できません。'); spend(s, l.purchasePrice); s.properties.push({ id: `property-${l.id}`, lotId: l.id, purchasePrice: l.purchasePrice, level: 1, occupancy: .9, weeklyIncome: l.rent }); break; }
     case 'upgradeProperty': { const p = s.properties.find(x => x.id === action.propertyId); requireThat(p && p.level < 5, '物件がないか、最大レベルです。'); spend(s, round(p.purchasePrice * .12)); p.level++; p.weeklyIncome = round(p.weeklyIncome * 1.15); p.occupancy = Math.min(.98, p.occupancy + .02); break; }
@@ -336,5 +347,7 @@ export function advanceWeek(state: GameState): GameState {
   s = settleOpeningRecords(s, r);
   s.lastReport = { ...r, news: createWeeklyNews(state, s.stockPrices, operatingConditions(state), r,
     state.week > 1 ? operatingConditions({ ...state, week: state.week - 1 }) : undefined) };
+  const campaignAchievement = settleCampaignAchievement(s, r);
+  if (campaignAchievement) s.campaignAchievement = campaignAchievement;
   s.week++; return s.stores.length ? initializeDeals(s) : s;
 }

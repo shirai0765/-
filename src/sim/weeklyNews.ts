@@ -2,6 +2,7 @@ import type { GameState, WeeklyReport } from '../model';
 import { STOCKS } from '../data/stocks';
 import { developmentHeadlines } from './development';
 import { railProjectHeadlines } from './railProjects';
+import { MARKET_OPERATION_TERM_WEEKS } from './marketBusinessMath';
 
 /** Recorded reporting data only; never an input to simulation or a future estimate. */
 export interface WeeklyNewsConditions { readonly demand: number; readonly wages: number; readonly rents: number }
@@ -17,6 +18,21 @@ export interface WeeklyNewsDigest {
 export const WEEKLY_NEWS_COMPANY_LIMIT = 2;
 export const WEEKLY_NEWS_EVENT_LIMIT = 5;
 const conditions = ({ demand, wages, rents }: WeeklyNewsConditions): WeeklyNewsConditions => ({ demand, wages, rents });
+
+/** Only the saved paired result describes this closed week, not the full plan's return. */
+function marketOperationNews(report: WeeklyReport): WeeklyNewsDigest['events'] {
+  const operation = report.marketOperation;
+  if (!operation || operation.week !== report.week || operation.endWeek - operation.startWeek !== MARKET_OPERATION_TERM_WEEKS
+    || report.week < operation.startWeek || report.week >= operation.endWeek) return [];
+  const elapsed = report.week - operation.startWeek + 1;
+  const complete = elapsed === MARKET_OPERATION_TERM_WEEKS;
+  const policy = operation.policy === 'growth' ? '成長投資' : '安定運営';
+  const progress = complete ? `が完了（${MARKET_OPERATION_TERM_WEEKS}/${MARKET_OPERATION_TERM_WEEKS}週）`
+    : elapsed === 1 ? `を開始（1/${MARKET_OPERATION_TERM_WEEKS}週）`
+      : `が進行中（${elapsed}/${MARKET_OPERATION_TERM_WEEKS}週）`;
+  const difference = `${operation.profitDelta > 0 ? '+' : ''}${operation.profitDelta.toLocaleString('ja-JP')}円`;
+  return [{ category: 'company', text: `${operation.sector}の${policy}${progress}。${complete ? '最終週' : '今週'}の利益差 ${difference}（同条件の通常運営比・週次運営費込み・初回費用別）。` }];
+}
 
 /** Call once after the existing end-week price update, with this week's actual report. */
 export function createWeeklyNews(
@@ -52,12 +68,19 @@ export function createWeeklyNews(
   const companyEvents = report.headlines
     .filter(text => text.endsWith('の事業運営が開始しました。') || text.endsWith('の保有資産運用が開始しました。'))
     .map(text => ({ category: 'company' as const, text }));
+  const seenEvents = new Set<string>();
+  const events = [...marketOperationNews(report), ...cityEvents, ...companyEvents].filter(event => {
+    const key = `${event.category}:${event.text}`;
+    if (seenEvents.has(key)) return false;
+    seenEvents.add(key);
+    return true;
+  }).slice(0, WEEKLY_NEWS_EVENT_LIMIT);
   return {
     week: report.week,
     market,
     companies,
     city: { current: conditions(currentConditions), ...(previousConditions ? { previous: conditions(previousConditions) } : {}) },
-    events: [...cityEvents, ...companyEvents].slice(0, WEEKLY_NEWS_EVENT_LIMIT),
+    events,
   };
 }
 

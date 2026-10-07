@@ -6,6 +6,7 @@ import { STOCKS } from '../src/data/stocks';
 import { advanceWeek, applyAction, createGame, operatingConditions, previewWeek } from '../src/sim/engine';
 import { createWeeklyNews, isWeeklyNewsDigest } from '../src/sim/weeklyNews';
 import { createEnvelope, decodeEnvelope, validateGame } from '../src/persistence';
+import { marketIntegrationWeeks } from '../src/sim/marketAcquisitions';
 import WeeklyNews from '../src/ui/WeeklyNews';
 
 function cafe(seed = 812) {
@@ -13,6 +14,18 @@ function cafe(seed = 812) {
   return applyAction(opened, { type: 'updateStore', storeId: opened.stores[0].id, changes: { price: 950, staff: 4, quality: 85, marketing: 0 } });
 }
 const render = (state: GameState) => renderToStaticMarkup(createElement(WeeklyNews, { report: state.lastReport! }));
+
+// Funded/owned fixtures isolate recorded program news, not campaign reachability.
+function marketProgram() {
+  let state = cafe();
+  for (let week = 1; week <= 6; week++) state = advanceWeek(state);
+  const stock = STOCKS.find(stock => stock.sector === '非鉄金属')!;
+  state.cash = 1_000_000_000; state.reputation = 95; state.listed = true;
+  state.marketAcquisitions = { research: [{ stockId: stock.id, week: 1 }], companies: [
+    { stockId: stock.id, mode: 'autonomous', acquiredWeek: 1, readyWeek: 1 + marketIntegrationWeeks(stock, 'autonomous') },
+  ] };
+  return applyAction(state, { type: 'startMarketOperation', sector: stock.sector, policy: 'growth' });
+}
 
 describe('recorded weekly city and company news', () => {
   it('records exact old/new prices and market breadth without changing its inputs', () => {
@@ -95,6 +108,93 @@ describe('recorded weekly city and company news', () => {
     expect(news.events.every(event => complete.lastReport!.headlines.includes(event.text))).toBe(true);
     expect(news.companies.some(row => row.stockId === stock.id)).toBe(false);
     expect(advanceWeek(complete).lastReport!.news!.events).toEqual([]);
+  });
+
+  it('records program start, progress and the 26th settlement without claiming a full-plan return', () => {
+    const before = marketProgram(), original = structuredClone(before);
+    expect(previewWeek(before).marketOperation).toBeUndefined();
+    let settled = advanceWeek(before);
+    const start = settled.lastReport!.news!.events.filter(event => event.category === 'company');
+    expect(start).toHaveLength(1);
+    expect(start[0].text).toContain('非鉄金属の成長投資を開始（1/26週）');
+    expect(start[0].text).toContain('今週の利益差');
+    expect(before).toEqual(original);
+    for (let week = 2; week <= 25; week++) settled = advanceWeek(settled);
+    expect(settled.lastReport!.news!.events[0].text).toContain('が進行中（25/26週）');
+    const completed = advanceWeek(settled), report = completed.lastReport!, operation = report.marketOperation!;
+    expect(report.week).toBe(operation.endWeek - 1);
+    const events = report.news!.events.filter(event => event.category === 'company');
+    expect(events).toHaveLength(1);
+    expect(events[0].text).toContain('非鉄金属の成長投資が完了（26/26週）');
+    expect(events[0].text).toContain(`最終週の利益差 ${operation.profitDelta > 0 ? '+' : ''}${operation.profitDelta.toLocaleString('ja-JP')}円`);
+    expect(events[0].text).toContain('同条件の通常運営比・週次運営費込み・初回費用別');
+    expect(events[0].text).not.toMatch(/累計|総利益|利回り|収益保証/);
+    expect(advanceWeek(completed).lastReport!.news!.events).toEqual([]);
+  });
+
+  it('preserves negative and zero recorded differences and keeps group news separate from other companies', () => {
+    const before = marketProgram(), report = advanceWeek(before).lastReport!;
+    for (const difference of [-75_000, 0]) {
+      // A coherent synthetic settlement isolates negative/zero wording.
+      const actual = { ...report, marketOperation: { ...report.marketOperation!, policy: 'stability' as const,
+        baselineProfit: 25_000, operatingProfit: 25_000 + difference, profitDelta: difference } };
+      const news = createWeeklyNews(before, before.stockPrices, operatingConditions(before), actual,
+        operatingConditions({ ...before, week: before.week - 1 }));
+      const event = news.events.find(event => event.category === 'company')!;
+      expect(event.text).toContain('安定運営を開始');
+      expect(event.text).toContain(`今週の利益差 ${difference.toLocaleString('ja-JP')}円`);
+      const markup = renderToStaticMarkup(createElement(WeeklyNews, { report: { ...actual, news } }));
+      expect(markup).toContain('data-news-category="group" aria-label="グループ企業のニュース"');
+      expect(markup).toContain('data-news-category="company" aria-label="他社のニュース"');
+      expect(markup.match(/今週の利益差/g)).toHaveLength(1);
+      expect(markup).not.toMatch(/新製品|出店しました|株価.*原因|成長を保証/);
+    }
+  });
+
+  it('uses only this week\'s recorded program settlement and reserves one bounded, deduplicated event', () => {
+    const before = marketProgram(), report = advanceWeek(before).lastReport!;
+    const digest = (actual = report) => createWeeklyNews(before, before.stockPrices, operatingConditions(before), actual,
+      operatingConditions({ ...before, week: before.week - 1 }));
+    expect(digest(previewWeek(before)).events).toEqual([]);
+    const operation = report.marketOperation!;
+    for (const week of [operation.startWeek - 1, operation.endWeek]) {
+      expect(digest({ ...report, week, marketOperation: { ...operation, week } }).events).toEqual([]);
+    }
+    expect(digest({ ...report, marketOperation: { ...operation, week: report.week + 1 } }).events).toEqual([]);
+    const headlines = ['企業A', '企業A', '企業B', '企業C', '企業D', '企業E'].map(name => `${name}の事業運営が開始しました。`);
+    const news = digest({ ...report, headlines });
+    expect(news.events).toHaveLength(5);
+    expect(news.events[0].text).toContain('成長投資を開始');
+    expect(new Set(news.events.map(event => `${event.category}:${event.text}`)).size).toBe(news.events.length);
+    expect(isWeeklyNewsDigest(news, report.week)).toBe(true);
+  });
+
+  it('keeps a completed program snapshot stable after spending, import, reopening and a new settlement', async () => {
+    let state = marketProgram();
+    for (let week = 1; week <= 26; week++) state = advanceWeek(state);
+    const news = structuredClone(state.lastReport!.news), markup = render(state);
+    const stock = STOCKS.find(stock => stock.market === 'Growth' && stock.sector !== '非鉄金属')!;
+    state = applyAction(state, { type: 'researchMarketCompany', stockId: stock.id });
+    state = applyAction(state, { type: 'acquireMarketCompany', stockId: stock.id, mode: 'autonomous' });
+    const restored = await decodeEnvelope(await createEnvelope(state));
+    expect(restored.lastReport!.news).toEqual(news);
+    expect(render(restored)).toBe(markup);
+    expect(render(restored)).toBe(markup);
+    expect(advanceWeek(restored).lastReport!.news!.events.some(event => event.text.includes('26/26週'))).toBe(false);
+    expect(restored.lastReport!.news).toEqual(news);
+  });
+
+  it('does not backfill program events into a pre-existing digest or a save without news', async () => {
+    const state = advanceWeek(marketProgram());
+    state.lastReport!.news = { ...state.lastReport!.news!, events: [] };
+    const restored = await decodeEnvelope(await createEnvelope(state));
+    expect(render(restored)).not.toContain('グループ企業の進展');
+    expect(restored.lastReport!.news!.events).toEqual([]);
+    delete restored.lastReport!.news;
+    const legacy = await decodeEnvelope(await createEnvelope(restored));
+    expect(render(legacy)).toContain('市場ニュースの記録がありません');
+    expect(render(legacy)).not.toContain('成長投資を開始');
+    expect(legacy.lastReport!.news).toBeUndefined();
   });
 
   it('preserves a recorded report through trading, settings, export/import, reopening and later settlement', async () => {

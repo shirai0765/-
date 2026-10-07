@@ -47,7 +47,7 @@ describe('live progression', () => {
     expect(ipoRequirements.slice(0, 3).map(r => r.label)).toEqual([
       '店舗数 0 / 3 店', '累計黒字 0 / 12 週', '純資産 ¥2,000,000,000 / ¥20,000,000',
     ]);
-    expect(ipoRequirements.at(-1)!.label).toContain('収益条件（基準利益が黒字）：未達');
+    expect(ipoRequirements.at(-1)!.label).toContain('直近の決算が黒字：営業実績はまだありません');
     expect(state).toEqual(before);
     expect(result.next?.id).toBe('cafe');
   });
@@ -79,9 +79,9 @@ describe('live progression', () => {
     expect(result.recommendations[0].body).toContain('可能性');
     expect(result.recommendations[0].body).toContain('実績利益がゼロ以下');
     const ipoProfit = result.roadmap.find(s => s.id === 'ipo')!.requirements.at(-1)!;
-    expect(ipoProfit.met).toBe(true);
+    expect(ipoProfit.met).toBe(false);
     expect(ipoProfit.label).not.toContain('〜');
-    expect(ipoProfit.label).toContain('収益条件（基準利益が黒字）：充足');
+    expect(ipoProfit.label).toContain('営業実績はまだありません');
     expect(state).toEqual(before);
   });
   it('retains internal downside risk while rendering only a qualitative warning', () => {
@@ -104,7 +104,7 @@ describe('live progression', () => {
     expect(state).toEqual(before);
   });
   it('keeps IPO eligibility independent of optional property ownership and managers', () => {
-    const state = threeStoreCompany();
+    const state = advanceWeek(threeStoreCompany());
     state.profitableWeeks = 12;
     const before = structuredClone(state);
     const result = getProgression(state);
@@ -141,7 +141,7 @@ describe('live progression', () => {
     expect(state).toEqual(before);
   });
   it.each([19_999_999, 20_000_000, 20_000_001])('shows exact IPO net worth at the ¥%i boundary without changing eligibility', netWorth => {
-    const state = threeStoreCompany();
+    const state = advanceWeek(threeStoreCompany());
     state.profitableWeeks = 12;
     state.cash += netWorth - getSummary(state).netWorth;
     const result = getProgression(state);
@@ -151,18 +151,18 @@ describe('live progression', () => {
     expect(ipo.requirements.map(r => r.met)).toEqual(getSummary(state).ipoRequirements.map(r => r.met));
     expect(result.capital).toMatchObject({ kind: 'ipo', eligible: getSummary(state).ipoEligible });
   });
-  it('describes a negative neutral IPO profit as loss and retains the engine predicate', () => {
+  it('keeps IPO profit unmet without a settled report even when internal risk identifies a loss', () => {
     const state = applyAction(createGame(), { type: 'borrow', amount: 100_000, weeks: 52 });
     const result = getProgression(state);
     const requirement = result.roadmap.find(s => s.id === 'ipo')!.requirements.at(-1)!;
     expect(result.summary.weeklyProfit).toBeLessThan(0);
     expect(requirement.met).toBe(false);
-    expect(requirement.label).toContain('収益条件（基準利益が黒字）：未達');
+    expect(requirement.label).toContain('直近の決算が黒字：営業実績はまだありません');
     expect(requirement.label).not.toContain('〜');
     expect(result.recommendations[0]).toMatchObject({ urgent: true, tab: 'finance' });
   });
   it('does not make unowned optional property the next goal or capital default after IPO', () => {
-    const beforeIPO = threeStoreCompany();
+    const beforeIPO = advanceWeek(threeStoreCompany());
     beforeIPO.profitableWeeks = 12;
     const state = applyAction(beforeIPO, { type: 'ipo' });
     const before = structuredClone(state);
@@ -173,9 +173,8 @@ describe('live progression', () => {
     expect(result.roadmap.find(s => s.id === 'ipo')!.achieved).toBe(true);
     expect(state).toEqual(before);
   });
-  it('retains neutral-based campaign completion even with a possible downside loss', () => {
-    const state = campaignCompany();
-    state.lastReport = { ...previewWeek(state), week: 9 };
+  it('retains a saved campaign achievement even with a possible downside loss during continued play', () => {
+    const state = advanceWeek(campaignCompany());
     const debt = (previewWeek(state).operatingProfit - 1) * 52 / .05;
     state.loans = [{ id: 'marginal-debt', principal: debt, remaining: debt, annualRate: .05, weeksLeft: 52, weeklyPayment: 20 }];
     const before = structuredClone(state);
@@ -188,10 +187,11 @@ describe('live progression', () => {
     expect(campaign.achieved).toBe(true);
     expect(campaign.requirements.at(-1)!.met).toBe(true);
     expect(campaign.requirements.at(-1)!.label).not.toContain('〜');
-    expect(campaign.requirements.at(-1)!.label).toBe('継続収益の条件（基準判定）：充足');
+    expect(campaign.requirements.at(-1)!.label).toBe('全事業と全地区が稼働する週の黒字決算を保存');
+    expect(campaign.description).toContain(`第${state.campaignAchievement!.week}週の黒字決算`);
     expect(state).toEqual(before);
   });
-  it('requires the complete campaign but does not require a debt-free balance sheet', () => {
+  it('separates live completion requirements from the first saved achievement and allows debt', () => {
     const state = campaignCompany();
     state.loans = [{ id: 'small-debt', principal: 1000, remaining: 1000, annualRate: .01, weeksLeft: 52, weeklyPayment: 20 }];
     expect(getProgression(state).roadmap.find(s => s.id === 'campaign')!.achieved).toBe(false);
@@ -200,7 +200,10 @@ describe('live progression', () => {
     state.lastReport = { ...previewWeek(state), week: 9, netProfit: -1 };
     expect(getProgression(state).roadmap.find(s => s.id === 'campaign')!.achieved).toBe(false);
     state.lastReport = { ...previewWeek(state), week: 9 };
-    expect(getProgression(state).roadmap.find(s => s.id === 'campaign')!.achieved).toBe(true);
+    expect(getProgression(state).completion.currentRequirementsMet).toBe(true);
+    expect(getProgression(state).roadmap.find(s => s.id === 'campaign')!.achieved).toBe(false);
+    const settled = advanceWeek(state);
+    expect(getProgression(settled).roadmap.find(s => s.id === 'campaign')!.achieved).toBe(true);
     state.gameOver = true;
     expect(getProgression(state).roadmap.find(s => s.id === 'campaign')!.achieved).toBe(false);
     state.gameOver = false;

@@ -63,20 +63,20 @@ describe('manual strategy panel', () => {
     { profit: 1, sign: '黒字', met: true },
     { profit: 0, sign: '損益ゼロ', met: false },
     { profit: -1, sign: '赤字', met: false },
-  ])('shows neutral $sign at ¥$profit without treating the historical profit as this week', ({ profit, met }) => {
-    const state = company(1);
-    const debt = (previewWeek(state).operatingProfit - profit) * 52 / .05;
-    state.loans = [{ id: 'sign-fixture', principal: debt, remaining: debt, annualRate: .05, weeksLeft: 52, weeklyPayment: 20 }];
-    state.lastReport = { ...previewWeek(state), week: 1, netProfit: -1_000_000 };
-    expect(getSummary(state).weeklyProfit).toBe(profit);
+  ])('shows settled $sign at ¥$profit as the IPO profit criterion', ({ profit, met }) => {
+    const state = advanceWeek(company(1));
+    // Synthetic sign fixture isolates the latest saved-report requirement.
+    state.lastReport = { ...state.lastReport!, netProfit: profit };
+    expect(getSummary(state).weeklyProfit).toBeGreaterThan(0);
     const row = requirements(markup(state))[3];
     expect(row.met).toBe(met);
-    expect(row.content).toContain(`収益条件（基準利益が黒字）：${met ? '充足' : '未達'}`);
+    expect(row.content).toContain(`直近の決算が黒字（第1週）：¥${profit.toLocaleString('ja-JP')}`);
+    expect(row.content).not.toContain('基準利益');
     expect(row.content).not.toContain('〜');
   });
 
   it.each([false, true])('reviews IPO status with eligible=$0 and leaves property optional before IPO', eligible => {
-    const state = company(3);
+    const state = advanceWeek(company(3));
     state.profitableWeeks = eligible ? 12 : 11;
     expect(getSummary(state).ipoEligible).toBe(eligible);
     const rendered = markup(state);

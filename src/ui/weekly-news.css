@@ -24,5 +24,5 @@
 .weekly-news-conditions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:8px 0 0}
 .weekly-news-conditions dt{font-size:10px;color:var(--muted)}
 .weekly-news-conditions dd{font-size:12px;font-weight:600;margin:2px 0 0;color:var(--ink);font-variant-numeric:tabular-nums}
-.weekly-news-group-events{border-top:1px solid var(--line);padding-top:10px;margin-top:14px}
+.weekly-news-group-events .weekly-news-event{margin-bottom:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 @media(max-width:480px){.weekly-news-card{padding:12px}.weekly-news-card h4{font-size:14px}.weekly-news-source{font-size:10px}.weekly-news-companies li>div{gap:8px}}

@@ -20,6 +20,7 @@ export default function WeeklyNews({ report }: Props) {
   const { current, previous } = news.city;
   const demandChange = previous ? (current.demand / previous.demand - 1) * 100 : null;
   const cityEvents = news.events.filter(event => event.category === 'city');
+  const groupEvents = news.events.filter(event => event.category === 'company');
   const cityTitle = cityEvents.length ? '地区の開発が完成'
     : demandChange !== null && Math.abs(demandChange) > .001 ? `街のカフェ需要が前週より${demandChange > 0 ? '増加' : '減少'}`
       : '街のカフェ需要は基準並み';
@@ -56,7 +57,11 @@ export default function WeeklyNews({ report }: Props) {
         })}</ul> : <p>この週は比較できる他社の株価が記録されていません。</p>}
         <p className="weekly-news-caption">週初から週末の価格変化。</p>
       </article>
+      {groupEvents.length > 0 && <article className="weekly-news-card weekly-news-group-events" data-news-category="group" aria-label="グループ企業のニュース">
+        <span className="weekly-news-category">グループ</span><h4>グループ企業の進展</h4>
+        <p className="weekly-news-event">{groupEvents[0].text}</p>
+        {groupEvents.length > 1 && <details className="weekly-news-details"><summary>ほか{groupEvents.length - 1}件の進展</summary><ul>{groupEvents.slice(1).map((event, i) => <li key={i}>{event.text}</li>)}</ul></details>}
+      </article>}
     </div>
-    {news.events.some(event => event.category === 'company') && <details className="weekly-news-details weekly-news-group-events"><summary>グループ企業の進展</summary><ul>{news.events.filter(event => event.category === 'company').map((event, i) => <li key={i}>{event.text}</li>)}</ul></details>}
   </section>;
 }

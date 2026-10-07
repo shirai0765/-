@@ -66,6 +66,7 @@ export async function runManagedWeeks(initial: GameState, requested: 4 | 13, hoo
     try {
       hooks.onCommit?.(state, report);
       if (state.gameOver) return stop(state.gameOverReason ?? 'ゲームが終了しました。');
+      if (!initial.campaignAchievement && state.campaignAchievement) return stop('街と企業の成長を達成しました。保存した達成記録を確認できます。この会社の経営は続けられます。');
       if (operatingProgram && state.week >= operatingProgram.endWeek) return stop('事業投資の26週間が終了しました。保存済みの実績を確認し、次の運営方針を判断してください。');
       const completedBefore = initial.development?.programs.reduce((n, p) => n + p.completedChoiceIds.length, 0) ?? 0;
       const completedNow = state.development?.programs.reduce((n, p) => n + p.completedChoiceIds.length, 0) ?? 0;

@@ -12,6 +12,7 @@ function eligibleCompany() {
   let state = createGame();
   state.cash = 50_000_000;
   for (const site of sites.slice(0, 3)) state = applyAction(state, { type: 'openStore', lotId: site.id, style: 'standard' });
+  state = advanceWeek(state);
   state.profitableWeeks = 12;
   expect(getSummary(state).ipoEligible).toBe(true);
   return state;

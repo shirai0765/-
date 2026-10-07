@@ -1,0 +1,75 @@
+.campaign-completion-screen {
+  --completion-ink: #18352f;
+  --completion-green: #167563;
+  --completion-muted: #64776f;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: #fafbf7;
+  color: var(--completion-ink);
+}
+.campaign-completion-screen::backdrop { background: #fafbf7; }
+.campaign-completion-screen[open] { display: block; }
+.campaign-completion-surface { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; background: #fafbf7; }
+.campaign-completion-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: calc(18px + env(safe-area-inset-top, 0px)) max(32px, env(safe-area-inset-right, 0px)) 18px max(32px, env(safe-area-inset-left, 0px)); border-bottom: 1px solid #dfe8de; }
+.campaign-completion-brand { display: flex; align-items: center; gap: 11px; }
+.campaign-completion-brand > span { display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid #b8d4c7; border-radius: 9px; font: 800 18px 'Manrope Variable', sans-serif; letter-spacing: -1.5px; color: var(--completion-green); }
+.campaign-completion-brand strong { font-size: 10px; letter-spacing: .04em; }
+.campaign-completion-brand small { display: block; font-size: 9px; font-weight: 500; margin-top: 3px; color: var(--completion-muted); }
+.campaign-completion-exit { display: grid; place-items: center; min-width: 44px; min-height: 44px; background: transparent; color: var(--completion-muted); }
+.campaign-completion-content { min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.campaign-completion-inner { max-width: 880px; margin: 0 auto; padding: 35px 40px 28px; }
+.campaign-completion-kicker { display: flex; align-items: center; gap: 7px; margin: 0 0 18px; font-size: 12px; font-weight: 650; color: var(--completion-green); }
+.campaign-completion-inner h2 { margin: 0; font-size: clamp(29px, 4vw, 43px); font-weight: 700; line-height: 1.55; letter-spacing: -.035em; }
+.campaign-completion-inner h2:focus { outline: none; }
+.campaign-completion-company { margin: 13px 0 0; font-size: 15px; font-weight: 650; overflow-wrap: anywhere; }
+.campaign-completion-milestones { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; margin: 28px 0; padding: 24px 0; border-block: 1px solid #d5e3d8; }
+.campaign-completion-milestones > div { min-width: 0; }
+.campaign-completion-milestones svg { color: var(--completion-green); vertical-align: baseline; }
+.campaign-completion-milestones strong { display: inline-block; margin-left: 12px; font: 650 43px 'Manrope Variable', 'Noto Sans JP Variable', sans-serif; letter-spacing: -.04em; }
+.campaign-completion-milestones strong span { font: 600 16px 'Noto Sans JP Variable', sans-serif; margin-left: 6px; letter-spacing: 0; }
+.campaign-completion-milestones p { margin: 9px 0 0; color: var(--completion-muted); font-size: 12px; line-height: 1.8; }
+.campaign-completion-check { display: inline-grid; place-items: center; width: 27px; height: 27px; border: 1px solid #b4d0bd; border-radius: 50%; }
+.campaign-completion-settlement h3 { margin: 0 0 13px; color: var(--completion-muted); font-size: 12px; font-weight: 550; }
+.campaign-completion-settlement dl { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 0; }
+.campaign-completion-settlement dl > div { min-width: 0; }
+.campaign-completion-settlement dt { font-size: 11px; color: var(--completion-muted); }
+.campaign-completion-settlement dd { margin: 7px 0 0; font: 650 clamp(21px, 3vw, 30px) 'Manrope Variable', 'Noto Sans JP Variable', sans-serif; letter-spacing: -.035em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.campaign-completion-footprint { display: flex; align-items: center; gap: 6px; color: var(--completion-muted); font-size: 11px; margin: 23px 0 0; line-height: 1.7; }
+.campaign-completion-footprint svg { flex-shrink: 0; }
+.campaign-completion-note { color: var(--completion-muted); font-size: 11px; line-height: 1.9; margin: 10px 0 0; }
+.campaign-completion-footer { border-top: 1px solid #dfe8de; padding: 18px max(32px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(32px, env(safe-area-inset-left, 0px)); background: #fafbf7; }
+.campaign-completion-footer > div { display: flex; align-items: center; justify-content: flex-end; gap: 26px; max-width: 800px; margin: 0 auto; }
+.campaign-completion-review { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 8px 0; font-size: 12px; color: var(--completion-muted); background: transparent; }
+.campaign-completion-screen .campaign-completion-continue { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 48px; padding: 12px 18px; background: var(--completion-green); color: #fff; border-radius: 8px; font-size: 12px; font-weight: 650; }
+.campaign-completion-screen button:focus-visible { outline: 2px solid var(--completion-green); outline-offset: 4px; }
+@media (max-width: 620px) {
+  .campaign-completion-header { padding: calc(10px + env(safe-area-inset-top, 0px)) max(22px, env(safe-area-inset-right, 0px)) 10px max(22px, env(safe-area-inset-left, 0px)); }
+  .campaign-completion-inner { padding: 22px 24px 20px; }
+  .campaign-completion-kicker { font-size: 11px; margin-bottom: 12px; }
+  .campaign-completion-inner h2 { font-size: 28px; line-height: 1.5; }
+  .campaign-completion-company { margin-top: 10px; font-size: 13px; }
+  .campaign-completion-milestones { grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0; padding: 17px 0; }
+  .campaign-completion-milestones > div > svg, .campaign-completion-check { display: none; }
+  .campaign-completion-milestones strong { margin: 0; font-size: 36px; }
+  .campaign-completion-milestones strong span { font-size: 12px; margin-left: 4px; }
+  .campaign-completion-milestones p { font-size: 10px; line-height: 1.8; margin-top: 6px; }
+  .campaign-completion-settlement h3 { font-size: 11px; margin-bottom: 12px; }
+  .campaign-completion-settlement dl { gap: 14px; }
+  .campaign-completion-settlement dt { font-size: 10px; }
+  .campaign-completion-settlement dd { font-size: clamp(15px, 4.5vw, 20px); margin-top: 6px; }
+  .campaign-completion-footprint { font-size: 10px; margin-top: 17px; }
+  .campaign-completion-note { font-size: 10px; line-height: 1.8; margin-top: 9px; }
+  .campaign-completion-footer { padding: 12px max(24px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)) max(24px, env(safe-area-inset-left, 0px)); }
+  .campaign-completion-footer > div { flex-direction: column; align-items: stretch; gap: 6px; }
+  .campaign-completion-review { justify-content: center; font-size: 11px; }
+  .campaign-completion-screen .campaign-completion-continue { width: 100%; min-height: 46px; }
+}
