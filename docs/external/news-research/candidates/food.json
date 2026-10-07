@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "category": "food",
+  "candidates": [
+    {
+      "id": "nr-food-doutor-price-revision-20241212",
+      "eventKey": "doutor-dcs-price-revision-20241212",
+      "category": "food",
+      "realEntities": [
+        "株式会社ドトールコーヒー",
+        "ドトールコーヒーショップ"
+      ],
+      "eventDate": "2024-12-12",
+      "eventDateNote": "価格改定概要の実施日。2024年11月27日の発表に記載された予定であり、この資料だけで各店舗の実施を確認したものではない。",
+      "sourceURL": "https://www.doutor.co.jp/news/newsrelease/detail/20241127100901.html",
+      "publisher": "株式会社ドトールコーヒー",
+      "publishedDate": "2024-11-27",
+      "publishedDateNote": "ニュース本文上部の2024.11.27 NEWS表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭、価格改定概要、主な価格改定表。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事を開き、発表日、実施予定日、対象商品、税込新旧価格を読んだ。ドトール・日レスHD公式の関係会社一覧 https://www.dnh.co.jp/company/group/ も開き、発表主体が連結子会社であることを確認した。"
+      },
+      "facts": [
+        "ドトールコーヒーは2024年11月27日、全国のドトールコーヒーショップで一部の飲料、フード、コーヒー豆の価格を12月12日から改定すると発表した。",
+        "発表時の税込価格表では、ブレンドコーヒーSを250円から280円、カフェ・ラテSを340円から380円とする予定を示した。",
+        "同社は原材料、人件費、物流費、為替変動などによるコスト増を改定理由として説明した。"
+      ],
+      "managementChoice": "運営効率化による吸収と、品質・労務環境を保つための一部商品の価格改定を比較する。",
+      "authorWrittenBrief": "2024年、ドトールコーヒーはコスト上昇への対応として、12月から一部商品の値上げを行う方針を公表した。価格を維持する努力と、食材調達や従業員の環境を支える判断が並んだ事例である。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3087",
+          "gameName": "ドートル・日食",
+          "realName": "ドトール・日レスホールディングス",
+          "relationship": "subsidiary",
+          "note": "既存STOCKSの3087は持株会社。発表主体の株式会社ドトールコーヒーはHD公式関係会社一覧の連結子会社であり、持株会社自身による商品価格発表と混同しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "pricing-operation",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.price / WeeklyReport.storeResults / WeeklyReport.storeAccounts",
+          "rationale": "自社店舗の価格設定と、その後の確定売上・利益・費用を読む際に参考になる。",
+          "limitation": "保存値は自社の設定と決算だけを立証する。独立他社の価格改定や原因、価格変更の履歴を記録するものではなく、株価から実施を推測できない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.dnh.co.jp/company/group/",
+          "publisher": "株式会社ドトール・日レスホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "関係会社一覧の本文に掲載日・更新日の明記を確認できないため不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "連結子会社の一覧、株式会社ドトールコーヒーの行。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "関係会社一覧を開き、ドトールコーヒーが連結子会社に掲載されることを実読した。商品発表のfactsは主出典に基づき、このページは現時点の企業対応を補足する。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-food-doutor-coffee-lineup-20250725",
+      "eventKey": "doutor-kenya-guatemala-launch-20250725",
+      "category": "food",
+      "realEntities": [
+        "株式会社ドトールコーヒー",
+        "ドトールコーヒーショップ"
+      ],
+      "eventDate": "2025-07-25",
+      "eventDateNote": "本文冒頭に記されたコーヒー豆2商品の発売予定日。発表資料のため、各店舗での実売開始の確認とは区別する。",
+      "sourceURL": "https://www.doutor.co.jp/news/newsrelease/detail/20250709171732.html",
+      "publisher": "株式会社ドトールコーヒー",
+      "publishedDate": "2025-07-11",
+      "publishedDateNote": "本文上部の2025.07.11 NEWS表記。URL中の20250709からは推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭、ケニアとグアテマラの商品紹介、既存商品の販売終了に関する注記。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事の掲載日、発売予定日、深煎りという商品設計、既存商品の在庫終了条件を本文で確認した。HD公式関係会社一覧 https://www.dnh.co.jp/company/group/ の連結子会社欄も読んだ。"
+      },
+      "facts": [
+        "ドトールコーヒーは2025年7月11日、コーヒー豆のケニアとグアテマラを7月25日から発売すると発表した。",
+        "両商品は深煎りで、ストレートコーヒーの品ぞろえを更新する位置付けとした。",
+        "導入に伴い既存のブラジルとコロンビアは、各店の在庫がなくなった時点で販売終了すると案内した。"
+      ],
+      "managementChoice": "産地別商品の追加と既存商品の段階的終了を組み合わせ、品ぞろえを更新する。",
+      "authorWrittenBrief": "ドトールコーヒーは2025年夏、深煎りのケニアとグアテマラを加えるコーヒー豆の更新計画を発表した。従来の2商品は店舗在庫の終了に合わせて切り替える方式を選んだ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3087",
+          "gameName": "ドートル・日食",
+          "realName": "ドトール・日レスホールディングス",
+          "relationship": "subsidiary",
+          "note": "STOCKSの3087はHD、ニュースの主体は公式関係会社一覧で連結子会社とされるドトールコーヒー。商品ブランドと持株会社を別に扱う。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality / Store.price / WeeklyReport.storeResults",
+          "rationale": "自社店舗の商品価値と価格の選択を考え、確定決算を読む場面の参考事例。",
+          "limitation": "現行保存には商品SKU、産地、発売日、在庫による販売終了のログがない。自社設定や他社の株価は、この商品発売がゲームの今週に起きた証拠にならない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.dnh.co.jp/company/group/",
+          "publisher": "株式会社ドトール・日レスホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "関係会社一覧の本文に掲載日・更新日の明記を確認できないため不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "連結子会社の一覧、株式会社ドトールコーヒーの行。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "関係会社一覧を開き、ドトールコーヒーが連結子会社に掲載されることを実読した。商品発表のfactsは主出典に基づき、このページは現時点の企業対応を補足する。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-food-basefood-yakisoba-launch-20250116",
+      "eventKey": "basefood-yakisoba-relaunch-20250116",
+      "category": "food",
+      "realEntities": [
+        "ベースフード株式会社",
+        "BASE YAKISOBA"
+      ],
+      "eventDate": "2025-01-16",
+      "eventDateNote": "本文冒頭と商品概要にある国内の順次発売予定日。香港の発売予定日は別日の2025年1月23日であり、同日の発売とは扱わない。",
+      "sourceURL": "https://basefood.co.jp/news/2120",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2025-01-09",
+      "publishedDateNote": "NEWS本文上部の2025/1/9表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "記事冒頭、即席麺シリーズの説明、購入単位の変更、香港展開の節。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "企業公式記事を開き、国内と香港の異なる発売予定日、旧シリーズ終売の記述、商品改善、EC購入単位の変更を実読した。健康効果を独自に実証したものではない。"
+      },
+      "facts": [
+        "ベースフードは2025年1月9日、BASE YAKISOBAのソース焼きそばと旨辛まぜそばを国内で1月16日から順次発売すると発表した。",
+        "記事は旧BASE PASTA即席麺シリーズが2024年12月に終売したことと、新シリーズで穀物原料の配合や麺の形状を調整したことを説明している。",
+        "ECでの購入単位を旧商品の12個から新商品の4個に変更すると説明した。",
+        "香港の公式オンラインショップでは1月23日から発売する予定を示した。"
+      ],
+      "managementChoice": "商品設計の改良と小口の購入単位を組み合わせ、国内販売と海外展開の日程を分ける。",
+      "authorWrittenBrief": "ベースフードは2025年初め、即席麺を改良したBASE YAKISOBAの発売計画を公表した。味や麺の設計に加えてECの購入単位を小さくし、国内に続いて香港でも販売する方針を示した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "STOCKSとmarket-universeの2936はベースフード。発表主体は同社であり、商品名を企業名やゲーム名に置換しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality / Store.style / WeeklyReport.storeResults",
+          "rationale": "商品価値や販売形態を選び、その後の確定収益を見るための比較資料。",
+          "limitation": "保存済み店舗設定と決算には即席麺SKU、購入単位、海外発売日を記録する欄がない。ベースフードの現実の発売や将来利益をゲームの今週実績に対応させられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-komeda-is-higashiginza-20200715",
+      "eventKey": "komeda-is-higashiginza-opening-20200715",
+      "category": "food",
+      "realEntities": [
+        "株式会社コメダ",
+        "KOMEDA is □東銀座店"
+      ],
+      "eventDate": "2020-07-15",
+      "eventDateNote": "会社発信プレスリリースの本文冒頭に示された開業予定日。発表当時の計画として記録し、この資料から当日の実施を断定しない。",
+      "sourceURL": "https://www.atpress.ne.jp/news/218193",
+      "publisher": "株式会社コメダ（配信：アットプレス）",
+      "publishedDate": "2020-07-09",
+      "publishedDateNote": "記事タイトル直下の2020年7月9日15:00表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "発信企業・日時、本文冒頭、提供メニュー、店舗概要。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "株式会社コメダを発信主体とする配信原稿を開き、日付、新業態、開業予定、メニュー説明を読んだ。HD公式会社概要 https://komeda-holdings.co.jp/company-profile/ も開き、コメダHDが株式会社コメダの持株会社であることを確認した。"
+      },
+      "facts": [
+        "株式会社コメダは2020年7月9日、植物由来の原材料を用いる新業態KOMEDA is □の東銀座店を7月15日に開く予定を発表した。",
+        "原稿ではフード34種、デザート8種をべっぴんプラスと共同開発し、アルコールを含む飲料にも植物由来のものをそろえると説明した。"
+      ],
+      "managementChoice": "既存の喫茶体験を維持しつつ、原材料とメニューを特徴とする別業態で出店する。",
+      "authorWrittenBrief": "コメダは2020年、東銀座に植物由来のメニューを提供する新業態を開く計画を発表した。従来の喫茶店とは異なる食材の選択を、くつろぎを提供する店舗づくりに取り込んだ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3543",
+          "gameName": "コモレビ珈琲",
+          "realName": "コメダホールディングス",
+          "relationship": "subsidiary",
+          "note": "STOCKSの3543はHD。公式会社概要はHDを株式会社コメダの持株会社と説明している。リリース主体の株式会社コメダと、上場HDを区別する。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.style / OpeningRecord.decisionWeek / OpeningRecord.result",
+          "rationale": "自社の出店形態を決め、判断後の初回決算を読む際に、新業態による差別化の参考となる。",
+          "limitation": "OpeningRecordは自社の出店判断と初回決算の記録。独立他社の開業、植物由来メニュー、現実の2020年の日付を記録せず、将来利益も立証しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://komeda-holdings.co.jp/company-profile/",
+          "publisher": "株式会社コメダホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "ページ見出し下に複数の日付表示があるが、本文表示では公開日と更新日の区別を確定できず、再取得時にも表示日が異なったため掲載日は不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "会社概要の冒頭説明および事業内容欄。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "HDが喫茶店チェーンを運営する株式会社コメダの持株会社だという説明を実読した。現時点の企業対応の裏付けであり、個店の開業日やFCオーナーの所有関係の裏付けではない。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-food-komeda-tokyobay-opening-20251030",
+      "eventKey": "komeda-tokyobay-store-opening-20251030",
+      "category": "food",
+      "realEntities": [
+        "株式会社コメダ",
+        "コメダ珈琲店 ららぽーとTOKYO-BAY店"
+      ],
+      "eventDate": "2025-10-30",
+      "eventDateNote": "公式記事の本文で2025年10月30日に開業したと報告されている。予定ではなく開業報告。",
+      "sourceURL": "https://fc.komeda.co.jp/information/461/",
+      "publisher": "株式会社コメダ（フランチャイズ加盟募集サイト）",
+      "publishedDate": "2025-10-30",
+      "publishedDateNote": "記事タイトル直上の2025.10.30表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭、商業施設入口横の立地説明、新規加盟オーナーの記述、店舗情報。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "コメダ公式FC募集サイトの記事を開き、開業日、施設内立地、新規加盟オーナーの初出店という説明を確認した。加盟オーナーの法人名や店舗利益は掲載されていない。HD公式会社概要 https://komeda-holdings.co.jp/company-profile/ による持株会社と事業会社の関係も実読した。"
+      },
+      "facts": [
+        "公式FC募集サイトは、コメダ珈琲店ららぽーとTOKYO-BAY店が2025年10月30日に開業したと報告した。",
+        "店舗は千葉県船橋市のららぽーとTOKYO-BAY北館1階、施設の入口横に位置すると説明している。",
+        "新規加盟オーナーによる初めての出店と説明されている。"
+      ],
+      "managementChoice": "商業施設の入口に近い区画へ、加盟オーナーのFC店舗として出店する。",
+      "authorWrittenBrief": "2025年秋、コメダはららぽーとTOKYO-BAYの入口横に新しい加盟店が開業したと紹介した。新規オーナーが商業施設内で初出店する事例であり、直営店の増設とは事業主体が異なる。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3543",
+          "gameName": "コモレビ珈琲",
+          "realName": "コメダホールディングス",
+          "relationship": "parent-group",
+          "note": "既存3543への対応はグループが展開するコメダ珈琲店ブランドとしての対応。原資料は新規FCオーナーによる開業で、オーナー名は不明。加盟店をHD直営店またはHDの連結子会社とみなさない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId / OpeningRecord.decisionWeek / OpeningRecord.result",
+          "rationale": "自社の出店先区画を選び、その初回の確定営業結果を読む際に、施設内立地を比較する参考。",
+          "limitation": "自社の開業記録には独立FCオーナーや加盟方式のログがない。ブランド網の店舗数を自社店舗数やグループ収益へ加算できず、この現実の開業を今週の実績と扱えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://komeda-holdings.co.jp/company-profile/",
+          "publisher": "株式会社コメダホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "ページ見出し下に複数の日付表示があるが、本文表示では公開日と更新日の区別を確定できず、再取得時にも表示日が異なったため掲載日は不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "会社概要の冒頭説明および事業内容欄。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "HDが喫茶店チェーンを運営する株式会社コメダの持株会社だという説明を実読した。現時点の企業対応の裏付けであり、個店の開業日やFCオーナーの所有関係の裏付けではない。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-food-komeda-fy2025-results-20250409",
+      "eventKey": "komeda-fy2025-results-20250409",
+      "category": "food",
+      "realEntities": [
+        "株式会社コメダホールディングス"
+      ],
+      "eventDate": "2025-04-09",
+      "eventDateNote": "会社が2025年2月期の連結決算を発表した日。業績の対象期間は2024年3月1日から2025年2月28日で、発表日の営業成績ではない。",
+      "sourceURL": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20250409/20250408510776.pdf",
+      "publisher": "株式会社コメダホールディングス（Yahoo!ファイナンス適時開示配信PDF）",
+      "publishedDate": "2025-04-09",
+      "publishedDateNote": "原PDF1ページ目の発表日2025年4月9日。URLや検索結果の経過期間から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページ目の連結経営成績と対象期間、PDF4ページ目（資料内2ページ）の当期経営成績概況。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "会社名・証券コード・発表日が明記された13ページの会社作成決算短信PDFを配信先で開いた。1ページ目の確定連結業績と4ページ目の価格改定・店舗数・業績説明を実読した。翌期予想を確定実績として採録していない。Daiwa IR配信の同日要約PDF https://www.daiwair.co.jp/td_download.cgi?c=3543&i=2963606 も開いて数値を照合した。"
+      },
+      "facts": [
+        "2025年4月9日に公表された2025年2月期の連結決算で、売上収益は47,057百万円、前期比8.8%増だった。",
+        "同期間の営業利益は8,820百万円で前期比1.2%増、親会社所有者に帰属する当期利益は5,814百万円で前期比2.6%減だった。",
+        "経営成績概況では店頭メニューを4月、FC加盟店向け卸売価格を9月に改定したと説明した。",
+        "期末のグループ店舗網は1,083店で、同じ表の直営店内数は60店。全店舗数を自社直営店舗数とは扱わない。"
+      ],
+      "managementChoice": "店頭とFC卸売の価格改定時期を分けながら、店舗網拡大と連結の売上・利益の伸びを別々に評価する。",
+      "authorWrittenBrief": "コメダホールディングスの2025年2月期は増収と営業増益だった一方、親会社所有者に帰属する利益は減少した。価格改定や店舗網の拡大を、売上と複数の利益指標を分けて振り返れる決算事例である。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3543",
+          "gameName": "コモレビ珈琲",
+          "realName": "コメダホールディングス",
+          "relationship": "direct",
+          "note": "原PDFの発行主体・証券コード3543が既存STOCKSおよびmarket-universeのコメダホールディングスと一致する。数値は持株会社の連結決算で、個店の決算やFC加盟店全体の売上ではない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "settled-results",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "WeeklyReport.week / WeeklyReport.revenue / WeeklyReport.operatingProfit / WeeklyReport.netProfit",
+          "rationale": "自社の確定決算で売上・営業利益・純利益を分けて読むための参考となる。",
+          "limitation": "WeeklyReportは自社の週次決算で、現実企業の年度連結決算とは期間・範囲が異なる。現実の数値をゲーム決算や株価に移せず、独立他社の過去業績を自社傘下の収益へ二重計上できない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.daiwair.co.jp/td_download.cgi?c=3543&i=2963606",
+          "publisher": "株式会社コメダホールディングス（Daiwa IR配信の会社作成PDF）",
+          "publishedDate": "2025-04-09",
+          "publishedDateNote": "PDF1ページ目の会社名の直前に示された2025年4月9日。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "2ページの要約PDFの1ページ目、連結経営成績と対象期間。",
+          "sourceRead": {
+            "method": "web-open/pdf-text",
+            "status": "verified",
+            "notes": "2ページの要約版を開き、発行会社・コード3543・発表日・対象期間・売上収益47,057百万円・営業利益8,820百万円・親会社所有者帰属当期利益5,814百万円を主出典と照合した。店舗や価格改定の説明は13ページ版の主出典に基づく。"
+          }
+        }
+      ]
+    }
+  ]
+}

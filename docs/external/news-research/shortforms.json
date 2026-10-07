@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "candidateId": "nr-capital-ma-basefood-ipo-20221115",
+      "authorWrittenBrief": "ベースフードは2022年11月15日、東証グロース市場への上場を報告した。主食商品の開発・販売を続けながら事業拡大を目指す方針を、上場時の発表に添えた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "実施済み上場と将来の事業拡大方針を分離。調達額や上場後の成長・利益は資料の範囲を超えて加えない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-tsukuruba-ipo-20190731",
+      "authorWrittenBrief": "住宅流通サービスcowcamoとシェアードワークプレイスを営んでいたツクルバは、2019年7月31日に東証マザーズ市場への上場を報告した。住宅や働く場の事業と、株式公開による資本政策を組み合わせた過去の事例である。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "市場名は当時のマザーズを保持し、現在のGrowth区分と混同しない。物件取得や開業、調達額を推定しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-basefood-equity-loan-20220223",
+      "authorWrittenBrief": "ベースフードは2022年2月、第三者割当増資で10億円を調達し、別に総額10億円の銀行融資契約を結んだと報告した。商品改良・新商品開発と採用強化に向け、株式と借入を組み合わせた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "日付は報告月で、正確な調達日・締結日・入金日を補わない。20億円全額を増資としたり融資契約を現金受領済みとしたりしない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-softbank-bond-decision-20240301",
+      "authorWrittenBrief": "ソフトバンクグループは2024年3月、主に個人投資家向けの7年社債を5,500億円発行すると決めた。国内社債の償還で減る手元資金の補充と、近く償還する社債の返済資金に充てる計画だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "発行決定を払込完了へ変えない。資金使途は償還に関連する2項目を維持し、新規成長投資と書かない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-sony-bungie-completion-20220715",
+      "authorWrittenBrief": "ソニー傘下のSIEは2022年7月15日、Bungieの全株式取得を完了した。約37億米ドルの調整後対価には従業員インセンティブも含まれ、完了が想定より早まったことで買収関連費用の見通しを再評価していると説明した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "完了日は原資料の米国PDT表記。約37億米ドルを株式代金だけとせず、費用予想の再評価を実際の利益増減へ変えない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-nintendo-nlg-contract-20210105",
+      "authorWrittenBrief": "任天堂は2021年1月、Next Level Gamesの全株式を取得する契約を結んだと報告した。開発資源の確保やチーム間の連携を狙い、取得実行は当局の承認などを条件とする予定だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "契約の報告月であり正確な締結日は不明。契約締結を取得完了とせず、狙いを達成済みの開発速度・品質向上にしない。"
+    },
+    {
+      "candidateId": "nr-food-doutor-price-revision-20241212",
+      "authorWrittenBrief": "ドトールコーヒーは2024年11月、原材料や人件費などの上昇を理由に、翌月から一部商品の価格を改定すると発表した。ブレンドコーヒーSは税込250円から280円にする予定を示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "発表主体は持株会社でなくドトールコーヒー。会社が説明した理由と予定価格を記し、値上げ後の販売・利益は主張しない。"
+    },
+    {
+      "candidateId": "nr-food-doutor-coffee-lineup-20250725",
+      "authorWrittenBrief": "ドトールコーヒーは2025年7月、深煎りのケニアとグアテマラをコーヒー豆の品ぞろえに加えると発表した。従来のブラジルとコロンビアは、店ごとの在庫終了に合わせて販売を終える計画だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "産地別の商品更新と旧商品の段階的終了を示す。発売予定を実売の確認へ広げず、ドトール・日レスHD自身の商品と書き換えない。"
+    },
+    {
+      "candidateId": "nr-food-basefood-yakisoba-launch-20250116",
+      "authorWrittenBrief": "ベースフードは2025年1月、麺の配合や形状を調整したBASE YAKISOBAを国内で順次発売する計画を発表した。ECの購入単位を12個から4個へ小さくし、香港では国内より後の日程で販売する予定も示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "商品改良・購入単位・市場別日程を主眼にする。旧即席麺シリーズと新シリーズを分け、香港を国内と同日発売としない。"
+    },
+    {
+      "candidateId": "nr-food-komeda-is-higashiginza-20200715",
+      "authorWrittenBrief": "コメダは2020年7月、東銀座で植物由来の原材料を使う新業態KOMEDA is □を開く計画を発表した。既存の喫茶店とは違う食材とメニューを軸にした出店計画だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "発表主体は株式会社コメダで持株会社ではない。計画発表に限定し、植物由来原材料の採用を環境効果や利益の証拠へ広げない。"
+    },
+    {
+      "candidateId": "nr-food-komeda-tokyobay-opening-20251030",
+      "authorWrittenBrief": "コメダの公式FC募集サイトは、ららぽーとTOKYO-BAY店が2025年10月30日に開業したと報告した。施設入口横の区画で、新規加盟オーナーが初めて出店した事例である。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "開業済みのFC店舗として記し、コメダHDやコメダの直営店としない。入口立地を集客・収益が増えた証拠にしない。"
+    },
+    {
+      "candidateId": "nr-food-komeda-fy2025-results-20250409",
+      "authorWrittenBrief": "コメダホールディングスの2025年2月期連結決算は、売上収益と営業利益が増えた一方、親会社所有者に帰属する当期利益は減った。期末の店舗網1,083店には直営以外の店舗も含まれ、直営店の内数は60店だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "年度連結の複数指標と店舗主体を保持。対象期間2024/3/1〜2025/2/28を発表日の営業実績や今週決算へ移さず、価格改定だけを増益の原因としない。"
+    },
+    {
+      "candidateId": "nr-rail-city-setagaya-renewable-operation-20190325",
+      "authorWrittenBrief": "当時の東京急行電鉄は2019年3月25日、世田谷線の列車を動かす電力を水力・地熱由来に切り替えた。既存路線の運行を続けながら、通年・全列車を対象に電力の調達方法を変えた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "当日発表と後年公式記録が裏付ける実施範囲に限定。世田谷線の列車運行を東急全線・駅舎へ拡張しない。"
+    },
+    {
+      "candidateId": "nr-rail-city-shinyokohama-line-opening-20230318",
+      "authorWrittenBrief": "東急新横浜線は2023年3月18日に開業し、日吉と新横浜を結ぶ5.8kmの区間が加わった。新横浜で相鉄新横浜線につながり、両社の路線をまたぐ直通運転が可能になった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "IRと路線史による開業実施を記す。需要・賃料・利益や新幹線旅客増など、接続だけでは立証できない効果は加えない。"
+    },
+    {
+      "candidateId": "nr-rail-city-shibuya-saikyo-plan-announcement-20200218",
+      "authorWrittenBrief": "JR東日本は2020年2月、渋谷駅の埼京線ホームを約350m北へ移し、山手線ホームと並べる工事計画を発表した。改札への動線変更とともに、工事中の運休や悪天候時の延期条件も示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "ホーム改良と運休・延期の計画発表として記し、供用開始実施をこの資料から断定しない。移動距離を新路線の営業キロとしない。"
+    },
+    {
+      "candidateId": "nr-rail-city-shibuya-yamanote-platform-unification-20230109",
+      "authorWrittenBrief": "JR東日本は渋谷駅の段階的な改良で、2023年1月に山手線の内・外回りホームを一つにした。事前には外回りの運休を伴う工事を案内し、後年の公式資料でもホーム同一化の実施を記録している。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "事前計画と日付付き公式冊子・後年の実施記録を併読した範囲を保つ。2020年の埼京線ホーム移設と別の工事に扱う。"
+    },
+    {
+      "candidateId": "nr-rail-city-takanawa-stage-opening-20250327",
+      "authorWrittenBrief": "JR東日本は2025年4月、TAKANAWA GATEWAY CITYのTHE LINKPILLAR 1が3月27日にまちびらきを迎えたと報告した。商業施設やホテル、他の棟は時期を分けて開業する計画で、駅直結の街区を段階的に立ち上げる構成だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "実施済みのTHE LINKPILLAR 1と当時予定だった施設・他棟を分ける。2026年春の予定を現在完了したと補わず、全街区が2025/3/27に開いたとしない。"
+    },
+    {
+      "candidateId": "nr-rail-city-minamimachida-station-service-change-20191001",
+      "authorWrittenBrief": "南町田駅では2019年10月1日、南町田グランベリーパーク駅への改称とダイヤ改正が行われた。翌月の街のまちびらきに先行し、平日・土休日とも田園都市線の全急行が停まる設定に変えた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "公式社史の実施記録を根拠とする。駅名・ダイヤ変更日と商業施設のまちびらきや新駅舎供用を混同せず、全急行は田園都市線の範囲に限定。"
+    },
+    {
+      "candidateId": "nr-retail-property-mitsui-kadoma-hybrid-20230208",
+      "authorWrittenBrief": "三井不動産は2023年2月、門真の一つの建物にららぽーととアウトレットを組み合わせ、同年4月に開く計画を発表した。普段の買い物とアウトレット利用を階ごとに配置する構成だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "発表時点の計画として記述し、開業実施の確認へ広げない。異なる商業形態の併設という選択を示し、集客や収益の増加は推定しない。"
+    },
+    {
+      "candidateId": "nr-retail-property-muji-ginza-complex-20190228",
+      "authorWrittenBrief": "良品計画は2019年2月、銀座で物販・飲食・宿泊を同年4月に同時開業する計画を示した。ホテルの企画・内装設計・運営をUDSが担い、買い物以外の利用も同じ建物に組み合わせる計画だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "複合用途と運営主体の分担が主眼。発表資料だけで実際の開業・運営収益を立証せず、既存100stockに良品計画の対応がない点も保つ。"
+    },
+    {
+      "candidateId": "nr-retail-property-uniqlo-maebashi-energy-20230419",
+      "authorWrittenBrief": "ユニクロは2023年4月、前橋の新店に自然採光、照明制御、太陽光パネルなどを採用したと発表した。開業を前にBELSの星5つとZEB Readyの認定を受けた店舗設計の事例である。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "設備採用・認定を記す一方、開業実施と実際の省エネ量は主張しない。現行100stockに対応銘柄がない点を維持。"
+    },
+    {
+      "candidateId": "nr-retail-property-mec-tokiwabashi-office-20210719",
+      "authorWrittenBrief": "三菱地所は2021年7月、常盤橋タワーが6月30日に竣工したと報告した。オフィスの2フロアを共用空間に充て、カフェテリアや会議・仕事場所などを用意する構成を示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "竣工実施と共用施設の計画・案内を分ける。カフェテリアは後日開業予定なので竣工日に営業開始したとしない。"
+    },
+    {
+      "candidateId": "nr-retail-property-nbf-toranomon-land-retention-20240712",
+      "authorWrittenBrief": "日本ビルファンドは2024年7月、NBF虎ノ門ビルの建物部分を譲り、土地を持ち続けて貸す取組みを決めた。自らの建替えを含む案を比較し、50年の借地契約と再開発後の建物取得に向けた優先交渉権を組み合わせた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "決定・契約と将来の譲渡を区別。優先交渉権を再開発後建物の取得確定と書かず、REITと譲受人三井不動産の役割を保つ。"
+    },
+    {
+      "candidateId": "nr-retail-property-arealink-storage-expansion-20250304",
+      "authorWrittenBrief": "エリアリンクは2025年3月、2024年の新規出店が10,545室、年末の総室数が110,442室だったと公表した。新規出店の約8割はコンテナ型で、一都三県に加え関西・中部などにも展開した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "2024年の年間新規出店集計で、閉鎖を差し引いた純増ではない。2025年3月の一日や一週の出店実績へ移さず、室数を店舗数に置換しない。種別82.6%を約8割と短縮。"
+    }
+  ]
+}
