@@ -1,5 +1,9 @@
 # A01 オリジナルBGM 2案
 
+音声統合条件6032142623の24-bit実原盤・AAC・24秒試聴・配布版decode境界・3周数値検査を完了した。追加の現物と実測は [SUPPLEMENT.md](SUPPLEMENT.md)、型に渡せる相対pathと秒境界は [city-audio-assets.json](city-audio-assets.json) にある。以下の制作表は初回WAV/OGG/MP3の数値を保持する。
+
+runtime用variantsはAAC→OGG→MP3の圧縮3形式だけに限定した。raw WAVは原稿・試聴用に保持し、previewから選べる。短い試聴案とWAVは容量目安のruntime fallbackへ含めない。
+
 試聴できる16小節のオリジナル音源を制作した。ゲームruntimeへの組込は親が行う。基点は `407236858c287a3060c224967489010e669d1eea`。制作中に正式指示 `0f20987` の `docs/external/teams/news-research-team.md` と最新 `game-source/docs/coordination.md` を読み、WAV/OGG必須と1曲単位のPR提出を反映した。
 
 | 曲 | 用途・編成 | 長さ / テンポ | WAV / OGG / MP3容量 | WAV LUFS / true peak |
@@ -7,7 +11,7 @@
 | 窓辺の午後 (`cafe-lounge`) | カフェ・ラウンジ。柔らかな電気鍵盤、丸いベース、ブラシ、リム、軽いハイハット、ベル、薄いパッド | 45.714286秒 / 84 BPM | 8,064,044 / 621,745 / 915,374 bytes | −21.61 LUFS / −9.81 dBTP |
 | 坂道のネオン (`shibuya-citypop`) | Tokyo city pop。明るいシンセ旋律、短い鍵盤コード、ギター風の倍音プラック、動くベース、バックビート、細かいハイハット | 34.285714秒 / 112 BPM | 6,048,044 / 519,903 / 687,064 bytes | −19.84 LUFS / −9.25 dBTP |
 
-全WAVは44,100 Hz、ステレオ、16-bit PCM。OGGはVorbis quality 5、MP3は160 kbps。16小節の各小節に旋律・和声・ベース・打楽器を配置し、後半は別の旋律へ展開する。外部の曲やサンプルをコピーせず、原稿中のノート列と数式から音色も合成した。
+publicの既存WAVは44,100 Hz、ステレオ、16-bit PCM。docs側に追加した実原盤は同じ独自scoreの元float64から直量子化した24-bit PCMである。OGGはVorbis quality 5、MP3は160 kbps、新AAC-LCも160 kbps指定。16小節の各小節に旋律・和声・ベース・打楽器を配置し、後半は別の旋律へ展開する。外部の曲やサンプルをコピーせず、原稿中のノート列と数式から音色も合成した。
 
 ## 試聴
 
@@ -19,7 +23,7 @@ python -m http.server 8765 --directory public
 
 ブラウザーで `http://127.0.0.1:8765/audio/external-v080/bgm/preview.html` を開く。1曲目だけのPRでは `cafe-lounge-preview.html` を使う。2曲目のPRを重ねたら `shibuya-citypop-preview.html` も利用できる。
 
-再生ボタンを押すまで音は出ない。初期の試聴音量は25%。WAV・OGG・MP3を選び、Web Audioのバッファを曲の正確な長さで繰り返す。別曲・接続試聴を開始すると先の音源は停止する。デコード後の長さが期待値から2サンプル以上ずれる形式は再生を拒否し、WAVへの切替を案内する。
+再生ボタンを押すまで音は出ない。初期の試聴音量は25%。AAC-LC・OGG・MP3・WAVを選び、曲別manifestの配布版decodeで確認した秒のloopStart/loopEndを使って繰り返す。AACのbuffer全長に含まれる末尾paddingはループ外に置く。境界がbufferに収まらない場合は再生を拒否する。別曲・接続試聴・24秒試聴を開始すると先の音源は停止する。24秒試聴と4秒接続音源は単発再生である。ブラウザー間のpadding処理と実音声出力は未確認。
 
 各曲に4秒の `*-boundary-check.wav` がある。末尾2秒と冒頭2秒を連結しており、再生2秒地点でループ境界を聴ける。これはループ全体とは別の確認用音源である。
 
@@ -45,11 +49,16 @@ ffmpegによるOGG/MP3デコード後のフレーム数は、それぞれ元WAV�
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/external/audio-bgm/render.py
 python scripts/external/audio-bgm/validate.py
+# 24-bit原盤・AAC・24秒試聴と配布decode/3周数値を追加
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/external/audio-bgm/supplement.py
+python scripts/external/audio-bgm/validate-delivery.py
 # 1曲目だけのPRを検査するとき
 python scripts/external/audio-bgm/validate.py --track cafe-lounge
 ```
 
 処理は1worker、ffmpeg `threads=1` / `filter_threads=1`。各曲の `*.manifest.json` は用途、作者、originalの根拠、制作方法、配布条件URL、sample rate/channels、長さ、容量、SHA256、loop start/end frames、peak/RMS/LUFS、clipping、WAV/OGG/MP3境界、試聴未確認を保持する。全曲の実測は `measurements.json`、検査結果は `validation.json`。
+
+追加の実測・hashは同じ曲別manifestへ保存し、補完検査は `delivery-validation.json`、容量は `delivery-budget.json` に保存した。`render.py` を再実行すると初回形式のmanifestへ戻るため、その後は必ず `supplement.py` も実行する。補完単独の再実行は既存WAV/OGG/MP3を上書きせず、旧WAV再生成SHA一致を確認する。
 
 初回実行はmetadata書出しの閉じ括弧不足で生成前に停止。2回目はWAV/MP3生成後、ffmpegのJSONの後ろに出力されたsummaryを含めて解析しようとして停止した。括弧とparserを修正して生成・計測を完了し、WAV/OGG/MP3のheader・hash・frame一致・peak/clipping/境界、HTMLの参照とJavaScript構文を検査した。失敗2回の原因と解消は `developmentFailureHistory` に保持し、初回全成功とは記録しない。
 

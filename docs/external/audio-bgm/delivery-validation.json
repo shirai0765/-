@@ -1,0 +1,35 @@
+{
+  "humanListening": "not-performed",
+  "browserPlayback": "not-performed",
+  "tracks": [
+    {
+      "id": "cafe-lounge",
+      "master24bitHashAndHeader": "PASS",
+      "decodedDeliveryThreeCycles": "PASS",
+      "AACAndShortAudition": "PASS",
+      "realVariantsAndHtmlReferences": "PASS",
+      "warnings": [
+        "Preserved cafe MP3 slightly below -22 LUFS; use preferred AAC/OGG after output QA"
+      ]
+    },
+    {
+      "id": "shibuya-citypop",
+      "master24bitHashAndHeader": "PASS",
+      "decodedDeliveryThreeCycles": "PASS",
+      "AACAndShortAudition": "PASS",
+      "realVariantsAndHtmlReferences": "PASS",
+      "warnings": []
+    }
+  ],
+  "javascriptSyntax": "PASS",
+  "runtimeCompressedVariantsMetadataCheck": {
+    "status": "PASS",
+    "order": [
+      "m4a",
+      "ogg",
+      "mp3"
+    ],
+    "rawWavRuntimeFallback": false,
+    "scope": "JSON/script-only correction; audio bytes and prior decode/three-cycle measurements retained; no audio generation or focused CPU verification rerun."
+  }
+}

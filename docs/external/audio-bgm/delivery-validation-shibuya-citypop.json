@@ -1,0 +1,15 @@
+{
+  "humanListening": "not-performed",
+  "browserPlayback": "not-performed",
+  "tracks": [
+    {
+      "id": "shibuya-citypop",
+      "master24bitHashAndHeader": "PASS",
+      "decodedDeliveryThreeCycles": "PASS",
+      "AACAndShortAudition": "PASS",
+      "realVariantsAndHtmlReferences": "PASS",
+      "warnings": []
+    }
+  ],
+  "javascriptSyntax": "PASS"
+}
