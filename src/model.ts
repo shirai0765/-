@@ -1,3 +1,4 @@
+import type { WeeklyNewsDigest } from './sim/weeklyNews';
 /** Shared public contracts. Money is JPY; simulation advances only at end-week. */
 export type DistrictId = 'center' | 'dogenzaka' | 'miyashita' | 'sakuragaoka';
 export type StoreStyle = 'standard' | 'premium' | 'takeaway';
@@ -18,7 +19,7 @@ export interface StoreAccount {
   /** Display reconciliation only; never an additional economic charge. */
   roundingAdjustment: number;
 }
-export interface WeeklyReport { week: number; revenue: number; operatingProfit: number; interest: number; netProfit: number; loanRepayment: number; dividendsReceived: number; dividendsPaid: number; cashChange: number; customers: number; headlines: string[]; storeResults: { id: string; revenue: number; profit: number; customers: number; satisfaction: number }[]; /** Actual settlement only. Missing rows have no recorded expense breakdown. */ storeAccounts?: StoreAccount[]; /** Recorded actual paired group result, never an economic input. */ marketOperation?: MarketOperationSettlement }
+export interface WeeklyReport { /** Immutable news from this settlement; absent in older saves. */ news?: WeeklyNewsDigest; week: number; revenue: number; operatingProfit: number; interest: number; netProfit: number; loanRepayment: number; dividendsReceived: number; dividendsPaid: number; cashChange: number; customers: number; headlines: string[]; storeResults: { id: string; revenue: number; profit: number; customers: number; satisfaction: number }[]; /** Actual settlement only. Missing rows have no recorded expense breakdown. */ storeAccounts?: StoreAccount[]; /** Recorded actual paired group result, never an economic input. */ marketOperation?: MarketOperationSettlement }
 export interface HistoryPoint { week: number; cash: number; profit: number; revenue: number; valuation: number; stores: number }
 /** A bounded decision journal; never used to calculate company finances. */
 export interface OpeningRecord {

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { GameState, StoreWeeklyCosts, WeeklyReport } from '../src/model';
 import { advanceWeek } from '../src/sim/engine';
 import { validateGame } from '../src/persistence';
+import { isWeeklyNewsDigest } from '../src/sim/weeklyNews';
 import baseline from './fixtures/settled-store-baseline-v046.json';
 
 // Captured from the unchanged 0.4.6 actual calculation, not from the new account helper.
@@ -17,8 +18,11 @@ const costsObject = (state: GameState) => accountObject(state).costs as Record<s
 describe('recorded store expense accounts', () => {
   it.each(fixtures)('preserves baseline settlement metrics and actual expenses: $label', fixture => {
     const next = advanceWeek(structuredClone(fixture.input));
-    const { storeAccounts, ...oldFields } = next.lastReport!;
+    // News is additive reporting data. Keep every original economic field in
+    // the exact v0.4.6 comparison and validate the new snapshot separately.
+    const { storeAccounts, news, ...oldFields } = next.lastReport!;
     expect(oldFields).toEqual(fixture.expectedReport);
+    expect(isWeeklyNewsDigest(news, next.lastReport!.week)).toBe(true);
     expect(storeAccounts !== undefined).toBe(fixture.actualAccountCaptured);
     if (!fixture.actualAccountCaptured) {
       expect(next.lastReport).not.toHaveProperty('storeAccounts');

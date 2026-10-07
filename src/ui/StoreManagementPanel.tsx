@@ -100,8 +100,9 @@ export default function StoreManagementPanel({ state, store, onAction, disabled 
 
   return <div className="store-controls store-management" ref={root} data-store-id={store.id} data-store-purpose={purpose}
     onPointerDownCapture={event => {
-      // Secure button clicks before a blur-triggered validation notice can move them.
-      if (event.button === 0 && event.target instanceof Element && event.target.closest('button')) event.preventDefault();
+      // Keep mouse focus from moving a button during draft validation. Cancelling
+      // a touch pointerdown can suppress Safari's native tap-to-click entirely.
+      if (event.pointerType === 'mouse' && event.button === 0 && event.target instanceof Element && event.target.closest('button')) event.preventDefault();
     }}
     onClickCapture={event => {
       if (event.target instanceof Element && event.target.closest('button')) commitActiveDraft();

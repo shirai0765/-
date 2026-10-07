@@ -1,0 +1,28 @@
+.weekly-news{min-width:0}
+.weekly-news-source{font-size:11px;line-height:1.7;color:var(--muted);margin:0 0 12px}
+.weekly-news-cards{display:grid;gap:10px}
+.weekly-news-card{min-width:0;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft)}
+.weekly-news-category{font-size:10px;font-weight:650;color:var(--accent)}
+.weekly-news-card h4{font-size:15px;line-height:1.6;font-weight:650;margin:3px 0 7px;overflow-wrap:anywhere}
+.weekly-news-card p{font-size:12px;line-height:1.8;margin:0;color:var(--muted)}
+.weekly-news-card strong{color:var(--ink)}
+.weekly-news-card .weekly-news-event{color:var(--ink);margin-bottom:7px}
+.weekly-news-card .weekly-news-caption{font-size:10px;line-height:1.7;margin-top:8px}
+.weekly-news-companies{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.weekly-news-companies li{min-width:0}
+.weekly-news-companies li>div{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:12px}
+.weekly-news-companies strong{overflow-wrap:anywhere}
+.weekly-news-companies b{flex-shrink:0;font-size:14px;font-variant-numeric:tabular-nums;font-weight:650}
+.weekly-news-companies li>span{display:block;font-size:10px;line-height:1.8;color:var(--muted);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.weekly-news-details{margin-top:8px;min-width:0}
+.weekly-news-details summary{font-size:11px;line-height:1.8;color:var(--muted);cursor:pointer}
+.weekly-news-details summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.weekly-news-details[open]>summary{margin-bottom:7px;color:var(--ink)}
+.weekly-news-details p,.weekly-news-details li,.weekly-news-legacy-list li{font-size:11px;line-height:1.8;color:var(--muted);overflow-wrap:anywhere}
+.weekly-news-details ul,.weekly-news-legacy-list{padding-left:17px;margin:8px 0 0}
+.weekly-news-details li+li,.weekly-news-legacy-list li+li{margin-top:7px}
+.weekly-news-conditions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:8px 0 0}
+.weekly-news-conditions dt{font-size:10px;color:var(--muted)}
+.weekly-news-conditions dd{font-size:12px;font-weight:600;margin:2px 0 0;color:var(--ink);font-variant-numeric:tabular-nums}
+.weekly-news-group-events{border-top:1px solid var(--line);padding-top:10px;margin-top:14px}
+@media(max-width:480px){.weekly-news-card{padding:12px}.weekly-news-card h4{font-size:14px}.weekly-news-source{font-size:10px}.weekly-news-companies li>div{gap:8px}}

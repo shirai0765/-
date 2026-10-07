@@ -40,3 +40,6 @@
 .store-management-location dt{color:var(--muted)}
 .store-management-location dd{margin:0;font-variant-numeric:tabular-nums}
 .store-controls .store-management-prior-result{font-size:11px;line-height:1.8;color:var(--muted);margin:0 0 12px}
+
+/* iPhone Safari keeps the viewport scale stable while editing a store. */
+@media(max-width:620px){.store-management input[type=number],.store-management input[type=text]{font-size:16px}}

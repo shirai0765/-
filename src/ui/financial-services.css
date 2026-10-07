@@ -15,4 +15,68 @@
 .service-loans article p{font-size:12px;color:var(--muted);margin:5px 0 0}
 .service-market-links{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .financial-service .capital-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bank-application{min-width:0;margin-bottom:24px}
+.bank-application h3{margin:7px 0 14px;font-size:20px;line-height:1.5}
+.bank-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;list-style:none;padding:0;margin:0 0 12px}
+.bank-steps li{padding:9px 7px;border-radius:7px;background:var(--surface-soft);font-size:12px;text-align:center;color:var(--muted)}
+.bank-steps li[data-current=true]{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.bank-note{font-size:12px;line-height:1.85;color:var(--muted);overflow-wrap:anywhere}
+.bank-settings{min-width:0;border:1px solid var(--line);border-radius:10px;margin:16px 0;padding:13px}
+.bank-settings legend{padding:0 5px;font-size:13px;font-weight:700}
+.bank-settings label{display:grid;gap:7px;font-size:12px;margin-top:12px}
+.bank-settings input{min-width:0;width:100%;min-height:44px}
+.bank-settings .bank-note{margin:10px 0 0}
+.bank-presets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.bank-presets button{min-width:0;min-height:42px;padding:9px 5px;font-size:12px;white-space:normal;overflow-wrap:anywhere}
+.bank-presets button[aria-pressed=true]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.bank-term-presets{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bank-quote{padding:16px;background:var(--surface-soft);border-radius:10px;margin:18px 0}
+.bank-quote-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.bank-quote-heading h4{margin:0;font-size:15px}
+.bank-quote-heading>span{font-size:12px;color:var(--muted)}
+.bank-quote-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 12px;margin:0}
+.bank-quote-values>div{min-width:0}
+.bank-quote-values dt{font-size:11px;line-height:1.7;color:var(--muted)}
+.bank-quote-values dd{margin:4px 0 0;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.bank-quote-emphasis dd{font-size:23px}
+.bank-quote>.bank-note{margin:15px 0 10px}
+.bank-payment-details summary,.bank-screening-details summary{cursor:pointer;font-size:12px;color:var(--muted);line-height:1.7}
+.bank-payment-details summary:focus-visible,.bank-screening-details summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.bank-payment-details .bank-note{margin:8px 0 0}
+.bank-payment-values{margin:14px 0 10px}
+.bank-payment-values>div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.6}
+.bank-payment-values dt{color:var(--muted)}
+.bank-payment-values dd{margin:0;flex-shrink:0;font-weight:700;font-variant-numeric:tabular-nums}
+.bank-screen,.bank-confirm{min-height:46px;width:100%;white-space:normal;overflow-wrap:anywhere}
+.bank-review{padding:16px;margin:18px 0;border:1px solid var(--line);border-radius:10px}
+.bank-approved{border-color:var(--green)}
+.bank-declined{border-color:var(--red)}
+.bank-review h4{font-size:15px;margin:0 0 10px;line-height:1.6}
+.bank-approved h4{color:var(--green)}
+.bank-declined h4{color:var(--red)}
+.bank-decline-reason{font-size:12px;line-height:1.9;color:var(--red);margin:8px 0 14px}
+.bank-contract-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;margin:16px 0 0}
+.bank-contract-values>div{min-width:0}
+.bank-contract-values dt{font-size:11px;color:var(--muted)}
+.bank-contract-values dd{margin:5px 0 0;font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.bank-review ul{list-style:none;padding:0;margin:14px 0;display:grid;gap:12px}
+.bank-review li{display:flex;gap:9px;align-items:flex-start}
+.bank-check-mark{flex:none;font-size:14px;color:var(--green);line-height:1.8}
+.bank-review li[data-passed=false] .bank-check-mark{color:var(--red)}
+.bank-review li strong{font-size:12px;line-height:1.8}
+.bank-review li p{margin:3px 0 0;font-size:12px;line-height:1.8;color:var(--muted);overflow-wrap:anywhere}
+.bank-alternative{display:grid;gap:8px}
+.bank-alternative button{min-height:44px;white-space:normal;overflow-wrap:anywhere}
+.bank-contract-summary{font-size:12px;line-height:1.9;margin:14px 0}
+.bank-edit{width:100%;min-height:44px;margin-top:10px;white-space:normal}
+.bank-screening-details{border-top:1px solid var(--line);margin-top:16px;padding-top:12px}
+.bank-review-stale,.bank-submission{font-size:12px;line-height:1.8;padding:12px;background:var(--surface-soft);border-radius:8px}
+.bank-rule{font-size:12px;color:var(--red);line-height:1.85;margin:16px 0 0}
 @media(max-width:620px){.service-balances{grid-template-columns:1fr;gap:12px}.service-balances>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.service-balances dd{font-size:18px}.service-listing-conditions{padding:14px}.service-listing-conditions li{grid-template-columns:auto 1fr}.service-listing-conditions li>small{grid-column:2}.financial-service .capital-options,.service-market-links{grid-template-columns:1fr}}
+@media(max-width:620px){.bank-quote-values{grid-template-columns:repeat(2,minmax(0,1fr))}.bank-quote-values>div:last-child{grid-column:1/-1}.bank-quote-emphasis dd{font-size:20px}}
+@media(max-width:420px){.bank-application{padding:16px}.bank-application h3{font-size:18px}.bank-steps li{font-size:10px;padding:9px 3px}.bank-settings{padding:10px}.bank-presets{gap:6px}.bank-presets button{font-size:11px;padding:9px 3px}.bank-term-presets{grid-template-columns:repeat(3,minmax(0,1fr))}.bank-quote,.bank-review{padding:12px}.bank-quote-values{gap:13px 10px}.bank-contract-values dd{font-size:18px}.bank-payment-values>div{font-size:11px;gap:9px}}
+
+/* A new application phase starts below the sticky facility title. */
+.bank-application>h3{scroll-margin-block-start:100px}
+.bank-application>h3:focus{outline:none}
+@media(max-width:620px){.bank-settings input{font-size:16px}}

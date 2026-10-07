@@ -8,6 +8,7 @@ import { marketOperationCohort } from './sim/marketBusinessMath';
 import { DEVELOPMENT_CHOICES } from './sim/development';
 import { OPENING_RECORD_LIMIT } from './sim/openingJournal';
 import { RAIL_PROJECT_CHOICES } from './sim/railProjects';
+import { isWeeklyNewsDigest } from './sim/weeklyNews';
 const lotIds = new Set(LOTS.map(l => l.id));
 const stockIds = new Set(STOCKS.map(s => s.id));
 const stockSectors = new Set(STOCKS.map(s => s.sector));
@@ -242,6 +243,7 @@ export function validateGame(value: unknown): GameState {
     const r = obj(s.lastReport); num(r.week, 0, Number(s.week), true); fields(r, ['revenue', 'interest', 'loanRepayment', 'dividendsReceived', 'dividendsPaid', 'customers'], 0); fields(r, ['operatingProfit', 'netProfit', 'cashChange']); array(r.headlines, 100).forEach(v => str(v, 1000));
     const results = uniqueRows(r.storeResults, 'id', o => { fields(o, ['revenue', 'customers'], 0); num(o.profit); num(o.satisfaction, 0, 100); });
     if (Object.hasOwn(r, 'storeAccounts')) validateStoreAccounts(r.storeAccounts, results);
+    if (Object.hasOwn(r, 'news') && !isWeeklyNewsDigest(r.news, Number(r.week))) fail();
     if (Object.hasOwn(r, 'marketOperation')) validateMarketOperationSettlement(r.marketOperation, r, s);
   }
   if (s.deals !== undefined) validateDeals(s.deals, s);

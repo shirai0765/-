@@ -5,13 +5,24 @@ import CapitalPlanningPanel from '../src/ui/CapitalPlanningPanel';
 import { applyAction, createGame } from '../src/sim/engine';
 
 describe('physical financial service destinations', () => {
-  it('opens a bank loan proposal without borrowing or offering stock issuance', () => {
+  it('opens a staged bank quote without borrowing or offering stock issuance', () => {
     const state = createGame('街の銀行を訪ねる', 1);
     const before = JSON.stringify(state);
     let actions = 0;
-    const html = renderToStaticMarkup(<FinancialServicesPanel kind="bank" state={state} onAction={() => actions++} onMarket={() => actions++}/>);
+    const html = renderToStaticMarkup(<FinancialServicesPanel kind="bank" state={state} onAction={() => { actions++; }} onMarket={() => actions++}/>);
     expect(html).toContain('借入希望額（円）');
-    expect(html).toContain('¥3,000,000を借り入れる');
+    expect(html).toContain('この条件で融資審査する');
+    expect(html).toContain('data-loan-step="quote"');
+    expect(html).not.toContain('data-loan-confirm');
+    expect(html).toContain('10万円');
+    expect(html).toContain('100万円');
+    expect(html).toContain('300万円');
+    expect(html).toContain('500万円');
+    expect(html).toContain('契約の年利');
+    expect(html).toContain('4.50%');
+    expect(html).toContain('追加の初週利息');
+    expect(html).toContain('利息総額 / 満期まで');
+    expect(html).toContain('返済総額（元本＋利息）');
     expect(html).toContain('調達直後の手元資金');
     expect(html).toContain('¥15,000,000');
     expect(html).not.toContain('株式公開する');

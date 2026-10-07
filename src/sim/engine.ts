@@ -8,6 +8,7 @@ import { initializeDeals, applyDealAction, getDealFinancials, getDealAssetValue,
 import { recordOpening, settleOpeningRecords, closeOpeningRecords } from './openingJournal';
 import { getRailProjectEffects, getRailProjectFinancials, railProjectHeadlines, startRailProject } from './railProjects';
 import { quoteStockTrade, settleStockTradeCash } from './stockTrading';
+import { createWeeklyNews } from './weeklyNews';
 
 const STYLES = { standard: { cost: 3_600_000, price: 580, quality: 65, capacity: 280, appeal: 1 }, premium: { cost: 4_800_000, price: 780, quality: 85, capacity: 210, appeal: 1.08 }, takeaway: { cost: 3_000_000, price: 450, quality: 55, capacity: 360, appeal: .96 } };
 const round = (n: number) => Math.round(n);
@@ -333,5 +334,7 @@ export function advanceWeek(state: GameState): GameState {
   if (s.stores.length >= 1 && !s.milestones.includes('渋谷で創業')) s.milestones.push('渋谷で創業');
   if (s.stores.length >= 3 && !s.milestones.includes('3店舗チェーン')) s.milestones.push('3店舗チェーン');
   s = settleOpeningRecords(s, r);
+  s.lastReport = { ...r, news: createWeeklyNews(state, s.stockPrices, operatingConditions(state), r,
+    state.week > 1 ? operatingConditions({ ...state, week: state.week - 1 }) : undefined) };
   s.week++; return s.stores.length ? initializeDeals(s) : s;
 }
