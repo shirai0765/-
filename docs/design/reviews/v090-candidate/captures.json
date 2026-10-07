@@ -1,0 +1,28 @@
+{
+  "runtimeSource": "0c1b5e2",
+  "build": "build-03",
+  "indexSHA256": "f1c8a5f4906e58e344ffe0a8564ba619abaa3aedee36bc29f6c6897932a3de82",
+  "type": "Actual native Linux WebKit production CSP screenshots, not concept art",
+  "files": {
+    "weekly-390.png": {
+      "original": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-02/weekly-390-actual-first-settlement.png",
+      "bytes": 263850,
+      "sha256": "4469ac25bedfa130bb03d4971409771bb06ff05593808b3bf9e0c750862ee48c"
+    },
+    "weekly-1280.png": {
+      "original": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-02/weekly-1280-actual-first-settlement.png",
+      "bytes": 1062293,
+      "sha256": "ec594c52429eb8e7b08076bbb2f60773b33b480e8898ffccbb39607242a63051"
+    },
+    "property-390.png": {
+      "original": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-02/property-390-hero.png",
+      "bytes": 341400,
+      "sha256": "4bc4e3cc04c891cbc5c41a26ef45262b85b4f6d5c3658875b434e212c0258cd2"
+    },
+    "property-styles-390.png": {
+      "original": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-02/property-390-styles.png",
+      "bytes": 314995,
+      "sha256": "ebe8aac4a24be3fe7fed57c3c7d8dad9172d180a71a0b1714ad42aede4075ddf"
+    }
+  }
+}
