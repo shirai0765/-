@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "trace": "02",
+  "method": "Limited phase replay from the unmodified previous-phase natural save; recorded public actions, full before/after SHA, actual reports and boundary save round trips checked",
+  "provesNaturalCreationInThisReplay": false,
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "version": "0.8.0",
+  "seed": 1,
+  "provenanceNote": "Recorded provenance; transition hashes verify runtime behavior",
+  "transitions": 211,
+  "executedActions": 109,
+  "gameWeeksSettled": 102,
+  "initialStateWeek": 2,
+  "finalStateWeek": 104,
+  "finalCash": 108496635,
+  "achievement": null,
+  "checkedSaves": 2,
+  "checkedSaveFiles": [
+    "save-founder-first-settlement.json",
+    "save-middle-boundary.json"
+  ],
+  "checkedTraceFiles": [
+    "trace-02-ipo-investment.jsonl"
+  ],
+  "scriptElapsedSeconds": 0.454641738,
+  "humanThirtyHours": "unmeasured"
+}
