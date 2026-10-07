@@ -1,0 +1,11 @@
+{
+  "operation": "File packaging only; no game or replay executed",
+  "method": "Node standard node:zlib gzip level 9",
+  "sourceFile": "trace-03-late-growth.jsonl",
+  "compressedFile": "trace-03-late-growth.jsonl.gz",
+  "sourceBytes": 39117707,
+  "compressedBytes": 1080443,
+  "sourceSHA256": "612b3ce6536677e3fce40c91c40703c52c98192583519daa32c8177381e4d5ed",
+  "compressedSHA256": "54ecec0a4a63c4e7e7eefc935c1b2f3005c900e2c8cbba61013712dd7c7b04bf",
+  "decompressedBytesIdentical": true
+}
