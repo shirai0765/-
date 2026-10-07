@@ -1,0 +1,435 @@
+{
+  "verifiedAt": "2026-10-07T06:51:31.018533+00:00",
+  "primaryCompressedBundle": {
+    "bgmWithBothShortAuditions": [
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge-audition-24s.m4a",
+        "bytes": 503735
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.m4a",
+        "bytes": 959203
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.mp3",
+        "bytes": 915374
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.ogg",
+        "bytes": 621745
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop-audition-24s.m4a",
+        "bytes": 507473
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.m4a",
+        "bytes": 723022
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.mp3",
+        "bytes": 687064
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.ogg",
+        "bytes": 519903
+      }
+    ],
+    "sfxDeliveryV2": [
+      {
+        "path": "public/audio/external-v080/sfx/cafe-floor-loop-v2.m4a",
+        "bytes": 936561
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-floor-loop-v2.mp3",
+        "bytes": 720788
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-floor-loop-v2.ogg",
+        "bytes": 374042
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-a-v2.m4a",
+        "bytes": 27190
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-a-v2.mp3",
+        "bytes": 21908
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-a-v2.ogg",
+        "bytes": 12772
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-b-v2.m4a",
+        "bytes": 23243
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-b-v2.mp3",
+        "bytes": 18452
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-b-v2.ogg",
+        "bytes": 10920
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-a-v2.m4a",
+        "bytes": 7184
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-a-v2.mp3",
+        "bytes": 6164
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-a-v2.ogg",
+        "bytes": 5951
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-b-v2.m4a",
+        "bytes": 8137
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-b-v2.mp3",
+        "bytes": 6932
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-b-v2.ogg",
+        "bytes": 6335
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening-v2.m4a",
+        "bytes": 23563
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening-v2.mp3",
+        "bytes": 19220
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening-v2.ogg",
+        "bytes": 8162
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel-v2.m4a",
+        "bytes": 3529
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel-v2.mp3",
+        "bytes": 3092
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel-v2.ogg",
+        "bytes": 3972
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click-v2.m4a",
+        "bytes": 2808
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click-v2.mp3",
+        "bytes": 2324
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click-v2.ogg",
+        "bytes": 4223
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss-v2.m4a",
+        "bytes": 17875
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss-v2.mp3",
+        "bytes": 15380
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss-v2.ogg",
+        "bytes": 6916
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-neutral-v2.m4a",
+        "bytes": 7915
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-neutral-v2.mp3",
+        "bytes": 6932
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-neutral-v2.ogg",
+        "bytes": 4832
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit-v2.m4a",
+        "bytes": 17012
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit-v2.mp3",
+        "bytes": 14612
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit-v2.ogg",
+        "bytes": 6779
+      }
+    ],
+    "bgmBytes": 5437519,
+    "sfxBytes": 2355725,
+    "totalBytes": 7793244,
+    "targetBytes": 8000000
+  },
+  "allPublicAudioInventory": {
+    "files": [
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge-audition-24s.m4a",
+        "bytes": 503735
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge-boundary-check.wav",
+        "bytes": 705644
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.m4a",
+        "bytes": 959203
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.mp3",
+        "bytes": 915374
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.ogg",
+        "bytes": 621745
+      },
+      {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.wav",
+        "bytes": 8064044
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop-audition-24s.m4a",
+        "bytes": 507473
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop-boundary-check.wav",
+        "bytes": 705644
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.m4a",
+        "bytes": 723022
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.mp3",
+        "bytes": 687064
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.ogg",
+        "bytes": 519903
+      },
+      {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.wav",
+        "bytes": 6048044
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-floor-loop-v2.m4a",
+        "bytes": 936561
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-floor-loop-v2.mp3",
+        "bytes": 720788
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-floor-loop-v2.ogg",
+        "bytes": 374042
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-room-loop.m4a",
+        "bytes": 553550
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-room-loop.ogg",
+        "bytes": 202085
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cafe-room-loop.wav",
+        "bytes": 4320044
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-a-v2.m4a",
+        "bytes": 27190
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-a-v2.mp3",
+        "bytes": 21908
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-a-v2.ogg",
+        "bytes": 12772
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-b-v2.m4a",
+        "bytes": 23243
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-b-v2.mp3",
+        "bytes": 18452
+      },
+      {
+        "path": "public/audio/external-v080/sfx/coffee-steam-b-v2.ogg",
+        "bytes": 10920
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-a-v2.m4a",
+        "bytes": 7184
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-a-v2.mp3",
+        "bytes": 6164
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-a-v2.ogg",
+        "bytes": 5951
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-b-v2.m4a",
+        "bytes": 8137
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-b-v2.mp3",
+        "bytes": 6932
+      },
+      {
+        "path": "public/audio/external-v080/sfx/cup-b-v2.ogg",
+        "bytes": 6335
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening-v2.m4a",
+        "bytes": 23563
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening-v2.mp3",
+        "bytes": 19220
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening-v2.ogg",
+        "bytes": 8162
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening.m4a",
+        "bytes": 14736
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening.ogg",
+        "bytes": 7143
+      },
+      {
+        "path": "public/audio/external-v080/sfx/store-opening.wav",
+        "bytes": 110444
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel-v2.m4a",
+        "bytes": 3529
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel-v2.mp3",
+        "bytes": 3092
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel-v2.ogg",
+        "bytes": 3972
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel.m4a",
+        "bytes": 2794
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel.ogg",
+        "bytes": 4068
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-cancel.wav",
+        "bytes": 13484
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click-v2.m4a",
+        "bytes": 2808
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click-v2.mp3",
+        "bytes": 2324
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click-v2.ogg",
+        "bytes": 4223
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click.m4a",
+        "bytes": 2302
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click.ogg",
+        "bytes": 4362
+      },
+      {
+        "path": "public/audio/external-v080/sfx/ui-click.wav",
+        "bytes": 8684
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss-v2.m4a",
+        "bytes": 17875
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss-v2.mp3",
+        "bytes": 15380
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss-v2.ogg",
+        "bytes": 6916
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss.m4a",
+        "bytes": 11511
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss.ogg",
+        "bytes": 6038
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-loss.wav",
+        "bytes": 86444
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-neutral-v2.m4a",
+        "bytes": 7915
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-neutral-v2.mp3",
+        "bytes": 6932
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-neutral-v2.ogg",
+        "bytes": 4832
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit-v2.m4a",
+        "bytes": 17012
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit-v2.mp3",
+        "bytes": 14612
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit-v2.ogg",
+        "bytes": 6779
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit.m4a",
+        "bytes": 11002
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit.ogg",
+        "bytes": 6040
+      },
+      {
+        "path": "public/audio/external-v080/sfx/weekly-profit.wav",
+        "bytes": 81644
+      }
+    ],
+    "totalBytes": 28762995
+  },
+  "interpretation": "Primary proposed compressed delivery, both BGM choices/fallbacks/two excerpts plus new SFX kit, is under the 8MB target. Retained raw/reference WAV and old SFX kit are excluded from that proposed bundle; all public source audio bytes are reported separately. No runtime or publication selection has been made."
+}

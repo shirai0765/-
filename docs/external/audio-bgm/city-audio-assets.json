@@ -1,10 +1,9 @@
 {
-  "sampleRate": 44100,
-  "tracks": [
-    {
-      "id": "cafe-lounge",
-      "frames": 2016000,
-      "durationSeconds": 45.714285714285715,
+  "typeSource": "https://github.com/shirai0765/-/blob/b40f2ba/src/audio/CityAudioAssets.ts",
+  "contract": "https://github.com/shirai0765/-/pull/8#issuecomment-6032142623",
+  "status": "complete",
+  "musicCandidates": {
+    "cafe-lounge": {
       "variants": [
         {
           "path": "audio/external-v080/bgm/cafe-lounge.m4a",
@@ -21,12 +20,10 @@
           "loopStart": 0,
           "loopEnd": 45.714285714285715
         }
-      ]
+      ],
+      "gain": 1
     },
-    {
-      "id": "shibuya-citypop",
-      "frames": 1512000,
-      "durationSeconds": 34.285714285714285,
+    "shibuya-citypop": {
       "variants": [
         {
           "path": "audio/external-v080/bgm/shibuya-citypop.m4a",
@@ -43,7 +40,11 @@
           "loopStart": 0,
           "loopEnd": 34.285714285714285
         }
-      ]
+      ],
+      "gain": 1
     }
-  ]
+  },
+  "runtimeActivation": "not-activated; select exactly one music candidate internally",
+  "humanListening": "not-performed",
+  "browserPlayback": "not-performed"
 }

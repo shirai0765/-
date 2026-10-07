@@ -1,0 +1,17 @@
+{
+  "humanListening": "not-performed",
+  "browserPlayback": "not-performed",
+  "tracks": [
+    {
+      "id": "cafe-lounge",
+      "master24bitHashAndHeader": "PASS",
+      "decodedDeliveryThreeCycles": "PASS",
+      "AACAndShortAudition": "PASS",
+      "realVariantsAndHtmlReferences": "PASS",
+      "warnings": [
+        "Preserved cafe MP3 slightly below -22 LUFS; use preferred AAC/OGG after output QA"
+      ]
+    }
+  ],
+  "javascriptSyntax": "PASS"
+}

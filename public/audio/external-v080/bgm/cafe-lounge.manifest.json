@@ -35,7 +35,99 @@
     "integratedLufs": -21.61,
     "truePeakDbtp": -9.81,
     "loudnessRangeLu": 0.9,
-    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+    "deliveryVerification": {
+      "decoder": "ffmpeg pcm_f32le, 44100Hz stereo; container delay/edit-list handling enabled",
+      "decodedFrames": 2016000,
+      "decodedDurationSeconds": 45.714285714285715,
+      "leadingFramesTrimmed": 0,
+      "trailingFramesTrimmed": 0,
+      "loopStartFrame": 0,
+      "loopEndFrame": 2016000,
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715,
+      "loopBoundaryBasis": "Original period length confirmed against this decoded stream; decoded end padding is excluded explicitly",
+      "decodedSignal": {
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -9.811079497044659,
+        "rmsDbfs": -23.000265999600508,
+        "channelDcOffset": [
+          2.1949646964905753e-09,
+          9.975736103360615e-09
+        ],
+        "clippedSamples": 0
+      },
+      "trimmedLoopSignal": {
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -9.811079497044659,
+        "rmsDbfs": -23.000265999600508,
+        "channelDcOffset": [
+          2.1949646964905753e-09,
+          9.975736103360615e-09
+        ],
+        "clippedSamples": 0,
+        "loopBoundary": {
+          "lastToFirstDelta": [
+            0.0001220703125,
+            0.00018310546875
+          ],
+          "lastToFirstMaximumDeltaDbfs": -74.74597369152148,
+          "neighboring100msMaximumStepDbfs": -33.95769130799874,
+          "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+          "wrappedTails": true
+        }
+      },
+      "decodedLoopLoudness": {
+        "integratedLufs": -21.61,
+        "truePeakDbtp": -9.81,
+        "loudnessRangeLu": 0.9,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+      },
+      "threeCycleCheck": {
+        "cycles": 3,
+        "sampleFrames": 6048000,
+        "durationSeconds": 137.14285714285714,
+        "joins": [
+          {
+            "atFrame": 2016000,
+            "atSeconds": 45.714285714285715,
+            "maximumAdjacentStepDbfs": -74.74597369152148,
+            "minimum20msRmsWithin100msDbfs": -46.79381556408715,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.39984771788555,
+            "first50msRmsDbfs": -20.07154091491621
+          },
+          {
+            "atFrame": 4032000,
+            "atSeconds": 91.42857142857143,
+            "maximumAdjacentStepDbfs": -74.74597369152148,
+            "minimum20msRmsWithin100msDbfs": -46.79381556408715,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.39984771788555,
+            "first50msRmsDbfs": -20.07154091491621
+          }
+        ],
+        "cycleRmsDbfs": [
+          -23.000265999600508,
+          -23.000265999600508,
+          -23.000265999600508
+        ],
+        "cycleRmsRangeDb": 0.0,
+        "clippedSamples": 0,
+        "method": "Concatenate three decoded periods after explicit frame trim; inspect both joins in 20ms RMS windows and adjacent-sample deltas. Repeated-period RMS equality is a numerical consequence, not human listening evidence.",
+        "humanListening": "not-performed"
+      },
+      "browserDecoderAndSafari": "not-performed; cross-decoder padding behavior requires internal output QA"
+    },
+    "loopStart": 0,
+    "loopEnd": 45.714285714285715,
+    "sampleRate": 44100,
+    "channels": 2,
+    "conformsToRequestedLoudness": true,
+    "conformsToRequestedTruePeak": true,
+    "compatibilityNote": "Preserved pre-contract encoding"
   },
   "mp3": {
     "path": "public/audio/external-v080/bgm/cafe-lounge.mp3",
@@ -66,7 +158,99 @@
         "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
         "wrappedTails": true
       }
-    }
+    },
+    "deliveryVerification": {
+      "decoder": "ffmpeg pcm_f32le, 44100Hz stereo; container delay/edit-list handling enabled",
+      "decodedFrames": 2016000,
+      "decodedDurationSeconds": 45.714285714285715,
+      "leadingFramesTrimmed": 0,
+      "trailingFramesTrimmed": 0,
+      "loopStartFrame": 0,
+      "loopEndFrame": 2016000,
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715,
+      "loopBoundaryBasis": "Original period length confirmed against this decoded stream; decoded end padding is excluded explicitly",
+      "decodedSignal": {
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -10.256534882349879,
+        "rmsDbfs": -23.446363555193763,
+        "channelDcOffset": [
+          -4.326131771506087e-07,
+          2.108339459762746e-06
+        ],
+        "clippedSamples": 0
+      },
+      "trimmedLoopSignal": {
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -10.256534882349879,
+        "rmsDbfs": -23.446363555193763,
+        "channelDcOffset": [
+          -4.326131771506087e-07,
+          2.108339459762746e-06
+        ],
+        "clippedSamples": 0,
+        "loopBoundary": {
+          "lastToFirstDelta": [
+            -0.0004626922309398651,
+            -0.00014933384954929352
+          ],
+          "lastToFirstMaximumDeltaDbfs": -66.69415585345453,
+          "neighboring100msMaximumStepDbfs": -41.67728704224743,
+          "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+          "wrappedTails": true
+        }
+      },
+      "decodedLoopLoudness": {
+        "integratedLufs": -22.06,
+        "truePeakDbtp": -10.26,
+        "loudnessRangeLu": 0.9,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+      },
+      "threeCycleCheck": {
+        "cycles": 3,
+        "sampleFrames": 6048000,
+        "durationSeconds": 137.14285714285714,
+        "joins": [
+          {
+            "atFrame": 2016000,
+            "atSeconds": 45.714285714285715,
+            "maximumAdjacentStepDbfs": -66.69415585345453,
+            "minimum20msRmsWithin100msDbfs": -47.242743834423315,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.83574767264345,
+            "first50msRmsDbfs": -20.521719996884723
+          },
+          {
+            "atFrame": 4032000,
+            "atSeconds": 91.42857142857143,
+            "maximumAdjacentStepDbfs": -66.69415585345453,
+            "minimum20msRmsWithin100msDbfs": -47.242743834423315,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.83574767264345,
+            "first50msRmsDbfs": -20.521719996884723
+          }
+        ],
+        "cycleRmsDbfs": [
+          -23.446363555193763,
+          -23.446363555193763,
+          -23.446363555193763
+        ],
+        "cycleRmsRangeDb": 0.0,
+        "clippedSamples": 0,
+        "method": "Concatenate three decoded periods after explicit frame trim; inspect both joins in 20ms RMS windows and adjacent-sample deltas. Repeated-period RMS equality is a numerical consequence, not human listening evidence.",
+        "humanListening": "not-performed"
+      },
+      "browserDecoderAndSafari": "not-performed; cross-decoder padding behavior requires internal output QA"
+    },
+    "loopStart": 0,
+    "loopEnd": 45.714285714285715,
+    "sampleRate": 44100,
+    "channels": 2,
+    "conformsToRequestedLoudness": false,
+    "conformsToRequestedTruePeak": true,
+    "compatibilityNote": "Preserved pre-contract encoding"
   },
   "boundaryAudition": {
     "path": "public/audio/external-v080/bgm/cafe-lounge-boundary-check.wav",
@@ -104,7 +288,99 @@
         "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
         "wrappedTails": true
       }
-    }
+    },
+    "deliveryVerification": {
+      "decoder": "ffmpeg pcm_f32le, 44100Hz stereo; container delay/edit-list handling enabled",
+      "decodedFrames": 2016000,
+      "decodedDurationSeconds": 45.714285714285715,
+      "leadingFramesTrimmed": 0,
+      "trailingFramesTrimmed": 0,
+      "loopStartFrame": 0,
+      "loopEndFrame": 2016000,
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715,
+      "loopBoundaryBasis": "Original period length confirmed against this decoded stream; decoded end padding is excluded explicitly",
+      "decodedSignal": {
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -9.817929723863443,
+        "rmsDbfs": -22.978407293903196,
+        "channelDcOffset": [
+          1.5850266667018368e-05,
+          1.862612106353951e-05
+        ],
+        "clippedSamples": 0
+      },
+      "trimmedLoopSignal": {
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -9.817929723863443,
+        "rmsDbfs": -22.978407293903196,
+        "channelDcOffset": [
+          1.5850266667018368e-05,
+          1.862612106353951e-05
+        ],
+        "clippedSamples": 0,
+        "loopBoundary": {
+          "lastToFirstDelta": [
+            0.0012129181995987892,
+            0.0008859280496835709
+          ],
+          "lastToFirstMaximumDeltaDbfs": -58.323369747891505,
+          "neighboring100msMaximumStepDbfs": -36.24701422322299,
+          "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+          "wrappedTails": true
+        }
+      },
+      "decodedLoopLoudness": {
+        "integratedLufs": -21.59,
+        "truePeakDbtp": -9.82,
+        "loudnessRangeLu": 0.8,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+      },
+      "threeCycleCheck": {
+        "cycles": 3,
+        "sampleFrames": 6048000,
+        "durationSeconds": 137.14285714285714,
+        "joins": [
+          {
+            "atFrame": 2016000,
+            "atSeconds": 45.714285714285715,
+            "maximumAdjacentStepDbfs": -58.323369747891505,
+            "minimum20msRmsWithin100msDbfs": -46.789502757599294,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.35885459635955,
+            "first50msRmsDbfs": -20.05668299528905
+          },
+          {
+            "atFrame": 4032000,
+            "atSeconds": 91.42857142857143,
+            "maximumAdjacentStepDbfs": -58.323369747891505,
+            "minimum20msRmsWithin100msDbfs": -46.789502757599294,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.35885459635955,
+            "first50msRmsDbfs": -20.05668299528905
+          }
+        ],
+        "cycleRmsDbfs": [
+          -22.978407293903196,
+          -22.978407293903196,
+          -22.978407293903196
+        ],
+        "cycleRmsRangeDb": 0.0,
+        "clippedSamples": 0,
+        "method": "Concatenate three decoded periods after explicit frame trim; inspect both joins in 20ms RMS windows and adjacent-sample deltas. Repeated-period RMS equality is a numerical consequence, not human listening evidence.",
+        "humanListening": "not-performed"
+      },
+      "browserDecoderAndSafari": "not-performed; cross-decoder padding behavior requires internal output QA"
+    },
+    "loopStart": 0,
+    "loopEnd": 45.714285714285715,
+    "sampleRate": 44100,
+    "channels": 2,
+    "conformsToRequestedLoudness": true,
+    "conformsToRequestedTruePeak": true,
+    "compatibilityNote": "Preserved pre-contract encoding"
   },
   "loopStartFrame": 0,
   "loopEndFrame": 2016000,
@@ -126,7 +402,251 @@
   "verification": {
     "humanListening": "not-performed",
     "browserPlayback": "not-performed",
-    "measured": "WAV/MP3/OGG decoded frames, duration, peak, RMS, LUFS, clipping and loop boundary",
+    "measured": "Per-distribution ffmpeg float decode, explicit seconds/frame trim, three-cycle adjacent-step and silence-window analysis; 24-bit master and short AAC audition metadata",
     "musicalAudition": "Pending parent review using preview.html and boundary-check.wav"
+  },
+  "master": {
+    "path": "docs/external/audio-bgm/masters/cafe-lounge-master-24bit.wav",
+    "bytes": 12096044,
+    "sha256": "0f5a22c522309ac9c670533d73870fd50cb5189b8af82b4cd9c02cf1beb805ce",
+    "pcmBitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "generation": "Direct quantization of deterministic compose(id) float64 mix; not 16-bit expansion",
+    "nonzeroLowByteSamples": 4016200,
+    "integratedLufs": -21.61,
+    "truePeakDbtp": -9.81,
+    "loudnessRangeLu": 0.9,
+    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+    "sampleFrames": 2016000,
+    "durationSeconds": 45.714285714285715,
+    "sourceFloatMetrics": {
+      "sampleFrames": 2016000,
+      "durationSeconds": 45.714285714285715,
+      "samplePeakDbfs": -9.810945778605145,
+      "rmsDbfs": -23.0,
+      "channelDcOffset": [
+        4.514420796787181e-18,
+        -3.5696551982235015e-18
+      ],
+      "clippedSamples": 0,
+      "loopBoundary": {
+        "lastToFirstDelta": [
+          0.00012890573808862875,
+          0.00019666857316812635
+        ],
+        "lastToFirstMaximumDeltaDbfs": -74.125300660291,
+        "neighboring100msMaximumStepDbfs": -33.94800374248978,
+        "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+        "wrappedTails": true
+      }
+    },
+    "existing16bitWavReproductionSha256Matched": true
+  },
+  "m4a": {
+    "path": "public/audio/external-v080/bgm/cafe-lounge.m4a",
+    "bytes": 959203,
+    "sha256": "fea64ef94140d14c5a2707a6d0a389846f94697be70d99d0d53ed9ec0aab78af",
+    "codec": "AAC-LC",
+    "bitrateKbps": 160,
+    "integratedLufs": -21.62,
+    "truePeakDbtp": -9.82,
+    "loudnessRangeLu": 0.9,
+    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "profile": "LC",
+          "sample_rate": "44100",
+          "channels": 2,
+          "start_time": "0.000000",
+          "duration": "45.714286",
+          "bit_rate": "166256"
+        }
+      ],
+      "format": {
+        "duration": "45.714286",
+        "size": "959203"
+      }
+    },
+    "deliveryVerification": {
+      "decoder": "ffmpeg pcm_f32le, 44100Hz stereo; container delay/edit-list handling enabled",
+      "decodedFrames": 2016256,
+      "decodedDurationSeconds": 45.72009070294784,
+      "leadingFramesTrimmed": 0,
+      "trailingFramesTrimmed": 256,
+      "loopStartFrame": 0,
+      "loopEndFrame": 2016000,
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715,
+      "loopBoundaryBasis": "Original period length confirmed against this decoded stream; decoded end padding is excluded explicitly",
+      "decodedSignal": {
+        "sampleFrames": 2016256,
+        "durationSeconds": 45.72009070294784,
+        "samplePeakDbfs": -9.825374220724598,
+        "rmsDbfs": -23.011701659737778,
+        "channelDcOffset": [
+          -1.5568789443138225e-06,
+          1.9276707841410552e-06
+        ],
+        "clippedSamples": 0
+      },
+      "trimmedLoopSignal": {
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -9.825374220724598,
+        "rmsDbfs": -23.011150214000754,
+        "channelDcOffset": [
+          -1.5528550243773611e-06,
+          1.927114573785036e-06
+        ],
+        "clippedSamples": 0,
+        "loopBoundary": {
+          "lastToFirstDelta": [
+            0.000736837275326252,
+            0.0008093141950666904
+          ],
+          "lastToFirstMaximumDeltaDbfs": -61.83765684357441,
+          "neighboring100msMaximumStepDbfs": -38.65610934549119,
+          "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+          "wrappedTails": true
+        }
+      },
+      "decodedLoopLoudness": {
+        "integratedLufs": -21.62,
+        "truePeakDbtp": -9.82,
+        "loudnessRangeLu": 0.9,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+      },
+      "threeCycleCheck": {
+        "cycles": 3,
+        "sampleFrames": 6048000,
+        "durationSeconds": 137.14285714285714,
+        "joins": [
+          {
+            "atFrame": 2016000,
+            "atSeconds": 45.714285714285715,
+            "maximumAdjacentStepDbfs": -61.83765684357441,
+            "minimum20msRmsWithin100msDbfs": -46.80379588841785,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.378019815248805,
+            "first50msRmsDbfs": -20.035126338520023
+          },
+          {
+            "atFrame": 4032000,
+            "atSeconds": 91.42857142857143,
+            "maximumAdjacentStepDbfs": -61.83765684357441,
+            "minimum20msRmsWithin100msDbfs": -46.80379588841785,
+            "silent20msWindowsBelowMinus80Dbfs": 0,
+            "last50msRmsDbfs": -45.378019815248805,
+            "first50msRmsDbfs": -20.035126338520023
+          }
+        ],
+        "cycleRmsDbfs": [
+          -23.011150214000754,
+          -23.011150214000754,
+          -23.011150214000754
+        ],
+        "cycleRmsRangeDb": 0.0,
+        "clippedSamples": 0,
+        "method": "Concatenate three decoded periods after explicit frame trim; inspect both joins in 20ms RMS windows and adjacent-sample deltas. Repeated-period RMS equality is a numerical consequence, not human listening evidence.",
+        "humanListening": "not-performed"
+      },
+      "browserDecoderAndSafari": "not-performed; cross-decoder padding behavior requires internal output QA"
+    },
+    "loopStart": 0,
+    "loopEnd": 45.714285714285715,
+    "sampleRate": 44100,
+    "channels": 2,
+    "conformsToRequestedLoudness": true,
+    "conformsToRequestedTruePeak": true,
+    "compatibilityNote": "New preferred AAC-LC delivery"
+  },
+  "shortAudition": {
+    "path": "public/audio/external-v080/bgm/cafe-lounge-audition-24s.m4a",
+    "bytes": 503735,
+    "sha256": "e274e6546cf76770771778b552fff0d0fd771d2486c8206a4b979da531d5e361",
+    "codec": "AAC-LC",
+    "bitrateKbps": 160,
+    "programDurationSeconds": 24,
+    "loop": false,
+    "edit": "First 24 seconds of original float mix; 120ms onset/end fades; audition only",
+    "integratedLufs": -21.52,
+    "truePeakDbtp": -9.82,
+    "loudnessRangeLu": 0.7,
+    "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "profile": "LC",
+          "sample_rate": "44100",
+          "channels": 2,
+          "start_time": "0.000000",
+          "duration": "24.000000",
+          "bit_rate": "166102"
+        }
+      ],
+      "format": {
+        "duration": "24.000000",
+        "size": "503735"
+      }
+    },
+    "decodedSignal": {
+      "sampleFrames": 1058816,
+      "durationSeconds": 24.009433106575965,
+      "samplePeakDbfs": -9.825374220724598,
+      "rmsDbfs": -22.969397059320183,
+      "channelDcOffset": [
+        8.192241544001359e-08,
+        2.4142079254459477e-07
+      ],
+      "clippedSamples": 0
+    }
+  },
+  "cityAudioAsset": {
+    "variants": [
+      {
+        "path": "audio/external-v080/bgm/cafe-lounge.m4a",
+        "loopStart": 0,
+        "loopEnd": 45.714285714285715
+      },
+      {
+        "path": "audio/external-v080/bgm/cafe-lounge.ogg",
+        "loopStart": 0,
+        "loopEnd": 45.714285714285715
+      },
+      {
+        "path": "audio/external-v080/bgm/cafe-lounge.mp3",
+        "loopStart": 0,
+        "loopEnd": 45.714285714285715
+      }
+    ],
+    "gain": 1
+  },
+  "deliveryContract": {
+    "url": "https://github.com/shirai0765/-/pull/8#issuecomment-6032142623",
+    "typeSource": "https://github.com/shirai0765/-/blob/b40f2ba/src/audio/CityAudioAssets.ts",
+    "implementationSourceCommit": "b40f2ba",
+    "runtimeActivation": "internal-team-only"
+  },
+  "reproduction": {
+    "score": "scripts/external/audio-bgm/render.py",
+    "deliveryScript": "scripts/external/audio-bgm/supplement.py",
+    "scoreSha256": "e32eb4b897c006ab71c46ae65a16a3e40a813e9c668a7a5ebf74d57729014e93",
+    "deliveryScriptSha256": "d5abd13582e36707e05f2d4afd307b8f6aed75d227536d8c9a3d046aae5fcc4d",
+    "numpyVersion": "2.3.5",
+    "sampleRate": 44100,
+    "sourcePrecision": "float64",
+    "masterPcmBitDepth": 24,
+    "seed": 8407,
+    "workerLimit": 1,
+    "ffmpegThreads": 1,
+    "metadataRevision": "Runtime variants restricted to AAC/OGG/MP3 by metadata-only edit; audio files and decoded measurements unchanged."
   }
 }
