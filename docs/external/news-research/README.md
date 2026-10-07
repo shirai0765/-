@@ -1,5 +1,22 @@
 # ニュース素材調査 pilot
 
+## 有限waveの最終catalog（80件）
+
+初回24件（[PR #7](https://github.com/shirai0765/-/pull/7)）＋新28件（[PR #11](https://github.com/shirai0765/-/pull/11)）＋新28件（[PR #12](https://github.com/shirai0765/-/pull/12)）。`catalog.json` は提出済み80件の索引で、新たな80件のbatchではない。N01 `candidates/company-news-wave1.json` は初回8＋新32、N02 `candidates/property-rail-capital-wave1.json` は初回16＋新24。`initialCandidateIds` を使い初回を二重計上しない。
+
+全件historical-reference/runtimeEligible:false。food25・retail-property27・rail-city10・capital-ma18件。主80＋補助18の全distinct97 URLを確認。追加56件はN03が作者とは独立して本文/PDFを再読し、作者も全編集短文を照合した。初回24のsource/factsと独立QA証拠を保持する。実在企業/事実と、既存100stockのゲーム名への対応、既存保存fieldに関連する参考文脈を分離し、現実の過去事例をゲーム内の今週活動として採用しない。
+
+```sh
+python3 scripts/external/news-research/validate-wave.py --self-test
+python3 scripts/external/news-research/validate-wave.py --batch docs/external/news-research/edited/batch-02 --baseline docs/external/news-research/pilot.json --catalog docs/external/news-research/catalog.json
+python3 scripts/external/news-research/validate-wave.py --batch docs/external/news-research/edited/batch-03 --baseline docs/external/news-research/pilot.json --catalog docs/external/news-research/catalog.json
+```
+
+本索引PRは上の2追加PRと同じbatchファイルを含み、単独checkoutでも全体検証が可能。先にbatch PRを取り込めば差分はcanonical・catalog・本README・検証記録へ縮む。研究基点0f20987、初回基点12c375a、索引提出基点87915c2。`validation-wave.json` に実際のcommand、結果、hashを記録。原資料の実読・事実・意味上の重複や独自性は各auditの読取所見に基づき、自動schema合格とは区別する。掲載日/実施日不明、未実施計画、非開示数量は理由付きで残す。初回未知保存field10エラーの訂正履歴も保持。
+
+[追加割当](https://github.com/shirai0765/-/pull/2#issuecomment-6031934250)に従う有限80件であり、src/runtime/経済/保存/依存/mainの変更は行わない。採用・merge・公開は開発親のレビュー待ち。
+
+
 実際に読めた過去の公開資料を、親の採否レビュー向けにまとめる。基点は `game-source` の `12c375a2dab551c1511e00b2304e69027fdb0dc0`。ゲームへの組込みはこのPRの範囲に含めない。
 
 ## 分担と形式
