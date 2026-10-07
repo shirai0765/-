@@ -1,17 +1,17 @@
 {
   "asset": "dogenzaka-sakamichi-a.glb",
-  "sha256": "0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20",
+  "sha256": "4b0dabe359f0005f91e35192263ea03bca9a820bb32b6270081d4e14770a4835",
   "blender_version": "4.3.2",
   "actual_import_status": [
     "FINISHED"
   ],
-  "import_seconds": 0.2329,
+  "import_seconds": 0.2258,
   "passed": true,
   "errors": [],
   "warnings": [],
   "mesh_objects": 1,
-  "vertices_after_import": 20348,
-  "triangles_after_import": 10894,
+  "vertices_after_import": 19496,
+  "triangles_after_import": 10422,
   "world_bounds_blender_z_up_m": {
     "min": [
       -4.170000076293945,
@@ -101,9 +101,9 @@
   "meshes": [
     {
       "name": "dogenzaka-sakamichi-a",
-      "vertices": 20348,
-      "triangles": 10894,
-      "polygons": 10894,
+      "vertices": 19496,
+      "triangles": 10422,
+      "polygons": 10422,
       "material_slots": 11,
       "uv_layer_count": 1,
       "degenerate_triangles": 0,
@@ -119,7 +119,7 @@
         768,
         768
       ],
-      "seconds": 13.938
+      "seconds": 13.712
     },
     {
       "view": "three-quarter",
@@ -128,7 +128,7 @@
         768,
         768
       ],
-      "seconds": 27.463
+      "seconds": 19.168
     },
     {
       "view": "roof",
@@ -137,15 +137,9 @@
         768,
         768
       ],
-      "seconds": 28.019
+      "seconds": 19.225
     }
   ],
-  "visual_review": "PASS for staged standalone review: independent front, three-quarter and roof PNGs inspected. Narrow frontage, differentiated tenant signs, separate street shop/stair entrances, external stairs/rails, balcony AC units and roof mechanical equipment remain legible. No obvious missing/inside-out faces, floating parts or z-fighting observed. Stairs are illustrative scenery; opaque glass, simplified party walls and inferred roof/back geometry are intentional. Browser performance and placement remain untested.",
-  "source_hash_unchanged_after_validation": true,
-  "revision_notice": {
-    "status": "superseded_for_architectural_fidelity",
-    "reason": "A later close architectural review found rear AC fan facing, a roof-bound stair/slab conflict and missing tenant access doors. The historical geometry/import pass remains valid, but the original three-view visual review missed these details.",
-    "replacement_sha256": "4b0dabe359f0005f91e35192263ea03bca9a820bb32b6270081d4e14770a4835",
-    "old_evidence_preserved": true
-  }
+  "visual_review": "PASS for targeted architectural correction: all three full-model views and three rear/stair/door close-ups inspected. Sixteen isolated actual-mesh probes pass on revised bytes and zero of sixteen pass on archived predecessor. Five tenant lower door panels and five outward rear fan faces verified; six sample paths through removed roof-bound flight are clear. Roof access is inferred via existing headhouse, not a modeled navigable connection. No global or game-runtime acceptance.",
+  "source_hash_unchanged_after_validation": true
 }

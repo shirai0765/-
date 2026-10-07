@@ -53,3 +53,7 @@ blender -t 2 -b --python scripts/external-v080/dogenzaka-mixed/generate.py -- --
 ```
 
 `--no-render` はGLBと実読込manifestのみ。`--authoring` はプレビュー用シーンを含む`.blend`も保存。現環境のCyclesにOpenImageDenoiseがないため、CPU2スレッド・64サンプル・デノイズ無効で実レンダリングします。
+
+## Aの限定改訂（asset_version 2）
+
+2026-10-07。外階段は6階踊り場で終わる形に修正し、屋根スラブを貫いていた最終フライトを除去しました。屋上への動線は既存の後退した屋上室内にあるものと推定しています。背面5台の室外機ファンを外向きにし、上階の窓帯の階段寄りに各階のテナント扉を設けました。室内・衝突判定は追加していません。BのGLB・プレビュー・manifestは変更していません。旧版のQA結果は旧SHAに対応し、新版は別途再検査が必要です。
