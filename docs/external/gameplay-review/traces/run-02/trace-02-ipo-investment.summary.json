@@ -1,0 +1,1059 @@
+{
+  "id": "trace-02-ipo-investment",
+  "mode": "public-engine-actions",
+  "version": "0.8.0",
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "seed": 1,
+  "oneContinuousNaturalCompany": true,
+  "stats": {
+    "fromWeek": 2,
+    "toStateWeek": 104,
+    "actions": 109,
+    "settlements": 102,
+    "idleSettlements": 76,
+    "positiveSettlements": 102,
+    "nonpositiveSettlements": 0,
+    "minCash": 2173883,
+    "minNetProfit": 751599,
+    "firstStateSHA256": "8ff52d3ecaa574323e4f165ccb4ff00b6b21539d5ae8fa1350b01557307505d4",
+    "finalStateSHA256": "67e5b2ec595a2bc9adb170002b0b4b64ecadb0f8c53fe46f609ced5a7ba8bf9d"
+  },
+  "transitions": 211,
+  "firstBeforeState": {
+    "id": "shibuya-1",
+    "week": 2,
+    "cash": 8622284,
+    "reputation": 13.15,
+    "stores": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "lotId": "sakuragaoka-09",
+        "name": "桜丘南の住宅小路店",
+        "style": "standard",
+        "price": 850,
+        "quality": 100,
+        "staff": 4,
+        "manager": false,
+        "marketing": 0,
+        "level": 1,
+        "openedWeek": 1
+      }
+    ],
+    "properties": [],
+    "loans": [],
+    "subsidiaries": [],
+    "listed": false,
+    "sharesOutstanding": 1000000,
+    "founderShares": 1000000,
+    "profitableWeeks": 1,
+    "totalCustomers": 1068,
+    "gameOver": false,
+    "gameOverReason": null,
+    "lastReportWeek": 1,
+    "netProfit": 310284
+  },
+  "firstAfterState": {
+    "id": "shibuya-1",
+    "week": 2,
+    "cash": 5022284,
+    "reputation": 13.15,
+    "stores": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "lotId": "sakuragaoka-09",
+        "name": "桜丘南の住宅小路店",
+        "style": "standard",
+        "price": 850,
+        "quality": 100,
+        "staff": 4,
+        "manager": false,
+        "marketing": 0,
+        "level": 1,
+        "openedWeek": 1
+      },
+      {
+        "id": "store-dogenzaka-09-2",
+        "lotId": "dogenzaka-09",
+        "name": "坂西の小さな路面店店",
+        "style": "standard",
+        "price": 580,
+        "quality": 65,
+        "staff": 4,
+        "manager": false,
+        "marketing": 10000,
+        "level": 1,
+        "openedWeek": 2
+      }
+    ],
+    "properties": [],
+    "loans": [],
+    "subsidiaries": [],
+    "listed": false,
+    "sharesOutstanding": 1000000,
+    "founderShares": 1000000,
+    "profitableWeeks": 1,
+    "totalCustomers": 1068,
+    "gameOver": false,
+    "gameOverReason": null,
+    "lastReportWeek": 1,
+    "netProfit": 310284
+  },
+  "lastAfterState": {
+    "id": "shibuya-1",
+    "week": 104,
+    "cash": 108496635,
+    "reputation": 84.98720812912597,
+    "stores": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "lotId": "sakuragaoka-09",
+        "name": "桜丘南の住宅小路店",
+        "style": "standard",
+        "price": 850,
+        "quality": 100,
+        "staff": 4,
+        "manager": true,
+        "marketing": 0,
+        "level": 2,
+        "openedWeek": 1
+      },
+      {
+        "id": "store-dogenzaka-09-2",
+        "lotId": "dogenzaka-09",
+        "name": "坂西の小さな路面店店",
+        "style": "standard",
+        "price": 850,
+        "quality": 100,
+        "staff": 5,
+        "manager": true,
+        "marketing": 0,
+        "level": 2,
+        "openedWeek": 2
+      },
+      {
+        "id": "store-sakuragaoka-13-3",
+        "lotId": "sakuragaoka-13",
+        "name": "桜丘南の生活通り店",
+        "style": "standard",
+        "price": 754,
+        "quality": 75,
+        "staff": 4,
+        "manager": true,
+        "marketing": 0,
+        "level": 2,
+        "openedWeek": 3
+      },
+      {
+        "id": "store-center-16-9",
+        "lotId": "center-16",
+        "name": "北の通勤広場前店",
+        "style": "takeaway",
+        "price": 1150,
+        "quality": 55,
+        "staff": 4,
+        "manager": true,
+        "marketing": 0,
+        "level": 2,
+        "openedWeek": 9
+      },
+      {
+        "id": "store-center-02-13",
+        "lotId": "center-02",
+        "name": "センター街入口店",
+        "style": "takeaway",
+        "price": 1150,
+        "quality": 65,
+        "staff": 4,
+        "manager": true,
+        "marketing": 0,
+        "level": 3,
+        "openedWeek": 13
+      },
+      {
+        "id": "store-miyashita-11-17",
+        "lotId": "miyashita-11",
+        "name": "東のオフィス街口店",
+        "style": "takeaway",
+        "price": 1150,
+        "quality": 45,
+        "staff": 4,
+        "manager": true,
+        "marketing": 10000,
+        "level": 2,
+        "openedWeek": 17
+      }
+    ],
+    "properties": [
+      {
+        "id": "property-dogenzaka-02",
+        "lotId": "dogenzaka-02",
+        "purchasePrice": 30000000,
+        "level": 1,
+        "occupancy": 0.9,
+        "weeklyIncome": 65000
+      },
+      {
+        "id": "property-center-09",
+        "lotId": "center-09",
+        "purchasePrice": 38000000,
+        "level": 1,
+        "occupancy": 0.9,
+        "weeklyIncome": 68000
+      },
+      {
+        "id": "property-miyashita-12",
+        "lotId": "miyashita-12",
+        "purchasePrice": 34000000,
+        "level": 1,
+        "occupancy": 0.9,
+        "weeklyIncome": 64000
+      },
+      {
+        "id": "property-sakuragaoka-09",
+        "lotId": "sakuragaoka-09",
+        "purchasePrice": 27000000,
+        "level": 1,
+        "occupancy": 0.9,
+        "weeklyIncome": 51000
+      }
+    ],
+    "loans": [],
+    "subsidiaries": [
+      "sakura-kitchen",
+      "hoshi-roasters",
+      "morning-bakery",
+      "sakura-estate",
+      "miyashita-development"
+    ],
+    "marketAcquisitions": {
+      "research": [
+        {
+          "stockId": "jp-5858",
+          "week": 37
+        },
+        {
+          "stockId": "jp-9204",
+          "week": 37
+        },
+        {
+          "stockId": "jp-7689",
+          "week": 37
+        },
+        {
+          "stockId": "jp-402A",
+          "week": 41
+        },
+        {
+          "stockId": "jp-247A",
+          "week": 41
+        },
+        {
+          "stockId": "jp-7897",
+          "week": 41
+        },
+        {
+          "stockId": "jp-1401",
+          "week": 45
+        },
+        {
+          "stockId": "jp-325A",
+          "week": 45
+        },
+        {
+          "stockId": "jp-7806",
+          "week": 45
+        },
+        {
+          "stockId": "jp-7713",
+          "week": 49
+        },
+        {
+          "stockId": "jp-9173",
+          "week": 49
+        },
+        {
+          "stockId": "jp-5199",
+          "week": 49
+        },
+        {
+          "stockId": "jp-9158",
+          "week": 53
+        },
+        {
+          "stockId": "jp-7343",
+          "week": 53
+        },
+        {
+          "stockId": "jp-4564",
+          "week": 53
+        },
+        {
+          "stockId": "jp-7161",
+          "week": 57
+        },
+        {
+          "stockId": "jp-218A",
+          "week": 57
+        },
+        {
+          "stockId": "jp-5842",
+          "week": 57
+        },
+        {
+          "stockId": "jp-7264",
+          "week": 61
+        },
+        {
+          "stockId": "jp-5252",
+          "week": 61
+        },
+        {
+          "stockId": "jp-6224",
+          "week": 61
+        },
+        {
+          "stockId": "jp-3550",
+          "week": 65
+        },
+        {
+          "stockId": "jp-7320",
+          "week": 65
+        },
+        {
+          "stockId": "jp-4346",
+          "week": 65
+        },
+        {
+          "stockId": "jp-4597",
+          "week": 69
+        },
+        {
+          "stockId": "jp-5010",
+          "week": 69
+        },
+        {
+          "stockId": "jp-523A",
+          "week": 69
+        },
+        {
+          "stockId": "jp-4524",
+          "week": 73
+        },
+        {
+          "stockId": "jp-9639",
+          "week": 73
+        },
+        {
+          "stockId": "jp-3951",
+          "week": 73
+        },
+        {
+          "stockId": "jp-6731",
+          "week": 77
+        },
+        {
+          "stockId": "jp-8704",
+          "week": 77
+        },
+        {
+          "stockId": "jp-9326",
+          "week": 77
+        },
+        {
+          "stockId": "jp-2978",
+          "week": 81
+        },
+        {
+          "stockId": "jp-9361",
+          "week": 81
+        },
+        {
+          "stockId": "jp-8914",
+          "week": 81
+        },
+        {
+          "stockId": "jp-5609",
+          "week": 85
+        },
+        {
+          "stockId": "jp-1921",
+          "week": 85
+        },
+        {
+          "stockId": "jp-5279",
+          "week": 85
+        },
+        {
+          "stockId": "jp-350A",
+          "week": 89
+        },
+        {
+          "stockId": "jp-2936",
+          "week": 89
+        },
+        {
+          "stockId": "jp-1514",
+          "week": 89
+        },
+        {
+          "stockId": "jp-6408",
+          "week": 93
+        },
+        {
+          "stockId": "jp-6521",
+          "week": 93
+        },
+        {
+          "stockId": "jp-3529",
+          "week": 93
+        },
+        {
+          "stockId": "jp-4889",
+          "week": 97
+        },
+        {
+          "stockId": "jp-8107",
+          "week": 97
+        },
+        {
+          "stockId": "jp-3933",
+          "week": 97
+        },
+        {
+          "stockId": "jp-5922",
+          "week": 101
+        },
+        {
+          "stockId": "jp-4360",
+          "week": 101
+        },
+        {
+          "stockId": "jp-6993",
+          "week": 101
+        }
+      ],
+      "companies": [
+        {
+          "stockId": "jp-5858",
+          "mode": "integrated",
+          "acquiredWeek": 41,
+          "readyWeek": 47
+        },
+        {
+          "stockId": "jp-7806",
+          "mode": "integrated",
+          "acquiredWeek": 49,
+          "readyWeek": 55
+        },
+        {
+          "stockId": "jp-9204",
+          "mode": "integrated",
+          "acquiredWeek": 53,
+          "readyWeek": 59
+        },
+        {
+          "stockId": "jp-1401",
+          "mode": "integrated",
+          "acquiredWeek": 57,
+          "readyWeek": 63
+        },
+        {
+          "stockId": "jp-5199",
+          "mode": "autonomous",
+          "acquiredWeek": 65,
+          "readyWeek": 67
+        },
+        {
+          "stockId": "jp-4564",
+          "mode": "integrated",
+          "acquiredWeek": 69,
+          "readyWeek": 75
+        },
+        {
+          "stockId": "jp-523A",
+          "mode": "integrated",
+          "acquiredWeek": 73,
+          "readyWeek": 79
+        },
+        {
+          "stockId": "jp-402A",
+          "mode": "integrated",
+          "acquiredWeek": 85,
+          "readyWeek": 91
+        },
+        {
+          "stockId": "jp-247A",
+          "mode": "integrated",
+          "acquiredWeek": 89,
+          "readyWeek": 95
+        }
+      ]
+    },
+    "development": {
+      "programs": [
+        {
+          "districtId": "dogenzaka",
+          "completedChoiceIds": [
+            "dogenzaka-0-commerce",
+            "dogenzaka-1-commerce",
+            "dogenzaka-2-commerce"
+          ]
+        },
+        {
+          "districtId": "center",
+          "completedChoiceIds": [
+            "center-0-commerce",
+            "center-1-commerce",
+            "center-2-commerce"
+          ]
+        },
+        {
+          "districtId": "miyashita",
+          "completedChoiceIds": [
+            "miyashita-0-commerce",
+            "miyashita-1-commerce",
+            "miyashita-2-commerce"
+          ]
+        },
+        {
+          "districtId": "sakuragaoka",
+          "completedChoiceIds": [
+            "sakuragaoka-0-commerce",
+            "sakuragaoka-1-commerce",
+            "sakuragaoka-2-commerce"
+          ]
+        }
+      ]
+    },
+    "listed": true,
+    "sharesOutstanding": 2441406,
+    "founderShares": 1000000,
+    "profitableWeeks": 103,
+    "totalCustomers": 877588,
+    "gameOver": false,
+    "gameOverReason": null,
+    "lastReportWeek": 103,
+    "netProfit": 6498040
+  },
+  "firstActualReport": {
+    "week": 2,
+    "revenue": 2093550,
+    "operatingProfit": 751599,
+    "interest": 0,
+    "netProfit": 751599,
+    "loanRepayment": 0,
+    "dividendsReceived": 0,
+    "dividendsPaid": 0,
+    "cashChange": 751599,
+    "customers": 2463,
+    "headlines": [
+      "営業提案の今週効果 0円／継続費用 4,000円（営業利益に反映）。",
+      "坂西の小さな路面店店：客足が普段より多めで、1,365人が来店しました。 運営に小さな遅れが出ました。",
+      "桜丘南の住宅小路店：普段並みの客足で、1,098人が来店しました。",
+      "利益を確保しました。次の投資機会を検討しましょう。"
+    ],
+    "storeResults": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "revenue": 933300,
+        "profit": 330697,
+        "customers": 1098,
+        "satisfaction": 99
+      },
+      {
+        "id": "store-dogenzaka-09-2",
+        "revenue": 1160250,
+        "profit": 424902,
+        "customers": 1365,
+        "satisfaction": 98
+      }
+    ],
+    "storeAccounts": [
+      {
+        "storeId": "store-sakuragaoka-09-1",
+        "costs": {
+          "ingredients": 203130,
+          "fulfilment": 111996,
+          "labor": 208458,
+          "rent": 51020,
+          "equipment": 28000,
+          "marketing": 0,
+          "manager": 0
+        },
+        "roundingAdjustment": -1
+      },
+      {
+        "storeId": "store-dogenzaka-09-2",
+        "costs": {
+          "ingredients": 252525,
+          "fulfilment": 139230,
+          "labor": 260572,
+          "rent": 55021,
+          "equipment": 28000,
+          "marketing": 0,
+          "manager": 0
+        },
+        "roundingAdjustment": 0
+      }
+    ],
+    "news": {
+      "week": 2,
+      "market": {
+        "advances": 83,
+        "declines": 17,
+        "unchanged": 0
+      },
+      "companies": [
+        {
+          "stockId": "jp-6993",
+          "previousPrice": 97.7,
+          "currentPrice": 126.74,
+          "percentChange": 29.723643807574195
+        },
+        {
+          "stockId": "jp-3175",
+          "previousPrice": 933.42,
+          "currentPrice": 874.19,
+          "percentChange": -6.345482205223796
+        }
+      ],
+      "city": {
+        "current": {
+          "demand": 1.00422649481956,
+          "wages": 1.0022004404721512,
+          "rents": 1.0003841227091486
+        },
+        "previous": {
+          "demand": 1,
+          "wages": 1,
+          "rents": 1
+        }
+      },
+      "events": []
+    }
+  },
+  "lastActualReport": {
+    "week": 103,
+    "revenue": 13035415,
+    "operatingProfit": 6498040,
+    "interest": 0,
+    "netProfit": 6498040,
+    "loanRepayment": 0,
+    "dividendsReceived": 0,
+    "dividendsPaid": 0,
+    "cashChange": 6498040,
+    "customers": 10354,
+    "headlines": [
+      "市場企業グループ：稼働9社・準備0社、営業利益 1,178,110円／週。",
+      "センター街の「沿線商業の共同拠点」が完成。今週から効果と維持費を反映します。",
+      "宮下・東口の「沿線商業の共同拠点」が完成。今週から効果と維持費を反映します。",
+      "桜丘の「沿線商業の共同拠点」が完成。今週から効果と維持費を反映します。",
+      "地区開発の維持費 112,000円／週を営業利益に反映。",
+      "本部・グループ運営費 482,531円／週。店長なし店舗の運営能力 100%。",
+      "営業提案の今週効果 52,568円／継続費用 18,000円（営業利益に反映）。",
+      "センター街入口店：客足が普段より落ち着き、2,156人が来店しました。",
+      "桜丘南の生活通り店：客足が普段より落ち着き、1,358人が来店しました。",
+      "北の通勤広場前店：客足が普段より落ち着き、1,866人が来店しました。",
+      "利益を確保しました。次の投資機会を検討しましょう。"
+    ],
+    "storeResults": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "revenue": 1184900,
+        "profit": 433311,
+        "customers": 1394,
+        "satisfaction": 100
+      },
+      {
+        "id": "store-dogenzaka-09-2",
+        "revenue": 1485800,
+        "profit": 520834,
+        "customers": 1748,
+        "satisfaction": 100
+      },
+      {
+        "id": "store-sakuragaoka-13-3",
+        "revenue": 1023932,
+        "profit": 276325,
+        "customers": 1358,
+        "satisfaction": 95
+      },
+      {
+        "id": "store-center-16-9",
+        "revenue": 2145900,
+        "profit": 1060642,
+        "customers": 1866,
+        "satisfaction": 66
+      },
+      {
+        "id": "store-center-02-13",
+        "revenue": 2479400,
+        "profit": 1267858,
+        "customers": 2156,
+        "satisfaction": 71
+      },
+      {
+        "id": "store-miyashita-11-17",
+        "revenue": 2106800,
+        "profit": 1023211,
+        "customers": 1832,
+        "satisfaction": 64
+      }
+    ],
+    "storeAccounts": [
+      {
+        "storeId": "store-sakuragaoka-09-1",
+        "costs": {
+          "ingredients": 257890,
+          "fulfilment": 142188,
+          "labor": 219523,
+          "rent": 0,
+          "equipment": 56000,
+          "marketing": 0,
+          "manager": 75989
+        },
+        "roundingAdjustment": -1
+      },
+      {
+        "storeId": "store-dogenzaka-09-2",
+        "costs": {
+          "ingredients": 323380,
+          "fulfilment": 178296,
+          "labor": 274403,
+          "rent": 56899,
+          "equipment": 56000,
+          "marketing": 0,
+          "manager": 75989
+        },
+        "roundingAdjustment": -1
+      },
+      {
+        "storeId": "store-sakuragaoka-13-3",
+        "costs": {
+          "ingredients": 212188,
+          "fulfilment": 122872,
+          "labor": 219523,
+          "rent": 61037,
+          "equipment": 56000,
+          "marketing": 0,
+          "manager": 75989
+        },
+        "roundingAdjustment": -2
+      },
+      {
+        "storeId": "store-center-16-9",
+        "costs": {
+          "ingredients": 248645,
+          "fulfilment": 257508,
+          "labor": 219523,
+          "rent": 227594,
+          "equipment": 56000,
+          "marketing": 0,
+          "manager": 75989
+        },
+        "roundingAdjustment": -1
+      },
+      {
+        "storeId": "store-center-02-13",
+        "costs": {
+          "ingredients": 312081,
+          "fulfilment": 297528,
+          "labor": 219523,
+          "rent": 222422,
+          "equipment": 84000,
+          "marketing": 0,
+          "manager": 75989
+        },
+        "roundingAdjustment": -1
+      },
+      {
+        "storeId": "store-miyashita-11-17",
+        "costs": {
+          "ingredients": 223046,
+          "fulfilment": 252816,
+          "labor": 219523,
+          "rent": 246216,
+          "equipment": 56000,
+          "marketing": 10000,
+          "manager": 75989
+        },
+        "roundingAdjustment": -1
+      }
+    ],
+    "news": {
+      "week": 103,
+      "market": {
+        "advances": 27,
+        "declines": 73,
+        "unchanged": 0
+      },
+      "companies": [
+        {
+          "stockId": "jp-6993",
+          "previousPrice": 357.8,
+          "currentPrice": 385.53,
+          "percentChange": 7.750139742873108
+        },
+        {
+          "stockId": "jp-9326",
+          "previousPrice": 830.25,
+          "currentPrice": 705.02,
+          "percentChange": -15.083408611863902
+        }
+      ],
+      "city": {
+        "current": {
+          "demand": 0.9915624323821274,
+          "wages": 1.0553972603362813,
+          "rents": 1.034520060307906
+        },
+        "previous": {
+          "demand": 0.9873821473530265,
+          "wages": 1.0534357496729216,
+          "rents": 1.0342235779552973
+        }
+      },
+      "events": [
+        {
+          "category": "city",
+          "text": "センター街の「沿線商業の共同拠点」が完成。今週から効果と維持費を反映します。"
+        },
+        {
+          "category": "city",
+          "text": "宮下・東口の「沿線商業の共同拠点」が完成。今週から効果と維持費を反映します。"
+        },
+        {
+          "category": "city",
+          "text": "桜丘の「沿線商業の共同拠点」が完成。今週から効果と維持費を反映します。"
+        }
+      ]
+    }
+  },
+  "executedActionSpending": 935277036,
+  "executedActionFinancing": 638029384,
+  "milestones": [
+    {
+      "week": 17,
+      "action": {
+        "type": "ipo"
+      },
+      "cashDelta": 82817692
+    },
+    {
+      "week": 17,
+      "action": {
+        "type": "buyProperty",
+        "lotId": "dogenzaka-02"
+      },
+      "cashDelta": -30000000
+    },
+    {
+      "week": 29,
+      "action": {
+        "type": "acquire",
+        "targetId": "sakura-kitchen"
+      },
+      "cashDelta": -46000000
+    },
+    {
+      "week": 33,
+      "action": {
+        "type": "acquire",
+        "targetId": "hoshi-roasters"
+      },
+      "cashDelta": -19000000
+    },
+    {
+      "week": 33,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "dogenzaka",
+        "choiceId": "dogenzaka-0-commerce"
+      },
+      "cashDelta": -2520000
+    },
+    {
+      "week": 37,
+      "action": {
+        "type": "acquire",
+        "targetId": "morning-bakery"
+      },
+      "cashDelta": -8000000
+    },
+    {
+      "week": 37,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "dogenzaka",
+        "choiceId": "dogenzaka-1-commerce"
+      },
+      "cashDelta": -6825000
+    },
+    {
+      "week": 45,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "dogenzaka",
+        "choiceId": "dogenzaka-2-commerce"
+      },
+      "cashDelta": -18900000
+    },
+    {
+      "week": 53,
+      "action": {
+        "type": "issueShares",
+        "fraction": 0.25
+      },
+      "cashDelta": 129852423
+    },
+    {
+      "week": 53,
+      "action": {
+        "type": "buyProperty",
+        "lotId": "center-09"
+      },
+      "cashDelta": -38000000
+    },
+    {
+      "week": 53,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "center",
+        "choiceId": "center-0-commerce"
+      },
+      "cashDelta": -2400000
+    },
+    {
+      "week": 53,
+      "action": {
+        "type": "buyProperty",
+        "lotId": "miyashita-12"
+      },
+      "cashDelta": -34000000
+    },
+    {
+      "week": 53,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "miyashita",
+        "choiceId": "miyashita-0-commerce"
+      },
+      "cashDelta": -2640000
+    },
+    {
+      "week": 53,
+      "action": {
+        "type": "buyProperty",
+        "lotId": "sakuragaoka-09"
+      },
+      "cashDelta": -27000000
+    },
+    {
+      "week": 53,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "sakuragaoka",
+        "choiceId": "sakuragaoka-0-commerce"
+      },
+      "cashDelta": -2760000
+    },
+    {
+      "week": 69,
+      "action": {
+        "type": "issueShares",
+        "fraction": 0.25
+      },
+      "cashDelta": 179773481
+    },
+    {
+      "week": 69,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "center",
+        "choiceId": "center-1-commerce"
+      },
+      "cashDelta": -6500000
+    },
+    {
+      "week": 69,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "miyashita",
+        "choiceId": "miyashita-1-commerce"
+      },
+      "cashDelta": -7150000
+    },
+    {
+      "week": 69,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "sakuragaoka",
+        "choiceId": "sakuragaoka-1-commerce"
+      },
+      "cashDelta": -7475000
+    },
+    {
+      "week": 77,
+      "action": {
+        "type": "acquire",
+        "targetId": "sakura-estate"
+      },
+      "cashDelta": -68000000
+    },
+    {
+      "week": 93,
+      "action": {
+        "type": "issueShares",
+        "fraction": 0.25
+      },
+      "cashDelta": 245585788
+    },
+    {
+      "week": 93,
+      "action": {
+        "type": "acquire",
+        "targetId": "miyashita-development"
+      },
+      "cashDelta": -175000000
+    },
+    {
+      "week": 93,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "center",
+        "choiceId": "center-2-commerce"
+      },
+      "cashDelta": -18000000
+    },
+    {
+      "week": 93,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "miyashita",
+        "choiceId": "miyashita-2-commerce"
+      },
+      "cashDelta": -19800000
+    },
+    {
+      "week": 93,
+      "action": {
+        "type": "startDevelopment",
+        "districtId": "sakuragaoka",
+        "choiceId": "sakuragaoka-2-commerce"
+      },
+      "cashDelta": -20700000
+    }
+  ],
+  "evidence": {
+    "jsonl": "trace-02-ipo-investment.jsonl",
+    "sha256": "1a9efd0cfbffeb6dcca46dc4358d24aef819bea2991c674fb18e650bc3e48c21",
+    "replay": "replay-result.json",
+    "summary": "summary.json"
+  },
+  "time": {
+    "fullCampaignScriptSeconds": 17.060751929,
+    "phaseScriptSeconds": null,
+    "humanPlaySeconds": null,
+    "humanThirtyHours": "unmeasured"
+  }
+}
