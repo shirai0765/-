@@ -1,3 +1,5 @@
+> Revision notice — 2026-10-07: SUPERSEDED for architectural fidelity. A later close architectural review found rear AC fan facing, a roof-bound stair/slab conflict and missing tenant access doors. The historical geometry/import pass remains valid, but the original three-view visual review missed these details. New hash-specific verification targets 4b0dabe359f0005f91e35192263ea03bca9a820bb32b6270081d4e14770a4835. The original report and images are preserved in the external QA snapshot; the historic measurements below are unchanged.
+
 # Dogenzaka Sakamichi A — independent review
 
 **Result: PASS for staged standalone-asset review, 2026-10-07.** Browser

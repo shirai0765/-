@@ -139,8 +139,14 @@ def building_a():
     for i in range(1,6):
         floor=base+(i-1)*pitch
         box(-.88,floor+.13,4.00,5.32,.26,1.24,'plaster')
-        box(-.88,floor+.42,3.88,5.02,.32,.28,'cream')
-        window(-.89,floor+1.60,3.72,4.57,2.00,3,'glass_light' if i%2 else 'glass')
+        box(-1.40,floor+.42,3.88,3.80,.32,.28,'cream')
+        window(-1.36,floor+1.60,3.72,3.63,2.00,3,'glass_light' if i%2 else 'glass')
+        # Visible tenant door from the exterior circulation balcony; no interior modeled.
+        box(1.05,floor+1.43,3.74,1.02,2.36,.12,'charcoal')
+        box(1.05,floor+1.43,3.815,.84,2.18,.025,'metal')
+        box(1.05,floor+1.68,3.835,.63,1.05,.014,'glass')
+        beam((1.34,floor+1.11,3.86),(1.34,floor+1.46,3.86),.021,'charcoal')
+        box(1.05,floor+.28,3.90,1.07,.06,.40,'concrete')
         # Narrow projecting balcony front with lower solid balustrade and upper rails.
         box(-.90,floor+.62,4.46,5.1,.38,.12,'plaster')
         rail((-3.40,floor+.80,4.47),(1.60,floor+.80,4.47),height=.31,posts=7)
@@ -153,9 +159,12 @@ def building_a():
         if i==5: nextfloor=H
         mid=(floor+nextfloor)/2
         box(2.86,floor+.07,4.36,2.14,.14,1.12,'concrete')
-        box(2.86,mid,1.62,2.14,.14,1.14,'concrete')
-        stair_flight(2.31,4.05,1.80,floor,mid,.98,10)
-        stair_flight(3.41,1.80,4.05,mid,nextfloor,.98,10)
+        # External stair ends at the sixth-floor landing, below the roof slab.
+        # Roof access is inferred inside the existing setback headhouse.
+        if i<5:
+            box(2.86,mid,1.62,2.14,.14,1.14,'concrete')
+            stair_flight(2.31,4.05,1.80,floor,mid,.98,10)
+            stair_flight(3.41,1.80,4.05,mid,nextfloor,.98,10)
         # Angled solid street-facing screens recall staggered exposed Dogenzaka stair bays.
         if i>0:
             box(2.85,floor+.55,4.82,2.16,1.08,.14,'plaster')
@@ -180,7 +189,7 @@ def building_a():
         yy=base+(j-1)*pitch+1.4
         # Rear windows face -Z; explicit box glazing avoids mirrored labels.
         box(-1.4,yy,-5.215,2.45,1.58,.035,'charcoal');box(-1.4,yy,-5.245,2.20,1.37,.02,'glass_light')
-        ac(.74,yy-.45,-5.38,.78)
+        ac(.74,yy-.45,-5.38,.78,front=False)
     beam((-3.76,.25,-4.97),(-3.76,H+.55,-4.97),.055,'metal')
     box(-3.48,14.04,4.68,.40,6.70,.34,'charcoal')
     # A clean slim sign blade, original strip applied horizontally at top.
@@ -311,7 +320,7 @@ for i,im in enumerate(g.get('images',[])):
     width,height=Image.open(io.BytesIO(payload)).size
     textures.append({'image_index':i,'width':width,'height':height,'mime_type':im.get('mimeType'),'embedded_buffer_view':im.get('bufferView'),'bytes':len(payload)})
 manifest={
- 'id':SLUG,'asset_version':1,'style':'original Dogenzaka-inspired mixed-use, not a measured replica','floors':6 if ARGS.asset=='a' else 5,
+ 'id':SLUG,'asset_version':2 if ARGS.asset=='a' else 1,'style':'original Dogenzaka-inspired mixed-use, not a measured replica','floors':6 if ARGS.asset=='a' else 5,
  'path':str(asset_path.relative_to(ROOT)),'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'triangles':tri,'vertices':verts,'meshes':len(g.get('meshes',[])),'primitives':len(primitives),'materials':len(g.get('materials',[])),'texture_count':len(textures),'textures':textures,
  'coordinates':{'units':'m','up':'+Y','front':'+Z','ground_y':0,'origin':'bottom centre of complete geometry footprint envelope','gltf_bounds_min':[round(mins[0],5),round(mins[2],5),round(-maxs[1],5)],'gltf_bounds_max':[round(maxs[0],5),round(maxs[2],5),round(-mins[1],5)],'dimensions_m':{'width':round(maxs[0]-mins[0],5),'height':round(maxs[2]-mins[2],5),'depth':round(maxs[1]-mins[1],5)}},
  'dimensions_provenance':'All dimensions inferred for original game art. Source listing confirms six storeys only for the Odawaraya reference. No survey or floor plan used; rear, roof and stairs are authored design assumptions.',
