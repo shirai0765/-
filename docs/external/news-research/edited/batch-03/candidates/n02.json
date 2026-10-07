@@ -1,0 +1,666 @@
+{
+  "schemaVersion": 1,
+  "task": "N02",
+  "candidates": [
+    {
+      "id": "nr-retail-property-nbf-yokohama-shiba-replacement-contract-20250131",
+      "eventKey": "nbf-yokohama-shiba-replacement-contract-20250131",
+      "category": "retail-property",
+      "realEntities": [
+        "日本ビルファンド投資法人",
+        "横浜三井ビルディング",
+        "芝NBFタワー"
+      ],
+      "eventDate": "2025-01-31",
+      "eventDateNote": "契約・決定日。売却・取得の引渡完了をこの資料からは確定しない。",
+      "sourceURL": "https://www2.jpx.co.jp/disc/89510/140120250131560167.pdf",
+      "publisher": "日本ビルファンド投資法人（JPX適時開示掲載）",
+      "publishedDate": "2025-01-31",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1〜3ページ、取得・譲渡の概要、決済予定日、取得理由と資金。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "発行者名・日付と契約表を実読。横浜は信託受益権準共有持分76%で、建物全部の取得ではない。双方の引渡しは3月予定。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "日本ビルファンドは2025年1月31日、横浜三井ビルディングの信託受益権準共有持分76%の取得と、芝NBFタワーの譲渡を決定し、同日契約を締結したと発表した。",
+        "取得予定価格は431.9億円、譲渡予定価格は321億円で、引渡しはそれぞれ3月31日と3月27日を予定した。",
+        "取得資金は借入金と譲渡資金を含む自己資金で賄う予定と説明した。"
+      ],
+      "managementChoice": "保有物件を売却して別物件の持分を取得する資産入替と、継続保有を比較する。",
+      "authorWrittenBrief": "日本ビルファンドは2025年1月、芝NBFタワーの売却と横浜三井ビルディングの受益権持分76%の取得を契約したと発表した。双方の引渡しは同年3月を予定した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-8951",
+          "gameName": "星都ビル投資",
+          "realName": "日本ビルファンド投資法人",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-city-property-investment",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "物件保有と、商業回遊・賃貸設備・駅前共同開発の投資判断を比較する参考。",
+          "limitation": "現実の資産取引や鉄道施策は保存された自社の地区工事とは別。完成週と一致し保存済みheadlinesに含まれた出来事だけがゲーム内ニュース対象で、新駅、車両数、実在ビル、物件交換は現行保存にない。株価や予定から利益・需要を補完しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-llr-kitakashiwa-cold-extension-contract-20230329",
+      "eventKey": "llr-kitakashiwa-cold-extension-contract-20230329",
+      "category": "retail-property",
+      "realEntities": [
+        "ラサールロジポート投資法人",
+        "ロジポート北柏"
+      ],
+      "eventDate": "2023-03-29",
+      "eventDateNote": "増築決定・請負契約日。未着工の注記があり、完成や賃貸稼働を主張しない。",
+      "sourceURL": "https://lasalle-logiport.com/file/news-77f7de0ea0fd99f0dccf9b22ee4d2ed49988b026.pdf",
+      "publisher": "ラサールロジポート投資法人",
+      "publishedDate": "2023-03-29",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1〜2ページ、建設決定・工事請負契約・予定引渡し・設備負担の区別。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "本文を実読。発表時未着工との注記、2024年4月下旬引渡し予定、断熱設備は投資法人・冷凍冷蔵設備は賃借人負担を確認。試算利回りを実績に採用しない。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "ラサールロジポートは2023年3月29日、ロジポート北柏の敷地内に冷凍冷蔵倉庫を増築すると決定し、工事請負契約を同日に締結したと発表した。",
+        "引渡しは2024年4月下旬を予定し、発表時点では建築工事に未着工であると注記した。",
+        "投資法人が断熱設備を、賃借人が冷凍冷蔵設備を負担する工事と説明した。"
+      ],
+      "managementChoice": "既存敷地の未消化容積率を使い、投資法人と賃借人で設備負担を分けて物流施設の機能を増やす。",
+      "authorWrittenBrief": "ラサールロジポートは2023年3月、ロジポート北柏で冷凍冷蔵倉庫を増築する工事を契約した。断熱設備と冷凍冷蔵設備の負担を分け、引渡しは翌年4月下旬を予定した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3466",
+          "gameName": "月丘倉庫投資",
+          "realName": "ラサールロジポート投資法人",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-city-property-investment",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "物件保有と、商業回遊・賃貸設備・駅前共同開発の投資判断を比較する参考。",
+          "limitation": "現実の資産取引や鉄道施策は保存された自社の地区工事とは別。完成週と一致し保存済みheadlinesに含まれた出来事だけがゲーム内ニュース対象で、新駅、車両数、実在ビル、物件交換は現行保存にない。株価や予定から利益・需要を補完しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-llr-nagareyama-staged-interest-sale-contract-20231016",
+      "eventKey": "llr-nagareyama-staged-interest-sale-contract-20231016",
+      "category": "retail-property",
+      "realEntities": [
+        "ラサールロジポート投資法人",
+        "ロジポート流山B棟"
+      ],
+      "eventDate": "2023-10-16",
+      "eventDateNote": "契約・決定日。3回の譲渡実行日は予定であり、完了や確定利益を採用しない。",
+      "sourceURL": "https://lasalle-logiport.com/file/news-fb275c1001534d1c6759d03f40f89fa00e8ed7f4.pdf",
+      "publisher": "ラサールロジポート投資法人",
+      "publishedDate": "2023-10-16",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1〜2ページ、準共有持分37.5%、契約日、3回の引渡し予定、譲渡理由。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "実読。37.5%持分を12.5%ずつ3回に分ける予定を確認。譲渡価格・予想利益・鑑定額を混同せず、引渡し予定を実施として書かない。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "ラサールロジポートは2023年10月16日、ロジポート流山B棟の信託受益権準共有持分37.5%の譲渡を決定し、同日売買契約を締結したと発表した。",
+        "持分12.5%ずつを2023年11月、2024年3月、同年9月の3回に分けて引き渡す予定を示した。",
+        "近隣競合や将来の収益性を考慮した判断と説明し、資金を分配や資産取得などに活用する予定とした。"
+      ],
+      "managementChoice": "一棟売却とは異なり、受益権持分を複数期に分けて譲渡して資金回収時期を調整する。",
+      "authorWrittenBrief": "ラサールロジポートは2023年10月、ロジポート流山B棟の受益権持分37.5%を譲渡する契約を発表した。持分を3回に分けて翌年9月までに引き渡す計画を示した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3466",
+          "gameName": "月丘倉庫投資",
+          "realName": "ラサールロジポート投資法人",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-city-property-investment",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "物件保有と、商業回遊・賃貸設備・駅前共同開発の投資判断を比較する参考。",
+          "limitation": "現実の資産取引や鉄道施策は保存された自社の地区工事とは別。完成週と一致し保存済みheadlinesに含まれた出来事だけがゲーム内ニュース対象で、新駅、車両数、実在ビル、物件交換は現行保存にない。株価や予定から利益・需要を補完しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-glp-shinkiba-tenant-energy-renewal-undated",
+      "eventKey": "glp-shinkiba-tenant-energy-renewal-undated",
+      "category": "retail-property",
+      "realEntities": [
+        "GLP投資法人",
+        "DHLジャパン株式会社",
+        "Marq新木場",
+        "日本GLPグループ"
+      ],
+      "eventDate": null,
+      "eventDateNote": "本文は実施を過去形で記すが、再契約・設置の年月日を特定できないためnull。年月日を推測したニュース時系列には使わない。",
+      "sourceURL": "https://www.glpjreit.com/ja/esg/environment.html",
+      "publisher": "GLP投資法人",
+      "publishedDate": null,
+      "publishedDateNote": "本文に公開日表示を確認できないためnull。出来事の日付を出版日として扱わない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "入居企業との協働によるESGの推進事例（Marq新木場）。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文で専用施設の再契約に伴う太陽光パネル設置・LED化サポートを実読。実施日・公開日は見当たらずnull。現行サイト名称を使用し、名称変更時期を推定しない。 著者による編集稿クロスレビューで、再契約時の連携主体は日本GLPグループとDHLジャパン、パネル設置・LED化支援の主体はGLP投資法人と原資料通りに分け、factsとrealEntitiesを補正した。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "GLP投資法人の公式ESG事例は、DHLジャパン専用施設Marq新木場の再契約に際し、日本GLPグループとDHLジャパンが連携したと説明している。",
+        "GLP投資法人が太陽光パネルを設置し、LED化を支援したと記載する。",
+        "事例本文に再契約日や設備設置日、記事公開日の明示は確認できない。"
+      ],
+      "managementChoice": "賃貸再契約を契機に、建物所有側が設備を改修し、入居企業の環境目標に協力する。",
+      "authorWrittenBrief": "GLP投資法人は、DHLジャパン専用施設の再契約に合わせ、太陽光パネル設置とLED化支援を行った事例を紹介している。公式本文には実施日の明記がない。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3281",
+          "gameName": "銀河物流投資",
+          "realName": "ＧＬＰ投資法人",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-city-property-investment",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "物件保有と、商業回遊・賃貸設備・駅前共同開発の投資判断を比較する参考。",
+          "limitation": "現実の資産取引や鉄道施策は保存された自社の地区工事とは別。完成週と一致し保存済みheadlinesに含まれた出来事だけがゲーム内ニュース対象で、新駅、車両数、実在ビル、物件交換は現行保存にない。株価や予定から利益・需要を補完しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-capital-ma-jrc-toyo-acquisition-decision-20231228",
+      "eventKey": "jrc-toyo-acquisition-decision-20231228",
+      "category": "capital-ma",
+      "realEntities": [
+        "株式会社JRC",
+        "JRC C&M株式会社",
+        "東陽工業株式会社"
+      ],
+      "eventDate": "2023-12-28",
+      "eventDateNote": "決議・発表日。日程表に実行日があるが、単独の完了報告とは区別する。",
+      "sourceURL": "https://www.jrcnet.co.jp/news/2023/4697/",
+      "publisher": "株式会社JRC",
+      "publishedDate": "2023-12-28",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭、取得目的、株式数・議決権比率、日程表。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式全文を実読。日程表に決議・契約・譲渡実行日が同日と記載されるが、本文の主述は決議であるため短文は決定・契約までに限定。子会社を取得主体として保持。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "JRCは2023年12月28日、連結子会社JRC C&Mが東陽工業の全株式20,000株を取得し子会社化することを取締役会で決議したと発表した。",
+        "日程表は取締役会決議日・契約締結日・株式譲渡実行日を同年12月28日と記載する。",
+        "環境プラント向けコンベヤ事業と、東陽工業の煙道ダクト・ケーシング等の製造を組み合わせ、製造領域の拡大・補完を目指すと説明した。"
+      ],
+      "managementChoice": "子会社を通じた全株式取得で既存コンベヤ事業の周辺製品領域を取り込む。",
+      "authorWrittenBrief": "JRCは2023年12月、子会社JRC C&Mによる東陽工業の全株式取得を決定し、同日契約の日程を公表した。ボイラー関連製品などを加え、製造領域の補完を目指した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-6224",
+          "gameName": "虹橋技研24",
+          "realName": "ＪＲＣ",
+          "relationship": "subsidiary",
+          "note": "現実の事業主体は既存STOCKSの親会社の子会社。事実の主体と市場銘柄を分ける。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-capital-policy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.marketAcquisitions; MarketAcquisitionState.companies.acquiredWeek/readyWeek; WeeklyReport.headlines",
+          "rationale": "上場、株式発行、取得後の引継ぎを別の判断として読むための現実の参考資料。",
+          "limitation": "listed単独は今週のIPOの証拠ではない。取得保存は自社傘下の事業だけで、独立他社の資金調達、TOB、契約、払込完了を記録しない。現実の対価・資金使途をゲームの数値へ付け替えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-capital-ma-integral-oliver-tob-result-20210818",
+      "eventKey": "integral-oliver-tob-result-20210818",
+      "category": "capital-ma",
+      "realEntities": [
+        "インテグラル株式会社",
+        "株式会社NEXT-O",
+        "株式会社オリバー"
+      ],
+      "eventDate": "2021-08-18",
+      "eventDateNote": "公開買付け結果の報告日。買付期間終了は前日で、決済・非公開化完了日はこの資料では確認しない。",
+      "sourceURL": "https://www.integralkk.com/gr/Integral_20210818.pdf",
+      "publisher": "インテグラル株式会社・株式会社NEXT-O",
+      "publishedDate": "2021-08-18",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページの親子関係・MBO目的、3ページの成否と応募数、4〜5ページの決済・後続手続。",
+      "sourceRead": {
+        "method": "web-open/pdf-text; HTTPS/pdf-text",
+        "status": "verified",
+        "notes": "正しい現行/gr/配信PDFを実読。旧wp-content URLは再アクセス404なので採用せず。応募9,419,917株が下限を上回る結果と、8月24日決済開始予定・完全取得と非公開化の後続予定を区別した。 QAのwebアクセスエラーを受け、同URLをHTTPSで再取得し、最終URL https://group.integralkk.com/Integral_20210818.pdf の200応答PDFをメモリ入力のpdftotextで再読した。元の親子関係・結果本文を再確認した。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "インテグラルは2021年8月18日、100%子会社NEXT-Oを通じたオリバーのMBO目的の公開買付けが8月17日に終了したと報告した。",
+        "応募数9,419,917株が下限6,186,900株を上回り、応募株式全てを買い付けると発表した。",
+        "決済開始日は8月24日とし、残余株式の取得手続を今後実施する予定と説明した。"
+      ],
+      "managementChoice": "MBOを目的とする公開買付けで応募条件を満たした段階と、決済・残余株式取得による非公開化完了を分ける。",
+      "authorWrittenBrief": "インテグラルは2021年8月、子会社NEXT-Oによるオリバー株の公開買付けで応募数が下限を上回ったと報告した。決済は翌週、残余株式の取得手続は今後の予定として示した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-5842",
+          "gameName": "陽光技研42",
+          "realName": "インテグラル",
+          "relationship": "subsidiary",
+          "note": "現実の事業主体は既存STOCKSの親会社の子会社。事実の主体と市場銘柄を分ける。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-capital-policy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.marketAcquisitions; MarketAcquisitionState.companies.acquiredWeek/readyWeek; WeeklyReport.headlines",
+          "rationale": "上場、株式発行、取得後の引継ぎを別の判断として読むための現実の参考資料。",
+          "limitation": "listed単独は今週のIPOの証拠ではない。取得保存は自社傘下の事業だけで、独立他社の資金調達、TOB、契約、払込完了を記録しない。現実の対価・資金使途をゲームの数値へ付け替えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-capital-ma-kdx-three-reits-merger-effective-20231101",
+      "eventKey": "kdx-three-reits-merger-effective-20231101",
+      "category": "capital-ma",
+      "realEntities": [
+        "KDX不動産投資法人",
+        "ケネディクス・オフィス投資法人",
+        "ケネディクス・レジデンシャル・ネクスト投資法人",
+        "ケネディクス商業リート投資法人"
+      ],
+      "eventDate": "2023-11-01",
+      "eventDateNote": "効力発生・成立日。6月13日の契約発表からの完了段階を本文で確認。",
+      "sourceURL": "https://ssl4.eir-parts.net/doc/8972/tdnet/2351917/00.pdf",
+      "publisher": "KDX不動産投資法人（公式サイトから配信PDFへリンク）",
+      "publishedDate": "2023-11-01",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページ、合併成立・商号変更と存続/消滅法人・効力発生日。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "公式合併ページ経由の発行者PDFを実読。6月契約とは別の成立報告で、旧オフィスが存続し2法人が消滅することを確認。運用予想は精査中とあり実績にしない。 初回は公式リンクからPDF全文を実読できたが、独立QA・後日のHTTPS再アクセスで503となったため、正常に読める公式合併ページと執行役員メッセージで効力日・合併実施・名称変更を再確認し補助出典へ追加した。"
+      },
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.kdx-reit.com/ja/merger/index.html",
+          "publisher": "KDX不動産投資法人",
+          "publishedDate": null,
+          "publishedDateNote": "ページ全体の公開日表示を確認できない。関連開示の2023年11月1日は文書の日付でありページ公開日ではない。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "スケジュールの存続/消滅法人と合併効力発生2023年11月1日、関連プレスリリースの成立・商号変更。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "公式本文を実読。合併後の確定交付金も掲載される事後ページで、存続消滅と効力日を確認した。PDFリンク先の不安定なアクセスを補う。"
+          }
+        },
+        {
+          "sourceURL": "https://www.kdx-reit.com/ja/about/index.html",
+          "publisher": "KDX不動産投資法人",
+          "publishedDate": null,
+          "publishedDateNote": "執行役員メッセージ本文に公開日・更新日の表示を確認できないためnull。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "メッセージ本文の2023年11月合併・KDXへの名称変更、合併後の用途拡大。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "合併と名称変更を実施した事後記述を実読。日までの特定は主出典・公式合併ページを使い、メッセージの11月表示から日を推定しない。"
+          }
+        }
+      ],
+      "facts": [
+        "KDX不動産投資法人は2023年11月1日、3投資法人の吸収合併が同日効力を生じ成立したと発表した。",
+        "ケネディクス・オフィス投資法人を存続法人、レジデンシャル・ネクストと商業リートの両投資法人を消滅法人とする合併であった。",
+        "存続法人は同日にKDX不動産投資法人へ商号変更した。"
+      ],
+      "managementChoice": "法人合併による資産承継と、個々の資産だけを購入する取引を比較する。",
+      "authorWrittenBrief": "2023年11月、ケネディクスのオフィス・住宅・商業リート3法人の吸収合併が成立した。存続するオフィス投資法人は同日にKDX不動産投資法人へ名称を変えた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-8972",
+          "gameName": "青葉不動産投資",
+          "realName": "ＫＤＸ不動産投資法人",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-capital-policy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.marketAcquisitions; MarketAcquisitionState.companies.acquiredWeek/readyWeek; WeeklyReport.headlines",
+          "rationale": "上場、株式発行、取得後の引継ぎを別の判断として読むための現実の参考資料。",
+          "limitation": "listed単独は今週のIPOの証拠ではない。取得保存は自社傘下の事業だけで、独立他社の資金調達、TOB、契約、払込完了を記録しない。現実の対価・資金使途をゲームの数値へ付け替えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-capital-ma-jre-zeb-committed-loan-contract-20260331",
+      "eventKey": "jre-zeb-committed-loan-contract-20260331",
+      "category": "capital-ma",
+      "realEntities": [
+        "ジャパンリアルエステイト投資法人",
+        "株式会社日本政策投資銀行"
+      ],
+      "eventDate": "2026-03-31",
+      "eventDateNote": "契約締結・決定の発表日。借入枠の確保を現金受領や改修完了とみなさない。",
+      "sourceURL": "https://www.j-re.co.jp/file/news-371f467754c358da4a5afad8a0609155695363dc.pdf",
+      "publisher": "ジャパンリアルエステイト投資法人",
+      "publishedDate": "2026-03-31",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1〜2ページ、契約目的・借入限度額・契約日・期間・無担保無保証。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "全文を実読。60億円はコミット型タームローンの限度額であり、全額借入済みとは読まない。既存ビルZEB改修の工事費調達予定と契約を分ける。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "ジャパンリアルエステイトは2026年3月31日、日本政策投資銀行との60億円のコミット型タームローン契約締結を決定したと発表し、同日を契約締結日と記載した。",
+        "無担保・無保証で、コミットメント期限は2029年3月30日とした。",
+        "既存ビルのZEB化改修工事費について、機動的・安定的な資金調達手段を確保する目的と説明した。"
+      ],
+      "managementChoice": "工事の必要時期に合わせて借り入れられる信用枠を先に確保し、既存ビル改修の調達手段を選ぶ。",
+      "authorWrittenBrief": "ジャパンリアルエステイトは2026年3月、既存ビルのZEB化工事費に向け、60億円を限度とするコミット型タームローン契約を発表した。期限は2029年3月で、借入実行は別の段階となる。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-8952",
+          "gameName": "虹橋都市投資",
+          "realName": "ジャパンリアルエステイト投資法人",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-capital-policy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.listed; GameState.sharesOutstanding; GameState.marketAcquisitions; MarketAcquisitionState.companies.acquiredWeek/readyWeek; WeeklyReport.headlines",
+          "rationale": "上場、株式発行、取得後の引継ぎを別の判断として読むための現実の参考資料。",
+          "limitation": "listed単独は今週のIPOの証拠ではない。取得保存は自社傘下の事業だけで、独立他社の資金調達、TOB、契約、払込完了を記録しない。現実の対価・資金使途をゲームの数値へ付け替えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-rail-city-tokyu-ikegami-bridge-station-operation-20200719",
+      "eventKey": "tokyu-ikegami-bridge-station-operation-20200719",
+      "category": "rail-city",
+      "realEntities": [
+        "東急電鉄株式会社",
+        "池上線池上駅"
+      ],
+      "eventDate": "2020-07-19",
+      "eventDateNote": "新駅舎の運用開始実施日。駅ビルの商業開業とは別の工程。",
+      "sourceURL": "https://www.tokyu.co.jp/company/information/detail/7_1.html",
+      "publisher": "東急電鉄株式会社",
+      "publishedDate": "2020-07-19",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文の初電からの改札階変更、北口・南口使用開始、店舗工事継続の項。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "全文を実読。2階改札・北南入口の運用は実施で、駅ビル商業部分は工事継続・年度内開業目標と分けた。構内踏切廃止と南口アクセスを確認。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "東急電鉄は2020年7月19日初電から、池上駅の改札階を2階へ切り替えて新駅舎の運用を開始したと発表した。",
+        "北口と南口を使用開始し、従来の改札口と構内踏切を廃止した。南口から踏切を渡らずに駅を利用できると説明した。",
+        "店舗部分の工事は継続し、駅ビルは2020年度内の開業を目指すとしていた。"
+      ],
+      "managementChoice": "駅ビル全体の完成を待たず、改札・入口の運用を段階的に切り替えて駅への経路を変える。",
+      "authorWrittenBrief": "東急電鉄は2020年7月、池上駅の改札を2階へ移し、北口・南口の運用を始めた。構内踏切を廃止した一方、駅ビルの店舗工事は継続した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9005",
+          "gameName": "東都電鉄",
+          "realName": "東急",
+          "relationship": "subsidiary",
+          "note": "現実の事業主体は既存STOCKSの親会社の子会社。事実の主体と市場銘柄を分ける。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-rail-functional-upgrade",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "駅ビル全体の完成を待たず、改札・入口の運用を段階的に切り替えて駅への経路を変える。",
+          "limitation": "RailProject.startWeek/completeWeekと保存済みWeeklyReport.headlinesは自社の地区工事の段階を示す。現実の駅改札階・踏切・車両編成・ホームドアの変更履歴は現行保存にないため、この過去事例から完成や今週実績を生成しない。輸送力計画から需要・株価・利益を推定しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-rail-city-tokyu-meguro-eight-car-plan-20220127",
+      "eventKey": "tokyu-meguro-eight-car-plan-20220127",
+      "category": "rail-city",
+      "realEntities": [
+        "東急電鉄株式会社",
+        "東急目黒線"
+      ],
+      "eventDate": "2022-01-27",
+      "eventDateNote": "発表日。4月上旬開始と26編成の増結は計画であり、この資料だけで運転開始や全編成完了を主張しない。",
+      "sourceURL": "https://www.tokyu.co.jp/company/news/detail/388.html",
+      "publisher": "東急電鉄株式会社",
+      "publishedDate": "2022-01-27",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文全体、順次開始予定・全26編成の計画・追加2両分のホームドアとカメラ整備。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "全文を実読。2022年4月上旬は運転開始予定で、発表日と実施日を区別。全26編成は新線開業までの計画で、一斉実施を主張しない。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "東急電鉄は2022年1月27日、同年4月上旬から目黒線の8両編成列車の営業を順次開始すると発表した。",
+        "当社保有の6両編成車に2両を増結し、東急新横浜線開業までに相鉄線へ乗り入れる目黒線26編成を8両化する計画を示した。",
+        "追加2両分の乗降口で安全性を維持するため、目黒線13駅でホームドアや防犯カメラなどの整備を進めたと説明した。"
+      ],
+      "managementChoice": "新線を建設する判断と、既存列車を増結して駅の安全設備を同時に対応させる輸送力投資を比較する。",
+      "authorWrittenBrief": "東急電鉄は2022年1月、目黒線で同年4月から8両編成の営業を順次始める計画を発表した。既存車への2両増結に合わせ、乗降口のホームドアなども整備すると説明した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9005",
+          "gameName": "東都電鉄",
+          "realName": "東急",
+          "relationship": "subsidiary",
+          "note": "現実の事業主体は既存STOCKSの親会社の子会社。事実の主体と市場銘柄を分ける。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-rail-functional-upgrade",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "新線を建設する判断と、既存列車を増結して駅の安全設備を同時に対応させる輸送力投資を比較する。",
+          "limitation": "RailProject.startWeek/completeWeekと保存済みWeeklyReport.headlinesは自社の地区工事の段階を示す。現実の駅改札階・踏切・車両編成・ホームドアの変更履歴は現行保存にないため、この過去事例から完成や今週実績を生成しない。輸送力計画から需要・株価・利益を推定しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-rail-city-jr-haneda-reuse-construction-plan-20230404",
+      "eventKey": "jr-haneda-reuse-construction-plan-20230404",
+      "category": "rail-city",
+      "realEntities": [
+        "東日本旅客鉄道株式会社",
+        "羽田空港アクセス線（仮称）"
+      ],
+      "eventDate": "2023-04-04",
+      "eventDateNote": "計画発表日。取得済み認可と、発表時点の着工・開業予定を区別。2031年度の開業を実施済みにしない。",
+      "sourceURL": "https://www.jreast.co.jp/press/2023/20230404_ho03.pdf",
+      "publisher": "東日本旅客鉄道株式会社",
+      "publishedDate": "2023-04-04",
+      "publishedDateNote": "資料冒頭・記事の日付表示を実読。URLや検索crawl日から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1〜4ページ、認可取得日、6月工事着手予定、大汐線改修、開業予定。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "PDF本文を実読。東山手ルート認可1月31日、アクセス新線認可3月24日が実施済みで、6月起工・2031年度開業は発表時点の予定。工事予定と現実開業を混同しない。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "JR東日本は2023年4月4日、羽田空港アクセス線の東山手ルート・アクセス新線の本格的な工事を同年6月に始め、2031年度の開業を目指すと発表した。",
+        "東山手ルートの鉄道施設変更認可を1月31日、アクセス新線の工事施行認可を3月24日に受けたと記載した。",
+        "休止中の大汐線の橋・高架橋などを活用し、健全度を調査して必要な改修を行う計画を示した。"
+      ],
+      "managementChoice": "新線整備に既存の休止線・橋・高架橋を組み合わせ、認可取得後に段階的な工事を進める計画。",
+      "authorWrittenBrief": "JR東日本は2023年4月、認可を受けた羽田空港アクセス線の工事を同年6月に始める計画を発表した。休止中の大汐線設備を活用し、開業は2031年度を目指すとした。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9020",
+          "gameName": "東日本レール",
+          "realName": "東日本旅客鉄道",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-rail-staged-planning",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "新線整備に既存の休止線・橋・高架橋を組み合わせ、認可取得後に段階的な工事を進める計画。",
+          "limitation": "保存済みGameState.railProjectsのstartWeek/completeWeekやWeeklyReport.headlinesで自社の工事段階を読む参考。実在駅の開業、鉄道認可、休止設備再利用やロボットの試行履歴は現行保存にない。過去資料の計画・駅開業・街区開業を1件の今週実績へまとめず、予定から利益や需要を推定しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-rail-city-jr-takanawa-station-opening-20200314",
+      "eventKey": "jr-takanawa-station-opening-20200314",
+      "category": "rail-city",
+      "realEntities": [
+        "東日本旅客鉄道株式会社",
+        "高輪ゲートウェイ駅"
+      ],
+      "eventDate": "2020-03-14",
+      "eventDateNote": "主出典基本情報の開業実施日。2025年のTAKANAWA GATEWAY CITY街区開業と別工程で、事前計画の機器稼働実績は補完しない。",
+      "sourceURL": "https://www.jreast.co.jp/estation/station/info.aspx?StationCd=1750",
+      "publisher": "東日本旅客鉄道株式会社",
+      "publishedDate": null,
+      "publishedDateNote": "本文に公開日表示を確認できないためnull。出来事の日付を出版日として扱わない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "公式駅情報の基本情報・開業年月日と駅ナンバリング。補助2019年12月3日概要PDF1〜4ページ。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "駅情報の開業年月日2020年3月14日を実読。山手線・京浜東北線の駅ナンバリングと、事前概要に示された環境技術・サービス試行計画を別資料として記録。現在設備一覧を2020年当日の状態へ遡及させない。"
+      },
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.jreast.co.jp/press/2019/20191203_ho01.pdf",
+          "publisher": "東日本旅客鉄道株式会社",
+          "publishedDate": "2019-12-03",
+          "publishedDateNote": "PDF冒頭の日付。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "PDF1〜4ページ、新駅の役割・環境配慮とロボット試行導入の計画。",
+          "sourceRead": {
+            "method": "web-open/pdf-text",
+            "status": "verified",
+            "notes": "概要発表本文を実読。駅の計画仕様と試行導入予定を補足し、予定から個別機器の導入完了を推定しない。2020/2024の年表示はPDF抽出で本文外へ回り込むため年の予定断定には用いない。"
+          }
+        }
+      ],
+      "facts": [
+        "JR東日本の公式駅情報は、高輪ゲートウェイ駅の開業年月日を2020年3月14日と記載している。",
+        "2019年12月の概要発表は、新駅を将来の街の玄関口と位置付け、膜屋根、国産木材などの環境配慮を説明した。",
+        "同概要発表は、案内・警備・清掃ロボットなどの試行導入を計画した。個別試行の実施日はこの組合せの資料では確認しない。"
+      ],
+      "managementChoice": "街区の商業開業と駅の営業開始を段階として分け、駅を先に設けて環境技術やサービスを試す計画を持つ。",
+      "authorWrittenBrief": "高輪ゲートウェイ駅は2020年3月14日に開業した。JR東日本は事前の概要発表で、将来の街の玄関口に環境技術やサービス機器の試行を盛り込む計画を示していた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9020",
+          "gameName": "東日本レール",
+          "realName": "東日本旅客鉄道",
+          "relationship": "direct",
+          "note": "src/data/stocks.tsとdocs/market-universe.jsonの既存銘柄対応。現実の過去実績をゲーム社の今週実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "historical-rail-staged-planning",
+          "sourceFile": "src/model.ts; src/sim/development.ts; src/sim/railProjects.ts; src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "GameState.development; GameState.railProjects; GameState.properties; DevelopmentProgram.construction; RailProject.startWeek/completeWeek; WeeklyReport.headlines; createWeeklyNews",
+          "rationale": "街区の商業開業と駅の営業開始を段階として分け、駅を先に設けて環境技術やサービスを試す計画を持つ。",
+          "limitation": "保存済みGameState.railProjectsのstartWeek/completeWeekやWeeklyReport.headlinesで自社の工事段階を読む参考。実在駅の開業、鉄道認可、休止設備再利用やロボットの試行履歴は現行保存にない。過去資料の計画・駅開業・街区開業を1件の今週実績へまとめず、予定から利益や需要を推定しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    }
+  ]
+}
