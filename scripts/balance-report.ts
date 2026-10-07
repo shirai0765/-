@@ -1,9 +1,18 @@
 import { createGame, applyAction, advanceWeek, getSummary, evaluateSite } from '../src/sim/engine';
 import { STOCKS } from '../src/data/stocks';
 import { LOTS } from '../src/data/district';
+import type { GameState, SiteEstimate } from '../src/model';
 
-export function runScenario(seed: number, strategy: 'cash' | 'basket' | 'growth' | 'cafes' | 'managed-cafes' | 'overstaffed-debt', weeks = 104) {
+export interface ScenarioOptions {
+  /** Freeze the opportunity set when comparing historical authored maps. */
+  candidateLotIds?: readonly string[];
+  observeOpening?: (before: GameState, after: GameState, estimate: SiteEstimate) => void;
+  observeSettlement?: (state: GameState) => void;
+}
+
+export function runScenario(seed: number, strategy: 'cash' | 'basket' | 'growth' | 'cafes' | 'managed-cafes' | 'overstaffed-debt', weeks = 104, options: ScenarioOptions = {}) {
   let s = createGame('Balance laboratory', seed), peak = s.cash, drawdown = 0, ipoWeek: number | null = null;
+  const candidateIds = options.candidateLotIds ? new Set(options.candidateLotIds) : null;
   if (strategy === 'basket' || strategy === 'growth') {
     const selected = strategy === 'basket' ? STOCKS : STOCKS.filter(x => x.volatility >= .06);
     const budget = s.cash * .8 / selected.length;
@@ -19,11 +28,12 @@ export function runScenario(seed: number, strategy: 'cash' | 'basket' | 'growth'
   }
   for (let i = 0; i < weeks && !s.gameOver; i++) {
     if ((strategy === 'cafes' || strategy === 'managed-cafes') && s.stores.length < 8 && s.cash >= 4_600_000) {
-      const candidates = LOTS.filter(l => l.available && !s.stores.some(st => st.lotId === l.id)).map(l => ({ l, e: evaluateSite(s, l.id, 'standard', strategy === 'managed-cafes') })).sort((a, b) => b.e.expectedProfit - a.e.expectedProfit);
+      const candidates = LOTS.filter(l => l.available && (!candidateIds || candidateIds.has(l.id)) && !s.stores.some(st => st.lotId === l.id)).map(l => ({ l, e: evaluateSite(s, l.id, 'standard', strategy === 'managed-cafes') })).sort((a, b) => b.e.expectedProfit - a.e.expectedProfit);
       const next = candidates[0];
-      if (next && next.e.expectedProfit > 0 && s.cash >= next.e.openingCost + 1_000_000) { s = applyAction(s, { type: 'openStore', lotId: next.l.id, style: 'standard' }); if (strategy === 'managed-cafes') s = applyAction(s, { type: 'updateStore', storeId: s.stores.at(-1)!.id, changes: { manager: true } }); }
+      if (next && next.e.expectedProfit > 0 && s.cash >= next.e.openingCost + 1_000_000) { const before = s; s = applyAction(s, { type: 'openStore', lotId: next.l.id, style: 'standard' }); if (strategy === 'managed-cafes') s = applyAction(s, { type: 'updateStore', storeId: s.stores.at(-1)!.id, changes: { manager: true } }); options.observeOpening?.(before, s, next.e); }
     }
     s = advanceWeek(s);
+    options.observeSettlement?.(s);
     const worth = getSummary(s).netWorth;
     peak = Math.max(peak, worth); drawdown = Math.max(drawdown, (peak - worth) / peak);
     if (ipoWeek === null && getSummary(s).ipoEligible) ipoWeek = s.week - 1;

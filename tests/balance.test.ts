@@ -3,6 +3,8 @@ import { runScenario } from '../scripts/balance-report';
 import { createGame, advanceWeek, applyAction, previewWeek, getWeekOutlook, getSummary, managerPlan } from '../src/sim/engine';
 import { LOTS } from '../src/data/district';
 import { STOCKS } from '../src/data/stocks';
+import baseline from './fixtures/neighborhoods-v070-baseline.json';
+import type { GameState } from '../src/model';
 
 it('delegation changes poor decisions without expanding payroll/advertising or changing identity', () => {
   let s = applyAction(createGame(), { type: 'openStore', lotId: LOTS.find(x => x.available)!.id, style: 'standard' });
@@ -38,16 +40,56 @@ it('reports an explicit failure warning before committing a borrowed loss', () =
   expect(s.gameOver).toBe(false); expect(advanceWeek(s).gameOver).toBe(true);
 });
 it('delegation supports a larger profitable group while unmanaged expansion stops at its economic limit', () => {
-  const manual = runScenario(7, 'cafes', 104), delegated = runScenario(7, 'managed-cafes', 104);
+  let openingSpend = 0, settledEarnings = 0, finalState: GameState | null = null;
+  const openings: { week: number; lotId: string }[] = [];
+  const manual = runScenario(7, 'cafes', 104), delegated = runScenario(7, 'managed-cafes', 104, {
+    observeOpening(before, after) {
+      expect(before.cash).toBe(12_000_000 - openingSpend + settledEarnings);
+      expect(before.cash - after.cash).toBe(3_600_000);
+      openingSpend += before.cash - after.cash;
+      openings.push({ week: before.week, lotId: after.stores.at(-1)!.lotId });
+      expect(after.cash).toBe(12_000_000 - openingSpend + settledEarnings);
+    },
+    observeSettlement(state) {
+      expect(state.lastReport!.cashChange).toBe(state.lastReport!.netProfit);
+      settledEarnings += state.lastReport!.netProfit;
+      expect(state.cash).toBe(12_000_000 - openingSpend + settledEarnings);
+      finalState = state;
+    },
+  });
   expect(manual.ruined).toBe(false); expect(delegated.ruined).toBe(false);
   expect(delegated.stores).toBeGreaterThan(manual.stores);
   expect(delegated.netWorth).toBeGreaterThan(manual.netWorth);
   expect(delegated.ipoWeek).not.toBeNull(); expect(delegated.ipoWeek!).toBeLessThan(manual.ipoWeek!);
-  // Recovery makes formerly loss-making high-rent sites viable, so this adaptive
-  // policy chooses a different chain. Keep the documented old 208m passive
-  // benchmark; the comparable original route retains its 150m guard below.
+  // Four additional high-traffic choices replace four quieter stores. Keep the
+  // old 48-site ceiling on that same opportunity set below; the 72-site policy
+  // is checked against its paid openings, actual earnings and equipment book.
   expect(delegated.stores).toBe(8);
-  expect(manual.netWorth).toBeLessThan(100000000); expect(delegated.netWorth).toBeLessThan(208000000);
+  expect(manual.netWorth).toBeLessThan(100000000);
+  expect(openings).toEqual([
+    { week: 1, lotId: 'miyashita-16' }, { week: 2, lotId: 'miyashita-01' },
+    { week: 3, lotId: 'dogenzaka-18' }, { week: 5, lotId: 'center-18' },
+    { week: 7, lotId: 'miyashita-18' }, { week: 9, lotId: 'center-03' },
+    { week: 11, lotId: 'miyashita-07' }, { week: 12, lotId: 'dogenzaka-01' },
+  ]);
+  const state = finalState! as GameState;
+  expect(openingSpend).toBe(28_800_000);
+  expect(state.stores.every(store => store.manager && store.level === 1 && store.style === 'standard')).toBe(true);
+  expect(state.loans).toEqual([]); expect(state.positions).toEqual([]);
+  expect(state.properties).toEqual([]); expect(state.subsidiaries).toEqual([]);
+  expect(state.listed).toBe(false);
+  expect(delegated.netWorth).toBe(state.cash + 8 * 3_600_000 * .55);
+  expect(delegated.netWorth).toBe(237_076_768); // Seeded 72-site route, not a universal earnings ceiling.
+}, 20000);
+it('preserves the old 48-site adaptive benchmark and its 208m ceiling on the same opportunity set', () => {
+  const candidateLotIds = baseline.lots.map(({ lot }) => lot.id);
+  expect(candidateLotIds).toHaveLength(48);
+  const delegated = runScenario(7, 'managed-cafes', 104, { candidateLotIds });
+  expect(delegated.ruined).toBe(false); expect(delegated.stores).toBe(8);
+  expect(delegated.netWorth).toBe(158_229_935);
+  expect(delegated.weeklyProfit).toBe(1_506_265);
+  expect(delegated.ipoWeek).toBe(16);
+  expect(delegated.netWorth).toBeLessThan(208_000_000);
 }, 20000);
 it('keeps the original profitable managed route bounded and funded only by paid openings and settled earnings', () => {
   // Original 32-site, seed-7 policy before manager recovery. Fixing the route

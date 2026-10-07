@@ -17,7 +17,7 @@ describe('game site marker targets', () => {
     const state = applyAction(createGame('marker QA'), { type: 'openStore', lotId: 'center-01', style: 'standard' });
     const before = JSON.stringify(state);
     markers.update(state, 'center-01');
-    expect(markers.pickables).toHaveLength(48);
+    expect(markers.pickables).toHaveLength(72);
     expect(markers.pickables.every(marker => LOTS.find(lot => lot.id === marker.userData.lotId)?.available)).toBe(true);
     expect(markers.pickables.find(marker => marker.userData.lotId === 'center-01')?.userData.siteStatus).toBe('store');
     expect(markers.pickables.find(marker => marker.userData.lotId === 'dogenzaka-01')?.userData.siteStatus).toBe('candidate');
@@ -77,7 +77,7 @@ describe('game site marker targets', () => {
   it('filters store, property and combined ownership through closes and sales without removing any lot', () => {
     const markers = new GameSiteMarkers(LOTS);
     const targets = [...markers.pickables];
-    expect(targets).toHaveLength(48);
+    expect(targets).toHaveLength(72);
     expect(targets.every(marker => marker.visible)).toBe(true);
     let state = { ...createGame('marker visibility QA'), cash: 1_000_000_000 };
     state = applyAction(state, { type: 'openStore', lotId: 'center-01', style: 'standard' });
@@ -91,7 +91,7 @@ describe('game site marker targets', () => {
       markers.update(state, 'center-02');
       expect(markers.pickables.filter(marker => marker.visible).map(marker => marker.userData.lotId).sort()).toEqual(expected.sort());
       expect(markers.pickables).toEqual(targets);
-      expect(markers.group.children).toHaveLength(48);
+      expect(markers.group.children).toHaveLength(72);
       expect(JSON.stringify(state)).toBe(before);
     };
     check(['center-01', 'dogenzaka-01', 'miyashita-01']);

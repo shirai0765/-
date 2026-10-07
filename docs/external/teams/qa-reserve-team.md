@@ -1,11 +1,11 @@
 # 独立QA予備班：開始指示がある時だけ使う
 
-**現在は待機。第二タブを今すぐ起動する指示ではない。** ニュース調査班1タブと既存の親班・Dotで進め、独立した再現・レビューが必要な時だけ親が開始する。以下はその時に新タブへ貼れる指示。
+**現在は待機。第二タブを今すぐ起動する指示ではない。** 既存の外部制作・調査班1タブがニュース80件・BGM2曲・SFX kit・3play tracesを順次返し、親側のSol担当が統合・QAを行う。独立確認が必要になった時だけ、この予備を親が開始する。
 
 ````text
 あなたはShibuya Capitalの独立QA予備班の主担当です。状態は待機です。親から明示的な「QA予備開始」と対象commit/PR・確認項目が届くまで、clone、6担当の起動、GPU、テスト、編集を始めないでください。今この文面だけを受領した場合は「待機・主担当のみ、sub未起動」と実際のモデル情報を報告してください。時間の経過を開始指示とみなしません。
 
-開始後の希望構成は主担当GPT-6.1 Sol／選べる最高推論設定（ultraがあればultra）、6担当GPT-6.1 Sol／high、主担当を含め最大7体です。孫agentは禁止。モデルoverrideとfork指定を提供するAPIではmodel=gpt-6.1-sol、reasoning_effort=high、fork_turns=noneで6担当に任務・repo・対象SHA・専有範囲を渡します。実際のtool/schemaに従い、実モデル・設定・agent ID・起動成功数を記録してください。希望を実起動の証拠にしないでください。
+開始後の指定は主担当GPT-6.1 Sol/max、子6担当GPT-6.1 Sol/high、主担当を含め最大7体です。孫agentは禁止。モデルoverrideとfork指定を提供するAPIではmodel=gpt-6.1-sol、reasoning_effort=high、fork_turns=noneで6担当に任務・repo・対象SHA・専有範囲を渡します。実際のtool/schemaに従い、実モデル・設定・agent ID・起動成功数を記録してください。希望を実起動の証拠にしないでください。
 
 repo=https://github.com/shirai0765/-.git。開発・PR宛先はgame-source。mainはcompiled公開専用でソースpush不可です。/workspaceのcheckout、AGENTS.md、git status --shortを確認し、正しいclean checkoutを再利用します。dirtyは保持し、reset/clean/forcepushは禁止。正しいcheckoutがなければ、開始後に以下で未使用directoryへ取得します。
 
@@ -27,10 +27,10 @@ git switch -c "$TEAM_BRANCH"
 2. 保存互換：save-compatibility.md。指定の旧save/import/export/再開とimmutableな達成記録、historyを実データで比較。個人の保存を削除せずfixtureと通常プレイを区別。
 3. 経済・会計：economy.md。指定場面の実決算、cash/費用/利益の整合、旧RNG経路、取得済み事業の二重計上を確認。係数の調整や未来カフェ利益予測は作らない。
 4. 初見操作・mobile読取：first-play.md。新会社→物件→開業→一週→ニュース→資金調達等、親指定の導線を読取・再現手順にする。390pxと実機を混同せず、新機能を提案して広げない。
-5. ニュース素材の独立確認：news-materials.md。指定pilotのURL・日付・原事実・独自短文・重複・既存保存イベントとの整合を実読確認。未記録の他社活動を今週の実績にしない。
-6. native実行・資源確認：native.mdとscripts/external/qa-reserve/の指定脚本。環境内唯一のGPU browser担当。他の5担当の必要な操作を1本へまとめ、実renderer・資源・cleanupとconsole/通信結果を保存する。
+5. ニュース/音声素材の独立確認：materials.md。ニュースのURL・日付・原事実・独自短文・重複・既存保存イベント整合、BGM/SFXの実WAV/OGG・出典/権利・loop/peak/容量を確認。未記録の他社活動を今週の実績にせず、聴いていない音を試聴済みとしない。
+6. native実行・資源確認：native.mdとscripts/external/qa-reserve/の指定脚本。環境内唯一のGPU browser担当。他の5担当の必要な操作を1本へまとめ、実renderer/audio・資源・cleanupとconsole/通信結果を保存する。
 
-主担当はreceipt、report.md、PR本文と検証調整を所有し、Gitのbranch/stage/commit/pushは主担当だけが操作します。親指定と関係しない担当はread-onlyまたは待機にし、6担当を動かすためだけに新しい作業を発明しません。
+主担当はreceipt、report.md、PR本文と検証調整を所有し、Gitのbranch/stage/commit/pushは主担当だけが操作します。task境界とPR提出時に最新docs/coordination.mdと親のPRコメントを確認。指定した確認は小PRで順次返し、別の割当済み確認はレビュー待ちでも進めます。親指定と関係しない担当はread-only/待機。UI案Bは選択済みですが、別途割り当てられていないUI改修や、人数のための新機能を作りません。
 
 最初はdocs/external/qa-reserve/receipt-<識別子>.mdだけのPRを返します。親の開始指示、対象SHA、確認範囲、希望/実際のモデル・設定・6担当のagent ID/起動結果、Git read/push/PR結果、実人数、共有可能なtask URLを記録。git push -u origin "$TEAM_BRANCH"の後、認証が使えるghならgh pr create --repo shirai0765/- --base game-source --head "$TEAM_BRANCH" --draft --title "QA reserve: receipt" --body-file=<実際の本文ファイル>で返してください。利用可能なGitHub connectorでも可。PR認証がない場合は成功したbranch URL/commitとブロッカーを返し、成功や認証を捏造しません。
 

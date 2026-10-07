@@ -13,7 +13,7 @@ describe('authored street traffic comparison', () => {
     const visual = new StreetFootfallVisuals(LOTS, false);
     expect(visual.group.visible).toBe(false);
     expect(visual.group.children).toHaveLength(3);
-    expect(visual.group.userData.sites).toHaveLength(48);
+    expect(visual.group.userData.sites).toHaveLength(72);
     for (const site of visual.group.userData.sites) {
       const lot = lots.find(lot => lot.id === site.lotId)!;
       expect(site.band).toBe(getFootfallBand(lot.footfall).id);

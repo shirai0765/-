@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ACQUISITION_TARGETS, DISTRICTS, LANDMARKS, LOTS, ROADS } from '../src/data/district';
 import type { Lot } from '../src/model';
 import { OUTER_NEIGHBORHOOD_LOTS } from '../src/data/neighborhoods';
+import { V080_NEIGHBORHOOD_LOTS } from '../src/data/neighborhoodsV080';
 import { CITY_SERVICES } from '../src/data/cityServices';
 import { CITY_DISPLAY_LOTS } from '../src/city/displayLayout';
 
@@ -11,23 +12,24 @@ const overlaps = (a: Pick<Lot, 'x' | 'z' | 'width' | 'depth'>, b: Pick<Lot, 'x' 
 describe('Shibuya authored district', () => {
   it('has four distinct economic districts and sufficient playable and scenery sites', () => {
     expect(new Set(LOTS.map(l => l.id)).size).toBe(LOTS.length);
-    expect(LOTS.filter(l => l.available)).toHaveLength(48);
+    expect(LOTS.filter(l => l.available)).toHaveLength(72);
     expect(LOTS.filter(l => !l.available).length).toBeGreaterThanOrEqual(80);
     for (const district of Object.keys(DISTRICTS)) {
-      expect(LOTS.filter(l => l.available && l.district === district)).toHaveLength(12);
+      expect(LOTS.filter(l => l.available && l.district === district)).toHaveLength(18);
     }
   });
   it('keeps buildings separate from one another, roads and rail', () => {
-    const roads = ROADS.map(r => {
-      const [a, b] = r.points;
+    const roads = ROADS.flatMap(r => r.points.slice(1).map((b, index) => {
+      const a = r.points[index];
       return { x: (a[0] + b[0]) / 2, z: (a[1] + b[1]) / 2,
         width: Math.abs(a[0] - b[0]) + r.width, depth: Math.abs(a[1] - b[1]) + r.width };
-    });
-    const rail = { x: 75, z: 0, width: 16, depth: 410 };
+    }));
+    // Match the drawn 430m tracks and the outermost catenary poles.
+    const rail = { x: 75, z: 0, width: 18.4, depth: 430 };
     for (const [i, lot] of LOTS.entries()) {
       for (const road of [...roads, rail]) expect(overlaps(lot, road), `${lot.id} on transport`).toBe(false);
       for (const other of LOTS.slice(i + 1)) expect(overlaps(lot, other), `${lot.id} overlaps ${other.id}`).toBe(false);
-      const bound = OUTER_NEIGHBORHOOD_LOTS.some(outer => outer.id === lot.id) ? 350 : 202;
+      const bound = V080_NEIGHBORHOOD_LOTS.some(outer => outer.id === lot.id) ? 470 : OUTER_NEIGHBORHOOD_LOTS.some(outer => outer.id === lot.id) ? 350 : 202;
       expect(Math.abs(lot.x) + lot.width / 2).toBeLessThanOrEqual(bound);
       expect(Math.abs(lot.z) + lot.depth / 2).toBeLessThanOrEqual(bound);
     }
@@ -38,7 +40,7 @@ describe('Shibuya authored district', () => {
       expect(lot.footfall).toBeLessThanOrEqual(80_000);
       expect(lot.affluence).toBeGreaterThanOrEqual(.7);
       expect(lot.affluence).toBeLessThanOrEqual(1.5);
-      const outer = OUTER_NEIGHBORHOOD_LOTS.some(candidate => candidate.id === lot.id);
+      const outer = [...OUTER_NEIGHBORHOOD_LOTS, ...V080_NEIGHBORHOOD_LOTS].some(candidate => candidate.id === lot.id);
       expect(lot.rent).toBeGreaterThanOrEqual(outer ? 50_000 : 65_000);
       expect(lot.purchasePrice).toBeGreaterThanOrEqual(outer ? 25_000_000 : 30_000_000);
       expect(lot.purchasePrice).toBeLessThanOrEqual(500_000_000);
@@ -60,7 +62,7 @@ describe('Shibuya authored district', () => {
     // Existing east-street is separated by the railway, so it is not part of
     // the six-road core graph. Every added street must reach the main core.
     for (let index = 6; index < ROADS.length; index++) expect(connected.has(index), ROADS[index].id).toBe(true);
-    for (const site of OUTER_NEIGHBORHOOD_LOTS) {
+    for (const site of [...OUTER_NEIGHBORHOOD_LOTS, ...V080_NEIGHBORHOOD_LOTS]) {
       expect(Math.max(Math.abs(site.x), Math.abs(site.z))).toBeGreaterThan(202);
       expect(CITY_DISPLAY_LOTS.some(lot => lot.id === site.id)).toBe(true);
       expect(footprints.some(road => overlaps({ ...site, width: site.width + 50, depth: site.depth + 50 }, road)), site.id).toBe(true);

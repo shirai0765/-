@@ -1,11 +1,11 @@
-# ニュース素材調査班：新しいタブへ貼る指示
+# 外部制作・調査班：継続して成果物を渡す指示
 
-この班を先に1タブ追加する。repo設定ができないベース環境にも、以下のプロンプト全体を貼れる。主担当のモデルはタブ設定でGPT-6.1 Sol・最高の推論設定にする。作業は実際の過去ニュースの素材収集と原稿で、ゲーム機能の追加ではない。
+既存の1タブを継続する。初期ニュース原稿を保持して小PRにし、完了した担当から下の制作・検証へ進む。新しいタブを重ねて起動する指示ではない。repo未設定の新環境で再開する場合も、以下に取得手順が含まれる。
 
 ````text
-あなたはShibuya Capitalの外部ニュース素材調査班の主担当です。ユーザーは元の経営ゲームを早く高品質に完成させたいと考えています。AIが他社の活動実績を捏造する新シミュレーションを作らず、実際の過去ニュースを素材に、出典を確認できる短い独自の文章を揃えてください。まず20〜30件を小PRで提出し、親の品質レビュー後に数百件へ増やします。現在のコード・保存・株価の変更は不要です。
+あなたはShibuya Capitalの外部制作・調査班の主担当です。親側は管理・設計・統合・QAへ集中します。実際の過去ニュース素材、実音声asset、公開actionによるプレイ再現を継続して小PRで渡してください。最初の20〜30件はニュースPRのbatchで、任務全体でも停止点でもありません。初期4出典担当＋編集＋QAによる約24件を破棄せず、小PRまで完了。完成して空いた既存担当から次のstreamへ移し、レビュー待ちでも独立した割当済み作業を進めます。新simulation、API、指数、汎用asset基盤は実装しません。PR2の受領コミット4072368は取り込み済み、追加指示はhttps://github.com/shirai0765/-/pull/2#issuecomment-6031934250に投稿済みです。
 
-主担当の希望構成はGPT-6.1 Sol／利用可能な最高推論設定（ultraがあればultra）。6担当をGPT-6.1 Sol／highで明示起動し、主担当含め最大7体。孫agentは禁止です。モデルoverrideとfork指定があるAPIでは、6担当にmodel=gpt-6.1-sol、reasoning_effort=high、fork_turns=noneを指定し、この任務・repo・branch・専有範囲をそれぞれ渡してください。実際に使えるtool名・schemaに従い、存在しない起動APIを呼んだふりをしないでください。主モデルを自己変更したふりをせず、実行情報で確認できる設定と実起動人数を報告してください。起動toolがない場合も調査と受領報告は進め、実人数を記録してください。
+主担当の指定はGPT-6.1 Sol/max、子6担当はGPT-6.1 Sol/high、主担当含め最大7体、孫agentなし。既存6担当を再利用し、さらに6体を追加しません。新環境で起動する場合は、対応するAPIにmodel=gpt-6.1-sol、reasoning_effort=high、fork_turns=noneと任務・repo・branch・専有範囲を渡します。実際のtool/schemaに従い、設定・起動を捏造しません。PR2の受領書は主＋6稼働・子Sol/high・主の正確なモデル確認不可と報告済みです。確認できた設定、実起動人数、未確認事項を更新してください。
 
 repo=https://github.com/shirai0765/-.git。開発・PR宛先はgame-source。mainはcompiled公開専用で、ソースpush、merge、公開は禁止です。まず/workspaceの既存checkoutとAGENTS.md、git status --shortを確認。正しいcleanなcheckoutは再利用し、dirtyを保持してください。reset/clean/forcepush、秘密値の抽出は禁止。正しいcheckoutがなければ、別の未使用directoryへ次の取得を行ってください。
 
@@ -19,18 +19,20 @@ git switch -c "$TEAM_BRANCH"
 
 既存clean checkoutではgit fetch origin game-sourceの後、同じ専用branchをFETCH_HEADから作ります。取得後にdocs/external/teams/bootstrap.md、docs/coordination.md、docs/interaction-v070.md、src/data/stocks.ts、docs/market-universe.json、src/sim/weeklyNews.ts、src/model.tsを読み、最新の基点SHAを記録してください。Git read/push/API権限は別々に実確認し、CLI loginやtoken変数の不在だけで環境認証がないと判断しないでください。
 
-専有namespaceはdocs/external/news-research/とscripts/external/news-research/だけです。src、既存news、model、engine、UI、storage、株価、package/lock、Vite、他班資料・GLBは一切変更しません。新API、活動指数、企業AI、random架空ニュース、依存関係は追加しません。
+専有namespaceは下の6streamに記載した場所だけです。src全体、App、音声runtime、engine、model、UI、storage、株価、package/lock、Vite、他班資料・GLBは、親が明示的に専有ファイルを委譲するまで変更しません。ユーザーはUI案B（モンスト系）を選択し実装を許可しましたが、その改修は親側で別途担当を割り当てます。この6streamの外部班は無断でUIを改修しません。
 
-6担当の割当を以下に固定し、同じファイルを複数担当に編集させないでください。
+初期原稿を保存・引継ぎした後、完了して空いた担当から次の6streamへ割り当てます。同じ狭いファイルを複数担当に編集させず、移行途中の元作者の原稿を上書きしません。
 
-1. 飲食の出典調査：docs/external/news-research/candidates/food.jsonだけ。カフェ・外食の実際の出店、商品、運営、決算の事例を5〜7件。
-2. 小売・不動産の出典調査：candidates/retail-property.jsonだけ。商業施設、店舗、賃貸・再開発の実際の事例を5〜7件。
-3. 鉄道・街づくりの出典調査：candidates/rail-city.jsonだけ。路線、駅、沿線・街区開発の実際の事例を5〜7件。
-4. IPO・資金調達・M&Aの出典調査：candidates/capital-ma.jsonだけ。上場、調達、取得・統合の実際の事例を5〜7件。
-5. 短文編集と条件タグ：shortforms.jsonとcontext-tags.jsonだけ。4担当の事実を読み、独自の短文と既存ゲーム内文脈との対応候補を作る。元の調査JSONは編集せず、訂正は作者へ送る。
-6. 出典・事実・権利・重複QA：scripts/external/news-research/validate.pyとdocs/external/news-research/audit.mdだけ。Python標準libraryで検証し、出典を実読して内容と独自性を確認する。作者のJSONを直接直さず、訂正を返す。
+1. 実際のカフェ・小売ニュース40件：docs/external/news-research/candidates/company-news-wave1.json。出店/撤退、商品、費用、決算、運営を異なる事例で集める。初期の採用候補も含めて40件、単なる言い換えを件数にしない。
+2. 不動産・鉄道・資金調達/M&Aニュース40件：docs/external/news-research/candidates/property-rail-capital-wave1.json。小型株・REITも含む多様な企業と局面を選び、大手だけに偏らせない。既存100stockの区分と実際の出典を保持する。
+3. 独自短文編集・source factcheck・100stock対応・dedupe：docs/external/news-research/edited/とscripts/external/news-research/。原資料を実読し、元100stock対応、既存保存イベントの文脈、事実/原稿/適用条件を分離し、検証器と整形原稿を返す。元作者のJSONは直接編集せず訂正を返す。主担当が最終catalogを組み立てる。
+4. オリジナルBGM2曲：public/audio/external-v080/bgm/、scripts/external/audio-bgm/、docs/external/audio-bgm/。café-loungeとTokyo-city-popを各30〜60秒loopで制作し、実WAVとOGG、試聴用file、manifest、再現手順、loop接続と容量/音量の実測を渡す。
+5. カフェ環境音/UI/週次利益SFX kit：public/audio/external-v080/sfx/、scripts/external/audio-sfx/、docs/external/audio-sfx/。原作または再配布可能な素材から実音声を作り、環境loop、UI操作音、黒字/赤字結果に使える短い音を用途別manifest付きで渡す。runtimeは変更しない。
+6. 初一時間/30時間の進行・判断・balance検証：docs/external/gameplay-review/、scripts/external/gameplay-review/。現在の公開actionで創業、中盤、終盤の3traceを再現し、所要時間、判断・待ち・資金/実利益/店舗/評判/到達週、保存と問題の根拠を記録する。最小の修正提案に絞り、新機能を発明しない。
 
-主担当はreceipt、README、最終pilot.json、PR本文と組立を所有します。主担当だけがGitのbranch/stage/commit/pushを操作し、6担当は共有checkoutの専有ファイルで作業します。編集担当とQAは調査完了を待ち続けず、形式・短文基準・検証器を並行して準備してください。
+主担当はreceipt、README、pilotと最終catalog.json、PR本文、全体の組立・検証調整を所有します。Gitのbranch/stage/commit/pushは主担当だけが操作します。6担当は専有ファイルで並行作業し、依存待ちは形式確認・既存原稿の編集・音声・別traceなど割当済みの独立作業へ移します。最終成果は文章だけでなく、使えるcatalog、WAV/OGG、manifest、repro scriptと実traceです。
+
+有限の初回は80の異なるニュース＋BGM2曲＋SFX kit＋3 play traces。初期pilotの採用品を80件へ含め、二重計上しません。ニュースは20〜30件単位、音声は1曲/1kit単位、traceは1本単位の小PRで返し、レビュー待ちで全員を停止させません。親の採用判断・merge・公開は待ちますが、独立した未完了queueの制作は継続してください。
 
 原資料は企業公式発表・IR、公式の施設/鉄道/自治体資料を優先し、必要なら出典を確認できる報道を使ってください。sourceURL、publisher、publishedDate、accessedDate、実際に確認できたfacts、出典内の該当箇所、authorWrittenBrief、parodyEntities、relevantExistingSavedEventContextを各候補に記録してください。日付不明ならnullと理由を記録し、推測で日付や数値を補いません。アクセスできない資料や記憶だけの話は未確認としてpilotから外します。
 
@@ -44,11 +46,15 @@ relevantExistingSavedEventContextは、現行の保存済み決算/イベント�
 
 検証器は必須項目、URL/日付形式、stable ID、重複ID・同一出来事・短文の重複、元100stockとの対応を確認します。docs/market-universe.jsonのcodeからjp-codeを作って照合でき、依存追加は不要です。自動schema合格を、出典の実読・事実確認済みと混同しません。QAが不利な例（出典欠落、未来日、未知stock、同一ニュースの社名差替え、未記録の活動を今週の実績として主張）を拒否することも検証してください。自動検出で確定できない意味の重複は人の読取所見として記録します。
 
-最初にdocs/external/news-research/receipt-<識別子>.mdの1ファイルPRを返してください。基点SHA・日時、Gitアクセス結果、希望と実際の主モデル設定、6担当のagent ID/モデル/設定/起動結果、実稼働人数、専有範囲、共有可能なタスクURLを書きます。起動7体未確認ならそう書き、人数を装いません。
+BGMは既存曲の録音・メロディを流用しない独自作曲。音声のsource/作者/制作method、利用・再配布条件と確認URL（完全自作はoriginalと根拠）、sample rate/channels/duration/bytes、WAV/OGG hash、peak/clipping、loop start/end frameと境界の測定をmanifestへ記録します。利用可能な制作tool/ffmpeg等を確認して再現可能にし、重いframeworkやpackage/lock変更を導入しません。BGMは雰囲気の異なる2試聴、SFXはcoffee ambience loop・UI confirm/cancel・週次黒字/赤字等の小kit。実際に音を聴けた範囲を記録し、波形や生成fileがあるだけで試聴済みとしません。音声制作toolが使えない場合は具体的な不足を返し、他の割当済み成果を進めます。
+
+play tracesは実際の公開操作または公開applyAction/advanceWeekを使い、seed・版/source SHA・選択policy・action列・前後state・実決算・保存復元を機械可読JSON/JSONLで返します。通常資金の経路とsynthetic fixtureを区別し、資金注入を自然到達の証拠にしません。人の操作時間、スクリプト所要時間、ゲーム内週数、30時間の推定を分け、速い自動週進行を人間30時間の面白さ検証とは呼びません。判断・待ち時間・不利/有利な選択を数え、再現できた問題に最小修正案を添えます。初回3本は創業〜初決算、中盤IPO/投資、終盤成長/達成の別局面。全30時間を実プレイしていない場合は未実測と明記し、未確認を埋めるために新機能を増やしません。
+
+初回はreceiptの1ファイルPR。PR2が既にある現在は同じreceiptを作り直さず、現在の担当・モデル/設定の確認状況・agent ID・実人数・専有範囲と進捗を更新してください。起動7体未確認ならそう書き、人数を装いません。
 
 受領PRはgit push -u origin "$TEAM_BRANCH"の後、認証が使えるghならgh pr create --repo shirai0765/- --base game-source --head "$TEAM_BRANCH" --draft --title "News research: receipt" --body-file=<実際の本文ファイル>で返します。利用可能なGitHub connectorでも可。PR認証がない場合は成功したbranch URL/commitとブロッカーを返し、認証を捏造しません。
 
-調査は続け、次の小PRをteam/news-research/pilot-<識別子>からgame-sourceへ返してください。最初のpilotは20〜30件、出典JSON、独自短文、タグ候補、実行した検証と出典/重複レビューを含めます。親のレビュー前に100社分や数百件へ広げず、merge・runtime組込・公開は行いません。親がpilotの品質を確認したら、同じ形式で小さい追加batchを返します。
+調査・制作・再現は継続します。ニュースはteam/news-research/news-batch-<識別子>、BGMはteam/audio-bgm/<batch>-<識別子>、SFXはteam/audio-sfx/<batch>-<識別子>、プレイtraceはteam/gameplay-review/<trace>-<識別子>からgame-sourceへ小PRを返します。task境界・PR提出時に最新game-sourceのdocs/coordination.mdと親のPRコメントを確認し、出された品質指摘を次batchへ適用。dirty原稿を保持したままgit show等で最新指示を読み、無理なcheckout/resetはしません。親レビュー前にmerge・runtime組込・公開はしません。初回80news/2BGM/kit/3tracesが揃ったら、完了と次の割当を親へ返し、未依頼の機能や無限batchを作りません。
 
-全体test/build/公開は親のみ。あなたの環境のfocused CPUは主担当が同時最大2workerへ調整し、native GPUが必要な場合も1browserだけ。通常この班にGPUとnpm導入は不要です。renderer/RAF/audio/TLS置換を実検証として扱わず、秘密値を出さず、設定や実行結果を捏造しません。最終報告はPR/commit、確認済みの件数・出典・検証、未確認事項を短く返してください。
+全体test/build/公開は親のみ。focused CPUは主担当が同時最大2workerへ調整。native GPU browserは環境1本、主担当が担当6へまとめ、調査/音声の別担当が追加browserを重複起動しません。renderer/RAF/audio/TLS置換を実検証として扱わず、秘密値や実行結果を捏造しません。PRごとにusable成果物のpath、source/asset hash、実確認した内容、未確認を短く報告してください。
 ````

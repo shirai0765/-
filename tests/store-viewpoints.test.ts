@@ -10,8 +10,8 @@ describe('store close-up endpoints',()=>{
     expect(OMITTED_SCENERY_LOTS.every(l=>!l.available)).toBe(true);
     for(const lot of LOTS.filter(l=>l.available))expect(CITY_DISPLAY_LOTS.find(l=>l.id===lot.id)).toBe(lot);
   });
-  it('keeps all 48 purchasable storefronts clear of neighboring buildings in all styles',()=>{
-    const lots=LOTS.filter(l=>l.available);expect(lots).toHaveLength(48);
+  it('keeps all 72 purchasable storefronts clear of neighboring buildings in all styles',()=>{
+    const lots=LOTS.filter(l=>l.available);expect(lots).toHaveLength(72);
     for(const lot of lots)for(const style of ['standard','premium','takeaway'] as const){
       const view=getStoreViewpoint(lot,style);expect(view,`${lot.id}/${style}`).not.toBeNull();
       expect(isStoreViewpointClear(lot,view!),`${lot.id}/${style} obstruction`).toBe(true);
@@ -28,7 +28,7 @@ describe('store close-up endpoints',()=>{
     expect(Math.abs(wide.position[2]-wide.target[2])).toBeLessThan(.01);
     expect(narrow.fov).toBeGreaterThan(wide.fov);expect(narrow.fov).toBeLessThanOrEqual(74);
   });
-  it.each([[390,844],[1000,760]])('frames the actual name-sign bounds for all 32 lots and styles at %i×%i', (width,height)=>{
+  it.each([[390,844],[1000,760]])('frames the actual name-sign bounds for all 72 lots and styles at %i×%i', (width,height)=>{
     for(const lot of LOTS.filter(lot=>lot.available))for(const style of ['standard','premium','takeaway'] as const){
       const view=getStoreViewpoint(lot,style,width/height);
       const label=`${lot.id}/${style} at ${width}×${height}`;

@@ -28,8 +28,10 @@ import { FinancialServiceVisuals } from './FinancialServiceVisuals';
 import { getFootfallBand } from '../sim/siteContext';
 import { getCityService } from '../data/cityServices';
 import { OUTER_SCENERY } from './sceneLayout';
+import { addSceneryBuilding } from './SceneryBuildings';
+import { panCameraToSite } from './sitePan';
 
-interface Props { cameraMode?:CameraMode; overviewRequestId?:number; storeFocusRequestId?:number; state:GameState; selectedLotId:string|null; onSelectLot:(id:string)=>void; quality:QualityLevel; viewMode?:'normal'|'demand'|'ownership'; focusLotId?:string|null; focusRailDistrict?:DistrictId|null; focusStoreLotId?:string|null }
+interface Props { cameraMode?:CameraMode; overviewRequestId?:number; storeFocusRequestId?:number; sitePanRequest?:{lotId:string;nonce:number}; state:GameState; selectedLotId:string|null; onSelectLot:(id:string)=>void; quality:QualityLevel; viewMode?:'normal'|'demand'|'ownership'; focusLotId?:string|null; focusRailDistrict?:DistrictId|null; focusStoreLotId?:string|null }
 interface Runtime { streetFootfall:StreetFootfallVisuals; financialServices:FinancialServiceVisuals; storeActivity:StoreActivityVisuals; siteMarkers:GameSiteMarkers; storeFrame?:{lot:Lot;style:StoreStyle}; railProjectVisuals:RailProjectVisuals; staticTerraces:Map<string,THREE.Group>; developmentVisuals:DevelopmentVisuals; originalFronts:Map<string,THREE.Group>; growth:CityGrowth; selection:THREE.Mesh; hover:THREE.Mesh; accents:Map<string,THREE.Group>; overlays:Map<string,THREE.Mesh>; controls:OrbitControls; camera:THREE.PerspectiveCamera; focus?:THREE.Vector3 }
 declare global { interface Window { __cityScene?:THREE.Scene; __cityCamera?:THREE.PerspectiveCamera; __cityRenderer?:THREE.WebGLRenderer } }
 const GOLD='#e9c276';
@@ -179,12 +181,13 @@ function makeLandmarks(art:CityArt,assets:LoadedAssetPool) {
   }
 }
 
-export default function CityView({state,selectedLotId,onSelectLot,quality,viewMode='normal',focusLotId,focusRailDistrict,focusStoreLotId,cameraMode='manage',overviewRequestId=0,storeFocusRequestId=0}:Props) {
+export default function CityView({state,selectedLotId,onSelectLot,quality,viewMode='normal',focusLotId,focusRailDistrict,focusStoreLotId,cameraMode='manage',overviewRequestId=0,storeFocusRequestId=0,sitePanRequest}:Props) {
   const cameraModeRef=useRef(cameraMode);cameraModeRef.current=cameraMode;
   const host=useRef<HTMLDivElement>(null);const runtime=useRef<Runtime|null>(null);
   const previousCloseFocus=useRef<string|null>(null);
   const previousLotFocus=useRef<string|null|undefined>(undefined);
   const previousOverviewRequest=useRef(overviewRequestId);
+  const previousSitePanRequest=useRef<{lotId:string;nonce:number}|null>(null);
   const previousStoreRequest=useRef<{lotId:string|null|undefined;requestId:number;sceneRevision:number}>({lotId:undefined,requestId:storeFocusRequestId,sceneRevision:-1});
   const focusedStore=state.stores.find(store=>store.lotId===focusStoreLotId);
   const focusedStoreStyle=focusedStore?.style;
@@ -265,19 +268,8 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
       for(let i=0;i<2;i++){const x=-lot.width*.25+i*4,z=lot.depth/2+2;art.cylinder(x,1.1,z,.65,.13,'#b3a98b',10,terrace);art.box(x,.55,z,.12,1.1,.12,'#6d7667',0,terrace);}
       compactRigidGroup(terrace);art.group.add(terrace);staticTerraces.set(lot.id,terrace);
     }
-    // A varied, lower-detail city fabric: mixed parcels and stepped roofs rather than a cube grid.
-    for(const {x,z,w,d,h,seed} of OUTER_SCENERY){
-      const facade=['#a6aaa5','#918e84','#b1aea3','#7f8c91','#a19889'][seed%5];
-      art.batch(x,h/2-.5,z,w,h,d,facade);
-      art.batch(x,h+.1,z,w-.6,.3,d-.6,'#737b7a');
-      if(seed%3===0){const upper=6+seed%12;art.batch(x-w*.12,h+upper/2,z,w*.7,upper,d*.64,facade);art.batch(x-w*.12,h+upper+.2,z,w*.72,.4,d*.66,'#737b7a');}
-      if(seed%4===0)art.batch(x+w*.16,h+1.4,z-d*.15,w*.24,2.6,d*.22,'#888d88');
-      for(let y=4;y<h-1;y+=3.5){
-        if(seed%2===0){art.batch(x,y,z+d/2+.06,w-2,1.45,.12,'#566a73');art.batch(x-w/2-.06,y,z,.12,1.45,d-2,'#566a73');}
-        else for(let t=-w/2+1.7;t<w/2-1;t+=3.1)art.batch(x+t,y,z+d/2+.06,1.5,1.65,.12,'#69797c');
-      }
-      if(seed%3===1){const sw=w*.45,sh=h*.52;art.batch(x+w*.22,sh/2,z+d*.5+5,sw,sh,9,facade);art.batch(x+w*.22,sh+.1,z+d*.5+5,sw,.3,9,'#737b7a');}
-    }
+    // Outer mixed-use, office and residential fabric shares opaque instanced boxes.
+    for(const building of OUTER_SCENERY) addSceneryBuilding(art,building);
     art.finish();
     const traffic:THREE.Group[]=[];
     for(let i=0;i<9;i++) {
@@ -372,6 +364,21 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
   useEffect(()=>{const rt=runtime.current;if(!rt)return;rt.siteMarkers.update(state,selectedLotId);rt.storeActivity.update(state,rt.storeFrame?.lot.id);rt.growth.update(state);rt.developmentVisuals.update(state);rt.railProjectVisuals.update(state);for(const [id,terrace] of rt.staticTerraces){const store=state.stores.find(s=>s.lotId===id);terrace.visible=!store||!(store.level>=2||(store.style==='premium'&&id!=='center-03'));}const lot=LOTS.find(l=>l.id===selectedLotId);rt.selection.visible=!!lot&&!rt.storeFrame;if(lot){rt.selection.position.set(lot.x,lot.height/2+.8,lot.z);rt.selection.scale.set(lot.width+1.3,lot.height+1.5,lot.depth+1.3);rt.selection.rotation.y=lot.rotation??0;}const owned=new Set([...state.stores.map(s=>s.lotId),...state.properties.map(p=>p.lotId)]);for(const [id,group] of rt.accents){const originalFront=rt.originalFronts.get(id);if(originalFront)originalFront.visible=!state.stores.some(store=>store.lotId===id);group.visible=owned.has(id);const level=state.properties.find(p=>p.lotId===id)?.level??1;for(const child of group.children)if(child.userData.propertyLevel)child.visible=child.userData.propertyLevel<=level;}for(const lot of LOTS){const mesh=rt.overlays.get(lot.id)!;mesh.visible=(viewMode==='demand'&&lot.available&&!rt.storeFrame&&!focusRailDistrict)||(viewMode==='ownership'&&owned.has(lot.id));(mesh.material as THREE.MeshBasicMaterial).color.set(viewMode==='demand'?FOOTFALL_COLORS[getFootfallBand(lot.footfall).rank]:GOLD);}},[selectedLotId,focusedStoreStyle,state.railProjects,state.development,state.week,state.stores,state.properties,state.subsidiaries,state.marketAcquisitions,state.companyName,state.listed,viewMode,quality,sceneRevision]);
   useEffect(()=>{
     const rt=runtime.current;if(!rt)return;
+    const previousPan=previousSitePanRequest.current;
+    const panSite=sitePanRequest&&(previousPan?.nonce!==sitePanRequest.nonce||previousPan?.lotId!==sitePanRequest.lotId)
+      ?LOTS.find(lot=>lot.available&&lot.id===sitePanRequest.lotId):undefined;
+    if(panSite&&sitePanRequest){
+      // Handle this before clearing an old store/rail focus can restore overview.
+      // Ordinary selection never creates a request and never reaches this path.
+      previousSitePanRequest.current=sitePanRequest;
+      previousLotFocus.current=focusLotId;
+      previousStoreRequest.current={lotId:focusStoreLotId,requestId:storeFocusRequestId,sceneRevision};
+      previousCloseFocus.current=null;rt.focus=undefined;rt.storeFrame=undefined;
+      rt.storeActivity.update(state,null);rt.hover.visible=false;
+      rt.selection.visible=!!LOTS.find(lot=>lot.id===selectedLotId);
+      panCameraToSite(rt.controls,panSite);
+      return;
+    }
     const ordinaryChanged=previousLotFocus.current!==focusLotId;previousLotFocus.current=focusLotId;
     const previousRequest=previousStoreRequest.current;
     const storeRequestChanged=previousRequest.lotId!==focusStoreLotId||previousRequest.requestId!==storeFocusRequestId||previousRequest.sceneRevision!==sceneRevision;
@@ -404,7 +411,7 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     previousCloseFocus.current=null;
     const selected=LOTS.find(l=>l.id===focusLotId);
     if(selected){rt.controls.minDistance=55;rt.focus=new THREE.Vector3(selected.x,Math.min(selected.height*.35,20),selected.z);}
-  },[focusStoreLotId,storeFocusRequestId,focusedStoreStyle,focusRailDistrict,focusLotId,quality,sceneRevision]);
+  },[focusStoreLotId,storeFocusRequestId,focusedStoreStyle,focusRailDistrict,focusLotId,sitePanRequest,quality,sceneRevision]);
   useEffect(()=>{
     if(previousOverviewRequest.current===overviewRequestId)return;
     previousOverviewRequest.current=overviewRequestId;
@@ -421,6 +428,6 @@ export default function CityView({state,selectedLotId,onSelectLot,quality,viewMo
     rt.streetFootfall.setVisible(viewMode==='demand'&&!rt.storeFrame&&!focusRailDistrict);
     rt.financialServices.setMarkersVisible(!rt.storeFrame&&!focusRailDistrict);
     for(const lot of LOTS){const overlay=rt.overlays.get(lot.id);if(overlay&&viewMode==='demand')overlay.visible=lot.available&&!rt.storeFrame&&!focusRailDistrict;}
-  },[viewMode,focusStoreLotId,storeFocusRequestId,focusedStoreStyle,focusRailDistrict,overviewRequestId,quality,sceneRevision]);
+  },[viewMode,focusStoreLotId,storeFocusRequestId,focusedStoreStyle,focusRailDistrict,sitePanRequest,overviewRequestId,quality,sceneRevision]);
   return <div className="city-world" ref={host}>{error&&<div className="city-webgl-error">3D表示を開始できませんでした。ブラウザのハードウェアアクセラレーションをご確認ください。物件一覧から経営操作を続けられます。</div>}<div className="city-location"><span className="city-location-dot"/>TOKYO / SHIBUYA <span>35°39′ N · 139°42′ E</span></div><div className="city-compass"><span>N</span><i>↑</i></div>{hovered&&<div className="city-hover"><span>{state.stores.some(s=>s.lotId===hovered.id)?'営業中':state.properties.some(p=>p.lotId===hovered.id)?'物件保有':'出店・購入'}</span><strong>{hovered.name}</strong><small>{viewMode==='demand'?`人通り · ${getFootfallBand(hovered.footfall).label}`:'タップで詳細・経営'}</small></div>}{hoveredService&&<div className="city-hover"><strong>{hoveredService}</strong><small>タップで利用</small></div>}{viewMode==='demand'&&!focusStoreLotId&&!focusRailDistrict&&<div className="city-footfall-legend" aria-label="人通りの目安"><strong>人通りの目安</strong><div>{[15000,35000,60000].map(value=>{const band=getFootfallBand(value);return <span key={band.id}><i style={{color:FOOTFALL_COLORS[band.rank]}} aria-hidden="true">{'▰'.repeat(band.rank+1)}</i>{band.label}</span>;})}</div><small>ゲーム内の立地設定 · 人影は賑わいの目安</small></div>}<div className="city-attribution">SHIBUYA DISTRICT · 実在地形を参考にした創作街区</div></div>;
 }

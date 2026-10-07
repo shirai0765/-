@@ -1,0 +1,4312 @@
+{
+  "sourceCommit": "57e90617f841e8be0a452a949f0d2afd758cdf68",
+  "scope": "Deterministic old-site data, forecast, settlement and RNG regression; synthetic funded scenario is not natural-play or elapsed-time evidence.",
+  "lots": [
+    {
+      "index": 0,
+      "lot": {
+        "id": "center-01",
+        "name": "宇田川の角店",
+        "district": "center",
+        "x": -82,
+        "z": -65,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 39000,
+        "affluence": 1,
+        "rent": 110000,
+        "purchasePrice": 62000000,
+        "available": true,
+        "description": "回遊客が立ち寄る角地。標準価格帯のカフェ向き。"
+      }
+    },
+    {
+      "index": 1,
+      "lot": {
+        "id": "center-02",
+        "name": "センター街入口",
+        "district": "center",
+        "x": -10,
+        "z": -66,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 65000,
+        "affluence": 1.02,
+        "rent": 215000,
+        "purchasePrice": 125000000,
+        "available": true,
+        "description": "人通りが多い一方、家賃と近隣店との競争が重い。"
+      }
+    },
+    {
+      "index": 2,
+      "lot": {
+        "id": "center-03",
+        "name": "スクランブル西口",
+        "district": "center",
+        "x": 15,
+        "z": -38,
+        "width": 18,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 80000,
+        "affluence": 1.15,
+        "rent": 360000,
+        "purchasePrice": 240000000,
+        "available": true,
+        "description": "駅前の一等地。十分な処理能力を備えてから出店したい。"
+      }
+    },
+    {
+      "index": 3,
+      "lot": {
+        "id": "center-04",
+        "name": "神南の路面店",
+        "district": "center",
+        "x": -82,
+        "z": -126,
+        "width": 14,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 37000,
+        "affluence": 1.16,
+        "rent": 125000,
+        "purchasePrice": 78000000,
+        "available": true,
+        "description": "買い物客の休憩需要。価格と品質の両立が鍵。"
+      }
+    },
+    {
+      "index": 4,
+      "lot": {
+        "id": "center-05",
+        "name": "宇田川裏通り",
+        "district": "center",
+        "x": -53,
+        "z": -126,
+        "width": 16,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 28000,
+        "affluence": 0.9,
+        "rent": 82000,
+        "purchasePrice": 43000000,
+        "available": true,
+        "description": "表通りから一歩奥。固定費を抑えた創業候補。"
+      }
+    },
+    {
+      "index": 5,
+      "lot": {
+        "id": "center-06",
+        "name": "駅西のテイクアウト窓口",
+        "district": "center",
+        "x": 15,
+        "z": 38,
+        "width": 18,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 58000,
+        "affluence": 0.97,
+        "rent": 170000,
+        "purchasePrice": 96000000,
+        "available": true,
+        "description": "朝夕の急ぐ人に短時間で提供する小型立地。"
+      }
+    },
+    {
+      "index": 6,
+      "lot": {
+        "id": "center-07",
+        "name": "センター街北端",
+        "district": "center",
+        "x": -23,
+        "z": -157,
+        "width": 14,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 32000,
+        "affluence": 1.08,
+        "rent": 98000,
+        "purchasePrice": 55000000,
+        "available": true,
+        "description": "駅前ほどの賃料を払わずに回遊客へ届ける。"
+      }
+    },
+    {
+      "index": 7,
+      "lot": {
+        "id": "center-08",
+        "name": "公園通り手前",
+        "district": "center",
+        "x": 15,
+        "z": -128,
+        "width": 16,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 47000,
+        "affluence": 1.27,
+        "rent": 182000,
+        "purchasePrice": 112000000,
+        "available": true,
+        "description": "買い物客の客単価は高め。品質投資が活きる。"
+      }
+    },
+    {
+      "index": 8,
+      "lot": {
+        "id": "dogenzaka-01",
+        "name": "道玄坂の小さな一階",
+        "district": "dogenzaka",
+        "x": -151,
+        "z": 28,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 31000,
+        "affluence": 0.96,
+        "rent": 72000,
+        "purchasePrice": 36000000,
+        "available": true,
+        "description": "小さく始めやすい路面店。初出店の有力候補。"
+      }
+    },
+    {
+      "index": 9,
+      "lot": {
+        "id": "dogenzaka-02",
+        "name": "百軒店の路地角",
+        "district": "dogenzaka",
+        "x": -177,
+        "z": -30,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 26000,
+        "affluence": 0.85,
+        "rent": 65000,
+        "purchasePrice": 30000000,
+        "available": true,
+        "description": "駅から離れる分、家賃は控えめ。常連を育てたい。"
+      }
+    },
+    {
+      "index": 10,
+      "lot": {
+        "id": "dogenzaka-03",
+        "name": "文化村前",
+        "district": "dogenzaka",
+        "x": -127,
+        "z": -61,
+        "width": 18,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 46000,
+        "affluence": 1.18,
+        "rent": 155000,
+        "purchasePrice": 88000000,
+        "available": true,
+        "description": "観劇や買い物の合間の需要。上質な空間が似合う。"
+      }
+    },
+    {
+      "index": 11,
+      "lot": {
+        "id": "dogenzaka-04",
+        "name": "坂の中腹",
+        "district": "dogenzaka",
+        "x": -151,
+        "z": -126,
+        "width": 14,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 24000,
+        "affluence": 0.92,
+        "rent": 69000,
+        "purchasePrice": 33000000,
+        "available": true,
+        "description": "目的来店を育てる立地。安さだけでは売上が伸びにくい。"
+      }
+    },
+    {
+      "index": 12,
+      "lot": {
+        "id": "dogenzaka-05",
+        "name": "道玄坂オフィス下",
+        "district": "dogenzaka",
+        "x": -177,
+        "z": 58,
+        "width": 16,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 42000,
+        "affluence": 1.07,
+        "rent": 129000,
+        "purchasePrice": 71000000,
+        "available": true,
+        "description": "働く人の休憩と朝の一杯を取り込む。"
+      }
+    },
+    {
+      "index": 13,
+      "lot": {
+        "id": "dogenzaka-06",
+        "name": "道玄坂西口",
+        "district": "dogenzaka",
+        "x": -127,
+        "z": 58,
+        "width": 18,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 35000,
+        "affluence": 0.94,
+        "rent": 93000,
+        "purchasePrice": 48000000,
+        "available": true,
+        "description": "賃料と通行量のバランスがよい中規模物件。"
+      }
+    },
+    {
+      "index": 14,
+      "lot": {
+        "id": "dogenzaka-07",
+        "name": "松濤への小径",
+        "district": "dogenzaka",
+        "x": -178,
+        "z": -158,
+        "width": 14,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 18000,
+        "affluence": 1.38,
+        "rent": 104000,
+        "purchasePrice": 67000000,
+        "available": true,
+        "description": "通行量は少ないが、品質を重視する客層。"
+      }
+    },
+    {
+      "index": 15,
+      "lot": {
+        "id": "dogenzaka-08",
+        "name": "坂上の焙煎店跡",
+        "district": "dogenzaka",
+        "x": -151,
+        "z": 125,
+        "width": 16,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 22000,
+        "affluence": 1.03,
+        "rent": 76000,
+        "purchasePrice": 39000000,
+        "available": true,
+        "description": "駅前から離れた落ち着いた街並み。低固定費で育てる。"
+      }
+    },
+    {
+      "index": 16,
+      "lot": {
+        "id": "miyashita-01",
+        "name": "東口のオフィス前",
+        "district": "miyashita",
+        "x": 112,
+        "z": -28,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 62000,
+        "affluence": 1.28,
+        "rent": 248000,
+        "purchasePrice": 168000000,
+        "available": true,
+        "description": "働く人の多い東口。サービス品質への期待も高い。"
+      }
+    },
+    {
+      "index": 17,
+      "lot": {
+        "id": "miyashita-02",
+        "name": "明治通りの角",
+        "district": "miyashita",
+        "x": 112,
+        "z": -73,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 55000,
+        "affluence": 1.15,
+        "rent": 198000,
+        "purchasePrice": 131000000,
+        "available": true,
+        "description": "通行量の厚い通り。競合との価格差を見極める。"
+      }
+    },
+    {
+      "index": 18,
+      "lot": {
+        "id": "miyashita-03",
+        "name": "宮下公園南端",
+        "district": "miyashita",
+        "x": 142,
+        "z": -73,
+        "width": 18,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 48000,
+        "affluence": 1.25,
+        "rent": 181000,
+        "purchasePrice": 117000000,
+        "available": true,
+        "description": "公園を巡る来街者の休憩需要を取り込む。"
+      }
+    },
+    {
+      "index": 19,
+      "lot": {
+        "id": "miyashita-04",
+        "name": "宮下のブティック横",
+        "district": "miyashita",
+        "x": 174,
+        "z": -128,
+        "width": 14,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 36000,
+        "affluence": 1.43,
+        "rent": 171000,
+        "purchasePrice": 106000000,
+        "available": true,
+        "description": "高単価向きだが、品質と採用への投資を要する。"
+      }
+    },
+    {
+      "index": 20,
+      "lot": {
+        "id": "miyashita-05",
+        "name": "東口の小路",
+        "district": "miyashita",
+        "x": 173,
+        "z": -28,
+        "width": 16,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 29000,
+        "affluence": 1.05,
+        "rent": 102000,
+        "purchasePrice": 58000000,
+        "available": true,
+        "description": "一等地の裏手。規模を抑えて東口へ進出できる。"
+      }
+    },
+    {
+      "index": 21,
+      "lot": {
+        "id": "miyashita-06",
+        "name": "青山方面の路面店",
+        "district": "miyashita",
+        "x": 173,
+        "z": 43,
+        "width": 18,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 41000,
+        "affluence": 1.5,
+        "rent": 210000,
+        "purchasePrice": 143000000,
+        "available": true,
+        "description": "高所得の客層。安売りより商品力が問われる。"
+      }
+    },
+    {
+      "index": 22,
+      "lot": {
+        "id": "miyashita-07",
+        "name": "高層街の入口",
+        "district": "miyashita",
+        "x": 143,
+        "z": 77,
+        "width": 14,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 72000,
+        "affluence": 1.4,
+        "rent": 390000,
+        "purchasePrice": 285000000,
+        "available": true,
+        "description": "大型店の候補地。人流は大きいが固定費負担も大きい。"
+      }
+    },
+    {
+      "index": 23,
+      "lot": {
+        "id": "miyashita-08",
+        "name": "宮下北の小さな店",
+        "district": "miyashita",
+        "x": 173,
+        "z": -177,
+        "width": 16,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 33000,
+        "affluence": 1.17,
+        "rent": 127000,
+        "purchasePrice": 74000000,
+        "available": true,
+        "description": "公園と住宅の境目で日常利用を育てる。"
+      }
+    },
+    {
+      "index": 24,
+      "lot": {
+        "id": "sakuragaoka-01",
+        "name": "桜丘のベーカリー隣",
+        "district": "sakuragaoka",
+        "x": -78,
+        "z": 120,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 30000,
+        "affluence": 0.98,
+        "rent": 78000,
+        "purchasePrice": 40000000,
+        "available": true,
+        "description": "住民と働く人が混ざる生活圏。初出店にも向く。"
+      }
+    },
+    {
+      "index": 25,
+      "lot": {
+        "id": "sakuragaoka-02",
+        "name": "桜並木の路面店",
+        "district": "sakuragaoka",
+        "x": -48,
+        "z": 120,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 27000,
+        "affluence": 1.08,
+        "rent": 88000,
+        "purchasePrice": 47000000,
+        "available": true,
+        "description": "落ち着いた日常需要。常連が居心地を求める。"
+      }
+    },
+    {
+      "index": 26,
+      "lot": {
+        "id": "sakuragaoka-03",
+        "name": "桜丘オフィス下",
+        "district": "sakuragaoka",
+        "x": -18,
+        "z": 120,
+        "width": 18,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 43000,
+        "affluence": 1.2,
+        "rent": 147000,
+        "purchasePrice": 91000000,
+        "available": true,
+        "description": "通勤と昼の需要を受け止める。客数に見合う配置が必要。"
+      }
+    },
+    {
+      "index": 27,
+      "lot": {
+        "id": "sakuragaoka-04",
+        "name": "南口の通勤路",
+        "district": "sakuragaoka",
+        "x": 16,
+        "z": 120,
+        "width": 14,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 52000,
+        "affluence": 1.12,
+        "rent": 164000,
+        "purchasePrice": 103000000,
+        "available": true,
+        "description": "駅へ向かう人の導線。持ち帰り需要を狙える。"
+      }
+    },
+    {
+      "index": 28,
+      "lot": {
+        "id": "sakuragaoka-05",
+        "name": "桜丘の住宅角",
+        "district": "sakuragaoka",
+        "x": -78,
+        "z": 156,
+        "width": 16,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 21000,
+        "affluence": 0.88,
+        "rent": 67000,
+        "purchasePrice": 32000000,
+        "available": true,
+        "description": "通行量は控えめ。固定費を小さく保ちたい。"
+      }
+    },
+    {
+      "index": 29,
+      "lot": {
+        "id": "sakuragaoka-06",
+        "name": "坂南の小さな店",
+        "district": "sakuragaoka",
+        "x": -48,
+        "z": 181,
+        "width": 18,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 15000,
+        "affluence": 0.78,
+        "rent": 65000,
+        "purchasePrice": 30000000,
+        "available": true,
+        "description": "低価格の日常需要。集客を過大評価しないこと。"
+      }
+    },
+    {
+      "index": 30,
+      "lot": {
+        "id": "sakuragaoka-07",
+        "name": "桜丘ガーデン前",
+        "district": "sakuragaoka",
+        "x": -17,
+        "z": 156,
+        "width": 14,
+        "depth": 14,
+        "height": 26,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 34000,
+        "affluence": 1.3,
+        "rent": 138000,
+        "purchasePrice": 82000000,
+        "available": true,
+        "description": "落ち着いた上質需要。価格と満足度を両立する。"
+      }
+    },
+    {
+      "index": 31,
+      "lot": {
+        "id": "sakuragaoka-08",
+        "name": "南口オフィス新館",
+        "district": "sakuragaoka",
+        "x": 16,
+        "z": 181,
+        "width": 16,
+        "depth": 16,
+        "height": 33,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 46000,
+        "affluence": 1.26,
+        "rent": 183000,
+        "purchasePrice": 121000000,
+        "available": true,
+        "description": "大きめのオフィス需要。十分な運転資金を持って出店。"
+      }
+    },
+    {
+      "index": 32,
+      "lot": {
+        "id": "center-09",
+        "district": "center",
+        "name": "神南北の小路",
+        "x": -78,
+        "z": -250,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 24000,
+        "affluence": 1,
+        "rent": 68000,
+        "purchasePrice": 38000000,
+        "available": true,
+        "description": "中心街の北に続く静かな小路。控えめな家賃と人通りを見比べたい。"
+      }
+    },
+    {
+      "index": 33,
+      "lot": {
+        "id": "center-10",
+        "district": "center",
+        "name": "北通りの角店",
+        "x": -20,
+        "z": -250,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 36000,
+        "affluence": 1.18,
+        "rent": 118000,
+        "purchasePrice": 66000000,
+        "available": true,
+        "description": "街歩きの途中にある角地。人通りと固定費は中程度。"
+      }
+    },
+    {
+      "index": 34,
+      "lot": {
+        "id": "center-11",
+        "district": "center",
+        "name": "神南の住宅坂",
+        "x": -78,
+        "z": -310,
+        "width": 14,
+        "depth": 14,
+        "height": 15,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 19000,
+        "affluence": 1.35,
+        "rent": 94000,
+        "purchasePrice": 59000000,
+        "available": true,
+        "description": "住宅に近い落ち着いた通り。人通りは少なく、購買力は高め。"
+      }
+    },
+    {
+      "index": 35,
+      "lot": {
+        "id": "center-12",
+        "district": "center",
+        "name": "北の大通り入口",
+        "x": -20,
+        "z": -310,
+        "width": 18,
+        "depth": 16,
+        "height": 26,
+        "type": "retail",
+        "color": "#e6d1b4",
+        "footfall": 54000,
+        "affluence": 1.06,
+        "rent": 175000,
+        "purchasePrice": 99000000,
+        "available": true,
+        "description": "人が行き交う北側の入口。人員と毎週の家賃を考えて選びたい。"
+      }
+    },
+    {
+      "index": 36,
+      "lot": {
+        "id": "dogenzaka-09",
+        "district": "dogenzaka",
+        "name": "坂西の小さな路面店",
+        "x": -270,
+        "z": -26,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 22000,
+        "affluence": 0.9,
+        "rent": 55000,
+        "purchasePrice": 28000000,
+        "available": true,
+        "description": "坂を越えた小さな通り。少ない人通りと低い家賃が特徴。"
+      }
+    },
+    {
+      "index": 37,
+      "lot": {
+        "id": "dogenzaka-10",
+        "district": "dogenzaka",
+        "name": "西通りの旧雑貨店",
+        "x": -330,
+        "z": -26,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 28000,
+        "affluence": 1.02,
+        "rent": 74000,
+        "purchasePrice": 39000000,
+        "available": true,
+        "description": "西へ延びる通り沿いの小型物件。日常の街歩きが見える。"
+      }
+    },
+    {
+      "index": 38,
+      "lot": {
+        "id": "dogenzaka-11",
+        "district": "dogenzaka",
+        "name": "松濤西の住宅前",
+        "x": -270,
+        "z": 42,
+        "width": 14,
+        "depth": 14,
+        "height": 15,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 17000,
+        "affluence": 1.42,
+        "rent": 96000,
+        "purchasePrice": 62000000,
+        "available": true,
+        "description": "静かな住宅地の入口。購買力は高めだが通行量は限られる。"
+      }
+    },
+    {
+      "index": 39,
+      "lot": {
+        "id": "dogenzaka-12",
+        "district": "dogenzaka",
+        "name": "西の商店通り",
+        "x": -330,
+        "z": 42,
+        "width": 18,
+        "depth": 16,
+        "height": 26,
+        "type": "retail",
+        "color": "#bdaaa1",
+        "footfall": 51000,
+        "affluence": 1.15,
+        "rent": 169000,
+        "purchasePrice": 94000000,
+        "available": true,
+        "description": "商店が連なる人通りの多い通り。客数を受け止める運営が必要。"
+      }
+    },
+    {
+      "index": 40,
+      "lot": {
+        "id": "miyashita-09",
+        "district": "miyashita",
+        "name": "東の並木小路",
+        "x": 260,
+        "z": -72,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 24000,
+        "affluence": 1.38,
+        "rent": 112000,
+        "purchasePrice": 70000000,
+        "available": true,
+        "description": "並木沿いの静かな一角。高めの購買力と家賃を見比べたい。"
+      }
+    },
+    {
+      "index": 41,
+      "lot": {
+        "id": "miyashita-10",
+        "district": "miyashita",
+        "name": "東通りの角店",
+        "x": 320,
+        "z": -72,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 38000,
+        "affluence": 1.24,
+        "rent": 145000,
+        "purchasePrice": 92000000,
+        "available": true,
+        "description": "東へ広がる街の角地。中程度の人通りが続く。"
+      }
+    },
+    {
+      "index": 42,
+      "lot": {
+        "id": "miyashita-11",
+        "district": "miyashita",
+        "name": "東のオフィス街口",
+        "x": 260,
+        "z": 45,
+        "width": 14,
+        "depth": 14,
+        "height": 15,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 56000,
+        "affluence": 1.34,
+        "rent": 238000,
+        "purchasePrice": 161000000,
+        "available": true,
+        "description": "オフィス街へ続く通り。人通りも家賃も高く、運営費の負担は大きい。"
+      }
+    },
+    {
+      "index": 43,
+      "lot": {
+        "id": "miyashita-12",
+        "district": "miyashita",
+        "name": "東端の小さな店",
+        "x": 320,
+        "z": 45,
+        "width": 18,
+        "depth": 16,
+        "height": 26,
+        "type": "retail",
+        "color": "#b1c5c9",
+        "footfall": 20000,
+        "affluence": 0.98,
+        "rent": 64000,
+        "purchasePrice": 34000000,
+        "available": true,
+        "description": "賑わいから離れた小さな店。静かな通りで固定費を抑える選択肢。"
+      }
+    },
+    {
+      "index": 44,
+      "lot": {
+        "id": "sakuragaoka-09",
+        "district": "sakuragaoka",
+        "name": "桜丘南の住宅小路",
+        "x": -78,
+        "z": 250,
+        "width": 14,
+        "depth": 14,
+        "height": 12,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 18000,
+        "affluence": 0.85,
+        "rent": 51000,
+        "purchasePrice": 27000000,
+        "available": true,
+        "description": "生活圏の小さな通り。控えめな購買力と少ない通行量に合わせて考えたい。"
+      }
+    },
+    {
+      "index": 45,
+      "lot": {
+        "id": "sakuragaoka-10",
+        "district": "sakuragaoka",
+        "name": "南坂の角店",
+        "x": -20,
+        "z": 250,
+        "width": 16,
+        "depth": 16,
+        "height": 19,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 31000,
+        "affluence": 1.07,
+        "rent": 91000,
+        "purchasePrice": 49000000,
+        "available": true,
+        "description": "南へ続く坂の角地。人通りと家賃はほどほど。"
+      }
+    },
+    {
+      "index": 46,
+      "lot": {
+        "id": "sakuragaoka-11",
+        "district": "sakuragaoka",
+        "name": "桜丘南の庭園横",
+        "x": -78,
+        "z": 310,
+        "width": 14,
+        "depth": 14,
+        "height": 15,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 23000,
+        "affluence": 1.36,
+        "rent": 101000,
+        "purchasePrice": 64000000,
+        "available": true,
+        "description": "落ち着いた住宅地の庭園横。少ない人通りと高めの購買力が特徴。"
+      }
+    },
+    {
+      "index": 47,
+      "lot": {
+        "id": "sakuragaoka-12",
+        "district": "sakuragaoka",
+        "name": "南のオフィス通り",
+        "x": -20,
+        "z": 310,
+        "width": 18,
+        "depth": 16,
+        "height": 26,
+        "type": "retail",
+        "color": "#c7c1b7",
+        "footfall": 53000,
+        "affluence": 1.22,
+        "rent": 192000,
+        "purchasePrice": 128000000,
+        "available": true,
+        "description": "南側のオフィスへ続く通り。人通りは多く、家賃も高め。"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "ordinary-core-and-west",
+      "seed": 1,
+      "actions": [
+        {
+          "type": "openStore",
+          "lotId": "center-01",
+          "style": "standard"
+        },
+        {
+          "type": "updateStore",
+          "storeId": "store-center-01-1",
+          "changes": {
+            "price": 850,
+            "quality": 85,
+            "staff": 4,
+            "marketing": 0
+          }
+        },
+        {
+          "type": "openStore",
+          "lotId": "dogenzaka-09",
+          "style": "takeaway"
+        },
+        {
+          "type": "borrow",
+          "amount": 500000,
+          "weeks": 52
+        }
+      ],
+      "initial": {
+        "version": 1,
+        "id": "shibuya-1",
+        "companyName": "v070旧区画回帰fixture",
+        "seed": 1,
+        "week": 1,
+        "cash": 5900000,
+        "reputation": 10,
+        "stores": [
+          {
+            "id": "store-center-01-1",
+            "lotId": "center-01",
+            "name": "宇田川の角店店",
+            "style": "standard",
+            "price": 850,
+            "quality": 85,
+            "staff": 4,
+            "manager": false,
+            "marketing": 0,
+            "level": 1,
+            "openedWeek": 1,
+            "revenue": 0,
+            "profit": 0,
+            "customers": 0,
+            "satisfaction": 70
+          },
+          {
+            "id": "store-dogenzaka-09-1",
+            "lotId": "dogenzaka-09",
+            "name": "坂西の小さな路面店店",
+            "style": "takeaway",
+            "price": 450,
+            "quality": 55,
+            "staff": 4,
+            "manager": false,
+            "marketing": 10000,
+            "level": 1,
+            "openedWeek": 1,
+            "revenue": 0,
+            "profit": 0,
+            "customers": 0,
+            "satisfaction": 70
+          }
+        ],
+        "loans": [
+          {
+            "id": "loan-1-0-5400000",
+            "principal": 500000,
+            "remaining": 500000,
+            "annualRate": 0.045,
+            "weeksLeft": 52,
+            "weeklyPayment": 9615.384615384615
+          }
+        ],
+        "properties": [],
+        "positions": [],
+        "stockPrices": {
+          "jp-9432": 170.1,
+          "jp-3543": 2797,
+          "jp-3087": 3170,
+          "jp-9005": 1584.5,
+          "jp-9020": 3295,
+          "jp-8801": 1420.5,
+          "jp-8802": 3476,
+          "jp-7203": 2930.5,
+          "jp-8306": 3671,
+          "jp-8316": 3429,
+          "jp-8591": 5870,
+          "jp-2502": 1592.5,
+          "jp-2802": 5372,
+          "jp-9984": 6295,
+          "jp-6758": 3768,
+          "jp-7974": 7815,
+          "jp-9433": 2883,
+          "jp-9501": 518.8,
+          "jp-5020": 1380,
+          "jp-8411": 8857,
+          "jp-7944": 3705,
+          "jp-8793": 4045,
+          "jp-5331": 3810,
+          "jp-5185": 1946,
+          "jp-9336": 3685,
+          "jp-3880": 948,
+          "jp-3232": 559,
+          "jp-7388": 2264,
+          "jp-9319": 1752,
+          "jp-4968": 2538,
+          "jp-4554": 1760,
+          "jp-3036": 3365,
+          "jp-3387": 777,
+          "jp-1833": 5330,
+          "jp-4481": 3150,
+          "jp-6310": 1916,
+          "jp-1375": 1143,
+          "jp-9119": 1656,
+          "jp-5011": 2256,
+          "jp-7715": 4490,
+          "jp-6731": 100,
+          "jp-6993": 90,
+          "jp-8107": 31,
+          "jp-7897": 115,
+          "jp-4346": 890,
+          "jp-5279": 1193,
+          "jp-5199": 2000,
+          "jp-9639": 2270,
+          "jp-3951": 894,
+          "jp-8914": 822,
+          "jp-9361": 1990,
+          "jp-4360": 1029,
+          "jp-4524": 2222,
+          "jp-8076": 2045,
+          "jp-3175": 935,
+          "jp-1921": 2038,
+          "jp-3933": 530,
+          "jp-6408": 4245,
+          "jp-1381": 3555,
+          "jp-9173": 2850,
+          "jp-5010": 317,
+          "jp-9206": 1910,
+          "jp-7713": 2700,
+          "jp-3529": 1031,
+          "jp-8704": 1392,
+          "jp-7264": 1330,
+          "jp-5922": 19980,
+          "jp-5609": 948,
+          "jp-1514": 624,
+          "jp-7161": 690,
+          "jp-4564": 21,
+          "jp-4597": 32,
+          "jp-7806": 9380,
+          "jp-7320": 1402,
+          "jp-9158": 774,
+          "jp-2978": 315,
+          "jp-7343": 1301,
+          "jp-9326": 476,
+          "jp-247A": 925,
+          "jp-4889": 1091,
+          "jp-7689": 373,
+          "jp-3550": 220,
+          "jp-1401": 1460,
+          "jp-5252": 1003,
+          "jp-6224": 1137,
+          "jp-9204": 428,
+          "jp-218A": 1054,
+          "jp-325A": 2055,
+          "jp-5842": 2752,
+          "jp-402A": 320,
+          "jp-523A": 1905,
+          "jp-350A": 688,
+          "jp-6521": 3500,
+          "jp-5858": 1159,
+          "jp-2936": 277,
+          "jp-8951": 116600,
+          "jp-8952": 106500,
+          "jp-3281": 128400,
+          "jp-3466": 143500,
+          "jp-8972": 141600
+        },
+        "subsidiaries": [],
+        "listed": false,
+        "sharesOutstanding": 1000000,
+        "founderShares": 1000000,
+        "sharePrice": 12,
+        "dividendPayout": 0,
+        "profitableWeeks": 0,
+        "totalCustomers": 0,
+        "history": [],
+        "lastReport": null,
+        "milestones": [],
+        "gameOver": false,
+        "gameOverReason": null,
+        "settings": {
+          "quality": "medium",
+          "sound": false
+        },
+        "openingRecords": [
+          {
+            "id": "opening-1-1",
+            "storeId": "store-center-01-1",
+            "lotId": "center-01",
+            "storeName": "宇田川の角店店",
+            "style": "standard",
+            "decisionWeek": 1,
+            "openingCost": 3600000,
+            "cashBefore": 12000000,
+            "cashAfter": 8400000,
+            "netProfitBefore": 0,
+            "netProfitAfter": 53528,
+            "initialStoreProfit": 53528,
+            "companyStoreCount": 1
+          },
+          {
+            "id": "opening-1-2",
+            "storeId": "store-dogenzaka-09-1",
+            "lotId": "dogenzaka-09",
+            "storeName": "坂西の小さな路面店店",
+            "style": "takeaway",
+            "decisionWeek": 1,
+            "openingCost": 3000000,
+            "cashBefore": 8400000,
+            "cashAfter": 5400000,
+            "netProfitBefore": 303880,
+            "netProfitAfter": 381240,
+            "initialStoreProfit": 77360,
+            "companyStoreCount": 2
+          }
+        ]
+      },
+      "initialPayload": "{\"version\":1,\"id\":\"shibuya-1\",\"companyName\":\"v070旧区画回帰fixture\",\"seed\":1,\"week\":1,\"cash\":5900000,\"reputation\":10,\"stores\":[{\"id\":\"store-center-01-1\",\"lotId\":\"center-01\",\"name\":\"宇田川の角店店\",\"style\":\"standard\",\"price\":850,\"quality\":85,\"staff\":4,\"manager\":false,\"marketing\":0,\"level\":1,\"openedWeek\":1,\"revenue\":0,\"profit\":0,\"customers\":0,\"satisfaction\":70},{\"id\":\"store-dogenzaka-09-1\",\"lotId\":\"dogenzaka-09\",\"name\":\"坂西の小さな路面店店\",\"style\":\"takeaway\",\"price\":450,\"quality\":55,\"staff\":4,\"manager\":false,\"marketing\":10000,\"level\":1,\"openedWeek\":1,\"revenue\":0,\"profit\":0,\"customers\":0,\"satisfaction\":70}],\"loans\":[{\"id\":\"loan-1-0-5400000\",\"principal\":500000,\"remaining\":500000,\"annualRate\":0.045,\"weeksLeft\":52,\"weeklyPayment\":9615.384615384615}],\"properties\":[],\"positions\":[],\"stockPrices\":{\"jp-9432\":170.1,\"jp-3543\":2797,\"jp-3087\":3170,\"jp-9005\":1584.5,\"jp-9020\":3295,\"jp-8801\":1420.5,\"jp-8802\":3476,\"jp-7203\":2930.5,\"jp-8306\":3671,\"jp-8316\":3429,\"jp-8591\":5870,\"jp-2502\":1592.5,\"jp-2802\":5372,\"jp-9984\":6295,\"jp-6758\":3768,\"jp-7974\":7815,\"jp-9433\":2883,\"jp-9501\":518.8,\"jp-5020\":1380,\"jp-8411\":8857,\"jp-7944\":3705,\"jp-8793\":4045,\"jp-5331\":3810,\"jp-5185\":1946,\"jp-9336\":3685,\"jp-3880\":948,\"jp-3232\":559,\"jp-7388\":2264,\"jp-9319\":1752,\"jp-4968\":2538,\"jp-4554\":1760,\"jp-3036\":3365,\"jp-3387\":777,\"jp-1833\":5330,\"jp-4481\":3150,\"jp-6310\":1916,\"jp-1375\":1143,\"jp-9119\":1656,\"jp-5011\":2256,\"jp-7715\":4490,\"jp-6731\":100,\"jp-6993\":90,\"jp-8107\":31,\"jp-7897\":115,\"jp-4346\":890,\"jp-5279\":1193,\"jp-5199\":2000,\"jp-9639\":2270,\"jp-3951\":894,\"jp-8914\":822,\"jp-9361\":1990,\"jp-4360\":1029,\"jp-4524\":2222,\"jp-8076\":2045,\"jp-3175\":935,\"jp-1921\":2038,\"jp-3933\":530,\"jp-6408\":4245,\"jp-1381\":3555,\"jp-9173\":2850,\"jp-5010\":317,\"jp-9206\":1910,\"jp-7713\":2700,\"jp-3529\":1031,\"jp-8704\":1392,\"jp-7264\":1330,\"jp-5922\":19980,\"jp-5609\":948,\"jp-1514\":624,\"jp-7161\":690,\"jp-4564\":21,\"jp-4597\":32,\"jp-7806\":9380,\"jp-7320\":1402,\"jp-9158\":774,\"jp-2978\":315,\"jp-7343\":1301,\"jp-9326\":476,\"jp-247A\":925,\"jp-4889\":1091,\"jp-7689\":373,\"jp-3550\":220,\"jp-1401\":1460,\"jp-5252\":1003,\"jp-6224\":1137,\"jp-9204\":428,\"jp-218A\":1054,\"jp-325A\":2055,\"jp-5842\":2752,\"jp-402A\":320,\"jp-523A\":1905,\"jp-350A\":688,\"jp-6521\":3500,\"jp-5858\":1159,\"jp-2936\":277,\"jp-8951\":116600,\"jp-8952\":106500,\"jp-3281\":128400,\"jp-3466\":143500,\"jp-8972\":141600},\"subsidiaries\":[],\"listed\":false,\"sharesOutstanding\":1000000,\"founderShares\":1000000,\"sharePrice\":12,\"dividendPayout\":0,\"profitableWeeks\":0,\"totalCustomers\":0,\"history\":[],\"lastReport\":null,\"milestones\":[],\"gameOver\":false,\"gameOverReason\":null,\"settings\":{\"quality\":\"medium\",\"sound\":false},\"openingRecords\":[{\"id\":\"opening-1-1\",\"storeId\":\"store-center-01-1\",\"lotId\":\"center-01\",\"storeName\":\"宇田川の角店店\",\"style\":\"standard\",\"decisionWeek\":1,\"openingCost\":3600000,\"cashBefore\":12000000,\"cashAfter\":8400000,\"netProfitBefore\":0,\"netProfitAfter\":53528,\"initialStoreProfit\":53528,\"companyStoreCount\":1},{\"id\":\"opening-1-2\",\"storeId\":\"store-dogenzaka-09-1\",\"lotId\":\"dogenzaka-09\",\"storeName\":\"坂西の小さな路面店店\",\"style\":\"takeaway\",\"decisionWeek\":1,\"openingCost\":3000000,\"cashBefore\":8400000,\"cashAfter\":5400000,\"netProfitBefore\":303880,\"netProfitAfter\":381240,\"initialStoreProfit\":77360,\"companyStoreCount\":2}]}",
+      "initialChecksum": "130424e7dacb607ccea90eea144325de7b4c1fc157f2497b0817b9978e6163bd",
+      "timeline": [
+        {
+          "forecast": {
+            "week": 1,
+            "revenue": 1600000,
+            "operatingProfit": 381240,
+            "interest": 433,
+            "netProfit": 380807,
+            "loanRepayment": 9615,
+            "dividendsReceived": 0,
+            "dividendsPaid": 0,
+            "cashChange": 371192,
+            "customers": 2560,
+            "headlines": [
+              "現在の計画は黒字見込みです。客足・運営状況で実績は変動します。"
+            ],
+            "storeResults": [
+              {
+                "id": "store-center-01-1",
+                "revenue": 952000,
+                "profit": 303880,
+                "customers": 1120,
+                "satisfaction": 80
+              },
+              {
+                "id": "store-dogenzaka-09-1",
+                "revenue": 648000,
+                "profit": 77360,
+                "customers": 1440,
+                "satisfaction": 76
+              }
+            ]
+          },
+          "next": {
+            "version": 1,
+            "id": "shibuya-1",
+            "companyName": "v070旧区画回帰fixture",
+            "seed": 1,
+            "week": 2,
+            "cash": 6272266,
+            "reputation": 12.41325,
+            "stores": [
+              {
+                "id": "store-center-01-1",
+                "lotId": "center-01",
+                "name": "宇田川の角店店",
+                "style": "standard",
+                "price": 850,
+                "quality": 85,
+                "staff": 4,
+                "manager": false,
+                "marketing": 0,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 960500,
+                "profit": 309683,
+                "customers": 1130,
+                "satisfaction": 81
+              },
+              {
+                "id": "store-dogenzaka-09-1",
+                "lotId": "dogenzaka-09",
+                "name": "坂西の小さな路面店店",
+                "style": "takeaway",
+                "price": 450,
+                "quality": 55,
+                "staff": 4,
+                "manager": false,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 639900,
+                "profit": 72631,
+                "customers": 1422,
+                "satisfaction": 76
+              }
+            ],
+            "loans": [
+              {
+                "id": "loan-1-0-5400000",
+                "principal": 500000,
+                "remaining": 490384.6153846154,
+                "annualRate": 0.045,
+                "weeksLeft": 51,
+                "weeklyPayment": 9615.384615384615
+              }
+            ],
+            "properties": [],
+            "positions": [],
+            "stockPrices": {
+              "jp-9432": 170.08,
+              "jp-3543": 2604.67,
+              "jp-3087": 3049.78,
+              "jp-9005": 1572.91,
+              "jp-9020": 3254.53,
+              "jp-8801": 1361.39,
+              "jp-8802": 3327.38,
+              "jp-7203": 2983.06,
+              "jp-8306": 3645.62,
+              "jp-8316": 3266.78,
+              "jp-8591": 5677.53,
+              "jp-2502": 1606.6,
+              "jp-2802": 5481.55,
+              "jp-9984": 6020.71,
+              "jp-6758": 3796.25,
+              "jp-7974": 7552.39,
+              "jp-9433": 2875.86,
+              "jp-9501": 525.95,
+              "jp-5020": 1366.06,
+              "jp-8411": 8877.27,
+              "jp-7944": 3665.06,
+              "jp-8793": 4114.58,
+              "jp-5331": 3908.5,
+              "jp-5185": 2017.88,
+              "jp-9336": 3472.91,
+              "jp-3880": 913.91,
+              "jp-3232": 551.69,
+              "jp-7388": 2303.23,
+              "jp-9319": 1794.96,
+              "jp-4968": 2609.44,
+              "jp-4554": 1751.61,
+              "jp-3036": 3239.77,
+              "jp-3387": 780.54,
+              "jp-1833": 5079.61,
+              "jp-4481": 3040.51,
+              "jp-6310": 1779.53,
+              "jp-1375": 1172.41,
+              "jp-9119": 1665.29,
+              "jp-5011": 2277.33,
+              "jp-7715": 4313.06,
+              "jp-6731": 102.06,
+              "jp-6993": 97.7,
+              "jp-8107": 31.41,
+              "jp-7897": 120.91,
+              "jp-4346": 879.17,
+              "jp-5279": 1176.5,
+              "jp-5199": 1868.38,
+              "jp-9639": 2142.75,
+              "jp-3951": 860.04,
+              "jp-8914": 770.51,
+              "jp-9361": 1967.62,
+              "jp-4360": 993.42,
+              "jp-4524": 2203.85,
+              "jp-8076": 2062.19,
+              "jp-3175": 933.42,
+              "jp-1921": 1925.41,
+              "jp-3933": 519.13,
+              "jp-6408": 4148.82,
+              "jp-1381": 3362.89,
+              "jp-9173": 2680.75,
+              "jp-5010": 313.58,
+              "jp-9206": 1918.94,
+              "jp-7713": 2637.39,
+              "jp-3529": 1066.01,
+              "jp-8704": 1375.95,
+              "jp-7264": 1351.43,
+              "jp-5922": 19670.75,
+              "jp-5609": 906.48,
+              "jp-1514": 622.17,
+              "jp-7161": 700.27,
+              "jp-4564": 18.79,
+              "jp-4597": 36.61,
+              "jp-7806": 9431.23,
+              "jp-7320": 1388.96,
+              "jp-9158": 704.31,
+              "jp-2978": 288.92,
+              "jp-7343": 1276.39,
+              "jp-9326": 489.49,
+              "jp-247A": 1006.36,
+              "jp-4889": 1070.41,
+              "jp-7689": 371.39,
+              "jp-3550": 208.08,
+              "jp-1401": 1383.6,
+              "jp-5252": 955.31,
+              "jp-6224": 1102.13,
+              "jp-9204": 398.42,
+              "jp-218A": 993.62,
+              "jp-325A": 1991.66,
+              "jp-5842": 2719.18,
+              "jp-402A": 334.16,
+              "jp-523A": 1897.76,
+              "jp-350A": 669.89,
+              "jp-6521": 3583.28,
+              "jp-5858": 1184.81,
+              "jp-2936": 284.01,
+              "jp-8951": 118477.47,
+              "jp-8952": 104154.28,
+              "jp-3281": 127163.28,
+              "jp-3466": 139637.19,
+              "jp-8972": 140549.16
+            },
+            "subsidiaries": [],
+            "listed": false,
+            "sharesOutstanding": 1000000,
+            "founderShares": 1000000,
+            "sharePrice": 49.016745,
+            "dividendPayout": 0,
+            "profitableWeeks": 1,
+            "totalCustomers": 2552,
+            "history": [
+              {
+                "week": 1,
+                "cash": 6272266,
+                "profit": 381881,
+                "revenue": 1600400,
+                "valuation": 49016745,
+                "stores": 2
+              }
+            ],
+            "lastReport": {
+              "week": 1,
+              "revenue": 1600400,
+              "operatingProfit": 382314,
+              "interest": 433,
+              "netProfit": 381881,
+              "loanRepayment": 9615,
+              "dividendsReceived": 0,
+              "dividendsPaid": 0,
+              "cashChange": 372266,
+              "customers": 2552,
+              "headlines": [
+                "宇田川の角店店：普段並みの客足で、1,130人が来店しました。",
+                "坂西の小さな路面店店：普段並みの客足で、1,422人が来店しました。",
+                "利益を確保しました。次の投資機会を検討しましょう。"
+              ],
+              "storeResults": [
+                {
+                  "id": "store-center-01-1",
+                  "revenue": 960500,
+                  "profit": 309683,
+                  "customers": 1130,
+                  "satisfaction": 81
+                },
+                {
+                  "id": "store-dogenzaka-09-1",
+                  "revenue": 639900,
+                  "profit": 72631,
+                  "customers": 1422,
+                  "satisfaction": 76
+                }
+              ],
+              "storeAccounts": [
+                {
+                  "storeId": "store-center-01-1",
+                  "costs": {
+                    "ingredients": 189558,
+                    "fulfilment": 115260,
+                    "labor": 208000,
+                    "rent": 110000,
+                    "equipment": 28000,
+                    "marketing": 0,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": -1
+                },
+                {
+                  "storeId": "store-dogenzaka-09-1",
+                  "costs": {
+                    "ingredients": 189482,
+                    "fulfilment": 76788,
+                    "labor": 208000,
+                    "rent": 55000,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": -1
+                }
+              ],
+              "news": {
+                "week": 1,
+                "market": {
+                  "advances": 34,
+                  "declines": 66,
+                  "unchanged": 0
+                },
+                "companies": [
+                  {
+                    "stockId": "jp-4597",
+                    "previousPrice": 32,
+                    "currentPrice": 36.61,
+                    "percentChange": 14.406249999999998
+                  },
+                  {
+                    "stockId": "jp-4564",
+                    "previousPrice": 21,
+                    "currentPrice": 18.79,
+                    "percentChange": -10.523809523809524
+                  }
+                ],
+                "city": {
+                  "current": {
+                    "demand": 1,
+                    "wages": 1,
+                    "rents": 1
+                  }
+                },
+                "events": []
+              }
+            },
+            "milestones": [
+              "渋谷で創業"
+            ],
+            "gameOver": false,
+            "gameOverReason": null,
+            "settings": {
+              "quality": "medium",
+              "sound": false
+            },
+            "openingRecords": [
+              {
+                "id": "opening-1-1",
+                "storeId": "store-center-01-1",
+                "lotId": "center-01",
+                "storeName": "宇田川の角店店",
+                "style": "standard",
+                "decisionWeek": 1,
+                "openingCost": 3600000,
+                "cashBefore": 12000000,
+                "cashAfter": 8400000,
+                "netProfitBefore": 0,
+                "netProfitAfter": 53528,
+                "initialStoreProfit": 53528,
+                "companyStoreCount": 1,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 381881,
+                  "cashChange": 372266,
+                  "storeProfit": 309683,
+                  "customers": 1130
+                }
+              },
+              {
+                "id": "opening-1-2",
+                "storeId": "store-dogenzaka-09-1",
+                "lotId": "dogenzaka-09",
+                "storeName": "坂西の小さな路面店店",
+                "style": "takeaway",
+                "decisionWeek": 1,
+                "openingCost": 3000000,
+                "cashBefore": 8400000,
+                "cashAfter": 5400000,
+                "netProfitBefore": 303880,
+                "netProfitAfter": 381240,
+                "initialStoreProfit": 77360,
+                "companyStoreCount": 2,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 381881,
+                  "cashChange": 372266,
+                  "storeProfit": 72631,
+                  "customers": 1422
+                }
+              }
+            ],
+            "deals": {
+              "offers": [
+                {
+                  "id": "cafe-0-system-fit",
+                  "category": "system",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "在庫・発注支援システム",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 80000,
+                  "weeklyFee": 4000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 23000,
+                  "advertisedAnnualYield": 14.95,
+                  "conservativeWeeklyBenefit": 12000,
+                  "optimisticWeeklyBenefit": 27600,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 10000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "cafe-0-marketing-reach",
+                  "category": "marketing",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "集客保証プレミアム広告",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 180000,
+                  "weeklyFee": 38000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 70000,
+                  "advertisedAnnualYield": 20.22222222222222,
+                  "conservativeWeeklyBenefit": 3500,
+                  "optimisticWeeklyBenefit": 70000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 100000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                }
+              ],
+              "contracts": [],
+              "generatedBatches": [
+                "cafe-0"
+              ],
+              "dismissed": []
+            }
+          }
+        },
+        {
+          "forecast": {
+            "week": 2,
+            "revenue": 1600000,
+            "operatingProfit": 380261,
+            "interest": 424,
+            "netProfit": 379837,
+            "loanRepayment": 9615,
+            "dividendsReceived": 0,
+            "dividendsPaid": 0,
+            "cashChange": 370222,
+            "customers": 2560,
+            "headlines": [
+              "現在の計画は黒字見込みです。客足・運営状況で実績は変動します。"
+            ],
+            "storeResults": [
+              {
+                "id": "store-center-01-1",
+                "revenue": 952000,
+                "profit": 303380,
+                "customers": 1120,
+                "satisfaction": 80
+              },
+              {
+                "id": "store-dogenzaka-09-1",
+                "revenue": 648000,
+                "profit": 76881,
+                "customers": 1440,
+                "satisfaction": 76
+              }
+            ]
+          },
+          "next": {
+            "version": 1,
+            "id": "shibuya-1",
+            "companyName": "v070旧区画回帰fixture",
+            "seed": 1,
+            "week": 3,
+            "cash": 6609819,
+            "reputation": 14.65278625,
+            "stores": [
+              {
+                "id": "store-center-01-1",
+                "lotId": "center-01",
+                "name": "宇田川の角店店",
+                "style": "standard",
+                "price": 850,
+                "quality": 85,
+                "staff": 4,
+                "manager": false,
+                "marketing": 0,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 918000,
+                "profit": 280170,
+                "customers": 1080,
+                "satisfaction": 80
+              },
+              {
+                "id": "store-dogenzaka-09-1",
+                "lotId": "dogenzaka-09",
+                "name": "坂西の小さな路面店店",
+                "style": "takeaway",
+                "price": 450,
+                "quality": 55,
+                "staff": 4,
+                "manager": false,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 631800,
+                "profit": 67422,
+                "customers": 1404,
+                "satisfaction": 74
+              }
+            ],
+            "loans": [
+              {
+                "id": "loan-1-0-5400000",
+                "principal": 500000,
+                "remaining": 480769.23076923075,
+                "annualRate": 0.045,
+                "weeksLeft": 50,
+                "weeklyPayment": 9615.384615384615
+              }
+            ],
+            "properties": [],
+            "positions": [],
+            "stockPrices": {
+              "jp-9432": 172.59,
+              "jp-3543": 2621.53,
+              "jp-3087": 3213.32,
+              "jp-9005": 1626.11,
+              "jp-9020": 3258.28,
+              "jp-8801": 1440.64,
+              "jp-8802": 3689.2,
+              "jp-7203": 3051.99,
+              "jp-8306": 3779.31,
+              "jp-8316": 3457.63,
+              "jp-8591": 5769.05,
+              "jp-2502": 1639.83,
+              "jp-2802": 5599.22,
+              "jp-9984": 6224.56,
+              "jp-6758": 4070.82,
+              "jp-7974": 8252.52,
+              "jp-9433": 3030.84,
+              "jp-9501": 557.19,
+              "jp-5020": 1415.9,
+              "jp-8411": 8874.6,
+              "jp-7944": 3536.38,
+              "jp-8793": 4192.85,
+              "jp-5331": 4160.73,
+              "jp-5185": 1988.53,
+              "jp-9336": 3507.08,
+              "jp-3880": 918.03,
+              "jp-3232": 614.95,
+              "jp-7388": 2296.63,
+              "jp-9319": 1935.95,
+              "jp-4968": 2528.41,
+              "jp-4554": 1725.87,
+              "jp-3036": 3269.76,
+              "jp-3387": 802.47,
+              "jp-1833": 5341.08,
+              "jp-4481": 3260.08,
+              "jp-6310": 1957.81,
+              "jp-1375": 1243.37,
+              "jp-9119": 1648.78,
+              "jp-5011": 2298.57,
+              "jp-7715": 4527.9,
+              "jp-6731": 117.03,
+              "jp-6993": 126.74,
+              "jp-8107": 33.42,
+              "jp-7897": 122.7,
+              "jp-4346": 877.36,
+              "jp-5279": 1263.75,
+              "jp-5199": 2064,
+              "jp-9639": 2226.46,
+              "jp-3951": 878.47,
+              "jp-8914": 827.05,
+              "jp-9361": 2057.76,
+              "jp-4360": 1014.38,
+              "jp-4524": 2175.1,
+              "jp-8076": 2129.46,
+              "jp-3175": 874.19,
+              "jp-1921": 2140.22,
+              "jp-3933": 516.22,
+              "jp-6408": 4174.06,
+              "jp-1381": 3675.16,
+              "jp-9173": 2697.22,
+              "jp-5010": 314.98,
+              "jp-9206": 1872.29,
+              "jp-7713": 2716.68,
+              "jp-3529": 1019.67,
+              "jp-8704": 1382.11,
+              "jp-7264": 1391.15,
+              "jp-5922": 20214.98,
+              "jp-5609": 917.75,
+              "jp-1514": 679.63,
+              "jp-7161": 735.32,
+              "jp-4564": 23.77,
+              "jp-4597": 41.94,
+              "jp-7806": 9778.8,
+              "jp-7320": 1419.4,
+              "jp-9158": 732.34,
+              "jp-2978": 326.3,
+              "jp-7343": 1308.97,
+              "jp-9326": 491.86,
+              "jp-247A": 1027.14,
+              "jp-4889": 1119.08,
+              "jp-7689": 405.48,
+              "jp-3550": 239.68,
+              "jp-1401": 1587.82,
+              "jp-5252": 1125.05,
+              "jp-6224": 1119.67,
+              "jp-9204": 385.82,
+              "jp-218A": 1127.74,
+              "jp-325A": 2207.43,
+              "jp-5842": 2775.37,
+              "jp-402A": 335.56,
+              "jp-523A": 2086.47,
+              "jp-350A": 639.55,
+              "jp-6521": 3491.26,
+              "jp-5858": 1255.63,
+              "jp-2936": 307.81,
+              "jp-8951": 118612.97,
+              "jp-8952": 105659.26,
+              "jp-3281": 131065.85,
+              "jp-3466": 140489.04,
+              "jp-8972": 139301.04
+            },
+            "subsidiaries": [],
+            "listed": false,
+            "sharesOutstanding": 1000000,
+            "founderShares": 1000000,
+            "sharePrice": 49.26293,
+            "dividendPayout": 0,
+            "profitableWeeks": 2,
+            "totalCustomers": 5036,
+            "history": [
+              {
+                "week": 1,
+                "cash": 6272266,
+                "profit": 381881,
+                "revenue": 1600400,
+                "valuation": 49016745,
+                "stores": 2
+              },
+              {
+                "week": 2,
+                "cash": 6609819,
+                "profit": 347168,
+                "revenue": 1549800,
+                "valuation": 49262930,
+                "stores": 2
+              }
+            ],
+            "lastReport": {
+              "week": 2,
+              "revenue": 1549800,
+              "operatingProfit": 347592,
+              "interest": 424,
+              "netProfit": 347168,
+              "loanRepayment": 9615,
+              "dividendsReceived": 0,
+              "dividendsPaid": 0,
+              "cashChange": 337553,
+              "customers": 2484,
+              "headlines": [
+                "宇田川の角店店：普段並みの客足で、1,080人が来店しました。 運営に小さな遅れが出ました。",
+                "坂西の小さな路面店店：客足が普段より多めで、1,404人が来店しました。 運営に小さな遅れが出ました。",
+                "利益を確保しました。次の投資機会を検討しましょう。"
+              ],
+              "storeResults": [
+                {
+                  "id": "store-center-01-1",
+                  "revenue": 918000,
+                  "profit": 280170,
+                  "customers": 1080,
+                  "satisfaction": 80
+                },
+                {
+                  "id": "store-dogenzaka-09-1",
+                  "revenue": 631800,
+                  "profit": 67422,
+                  "customers": 1404,
+                  "satisfaction": 74
+                }
+              ],
+              "storeAccounts": [
+                {
+                  "storeId": "store-center-01-1",
+                  "costs": {
+                    "ingredients": 181170,
+                    "fulfilment": 110160,
+                    "labor": 208458,
+                    "rent": 110042,
+                    "equipment": 28000,
+                    "marketing": 0,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": 0
+                },
+                {
+                  "storeId": "store-dogenzaka-09-1",
+                  "costs": {
+                    "ingredients": 187083,
+                    "fulfilment": 75816,
+                    "labor": 208458,
+                    "rent": 55021,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": 0
+                }
+              ],
+              "news": {
+                "week": 2,
+                "market": {
+                  "advances": 83,
+                  "declines": 17,
+                  "unchanged": 0
+                },
+                "companies": [
+                  {
+                    "stockId": "jp-6993",
+                    "previousPrice": 97.7,
+                    "currentPrice": 126.74,
+                    "percentChange": 29.723643807574195
+                  },
+                  {
+                    "stockId": "jp-3175",
+                    "previousPrice": 933.42,
+                    "currentPrice": 874.19,
+                    "percentChange": -6.345482205223796
+                  }
+                ],
+                "city": {
+                  "current": {
+                    "demand": 1.00422649481956,
+                    "wages": 1.0022004404721512,
+                    "rents": 1.0003841227091486
+                  },
+                  "previous": {
+                    "demand": 1,
+                    "wages": 1,
+                    "rents": 1
+                  }
+                },
+                "events": []
+              }
+            },
+            "milestones": [
+              "渋谷で創業"
+            ],
+            "gameOver": false,
+            "gameOverReason": null,
+            "settings": {
+              "quality": "medium",
+              "sound": false
+            },
+            "openingRecords": [
+              {
+                "id": "opening-1-1",
+                "storeId": "store-center-01-1",
+                "lotId": "center-01",
+                "storeName": "宇田川の角店店",
+                "style": "standard",
+                "decisionWeek": 1,
+                "openingCost": 3600000,
+                "cashBefore": 12000000,
+                "cashAfter": 8400000,
+                "netProfitBefore": 0,
+                "netProfitAfter": 53528,
+                "initialStoreProfit": 53528,
+                "companyStoreCount": 1,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 381881,
+                  "cashChange": 372266,
+                  "storeProfit": 309683,
+                  "customers": 1130
+                }
+              },
+              {
+                "id": "opening-1-2",
+                "storeId": "store-dogenzaka-09-1",
+                "lotId": "dogenzaka-09",
+                "storeName": "坂西の小さな路面店店",
+                "style": "takeaway",
+                "decisionWeek": 1,
+                "openingCost": 3000000,
+                "cashBefore": 8400000,
+                "cashAfter": 5400000,
+                "netProfitBefore": 303880,
+                "netProfitAfter": 381240,
+                "initialStoreProfit": 77360,
+                "companyStoreCount": 2,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 381881,
+                  "cashChange": 372266,
+                  "storeProfit": 72631,
+                  "customers": 1422
+                }
+              }
+            ],
+            "deals": {
+              "offers": [
+                {
+                  "id": "cafe-0-system-fit",
+                  "category": "system",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "在庫・発注支援システム",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 80000,
+                  "weeklyFee": 4000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 23000,
+                  "advertisedAnnualYield": 14.95,
+                  "conservativeWeeklyBenefit": 12000,
+                  "optimisticWeeklyBenefit": 27600,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 10000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "cafe-0-marketing-reach",
+                  "category": "marketing",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "集客保証プレミアム広告",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 180000,
+                  "weeklyFee": 38000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 70000,
+                  "advertisedAnnualYield": 20.22222222222222,
+                  "conservativeWeeklyBenefit": 3500,
+                  "optimisticWeeklyBenefit": 70000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 100000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                }
+              ],
+              "contracts": [],
+              "generatedBatches": [
+                "cafe-0"
+              ],
+              "dismissed": []
+            }
+          }
+        },
+        {
+          "forecast": {
+            "week": 3,
+            "revenue": 1600000,
+            "operatingProfit": 379286,
+            "interest": 416,
+            "netProfit": 378870,
+            "loanRepayment": 9615,
+            "dividendsReceived": 0,
+            "dividendsPaid": 0,
+            "cashChange": 369255,
+            "customers": 2560,
+            "headlines": [
+              "現在の計画は黒字見込みです。客足・運営状況で実績は変動します。"
+            ],
+            "storeResults": [
+              {
+                "id": "store-center-01-1",
+                "revenue": 952000,
+                "profit": 302882,
+                "customers": 1120,
+                "satisfaction": 80
+              },
+              {
+                "id": "store-dogenzaka-09-1",
+                "revenue": 648000,
+                "profit": 76404,
+                "customers": 1440,
+                "satisfaction": 76
+              }
+            ]
+          },
+          "next": {
+            "version": 1,
+            "id": "shibuya-1",
+            "companyName": "v070旧区画回帰fixture",
+            "seed": 1,
+            "week": 4,
+            "cash": 6997390,
+            "reputation": 16.84368873125,
+            "stores": [
+              {
+                "id": "store-center-01-1",
+                "lotId": "center-01",
+                "name": "宇田川の角店店",
+                "style": "standard",
+                "price": 850,
+                "quality": 85,
+                "staff": 4,
+                "manager": false,
+                "marketing": 0,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 983450,
+                "profit": 324351,
+                "customers": 1157,
+                "satisfaction": 79
+              },
+              {
+                "id": "store-dogenzaka-09-1",
+                "lotId": "dogenzaka-09",
+                "name": "坂西の小さな路面店店",
+                "style": "takeaway",
+                "price": 450,
+                "quality": 55,
+                "staff": 4,
+                "manager": false,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 642600,
+                "profit": 73251,
+                "customers": 1428,
+                "satisfaction": 76
+              }
+            ],
+            "loans": [
+              {
+                "id": "loan-1-0-5400000",
+                "principal": 500000,
+                "remaining": 471153.8461538461,
+                "annualRate": 0.045,
+                "weeksLeft": 49,
+                "weeklyPayment": 9615.384615384615
+              }
+            ],
+            "properties": [],
+            "positions": [],
+            "stockPrices": {
+              "jp-9432": 176.92,
+              "jp-3543": 2591,
+              "jp-3087": 3343.4,
+              "jp-9005": 1683.74,
+              "jp-9020": 3233.5,
+              "jp-8801": 1482.51,
+              "jp-8802": 4002.06,
+              "jp-7203": 3211.32,
+              "jp-8306": 3716.34,
+              "jp-8316": 3339.35,
+              "jp-8591": 5496.99,
+              "jp-2502": 1686.27,
+              "jp-2802": 5642.95,
+              "jp-9984": 6249.77,
+              "jp-6758": 4191.81,
+              "jp-7974": 8811.03,
+              "jp-9433": 3124.73,
+              "jp-9501": 565.43,
+              "jp-5020": 1466.75,
+              "jp-8411": 8825.43,
+              "jp-7944": 3795.99,
+              "jp-8793": 4057.43,
+              "jp-5331": 4228.12,
+              "jp-5185": 1970.96,
+              "jp-9336": 3549.92,
+              "jp-3880": 961.87,
+              "jp-3232": 640.22,
+              "jp-7388": 2160.96,
+              "jp-9319": 1963.57,
+              "jp-4968": 2427.82,
+              "jp-4554": 1771.78,
+              "jp-3036": 3238.08,
+              "jp-3387": 806.09,
+              "jp-1833": 5398.31,
+              "jp-4481": 3322.69,
+              "jp-6310": 1951.31,
+              "jp-1375": 1313.44,
+              "jp-9119": 1726.06,
+              "jp-5011": 2338.9,
+              "jp-7715": 4500.73,
+              "jp-6731": 130.24,
+              "jp-6993": 141.61,
+              "jp-8107": 35.89,
+              "jp-7897": 124.81,
+              "jp-4346": 859.53,
+              "jp-5279": 1269.13,
+              "jp-5199": 2038.84,
+              "jp-9639": 2223.55,
+              "jp-3951": 914.12,
+              "jp-8914": 873.6,
+              "jp-9361": 2162.67,
+              "jp-4360": 1037.66,
+              "jp-4524": 2173.38,
+              "jp-8076": 2280.45,
+              "jp-3175": 895.03,
+              "jp-1921": 2253.4,
+              "jp-3933": 525.34,
+              "jp-6408": 4262.44,
+              "jp-1381": 3941.61,
+              "jp-9173": 2753.41,
+              "jp-5010": 317.36,
+              "jp-9206": 1866.66,
+              "jp-7713": 2787.87,
+              "jp-3529": 1061.71,
+              "jp-8704": 1331.64,
+              "jp-7264": 1500.04,
+              "jp-5922": 21959.38,
+              "jp-5609": 916.86,
+              "jp-1514": 697.46,
+              "jp-7161": 713.64,
+              "jp-4564": 24.97,
+              "jp-4597": 42.08,
+              "jp-7806": 9922.03,
+              "jp-7320": 1353.92,
+              "jp-9158": 778.74,
+              "jp-2978": 341.67,
+              "jp-7343": 1261.18,
+              "jp-9326": 493.72,
+              "jp-247A": 1114.68,
+              "jp-4889": 1248.87,
+              "jp-7689": 393.3,
+              "jp-3550": 237.12,
+              "jp-1401": 1585.35,
+              "jp-5252": 1302.9,
+              "jp-6224": 1182.87,
+              "jp-9204": 381.65,
+              "jp-218A": 1278.36,
+              "jp-325A": 2395.71,
+              "jp-5842": 2727.26,
+              "jp-402A": 352.52,
+              "jp-523A": 2480.41,
+              "jp-350A": 674.69,
+              "jp-6521": 3714.19,
+              "jp-5858": 1278.14,
+              "jp-2936": 332.72,
+              "jp-8951": 123836.63,
+              "jp-8952": 108237.12,
+              "jp-3281": 131415.6,
+              "jp-3466": 148052.65,
+              "jp-8972": 146342.54
+            },
+            "subsidiaries": [],
+            "listed": false,
+            "sharesOutstanding": 1000000,
+            "founderShares": 1000000,
+            "sharePrice": 49.559548,
+            "dividendPayout": 0,
+            "profitableWeeks": 3,
+            "totalCustomers": 7621,
+            "history": [
+              {
+                "week": 1,
+                "cash": 6272266,
+                "profit": 381881,
+                "revenue": 1600400,
+                "valuation": 49016745,
+                "stores": 2
+              },
+              {
+                "week": 2,
+                "cash": 6609819,
+                "profit": 347168,
+                "revenue": 1549800,
+                "valuation": 49262930,
+                "stores": 2
+              },
+              {
+                "week": 3,
+                "cash": 6997390,
+                "profit": 397186,
+                "revenue": 1626050,
+                "valuation": 49559548,
+                "stores": 2
+              }
+            ],
+            "lastReport": {
+              "week": 3,
+              "revenue": 1626050,
+              "operatingProfit": 397602,
+              "interest": 416,
+              "netProfit": 397186,
+              "loanRepayment": 9615,
+              "dividendsReceived": 0,
+              "dividendsPaid": 0,
+              "cashChange": 387571,
+              "customers": 2585,
+              "headlines": [
+                "宇田川の角店店：客足が普段より多めで、1,157人が来店しました。 接客も順調でした。",
+                "坂西の小さな路面店店：普段並みの客足で、1,428人が来店しました。",
+                "利益を確保しました。次の投資機会を検討しましょう。"
+              ],
+              "storeResults": [
+                {
+                  "id": "store-center-01-1",
+                  "revenue": 983450,
+                  "profit": 324351,
+                  "customers": 1157,
+                  "satisfaction": 79
+                },
+                {
+                  "id": "store-dogenzaka-09-1",
+                  "revenue": 642600,
+                  "profit": 73251,
+                  "customers": 1428,
+                  "satisfaction": 76
+                }
+              ],
+              "storeAccounts": [
+                {
+                  "storeId": "store-center-01-1",
+                  "costs": {
+                    "ingredients": 194087,
+                    "fulfilment": 118014,
+                    "labor": 208914,
+                    "rent": 110084,
+                    "equipment": 28000,
+                    "marketing": 0,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": 0
+                },
+                {
+                  "storeId": "store-dogenzaka-09-1",
+                  "costs": {
+                    "ingredients": 190281,
+                    "fulfilment": 77112,
+                    "labor": 208914,
+                    "rent": 55042,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": 0
+                }
+              ],
+              "news": {
+                "week": 3,
+                "market": {
+                  "advances": 72,
+                  "declines": 28,
+                  "unchanged": 0
+                },
+                "companies": [
+                  {
+                    "stockId": "jp-523A",
+                    "previousPrice": 2086.47,
+                    "currentPrice": 2480.41,
+                    "percentChange": 18.880693228275504
+                  },
+                  {
+                    "stockId": "jp-7388",
+                    "previousPrice": 2296.63,
+                    "currentPrice": 2160.96,
+                    "percentChange": -5.907351205897338
+                  }
+                ],
+                "city": {
+                  "current": {
+                    "demand": 1.0084375676178725,
+                    "wages": 1.0043927205759764,
+                    "rents": 1.000767261749926
+                  },
+                  "previous": {
+                    "demand": 1.00422649481956,
+                    "wages": 1.0022004404721512,
+                    "rents": 1.0003841227091486
+                  }
+                },
+                "events": []
+              }
+            },
+            "milestones": [
+              "渋谷で創業"
+            ],
+            "gameOver": false,
+            "gameOverReason": null,
+            "settings": {
+              "quality": "medium",
+              "sound": false
+            },
+            "openingRecords": [
+              {
+                "id": "opening-1-1",
+                "storeId": "store-center-01-1",
+                "lotId": "center-01",
+                "storeName": "宇田川の角店店",
+                "style": "standard",
+                "decisionWeek": 1,
+                "openingCost": 3600000,
+                "cashBefore": 12000000,
+                "cashAfter": 8400000,
+                "netProfitBefore": 0,
+                "netProfitAfter": 53528,
+                "initialStoreProfit": 53528,
+                "companyStoreCount": 1,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 381881,
+                  "cashChange": 372266,
+                  "storeProfit": 309683,
+                  "customers": 1130
+                }
+              },
+              {
+                "id": "opening-1-2",
+                "storeId": "store-dogenzaka-09-1",
+                "lotId": "dogenzaka-09",
+                "storeName": "坂西の小さな路面店店",
+                "style": "takeaway",
+                "decisionWeek": 1,
+                "openingCost": 3000000,
+                "cashBefore": 8400000,
+                "cashAfter": 5400000,
+                "netProfitBefore": 303880,
+                "netProfitAfter": 381240,
+                "initialStoreProfit": 77360,
+                "companyStoreCount": 2,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 381881,
+                  "cashChange": 372266,
+                  "storeProfit": 72631,
+                  "customers": 1422
+                }
+              }
+            ],
+            "deals": {
+              "offers": [
+                {
+                  "id": "cafe-0-system-fit",
+                  "category": "system",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "在庫・発注支援システム",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 80000,
+                  "weeklyFee": 4000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 23000,
+                  "advertisedAnnualYield": 14.95,
+                  "conservativeWeeklyBenefit": 12000,
+                  "optimisticWeeklyBenefit": 27600,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 10000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "cafe-0-marketing-reach",
+                  "category": "marketing",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "集客保証プレミアム広告",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 180000,
+                  "weeklyFee": 38000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 70000,
+                  "advertisedAnnualYield": 20.22222222222222,
+                  "conservativeWeeklyBenefit": 3500,
+                  "optimisticWeeklyBenefit": 70000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 100000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                }
+              ],
+              "contracts": [],
+              "generatedBatches": [
+                "cafe-0"
+              ],
+              "dismissed": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "funded-property-manager-premium-fixture",
+      "seed": 42,
+      "syntheticCash": 200000000,
+      "actions": [
+        {
+          "type": "buyProperty",
+          "lotId": "miyashita-12"
+        },
+        {
+          "type": "buyProperty",
+          "lotId": "sakuragaoka-11"
+        },
+        {
+          "type": "openStore",
+          "lotId": "center-03",
+          "style": "premium"
+        },
+        {
+          "type": "updateStore",
+          "storeId": "store-center-03-1",
+          "changes": {
+            "manager": true,
+            "price": 1200,
+            "quality": 85,
+            "staff": 5
+          }
+        },
+        {
+          "type": "openStore",
+          "lotId": "center-11",
+          "style": "takeaway"
+        }
+      ],
+      "initial": {
+        "version": 1,
+        "id": "shibuya-42",
+        "companyName": "v070旧区画回帰fixture",
+        "seed": 42,
+        "week": 1,
+        "cash": 94200000,
+        "reputation": 10,
+        "stores": [
+          {
+            "id": "store-center-03-1",
+            "lotId": "center-03",
+            "name": "スクランブル西口店",
+            "style": "premium",
+            "price": 1200,
+            "quality": 85,
+            "staff": 5,
+            "manager": true,
+            "marketing": 10000,
+            "level": 1,
+            "openedWeek": 1,
+            "revenue": 0,
+            "profit": 0,
+            "customers": 0,
+            "satisfaction": 70
+          },
+          {
+            "id": "store-center-11-1",
+            "lotId": "center-11",
+            "name": "神南の住宅坂店",
+            "style": "takeaway",
+            "price": 450,
+            "quality": 55,
+            "staff": 4,
+            "manager": false,
+            "marketing": 10000,
+            "level": 1,
+            "openedWeek": 1,
+            "revenue": 0,
+            "profit": 0,
+            "customers": 0,
+            "satisfaction": 70
+          }
+        ],
+        "loans": [],
+        "properties": [
+          {
+            "id": "property-miyashita-12",
+            "lotId": "miyashita-12",
+            "purchasePrice": 34000000,
+            "level": 1,
+            "occupancy": 0.9,
+            "weeklyIncome": 64000
+          },
+          {
+            "id": "property-sakuragaoka-11",
+            "lotId": "sakuragaoka-11",
+            "purchasePrice": 64000000,
+            "level": 1,
+            "occupancy": 0.9,
+            "weeklyIncome": 101000
+          }
+        ],
+        "positions": [],
+        "stockPrices": {
+          "jp-9432": 170.1,
+          "jp-3543": 2797,
+          "jp-3087": 3170,
+          "jp-9005": 1584.5,
+          "jp-9020": 3295,
+          "jp-8801": 1420.5,
+          "jp-8802": 3476,
+          "jp-7203": 2930.5,
+          "jp-8306": 3671,
+          "jp-8316": 3429,
+          "jp-8591": 5870,
+          "jp-2502": 1592.5,
+          "jp-2802": 5372,
+          "jp-9984": 6295,
+          "jp-6758": 3768,
+          "jp-7974": 7815,
+          "jp-9433": 2883,
+          "jp-9501": 518.8,
+          "jp-5020": 1380,
+          "jp-8411": 8857,
+          "jp-7944": 3705,
+          "jp-8793": 4045,
+          "jp-5331": 3810,
+          "jp-5185": 1946,
+          "jp-9336": 3685,
+          "jp-3880": 948,
+          "jp-3232": 559,
+          "jp-7388": 2264,
+          "jp-9319": 1752,
+          "jp-4968": 2538,
+          "jp-4554": 1760,
+          "jp-3036": 3365,
+          "jp-3387": 777,
+          "jp-1833": 5330,
+          "jp-4481": 3150,
+          "jp-6310": 1916,
+          "jp-1375": 1143,
+          "jp-9119": 1656,
+          "jp-5011": 2256,
+          "jp-7715": 4490,
+          "jp-6731": 100,
+          "jp-6993": 90,
+          "jp-8107": 31,
+          "jp-7897": 115,
+          "jp-4346": 890,
+          "jp-5279": 1193,
+          "jp-5199": 2000,
+          "jp-9639": 2270,
+          "jp-3951": 894,
+          "jp-8914": 822,
+          "jp-9361": 1990,
+          "jp-4360": 1029,
+          "jp-4524": 2222,
+          "jp-8076": 2045,
+          "jp-3175": 935,
+          "jp-1921": 2038,
+          "jp-3933": 530,
+          "jp-6408": 4245,
+          "jp-1381": 3555,
+          "jp-9173": 2850,
+          "jp-5010": 317,
+          "jp-9206": 1910,
+          "jp-7713": 2700,
+          "jp-3529": 1031,
+          "jp-8704": 1392,
+          "jp-7264": 1330,
+          "jp-5922": 19980,
+          "jp-5609": 948,
+          "jp-1514": 624,
+          "jp-7161": 690,
+          "jp-4564": 21,
+          "jp-4597": 32,
+          "jp-7806": 9380,
+          "jp-7320": 1402,
+          "jp-9158": 774,
+          "jp-2978": 315,
+          "jp-7343": 1301,
+          "jp-9326": 476,
+          "jp-247A": 925,
+          "jp-4889": 1091,
+          "jp-7689": 373,
+          "jp-3550": 220,
+          "jp-1401": 1460,
+          "jp-5252": 1003,
+          "jp-6224": 1137,
+          "jp-9204": 428,
+          "jp-218A": 1054,
+          "jp-325A": 2055,
+          "jp-5842": 2752,
+          "jp-402A": 320,
+          "jp-523A": 1905,
+          "jp-350A": 688,
+          "jp-6521": 3500,
+          "jp-5858": 1159,
+          "jp-2936": 277,
+          "jp-8951": 116600,
+          "jp-8952": 106500,
+          "jp-3281": 128400,
+          "jp-3466": 143500,
+          "jp-8972": 141600
+        },
+        "subsidiaries": [],
+        "listed": false,
+        "sharesOutstanding": 1000000,
+        "founderShares": 1000000,
+        "sharePrice": 12,
+        "dividendPayout": 0,
+        "profitableWeeks": 0,
+        "totalCustomers": 0,
+        "history": [],
+        "lastReport": null,
+        "milestones": [],
+        "gameOver": false,
+        "gameOverReason": null,
+        "settings": {
+          "quality": "medium",
+          "sound": false
+        },
+        "openingRecords": [
+          {
+            "id": "opening-1-1",
+            "storeId": "store-center-03-1",
+            "lotId": "center-03",
+            "storeName": "スクランブル西口店",
+            "style": "premium",
+            "decisionWeek": 1,
+            "openingCost": 4800000,
+            "cashBefore": 102000000,
+            "cashAfter": 97200000,
+            "netProfitBefore": 132737,
+            "netProfitAfter": -37597,
+            "initialStoreProfit": -170334,
+            "companyStoreCount": 1
+          },
+          {
+            "id": "opening-1-2",
+            "storeId": "store-center-11-1",
+            "lotId": "center-11",
+            "storeName": "神南の住宅坂店",
+            "style": "takeaway",
+            "decisionWeek": 1,
+            "openingCost": 3000000,
+            "cashBefore": 97200000,
+            "cashAfter": 94200000,
+            "netProfitBefore": 410013,
+            "netProfitAfter": 448373,
+            "initialStoreProfit": 38360,
+            "companyStoreCount": 2
+          }
+        ]
+      },
+      "initialPayload": "{\"version\":1,\"id\":\"shibuya-42\",\"companyName\":\"v070旧区画回帰fixture\",\"seed\":42,\"week\":1,\"cash\":94200000,\"reputation\":10,\"stores\":[{\"id\":\"store-center-03-1\",\"lotId\":\"center-03\",\"name\":\"スクランブル西口店\",\"style\":\"premium\",\"price\":1200,\"quality\":85,\"staff\":5,\"manager\":true,\"marketing\":10000,\"level\":1,\"openedWeek\":1,\"revenue\":0,\"profit\":0,\"customers\":0,\"satisfaction\":70},{\"id\":\"store-center-11-1\",\"lotId\":\"center-11\",\"name\":\"神南の住宅坂店\",\"style\":\"takeaway\",\"price\":450,\"quality\":55,\"staff\":4,\"manager\":false,\"marketing\":10000,\"level\":1,\"openedWeek\":1,\"revenue\":0,\"profit\":0,\"customers\":0,\"satisfaction\":70}],\"loans\":[],\"properties\":[{\"id\":\"property-miyashita-12\",\"lotId\":\"miyashita-12\",\"purchasePrice\":34000000,\"level\":1,\"occupancy\":0.9,\"weeklyIncome\":64000},{\"id\":\"property-sakuragaoka-11\",\"lotId\":\"sakuragaoka-11\",\"purchasePrice\":64000000,\"level\":1,\"occupancy\":0.9,\"weeklyIncome\":101000}],\"positions\":[],\"stockPrices\":{\"jp-9432\":170.1,\"jp-3543\":2797,\"jp-3087\":3170,\"jp-9005\":1584.5,\"jp-9020\":3295,\"jp-8801\":1420.5,\"jp-8802\":3476,\"jp-7203\":2930.5,\"jp-8306\":3671,\"jp-8316\":3429,\"jp-8591\":5870,\"jp-2502\":1592.5,\"jp-2802\":5372,\"jp-9984\":6295,\"jp-6758\":3768,\"jp-7974\":7815,\"jp-9433\":2883,\"jp-9501\":518.8,\"jp-5020\":1380,\"jp-8411\":8857,\"jp-7944\":3705,\"jp-8793\":4045,\"jp-5331\":3810,\"jp-5185\":1946,\"jp-9336\":3685,\"jp-3880\":948,\"jp-3232\":559,\"jp-7388\":2264,\"jp-9319\":1752,\"jp-4968\":2538,\"jp-4554\":1760,\"jp-3036\":3365,\"jp-3387\":777,\"jp-1833\":5330,\"jp-4481\":3150,\"jp-6310\":1916,\"jp-1375\":1143,\"jp-9119\":1656,\"jp-5011\":2256,\"jp-7715\":4490,\"jp-6731\":100,\"jp-6993\":90,\"jp-8107\":31,\"jp-7897\":115,\"jp-4346\":890,\"jp-5279\":1193,\"jp-5199\":2000,\"jp-9639\":2270,\"jp-3951\":894,\"jp-8914\":822,\"jp-9361\":1990,\"jp-4360\":1029,\"jp-4524\":2222,\"jp-8076\":2045,\"jp-3175\":935,\"jp-1921\":2038,\"jp-3933\":530,\"jp-6408\":4245,\"jp-1381\":3555,\"jp-9173\":2850,\"jp-5010\":317,\"jp-9206\":1910,\"jp-7713\":2700,\"jp-3529\":1031,\"jp-8704\":1392,\"jp-7264\":1330,\"jp-5922\":19980,\"jp-5609\":948,\"jp-1514\":624,\"jp-7161\":690,\"jp-4564\":21,\"jp-4597\":32,\"jp-7806\":9380,\"jp-7320\":1402,\"jp-9158\":774,\"jp-2978\":315,\"jp-7343\":1301,\"jp-9326\":476,\"jp-247A\":925,\"jp-4889\":1091,\"jp-7689\":373,\"jp-3550\":220,\"jp-1401\":1460,\"jp-5252\":1003,\"jp-6224\":1137,\"jp-9204\":428,\"jp-218A\":1054,\"jp-325A\":2055,\"jp-5842\":2752,\"jp-402A\":320,\"jp-523A\":1905,\"jp-350A\":688,\"jp-6521\":3500,\"jp-5858\":1159,\"jp-2936\":277,\"jp-8951\":116600,\"jp-8952\":106500,\"jp-3281\":128400,\"jp-3466\":143500,\"jp-8972\":141600},\"subsidiaries\":[],\"listed\":false,\"sharesOutstanding\":1000000,\"founderShares\":1000000,\"sharePrice\":12,\"dividendPayout\":0,\"profitableWeeks\":0,\"totalCustomers\":0,\"history\":[],\"lastReport\":null,\"milestones\":[],\"gameOver\":false,\"gameOverReason\":null,\"settings\":{\"quality\":\"medium\",\"sound\":false},\"openingRecords\":[{\"id\":\"opening-1-1\",\"storeId\":\"store-center-03-1\",\"lotId\":\"center-03\",\"storeName\":\"スクランブル西口店\",\"style\":\"premium\",\"decisionWeek\":1,\"openingCost\":4800000,\"cashBefore\":102000000,\"cashAfter\":97200000,\"netProfitBefore\":132737,\"netProfitAfter\":-37597,\"initialStoreProfit\":-170334,\"companyStoreCount\":1},{\"id\":\"opening-1-2\",\"storeId\":\"store-center-11-1\",\"lotId\":\"center-11\",\"storeName\":\"神南の住宅坂店\",\"style\":\"takeaway\",\"decisionWeek\":1,\"openingCost\":3000000,\"cashBefore\":97200000,\"cashAfter\":94200000,\"netProfitBefore\":410013,\"netProfitAfter\":448373,\"initialStoreProfit\":38360,\"companyStoreCount\":2}]}",
+      "initialChecksum": "dfde8cbb025c962bb51b7e3e042ce995990fcffa940819b9077a0e59729984ea",
+      "timeline": [
+        {
+          "forecast": {
+            "week": 1,
+            "revenue": 2152845,
+            "operatingProfit": 448373,
+            "interest": 0,
+            "netProfit": 448373,
+            "loanRepayment": 0,
+            "dividendsReceived": 0,
+            "dividendsPaid": 0,
+            "cashChange": 448373,
+            "customers": 2574,
+            "headlines": [
+              "現在の計画は黒字見込みです。客足・運営状況で実績は変動します。"
+            ],
+            "storeResults": [
+              {
+                "id": "store-center-03-1",
+                "revenue": 1360800,
+                "profit": 277276,
+                "customers": 1134,
+                "satisfaction": 61
+              },
+              {
+                "id": "store-center-11-1",
+                "revenue": 648000,
+                "profit": 38360,
+                "customers": 1440,
+                "satisfaction": 78
+              }
+            ]
+          },
+          "next": {
+            "version": 1,
+            "id": "shibuya-42",
+            "companyName": "v070旧区画回帰fixture",
+            "seed": 42,
+            "week": 2,
+            "cash": 94638760,
+            "reputation": 11.848,
+            "stores": [
+              {
+                "id": "store-center-03-1",
+                "lotId": "center-03",
+                "name": "スクランブル西口店",
+                "style": "premium",
+                "price": 1200,
+                "quality": 85,
+                "staff": 5,
+                "manager": true,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 1344000,
+                "profit": 264840,
+                "customers": 1120,
+                "satisfaction": 60
+              },
+              {
+                "id": "store-center-11-1",
+                "lotId": "center-11",
+                "name": "神南の住宅坂店",
+                "style": "takeaway",
+                "price": 450,
+                "quality": 55,
+                "staff": 4,
+                "manager": false,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 654750,
+                "profit": 42301,
+                "customers": 1455,
+                "satisfaction": 78
+              }
+            ],
+            "loans": [],
+            "properties": [
+              {
+                "id": "property-miyashita-12",
+                "lotId": "miyashita-12",
+                "purchasePrice": 34000000,
+                "level": 1,
+                "occupancy": 0.9,
+                "weeklyIncome": 64000
+              },
+              {
+                "id": "property-sakuragaoka-11",
+                "lotId": "sakuragaoka-11",
+                "purchasePrice": 64000000,
+                "level": 1,
+                "occupancy": 0.9,
+                "weeklyIncome": 101000
+              }
+            ],
+            "positions": [],
+            "stockPrices": {
+              "jp-9432": 167.12,
+              "jp-3543": 2755.61,
+              "jp-3087": 3112.71,
+              "jp-9005": 1612.54,
+              "jp-9020": 3300.29,
+              "jp-8801": 1427.47,
+              "jp-8802": 3516.04,
+              "jp-7203": 2893.18,
+              "jp-8306": 3762.49,
+              "jp-8316": 3620.79,
+              "jp-8591": 5985.47,
+              "jp-2502": 1582.36,
+              "jp-2802": 5460.56,
+              "jp-9984": 6349.51,
+              "jp-6758": 3941.56,
+              "jp-7974": 8332.55,
+              "jp-9433": 3126.92,
+              "jp-9501": 512.85,
+              "jp-5020": 1368.85,
+              "jp-8411": 9029.43,
+              "jp-7944": 3886.8,
+              "jp-8793": 4217.34,
+              "jp-5331": 3570.3,
+              "jp-5185": 2047.98,
+              "jp-9336": 3762.18,
+              "jp-3880": 936.59,
+              "jp-3232": 559.82,
+              "jp-7388": 2344.77,
+              "jp-9319": 1789.84,
+              "jp-4968": 2436.38,
+              "jp-4554": 1806.87,
+              "jp-3036": 3440.43,
+              "jp-3387": 820.26,
+              "jp-1833": 5185.58,
+              "jp-4481": 3342.57,
+              "jp-6310": 2005.67,
+              "jp-1375": 1142.53,
+              "jp-9119": 1737.46,
+              "jp-5011": 2210.66,
+              "jp-7715": 4817.82,
+              "jp-6731": 107.72,
+              "jp-6993": 97.63,
+              "jp-8107": 30.74,
+              "jp-7897": 117.21,
+              "jp-4346": 915.03,
+              "jp-5279": 1197.68,
+              "jp-5199": 2076.86,
+              "jp-9639": 2310.6,
+              "jp-3951": 927.13,
+              "jp-8914": 837.83,
+              "jp-9361": 1988.3,
+              "jp-4360": 992.65,
+              "jp-4524": 2236.53,
+              "jp-8076": 2158.29,
+              "jp-3175": 950.89,
+              "jp-1921": 2117.86,
+              "jp-3933": 550.37,
+              "jp-6408": 4435.55,
+              "jp-1381": 3809.5,
+              "jp-9173": 3124.34,
+              "jp-5010": 313.61,
+              "jp-9206": 1937.74,
+              "jp-7713": 3001.41,
+              "jp-3529": 1099.37,
+              "jp-8704": 1422.44,
+              "jp-7264": 1399.76,
+              "jp-5922": 21366.13,
+              "jp-5609": 980.68,
+              "jp-1514": 646.49,
+              "jp-7161": 691.8,
+              "jp-4564": 22.43,
+              "jp-4597": 36.7,
+              "jp-7806": 9800.62,
+              "jp-7320": 1425,
+              "jp-9158": 785.66,
+              "jp-2978": 296.55,
+              "jp-7343": 1292.18,
+              "jp-9326": 470.52,
+              "jp-247A": 881.48,
+              "jp-4889": 1332.59,
+              "jp-7689": 382.85,
+              "jp-3550": 234.45,
+              "jp-1401": 1542.23,
+              "jp-5252": 1051.01,
+              "jp-6224": 1156.04,
+              "jp-9204": 461.08,
+              "jp-218A": 1173.03,
+              "jp-325A": 2070.35,
+              "jp-5842": 2802.68,
+              "jp-402A": 324.82,
+              "jp-523A": 2059.79,
+              "jp-350A": 660.56,
+              "jp-6521": 3484.74,
+              "jp-5858": 1271.49,
+              "jp-2936": 290.85,
+              "jp-8951": 119101.54,
+              "jp-8952": 108045.53,
+              "jp-3281": 131027.29,
+              "jp-3466": 148376.6,
+              "jp-8972": 146569.22
+            },
+            "subsidiaries": [],
+            "listed": false,
+            "sharesOutstanding": 1000000,
+            "founderShares": 1000000,
+            "sharePrice": 243.559552,
+            "dividendPayout": 0,
+            "profitableWeeks": 1,
+            "totalCustomers": 2575,
+            "history": [
+              {
+                "week": 1,
+                "cash": 94638760,
+                "profit": 438760,
+                "revenue": 2141676,
+                "valuation": 243559552,
+                "stores": 2
+              }
+            ],
+            "lastReport": {
+              "week": 1,
+              "revenue": 2141676,
+              "operatingProfit": 438760,
+              "interest": 0,
+              "netProfit": 438760,
+              "loanRepayment": 0,
+              "dividendsReceived": 0,
+              "dividendsPaid": 0,
+              "cashChange": 438760,
+              "customers": 2575,
+              "headlines": [
+                "スクランブル西口店：普段並みの客足で、1,120人が来店しました。",
+                "神南の住宅坂店：普段並みの客足で、1,455人が来店しました。",
+                "利益を確保しました。次の投資機会を検討しましょう。"
+              ],
+              "storeResults": [
+                {
+                  "id": "store-center-03-1",
+                  "revenue": 1344000,
+                  "profit": 264840,
+                  "customers": 1120,
+                  "satisfaction": 60
+                },
+                {
+                  "id": "store-center-11-1",
+                  "revenue": 654750,
+                  "profit": 42301,
+                  "customers": 1455,
+                  "satisfaction": 78
+                }
+              ],
+              "storeAccounts": [
+                {
+                  "storeId": "store-center-03-1",
+                  "costs": {
+                    "ingredients": 187880,
+                    "fulfilment": 161280,
+                    "labor": 260000,
+                    "rent": 360000,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 72000
+                  },
+                  "roundingAdjustment": 0
+                },
+                {
+                  "storeId": "store-center-11-1",
+                  "costs": {
+                    "ingredients": 193879,
+                    "fulfilment": 78570,
+                    "labor": 208000,
+                    "rent": 94000,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": 0
+                }
+              ],
+              "news": {
+                "week": 1,
+                "market": {
+                  "advances": 77,
+                  "declines": 23,
+                  "unchanged": 0
+                },
+                "companies": [
+                  {
+                    "stockId": "jp-4889",
+                    "previousPrice": 1091,
+                    "currentPrice": 1332.59,
+                    "percentChange": 22.143904674610447
+                  },
+                  {
+                    "stockId": "jp-5331",
+                    "previousPrice": 3810,
+                    "currentPrice": 3570.3,
+                    "percentChange": -6.291338582677164
+                  }
+                ],
+                "city": {
+                  "current": {
+                    "demand": 1,
+                    "wages": 1,
+                    "rents": 1
+                  }
+                },
+                "events": []
+              }
+            },
+            "milestones": [
+              "渋谷で創業"
+            ],
+            "gameOver": false,
+            "gameOverReason": null,
+            "settings": {
+              "quality": "medium",
+              "sound": false
+            },
+            "openingRecords": [
+              {
+                "id": "opening-1-1",
+                "storeId": "store-center-03-1",
+                "lotId": "center-03",
+                "storeName": "スクランブル西口店",
+                "style": "premium",
+                "decisionWeek": 1,
+                "openingCost": 4800000,
+                "cashBefore": 102000000,
+                "cashAfter": 97200000,
+                "netProfitBefore": 132737,
+                "netProfitAfter": -37597,
+                "initialStoreProfit": -170334,
+                "companyStoreCount": 1,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 438760,
+                  "cashChange": 438760,
+                  "storeProfit": 264840,
+                  "customers": 1120
+                }
+              },
+              {
+                "id": "opening-1-2",
+                "storeId": "store-center-11-1",
+                "lotId": "center-11",
+                "storeName": "神南の住宅坂店",
+                "style": "takeaway",
+                "decisionWeek": 1,
+                "openingCost": 3000000,
+                "cashBefore": 97200000,
+                "cashAfter": 94200000,
+                "netProfitBefore": 410013,
+                "netProfitAfter": 448373,
+                "initialStoreProfit": 38360,
+                "companyStoreCount": 2,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 438760,
+                  "cashChange": 438760,
+                  "storeProfit": 42301,
+                  "customers": 1455
+                }
+              }
+            ],
+            "deals": {
+              "offers": [
+                {
+                  "id": "cafe-0-system-fit",
+                  "category": "system",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "在庫・発注支援システム",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 80000,
+                  "weeklyFee": 4000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 23000,
+                  "advertisedAnnualYield": 14.95,
+                  "conservativeWeeklyBenefit": 12000,
+                  "optimisticWeeklyBenefit": 27600,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 10000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "cafe-0-marketing-reach",
+                  "category": "marketing",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "集客保証プレミアム広告",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 180000,
+                  "weeklyFee": 38000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 70000,
+                  "advertisedAnnualYield": 20.22222222222222,
+                  "conservativeWeeklyBenefit": 3500,
+                  "optimisticWeeklyBenefit": 70000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 100000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "property-0-property-fit",
+                  "category": "property",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "賃貸履歴付きワンルーム提案",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "三井の街不動産",
+                  "supplierStockId": "jp-8801",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 24000000,
+                  "weeklyFee": 8000,
+                  "termWeeks": 520,
+                  "advertisedWeeklyBenefit": 36000,
+                  "advertisedAnnualYield": 0.078,
+                  "conservativeWeeklyBenefit": 21600,
+                  "optimisticWeeklyBenefit": 43200,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 60000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 250000,
+                  "leadWeeks": 4,
+                  "residualValue": 21600000
+                },
+                {
+                  "id": "property-0-property-reach",
+                  "category": "property",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "駅近ワンルーム・満室想定提案",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "三井の街不動産",
+                  "supplierStockId": "jp-8801",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 32000000,
+                  "weeklyFee": 27000,
+                  "termWeeks": 520,
+                  "advertisedWeeklyBenefit": 51000,
+                  "advertisedAnnualYield": 0.082875,
+                  "conservativeWeeklyBenefit": 11200,
+                  "optimisticWeeklyBenefit": 51000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 60000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 250000,
+                  "leadWeeks": 4,
+                  "residualValue": 22400000
+                }
+              ],
+              "contracts": [],
+              "generatedBatches": [
+                "cafe-0",
+                "property-0"
+              ],
+              "dismissed": []
+            }
+          }
+        },
+        {
+          "forecast": {
+            "week": 2,
+            "revenue": 2152900,
+            "operatingProfit": 447066,
+            "interest": 0,
+            "netProfit": 447066,
+            "loanRepayment": 0,
+            "dividendsReceived": 0,
+            "dividendsPaid": 0,
+            "cashChange": 447066,
+            "customers": 2574,
+            "headlines": [
+              "現在の計画は黒字見込みです。客足・運営状況で実績は変動します。"
+            ],
+            "storeResults": [
+              {
+                "id": "store-center-03-1",
+                "revenue": 1360800,
+                "profit": 276407,
+                "customers": 1134,
+                "satisfaction": 61
+              },
+              {
+                "id": "store-center-11-1",
+                "revenue": 648000,
+                "profit": 37866,
+                "customers": 1440,
+                "satisfaction": 78
+              }
+            ]
+          },
+          "next": {
+            "version": 1,
+            "id": "shibuya-42",
+            "companyName": "v070旧区画回帰fixture",
+            "seed": 42,
+            "week": 3,
+            "cash": 95071719,
+            "reputation": 13.63132,
+            "stores": [
+              {
+                "id": "store-center-03-1",
+                "lotId": "center-03",
+                "name": "スクランブル西口店",
+                "style": "premium",
+                "price": 1200,
+                "quality": 85,
+                "staff": 5,
+                "manager": true,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 1350000,
+                "profit": 268412,
+                "customers": 1125,
+                "satisfaction": 61
+              },
+              {
+                "id": "store-center-11-1",
+                "lotId": "center-11",
+                "name": "神南の住宅坂店",
+                "style": "takeaway",
+                "price": 450,
+                "quality": 55,
+                "staff": 4,
+                "manager": false,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 639450,
+                "profit": 32874,
+                "customers": 1421,
+                "satisfaction": 77
+              }
+            ],
+            "loans": [],
+            "properties": [
+              {
+                "id": "property-miyashita-12",
+                "lotId": "miyashita-12",
+                "purchasePrice": 34000000,
+                "level": 1,
+                "occupancy": 0.9,
+                "weeklyIncome": 64000
+              },
+              {
+                "id": "property-sakuragaoka-11",
+                "lotId": "sakuragaoka-11",
+                "purchasePrice": 64000000,
+                "level": 1,
+                "occupancy": 0.9,
+                "weeklyIncome": 101000
+              }
+            ],
+            "positions": [],
+            "stockPrices": {
+              "jp-9432": 160.84,
+              "jp-3543": 2782.46,
+              "jp-3087": 3077.73,
+              "jp-9005": 1594.76,
+              "jp-9020": 3212.81,
+              "jp-8801": 1430.94,
+              "jp-8802": 3588.45,
+              "jp-7203": 2918.12,
+              "jp-8306": 3696.18,
+              "jp-8316": 3760.59,
+              "jp-8591": 6034.12,
+              "jp-2502": 1528.69,
+              "jp-2802": 5594.97,
+              "jp-9984": 6458.65,
+              "jp-6758": 4015.53,
+              "jp-7974": 8069.65,
+              "jp-9433": 3031,
+              "jp-9501": 520.66,
+              "jp-5020": 1368.14,
+              "jp-8411": 9035.17,
+              "jp-7944": 3755.63,
+              "jp-8793": 4231.54,
+              "jp-5331": 3561.41,
+              "jp-5185": 2007.87,
+              "jp-9336": 3658.03,
+              "jp-3880": 927.78,
+              "jp-3232": 591.81,
+              "jp-7388": 2353.35,
+              "jp-9319": 1801.61,
+              "jp-4968": 2415.5,
+              "jp-4554": 1781.9,
+              "jp-3036": 3615.51,
+              "jp-3387": 785.12,
+              "jp-1833": 5309.23,
+              "jp-4481": 3432.06,
+              "jp-6310": 2114.43,
+              "jp-1375": 1146.03,
+              "jp-9119": 1707.43,
+              "jp-5011": 2183.4,
+              "jp-7715": 4497.41,
+              "jp-6731": 121.12,
+              "jp-6993": 98.75,
+              "jp-8107": 27.48,
+              "jp-7897": 118.75,
+              "jp-4346": 925.15,
+              "jp-5279": 1203.91,
+              "jp-5199": 2154.52,
+              "jp-9639": 2112.42,
+              "jp-3951": 938.05,
+              "jp-8914": 841.54,
+              "jp-9361": 2068.4,
+              "jp-4360": 958.01,
+              "jp-4524": 2259.93,
+              "jp-8076": 2127.16,
+              "jp-3175": 1015.93,
+              "jp-1921": 2097.11,
+              "jp-3933": 540.45,
+              "jp-6408": 4451.33,
+              "jp-1381": 3904.59,
+              "jp-9173": 3074.35,
+              "jp-5010": 317.73,
+              "jp-9206": 1937.89,
+              "jp-7713": 3085.56,
+              "jp-3529": 1076.14,
+              "jp-8704": 1403.6,
+              "jp-7264": 1370.15,
+              "jp-5922": 21323.63,
+              "jp-5609": 971.79,
+              "jp-1514": 610.68,
+              "jp-7161": 696.34,
+              "jp-4564": 24.4,
+              "jp-4597": 36.02,
+              "jp-7806": 10002.58,
+              "jp-7320": 1475.21,
+              "jp-9158": 732.26,
+              "jp-2978": 321.09,
+              "jp-7343": 1311.44,
+              "jp-9326": 481.21,
+              "jp-247A": 879.67,
+              "jp-4889": 1316.2,
+              "jp-7689": 436.92,
+              "jp-3550": 225.56,
+              "jp-1401": 1478.11,
+              "jp-5252": 1047.19,
+              "jp-6224": 1194.61,
+              "jp-9204": 431.48,
+              "jp-218A": 1125,
+              "jp-325A": 1866.7,
+              "jp-5842": 2815.53,
+              "jp-402A": 350.84,
+              "jp-523A": 2224,
+              "jp-350A": 690.85,
+              "jp-6521": 3590.46,
+              "jp-5858": 1369.07,
+              "jp-2936": 282.34,
+              "jp-8951": 118925.71,
+              "jp-8952": 107319.52,
+              "jp-3281": 127770.24,
+              "jp-3466": 147008.48,
+              "jp-8972": 144783.94
+            },
+            "subsidiaries": [],
+            "listed": false,
+            "sharesOutstanding": 1000000,
+            "founderShares": 1000000,
+            "sharePrice": 243.856583,
+            "dividendPayout": 0,
+            "profitableWeeks": 2,
+            "totalCustomers": 5121,
+            "history": [
+              {
+                "week": 1,
+                "cash": 94638760,
+                "profit": 438760,
+                "revenue": 2141676,
+                "valuation": 243559552,
+                "stores": 2
+              },
+              {
+                "week": 2,
+                "cash": 95071719,
+                "profit": 432959,
+                "revenue": 2132431,
+                "valuation": 243856583,
+                "stores": 2
+              }
+            ],
+            "lastReport": {
+              "week": 2,
+              "revenue": 2132431,
+              "operatingProfit": 432959,
+              "interest": 0,
+              "netProfit": 432959,
+              "loanRepayment": 0,
+              "dividendsReceived": 0,
+              "dividendsPaid": 0,
+              "cashChange": 432959,
+              "customers": 2546,
+              "headlines": [
+                "スクランブル西口店：客足が普段より落ち着き、1,125人が来店しました。",
+                "神南の住宅坂店：客足が普段より多めで、1,421人が来店しました。",
+                "利益を確保しました。次の投資機会を検討しましょう。"
+              ],
+              "storeResults": [
+                {
+                  "id": "store-center-03-1",
+                  "revenue": 1350000,
+                  "profit": 268412,
+                  "customers": 1125,
+                  "satisfaction": 61
+                },
+                {
+                  "id": "store-center-11-1",
+                  "revenue": 639450,
+                  "profit": 32874,
+                  "customers": 1421,
+                  "satisfaction": 77
+                }
+              ],
+              "storeAccounts": [
+                {
+                  "storeId": "store-center-03-1",
+                  "costs": {
+                    "ingredients": 188719,
+                    "fulfilment": 162000,
+                    "labor": 260572,
+                    "rent": 360138,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 72158
+                  },
+                  "roundingAdjustment": 1
+                },
+                {
+                  "storeId": "store-center-11-1",
+                  "costs": {
+                    "ingredients": 189348,
+                    "fulfilment": 76734,
+                    "labor": 208458,
+                    "rent": 94036,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": 0
+                }
+              ],
+              "news": {
+                "week": 2,
+                "market": {
+                  "advances": 51,
+                  "declines": 49,
+                  "unchanged": 0
+                },
+                "companies": [
+                  {
+                    "stockId": "jp-7689",
+                    "previousPrice": 382.85,
+                    "currentPrice": 436.92,
+                    "percentChange": 14.123024683296336
+                  },
+                  {
+                    "stockId": "jp-8107",
+                    "previousPrice": 30.74,
+                    "currentPrice": 27.48,
+                    "percentChange": -10.605074821080018
+                  }
+                ],
+                "city": {
+                  "current": {
+                    "demand": 1.00422649481956,
+                    "wages": 1.0022004404721512,
+                    "rents": 1.0003841227091486
+                  },
+                  "previous": {
+                    "demand": 1,
+                    "wages": 1,
+                    "rents": 1
+                  }
+                },
+                "events": []
+              }
+            },
+            "milestones": [
+              "渋谷で創業"
+            ],
+            "gameOver": false,
+            "gameOverReason": null,
+            "settings": {
+              "quality": "medium",
+              "sound": false
+            },
+            "openingRecords": [
+              {
+                "id": "opening-1-1",
+                "storeId": "store-center-03-1",
+                "lotId": "center-03",
+                "storeName": "スクランブル西口店",
+                "style": "premium",
+                "decisionWeek": 1,
+                "openingCost": 4800000,
+                "cashBefore": 102000000,
+                "cashAfter": 97200000,
+                "netProfitBefore": 132737,
+                "netProfitAfter": -37597,
+                "initialStoreProfit": -170334,
+                "companyStoreCount": 1,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 438760,
+                  "cashChange": 438760,
+                  "storeProfit": 264840,
+                  "customers": 1120
+                }
+              },
+              {
+                "id": "opening-1-2",
+                "storeId": "store-center-11-1",
+                "lotId": "center-11",
+                "storeName": "神南の住宅坂店",
+                "style": "takeaway",
+                "decisionWeek": 1,
+                "openingCost": 3000000,
+                "cashBefore": 97200000,
+                "cashAfter": 94200000,
+                "netProfitBefore": 410013,
+                "netProfitAfter": 448373,
+                "initialStoreProfit": 38360,
+                "companyStoreCount": 2,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 438760,
+                  "cashChange": 438760,
+                  "storeProfit": 42301,
+                  "customers": 1455
+                }
+              }
+            ],
+            "deals": {
+              "offers": [
+                {
+                  "id": "cafe-0-system-fit",
+                  "category": "system",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "在庫・発注支援システム",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 80000,
+                  "weeklyFee": 4000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 23000,
+                  "advertisedAnnualYield": 14.95,
+                  "conservativeWeeklyBenefit": 12000,
+                  "optimisticWeeklyBenefit": 27600,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 10000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "cafe-0-marketing-reach",
+                  "category": "marketing",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "集客保証プレミアム広告",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 180000,
+                  "weeklyFee": 38000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 70000,
+                  "advertisedAnnualYield": 20.22222222222222,
+                  "conservativeWeeklyBenefit": 3500,
+                  "optimisticWeeklyBenefit": 70000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 100000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "property-0-property-fit",
+                  "category": "property",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "賃貸履歴付きワンルーム提案",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "三井の街不動産",
+                  "supplierStockId": "jp-8801",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 24000000,
+                  "weeklyFee": 8000,
+                  "termWeeks": 520,
+                  "advertisedWeeklyBenefit": 36000,
+                  "advertisedAnnualYield": 0.078,
+                  "conservativeWeeklyBenefit": 21600,
+                  "optimisticWeeklyBenefit": 43200,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 60000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 250000,
+                  "leadWeeks": 4,
+                  "residualValue": 21600000
+                },
+                {
+                  "id": "property-0-property-reach",
+                  "category": "property",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "駅近ワンルーム・満室想定提案",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "三井の街不動産",
+                  "supplierStockId": "jp-8801",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 32000000,
+                  "weeklyFee": 27000,
+                  "termWeeks": 520,
+                  "advertisedWeeklyBenefit": 51000,
+                  "advertisedAnnualYield": 0.082875,
+                  "conservativeWeeklyBenefit": 11200,
+                  "optimisticWeeklyBenefit": 51000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 60000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 250000,
+                  "leadWeeks": 4,
+                  "residualValue": 22400000
+                }
+              ],
+              "contracts": [],
+              "generatedBatches": [
+                "cafe-0",
+                "property-0"
+              ],
+              "dismissed": []
+            }
+          }
+        },
+        {
+          "forecast": {
+            "week": 3,
+            "revenue": 2152956,
+            "operatingProfit": 445763,
+            "interest": 0,
+            "netProfit": 445763,
+            "loanRepayment": 0,
+            "dividendsReceived": 0,
+            "dividendsPaid": 0,
+            "cashChange": 445763,
+            "customers": 2574,
+            "headlines": [
+              "現在の計画は黒字見込みです。客足・運営状況で実績は変動します。"
+            ],
+            "storeResults": [
+              {
+                "id": "store-center-03-1",
+                "revenue": 1360800,
+                "profit": 275541,
+                "customers": 1134,
+                "satisfaction": 60
+              },
+              {
+                "id": "store-center-11-1",
+                "revenue": 648000,
+                "profit": 37374,
+                "customers": 1440,
+                "satisfaction": 78
+              }
+            ]
+          },
+          "next": {
+            "version": 1,
+            "id": "shibuya-42",
+            "companyName": "v070旧区画回帰fixture",
+            "seed": 42,
+            "week": 4,
+            "cash": 95496969,
+            "reputation": 15.322473800000001,
+            "stores": [
+              {
+                "id": "store-center-03-1",
+                "lotId": "center-03",
+                "name": "スクランブル西口店",
+                "style": "premium",
+                "price": 1200,
+                "quality": 85,
+                "staff": 5,
+                "manager": true,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 1348800,
+                "profit": 266658,
+                "customers": 1124,
+                "satisfaction": 59
+              },
+              {
+                "id": "store-center-11-1",
+                "lotId": "center-11",
+                "name": "神南の住宅坂店",
+                "style": "takeaway",
+                "price": 450,
+                "quality": 55,
+                "staff": 4,
+                "manager": false,
+                "marketing": 10000,
+                "level": 1,
+                "openedWeek": 1,
+                "revenue": 630000,
+                "profit": 26864,
+                "customers": 1400,
+                "satisfaction": 78
+              }
+            ],
+            "loans": [],
+            "properties": [
+              {
+                "id": "property-miyashita-12",
+                "lotId": "miyashita-12",
+                "purchasePrice": 34000000,
+                "level": 1,
+                "occupancy": 0.9,
+                "weeklyIncome": 64000
+              },
+              {
+                "id": "property-sakuragaoka-11",
+                "lotId": "sakuragaoka-11",
+                "purchasePrice": 64000000,
+                "level": 1,
+                "occupancy": 0.9,
+                "weeklyIncome": 101000
+              }
+            ],
+            "positions": [],
+            "stockPrices": {
+              "jp-9432": 160.87,
+              "jp-3543": 2818.65,
+              "jp-3087": 3263.57,
+              "jp-9005": 1543.13,
+              "jp-9020": 3149.42,
+              "jp-8801": 1493.5,
+              "jp-8802": 3686.9,
+              "jp-7203": 2918.34,
+              "jp-8306": 3677.88,
+              "jp-8316": 3760.44,
+              "jp-8591": 6113.54,
+              "jp-2502": 1515.93,
+              "jp-2802": 5604.3,
+              "jp-9984": 6270.51,
+              "jp-6758": 4211.38,
+              "jp-7974": 8248.52,
+              "jp-9433": 2880.84,
+              "jp-9501": 514.09,
+              "jp-5020": 1428.12,
+              "jp-8411": 8870.07,
+              "jp-7944": 3772.31,
+              "jp-8793": 4197.6,
+              "jp-5331": 3490.31,
+              "jp-5185": 2122.16,
+              "jp-9336": 3519.65,
+              "jp-3880": 876.72,
+              "jp-3232": 551.28,
+              "jp-7388": 2345.86,
+              "jp-9319": 1799.52,
+              "jp-4968": 2347.1,
+              "jp-4554": 1793.09,
+              "jp-3036": 3939.39,
+              "jp-3387": 754.95,
+              "jp-1833": 5280.92,
+              "jp-4481": 3510.19,
+              "jp-6310": 2106.43,
+              "jp-1375": 1127.46,
+              "jp-9119": 1730.91,
+              "jp-5011": 2148.19,
+              "jp-7715": 4700.63,
+              "jp-6731": 107.74,
+              "jp-6993": 81.94,
+              "jp-8107": 25.03,
+              "jp-7897": 122.29,
+              "jp-4346": 925.36,
+              "jp-5279": 1181.57,
+              "jp-5199": 2224.88,
+              "jp-9639": 2154.87,
+              "jp-3951": 972.96,
+              "jp-8914": 849.17,
+              "jp-9361": 2101.13,
+              "jp-4360": 911.99,
+              "jp-4524": 2264.92,
+              "jp-8076": 2138.36,
+              "jp-3175": 907.83,
+              "jp-1921": 2125.14,
+              "jp-3933": 552.36,
+              "jp-6408": 4692.62,
+              "jp-1381": 3830.08,
+              "jp-9173": 3027.14,
+              "jp-5010": 319.48,
+              "jp-9206": 1861.36,
+              "jp-7713": 3138.12,
+              "jp-3529": 1022.37,
+              "jp-8704": 1401.32,
+              "jp-7264": 1364.14,
+              "jp-5922": 21313.64,
+              "jp-5609": 905.32,
+              "jp-1514": 599.55,
+              "jp-7161": 702.63,
+              "jp-4564": 22.19,
+              "jp-4597": 33.1,
+              "jp-7806": 9778.33,
+              "jp-7320": 1471.75,
+              "jp-9158": 599.06,
+              "jp-2978": 315.66,
+              "jp-7343": 1383.58,
+              "jp-9326": 498.58,
+              "jp-247A": 860.44,
+              "jp-4889": 1312.18,
+              "jp-7689": 407.94,
+              "jp-3550": 221.07,
+              "jp-1401": 1583.23,
+              "jp-5252": 1035.24,
+              "jp-6224": 1261.31,
+              "jp-9204": 423.67,
+              "jp-218A": 1157.19,
+              "jp-325A": 1910.75,
+              "jp-5842": 2874.21,
+              "jp-402A": 346.7,
+              "jp-523A": 2324.7,
+              "jp-350A": 755.64,
+              "jp-6521": 3545.44,
+              "jp-5858": 1355.7,
+              "jp-2936": 285.91,
+              "jp-8951": 118327.7,
+              "jp-8952": 106830.91,
+              "jp-3281": 129619.99,
+              "jp-3466": 147539.22,
+              "jp-8972": 144435.79
+            },
+            "subsidiaries": [],
+            "listed": false,
+            "sharesOutstanding": 1000000,
+            "founderShares": 1000000,
+            "sharePrice": 244.146321,
+            "dividendPayout": 0,
+            "profitableWeeks": 3,
+            "totalCustomers": 7645,
+            "history": [
+              {
+                "week": 1,
+                "cash": 94638760,
+                "profit": 438760,
+                "revenue": 2141676,
+                "valuation": 243559552,
+                "stores": 2
+              },
+              {
+                "week": 2,
+                "cash": 95071719,
+                "profit": 432959,
+                "revenue": 2132431,
+                "valuation": 243856583,
+                "stores": 2
+              },
+              {
+                "week": 3,
+                "cash": 95496969,
+                "profit": 425250,
+                "revenue": 2121836,
+                "valuation": 244146321,
+                "stores": 2
+              }
+            ],
+            "lastReport": {
+              "week": 3,
+              "revenue": 2121836,
+              "operatingProfit": 425250,
+              "interest": 0,
+              "netProfit": 425250,
+              "loanRepayment": 0,
+              "dividendsReceived": 0,
+              "dividendsPaid": 0,
+              "cashChange": 425250,
+              "customers": 2524,
+              "headlines": [
+                "神南の住宅坂店：普段並みの客足で、1,400人が来店しました。 運営に小さな遅れが出ました。",
+                "スクランブル西口店：客足が普段より多めで、1,124人が来店しました。",
+                "利益を確保しました。次の投資機会を検討しましょう。"
+              ],
+              "storeResults": [
+                {
+                  "id": "store-center-03-1",
+                  "revenue": 1348800,
+                  "profit": 266658,
+                  "customers": 1124,
+                  "satisfaction": 59
+                },
+                {
+                  "id": "store-center-11-1",
+                  "revenue": 630000,
+                  "profit": 26864,
+                  "customers": 1400,
+                  "satisfaction": 78
+                }
+              ],
+              "storeAccounts": [
+                {
+                  "storeId": "store-center-03-1",
+                  "costs": {
+                    "ingredients": 188551,
+                    "fulfilment": 161856,
+                    "labor": 261142,
+                    "rent": 360276,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 72316
+                  },
+                  "roundingAdjustment": 1
+                },
+                {
+                  "storeId": "store-center-11-1",
+                  "costs": {
+                    "ingredients": 186550,
+                    "fulfilment": 75600,
+                    "labor": 208914,
+                    "rent": 94072,
+                    "equipment": 28000,
+                    "marketing": 10000,
+                    "manager": 0
+                  },
+                  "roundingAdjustment": 0
+                }
+              ],
+              "news": {
+                "week": 3,
+                "market": {
+                  "advances": 45,
+                  "declines": 55,
+                  "unchanged": 0
+                },
+                "companies": [
+                  {
+                    "stockId": "jp-350A",
+                    "previousPrice": 690.85,
+                    "currentPrice": 755.64,
+                    "percentChange": 9.378302091626246
+                  },
+                  {
+                    "stockId": "jp-9158",
+                    "previousPrice": 732.26,
+                    "currentPrice": 599.06,
+                    "percentChange": -18.190260290060912
+                  }
+                ],
+                "city": {
+                  "current": {
+                    "demand": 1.0084375676178725,
+                    "wages": 1.0043927205759764,
+                    "rents": 1.000767261749926
+                  },
+                  "previous": {
+                    "demand": 1.00422649481956,
+                    "wages": 1.0022004404721512,
+                    "rents": 1.0003841227091486
+                  }
+                },
+                "events": []
+              }
+            },
+            "milestones": [
+              "渋谷で創業"
+            ],
+            "gameOver": false,
+            "gameOverReason": null,
+            "settings": {
+              "quality": "medium",
+              "sound": false
+            },
+            "openingRecords": [
+              {
+                "id": "opening-1-1",
+                "storeId": "store-center-03-1",
+                "lotId": "center-03",
+                "storeName": "スクランブル西口店",
+                "style": "premium",
+                "decisionWeek": 1,
+                "openingCost": 4800000,
+                "cashBefore": 102000000,
+                "cashAfter": 97200000,
+                "netProfitBefore": 132737,
+                "netProfitAfter": -37597,
+                "initialStoreProfit": -170334,
+                "companyStoreCount": 1,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 438760,
+                  "cashChange": 438760,
+                  "storeProfit": 264840,
+                  "customers": 1120
+                }
+              },
+              {
+                "id": "opening-1-2",
+                "storeId": "store-center-11-1",
+                "lotId": "center-11",
+                "storeName": "神南の住宅坂店",
+                "style": "takeaway",
+                "decisionWeek": 1,
+                "openingCost": 3000000,
+                "cashBefore": 97200000,
+                "cashAfter": 94200000,
+                "netProfitBefore": 410013,
+                "netProfitAfter": 448373,
+                "initialStoreProfit": 38360,
+                "companyStoreCount": 2,
+                "result": {
+                  "week": 1,
+                  "companyNetProfit": 438760,
+                  "cashChange": 438760,
+                  "storeProfit": 42301,
+                  "customers": 1455
+                }
+              }
+            ],
+            "deals": {
+              "offers": [
+                {
+                  "id": "cafe-0-system-fit",
+                  "category": "system",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "在庫・発注支援システム",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 80000,
+                  "weeklyFee": 4000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 23000,
+                  "advertisedAnnualYield": 14.95,
+                  "conservativeWeeklyBenefit": 12000,
+                  "optimisticWeeklyBenefit": 27600,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 10000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "cafe-0-marketing-reach",
+                  "category": "marketing",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "集客保証プレミアム広告",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "NTTOWN",
+                  "supplierStockId": "jp-9432",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 180000,
+                  "weeklyFee": 38000,
+                  "termWeeks": 26,
+                  "advertisedWeeklyBenefit": 70000,
+                  "advertisedAnnualYield": 20.22222222222222,
+                  "conservativeWeeklyBenefit": 3500,
+                  "optimisticWeeklyBenefit": 70000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 8000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 100000,
+                  "leadWeeks": 2,
+                  "residualValue": 0
+                },
+                {
+                  "id": "property-0-property-fit",
+                  "category": "property",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "賃貸履歴付きワンルーム提案",
+                  "salesperson": "営業担当・青葉",
+                  "supplier": "三井の街不動産",
+                  "supplierStockId": "jp-8801",
+                  "pitch": "既存の導入実績をもとに、控えめな計画をご提案します。",
+                  "upfrontCost": 24000000,
+                  "weeklyFee": 8000,
+                  "termWeeks": 520,
+                  "advertisedWeeklyBenefit": 36000,
+                  "advertisedAnnualYield": 0.078,
+                  "conservativeWeeklyBenefit": 21600,
+                  "optimisticWeeklyBenefit": 43200,
+                  "signals": [
+                    "同規模店舗・賃貸履歴の資料があります",
+                    "売上保証はありません。効果には幅があります"
+                  ],
+                  "investigationCost": 60000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 250000,
+                  "leadWeeks": 4,
+                  "residualValue": 21600000
+                },
+                {
+                  "id": "property-0-property-reach",
+                  "category": "property",
+                  "createdWeek": 2,
+                  "expiresWeek": 7,
+                  "title": "駅近ワンルーム・満室想定提案",
+                  "salesperson": "営業担当・速水",
+                  "supplier": "三井の街不動産",
+                  "supplierStockId": "jp-8801",
+                  "pitch": "最大の導入事例では高収益。掲載の利回りは満稼働時・諸費用控除前です。",
+                  "upfrontCost": 32000000,
+                  "weeklyFee": 27000,
+                  "termWeeks": 520,
+                  "advertisedWeeklyBenefit": 51000,
+                  "advertisedAnnualYield": 0.082875,
+                  "conservativeWeeklyBenefit": 11200,
+                  "optimisticWeeklyBenefit": 51000,
+                  "signals": [
+                    "利回りは費用控除前・最大事例です",
+                    "固定費が高く、稼働や集客の保証条件はありません",
+                    "同規模の実績は調査で確認できます"
+                  ],
+                  "investigationCost": 60000,
+                  "investigated": false,
+                  "investigationNotes": [],
+                  "cancellationFee": 250000,
+                  "leadWeeks": 4,
+                  "residualValue": 22400000
+                }
+              ],
+              "contracts": [],
+              "generatedBatches": [
+                "cafe-0",
+                "property-0"
+              ],
+              "dismissed": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

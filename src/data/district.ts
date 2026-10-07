@@ -1,5 +1,6 @@
 import type { AcquisitionTarget, DistrictId, Lot } from '../model';
 import { OUTER_NEIGHBORHOOD_LOTS, OUTER_NEIGHBORHOOD_ROADS } from './neighborhoods';
+import { V080_NEIGHBORHOOD_LOTS, V080_NEIGHBORHOOD_ROADS } from './neighborhoodsV080';
 import { CITY_SERVICES } from './cityServices';
 
 /** An authored, compressed Shibuya-inspired map, not surveyed Tokyo GIS data.
@@ -21,6 +22,7 @@ export const ROADS: Road[] = [
   { id: 'sakura-street', name: '桜丘通り', points: [[-202, 88], [33, 88]], width: 12 },
   { id: 'east-street', name: '東口通り', points: [[86, 100], [202, 100]], width: 10 },
   ...OUTER_NEIGHBORHOOD_ROADS,
+  ...V080_NEIGHBORHOOD_ROADS,
 ];
 
 export interface Landmark { id: string; name: string; x: number; z: number; kind: 'station' | 'tower' | 'mall' | 'park' | 'crossing'; height?: number }
@@ -82,14 +84,14 @@ const overlaps = (a: Footprint, b: Footprint, gap = 2) =>
   Math.abs(a.x - b.x) < (a.width + b.width) / 2 + gap &&
   Math.abs(a.z - b.z) < (a.depth + b.depth) / 2 + gap;
 
-const roadFootprints: Footprint[] = ROADS.map(road => {
-  const [a, b] = road.points;
+const roadFootprints: Footprint[] = ROADS.flatMap(road => road.points.slice(1).map((b, index) => {
+  const a = road.points[index];
   return { x: (a[0] + b[0]) / 2, z: (a[1] + b[1]) / 2,
     width: Math.abs(a[0] - b[0]) + road.width,
     depth: Math.abs(a[1] - b[1]) + road.width };
-});
+}));
 const railway = { x: 75, z: 0, width: 16, depth: 410 };
-const blocked = [...roadFootprints, ...landmarkReservations, railway, ...cafeSites, ...OUTER_NEIGHBORHOOD_LOTS];
+const blocked = [...roadFootprints, ...landmarkReservations, railway, ...cafeSites, ...OUTER_NEIGHBORHOOD_LOTS, ...V080_NEIGHBORHOOD_LOTS];
 const backgroundLots: Lot[] = [];
 const candidates: { x: number; z: number; order: number }[] = [];
 for (let z = -188; z <= 188; z += 20) {
@@ -115,7 +117,9 @@ for (const candidate of candidates.sort((a, b) => a.order - b.order)) {
   blocked.push(footprint);
   if (backgroundLots.length === 110) break;
 }
-export const LOTS: Lot[] = [...cafeSites, ...OUTER_NEIGHBORHOOD_LOTS, ...backgroundLots];
+// Append expansion parcels after every original lot, including background. The
+// existing order also seeds facade appearance and must stay stable across saves.
+export const LOTS: Lot[] = [...cafeSites, ...OUTER_NEIGHBORHOOD_LOTS, ...backgroundLots, ...V080_NEIGHBORHOOD_LOTS];
 
 /** Prices and earnings are authored gameplay assumptions, not real company valuations.
  * weeklyProfit is a baseline before simulation shocks; risk is a 0..1 model input.
