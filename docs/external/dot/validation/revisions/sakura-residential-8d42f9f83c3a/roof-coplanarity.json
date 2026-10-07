@@ -1,0 +1,23 @@
+{
+  "asset": "sakura-residential.glb",
+  "sha256": "8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0",
+  "scope": "Only outward X-side roof triangles in |X|6.6..6.8m and Y21.0..22.1m; baked identity-node GLB required. Geometric overlap, not a diagnosis of every shading artifact.",
+  "candidate_triangles": 16,
+  "overlapping_pairs": 0,
+  "sum_pairwise_overlap_area_m2": 0,
+  "overlaps": [],
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "roof_closeup": {
+    "file": "roof-interface.png",
+    "size": [
+      900,
+      900
+    ],
+    "camera_matches_D01_2_closeup": true
+  },
+  "source_hash_unchanged": true,
+  "pixel_review": "PASS: same-camera comparison against D01.2 shows the black outer side-roof line removed, with parapet top and balcony silhouette preserved.",
+  "script_sha256": "16d228b077a0f47fd423db350ddab0c014043756f528cd406105231ee40c92a1"
+}

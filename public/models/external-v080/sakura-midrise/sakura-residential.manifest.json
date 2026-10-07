@@ -1,7 +1,7 @@
 {
   "asset": "sakura-residential",
   "display_name": "HANA COURT",
-  "version": "D01.1",
+  "version": "D01.3",
   "authoring": "Original procedural Blender geometry; no copied models or image textures.",
   "units": "metres",
   "up_axis": "+Y",
@@ -14,7 +14,7 @@
   "lod": "LOD0 only, already lightweight; no decimation fallback supplied.",
   "geometry": {
     "bytes": 489440,
-    "sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+    "sha256": "8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0",
     "vertices": 13740,
     "triangles": 6844,
     "materials": 8,

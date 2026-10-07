@@ -1,0 +1,522 @@
+{
+  "asset": "sakura-residential.glb",
+  "sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+  "revision": "previous",
+  "kind": "residential",
+  "blender": "4.3.2",
+  "actual_import_status": [
+    "FINISHED"
+  ],
+  "probe_count": 24,
+  "probes_satisfying_corrected_expectation": 0,
+  "all_corrected_expectations_pass": false,
+  "probes": [
+    {
+      "label": "2F_left_former_upper_gap",
+      "origin_gltf": [
+        -4.58,
+        6.1450000000000005,
+        4.4
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "2F_left_former_back_gap",
+      "origin_gltf": [
+        -4.58,
+        4.76,
+        3.5
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "2F_right_former_upper_gap",
+      "origin_gltf": [
+        6.54,
+        6.1450000000000005,
+        4.4
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "2F_right_former_back_gap",
+      "origin_gltf": [
+        6.54,
+        4.76,
+        3.5
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "3F_left_former_upper_gap",
+      "origin_gltf": [
+        -4.58,
+        9.094999999999999,
+        4.4
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "3F_left_former_back_gap",
+      "origin_gltf": [
+        -4.58,
+        7.709999999999999,
+        3.5
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "3F_right_former_upper_gap",
+      "origin_gltf": [
+        6.54,
+        9.094999999999999,
+        4.4
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "3F_right_former_back_gap",
+      "origin_gltf": [
+        6.54,
+        7.709999999999999,
+        3.5
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "4F_left_former_upper_gap",
+      "origin_gltf": [
+        -4.58,
+        12.044999999999998,
+        4.4
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "4F_left_former_back_gap",
+      "origin_gltf": [
+        -4.58,
+        10.66,
+        3.5
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "4F_right_former_upper_gap",
+      "origin_gltf": [
+        6.54,
+        12.044999999999998,
+        4.4
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "4F_right_former_back_gap",
+      "origin_gltf": [
+        6.54,
+        10.66,
+        3.5
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "5F_left_former_upper_gap",
+      "origin_gltf": [
+        -4.58,
+        14.995000000000001,
+        4.4
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "5F_left_former_back_gap",
+      "origin_gltf": [
+        -4.58,
+        13.610000000000001,
+        3.5
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "5F_right_former_upper_gap",
+      "origin_gltf": [
+        6.54,
+        14.995000000000001,
+        4.4
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "5F_right_former_back_gap",
+      "origin_gltf": [
+        6.54,
+        13.610000000000001,
+        3.5
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "6F_left_former_upper_gap",
+      "origin_gltf": [
+        -4.58,
+        17.945,
+        4.4
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "6F_left_former_back_gap",
+      "origin_gltf": [
+        -4.58,
+        16.56,
+        3.5
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "6F_right_former_upper_gap",
+      "origin_gltf": [
+        6.54,
+        17.945,
+        4.4
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "6F_right_former_back_gap",
+      "origin_gltf": [
+        6.54,
+        16.56,
+        3.5
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "7F_left_former_upper_gap",
+      "origin_gltf": [
+        -4.58,
+        20.955,
+        4.4
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "7F_left_former_back_gap",
+      "origin_gltf": [
+        -4.58,
+        19.509999999999998,
+        3.5
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "7F_right_former_upper_gap",
+      "origin_gltf": [
+        6.54,
+        20.955,
+        4.4
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    },
+    {
+      "label": "7F_right_former_back_gap",
+      "origin_gltf": [
+        6.54,
+        19.509999999999998,
+        3.5
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "maximum_distance_m": 0.35,
+      "expected_hit": true,
+      "expected_material": "mineral_plaster",
+      "hit": false,
+      "location_gltf": null,
+      "normal_gltf": null,
+      "material": null,
+      "passed": false
+    }
+  ],
+  "renders": [],
+  "scope": "Targeted actual-mesh sample rays and close-up views only; no proof of navigable interior, physical collision clearance, egress compliance, or complete watertightness.",
+  "source_hash_unchanged": true
+}

@@ -1,0 +1,91 @@
+{
+  "revision": "D01.3 compared with D01.2",
+  "gltf_json_identical": true,
+  "indices_normals_materials_identical": true,
+  "changed_mesh_attributes": [
+    {
+      "material": "mineral_plaster",
+      "changed_attribute_records": {
+        "POSITION": 16,
+        "TEXCOORD_0": 16
+      }
+    }
+  ],
+  "previous_actual_glb_roof_faces": {
+    "left": {
+      "triangle_count": 4,
+      "coplanar_face_yz_bounds_m": [
+        [
+          21.0049992,
+          21.2350006,
+          -5.3000007,
+          5.5999999
+        ],
+        [
+          21.1599998,
+          21.9599991,
+          -5.2199998,
+          5.48
+        ]
+      ],
+      "positive_overlap_area_m2": 0.8025085449998184
+    },
+    "right": {
+      "triangle_count": 4,
+      "coplanar_face_yz_bounds_m": [
+        [
+          21.0049992,
+          21.2350006,
+          -5.3000007,
+          5.5999999
+        ],
+        [
+          21.1599998,
+          21.9599991,
+          -5.2199998,
+          5.48
+        ]
+      ],
+      "positive_overlap_area_m2": 0.8025085449998184
+    }
+  },
+  "current_actual_glb_roof_faces": {
+    "left": {
+      "triangle_count": 4,
+      "coplanar_face_yz_bounds_m": [
+        [
+          21.0049992,
+          21.2350006,
+          -5.3000007,
+          5.5999999
+        ],
+        [
+          21.2350006,
+          21.9599991,
+          -5.2199998,
+          5.48
+        ]
+      ],
+      "positive_overlap_area_m2": 0.0
+    },
+    "right": {
+      "triangle_count": 4,
+      "coplanar_face_yz_bounds_m": [
+        [
+          21.0049992,
+          21.2350006,
+          -5.3000007,
+          5.5999999
+        ],
+        [
+          21.2350006,
+          21.9599991,
+          -5.2199998,
+          5.48
+        ]
+      ],
+      "positive_overlap_area_m2": 0.0
+    }
+  },
+  "outside_envelope_preserved": "Only the two parapet bottoms moved upward within roof-slab occupied volume; all outer extrema and parapet tops unchanged."
+}

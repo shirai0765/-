@@ -1,3 +1,5 @@
+> Revision notice — 2026-10-07: SUPERSEDED for architectural fidelity. A later close architectural review found repeated unintended seams at balcony end-wall/slab and end-wall/sidewall junctions. The historical geometry/import pass remains valid, but the original three-view visual review missed these details. Final hash-specific verification targets 8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0; intermediate D01.2 evidence is retained separately. The original report and images are preserved in the external QA snapshot; the historic measurements below are unchanged.
+
 # Sakura residential — independent review
 
 **Result: PASS for staged standalone-asset review, 2026-10-07.** The checked

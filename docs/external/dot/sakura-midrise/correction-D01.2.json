@@ -1,0 +1,26 @@
+{
+  "revision": "D01.2 residential seam closure",
+  "status": "Author generation, actual import, reproduction, scope checks and three-view review passed; independent evidence is separate.",
+  "sha256": "1b2c14220e485a19177f19184c4a221fddd81446dff8ac968d08d390673b69e6",
+  "previous_sha256": "efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b",
+  "geometry_cost_change": {
+    "bytes": 0,
+    "vertices": 0,
+    "triangles": 0,
+    "materials": 0,
+    "primitives": 0,
+    "textures": 0
+  },
+  "changed_geometry": "12 outer balcony-end walls only; backs extended to Z3.42m, fronts retained atZ5.47m; tops extended5mm into next floor/roof slab underside.",
+  "preserved_openings": "Balcony fronts and internal apartment-separator ventilation clearances unchanged.",
+  "evidence": [
+    "seam-scope-D01.2.json",
+    "reproducibility-D01.2.json",
+    "residential-D01.2-build.log",
+    "residential-D01.2-render.log"
+  ],
+  "independent_evidence_directory": "docs/external/dot/validation/revisions/sakura-residential-1b2c14220e48/",
+  "office_files": "All original office artifacts byte-identical, checked against archived submitted snapshot.",
+  "preview_check": "Three regenerated1056x1056PNGs opened and pixel-reviewed; source and PNG hashes match preview ledger.",
+  "untouched_scope": "No runtime, street placement, global tests, git, remote writes, build or deployment."
+}

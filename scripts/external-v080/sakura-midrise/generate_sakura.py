@@ -133,7 +133,15 @@ def residential():
                 for xx in [x-.85,x+.85]:box('balcony_mullion',xx,5.365,h+.71,.035,.045,.99,'silver_metal')
             # Individual apartment separator and service drainage chase.
             if bi<2:box('balcony_divider',x+1.76,4.41,h+1.27,.08,1.60,2.31,'mineral_plaster',('bottom',))
-        for x in [-4.40,6.24]:box('balcony_end',x,4.51,h+1.36,.16,1.92,2.58,'mineral_plaster',('bottom','top'))
+        # Structural outer returns meet the backing wall and the next soffit.
+        # Keep internal dividers/rail openings unchanged; only close accidental end seams.
+        end_back,end_front=3.42,5.47
+        end_bottom=h+.07
+        next_soffit=(h+floorh-.115) if k<5 else (roof+.06-.115)
+        end_top=next_soffit+.005  # 5 mm overlap avoids floating-point hairline cracks.
+        for x in [-4.40,6.24]:
+            box('balcony_end',x,(end_back+end_front)/2,(end_bottom+end_top)/2,
+                .16,end_front-end_back,end_top-end_bottom,'mineral_plaster',('bottom','top'))
         window('common_landing',-5.48,4.416,h+1.60,.73,1.55,'frosted_glazing')
         box('common_landing_visor',-5.48,4.60,h+2.5,1.12,.5,.09,'mineral_plaster',('back',))
         # Two side windows per side; quieter party-wall elevations.
@@ -148,7 +156,13 @@ def residential():
     box('roof',0,.15,roof+.06,13.45,10.90,.23,'mineral_plaster')
     box('roof_surface',.5,-.05,roof+.185,11.9,9.4,.04,'roof_membrane',('bottom',))
     for f in [-5.22,5.48]:box('roof_parapet',0,f,roof+.50,13.4,.15,.8,'mineral_plaster',('bottom',))
-    for x in [-6.65,6.65]:box('roof_parapet',x,.13,roof+.50,.15,10.7,.8,'mineral_plaster',('bottom',))
+    # Side outer faces align with the roof slab: join at its top instead of overlapping.
+    # This removes only duplicate buried wall volume; parapet tops and silhouette stay fixed.
+    roof_slab_top=roof+.06+.23/2
+    side_parapet_top=roof+.50+.8/2
+    for x in [-6.65,6.65]:
+        box('roof_parapet',x,.13,(roof_slab_top+side_parapet_top)/2,.15,10.7,
+            side_parapet_top-roof_slab_top,'mineral_plaster',('bottom',))
     box('stair_headhouse',-4.75,-2.8,roof+1.32,2.75,3.6,2.54,'mineral_plaster',('bottom',))
     box('stair_cap',-4.75,-2.8,roof+2.65,2.95,3.8,.15,'charcoal_tile',('bottom',))
     window('roof_access',-4.75,-.97,roof+1.20,1.05,2.1)
@@ -323,7 +337,7 @@ def build(kind):
     stats=glb_stats(path)
     validation=validate_import(path)
     if not args.no_render:render_views(info['base_name'],stats['dimensions_m'][1])
-    manifest={'asset':info['base_name'],'display_name':info['label'],'version':'D01.1','authoring':'Original procedural Blender geometry; no copied models or image textures.','units':'metres','up_axis':'+Y','front_axis':'+Z','ground_y_m':0,'origin':'Bottom center of the model footprint; all mesh node origins at [0,0,0].','floors':info['floors'],'design':info['concept'],'dimensions_status':'All model dimensions are author estimates for a fictional synthesis, not a survey or measurements of the referenced properties.','lod':'LOD0 only, already lightweight; no decimation fallback supplied.','geometry':stats,'import_validation':validation,'reference_document':'docs/external/dot/sakura-midrise/references.md','generator':'scripts/external-v080/sakura-midrise/generate_sakura.py','previews':[info['base_name']+'-'+v+'.png' for v in ['front','oblique','roof']],'preview_note':'Original geometry rendered with studio sky/sun and ground plane. Preview ground, camera, lighting are excluded from GLB.','limitations':['Conceptual Sakuragaoka building, not a reconstruction or exact footprint.','Reference photos do not establish rear elevations, roof services, dimensions or interior layouts. Those are invented plausibly.','Glazing uses opaque PBR color and coating to avoid transparency sorting and overdraw. No interior rooms.','Connected structural pieces may intersect; hidden faces are selectively omitted but not a boolean watertight solid.','Generated UVs are box-projected and untextured; no baked AO, lightmap or image textures.','No navigation/collision mesh, lot placement, street slopes or scene integration supplied.','GLB and Blender import validated; final application, Windows GPU and WebGL performance remain integration checks.'],'scope':'Only new external assets, scripts and documentation. Existing models, src, game data and city placements unchanged.'}
+    manifest={'asset':info['base_name'],'display_name':info['label'],'version':'D01.3' if kind=='residential' else 'D01.1','authoring':'Original procedural Blender geometry; no copied models or image textures.','units':'metres','up_axis':'+Y','front_axis':'+Z','ground_y_m':0,'origin':'Bottom center of the model footprint; all mesh node origins at [0,0,0].','floors':info['floors'],'design':info['concept'],'dimensions_status':'All model dimensions are author estimates for a fictional synthesis, not a survey or measurements of the referenced properties.','lod':'LOD0 only, already lightweight; no decimation fallback supplied.','geometry':stats,'import_validation':validation,'reference_document':'docs/external/dot/sakura-midrise/references.md','generator':'scripts/external-v080/sakura-midrise/generate_sakura.py','previews':[info['base_name']+'-'+v+'.png' for v in ['front','oblique','roof']],'preview_note':'Original geometry rendered with studio sky/sun and ground plane. Preview ground, camera, lighting are excluded from GLB.','limitations':['Conceptual Sakuragaoka building, not a reconstruction or exact footprint.','Reference photos do not establish rear elevations, roof services, dimensions or interior layouts. Those are invented plausibly.','Glazing uses opaque PBR color and coating to avoid transparency sorting and overdraw. No interior rooms.','Connected structural pieces may intersect; hidden faces are selectively omitted but not a boolean watertight solid.','Generated UVs are box-projected and untextured; no baked AO, lightmap or image textures.','No navigation/collision mesh, lot placement, street slopes or scene integration supplied.','GLB and Blender import validated; final application, Windows GPU and WebGL performance remain integration checks.'],'scope':'Only new external assets, scripts and documentation. Existing models, src, game data and city placements unchanged.'}
     (OUT/(info['base_name']+'.manifest.json')).write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     print('SAKURA_RESULT '+json.dumps({'asset':info['base_name'],**stats,'validation':validation}))
 for kind in (['residential','office'] if args.asset=='all' else [args.asset]):

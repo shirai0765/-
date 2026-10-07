@@ -1,0 +1,17 @@
+{
+  "method": "Identical generator copied outside repository, fresh --asset all --no-render; repository office files never rewritten.",
+  "results": [
+    {
+      "asset": "sakura-residential",
+      "sha256": "8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0",
+      "isolated_generation_sha256": "8d42f9f83c3a15a2c2df5b5824e62337945ef335abde6c843d647659e07b31a0",
+      "byte_identical": true
+    },
+    {
+      "asset": "sakura-office",
+      "sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "isolated_generation_sha256": "39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08",
+      "byte_identical": true
+    }
+  ]
+}
