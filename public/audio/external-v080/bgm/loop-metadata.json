@@ -1,0 +1,15 @@
+{
+  "sampleRate": 44100,
+  "tracks": [
+    {
+      "id": "cafe-lounge",
+      "frames": 2016000,
+      "durationSeconds": 45.714285714285715
+    },
+    {
+      "id": "shibuya-citypop",
+      "frames": 1512000,
+      "durationSeconds": 34.285714285714285
+    }
+  ]
+}

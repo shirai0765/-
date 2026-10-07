@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "task": "A01",
+  "baseSha": "407236858c287a3060c224967489010e669d1eea",
+  "sampleRate": 44100,
+  "channels": 2,
+  "pcmBitDepth": 16,
+  "ffmpegVersion": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "numpyVersion": "2.3.5",
+  "compositionSource": "scripts/external/audio-bgm/render.py",
+  "thirdPartyMusicOrSamples": [],
+  "humanListeningVerified": false,
+  "browserPlaybackVerified": false,
+  "failures": [],
+  "developmentFailureHistory": [
+    {
+      "attempt": "initial-render",
+      "reason": "SyntaxError: missing closing list bracket in metadata serialization; process stopped before synthesis.",
+      "resolved": true
+    },
+    {
+      "attempt": "second-render",
+      "reason": "JSONDecodeError: ffmpeg appended a summary after loudnorm JSON. Audio encoding succeeded; measurement parser corrected to raw_decode.",
+      "resolved": true
+    }
+  ],
+  "tracks": [
+    {
+      "id": "cafe-lounge",
+      "title": "窓辺の午後",
+      "bpm": 84,
+      "bars": 16,
+      "timeSignature": "4/4",
+      "durationSeconds": 45.714285714285715,
+      "loopStartSeconds": 0,
+      "loopEndSeconds": 45.714285714285715,
+      "events": 462,
+      "normalization": "RMS gain with sample peak ceiling -4 dBFS; no clipping limiter",
+      "wav": {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.wav",
+        "bytes": 8064044,
+        "sha256": "e0559fa2caa8bd090a61ecef3caaea4d6f5b944de3754effb04a433fe21212b2",
+        "sampleFrames": 2016000,
+        "durationSeconds": 45.714285714285715,
+        "samplePeakDbfs": -9.811079497044659,
+        "rmsDbfs": -23.000265999600508,
+        "channelDcOffset": [
+          2.1949646964905753e-09,
+          9.975736103360615e-09
+        ],
+        "clippedSamples": 0,
+        "loopBoundary": {
+          "lastToFirstDelta": [
+            0.0001220703125,
+            0.00018310546875
+          ],
+          "lastToFirstMaximumDeltaDbfs": -74.74597369152148,
+          "neighboring100msMaximumStepDbfs": -33.95769130799874,
+          "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+          "wrappedTails": true
+        },
+        "integratedLufs": -21.61,
+        "truePeakDbtp": -9.81,
+        "loudnessRangeLu": 0.9,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+      },
+      "mp3": {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.mp3",
+        "bytes": 915374,
+        "sha256": "8de8cc1af6a5eeafb39a444b958e86ca57155d8e833f5c3008a9c713ed14ccae",
+        "bitrateKbps": 160,
+        "integratedLufs": -22.06,
+        "truePeakDbtp": -10.26,
+        "loudnessRangeLu": 0.9,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+        "decodedSignal": {
+          "sampleFrames": 2016000,
+          "durationSeconds": 45.714285714285715,
+          "samplePeakDbfs": -10.25617571919356,
+          "rmsDbfs": -23.446363717121347,
+          "channelDcOffset": [
+            -4.3086400107731896e-07,
+            2.117066156296503e-06
+          ],
+          "clippedSamples": 0,
+          "loopBoundary": {
+            "lastToFirstDelta": [
+              -0.000457763671875,
+              -0.000152587890625
+            ],
+            "lastToFirstMaximumDeltaDbfs": -66.78717351808073,
+            "neighboring100msMaximumStepDbfs": -41.68172341601461,
+            "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+            "wrappedTails": true
+          }
+        }
+      },
+      "boundaryAudition": {
+        "path": "public/audio/external-v080/bgm/cafe-lounge-boundary-check.wav",
+        "seconds": 4,
+        "joinAtSeconds": 2,
+        "bytes": 705644
+      },
+      "ogg": {
+        "path": "public/audio/external-v080/bgm/cafe-lounge.ogg",
+        "bytes": 621745,
+        "sha256": "3d9dc319092716f38b5c7c5b989cfcac8ed7f1bf03d522e2296e8ae39e23c86e",
+        "codec": "Vorbis",
+        "quality": 5,
+        "integratedLufs": -21.59,
+        "truePeakDbtp": -9.82,
+        "loudnessRangeLu": 0.8,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+        "decodedSignal": {
+          "sampleFrames": 2016000,
+          "durationSeconds": 45.714285714285715,
+          "samplePeakDbfs": -9.817643555273598,
+          "rmsDbfs": -22.97840732882345,
+          "channelDcOffset": [
+            1.5847478594098772e-05,
+            1.8625425913977246e-05
+          ],
+          "clippedSamples": 0,
+          "loopBoundary": {
+            "lastToFirstDelta": [
+              0.001220703125,
+              0.000885009765625
+            ],
+            "lastToFirstMaximumDeltaDbfs": -58.26779887263511,
+            "neighboring100msMaximumStepDbfs": -36.24317113682113,
+            "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+            "wrappedTails": true
+          }
+        }
+      },
+      "loopStartFrame": 0,
+      "loopEndFrame": 2016000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "purpose": "cafe-lounge",
+      "creator": "Codex A01 audio-bgm author (original synthesis for Shibuya Capital)",
+      "source": {
+        "classification": "original",
+        "thirdPartyMusicOrSamples": [],
+        "evidence": "All melody/chord/rhythm note lists, oscillators and seeded-noise percussion are defined in scripts/external/audio-bgm/render.py; no external asset loads.",
+        "externalSourceUrl": null
+      },
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "scope": "New synthesized sound recordings, compositions and generated waveform SVGs; no attribution required. Runtime/repository code excluded."
+      },
+      "verification": {
+        "humanListening": "not-performed",
+        "browserPlayback": "not-performed",
+        "measured": "WAV/MP3/OGG decoded frames, duration, peak, RMS, LUFS, clipping and loop boundary",
+        "musicalAudition": "Pending parent review using preview.html and boundary-check.wav"
+      }
+    },
+    {
+      "id": "shibuya-citypop",
+      "title": "坂道のネオン",
+      "bpm": 112,
+      "bars": 16,
+      "timeSignature": "4/4",
+      "durationSeconds": 34.285714285714285,
+      "loopStartSeconds": 0,
+      "loopEndSeconds": 34.285714285714285,
+      "events": 790,
+      "normalization": "RMS gain with sample peak ceiling -4 dBFS; no clipping limiter",
+      "wav": {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.wav",
+        "bytes": 6048044,
+        "sha256": "5666103df9512a6c65a1232f060274256e7ed0d6f02bfc97cb57a0ad8e8e89ca",
+        "sampleFrames": 1512000,
+        "durationSeconds": 34.285714285714285,
+        "samplePeakDbfs": -9.361943484115674,
+        "rmsDbfs": -21.000265370108984,
+        "channelDcOffset": [
+          -2.3009285094246033e-09,
+          1.2110150049603175e-09
+        ],
+        "clippedSamples": 0,
+        "loopBoundary": {
+          "lastToFirstDelta": [
+            0.00042724609375,
+            0.0003662109375
+          ],
+          "lastToFirstMaximumDeltaDbfs": -67.3864379856296,
+          "neighboring100msMaximumStepDbfs": -32.61309142021474,
+          "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+          "wrappedTails": true
+        },
+        "integratedLufs": -19.84,
+        "truePeakDbtp": -9.25,
+        "loudnessRangeLu": 0.7,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)"
+      },
+      "mp3": {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.mp3",
+        "bytes": 687064,
+        "sha256": "2611751fc254eea3ab14baf82f90fce013a84ab7ffd55d6ab009f623610b74d0",
+        "bitrateKbps": 160,
+        "integratedLufs": -20.29,
+        "truePeakDbtp": -9.7,
+        "loudnessRangeLu": 0.7,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+        "decodedSignal": {
+          "sampleFrames": 1512000,
+          "durationSeconds": 34.285714285714285,
+          "samplePeakDbfs": -9.82832074117626,
+          "rmsDbfs": -21.447571954853423,
+          "channelDcOffset": [
+            -1.6726135576843584e-06,
+            -3.451594599971065e-07
+          ],
+          "clippedSamples": 0,
+          "loopBoundary": {
+            "lastToFirstDelta": [
+              -0.000335693359375,
+              0.00164794921875
+            ],
+            "lastToFirstMaximumDeltaDbfs": -55.66112350273499,
+            "neighboring100msMaximumStepDbfs": -36.106651396958036,
+            "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+            "wrappedTails": true
+          }
+        }
+      },
+      "boundaryAudition": {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop-boundary-check.wav",
+        "seconds": 4,
+        "joinAtSeconds": 2,
+        "bytes": 705644
+      },
+      "ogg": {
+        "path": "public/audio/external-v080/bgm/shibuya-citypop.ogg",
+        "bytes": 519903,
+        "sha256": "dcbdc4bcdcf73b8ed9819334955396cdbf97a9f1198aaee6866e021c5700edf7",
+        "codec": "Vorbis",
+        "quality": 5,
+        "integratedLufs": -19.82,
+        "truePeakDbtp": -9.16,
+        "loudnessRangeLu": 0.7,
+        "method": "ffmpeg loudnorm input statistics (EBU R128 / ITU-R BS.1770)",
+        "decodedSignal": {
+          "sampleFrames": 1512000,
+          "durationSeconds": 34.285714285714285,
+          "samplePeakDbfs": -9.24205085580901,
+          "rmsDbfs": -20.97433025935128,
+          "channelDcOffset": [
+            5.529248272931134e-05,
+            0.00010205723999669312
+          ],
+          "clippedSamples": 0,
+          "loopBoundary": {
+            "lastToFirstDelta": [
+              0.000274658203125,
+              0.001434326171875
+            ],
+            "lastToFirstMaximumDeltaDbfs": -56.86704154048001,
+            "neighboring100msMaximumStepDbfs": -33.27160668459903,
+            "method": "Compare last→first adjacent-sample step with adjacent steps within 50 ms on each side; no silence padding/fade-to-zero.",
+            "wrappedTails": true
+          }
+        }
+      },
+      "loopStartFrame": 0,
+      "loopEndFrame": 1512000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "purpose": "Tokyo-city-pop",
+      "creator": "Codex A01 audio-bgm author (original synthesis for Shibuya Capital)",
+      "source": {
+        "classification": "original",
+        "thirdPartyMusicOrSamples": [],
+        "evidence": "All melody/chord/rhythm note lists, oscillators and seeded-noise percussion are defined in scripts/external/audio-bgm/render.py; no external asset loads.",
+        "externalSourceUrl": null
+      },
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "scope": "New synthesized sound recordings, compositions and generated waveform SVGs; no attribution required. Runtime/repository code excluded."
+      },
+      "verification": {
+        "humanListening": "not-performed",
+        "browserPlayback": "not-performed",
+        "measured": "WAV/MP3/OGG decoded frames, duration, peak, RMS, LUFS, clipping and loop boundary",
+        "musicalAudition": "Pending parent review using preview.html and boundary-check.wav"
+      }
+    }
+  ]
+}
