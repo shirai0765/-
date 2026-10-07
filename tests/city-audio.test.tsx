@@ -5,6 +5,8 @@ import { CityAudioEngine } from '../src/audio/CityAudioEngine';
 import type { CityAudioContextState } from '../src/audio/CityAudioEngine';
 import { CITY_AUDIO_STORAGE_KEY, CityAudioSession, createCityAudioContext, readCityAudioPreferences } from '../src/audio/CityAudioSession';
 import CityAudioControl, { cityAudioPresentation } from '../src/ui/CityAudioControl';
+import { emitCityAudioCue, subscribeCityAudioCues } from '../src/audio/CityAudioCues';
+import type { CityAudioAssetConfig } from '../src/audio/CityAudioAssets';
 
 class Parameter {
   value = 1;
@@ -54,6 +56,7 @@ class Context extends EventTarget {
   createBiquadFilter() { return new Node(); }
   createOscillator() { const node = new Node(); this.oscillators.push(node); return node; }
   createBufferSource() { const node = new Node(); this.sources.push(node); return node; }
+  decodeAudioData = vi.fn(async (_bytes: ArrayBuffer) => ({ duration: 2, length: 16_000, numberOfChannels: 2 } as AudioBuffer));
   createBuffer(_channels: number, length: number) {
     const data = new Float32Array(length); this.buffers.push(data);
     return { getChannelData: () => data };
@@ -64,6 +67,7 @@ class Context extends EventTarget {
 const preferences = { volume: .6, muted: false, music: .72, ambience: .9 };
 const sessions: CityAudioSession[] = [];
 const engines: CityAudioEngine[] = [];
+const cueSubscriptions: (() => void)[] = [];
 const flush = async () => { await Promise.resolve(); await Promise.resolve(); await Promise.resolve(); };
 function session(context = new Context()) {
   const create = vi.fn(() => context.audioContext);
@@ -75,7 +79,172 @@ beforeEach(() => { vi.useFakeTimers(); });
 afterEach(async () => {
   for (const audio of sessions.splice(0)) audio.dispose();
   for (const engine of engines.splice(0)) await engine.dispose();
+  for (const unsubscribe of cueSubscriptions.splice(0)) unsubscribe();
   vi.useRealTimers(); vi.unstubAllGlobals();
+});
+
+const bundledMusic: CityAudioAssetConfig = { music: { variants: [{ path: 'audio/external-v080/bgm/lounge.m4a', loopStart: .1, loopEnd: 1.9 }] } };
+function assetSession(context = new Context()) {
+  vi.stubGlobal('document', { baseURI: 'https://example.test/-/?v=0.9.0' });
+  const fetchAsset = vi.fn(async () => ({ ok: true, arrayBuffer: async () => new ArrayBuffer(4) }));
+  vi.stubGlobal('fetch', fetchAsset);
+  const create = vi.fn(() => context.audioContext);
+  const audio = new CityAudioSession({ ...preferences }, create, bundledMusic);
+  sessions.push(audio);
+  return { audio, context, create, fetchAsset };
+}
+
+describe('optional local audio loading lifecycle', () => {
+  it('resumes in the gesture before fetching and confirms source readiness before playing', async () => {
+    const { audio, context, create, fetchAsset } = assetSession();
+    let complete!: (buffer: AudioBuffer) => void;
+    context.decodeAudioData.mockImplementation(() => new Promise(done => { complete = done; }));
+    audio.toggle();
+    expect(create).toHaveBeenCalledTimes(1);
+    expect(context.resume.mock.invocationCallOrder[0]).toBeLessThan(fetchAsset.mock.invocationCallOrder[0]);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current.playback).toBe('starting');
+    expect(context.sources).toHaveLength(0);
+    audio.playCue({ kind: 'button' });
+    expect(context.oscillators).toHaveLength(0);
+    complete({ duration: 2, length: 16_000, numberOfChannels: 2 } as AudioBuffer);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current.playback).toBe('playing');
+    expect(context.sources.filter(source => source.loop)).toHaveLength(2);
+    expect(context.oscillators).toHaveLength(0);
+  });
+
+  it('cancels pending decoding and never revives a retired context from the late result', async () => {
+    const { audio, context, fetchAsset } = assetSession();
+    let complete!: (buffer: AudioBuffer) => void;
+    context.decodeAudioData.mockImplementation(() => new Promise(done => { complete = done; }));
+    audio.toggle(); await vi.advanceTimersByTimeAsync(0);
+    const signal = (fetchAsset.mock.calls[0] as unknown as [URL, { signal: AbortSignal }])[1].signal;
+    audio.toggle();
+    expect(signal.aborted).toBe(true);
+    expect(context.close).toHaveBeenCalledTimes(1);
+    complete({ duration: 2, length: 16_000, numberOfChannels: 2 } as AudioBuffer);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current.playback).toBe('paused');
+    expect(context.sources).toHaveLength(0);
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('times out a loading start and retries only on a fresh explicit gesture', async () => {
+    const stalled = new Context(), next = new Context();
+    const { audio, create } = assetSession(stalled);
+    create.mockReturnValueOnce(stalled.audioContext).mockReturnValueOnce(next.audioContext);
+    let complete!: (buffer: AudioBuffer) => void;
+    stalled.decodeAudioData.mockImplementation(() => new Promise(done => { complete = done; }));
+    audio.toggle(); await vi.advanceTimersByTimeAsync(8_000);
+    expect(audio.current.playback).toBe('error');
+    expect(stalled.close).toHaveBeenCalledTimes(1);
+    audio.recover(); expect(create).toHaveBeenCalledTimes(1);
+    audio.toggle(); await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current.playback).toBe('playing');
+    expect(create).toHaveBeenCalledTimes(2);
+    complete({ duration: 2, length: 16_000, numberOfChannels: 2 } as AudioBuffer);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(stalled.sources).toHaveLength(0);
+    expect(audio.current.playback).toBe('playing');
+  });
+
+  it('reports failed decoding as a retry and reuses decoded loops through pause/visibility recovery', async () => {
+    const { audio, context, create, fetchAsset } = assetSession();
+    const replacement = new Context();
+    create.mockReturnValueOnce(context.audioContext).mockReturnValueOnce(replacement.audioContext);
+    context.decodeAudioData.mockRejectedValueOnce(new Error('Unsupported or corrupt file'));
+    audio.toggle(); await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current).toMatchObject({ playback: 'error', error: expect.stringContaining('音源') });
+    expect(context.sources).toHaveLength(0);
+    audio.toggle(); await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current.playback).toBe('playing');
+    const requests = fetchAsset.mock.calls.length;
+    const loops = replacement.sources.length;
+    audio.setVisible(false); await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current.playback).toBe('hidden');
+    audio.setVisible(true); await vi.advanceTimersByTimeAsync(0);
+    audio.toggle(); await vi.advanceTimersByTimeAsync(0);
+    audio.toggle(); await vi.advanceTimersByTimeAsync(0);
+    expect(audio.current.playback).toBe('playing');
+    expect(fetchAsset).toHaveBeenCalledTimes(requests);
+    expect(replacement.sources).toHaveLength(loops);
+    expect(create).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('opt-in result and button feedback', () => {
+  it('never starts audio for events and consumes silent/reduced-motion weekly reveals without replay', async () => {
+    const { audio, context, create } = session();
+    cueSubscriptions.push(subscribeCityAudioCues(cue => audio.playCue(cue)));
+    const silent = { kind: 'weekly' as const, reportKey: 'silent-company:1', netProfit: 123 };
+    emitCityAudioCue(silent); emitCityAudioCue({ kind: 'button' });
+    expect(create).not.toHaveBeenCalled();
+    audio.toggle(); await flush();
+    const before = context.oscillators.length;
+    emitCityAudioCue(silent);
+    emitCityAudioCue({ kind: 'weekly', reportKey: 'reduced-company:1', netProfit: 123, reducedMotion: true });
+    emitCityAudioCue({ kind: 'weekly', reportKey: 'reduced-company:1', netProfit: 123 });
+    expect(context.oscillators).toHaveLength(before);
+    emitCityAudioCue({ kind: 'weekly', reportKey: 'audible-company:1', netProfit: 123 });
+    const after = context.oscillators.length;
+    expect(after).toBeGreaterThan(before);
+    emitCityAudioCue({ kind: 'weekly', reportKey: 'audible-company:1', netProfit: 123 });
+    expect(context.oscillators).toHaveLength(after);
+  });
+
+  it('drops cues under mute, zero effects/master, hidden state and deliberate pause', async () => {
+    const { audio, context } = session();
+    audio.toggle(); await flush();
+    for (const prefs of [{ ...preferences, muted: true }, { ...preferences, ambience: 0 }, { ...preferences, volume: 0 }]) {
+      audio.setPreferences(prefs);
+      const before = context.oscillators.length;
+      audio.playCue({ kind: 'weekly', reportKey: 'gate:1', netProfit: 1 });
+      expect(context.oscillators).toHaveLength(before);
+    }
+    audio.setPreferences(preferences);
+    audio.setVisible(false); await flush();
+    const hidden = context.oscillators.length;
+    audio.playCue({ kind: 'button' }); expect(context.oscillators).toHaveLength(hidden);
+    audio.setVisible(true); await flush();
+    audio.playCue({ kind: 'button' });
+    const feedback = context.oscillators.at(-1)!;
+    audio.toggle(); await flush();
+    expect(feedback.stop).toHaveBeenCalledTimes(2);
+    expect(feedback.disconnect).toHaveBeenCalled();
+    const paused = context.oscillators.length;
+    audio.playCue({ kind: 'button' }); expect(context.oscillators).toHaveLength(paused);
+  });
+
+  it('uses restrained confirmation instead of a profit flourish for loss, zero and ended games', async () => {
+    const { audio, context } = session();
+    audio.toggle(); await flush();
+    for (const result of [{ netProfit: -1 }, { netProfit: 0 }, { netProfit: 1, gameOver: true }]) {
+      const before = context.oscillators.length;
+      audio.playCue({ kind: 'weekly', reportKey: 'outcome:1', ...result });
+      const added = context.oscillators.slice(before);
+      expect(added).toHaveLength(1);
+      expect(added[0].frequency.value).toBeLessThanOrEqual(440);
+      context.currentTime += .4;
+    }
+  });
+
+  it('discards feedback tails and their nodes on an OS interruption instead of replaying them on recovery', async () => {
+    const { audio, context } = session();
+    audio.toggle(); await flush();
+    audio.playCue({ kind: 'button' });
+    const voice = context.oscillators.at(-1)!;
+    const gain = context.gains.at(-1)!;
+    context.transition('interrupted');
+    expect(voice.stop).toHaveBeenCalledTimes(2);
+    expect(voice.disconnect).toHaveBeenCalledTimes(1);
+    expect(gain.disconnect).toHaveBeenCalledTimes(1);
+    expect(voice.onended).toBeNull();
+    const before = context.oscillators.length;
+    context.transition('suspended'); await flush();
+    expect(audio.current.playback).toBe('playing');
+    expect(context.oscillators).toHaveLength(before);
+  });
 });
 
 describe('gesture-started café audio session', () => {

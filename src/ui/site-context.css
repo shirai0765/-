@@ -1,10 +1,20 @@
-.site-context{min-width:0;margin:0 0 18px}
-.site-context h3{font-size:15px;margin:0 0 8px}
-.site-context .site-context-description{font-size:13px;line-height:1.7;margin:0 0 10px;color:var(--ink)}
-.site-context-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0}
-.site-context-facts>div{min-width:0;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--surface-soft)}
-.site-context-facts dt{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:5px}
-.site-context-facts dd{font-size:13px;font-weight:600;line-height:1.6;margin:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-.site-context-facts dd small{display:block;font-size:10px;font-weight:400;color:var(--muted);line-height:1.6}
-.site-context .site-context-note{font-size:11px;line-height:1.6;color:var(--muted);margin:8px 0 0}
-@media(max-width:360px){.site-context-facts{gap:6px}.site-context-facts>div{padding:8px}}
+.site-context { min-width: 0; margin: 0 0 18px; }
+.site-context h3 { font-family: var(--game-display, sans-serif); color: #1459ae; font-size: clamp(15px, 3.8vw, 19px); line-height: 1.6; margin: 0 0 10px; }
+.site-context .site-context-description { font-size: 13px; line-height: 1.8; margin: 0 0 10px; color: #264e79; }
+.site-context-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.site-context-facts > div { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 83px; padding: 10px; border: 2px solid #afd6ed; border-radius: 11px; background: linear-gradient(135deg, #fff, #eaf7ff); box-shadow: 0 3px 0 #d1e6f2; }
+.site-context-facts > div > .game-icon { flex-shrink: 0; }
+.site-context-facts > div > div { min-width: 0; }
+.site-context-facts dt { font-size: 11px; color: #42638a; font-weight: 750; line-height: 1.5; margin-bottom: 4px; }
+.site-context-facts dd { font-size: 15px; font-weight: 850; color: #19467f; line-height: 1.6; margin: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.site-context-facts dd small { display: block; font-size: 10px; font-weight: 500; color: #4c6989; line-height: 1.7; }
+.site-context-facts dd.site-context-amount { font-family: var(--game-numeric, sans-serif); font-style: italic; font-weight: 900; font-size: clamp(18px, 4.5vw, 23px); line-height: 1.4; }
+.site-context-facts dd.site-context-owned { color: #087951; font-size: 12px; }
+.site-context .site-context-note { font-size: 11px; line-height: 1.7; color: #49617e; margin: 10px 0 0; }
+@media (max-width: 390px) {
+  .site-context-facts { gap: 7px; }
+  .site-context-facts > div { padding: 8px; gap: 5px; }
+  .site-context-facts > div > .game-icon { width: 25px; height: 25px; }
+  .site-context-facts dt { font-size: 10px; }
+  .site-context-facts dd { font-size: 13px; }
+}

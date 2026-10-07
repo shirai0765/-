@@ -1,0 +1,212 @@
+{
+  "family": "Phosphor Icons",
+  "weight": "duotone",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2023 Phosphor Icons",
+  "sourceRepository": "https://github.com/phosphor-icons/core",
+  "sourceCommit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+  "licenseSource": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
+  "licenseSha256": "b5b1f1da112d18ea2147decfd48ddc1bf2b5aeb6c265381579340e95b15a2bb2",
+  "assets": [
+    {
+      "name": "wallet",
+      "upstreamName": "wallet",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/wallet-duotone.svg",
+      "file": "wallet.svg",
+      "bytes": 451,
+      "sha256": "b3a8bd8ee9727f61f660cbf35032772c7e8b20e7be0666d436908a1a949ecbd2"
+    },
+    {
+      "name": "trend-up",
+      "upstreamName": "trend-up",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/trend-up-duotone.svg",
+      "file": "trend-up.svg",
+      "bytes": 382,
+      "sha256": "6c5627f33e08fb1699cb37d25d3d9e606c12024d9c04d770e6c83ffbd30b61a8"
+    },
+    {
+      "name": "users",
+      "upstreamName": "users-three",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/users-three-duotone.svg",
+      "file": "users.svg",
+      "bytes": 809,
+      "sha256": "8df43f36d7329c365afa0672e2367af16a7bfc7d8820838dfe7358cce1a76aba"
+    },
+    {
+      "name": "shop",
+      "upstreamName": "storefront",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/storefront-duotone.svg",
+      "file": "shop.svg",
+      "bytes": 805,
+      "sha256": "9e755963f1672b9d45a199797cfb3479dd13517690b08f76bb013a08043cc2b3"
+    },
+    {
+      "name": "coffee",
+      "upstreamName": "coffee",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/coffee-duotone.svg",
+      "file": "coffee.svg",
+      "bytes": 660,
+      "sha256": "f8285e75660c4ed9830ed42416bf3a839cb52c30a3bf2f19ba303e9ed6fb05a1"
+    },
+    {
+      "name": "bank",
+      "upstreamName": "bank",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/bank-duotone.svg",
+      "file": "bank.svg",
+      "bytes": 417,
+      "sha256": "5dffd93d7fcc81e6faed6f69b327506418af5b39aa3c6baa59fbe5afe25804ff"
+    },
+    {
+      "name": "chart",
+      "upstreamName": "chart-bar",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/chart-bar-duotone.svg",
+      "file": "chart.svg",
+      "bytes": 327,
+      "sha256": "7c53ca5599782f50da2591abafd76d04d9fc9388877041911cb97ea585373d2f"
+    },
+    {
+      "name": "news",
+      "upstreamName": "newspaper",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/newspaper-duotone.svg",
+      "file": "news.svg",
+      "bytes": 508,
+      "sha256": "dfca2a911dee7a43b71df373f18799fddb2f143475b5ac15229bfd21786e97cb"
+    },
+    {
+      "name": "check",
+      "upstreamName": "check",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/check-duotone.svg",
+      "file": "check.svg",
+      "bytes": 334,
+      "sha256": "581385c1c40e6e618fe35f6ce2c39e81e0aab36a807ec64437424a5f56c8f240"
+    },
+    {
+      "name": "arrow-right",
+      "upstreamName": "arrow-right",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/arrow-right-duotone.svg",
+      "file": "arrow-right.svg",
+      "bytes": 291,
+      "sha256": "5a480091cae4701fba918894eaa657bcbb3c705d0cb7a0eee954506f09aec11c"
+    },
+    {
+      "name": "arrow-left",
+      "upstreamName": "arrow-left",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/arrow-left-duotone.svg",
+      "file": "arrow-left.svg",
+      "bytes": 285,
+      "sha256": "d9b9a505ce3f1240e989bac22aa2b4ba0458f580e2a5a8843c37de4a9cdc63a8"
+    },
+    {
+      "name": "pin",
+      "upstreamName": "map-pin",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/map-pin-duotone.svg",
+      "file": "pin.svg",
+      "bytes": 607,
+      "sha256": "c21ced095b724128b17c25ce60f40e32d98d14339038d818cf79140dc1e04349"
+    },
+    {
+      "name": "coins",
+      "upstreamName": "coins",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/coins-duotone.svg",
+      "file": "coins.svg",
+      "bytes": 1309,
+      "sha256": "23551f8da502c3290481cd0ae01c518628f2ca851689effacfa901e7c54aafad"
+    },
+    {
+      "name": "settings",
+      "upstreamName": "gear-six",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/gear-six-duotone.svg",
+      "file": "settings.svg",
+      "bytes": 1970,
+      "sha256": "049e51d9b794d6b2649073414f90daed5ebadbebfcefb178170aef21c7ace330"
+    },
+    {
+      "name": "building",
+      "upstreamName": "buildings",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/buildings-duotone.svg",
+      "file": "building.svg",
+      "bytes": 548,
+      "sha256": "d6843f7a68d132f539effacbfc5151d6a506ee983f1a409ad98a868d8be14713"
+    },
+    {
+      "name": "train",
+      "upstreamName": "train",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/train-duotone.svg",
+      "file": "train.svg",
+      "bytes": 555,
+      "sha256": "a29072c2bb72e15f7f05327e298cdedacddbcf7dc2b20d9ab11234deae4dd1fc"
+    },
+    {
+      "name": "briefcase",
+      "upstreamName": "briefcase",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/briefcase-duotone.svg",
+      "file": "briefcase.svg",
+      "bytes": 638,
+      "sha256": "6d64f87d3b91ce799edcfc5d7e3cf2d058234ac9f52a8f4883c7c29d6bc9069f"
+    },
+    {
+      "name": "close",
+      "upstreamName": "x",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/x-duotone.svg",
+      "file": "close.svg",
+      "bytes": 405,
+      "sha256": "2092e345cb389e4b3c9795d5aa467b7da4e230dd257ba40845a262c80d51f1ab"
+    },
+    {
+      "name": "search",
+      "upstreamName": "magnifying-glass",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/magnifying-glass-duotone.svg",
+      "file": "search.svg",
+      "bytes": 316,
+      "sha256": "7a840ea2341e75cf1d9187e07223be4501d6c6078a064a4097be07c1b3a52fb6"
+    },
+    {
+      "name": "warning",
+      "upstreamName": "warning",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/warning-duotone.svg",
+      "file": "warning.svg",
+      "bytes": 703,
+      "sha256": "5ae0c2cd3e764e0e82f03685657353b65499d6b231745af8516c140e8b1ba4af"
+    },
+    {
+      "name": "celebrate",
+      "upstreamName": "confetti",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/confetti-duotone.svg",
+      "file": "celebrate.svg",
+      "bytes": 930,
+      "sha256": "635f8554d2f230cc11459700d7a85b9437818dda1460d89743308e476c37bec9"
+    },
+    {
+      "name": "volume",
+      "upstreamName": "speaker-high",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/speaker-high-duotone.svg",
+      "file": "volume.svg",
+      "bytes": 584,
+      "sha256": "df9b42e5af71a3f87a7588397ba9ad73f70133cbc1352e3f916ac8c2f380207b"
+    },
+    {
+      "name": "play",
+      "upstreamName": "play",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/play-duotone.svg",
+      "file": "play.svg",
+      "bytes": 437,
+      "sha256": "8485ad1efd20878370885ccf7b825aae21a3b2fede35734484475672ac707c48"
+    },
+    {
+      "name": "pause",
+      "upstreamName": "pause",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/pause-duotone.svg",
+      "file": "pause.svg",
+      "bytes": 505,
+      "sha256": "d8cd1f4b61cc90a6f70bb87db2dc4bda686f8ef9f3c69722c3528860b5c43c1c"
+    },
+    {
+      "name": "lightning",
+      "upstreamName": "lightning",
+      "source": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/duotone/lightning-duotone.svg",
+      "file": "lightning.svg",
+      "bytes": 443,
+      "sha256": "aab43bf156d9047ff4002359cecedc867c8e3fecd9d1475635ea4e7b8416267c"
+    }
+  ]
+}

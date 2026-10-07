@@ -1,7 +1,9 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { Coffee, Music2, Pause, Play, SlidersHorizontal, Volume2, VolumeX } from 'lucide-react';
 import GameDialog from './GameDialog';
+import { GameIcon } from './GameIcon';
 import { CITY_AUDIO_STORAGE_KEY, CityAudioSession, readCityAudioPreferences } from '../audio/CityAudioSession';
+import { CITY_AUDIO_ASSETS } from '../audio/CityAudioAssets';
+import { subscribeCityAudioCues } from '../audio/CityAudioCues';
 import type { CityAudioPlayback, CityAudioPreferences, CityAudioSnapshot } from '../audio/CityAudioSession';
 import './city-audio-control.css';
 
@@ -44,9 +46,10 @@ export default function CityAudioControl({ className = '' }: { className?: strin
   }, [preferences]);
 
   useEffect(() => {
-    const active = new CityAudioSession(latestPreferences.current);
+    const active = new CityAudioSession(latestPreferences.current, undefined, CITY_AUDIO_ASSETS);
     session.current = active;
     active.subscribe(setSnapshot);
+    const unsubscribeCues = subscribeCityAudioCues(cue => active.playCue(cue));
     active.setVisible(!document.hidden);
     const visibility = () => active.setVisible(!document.hidden);
     const pagehide = () => active.setVisible(false);
@@ -57,6 +60,7 @@ export default function CityAudioControl({ className = '' }: { className?: strin
     window.addEventListener('pageshow', pageshow);
     window.addEventListener('focus', focus);
     return () => {
+      unsubscribeCues();
       document.removeEventListener('visibilitychange', visibility);
       window.removeEventListener('pagehide', pagehide);
       window.removeEventListener('pageshow', pageshow);
@@ -73,20 +77,20 @@ export default function CityAudioControl({ className = '' }: { className?: strin
   return <>
     <div className={`city-audio-hud ${className}`}>
       <button type="button" className={`hud-button city-audio-start ${snapshot.playback === 'playing' && !presentation.silent ? 'city-audio-on' : ''}`} onClick={toggle} aria-label={presentation.label} aria-pressed={presentation.active} aria-describedby={statusId} title={snapshot.error || presentation.status}>
-        {snapshot.playback === 'playing' ? presentation.silent ? <VolumeX size={18} aria-hidden="true"/> : <Volume2 size={18} aria-hidden="true"/> : <Coffee size={18} aria-hidden="true"/>}<span className="city-audio-label-wide">{presentation.text}</span><span className="city-audio-label-compact" aria-hidden="true">{compactText}</span>
+        <GameIcon name={snapshot.playback === 'playing' ? 'volume' : 'coffee'} size={20} tone={presentation.silent ? 'muted' : undefined}/><span className="city-audio-label-wide">{presentation.text}</span><span className="city-audio-label-compact" aria-hidden="true">{compactText}</span>
       </button>
-      <button type="button" className="hud-button city-audio-settings" onClick={() => setExpanded(true)} aria-label="街のBGMを設定" title="音量・BGM・店内音の設定" aria-haspopup="dialog"><SlidersHorizontal size={17} aria-hidden="true"/></button>
+      <button type="button" className="hud-button city-audio-settings" onClick={() => setExpanded(true)} aria-label="街のBGMを設定" title="音量・BGM・店内音の設定" aria-haspopup="dialog"><GameIcon name="settings" size={20}/></button>
       <span id={statusId} className="city-audio-hud-status" role="status">{presentation.status}</span>
     </div>
     {expanded && <GameDialog title="カフェの音とBGM" close={() => setExpanded(false)}><section className="city-audio-control" aria-label="カフェの音とBGM">
-      <div className="city-audio-title"><Coffee size={21} aria-hidden="true"/><div><strong>カップの音、コーヒー、静かな旋律</strong><small role="status">{presentation.status}</small></div></div>
+      <div className="city-audio-title"><GameIcon name="coffee" size={27} tone="gold"/><div><strong>カフェの音と、週のひと区切り</strong><small role="status">{presentation.status}</small></div></div>
       <div className="city-audio-actions">
-        <button type="button" className="secondary" onClick={toggle} aria-label={presentation.label}>{presentation.active ? <Pause size={16} aria-hidden="true"/> : <Play size={16} aria-hidden="true"/>} {snapshot.playback === 'starting' ? '開始をキャンセル' : presentation.active ? '一時停止' : snapshot.playback === 'interrupted' ? '音を再開' : snapshot.playback === 'error' ? '音を再試行' : '音を入れる'}</button>
-        <button type="button" className="secondary city-audio-mute" onClick={() => setPreferences(value => ({ ...value, muted: !value.muted }))} aria-label={preferences.muted ? 'BGMの消音を解除' : 'BGMを消音'} aria-pressed={preferences.muted}>{preferences.muted ? <VolumeX size={17} aria-hidden="true"/> : <Volume2 size={17} aria-hidden="true"/>}<span>{preferences.muted ? '消音を解除' : '消音'}</span></button>
+        <button type="button" className="secondary" onClick={toggle} aria-label={presentation.label}><GameIcon name={presentation.active ? 'pause' : 'play'} size={20}/> {snapshot.playback === 'starting' ? '開始をキャンセル' : presentation.active ? '一時停止' : snapshot.playback === 'interrupted' ? '音を再開' : snapshot.playback === 'error' ? '音を再試行' : '音を入れる'}</button>
+        <button type="button" className="secondary city-audio-mute" onClick={() => setPreferences(value => ({ ...value, muted: !value.muted }))} aria-label={preferences.muted ? '音の消音を解除' : '音を消音'} aria-pressed={preferences.muted}><GameIcon name="volume" size={20} tone={preferences.muted ? 'muted' : undefined}/><span>{preferences.muted ? '消音を解除' : '消音'}</span></button>
       </div>
       <div className="city-audio-master">{volume('volume', '音量')}</div>
-      <div className="city-audio-mix"><div><Music2 size={17} aria-hidden="true"/>{volume('music', 'BGM')}</div><div><Coffee size={17} aria-hidden="true"/>{volume('ambience', '店内音')}</div></div>
-      <p className="city-audio-note">BGMと店内音は個別に調整できます。音量0でその音を止めます。</p>
+      <div className="city-audio-mix"><div><GameIcon name="volume" size={21}/>{volume('music', 'BGM')}</div><div><GameIcon name="coffee" size={21}/>{volume('ambience', '店内音')}</div></div>
+      <p className="city-audio-note">BGMと店内音は個別に調整できます。効果音も店内音の設定に従います。</p>
       {snapshot.error && <p className="city-audio-error" role="status">{snapshot.error}</p>}
     </section></GameDialog>}
   </>;

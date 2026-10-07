@@ -1,75 +1,68 @@
-.campaign-completion-screen {
-  --completion-ink: #18352f;
-  --completion-green: #167563;
-  --completion-muted: #64776f;
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  max-width: none;
-  max-height: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  background: #fafbf7;
-  color: var(--completion-ink);
-}
-.campaign-completion-screen::backdrop { background: #fafbf7; }
+.campaign-completion-screen { --completion-ink: #082348; --completion-muted: #3c5370; --ink: #082348; --muted: #3c5370; --green: #087951; --red: #bb2f47; --game-green: #087951; --game-red: #bb2f47; color-scheme: light; position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: #06336d; color: var(--completion-ink); }
+.campaign-completion-screen::backdrop { background: #06336d; }
 .campaign-completion-screen[open] { display: block; }
-.campaign-completion-surface { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; background: #fafbf7; }
-.campaign-completion-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: calc(18px + env(safe-area-inset-top, 0px)) max(32px, env(safe-area-inset-right, 0px)) 18px max(32px, env(safe-area-inset-left, 0px)); border-bottom: 1px solid #dfe8de; }
-.campaign-completion-brand { display: flex; align-items: center; gap: 11px; }
-.campaign-completion-brand > span { display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid #b8d4c7; border-radius: 9px; font: 800 18px 'Manrope Variable', sans-serif; letter-spacing: -1.5px; color: var(--completion-green); }
-.campaign-completion-brand strong { font-size: 10px; letter-spacing: .04em; }
-.campaign-completion-brand small { display: block; font-size: 9px; font-weight: 500; margin-top: 3px; color: var(--completion-muted); }
-.campaign-completion-exit { display: grid; place-items: center; min-width: 44px; min-height: 44px; background: transparent; color: var(--completion-muted); }
+.campaign-completion-surface { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; background-color: #126fc0; background-image: linear-gradient(180deg, #0776a866, #043571e0), var(--game-city-art, none); background-size: cover; background-position: center; }
+.campaign-completion-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: calc(17px + env(safe-area-inset-top, 0px)) max(30px, env(safe-area-inset-right, 0px)) 17px max(30px, env(safe-area-inset-left, 0px)); background: #052758e8; border-bottom: 2px solid #56daff; }
+.campaign-completion-brand { display: flex; align-items: center; gap: 10px; color: #fff; }
+.campaign-completion-brand > .game-icon { color: #ffdd3e; }
+.campaign-completion-brand strong { font-family: var(--game-display, 'Noto Sans JP Variable', sans-serif); font-size: 17px; line-height: 1.4; text-shadow: 2px 2px #071d43; }
+.campaign-completion-brand small { display: block; font: 750 11px 'Noto Sans JP Variable', sans-serif; margin-top: 4px; color: #cff2ff; text-shadow: none; }
+.campaign-completion-exit { display: grid; place-items: center; min-width: 44px; min-height: 44px; border: 2px solid #9ce7ff; border-radius: 9px; background: linear-gradient(#174785, #071e47); box-shadow: 0 3px 0 #021631; color: #fff; }
 .campaign-completion-content { min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-.campaign-completion-inner { max-width: 880px; margin: 0 auto; padding: 35px 40px 28px; }
-.campaign-completion-kicker { display: flex; align-items: center; gap: 7px; margin: 0 0 18px; font-size: 12px; font-weight: 650; color: var(--completion-green); }
-.campaign-completion-inner h2 { margin: 0; font-size: clamp(29px, 4vw, 43px); font-weight: 700; line-height: 1.55; letter-spacing: -.035em; }
+.campaign-completion-inner { max-width: 940px; margin: 0 auto; padding: 30px 32px 28px; }
+.campaign-completion-kicker { display: inline-flex; align-items: center; gap: 7px; margin: 0 0 18px; padding: 8px 13px; border: 2px solid #9ae3ff; border-radius: 8px; background: #fff; box-shadow: 0 4px 0 #05316e; font-size: 14px; font-weight: 900; color: #125bdd; }
+.campaign-completion-inner h2 { margin: 0; color: #fff142; font-family: var(--game-display, 'Noto Sans JP Variable', sans-serif); font-size: clamp(28px, 4vw, 48px); font-style: italic; font-weight: 900; line-height: 1.55; letter-spacing: -.02em; -webkit-text-stroke: 1px #082348; paint-order: stroke fill; text-shadow: 3px 4px #082348, 5px 6px #2bd7ff; overflow-wrap: anywhere; }
 .campaign-completion-inner h2:focus { outline: none; }
-.campaign-completion-company { margin: 13px 0 0; font-size: 15px; font-weight: 650; overflow-wrap: anywhere; }
-.campaign-completion-milestones { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; margin: 28px 0; padding: 24px 0; border-block: 1px solid #d5e3d8; }
-.campaign-completion-milestones > div { min-width: 0; }
-.campaign-completion-milestones svg { color: var(--completion-green); vertical-align: baseline; }
-.campaign-completion-milestones strong { display: inline-block; margin-left: 12px; font: 650 43px 'Manrope Variable', 'Noto Sans JP Variable', sans-serif; letter-spacing: -.04em; }
-.campaign-completion-milestones strong span { font: 600 16px 'Noto Sans JP Variable', sans-serif; margin-left: 6px; letter-spacing: 0; }
-.campaign-completion-milestones p { margin: 9px 0 0; color: var(--completion-muted); font-size: 12px; line-height: 1.8; }
-.campaign-completion-check { display: inline-grid; place-items: center; width: 27px; height: 27px; border: 1px solid #b4d0bd; border-radius: 50%; }
-.campaign-completion-settlement h3 { margin: 0 0 13px; color: var(--completion-muted); font-size: 12px; font-weight: 550; }
-.campaign-completion-settlement dl { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 0; }
+.campaign-completion-company { display: inline-block; max-width: 100%; margin: 18px 0 0; padding: 9px 13px; border-radius: 8px; color: #fff; background: #062653ef; font-size: 17px; font-weight: 850; line-height: 1.6; overflow-wrap: anywhere; }
+.campaign-completion-milestones { display: grid; grid-template-columns: 1.2fr 1fr; gap: 17px; margin: 23px 0; }
+.campaign-completion-milestones > div { min-width: 0; padding: 21px; border: 3px solid #72e2ff; border-radius: 17px; background: linear-gradient(145deg, #075ba3, #061e49); box-shadow: 0 5px 0 #042556; color: #fff; }
+.campaign-completion-milestones .game-icon { color: #ffdf3d; vertical-align: baseline; }
+.campaign-completion-milestones strong { display: inline-block; margin-left: 12px; font: italic 800 76px var(--game-numeric, 'Manrope Variable', 'Noto Sans JP Variable', sans-serif); line-height: 1.1; color: #ffe03d; text-shadow: 2px 3px #805107, 4px 4px #021639; }
+.campaign-completion-milestones strong span { font: 850 17px 'Noto Sans JP Variable', sans-serif; margin-left: 7px; color: #fff; text-shadow: 1px 2px #021639; }
+.campaign-completion-milestones p { margin: 12px 0 0; color: #deefff; font-size: 13px; font-weight: 650; line-height: 1.8; }
+.campaign-completion-check { display: inline-grid; place-items: center; }
+.campaign-completion-settlement { padding: 19px 22px; border: 2px solid #d1efff; border-radius: 14px; background: #fff; box-shadow: 0 4px 0 #052a60; }
+.campaign-completion-settlement h3 { margin: 0 0 14px; color: #244d7b; font-size: 14px; font-weight: 850; }
+.campaign-completion-settlement dl { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 0; }
 .campaign-completion-settlement dl > div { min-width: 0; }
-.campaign-completion-settlement dt { font-size: 11px; color: var(--completion-muted); }
-.campaign-completion-settlement dd { margin: 7px 0 0; font: 650 clamp(21px, 3vw, 30px) 'Manrope Variable', 'Noto Sans JP Variable', sans-serif; letter-spacing: -.035em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.campaign-completion-footprint { display: flex; align-items: center; gap: 6px; color: var(--completion-muted); font-size: 11px; margin: 23px 0 0; line-height: 1.7; }
-.campaign-completion-footprint svg { flex-shrink: 0; }
-.campaign-completion-note { color: var(--completion-muted); font-size: 11px; line-height: 1.9; margin: 10px 0 0; }
-.campaign-completion-footer { border-top: 1px solid #dfe8de; padding: 18px max(32px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(32px, env(safe-area-inset-left, 0px)); background: #fafbf7; }
-.campaign-completion-footer > div { display: flex; align-items: center; justify-content: flex-end; gap: 26px; max-width: 800px; margin: 0 auto; }
-.campaign-completion-review { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 8px 0; font-size: 12px; color: var(--completion-muted); background: transparent; }
-.campaign-completion-screen .campaign-completion-continue { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 48px; padding: 12px 18px; background: var(--completion-green); color: #fff; border-radius: 8px; font-size: 12px; font-weight: 650; }
-.campaign-completion-screen button:focus-visible { outline: 2px solid var(--completion-green); outline-offset: 4px; }
+.campaign-completion-settlement dt { font-size: 12px; font-weight: 750; color: #3c5370; }
+.campaign-completion-settlement dd { margin: 7px 0 0; color: #082348; font: italic 800 clamp(27px, 3.7vw, 39px) var(--game-numeric, 'Manrope Variable', 'Noto Sans JP Variable', sans-serif); line-height: 1.2; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.campaign-completion-settlement dl > div:first-child dd { color: #087951; }
+.campaign-completion-footprint { display: flex; align-items: center; gap: 7px; color: #fff; font-size: 13px; font-weight: 750; margin: 21px 0 0; line-height: 1.8; }
+.campaign-completion-footprint .game-icon { flex-shrink: 0; color: #ffdc39; }
+.campaign-completion-note { color: #e4f4ff; font-size: 12px; line-height: 1.9; margin: 10px 0 0; padding: 11px 13px; border-radius: 8px; background: #082c65d9; }
+.campaign-completion-footer { border-top: 2px solid #43caf2; padding: 16px max(30px, env(safe-area-inset-right, 0px)) calc(19px + env(safe-area-inset-bottom, 0px)) max(30px, env(safe-area-inset-left, 0px)); background: #04234ff2; }
+.campaign-completion-footer > div { display: flex; align-items: center; justify-content: flex-end; gap: 22px; max-width: 876px; margin: 0 auto; }
+.campaign-completion-review { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 8px 0; font-size: 13px; font-weight: 750; color: #dbf4ff; background: transparent; }
+.campaign-completion-screen .campaign-completion-continue { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 59px; padding: 12px 17px; border: 3px solid #082348; border-radius: 10px; background: linear-gradient(172deg, #fff463, #ffe226 42%, #ffb522); color: #082348; box-shadow: 0 0 0 2px #7de5ff, 0 6px 0 #031833, inset 0 2px 0 #fff7c0, inset 0 -4px 0 #dc780f; font-family: var(--game-display, 'Noto Sans JP Variable', sans-serif); font-size: 15px; font-weight: 900; text-align: left; white-space: normal; }
+.campaign-completion-continue > span:not(.game-icon) { min-width: 0; flex: 1; overflow-wrap: anywhere; }
+.campaign-completion-screen button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; box-shadow: 0 0 0 6px #082348; }
 @media (max-width: 620px) {
-  .campaign-completion-header { padding: calc(10px + env(safe-area-inset-top, 0px)) max(22px, env(safe-area-inset-right, 0px)) 10px max(22px, env(safe-area-inset-left, 0px)); }
-  .campaign-completion-inner { padding: 22px 24px 20px; }
-  .campaign-completion-kicker { font-size: 11px; margin-bottom: 12px; }
-  .campaign-completion-inner h2 { font-size: 28px; line-height: 1.5; }
-  .campaign-completion-company { margin-top: 10px; font-size: 13px; }
-  .campaign-completion-milestones { grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0; padding: 17px 0; }
-  .campaign-completion-milestones > div > svg, .campaign-completion-check { display: none; }
-  .campaign-completion-milestones strong { margin: 0; font-size: 36px; }
-  .campaign-completion-milestones strong span { font-size: 12px; margin-left: 4px; }
-  .campaign-completion-milestones p { font-size: 10px; line-height: 1.8; margin-top: 6px; }
-  .campaign-completion-settlement h3 { font-size: 11px; margin-bottom: 12px; }
-  .campaign-completion-settlement dl { gap: 14px; }
-  .campaign-completion-settlement dt { font-size: 10px; }
-  .campaign-completion-settlement dd { font-size: clamp(15px, 4.5vw, 20px); margin-top: 6px; }
-  .campaign-completion-footprint { font-size: 10px; margin-top: 17px; }
-  .campaign-completion-note { font-size: 10px; line-height: 1.8; margin-top: 9px; }
-  .campaign-completion-footer { padding: 12px max(24px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)) max(24px, env(safe-area-inset-left, 0px)); }
-  .campaign-completion-footer > div { flex-direction: column; align-items: stretch; gap: 6px; }
-  .campaign-completion-review { justify-content: center; font-size: 11px; }
-  .campaign-completion-screen .campaign-completion-continue { width: 100%; min-height: 46px; }
+  .campaign-completion-header { gap: 9px; padding: calc(10px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px)); }
+  .campaign-completion-brand { gap: 6px; }
+  .campaign-completion-brand > .game-icon { width: 25px; height: 25px; }
+  .campaign-completion-brand strong { font-size: 14px; }
+  .campaign-completion-brand small { font-size: 10px; }
+  .campaign-completion-inner { padding: 22px 16px 23px; }
+  .campaign-completion-kicker { font-size: 12px; margin-bottom: 16px; }
+  .campaign-completion-inner h2 { font-size: clamp(23px, 6.8vw, 29px); }
+  .campaign-completion-company { font-size: 14px; margin-top: 15px; }
+  .campaign-completion-milestones { grid-template-columns: 1fr 1fr; gap: 9px; margin: 20px 0; }
+  .campaign-completion-milestones > div { padding: 14px 10px; }
+  .campaign-completion-milestones > div > .game-icon, .campaign-completion-check { display: none; }
+  .campaign-completion-milestones strong { margin: 0; font-size: 52px; }
+  .campaign-completion-milestones strong span { display: block; font-size: 13px; margin: 6px 0 0; }
+  .campaign-completion-milestones p { font-size: 11px; line-height: 1.8; margin-top: 9px; }
+  .campaign-completion-settlement { padding: 16px 14px; }
+  .campaign-completion-settlement dl { grid-template-columns: 1fr; gap: 13px; }
+  .campaign-completion-settlement h3 { font-size: 13px; }
+  .campaign-completion-settlement dt { font-size: 11px; }
+  .campaign-completion-settlement dd { font-size: 30px; margin-top: 4px; }
+  .campaign-completion-footprint { font-size: 11px; margin-top: 17px; }
+  .campaign-completion-note { font-size: 11px; }
+  .campaign-completion-footer { padding: 12px max(18px, env(safe-area-inset-right, 0px)) calc(17px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px)); }
+  .campaign-completion-footer > div { flex-direction: column; align-items: stretch; gap: 8px; }
+  .campaign-completion-review { justify-content: center; font-size: 12px; }
+  .campaign-completion-screen .campaign-completion-continue { width: 100%; min-height: 59px; padding: 11px 12px; font-size: 14px; }
 }
+@media (prefers-reduced-motion: reduce) { .campaign-completion-screen button { transition: none; } }

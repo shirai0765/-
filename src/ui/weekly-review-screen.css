@@ -1,141 +1,89 @@
 .weekly-review-screen {
-  --review-ink: #183038;
-  --review-muted: #607078;
-  --review-blue: #255ee7;
-  --review-line: #e3eaed;
-  --surface: #fff;
-  --surface-soft: #f5f8fa;
-  --ink: var(--review-ink);
-  --muted: var(--review-muted);
-  --line: var(--review-line);
-  --accent: var(--review-blue);
-  --accent-soft: #eef4ff;
-  --accent-ink: #fff;
-  --green: #16806a;
-  --red: #bf4351;
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  max-width: none;
-  max-height: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: #fff;
-  color: var(--review-ink);
-  overflow: hidden;
+  --review-ink: #082348; --review-muted: #3c5370; --review-blue: #125bdd; --review-line: #a9d6ef;
+  --surface: #fff; --surface-soft: #eef7ff; --ink: var(--review-ink); --muted: var(--review-muted); --line: var(--review-line); --accent: var(--review-blue); --accent-soft: #e1f2ff; --green: #087951; --red: #bb2f47; --game-green: #087951; --game-red: #bb2f47; color-scheme: light;
+  position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #06336d; color: var(--review-ink); overflow: hidden;
 }
-.weekly-review-screen::backdrop { background: #fff; }
+.weekly-review-screen::backdrop { background: #06336d; }
 .weekly-review-screen[open] { display: block; }
-.weekly-review-surface { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; background: #fff; }
-.weekly-review-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: calc(23px + env(safe-area-inset-top, 0px)) max(32px, env(safe-area-inset-right, 0px)) 23px max(32px, env(safe-area-inset-left, 0px)); border-bottom: 1px solid var(--review-line); }
-.weekly-review-brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
-.weekly-review-brand > span { display: grid; place-items: center; width: 34px; height: 34px; font: 800 18px 'Manrope Variable', sans-serif; letter-spacing: -1.5px; color: var(--review-blue); border: 1px solid #dce7fc; border-radius: 9px; }
-.weekly-review-brand strong { display: block; font-size: 10px; font-weight: 750; letter-spacing: .055em; }
-.weekly-review-brand small { display: block; margin-top: 2px; font-size: 8px; letter-spacing: .11em; color: var(--review-muted); }
-.weekly-review-exit { display: flex; align-items: center; gap: 11px; min-height: 44px; background: transparent; padding: 8px 0 8px 12px; font-size: 12px; font-weight: 600; color: var(--review-muted); white-space: nowrap; }
+.weekly-review-surface { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; isolation: isolate; background-color: #126fc0; background-image: linear-gradient(180deg, #0356971f 0%, #07367365 42%, #052e74e6 100%), var(--game-city-art, none); background-size: cover; background-position: center 30%; }
+.weekly-review-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: calc(18px + env(safe-area-inset-top, 0px)) max(30px, env(safe-area-inset-right, 0px)) 18px max(30px, env(safe-area-inset-left, 0px)); background: linear-gradient(180deg, #062652f2, #073872b8); border-bottom: 2px solid #4edcff; }
+.weekly-review-brand { display: flex; align-items: center; gap: 9px; min-width: 0; color: #fff; }
+.weekly-review-brand > .game-icon { color: #ffe44c; }
+.weekly-review-brand strong { display: block; font-family: var(--game-display, 'Noto Sans JP Variable', sans-serif); font-size: clamp(16px, 2.5vw, 24px); line-height: 1.25; letter-spacing: -.025em; text-shadow: 2px 3px #061b3c; }
+.weekly-review-brand small { display: block; margin-top: 4px; color: #c5edff; font-size: 11px; font-weight: 750; }
+.weekly-review-exit { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; flex-shrink: 0; background: linear-gradient(#174785, #071e47); border: 2px solid #97eaff; border-radius: 10px; box-shadow: 0 3px 0 #03152f, inset 0 0 0 2px #1660a7; padding: 9px 14px; font-size: 13px; font-weight: 900; color: #fff; white-space: nowrap; }
 .weekly-review-content { min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-.weekly-review-content-inner { width: min(960px, 100%); margin: 0 auto; padding: 28px 40px 30px; }
-.weekly-review-steps { display: flex; align-items: center; gap: 26px; margin: 0 0 36px; padding: 0; list-style: none; }
-.weekly-review-steps li { display: flex; align-items: center; gap: 7px; color: #849198; font-size: 10px; font-weight: 550; }
-.weekly-review-steps li > span { display: grid; place-items: center; width: 21px; height: 21px; background: #f2f5f7; border-radius: 50%; font: 600 9px 'Manrope Variable', sans-serif; }
-.weekly-review-steps li.current { color: var(--review-blue); font-weight: 650; }
-.weekly-review-steps li.current > span { color: #fff; background: var(--review-blue); }
-.weekly-review-steps li.complete > span { color: var(--review-blue); background: #edf3ff; }
-.weekly-review-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 29px; border-bottom: 2px solid var(--review-ink); }
-.weekly-review-kicker { color: var(--review-muted); font-size: 11px; font-weight: 550; letter-spacing: .03em; margin: 0 0 9px; line-height: 1.6; }
-.weekly-review-heading h2 { font-size: clamp(25px, 3.5vw, 34px); font-weight: 700; line-height: 1.45; letter-spacing: -.035em; margin: 0; }
+.weekly-review-content-inner { width: min(960px, 100%); margin: 0 auto; padding: 30px 32px 28px; }
+.weekly-review-steps { display: flex; align-items: stretch; gap: 5px; margin: 0 0 24px; padding: 0; list-style: none; }
+.weekly-review-steps li { display: flex; align-items: center; gap: 9px; padding: 10px 18px; color: #455775; background: #fffffff2; border: 2px solid #d2efff; border-radius: 10px 20px 20px 10px; font-size: 13px; font-weight: 850; box-shadow: 0 3px 0 #06285f; }
+.weekly-review-steps li > span { display: grid; place-items: center; width: 27px; height: 27px; flex-shrink: 0; background: #e1edff; border-radius: 50%; font: 800 17px var(--game-numeric, 'Manrope Variable', sans-serif); }
+.weekly-review-steps li.current { color: #fff; background: linear-gradient(135deg, #1c8eff, #173cec); border-color: #55ddff; }
+.weekly-review-steps li.current > span { background: #2f6ef9; border: 1px solid #b3e7ff; }
+.weekly-review-steps li.complete > span { color: #1262d7; }
+.weekly-review-heading { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-bottom: 25px; }
+.weekly-review-heading > div:first-child { min-width: 0; }
+.weekly-review-heading h2 { margin: 0; color: #fff239; font-family: var(--game-display, 'Noto Sans JP Variable', sans-serif); font-size: clamp(32px, 4.2vw, 55px); font-weight: 900; font-style: italic; line-height: 1.4; letter-spacing: -.025em; -webkit-text-stroke: 1px #082348; paint-order: stroke fill; text-shadow: 3px 4px 0 #082348, -2px -1px 0 #082348, 5px 6px 0 #2bd7ff; overflow-wrap: anywhere; }
 .weekly-review-heading h2:focus { outline: none; }
-.weekly-review-week-transition { display: flex; align-items: center; gap: 16px; flex-shrink: 0; padding: 3px 0; }
-.weekly-review-week-transition > div { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-.weekly-review-week-transition small { font-size: 9px; color: var(--review-muted); }
-.weekly-review-week-transition strong { font: 650 32px 'Manrope Variable', 'Noto Sans JP Variable', sans-serif; letter-spacing: -.04em; line-height: 1.3; white-space: nowrap; }
-.weekly-review-week-transition strong span { font: 500 11px 'Noto Sans JP Variable', sans-serif; letter-spacing: 0; margin: 0 3px; }
-.weekly-review-week-transition > svg { color: #a1afb6; }
-.weekly-review-next-week strong { color: var(--review-blue); }
-.weekly-review-week-transition strong.weekly-review-end-label { font: 600 14px 'Noto Sans JP Variable', sans-serif; letter-spacing: 0; color: var(--red); }
-.weekly-review-summary .weekly-results-company { display: grid; grid-template-columns: 1.12fr 1fr; column-gap: 52px; padding: 38px 0 0; }
-.weekly-review-summary .weekly-results-profit { align-items: flex-start; justify-content: center; text-align: left; gap: 11px; padding: 0; min-width: 0; grid-row: span 2; }
-.weekly-review-summary .weekly-results-profit > span { color: var(--review-muted); font-size: 12px; }
-.weekly-review-summary .weekly-results-profit > strong { color: var(--review-ink); font-family: 'Manrope Variable', 'Noto Sans JP Variable', sans-serif; font-size: clamp(38px, 5vw, 61px); font-weight: 650; line-height: 1.18; letter-spacing: -.045em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.weekly-review-summary .weekly-results-profit > small { color: var(--review-muted); font-size: 11px; line-height: 1.7; }
-.weekly-review-summary .weekly-results-cash { display: grid; grid-template-columns: 1fr; gap: 17px; margin: 0; padding: 19px 24px; border: 1px solid var(--review-line); border-radius: 9px; background: #f7f9fb; }
-.weekly-review-summary .weekly-results-cash dt { font-size: 10px; color: var(--review-muted); line-height: 1.7; }
-.weekly-review-summary .weekly-results-cash dd { margin: 4px 0 0; font: 650 23px 'Manrope Variable', 'Noto Sans JP Variable', sans-serif; letter-spacing: -.025em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.weekly-review-summary .weekly-results-customers { color: var(--review-muted); margin: 14px 0 0; font-size: 11px; text-align: left; }
-.weekly-review-summary .weekly-results-customers strong { color: var(--review-ink); }
-.weekly-review-detail-link { display: flex; align-items: center; gap: 9px; min-height: 44px; padding: 10px 0; margin-top: 28px; background: transparent; color: var(--review-muted); font-size: 11px; }
-.weekly-review-footer { padding: 21px max(32px, env(safe-area-inset-right, 0px)) calc(21px + env(safe-area-inset-bottom, 0px)) max(32px, env(safe-area-inset-left, 0px)); border-top: 1px solid var(--review-line); background: #fff; }
-.weekly-review-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 880px; margin: 0 auto; }
-.weekly-review-saved { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--review-muted); line-height: 1.6; margin: 0; }
-.weekly-review-saved svg { color: #16806a; }
-.weekly-review-footer-actions { display: flex; align-items: center; gap: 22px; }
-.weekly-review-screen .weekly-review-primary { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 48px; min-width: 250px; max-width: 100%; padding: 12px 18px; background: var(--review-blue); color: #fff; border-radius: 8px; font-size: 12px; font-weight: 650; white-space: normal; text-align: left; }
-.weekly-review-back { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 8px 0; color: var(--review-muted); font-size: 11px; background: transparent; white-space: nowrap; }
-.weekly-review-screen button:focus-visible, .weekly-review-screen summary:focus-visible { outline: 2px solid var(--review-blue); outline-offset: 4px; }
-.weekly-review-news, .weekly-review-records { padding-top: 24px; }
-.weekly-review-opportunity { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0 0; margin-top: 24px; border-top: 1px solid var(--review-line); }
-.weekly-review-opportunity > div { min-width: 0; }
-.weekly-review-opportunity span { color: var(--review-muted); font-size: 10px; }
-.weekly-review-opportunity h3 { margin: 6px 0; font-size: 16px; }
-.weekly-review-opportunity p { margin: 0; font-size: 11px; line-height: 1.8; color: var(--review-muted); }
-.weekly-review-opportunity button { display: flex; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0; min-height: 44px; font-size: 11px; }
-.weekly-review-records .weekly-results { padding-bottom: 8px; }
+.weekly-review-kicker { display: inline-block; padding: 5px 9px; background: #082348; color: #87e8ff; font-size: 11px; font-weight: 850; letter-spacing: .035em; margin: 0 0 9px; line-height: 1.6; }
+.weekly-review-week-transition { display: flex; align-items: center; gap: 13px; flex-shrink: 0; padding: 10px 17px; border: 2px solid #72dbff; border-radius: 12px; background: #fff; box-shadow: 0 4px 0 #073169; }
+.weekly-review-week-transition > div { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.weekly-review-week-transition small { font-size: 11px; font-weight: 750; color: #294c73; }
+.weekly-review-week-transition strong { font: italic 800 37px var(--game-numeric, 'Manrope Variable', 'Noto Sans JP Variable', sans-serif); line-height: 1.1; white-space: nowrap; }
+.weekly-review-week-transition strong span { font: 800 12px 'Noto Sans JP Variable', sans-serif; margin: 0 3px; }
+.weekly-review-next-week strong { color: #0675e6; }
+.weekly-review-week-transition strong.weekly-review-end-label { font: 900 16px 'Noto Sans JP Variable', sans-serif; color: var(--red); }
+.weekly-review-summary .weekly-results-company { padding: 0; }
+.weekly-review-detail-link { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 13px 18px; margin-top: 12px; border: 2px solid #caeaff; border-radius: 12px; background: linear-gradient(#fff, #eff7ff); box-shadow: 0 4px 0 #073169; color: #082348; text-align: left; font-size: 14px; font-weight: 900; }
+.weekly-review-detail-link > span:not(.game-icon) { flex: 1; }
+.weekly-review-detail-link > .game-icon:first-child { color: #1265dc; }
+.weekly-review-footer { padding: 12px max(30px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(30px, env(safe-area-inset-left, 0px)); background: linear-gradient(180deg, #042554ec, #031b43); border-top: 2px solid #33c5f1; }
+.weekly-review-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 22px; max-width: 896px; margin: 0 auto; }
+.weekly-review-saved { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 750; color: #d9f4ff; line-height: 1.6; margin: 0; }
+.weekly-review-saved > .game-icon { color: #6decc1; }
+.weekly-review-footer-actions { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.weekly-review-screen .weekly-review-primary { display: flex; align-items: center; justify-content: space-between; gap: 13px; min-height: 58px; min-width: 280px; max-width: 100%; padding: 12px 17px; border: 3px solid #082348; border-radius: 10px; background: linear-gradient(172deg, #fff463 0%, #ffe226 42%, #ffb522 100%); color: #082348; box-shadow: 0 0 0 2px #7de5ff, 0 6px 0 #052257, inset 0 2px 0 #fff7c0, inset 0 -4px 0 #dc780f; font-family: var(--game-display, 'Noto Sans JP Variable', sans-serif); font-size: 15px; font-weight: 900; white-space: normal; text-align: left; }
+.weekly-review-primary > span:not(.game-icon) { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.weekly-review-back { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 8px 0; color: #d2ecff; font-size: 13px; font-weight: 750; background: transparent; white-space: nowrap; }
+.weekly-review-screen button:focus-visible, .weekly-review-screen summary:focus-visible { outline: 3px solid #fff; outline-offset: 4px; box-shadow: 0 0 0 6px #082348; }
+.weekly-review-news, .weekly-review-records { min-width: 0; }
+.weekly-review-records { padding: 18px; border: 2px solid #73d7ff; border-radius: 16px; background: #f6fbff; box-shadow: 0 5px 0 #072b67; }
 .weekly-review-records .weekly-results > details:first-child { border-top: 0; padding-top: 0; }
-.weekly-review-notice { display: flex; align-items: flex-start; gap: 14px; justify-content: space-between; background: #f3f6fb; color: var(--review-ink); border: 1px solid var(--review-line); border-radius: 7px; padding: 11px 14px; margin-top: 18px; font-size: 11px; line-height: 1.7; overflow-wrap: anywhere; }
-.weekly-review-notice-close { display: grid; place-items: center; flex-shrink: 0; background: transparent; color: var(--review-muted); padding: 2px; min-height: 24px; min-width: 24px; }
-.weekly-review-ended { background: #fff1f1; color: #a23543; border-left: 2px solid #bf4351; padding: 11px 14px; margin: 18px 0 0; font-size: 12px; }
-@media (min-width: 1000px) and (min-height: 850px) {
-  .weekly-review-content-inner { padding-top: 48px; }
-  .weekly-review-steps { margin-bottom: 47px; }
-  .weekly-review-summary .weekly-results-company { padding-top: 49px; }
-}
+.weekly-review-opportunity { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 19px; margin-top: 17px; border: 2px solid #ffe339; border-radius: 13px; background: #fff8d8; box-shadow: 0 4px 0 #082c68; }
+.weekly-review-opportunity > div { min-width: 0; }
+.weekly-review-opportunity span { font-size: 11px; font-weight: 800; color: #715518; }
+.weekly-review-opportunity h3 { margin: 6px 0; font-size: 18px; font-weight: 900; }
+.weekly-review-opportunity p { margin: 0; font-size: 13px; line-height: 1.8; color: #344f6b; }
+.weekly-review-opportunity button { display: flex; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0; min-height: 46px; border: 2px solid #125bdd; background: #fff; font-size: 13px; font-weight: 850; }
+.weekly-review-notice { display: flex; align-items: flex-start; gap: 14px; justify-content: space-between; background: #fff3cc; color: #452c13; border: 2px solid #ffd14a; border-radius: 10px; padding: 12px 14px; margin: 0 0 17px; font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+.weekly-review-notice-close { display: grid; place-items: center; flex-shrink: 0; background: transparent; color: #452c13; padding: 0; min-height: 44px; min-width: 44px; }
+.weekly-review-ended { background: #fff1f1; color: #861d35; border: 2px solid #c63351; border-radius: 10px; padding: 13px 15px; margin: 0 0 17px; font-size: 14px; font-weight: 800; }
 @media (max-width: 620px) {
-  .weekly-review-header { gap: 12px; padding: calc(10px + env(safe-area-inset-top, 0px)) max(22px, env(safe-area-inset-right, 0px)) 10px max(22px, env(safe-area-inset-left, 0px)); }
-  .weekly-review-brand { gap: 8px; }
-  .weekly-review-brand > span { width: 31px; height: 31px; font-size: 17px; }
-  .weekly-review-brand strong { font-size: 8px; }
-  .weekly-review-brand small { font-size: 7px; }
-  .weekly-review-exit { gap: 8px; font-size: 12px; min-height: 44px; }
-  .weekly-review-content-inner { padding: 16px 24px 12px; }
-  .weekly-review-steps { gap: 21px; margin-bottom: 14px; }
-  .weekly-review-steps li { font-size: 10px; }
-  .weekly-review-heading { flex-direction: column; align-items: stretch; gap: 14px; padding-bottom: 18px; }
-  .weekly-review-kicker { font-size: 10px; margin-bottom: 6px; }
-  .weekly-review-heading h2 { font-size: 25px; }
-  .weekly-review-week-transition { justify-content: flex-start; gap: 15px; }
-  .weekly-review-week-transition > div { flex-direction: row; align-items: center; gap: 5px; }
+  .weekly-review-header { gap: 10px; padding: calc(10px + env(safe-area-inset-top, 0px)) max(15px, env(safe-area-inset-right, 0px)) 12px max(15px, env(safe-area-inset-left, 0px)); }
+  .weekly-review-brand { gap: 5px; }
+  .weekly-review-brand > .game-icon { display: none; }
+  .weekly-review-brand strong { font-size: 14px; }
+  .weekly-review-brand small { font-size: 10px; }
+  .weekly-review-exit { gap: 5px; padding: 8px 10px; font-size: 12px; }
+  .weekly-review-content-inner { padding: 17px 16px 20px; }
+  .weekly-review-steps { gap: 4px; margin-bottom: 18px; }
+  .weekly-review-steps li { gap: 6px; padding: 8px 9px; font-size: 12px; }
+  .weekly-review-steps li > span { width: 24px; height: 24px; font-size: 15px; }
+  .weekly-review-heading { flex-direction: column; align-items: stretch; gap: 17px; margin-bottom: 18px; }
+  .weekly-review-heading h2 { font-size: clamp(28px, 7.7vw, 37px); line-height: 1.4; text-shadow: 2px 3px 0 #082348, -1px -1px 0 #082348, 4px 5px 0 #2bd7ff; }
+  .weekly-review-week-transition { justify-content: space-between; gap: 8px; padding: 8px 12px; }
+  .weekly-review-week-transition > div { flex-direction: row; gap: 6px; }
   .weekly-review-week-transition strong { font-size: 28px; }
   .weekly-review-week-transition small { font-size: 10px; }
-  .weekly-review-summary .weekly-results-company { display: block; padding-top: 20px; }
-  .weekly-review-summary .weekly-results-profit { gap: 9px; padding: 0 0 18px; }
-  .weekly-review-summary .weekly-results-profit > span { font-size: 12px; }
-  .weekly-review-summary .weekly-results-profit > strong { font-size: clamp(35px, 11.8vw, 54px); line-height: 1.16; }
-  .weekly-review-summary .weekly-results-profit > small { font-size: 11px; }
-  .weekly-review-summary .weekly-results-cash { grid-template-columns: 1fr 1fr; padding: 14px 15px; gap: 11px; border-radius: 8px; }
-  .weekly-review-summary .weekly-results-cash dt { font-size: 11px; }
-  .weekly-review-summary .weekly-results-cash dd { font-size: clamp(14px, 4.35vw, 20px); margin-top: 6px; }
-  .weekly-review-summary .weekly-results-customers { margin-top: 13px; font-size: 12px; }
-  .weekly-review-detail-link { margin-top: 6px; font-size: 12px; }
-  .weekly-review-footer { padding: 12px max(24px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)) max(24px, env(safe-area-inset-left, 0px)); }
-  .weekly-review-footer-inner { flex-direction: column; align-items: stretch; gap: 7px; }
-  .weekly-review-saved { justify-content: center; font-size: 10px; }
-  .weekly-review-footer-actions { display: grid; grid-template-columns: 1fr; gap: 5px; }
-  .weekly-review-screen .weekly-review-primary { width: 100%; min-width: 0; min-height: 46px; font-size: 12px; padding: 12px 16px; }
-  .weekly-review-back { grid-row: 2; min-height: 44px; font-size: 11px; }
-  .weekly-review-news, .weekly-review-records { padding-top: 20px; }
-  .weekly-review-opportunity { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 20px; padding-top: 18px; }
-  .weekly-review-opportunity button { align-self: flex-start; }
+  .weekly-review-detail-link { padding: 12px; gap: 8px; font-size: 13px; }
+  .weekly-review-footer { padding: 9px max(17px, env(safe-area-inset-right, 0px)) calc(15px + env(safe-area-inset-bottom, 0px)) max(17px, env(safe-area-inset-left, 0px)); }
+  .weekly-review-footer-inner { flex-direction: column; align-items: stretch; gap: 8px; }
+  .weekly-review-saved { justify-content: center; font-size: 11px; }
+  .weekly-review-footer-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .weekly-review-screen .weekly-review-primary { width: 100%; min-width: 0; min-height: 58px; font-size: 14px; padding: 11px 12px; gap: 9px; }
+  .weekly-review-primary > .game-icon:first-child { width: 25px; height: 25px; }
+  .weekly-review-back { grid-row: 2; font-size: 12px; }
+  .weekly-review-opportunity { flex-direction: column; align-items: stretch; gap: 12px; padding: 15px; }
+  .weekly-review-opportunity button { flex-shrink: 1; white-space: normal; }
+  .weekly-review-records { padding: 12px; }
 }
-@media (max-width: 620px) and (max-height: 700px) {
-  .weekly-review-steps { margin-bottom: 16px; }
-  .weekly-review-heading { gap: 12px; padding-bottom: 15px; }
-  .weekly-review-summary .weekly-results-company { padding-top: 18px; }
-  .weekly-review-summary .weekly-results-profit { padding-bottom: 16px; }
-  .weekly-review-detail-link { margin-top: 7px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .weekly-review-screen button { transition: none; }
-}
+@media (prefers-reduced-motion: reduce) { .weekly-review-screen button { transition: none; } }

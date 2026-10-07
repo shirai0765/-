@@ -1,9 +1,9 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { Landmark, TrendingUp } from 'lucide-react';
 import type { GameAction, GameState } from '../model';
 import { getSummary } from '../sim/engine';
 import { isLoanApplicationCurrent, screenLoanApplication, type LoanApplication } from '../sim/loanApplication';
 import CapitalPlanningPanel from './CapitalPlanningPanel';
+import { GameIcon } from './GameIcon';
 import './financial-services.css';
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
@@ -79,7 +79,7 @@ function BankApplicationPanel({ state, onAction, disabled = false }: Pick<Props,
       <p className="bank-note">13〜260週。長い期間ほど毎週の元本返済は減り、利息総額は増えます。</p>
     </fieldset>
     {quote ? <section className="bank-quote" aria-label="選んだ借入の利息と返済" data-loan-quote>
-      <div className="bank-quote-heading"><h4>この条件で借りると</h4><span>{quote.weeks}週返済</span></div>
+      <div className="bank-quote-heading"><h4><GameIcon name="coins" size={22} tone="gold"/>この条件で借りると</h4><span>{quote.weeks}週返済</span></div>
       <dl className="bank-quote-values">
         <div className="bank-quote-emphasis"><dt>契約の年利</dt><dd data-loan-field="annual-rate">{(quote.annualRate * 100).toFixed(2)}%</dd></div>
         <div className="bank-quote-emphasis"><dt>追加の初週支払（元本＋利息）</dt><dd data-loan-field="initial-payment">{yen(quote.initialPayment)}</dd></div>
@@ -98,7 +98,7 @@ function BankApplicationPanel({ state, onAction, disabled = false }: Pick<Props,
         <p className="bank-note">元本均等返済です。年利は現在の借入残高と企業価値で決まります。表示額は満期まで予定どおり返済し、追加借入・一括返済をしない場合の追加支払額です。利息と元本はそれぞれ全契約を合算し、毎週1円単位に四捨五入します。元本の支払合計と契約額には端数の差が生じる場合があります。</p>
       </details>
     </section> : <p className="bank-note bank-invalid-quote">金額と期間を選び、審査で借入できる条件を確認してください。</p>}
-    <button type="button" className="primary bank-screen" disabled={locked} onClick={() => { setReview(screenLoanApplication(state, amount, weeks)); setSubmission(null); }}>この条件で融資審査する</button>
+    <button type="button" className="primary bank-screen" disabled={locked} onClick={() => { setReview(screenLoanApplication(state, amount, weeks)); setSubmission(null); }}>この条件で融資審査する<GameIcon name="arrow-right" size={24}/></button>
     {review && !currentReview && <p className="bank-review-stale" role="status">会社の状態が変わりました。現在の条件で、もう一度審査してください。</p>}
     </>}
     {currentReview && review && <section className={'bank-review ' + (review.approved ? 'bank-approved' : 'bank-declined')} data-loan-review={review.approved ? 'approved' : 'declined'} aria-label="融資審査の結果" aria-live="polite">
@@ -112,7 +112,7 @@ function BankApplicationPanel({ state, onAction, disabled = false }: Pick<Props,
           <div><dt>追加の初週支払</dt><dd data-loan-field="initial-payment">{yen(quote.initialPayment)}</dd></div>
         </dl>
         <p className="bank-contract-summary">契約後の手元資金 {yen(quote.cashAfterBorrowing)} · 借入残高 {yen(quote.debtAfterBorrowing)}</p>
-        <button type="button" className="primary bank-confirm" data-loan-confirm disabled={locked} onClick={confirmBorrowing}>契約して{yen(quote.amount)}を借りる</button>
+        <button type="button" className="primary bank-confirm" data-loan-confirm disabled={locked} onClick={confirmBorrowing}>契約して{yen(quote.amount)}を借りる<GameIcon name="arrow-right" size={24}/></button>
       </>}
       {!review.approved && <div className="bank-alternative">
         {(!Number.isSafeInteger(amount) || amount < 100_000) && review.availableCredit >= 100_000 && <button type="button" className="secondary" disabled={locked} onClick={() => changeAmount(100_000)}>最低額の10万円で見直す</button>}
@@ -123,7 +123,7 @@ function BankApplicationPanel({ state, onAction, disabled = false }: Pick<Props,
       <button type="button" className="secondary bank-edit" onClick={() => { setReview(null); setSubmission(null); }}>条件を変更する</button>
       <details className="bank-screening-details"><summary>審査項目と判定理由</summary><ul>{review.checks.map(check => <li key={check.id} data-passed={check.passed}><span className="bank-check-mark" aria-hidden="true">{check.passed ? '✓' : '×'}</span><div><strong>{check.label} · {check.passed ? '適合' : '不適合'}</strong><p>{check.detail}</p></div></li>)}</ul></details>
     </section>}
-    {submission && <p className="bank-submission" role="status">{submitted ? `${yen(submission.amount)}の借入契約を実行しました。契約と返済は下で確認できます。` : submission.status === 'rejected' ? '借入を実行できませんでした。現在の条件でもう一度審査してください。' : '借入の実行結果を確認しています。契約一覧に反映されるまでお待ちください。'}</p>}
+    {submission && <p className={'bank-submission' + (submitted ? ' bank-submitted' : '')} role="status">{submitted && <GameIcon name="check" size={25} tone="green"/>}{submitted ? `${yen(submission.amount)}の借入契約を実行しました。契約と返済は下で確認できます。` : submission.status === 'rejected' ? '借入を実行できませんでした。現在の条件でもう一度審査してください。' : '借入の実行結果を確認しています。契約一覧に反映されるまでお待ちください。'}</p>}
     {showReceipt && submitted && <button type="button" className="secondary bank-edit" disabled={locked} onClick={() => { setSubmission(null); setReview(null); }}>新しい借入を相談する</button>}
     <p className="bank-rule">借入中の週は、営業利益から利息を引いた利益が0以下で倒産します。審査通過は将来の黒字を保証しません。元本返済は手元資金から支払います。</p>
   </section>;
@@ -135,8 +135,8 @@ export default function FinancialServicesPanel({ kind, state, onAction, onMarket
   const locked = disabled || state.gameOver;
   return <section className="financial-service" data-financial-service={kind}>
     <header className="financial-service-intro">
-      {kind === 'bank' ? <Landmark size={28} aria-hidden="true"/> : <TrendingUp size={28} aria-hidden="true"/>}
-      <div><h3>{kind === 'bank' ? '借入と返済の窓口' : state.listed ? '資本市場で、次の成長へ' : 'あなたの会社を株式市場へ'}</h3>
+      <span className="financial-service-emblem"><GameIcon name={kind === 'bank' ? 'bank' : 'chart'} size={42} tone="gold"/></span>
+      <div><span className="eyebrow">{kind === 'bank' ? '街の銀行' : '証券市場'}</span><h3>{kind === 'bank' ? '借入と返済の窓口' : state.listed ? '資本市場で、次の成長へ' : 'あなたの会社を株式市場へ'}</h3>
         <p>{kind === 'bank' ? '資金を借りる前に、利息と毎週の返済額を確認できます。' : '上場・増資と、ほかの企業への投資をここから行えます。'}</p></div>
     </header>
     {kind === 'bank' ? <dl className="service-balances">

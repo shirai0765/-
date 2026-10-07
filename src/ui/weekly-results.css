@@ -1,36 +1,99 @@
-.weekly-results{min-width:0}
-.weekly-results-company{padding:6px 0 12px}
-.weekly-results-profit{display:flex;flex-direction:column;gap:8px;text-align:center;padding:10px 0 20px}
-.weekly-results-profit>span{font-size:12px;color:var(--muted)}
-.weekly-results-profit>strong{font-size:clamp(30px,8vw,48px);line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.weekly-results-profit>small{font-size:12px;color:var(--muted)}
-.weekly-results-cash{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft)}
-.weekly-results-cash dd{font-size:18px}
-.weekly-results-customers{font-size:12px;text-align:center;color:var(--muted);margin:12px 0 0}
-.weekly-results-customers strong{font-weight:600;color:var(--ink)}
-.weekly-results dt{font-size:11px;color:var(--muted);line-height:1.5}
-.weekly-results dd{margin:4px 0 0;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.weekly-results dl>div{min-width:0}
-.weekly-stores{margin:0;padding:12px 0;border-top:1px solid var(--line)}
-.weekly-results .weekly-results-note{font-size:11px;line-height:1.6;color:var(--muted);margin:0 0 12px}
-.weekly-store-list{display:grid;gap:12px}
-.weekly-store{padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft);min-width:0}
-.weekly-store>header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-.weekly-store h4{margin:0;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
-.weekly-store-badge{font-size:11px;white-space:nowrap;color:var(--muted);line-height:1.8}
-.weekly-store-metrics{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;margin:14px 0}
-.weekly-store-metrics dd{font-size:18px;line-height:1.5}
-.weekly-store-metrics dd small{font-size:11px;font-weight:400}
-.weekly-store-actions,.weekly-results-actions{display:flex;flex-wrap:wrap;gap:8px}
-.weekly-store-actions>button{font-size:12px;min-height:40px;white-space:normal}
-.weekly-results-actions{margin-top:20px}
-.weekly-results-actions>button{max-width:100%;white-space:normal}
-.weekly-opening-comparison,.weekly-results-detail{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
-.weekly-results summary{font-size:12px;line-height:1.6;cursor:pointer;color:var(--muted)}
-.weekly-results summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-.weekly-results details[open]>summary{margin-bottom:12px;color:var(--ink)}
-.weekly-results details dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
-.weekly-results details p{font-size:12px;line-height:1.7;color:var(--muted);margin:10px 0}
-.weekly-results-headlines{font-size:12px;line-height:1.7;color:var(--muted);padding-left:18px}
-.weekly-results-headlines li+li{margin-top:6px}
-@media(max-width:480px){.weekly-results-profit{padding-top:4px}.weekly-results-cash{gap:10px;padding:12px}.weekly-results-cash dd{font-size:16px}.weekly-store{padding:12px}.weekly-store-metrics{gap:8px}.weekly-store-metrics dd{font-size:16px}.weekly-results details dl{grid-template-columns:1fr}.weekly-results-actions{margin-top:14px}.weekly-results-actions>button{font-size:12px}}
+.weekly-results, .weekly-results-company { --ink: #082348; --muted: #3c5370; --surface: #fff; --surface-soft: #eef7ff; --line: #b9d8f1; --green: #087951; --red: #bb2f47; --game-green: #087951; --game-red: #bb2f47; color-scheme: light; }
+.weekly-results { min-width: 0; color: var(--game-ink, #082348); }
+.weekly-results-company { padding: 6px 0 12px; min-width: 0; }
+.weekly-results-profit { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; text-align: left; padding: 22px 24px 25px; border: 3px solid #54dbff; border-radius: 18px; background: radial-gradient(ellipse at 90% 10%, #137be0, transparent 55%), linear-gradient(145deg, #063369, #061a44); box-shadow: 0 5px 0 #062956, inset 0 0 0 2px #176ab8; color: #fff; overflow: hidden; }
+.weekly-results-profit::before { content: ''; position: absolute; z-index: -1; left: 8px; right: 8px; bottom: 35px; height: 16px; background: #ffdf25; transform: rotate(-2deg); clip-path: polygon(0 34%, 12% 4%, 8% 30%, 76% 0, 71% 40%, 100% 18%, 94% 90%, 35% 100%, 40% 62%, 0 92%); }
+.weekly-results-profit-label { display: flex; align-items: center; gap: 9px; padding-right: 62px; color: #fff; font-size: 18px; font-weight: 900; line-height: 1.5; }
+.weekly-results-profit-label .game-icon { color: #9df059; }
+.weekly-results-profit > strong { position: relative; z-index: 1; max-width: 100%; font-family: var(--game-numeric, 'Manrope Variable', 'Noto Sans JP Variable', sans-serif); font-size: clamp(48px, 9.5vw, 100px); font-style: italic; font-weight: 900; line-height: 1.08; letter-spacing: -.015em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; color: #ffe64c; -webkit-text-stroke: 1px #fff6af; paint-order: stroke fill; text-shadow: 2px 3px 0 #81530b, 4px 5px 0 #03183b; }
+.weekly-results-profit.is-profitable > strong.positive { color: #ffe64c !important; }
+.weekly-results-profit > small { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 12px; position: relative; z-index: 1; color: #fff; font-size: 13px; font-weight: 750; line-height: 1.7; }
+.weekly-results-outcome { padding: 3px 8px; border-radius: 5px; color: #082348; background: #fff; }
+.weekly-results-previous { font-size: 12px; color: #e0f4ff; }
+.weekly-results-reward-art { position: absolute; top: 12px; right: 16px; color: #ffd735; transform: rotate(9deg); filter: drop-shadow(2px 3px 0 #051e4e); pointer-events: none; }
+.weekly-results-reward-art > i { position: absolute; left: 23px; top: 28px; width: 13px; height: 17px; border: 2px solid #fff39c; border-radius: 50%; background: #ffb521; opacity: 0; }
+.weekly-results-reward-art > i:nth-child(2) { --coin-x: -105px; --coin-y: -25px; }
+.weekly-results-reward-art > i:nth-child(3) { --coin-x: -75px; --coin-y: 38px; }
+.weekly-results-reward-art > i:nth-child(4) { --coin-x: -45px; --coin-y: -32px; }
+.weekly-results-reward-art > i:nth-child(5) { --coin-x: 14px; --coin-y: -18px; }
+.weekly-results-reward-art > i:nth-child(6) { --coin-x: -100px; --coin-y: 65px; }
+.weekly-results-reward-art > i:nth-child(7) { --coin-x: -28px; --coin-y: 75px; }
+[data-settlement-animation='reveal'] .weekly-results-profit.is-profitable { animation: weekly-reveal-in 140ms ease-out; }
+[data-settlement-animation='count'] .weekly-results-reward-art > i { animation: weekly-coin-burst 720ms ease-out both; }
+[data-settlement-animation='finish'] .weekly-results-profit.is-profitable > strong { animation: weekly-profit-finish 220ms ease-out both; }
+[data-settlement-animation='complete'] .weekly-results-reward-art > i { display: none; }
+.weekly-results-reveal-finish { position: relative; display: flex; align-items: center; gap: 5px; min-height: 44px; padding: 4px 8px; margin-bottom: -12px; border: 1px solid #a9dcff; border-radius: 6px; color: #fff; background: #082348; font-size: 12px; font-weight: 750; }
+.weekly-results-profit.is-loss { background: linear-gradient(135deg, #fff7f8, #ffedf2); border-color: #f3aabd; box-shadow: 0 5px 0 #672441; color: #082348; }
+.weekly-results-profit.is-loss::before, .weekly-results-profit.is-neutral::before { display: none; }
+.weekly-results-profit.is-loss .weekly-results-profit-label { color: #8f1d3c; padding-right: 0; }
+.weekly-results-profit.is-loss .game-icon { color: #bb2f47; }
+.weekly-results-profit.is-loss > strong { -webkit-text-stroke: 0; text-shadow: 2px 2px 0 #fff; color: #a62242 !important; }
+.weekly-results-profit.is-loss > small, .weekly-results-profit.is-loss .weekly-results-previous { color: #722b40; }
+.weekly-results-profit.is-loss .weekly-results-outcome { background: #a62242; color: #fff; }
+.weekly-results-profit.is-neutral .weekly-results-profit-label { padding-right: 0; }
+.weekly-results-profit.is-neutral > strong { color: #fff !important; -webkit-text-stroke: 0; text-shadow: 2px 3px 0 #03183b; }
+.weekly-results-cash { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 13px 0 0; padding: 0; }
+.weekly-results-cash > div { position: relative; min-width: 0; padding: 18px 18px 18px 63px; border: 2px solid #c1eaff; border-radius: 13px; background: linear-gradient(135deg, #fff, #eef7ff); box-shadow: 0 4px 0 #063169; color: #082348; }
+.weekly-results-cash > div > .game-icon { position: absolute; left: 17px; top: 20px; }
+.weekly-results-company .weekly-results-cash dt { font-size: 12px; font-weight: 750; line-height: 1.6; color: #294966; }
+.weekly-results-company .weekly-results-cash dd { margin: 5px 0 0; font: italic 800 clamp(23px, 3.6vw, 38px) var(--game-numeric, 'Manrope Variable', 'Noto Sans JP Variable', sans-serif); line-height: 1.2; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.weekly-results-customers { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 5px; font-size: 14px; line-height: 1.6; color: #082348; margin: 13px 0 0; padding: 12px 15px; border: 2px solid #c1eaff; border-radius: 12px; background: #fff; box-shadow: 0 4px 0 #063169; }
+.weekly-results-customers > .game-icon { color: #d42b64; margin-right: 6px; }
+.weekly-results-customers strong { font: italic 800 28px var(--game-numeric, 'Manrope Variable', 'Noto Sans JP Variable', sans-serif); color: #c02d5e; }
+.weekly-results dt { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.weekly-results dd { margin: 4px 0 0; font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.weekly-results dl > div { min-width: 0; }
+.weekly-stores { margin: 0; padding: 14px 0; border-top: 2px solid #b9d8f1; }
+.weekly-results .weekly-results-note { font-size: 13px; line-height: 1.7; color: var(--muted); margin: 0 0 13px; }
+.weekly-store-list { display: grid; gap: 14px; }
+.weekly-store { padding: 16px; border: 2px solid #b2dff5; border-radius: 13px; background: #fff; box-shadow: 0 3px 0 #c7e2f8; min-width: 0; }
+.weekly-store > header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.weekly-store h4 { margin: 0; color: #082348; font-size: 17px; font-weight: 900; line-height: 1.5; overflow-wrap: anywhere; }
+.weekly-store-badge { font-size: 11px; font-weight: 800; white-space: nowrap; color: #fff; padding: 3px 8px; border-radius: 6px; background: #1265dc; }
+.weekly-store-metrics { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 10px; margin: 14px 0; }
+.weekly-store-metrics dd { font-family: var(--game-numeric, 'Manrope Variable', sans-serif); font-size: 24px; line-height: 1.3; }
+.weekly-store-metrics dd small { font: 600 11px 'Noto Sans JP Variable', sans-serif; }
+.weekly-store-actions, .weekly-results-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.weekly-store-actions > button { font-size: 13px; min-height: 44px; white-space: normal; }
+.weekly-results-actions { margin-top: 20px; }
+.weekly-results-actions > button { max-width: 100%; min-height: 44px; font-size: 13px; white-space: normal; }
+.weekly-opening-comparison, .weekly-results-detail { margin-top: 14px; padding-top: 14px; border-top: 2px solid #c2dff1; }
+.weekly-results summary { min-height: 44px; padding: 11px 0; font-size: 14px; font-weight: 850; line-height: 1.6; cursor: pointer; color: #143b6d; }
+.weekly-results summary:focus-visible { outline: 3px solid #125bdd; outline-offset: 4px; }
+.weekly-results details[open] > summary { margin-bottom: 12px; color: #125bdd; }
+.weekly-results details dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 12px 0; }
+.weekly-results details p { font-size: 13px; line-height: 1.8; color: var(--muted); margin: 10px 0; }
+.weekly-results-headlines { font-size: 13px; line-height: 1.8; color: var(--muted); padding-left: 18px; }
+.weekly-results-headlines li + li { margin-top: 6px; }
+@keyframes weekly-reveal-in { from { transform: translateY(5px); } to { transform: translateY(0); } }
+@keyframes weekly-coin-burst { 0% { opacity: 0; transform: translate(0, 0) scale(.6); } 18% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--coin-x), var(--coin-y)) rotate(130deg) scale(.8); } }
+@keyframes weekly-profit-finish { 0% { transform: scale(1); } 42% { transform: scale(1.025); } 100% { transform: scale(1); } }
+@media (max-width: 620px) {
+  .weekly-results-profit { padding: 17px 16px 20px; gap: 9px; border-radius: 15px; }
+  .weekly-results-profit-label { font-size: 15px; padding-right: 48px; gap: 7px; }
+  .weekly-results-profit-label > .game-icon { width: 25px; height: 25px; }
+  .weekly-results-profit > strong { font-size: clamp(48px, 16.3vw, 70px); }
+  .weekly-results-profit.is-long-amount > strong { font-size: clamp(33px, 10.4vw, 45px); }
+  .weekly-results-profit > small { gap: 5px 8px; font-size: 12px; }
+  .weekly-results-previous { font-size: 11px; }
+  .weekly-results-reward-art { right: 8px; top: 10px; }
+  .weekly-results-reward-art > .game-icon { width: 48px; height: 48px; }
+  .weekly-results-cash { gap: 8px; }
+  .weekly-results-cash > div { padding: 12px 11px; }
+  .weekly-results-cash > div > .game-icon { position: static; width: 27px; height: 27px; margin-bottom: 4px; }
+  .weekly-results-company .weekly-results-cash dt { font-size: 11px; }
+  .weekly-results-company .weekly-results-cash dd { font-size: clamp(20px, 6.2vw, 28px); }
+  .weekly-results-cash.is-long-amount { grid-template-columns: 1fr; }
+  .weekly-results-cash.is-long-amount > div { padding-left: 52px; }
+  .weekly-results-cash.is-long-amount > div > .game-icon { position: absolute; top: 16px; left: 12px; }
+  .weekly-results-customers { font-size: 12px; padding: 10px 9px; gap: 4px; }
+  .weekly-results-customers strong { font-size: 25px; }
+  .weekly-results-customers > .game-icon { width: 24px; height: 24px; margin-right: 0; }
+  .weekly-store { padding: 12px; }
+  .weekly-store-metrics { gap: 8px; }
+  .weekly-store-metrics dd { font-size: 22px; }
+  .weekly-results details dl { grid-template-columns: 1fr; }
+  .weekly-results-actions { margin-top: 14px; }
+}
+@media (min-width: 621px) { .weekly-results-profit.is-long-amount > strong { font-size: clamp(44px, 7vw, 76px); } }
+@media (prefers-reduced-motion: reduce) { .weekly-results-company *, .weekly-results-company *::before { animation: none !important; transition: none !important; } .weekly-results-reward-art > i { display: none; } }

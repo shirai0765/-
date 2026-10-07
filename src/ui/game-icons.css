@@ -1,0 +1,15 @@
+.game-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  vertical-align: -.16em;
+  background-color: currentColor;
+  -webkit-mask: var(--game-icon-image) center / contain no-repeat;
+  mask: var(--game-icon-image) center / contain no-repeat;
+  pointer-events: none;
+}
+.game-icon--blue { color: var(--game-blue, #1265dc); }
+.game-icon--gold { color: var(--game-gold, #ffcd3f); }
+.game-icon--green { color: var(--game-green, #087951); }
+.game-icon--red { color: var(--game-red, #bb2f47); }
+.game-icon--navy { color: var(--game-ink, #082348); }
+.game-icon--muted { color: var(--muted, #536b8b); }

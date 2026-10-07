@@ -1,6 +1,6 @@
 import { createContext, useContext, useLayoutEffect, useId, useRef } from 'react';
 import type { ReactNode } from 'react';
-import { X } from 'lucide-react';
+import { GameIcon } from './GameIcon';
 import './game-dialog.css';
 
 export const GameNoticeContext = createContext<{ notice?: string; onClearNotice?: () => void }>({});
@@ -77,9 +77,9 @@ export default function GameDialog({ title, children, close, wide, className, no
     }}>
     <section className={['modal', wide && 'wide', className].filter(Boolean).join(' ')}>
       <header><div><span className="eyebrow">SHIBUYA CAPITAL</span><h2 id={titleId}>{title}</h2></div>
-        <button ref={closeButtonRef} type="button" className="icon-button" onClick={requestClose} aria-label="閉じる"><X size={20}/></button>
+        <button ref={closeButtonRef} type="button" className="icon-button" onClick={requestClose} aria-label="閉じる"><GameIcon name="close" size={24}/></button>
       </header>
-      {shownNotice && <div className="game-dialog-notice" role="alert"><span>{shownNotice}</span>{clearNotice && <button type="button" className="icon-button" onClick={() => { closeButtonRef.current?.focus(); clearNotice(); }} aria-label="通知を閉じる"><X size={16}/></button>}</div>}
+      {shownNotice && <div className="game-dialog-notice" role="alert"><span>{shownNotice}</span>{clearNotice && <button type="button" className="icon-button" onClick={() => { closeButtonRef.current?.focus(); clearNotice(); }} aria-label="通知を閉じる"><GameIcon name="close" size={20}/></button>}</div>}
       {children}
     </section>
   </dialog>;

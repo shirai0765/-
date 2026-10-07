@@ -1,5 +1,5 @@
 import { useId, useLayoutEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react';
+import { GameIcon } from './GameIcon';
 import WeeklyResults, { WeeklySettlementSummary } from './WeeklyResults';
 import type { WeeklyResultsProps } from './WeeklyResults';
 import WeeklyNews from './WeeklyNews';
@@ -21,7 +21,7 @@ export function CurrentListingOpportunity({ state, onExchange }: { state: GameSt
   if (!onExchange || state.listed || state.gameOver || !getSummary(state).ipoEligible) return null;
   return <aside className="weekly-review-opportunity" aria-label="現在の上場機会">
     <div><span>現在の会社でできること</span><h3>上場の条件を満たしています</h3><p>調達する資金と創業者持分を比較できます。今の経営を続けることも選べます。</p></div>
-    <button type="button" className="secondary" onClick={onExchange}>証券市場で条件を確認<ArrowRight size={15}/></button>
+    <button type="button" className="secondary" onClick={onExchange}>証券市場で条件を確認<GameIcon name="arrow-right" size={20}/></button>
   </aside>;
 }
 
@@ -65,14 +65,14 @@ export default function WeeklyReviewScreen(props: Props) {
     onCancel={event => { event.preventDefault(); event.stopPropagation(); onClose(); }}>
     <div className="weekly-review-surface">
       <header className="weekly-review-header">
-        <div className="weekly-review-brand"><span aria-hidden="true">SC</span><div><strong>SHIBUYA CAPITAL</strong><small>WEEKLY REVIEW</small></div></div>
-        <button ref={noticeCloseRef} type="button" className="weekly-review-exit" onClick={onClose}>{returnLabel}<X size={17}/></button>
+        <div className="weekly-review-brand"><GameIcon name="celebrate" size={32}/><div><strong>SHIBUYA CAPITAL</strong><small>街が、もっと面白くなる。</small></div></div>
+        <button ref={noticeCloseRef} type="button" className="weekly-review-exit" onClick={onClose}><GameIcon name="arrow-left" size={22}/>{returnLabel}</button>
       </header>
 
       <div ref={contentRef} className="weekly-review-content">
         <div className="weekly-review-content-inner">
           <ol className="weekly-review-steps" aria-label="週末レビューの流れ">
-            <li aria-current={phase !== 'news' ? 'step' : undefined} className={phase !== 'news' ? 'current' : 'complete'}><span aria-hidden="true">{phase === 'news' ? <Check size={12}/> : '01'}</span>営業結果</li>
+            <li aria-current={phase !== 'news' ? 'step' : undefined} className={phase !== 'news' ? 'current' : 'complete'}><span aria-hidden="true">{phase === 'news' ? <GameIcon name="check" size={16}/> : '01'}</span>営業結果</li>
             <li aria-current={phase === 'news' ? 'step' : undefined} className={phase === 'news' ? 'current' : ''}><span aria-hidden="true">02</span>街と企業のニュース</li>
           </ol>
 
@@ -83,17 +83,17 @@ export default function WeeklyReviewScreen(props: Props) {
             </div>
             {phase === 'summary' && <div className="weekly-review-week-transition" aria-label={state.gameOver ? `第${report.week}週の営業が終了し、会社の経営を終了しました` : `第${report.week}週の営業が終了し、第${nextWeek}週になりました`}>
               <div><small>営業終了</small><strong><span>第</span>{report.week}<span>週</span></strong></div>
-              <ArrowRight aria-hidden="true" size={23}/>
+              <GameIcon name="arrow-right" size={27}/>
               <div className="weekly-review-next-week">{state.gameOver ? <strong className="weekly-review-end-label">経営終了</strong> : <><small>次の経営へ</small><strong><span>第</span>{nextWeek}<span>週</span></strong></>}</div>
             </div>}
           </div>
 
-          {notice && <div className="weekly-review-notice" role="alert"><span>{notice}</span>{onClearNotice && <button type="button" className="weekly-review-notice-close" aria-label="通知を閉じる" onClick={() => { noticeCloseRef.current?.focus(); onClearNotice(); }}><X size={16}/></button>}</div>}
+          {notice && <div className="weekly-review-notice" role="alert"><span>{notice}</span>{onClearNotice && <button type="button" className="weekly-review-notice-close" aria-label="通知を閉じる" onClick={() => { noticeCloseRef.current?.focus(); onClearNotice(); }}><GameIcon name="close" size={20}/></button>}</div>}
           {state.gameOver && <p className="weekly-review-ended" role="status">{state.gameOverReason ?? '会社の経営を終了しました。'}</p>}
 
           {phase === 'summary' && <section className="weekly-review-summary" aria-label="確定した会社の実績">
             <WeeklySettlementSummary state={state}/>
-            <button type="button" className="weekly-review-detail-link" onClick={() => setPhase('details')}>店舗・収支の詳しい記録<ArrowRight size={15}/></button>
+            <button type="button" className="weekly-review-detail-link" onClick={() => setPhase('details')}><GameIcon name="shop" size={27}/><span>店舗・収支の詳しい記録</span><GameIcon name="arrow-right" size={22}/></button>
           </section>}
 
           {phase === 'news' && <section className="weekly-review-news" aria-label="今週の記録から読むニュース">
@@ -112,11 +112,11 @@ export default function WeeklyReviewScreen(props: Props) {
 
       <footer className="weekly-review-footer">
         <div className="weekly-review-footer-inner">
-          <p className="weekly-review-saved"><Check size={13} aria-hidden="true"/><span>営業結果を自動保存しました</span></p>
+          <p className="weekly-review-saved"><GameIcon name="check" size={20}/><span>営業結果を自動保存しました</span></p>
           <div className="weekly-review-footer-actions">
-            {phase !== 'summary' && <button type="button" className="weekly-review-back" onClick={() => setPhase('summary')}><ArrowLeft size={16}/>決算に戻る</button>}
+            {phase !== 'summary' && <button type="button" className="weekly-review-back" onClick={() => setPhase('summary')}><GameIcon name="arrow-left" size={20}/>決算に戻る</button>}
             <button type="button" className="primary weekly-review-primary" onClick={() => phase === 'summary' || phase === 'details' ? setPhase('news') : onClose()}>
-              {phase === 'news' ? state.gameOver ? '結果を閉じる' : `第${nextWeek}週の経営を始める` : '今週の街のニュースへ'}<ArrowRight size={18}/>
+              <GameIcon name={phase === 'news' ? 'shop' : 'news'} size={30}/><span>{phase === 'news' ? state.gameOver ? '結果を閉じる' : `第${nextWeek}週の経営を始める` : '今週の街のニュースへ'}</span><GameIcon name="arrow-right" size={27}/>
             </button>
           </div>
         </div>

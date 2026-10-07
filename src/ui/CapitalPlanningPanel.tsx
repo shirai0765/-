@@ -3,6 +3,7 @@ import type { GameAction, GameState } from '../model';
 import { getSummary } from '../sim/engine';
 import { getActiveMarketOperation } from '../sim/marketOperations';
 import { capitalBudgetError, getCapitalPlans, type CapitalPlanId } from '../sim/capitalPlanning';
+import { GameIcon } from './GameIcon';
 import './capital-planning.css';
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
@@ -73,7 +74,7 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
   ] : [];
 
   return <section className="card capital-planning" aria-label="資金調達の比較">
-    <span className="eyebrow">CAPITAL PLAN</span><h3>{service === 'bank' ? '事業資金を借りる' : service === 'exchange' ? state.listed ? '増資で事業を広げる' : '株式を公開する' : '次の投資に、どの資金を使う？'}</h3>
+    <header className="capital-panel-heading"><span className="capital-panel-emblem"><GameIcon name="wallet" size={30} tone="gold"/></span><div><span className="eyebrow">CAPITAL PLAN</span><h3>{service === 'bank' ? '事業資金を借りる' : service === 'exchange' ? state.listed ? '増資で事業を広げる' : '株式を公開する' : '次の投資に、どの資金を使う？'}</h3></div></header>
     <p className="capital-note">第{state.week}週の会社に、調達だけを実行した場合の比較です。選ぶだけでは現金も週も変わりません。</p>
     {getActiveMarketOperation(state) && <p className="capital-note">26週間の事業計画による一時的な利益変化は、企業価値と借入枠の収益評価には含めません。支出済みの現金と今週の営業収支には反映しています。</p>}
     {planningContext && <div className="capital-context">
@@ -82,7 +83,7 @@ export default function CapitalPlanningPanel({ state, onAction, disabled = false
     </div>}
     <div className="capital-options" role="group" aria-label="調達方法を比較">
       {plans.filter(plan => !service || plan.id === 'hold' || plan.id === (service === 'bank' ? 'borrow' : 'equity')).map(plan => <button type="button" key={plan.id} className={'capital-option' + (selectedId === plan.id ? ' selected' : '')} aria-pressed={selectedId === plan.id} onClick={() => setSelectedId(plan.id)}>
-        <strong>{labels[plan.id]}</strong>
+        <strong><GameIcon name={plan.id === 'borrow' ? 'bank' : plan.id === 'equity' ? 'trend-up' : 'wallet'} size={24} tone={selectedId === plan.id ? 'gold' : 'blue'}/>{labels[plan.id]}</strong>
         {plan.after ? <><span>得る現金 <b>{signedYen(plan.raisedCash ?? 0)}</b></span><span>持分 {percent(plan.after.ownership)} / 元本 {yen(plan.after.report.loanRepayment)}/週</span>{plan.budgetGap !== null && <span className={plan.budgetGap > 0 ? 'negative' : 'positive'}>計画資金 {plan.budgetGap > 0 ? `${yen(plan.budgetGap)}不足` : '確保できる'}</span>}{plan.after.debtProfitRisk && <span className="negative">借入中の利益不足リスク</span>}{plan.after.cashRisk && <span className="negative">週末の資金不足</span>}</> : <span className="capital-unavailable">{plan.reason}</span>}
       </button>)}
     </div>

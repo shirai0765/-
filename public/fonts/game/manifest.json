@@ -1,0 +1,38 @@
+{
+  "sourceRepository": "https://github.com/google/fonts",
+  "sourceCommit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+  "fonts": [
+    {
+      "family": "DelaGothicOne",
+      "source": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/delagothicone/DelaGothicOne-Regular.ttf",
+      "sourceFile": "DelaGothicOne-Regular.ttf",
+      "sourceSha256": "4ff87a0965f1b0505e5a2c58424bc6ad3cff27e56a82f21c2fc9d6b0e3857ee2",
+      "sourceBytes": 2508848,
+      "file": "DelaGothicOne-Regular.woff",
+      "sha256": "e2bccbff027f15b3c35e2aa630c0dd52a45fc8033ff3ccceb88bc44b2f0df037",
+      "bytes": 1577964,
+      "conversion": "fontTools TTFont, lossless WOFF container; no glyph subset or outline edits",
+      "glyphMappings": 9030,
+      "license": "SIL Open Font License 1.1",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/delagothicone/OFL.txt",
+      "licenseFile": "DelaGothicOne-OFL.txt",
+      "licenseSha256": "c0014792d4f4abc0508c295b277f2b17ae44465c8dc88d12af9cea48279b5fda"
+    },
+    {
+      "family": "BarlowCondensed",
+      "source": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/barlowcondensed/BarlowCondensed-BlackItalic.ttf",
+      "sourceFile": "BarlowCondensed-BlackItalic.ttf",
+      "sourceSha256": "e1ed5d7e50c6a4498454d40509ce2362384a2c7870df3418fdbd010f81dffad3",
+      "sourceBytes": 112592,
+      "file": "BarlowCondensed-BlackItalic.woff",
+      "sha256": "c1a0e3659ea528dfa17e79e2ff03a4a2a030490f45604a69dc90b8b70bf0de74",
+      "bytes": 53804,
+      "conversion": "fontTools TTFont, lossless WOFF container; no glyph subset or outline edits",
+      "glyphMappings": 525,
+      "license": "SIL Open Font License 1.1",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/barlowcondensed/OFL.txt",
+      "licenseFile": "BarlowCondensed-OFL.txt",
+      "licenseSha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f"
+    }
+  ]
+}

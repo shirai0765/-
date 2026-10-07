@@ -54,3 +54,50 @@
 /* Global market tables keep cells on one line. This comparison must instead
    wrap exact amounts inside its mobile columns, without hiding any figure. */
 @media(max-width:600px){.group-operation-compare-table{table-layout:fixed;max-width:100%}.group-operation-compare-table th,.group-operation-compare-table td{min-width:0;white-space:normal}}
+
+/* City Burst: quoted business ranges stay distinct from settled results. */
+.group-operations{--ink:#082348;--muted:#536b8b;--surface:#fff;--surface-soft:#edf6ff;--line:#c5daf0;--accent:#1265dc;--accent-soft:#e4f1ff;--accent-ink:#fff;--green:#087951;--red:#bb2f47;--game-green:#087951;--game-red:#bb2f47;color:#082348;color-scheme:light}
+.group-operations .group-operation-intro{position:relative;display:flex;align-items:center;gap:18px;overflow:hidden;padding:23px 25px;margin:0 0 18px;border:3px solid var(--game-ink);border-radius:14px;background:linear-gradient(110deg,rgba(8,35,72,.97),rgba(18,101,220,.9)),var(--game-city-art,none) center/cover;color:#fff;box-shadow:0 5px 0 var(--game-ink),inset 0 0 0 1px var(--game-cyan)}
+.group-operations .group-operation-intro:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(125deg,transparent 0 32px,rgba(55,220,255,.08) 33px 35px)}
+.group-operations .group-operation-intro>div,.group-operations .group-operation-emblem{position:relative;z-index:1}
+.group-operations .group-operation-emblem{display:grid;place-items:center;flex-shrink:0;width:66px;height:66px;border:2px solid var(--game-gold);border-radius:15px;background:var(--game-ink);box-shadow:3px 3px 0 rgba(0,0,0,.24);transform:rotate(-5deg)}
+.group-operations .group-operation-emblem>.game-icon{transform:rotate(5deg)}
+.group-operations .group-operation-intro .eyebrow{color:var(--game-gold);font-weight:800;letter-spacing:.13em}
+.group-operations .group-operation-intro h3{margin:7px 0 0;color:#fff;font-family:var(--game-display);font-size:23px;line-height:1.55;text-shadow:2px 2px 0 var(--game-ink)}
+.group-operations .group-operation-note{color:var(--game-ink);font-size:12px;line-height:1.85}
+.group-operations .group-operation-note strong{font-family:var(--game-numeric);font-size:19px;font-style:italic;overflow-wrap:anywhere}
+.group-operations .group-operation-back{padding:10px 14px;margin-bottom:15px;border:2px solid var(--game-blue);border-radius:9px;background:#fff;color:var(--game-ink);font-weight:800;min-height:44px}
+.group-operations .group-sector-list{gap:14px}
+.group-operations .group-sector-row{border:2px solid var(--game-ink);border-left:7px solid var(--game-blue);border-radius:12px;background:#fff;padding:18px;box-shadow:0 3px 0 #d9e7ff}
+.group-operations .group-sector-row h4{font-family:var(--game-display);color:var(--game-ink);font-size:17px}
+.group-operations .group-sector-row p{color:var(--game-ink)}
+.group-operations .group-sector-row p strong{font-family:var(--game-numeric);font-size:21px;font-style:italic;overflow-wrap:anywhere}
+.group-operations .group-operation-badge{padding:4px 7px;margin-left:10px;border-radius:5px;background:#dff8ed;color:var(--game-green);font-weight:800;vertical-align:middle}
+.group-operations .group-operation-choices{gap:10px;margin:20px 0}
+.group-operations .group-operation-choices button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:100px;padding:14px 10px;border:2px solid var(--game-blue);border-radius:12px;background:#f1f7ff;color:var(--game-ink);font-family:var(--game-display);font-size:13px;box-shadow:0 3px 0 #c4d9fc}
+.group-operations .group-operation-choices button[aria-pressed=true]{border:3px solid var(--game-ink);background:var(--game-blue);color:#fff;box-shadow:0 4px 0 var(--game-ink),inset 0 0 0 1px var(--game-cyan)}
+.group-operations .group-operation-comparison{padding:20px;border:2px solid var(--game-blue);border-radius:12px;background:#f2f7ff;box-shadow:0 4px 0 #d6e6ff}
+.group-operations .group-operation-comparison[data-operation-confirm]{border-color:var(--game-ink)}
+.group-operations .group-operation-comparison h4,.group-operations .group-operation-history h4{display:flex;align-items:center;gap:9px;color:var(--game-ink);font-family:var(--game-display);font-size:16px}
+.group-operations .group-operation-values{gap:12px}
+.group-operations .group-operation-values>div{padding:13px;border:1px solid #c4d9fa;border-radius:9px;background:#fff}
+.group-operations .group-operation-values dt{color:var(--game-ink);font-weight:700}
+.group-operations .group-operation-values dd{font-family:var(--game-numeric);font-size:26px;font-weight:800;font-style:italic;color:var(--game-ink);line-height:1.4}
+.group-operations .group-operation-range dd{font-size:30px}
+.group-operations .group-operation-compare-table{border:2px solid var(--game-blue);border-radius:8px;background:#fff}
+.group-operations .group-operation-compare-table thead th{padding:11px 8px;background:#deecff;color:var(--game-ink);font-weight:800}
+.group-operations .group-operation-compare-table tbody th{padding:12px 8px;color:var(--game-ink);font-weight:700}
+.group-operations .group-operation-compare-table td{padding:12px 8px;font-family:var(--game-numeric);font-size:20px;font-style:italic;color:var(--game-ink)}
+.group-operations .group-operation-warning{border:2px solid #efb3bd;border-left:6px solid var(--game-red);border-radius:8px;background:#fff1f4;color:var(--game-ink)}
+.group-operations .primary{min-height:54px;padding:13px 20px;border:3px solid var(--game-ink);border-radius:11px;background:linear-gradient(165deg,#fff173,var(--game-gold) 55%,#ffad24);color:var(--game-ink);font-family:var(--game-display);font-size:14px;box-shadow:0 4px 0 var(--game-ink),inset 0 0 0 1px #fff8b1;line-height:1.6;white-space:normal}
+.group-operations .secondary{min-height:44px;padding:10px 14px;border:2px solid var(--game-blue);border-radius:9px;background:#fff;color:var(--game-blue);font-weight:800;line-height:1.65}
+.group-operations .group-operation-actions{gap:12px;margin:22px 0}
+.group-operations .group-operation-actions>.primary{flex:1}
+.group-operations .group-operation-details{padding:14px;border:1px solid #c4d9fa;border-radius:9px;background:#f3f8ff}
+.group-operations .group-operation-details>summary{color:var(--game-blue);font-weight:800;font-size:12px}
+.group-operations .group-operation-history{padding:18px;border:2px solid var(--game-blue);border-radius:12px;background:#f5f9ff}
+.group-operations .group-operation-history-row{border-color:#c4d9fa}
+.group-operations .group-operation-history-row>strong{color:var(--game-ink);font-weight:800}
+.group-operations .group-operation-history-row p{color:var(--game-ink)}
+.group-operations .group-operation-history .group-operation-details{background:#fff}
+@media(max-width:600px){.group-operations .group-operation-intro{padding:19px 16px;gap:12px}.group-operations .group-operation-emblem{width:52px;height:58px}.group-operations .group-operation-intro h3{font-size:18px}.group-operations .group-sector-row{padding:16px}.group-operations .group-sector-row button{width:100%;justify-self:stretch}.group-operations .group-operation-choices{gap:6px}.group-operations .group-operation-choices button{font-size:11px;min-height:98px;padding:10px 5px}.group-operations .group-operation-comparison{padding:13px}.group-operations .group-operation-values{grid-template-columns:1fr}.group-operations .group-operation-values dd{font-size:24px}.group-operations .group-operation-range dd{font-size:26px}.group-operations .group-operation-compare-table td{font-size:16px;padding:10px 5px}.group-operations .group-operation-compare-table th{padding:10px 5px;font-size:11px}.group-operations .group-operation-history{padding:14px}.group-operations .primary{font-size:13px}}

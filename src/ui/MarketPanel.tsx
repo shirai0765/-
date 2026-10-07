@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Search } from 'lucide-react';
 import type { GameState, GameAction, StockDefinition } from '../model';
 import { STOCKS } from '../data/stocks';
 import { previewWeek } from '../sim/engine';
@@ -7,6 +6,7 @@ import { quoteStockTrade, settleStockTradeCash } from '../sim/stockTrading';
 import MarketAcquisitionsPanel from './MarketAcquisitionsPanel';
 import type { InvestmentIntent, InvestmentVisit } from './investmentPlanning';
 import GameDialog from './GameDialog';
+import { GameIcon } from './GameIcon';
 import './market.css';
 
 const yen = (value: number) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
@@ -68,6 +68,11 @@ export default function MarketPanel({ state, onAction, busy = false, onPlanInves
   }).sort((a, b) => sort === 'price' ? priceOf(a) - priceOf(b) : sort === 'yield' ? b.dividendYield - a.dividendYield : a.code.localeCompare(b.code));
   const openOrder = (id: string, action: 'buyStock' | 'sellStock') => { setSelectedId(id); setSide(action); setQuantity('1'); };
   return <div className="investment-panel">
+    <header className="market-service-header">
+      <span className="market-service-emblem"><GameIcon name={section === 'investment' ? 'chart' : 'briefcase'} size={42} tone="gold"/></span>
+      <div><span className="eyebrow">企業投資・友好的買収</span><h3>{section === 'investment' ? '1株から、企業の成長に参加する。' : '事業を迎え、グループを育てる。'}</h3><p>少額株、大型株、新興企業、不動産投資まで。手元資金 {yen(state.cash)} から投資できます。</p></div>
+      <span className="market-total">{STOCKS.length}<small>銘柄</small></span>
+    </header>
     <div className="market-tabs market-section-tabs" role="group" aria-label="株式市場の使い方"><button className={section === 'investment' ? 'active' : ''} aria-pressed={section === 'investment'} onClick={() => { setActiveVisit(null); setSection('investment'); }}>株式投資</button><button className={section === 'acquisitions' ? 'active' : ''} aria-pressed={section === 'acquisitions'} onClick={() => { setActiveVisit(null); setSelectedId(null); setSection('acquisitions'); }}>友好的買収</button></div>
     {section === 'acquisitions' ? <MarketAcquisitionsPanel state={state} onAction={onAction} busy={busy} onPlanInvestment={onPlanInvestment} investmentVisit={activeVisit} onManageSector={onManageSector}/> : <>
     <div className="summary-strip">
@@ -75,14 +80,13 @@ export default function MarketPanel({ state, onAction, busy = false, onPlanInves
       <div className="metric"><span>評価損益</span><strong className={portfolioValue >= cost ? 'positive' : 'negative'}>{yen(portfolioValue - cost)}</strong><small>{state.positions.length} 銘柄を保有</small></div>
       <div className="metric"><span>年間受取配当の目安</span><strong>{yen(annualDividends)}</strong><small>今週の配当予測 × 52週</small></div>
     </div>
-    <div className="market-intro"><div><span className="eyebrow">A SMALL INVESTMENT, A BIGGER WORLD</span><h3>1株から、企業の成長に参加する。</h3><p>少額株、大型株、新興企業、不動産投資まで。手元資金 {yen(state.cash)} から投資できます。</p></div><span className="market-total">{STOCKS.length}<small>銘柄</small></span></div>
     <div className="market-tabs" role="group" aria-label="上場市場で絞り込み">
       <button className={market === 'all' ? 'active' : ''} onClick={() => setMarket('all')}>すべて <small>{STOCKS.length}</small></button>
       {Object.entries(markets).map(([key, label]) => <button key={key} className={market === key ? 'active' : ''} onClick={() => setMarket(key)}>{label} <small>{STOCKS.filter(stock => stock.market === key).length}</small></button>)}
     </div>
     <p className="market-note">グロースには旧マザーズの企業も含みます。全銘柄1株単位で売買できるゲーム独自のルールです。安い株価でも、値下がりリスクが小さいとは限りません。</p>
     <div className="investment-filters">
-      <label className="search-field"><Search size={17}/><input aria-label="銘柄を検索" placeholder="架空名・実在名・コード" value={query} onChange={e => setQuery(e.target.value)}/></label>
+      <label className="search-field"><GameIcon name="search" size={21} tone="blue"/><input aria-label="銘柄を検索" placeholder="架空名・実在名・コード" value={query} onChange={e => setQuery(e.target.value)}/></label>
       <select aria-label="投資タイプ" value={profile} onChange={e => setProfile(e.target.value)}><option value="all">すべての投資タイプ</option>{Object.entries(profiles).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select>
       <select aria-label="1株の購入予算" value={budget} onChange={e => setBudget(e.target.value)}><option value="all">1株の予算：指定なし</option><option value="500">500円以下</option><option value="1000">1,000円以下</option><option value="5000">5,000円以下</option><option value="cash">手元資金で買える</option></select>
       <select aria-label="並び順" value={sort} onChange={e => setSort(e.target.value)}><option value="price">少額で買える順</option><option value="yield">設定配当利回り順</option><option value="code">コード順</option></select>

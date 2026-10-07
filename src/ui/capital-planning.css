@@ -61,3 +61,31 @@
   .capital-table { font-size: 11px; }
   .capital-table th, .capital-table td { padding: 9px 4px; }
 }
+
+/* Funding choices are transaction cards, never operating-profit rewards. */
+.capital-planning{--ink:#082348;--muted:#536b8b;--surface:#fff;--surface-soft:#edf6ff;--line:#c5daf0;--accent:#1265dc;--accent-soft:#e4f1ff;--accent-ink:#fff;--green:#087951;--red:#bb2f47;--game-green:#087951;--game-red:#bb2f47;color:#082348;color-scheme:light}
+.capital-planning{border:3px solid var(--game-ink,#082348);border-radius:12px;background:#fff;box-shadow:0 5px 0 #b8d4f8;padding:22px}
+.capital-panel-heading{display:flex;align-items:center;gap:13px;margin-bottom:16px;padding:16px;background:linear-gradient(120deg,#082348,#1265dc);border:2px solid #082348;border-radius:9px;color:#fff}
+.capital-panel-emblem{flex:none;display:grid;place-items:center;width:47px;height:51px;background:#082348;border:2px solid #55baff;border-radius:8px;transform:rotate(-5deg)}
+.capital-panel-heading>div{min-width:0}
+.capital-panel-heading .eyebrow{color:var(--game-gold,#ffcd3f);font-size:10px;font-weight:900;margin-bottom:7px;letter-spacing:.05em}
+.capital-panel-heading h3{font-family:var(--game-display,'Noto Sans JP Variable',sans-serif);font-weight:400;font-size:20px;color:#fff;line-height:1.6;letter-spacing:0;margin:0;text-shadow:1px 2px 0 #061c41}
+.capital-option{padding:16px;border:2px solid #aacbfb;border-radius:9px;background:linear-gradient(140deg,#fff,#f0f7ff);box-shadow:0 3px 0 #d4e4fa;gap:9px;color:var(--game-ink,#082348)}
+.capital-option strong{display:flex;align-items:center;gap:8px;font-weight:900;font-size:14px}
+.capital-option strong>.game-icon{flex:none}
+.capital-option.selected{background:linear-gradient(140deg,#fff9d7,#fff0b4);border-color:#bd871a;box-shadow:0 3px 0 #d4a32b,inset 0 0 0 1px #ffd65b}
+.capital-option b{font-family:var(--game-numeric,'Manrope Variable',sans-serif);font-size:26px;font-style:italic;font-weight:800;color:var(--game-ink,#082348)}
+.capital-context{background:#eaf4ff;border:2px solid #b6d3fb;border-left:5px solid var(--game-blue,#1265dc);border-radius:8px}
+.capital-outcome{border:2px solid #b9d5fb;background:linear-gradient(120deg,#eef6ff,#fff);padding:18px}
+.capital-key-values>div{background:#fff;border:1px solid #d2e3fb;border-radius:7px;padding:10px}
+.capital-key-values dd{font-family:var(--game-numeric,'Manrope Variable',sans-serif);font-size:24px;font-style:italic;font-weight:800;color:var(--game-ink,#082348);line-height:1.2}
+.capital-key-main dd{font-size:32px}
+.capital-borrow-settings,.capital-budget,.capital-details{border:2px solid #bdd7fb;background:#f7fbff;border-radius:9px}
+.capital-budget summary,.capital-details summary{color:var(--game-blue,#1265dc);font-weight:900}
+.capital-planning h4{font-family:var(--game-display,'Noto Sans JP Variable',sans-serif);font-size:15px;font-weight:400;color:var(--game-ink,#082348);line-height:1.7;letter-spacing:0}
+.capital-planning .secondary{border:2px solid var(--game-blue,#1265dc);background:#fff;color:var(--game-blue,#1265dc);border-radius:7px;min-height:44px;font-weight:800}
+.capital-actions>.primary{min-height:54px;border:3px solid var(--game-ink,#082348);border-radius:9px;background:linear-gradient(170deg,#fff79c,#ffcd3f 45%,#ffac1f);color:var(--game-ink,#082348);box-shadow:0 4px 0 #082348;font-family:var(--game-display,'Noto Sans JP Variable',sans-serif);font-weight:400;font-size:14px;padding:14px 18px;line-height:1.6}
+.capital-warning,.capital-rule{background:#fff3ed;border:2px solid #efbea9;border-radius:8px;padding:12px 14px;color:#9c283f;line-height:1.8}
+.capital-inputs input{border:2px solid #a4c6f4;border-radius:7px;min-height:46px;font-size:16px;background:#fff}
+@media(max-width:900px){.capital-option{grid-template-columns:1fr}.capital-option>span{grid-column:1}.capital-option b{display:block;font-size:25px}}
+@media(max-width:600px){.capital-planning{padding:16px}.capital-panel-heading{padding:12px;gap:10px}.capital-panel-heading h3{font-size:17px}.capital-panel-emblem{width:39px;height:47px}.capital-outcome{padding:12px}.capital-key-values dd{font-size:21px}.capital-key-main dd{font-size:26px}.capital-actions>.primary{font-size:12px}.capital-inputs{grid-template-columns:1fr}}

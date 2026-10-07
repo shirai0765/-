@@ -1,4 +1,7 @@
 import { CityAudioEngine } from './CityAudioEngine';
+import { CityAudioAssetError } from './CityAudioAssets';
+import type { CityAudioAssetConfig } from './CityAudioAssets';
+import type { CityAudioCue } from './CityAudioCues';
 
 export type CityAudioPlayback = 'paused' | 'starting' | 'playing' | 'hidden' | 'interrupted' | 'error';
 export type CityAudioPreferences = { volume: number; muted: boolean; music: number; ambience: number };
@@ -39,7 +42,7 @@ export class CityAudioSession {
   private timeout: ReturnType<typeof setTimeout> | null = null;
   private recovered = false;
 
-  constructor(private preferences: CityAudioPreferences, private readonly createContext = createCityAudioContext) {}
+  constructor(private preferences: CityAudioPreferences, private readonly createContext = createCityAudioContext, private readonly assets?: CityAudioAssetConfig) {}
 
   get current() { return this.snapshot; }
 
@@ -52,6 +55,10 @@ export class CityAudioSession {
     this.preferences = preferences;
     this.engine?.setVolume(preferences.volume, preferences.muted);
     this.engine?.setMix(preferences.music, preferences.ambience);
+  }
+
+  playCue(cue: CityAudioCue) {
+    if (!this.disposed && this.wanted && this.visible && this.snapshot.playback === 'playing') this.engine?.playCue(cue);
   }
 
   /** Call directly from the UI event; context construction and resume stay in that gesture. */
@@ -69,7 +76,7 @@ export class CityAudioSession {
       let context: AudioContext | null = null;
       try {
         context = this.createContext();
-        const active = new CityAudioEngine(context);
+        const active = new CityAudioEngine(context, this.assets);
         this.engine = active;
         this.unsubscribe = active.subscribe(() => this.contextChanged(active));
         this.setPreferences(this.preferences);
@@ -114,11 +121,13 @@ export class CityAudioSession {
         if (active.playing) this.publish('playing');
         else this.publish('interrupted', '音が休止しています。「音を再開」を押してください。');
       }
-    }).catch(() => {
+    }).catch((error: unknown) => {
       if (this.disposed || ticket !== this.revision || this.engine !== active) return;
       this.clearTimeout();
       if (!shouldPlay) return;
-      if (active.state === 'closed') {
+      if (error instanceof CityAudioAssetError) {
+        this.retire(); this.publish('error', '音源を読み込めませんでした。「音を再試行」を押してください。');
+      } else if (active.state === 'closed') {
         this.retire(); this.publish('error', '音を再開できませんでした。「音を再試行」を押してください。');
       } else this.publish('interrupted', '音が休止しています。「音を再開」を押してください。');
     });

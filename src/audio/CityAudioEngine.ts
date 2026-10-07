@@ -1,4 +1,8 @@
-/** Original music and synthesized café sounds; no recordings or network requests. */
+import { loadCityAudioAssets } from './CityAudioAssets';
+import type { CityAudioAssetConfig, CityAudioSound, DecodedCityAudioAsset, DecodedCityAudioAssets } from './CityAudioAssets';
+import type { CityAudioCue } from './CityAudioCues';
+
+/** Original synthesized fallback, with optional reviewed and bundled audio assets. */
 const BEAT = 60 / 78;
 const BAR = BEAT * 4;
 const CHORDS = [
@@ -22,18 +26,29 @@ export class CityAudioEngine {
   private readonly compressor: DynamicsCompressorNode;
   private readonly roomBuffer: AudioBuffer;
   private readonly sources = new Set<SoundSource>();
+  private readonly sourceCleanup = new Map<SoundSource, () => void>();
+  private readonly cueSources = new Set<SoundSource>();
   private readonly listeners = new Set<() => void>();
   private room: AudioBufferSourceNode | null = null;
+  private musicLoop: AudioBufferSourceNode | null = null;
+  private assets: DecodedCityAudioAssets | null = null;
+  private loading: Promise<void> | null = null;
+  private loadController: AbortController | null = null;
   private timer: ReturnType<typeof setInterval> | undefined;
   private nextBar: number | null = null;
   private bar = 0;
   private volume = .6;
+  private ambienceLevel = .9;
+  private lastButton = -Infinity;
+  private cueEnds: number[] = [];
+  private nextCafe: number | null = null;
+  private cafeSound = 0;
   private muted = false;
   private desired = false;
   private disposed = false;
   private revision = 0;
 
-  constructor(private readonly context: AudioContext) {
+  constructor(private readonly context: AudioContext, private readonly assetConfig?: CityAudioAssetConfig) {
     this.master = context.createGain();
     this.master.gain.value = 0;
     this.music = context.createGain();
@@ -52,7 +67,10 @@ export class CityAudioEngine {
   }
 
   get state(): CityAudioContextState { return this.context.state as CityAudioContextState; }
-  get playing(): boolean { return !this.disposed && this.desired && this.state === 'running' && this.timer !== undefined; }
+  get playing(): boolean {
+    return !this.disposed && this.desired && this.state === 'running' && this.timer !== undefined
+      && (!this.assetConfig || (this.assets !== null && this.musicLoop !== null));
+  }
 
   subscribe(listener: () => void) {
     this.listeners.add(listener);
@@ -75,8 +93,35 @@ export class CityAudioEngine {
 
   setMix(music: number, ambience: number) {
     if (this.disposed) return;
+    this.ambienceLevel = level(ambience);
     this.music.gain.setTargetAtTime(level(music), this.context.currentTime, .035);
-    this.ambience.gain.setTargetAtTime(level(ambience), this.context.currentTime, .035);
+    this.ambience.gain.setTargetAtTime(this.ambienceLevel, this.context.currentTime, .035);
+  }
+
+  /** Feedback never unlocks, resumes, or waits for an asset to load. */
+  playCue(cue: CityAudioCue) {
+    if (!this.playing || this.muted || this.volume === 0 || this.ambienceLevel === 0) return;
+    if (cue.kind === 'weekly' && (cue.reducedMotion || !Number.isFinite(cue.netProfit))) return;
+    const start = this.context.currentTime + .005;
+    if (cue.kind === 'button') {
+      if (start - this.lastButton < .08) return;
+      this.lastButton = start;
+    }
+    this.cueEnds = this.cueEnds.filter(end => end > start);
+    if (this.cueEnds.length >= 2) return;
+    const sound: CityAudioSound = cue.kind === 'button' ? 'button'
+      : cue.gameOver || cue.netProfit === 0 ? 'weeklyNeutral' : cue.netProfit > 0 ? 'weeklyProfit' : 'weeklyLoss';
+    const asset = this.assets?.sounds[sound];
+    if (asset) {
+      this.cueEnds.push(start + asset.loopEnd - asset.loopStart);
+      this.playAsset(asset, this.ambience, start, false, true);
+    } else {
+      // Short original confirmations until licensed recordings have been accepted.
+      const notes = sound === 'weeklyProfit' ? [523.25, 659.25, 783.99]
+        : sound === 'weeklyLoss' ? [293.66] : sound === 'weeklyNeutral' ? [440] : [880];
+      this.cueEnds.push(start + .3);
+      notes.forEach((frequency, i) => this.tone(frequency, start + i * .065, .14, sound === 'button' ? .065 : .08, this.ambience, false, true));
+    }
   }
 
   async setPlaying(playing: boolean): Promise<void> {
@@ -86,13 +131,15 @@ export class CityAudioEngine {
     const ticket = ++this.revision;
     if (!playing) {
       this.stopTimer();
+      this.stopCues();
       if (this.state !== 'closed' && this.state !== 'suspended') await this.context.suspend();
       return;
     }
     // This invocation occurs synchronously inside the tap handler on first start.
     // Do not defer resume() to an effect, timer or resolved promise on iOS.
     const resumed = this.context.resume();
-    await resumed;
+    if (this.assetConfig) await Promise.all([resumed, this.prepareAssets()]);
+    else await resumed;
     if (this.disposed) return;
     if (ticket !== this.revision || !this.desired) {
       // A late resume must never undo an explicit pause.
@@ -108,32 +155,56 @@ export class CityAudioEngine {
   private readonly contextChanged = () => {
     if (this.disposed) return;
     this.updateMaster();
-    if (this.desired && this.state === 'running') this.startScheduler();
-    else this.stopTimer();
+    if (this.desired && this.state === 'running' && (!this.assetConfig || this.assets)) this.startScheduler();
+    else { this.stopTimer(); this.stopCues(); }
     this.emit();
   };
 
   private emit() { for (const listener of this.listeners) listener(); }
 
+  private prepareAssets(): Promise<void> {
+    if (!this.assetConfig || this.assets) return Promise.resolve();
+    if (this.loading) return this.loading;
+    const controller = new AbortController();
+    this.loadController = controller;
+    this.loading = loadCityAudioAssets(this.context, this.assetConfig, controller.signal).then(assets => {
+      if (!this.disposed && !controller.signal.aborted) this.assets = assets;
+    }).finally(() => {
+      if (this.loadController === controller) { this.loading = null; this.loadController = null; }
+    });
+    return this.loading;
+  }
+
   private startScheduler() {
     if (this.timer !== undefined) return;
+    if (this.assetConfig && !this.assets) return;
     if (this.nextBar === null) this.nextBar = this.context.currentTime + .04;
-    if (!this.room) this.startRoom();
+    if (this.assets && !this.musicLoop) this.musicLoop = this.playAsset(this.assets.music, this.music, this.context.currentTime, true);
+    if (!this.room) {
+      if (this.assets?.ambience) this.room = this.playAsset(this.assets.ambience, this.ambience, this.context.currentTime, true);
+      else this.startRoom();
+    }
     this.schedule();
     this.timer = setInterval(() => this.schedule(), 100);
   }
 
   private track(source: SoundSource, nodes: AudioNode[]) {
     this.sources.add(source);
-    source.onended = () => {
+    const cleanup = () => {
       this.sources.delete(source);
+      this.cueSources.delete(source);
+      this.sourceCleanup.delete(source);
       if (source === this.room) this.room = null;
+      if (source === this.musicLoop) this.musicLoop = null;
+      source.onended = null;
       source.disconnect();
       for (const node of nodes) node.disconnect();
     };
+    this.sourceCleanup.set(source, cleanup);
+    source.onended = cleanup;
   }
 
-  private tone(frequency: number, start: number, duration: number, amplitude: number, destination: GainNode, pad = false) {
+  private tone(frequency: number, start: number, duration: number, amplitude: number, destination: GainNode, pad = false, cue = false) {
     const oscillator = this.context.createOscillator();
     const gain = this.context.createGain();
     const filter = this.context.createBiquadFilter();
@@ -149,7 +220,22 @@ export class CityAudioEngine {
     gain.gain.linearRampToValueAtTime(0, start + duration);
     oscillator.connect(filter); filter.connect(gain); gain.connect(destination);
     this.track(oscillator, [filter, gain]);
+    if (cue) this.cueSources.add(oscillator);
     oscillator.start(start); oscillator.stop(start + duration + .02);
+  }
+
+  private playAsset(asset: DecodedCityAudioAsset, destination: GainNode, start: number, loop: boolean, cue = false) {
+    const source = this.context.createBufferSource();
+    const gain = this.context.createGain();
+    source.buffer = asset.buffer; source.loop = loop;
+    source.loopStart = asset.loopStart; source.loopEnd = asset.loopEnd;
+    gain.gain.value = asset.gain;
+    source.connect(gain); gain.connect(destination);
+    this.track(source, [gain]);
+    if (cue) this.cueSources.add(source);
+    if (loop) source.start(start, asset.loopStart);
+    else source.start(start, asset.loopStart, asset.loopEnd - asset.loopStart);
+    return source;
   }
 
   private makeRoomBuffer() {
@@ -208,6 +294,17 @@ export class CityAudioEngine {
 
   private schedule() {
     if (this.disposed || !this.desired || this.state !== 'running' || this.nextBar === null) return;
+    if (this.assets) {
+      // Sparse ambience runs independently of musical bars and game economics.
+      this.nextCafe ??= this.context.currentTime + 12;
+      if (this.nextCafe < this.context.currentTime - .1) this.nextCafe = this.context.currentTime + 12;
+      if (this.nextCafe < this.context.currentTime + 1.2) {
+        const asset = this.assets.sounds[this.cafeSound % 3 === 0 ? 'coffee' : 'cup'];
+        if (asset) this.playAsset(asset, this.ambience, this.nextCafe, false);
+        this.nextCafe += 15 + (this.cafeSound++ % 5) * 3;
+      }
+      return;
+    }
     // Skip a throttled backlog rather than playing missed cups/notes all at once.
     while (this.nextBar < this.context.currentTime - .1) { this.nextBar += BAR; this.bar++; }
     while (this.nextBar < this.context.currentTime + 1.2) {
@@ -225,16 +322,25 @@ export class CityAudioEngine {
 
   private stopTimer() { if (this.timer !== undefined) clearInterval(this.timer); this.timer = undefined; }
 
+  private stopCues() {
+    for (const source of this.cueSources) {
+      try { source.stop(); } catch { /* Already ended. */ }
+      this.sourceCleanup.get(source)?.();
+    }
+    this.cueSources.clear(); this.cueEnds = [];
+  }
+
   async dispose() {
     if (this.disposed) return;
     this.disposed = true; this.desired = false; this.revision++; this.stopTimer();
+    this.loadController?.abort(); this.loadController = null; this.loading = null; this.assets = null;
     this.context.removeEventListener('statechange', this.contextChanged);
     this.listeners.clear();
     for (const source of this.sources) {
       try { source.stop(); } catch { /* Already ended. */ }
-      source.disconnect();
+      this.sourceCleanup.get(source)?.();
     }
-    this.sources.clear(); this.room = null;
+    this.sources.clear(); this.cueSources.clear(); this.cueEnds = []; this.room = null; this.musicLoop = null;
     this.master.disconnect(); this.music.disconnect(); this.ambience.disconnect(); this.compressor.disconnect();
     if (this.state !== 'closed') await this.context.close();
   }

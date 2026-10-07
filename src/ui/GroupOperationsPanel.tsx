@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
 import type { GameAction, GameState, MarketOperationPolicy, MarketOperationProject } from '../model';
 import { applyAction, getWeekOutlook } from '../sim/engine';
 import {
@@ -7,6 +6,7 @@ import {
   getMarketOperationQuote, getMarketOperationSectors, MARKET_OPERATION_TERM_WEEKS,
 } from '../sim/marketOperations';
 import type { InvestmentIntent, InvestmentVisit } from './investmentPlanning';
+import { GameIcon } from './GameIcon';
 import './group-operations.css';
 
 export interface GroupOperationsPanelProps {
@@ -30,7 +30,7 @@ function ProgramProgress({ state, project }: { state: GameState; project: Market
   const cohort = getMarketOperationCohort(state, project);
   const costs = getMarketOperationCosts(state, project);
   return <section className="group-operation-history" data-operation-start-week={project.startWeek} data-operation-end-week={project.endWeek}>
-    <h4>{result.complete ? '終了した事業計画' : '進行中の事業計画'} · {project.sector}</h4>
+    <h4><GameIcon name={result.complete ? 'check' : 'briefcase'} size={24} tone={result.complete ? 'green' : 'blue'}/>{result.complete ? '終了した事業計画' : '進行中の事業計画'} · {project.sector}</h4>
     <div className="group-operation-history-row">
       <strong>{labels[project.policy]} · {result.settledWeeks} / {MARKET_OPERATION_TERM_WEEKS}週 · 対象{cohort.length}件</strong>
       <dl className="group-operation-values"><div className="group-operation-range"><dt>決算済みの事業内の資金効果・初回支払込み</dt><dd className={differenceClass(result.netContribution)}>{signedYen(result.netContribution)}</dd></div></dl>
@@ -102,9 +102,9 @@ export default function GroupOperationsPanel({ state, onAction, busy = false, in
   };
 
   return <section className="group-operations" data-group-operations data-operation-sector={sector ?? undefined}>
-    {sector && <button type="button" className="group-operation-back" disabled={submitting} onClick={() => openSector(null)}><ArrowLeft size={15}/> 業種一覧へ</button>}
-    <span className="eyebrow">GROUP OPERATIONS</span>
-    <h3 ref={heading} tabIndex={-1} className="group-operation-heading">{sector ? `${sector}の運営・投資` : '市場から迎えた事業'}</h3>
+    {sector && <button type="button" className="group-operation-back" disabled={submitting} onClick={() => openSector(null)}><GameIcon name="arrow-left" size={21} tone="blue"/> 業種一覧へ</button>}
+    <header className="group-operation-intro"><span className="group-operation-emblem"><GameIcon name="briefcase" size={38} tone="gold"/></span><div><span className="eyebrow">GROUP OPERATIONS</span>
+    <h3 ref={heading} tabIndex={-1} className="group-operation-heading">{sector ? `${sector}の運営・投資` : '市場から迎えた事業'}</h3></div></header>
     {!sector ? <>
       <p className="group-operation-note">傘下の事業は、そのままでも運営を続けます。余力ができたら、一つの業種に26週の事業計画を選べます。</p>
       {active && <ProgramProgress state={state} project={active}/>}
@@ -119,7 +119,7 @@ export default function GroupOperationsPanel({ state, onAction, busy = false, in
       <p className="group-operation-note">稼働中 {selected.eligibleCount}件{selected.integratingCount > 0 && ` · 引継ぎ中 ${selected.integratingCount}件`}</p>
       {active && <ProgramProgress state={state} project={active}/>}
       {!active && <>
-        <div className="group-operation-choices" role="group" aria-label={`${sector}の事業計画を比較`}>{(['retain', 'growth', 'stability'] as const).map(option => <button type="button" key={option} data-operation-policy={option} aria-pressed={choice === option} disabled={submitting} onClick={() => choose(option)}>{labels[option]}</button>)}</div>
+        <div className="group-operation-choices" role="group" aria-label={`${sector}の事業計画を比較`}>{(['retain', 'growth', 'stability'] as const).map(option => <button type="button" key={option} data-operation-policy={option} aria-pressed={choice === option} disabled={submitting} onClick={() => choose(option)}><GameIcon name={option === 'growth' ? 'trend-up' : option === 'stability' ? 'check' : 'briefcase'} size={27} tone={choice === option ? 'gold' : 'blue'}/>{labels[option]}</button>)}</div>
         {choice === 'retain' ? <>
           <p className="group-operation-note">追加の計画費用を使わず、今の運営を続けます。週末に業績が確定します。</p>
           <dl className="group-operation-values"><div className="group-operation-range"><dt>この業種の事業利益の見込み / 今週</dt><dd>{rangeYen(selected.weeklyProfitRange)}</dd></div></dl>

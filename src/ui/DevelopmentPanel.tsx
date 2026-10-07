@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Building2, Check } from 'lucide-react';
 import type { DistrictId, GameAction, GameState } from '../model';
 import { getDevelopmentPrograms } from '../sim/development';
 import { applyAction, getWeekOutlook } from '../sim/engine';
 import GameDialog from './GameDialog';
+import { GameIcon } from './GameIcon';
 import './development.css';
 const yen = (n: number) => `¥${Math.round(n).toLocaleString('ja-JP')}`;
 const percent = (n: number) => `${n >= 0 ? '+' : ''}${(n * 100).toFixed(0)}%`;
@@ -36,12 +36,12 @@ export default function DevelopmentPanel({ state, onAction, busy = false }: { st
     finally { setSubmitting(false); }
   };
   return <div className="development-panel">
-    <header className="development-intro"><div><span className="eyebrow">FOUR DISTRICTS, TWELVE DECISIONS</span><h3>次の投資先は、街そのもの。</h3><p>各地区で3段階の開発を進めます。店舗の集客か、不動産の収益か。2つの計画から、その街の育て方を選びましょう。</p></div><Building2 size={30}/></header>
+    <header className="development-intro"><span className="development-intro-emblem"><GameIcon name="building" size={40} tone="gold"/></span><div><span className="eyebrow">FOUR DISTRICTS, TWELVE DECISIONS</span><h3>次の投資先は、街そのもの。</h3><p>各地区で3段階の開発を進めます。店舗の集客か、不動産の収益か。2つの計画から、その街の育て方を選びましょう。</p></div></header>
     <div className="development-summary"><div><span>全工程を完了した地区</span><strong>{programs.filter(p => p.phase === 3).length} / {programs.length}</strong><small>完成済みの工程は保有物件を売却しても残ります</small></div><div><span>進行中の工事</span><strong>{programs.filter(p => p.status === 'building').length} 件</strong><small>週を進めると工期が経過します</small></div><div><span>稼働中の維持費 / 週</span><strong>{yen(programs.filter(p => p.active).reduce((n, p) => n + p.effects.weeklyUpkeep, 0))}</strong><small>今週の予測に反映する開発費用</small></div></div>
     <p className="development-note">完成後の効果は、その地区の自社店舗と直接保有する賃貸物件に反映されます。需要の上昇は利益を保証しません。地区の最後の保有物件を売ると効果と維持費が停止し、再取得で再開します。</p>
     {error && !selected && <p className="development-error" role="alert">{error}</p>}
     {programs.map(p => <section className="development-district" key={p.districtId} aria-label={`${p.name}の開発`}><header><div><span className="eyebrow">DISTRICT DEVELOPMENT</span><h3>{p.name}</h3></div><strong>{statusLabel[p.status]}</strong></header>
-      <ol className="development-phases">{phases.map((name, index) => <li key={name} className={p.phase > index ? 'is-complete' : p.phase === index ? 'is-current' : ''}>{p.phase > index ? <Check size={13}/> : `PHASE ${index + 1}`}<strong>{name}</strong><span>{p.phase > index ? '完成' : p.phase === index && p.status === 'building' ? '工事中' : p.phase === index ? '次の工程' : '前の工程の完成後'}</span></li>)}</ol>
+      <ol className="development-phases">{phases.map((name, index) => <li key={name} className={p.phase > index ? 'is-complete' : p.phase === index ? 'is-current' : ''}>{p.phase > index ? <GameIcon name="check" size={21} tone="green"/> : `PHASE ${index + 1}`}<strong>{name}</strong><span>{p.phase > index ? '完成' : p.phase === index && p.status === 'building' ? '工事中' : p.phase === index ? '次の工程' : '前の工程の完成後'}</span></li>)}</ol>
       {p.status === 'building' ? <div className="development-construction"><strong>{p.remainingWeeks > 0 ? `完成まで、あと ${p.remainingWeeks} 週` : '今週の決算で完成'}</strong><p>{p.choices.find(c => c.id === state.development?.programs.find(row => row.districtId === p.districtId)?.construction?.choiceId)?.name}</p><p>{p.remainingWeeks > 0 ? '完成前は、この工程の効果は反映されません。' : p.active ? '今週の予測には、新しい効果と維持費を反映しています。' : '今週完成しますが、保有物件がないため稼働は停止します。'}次の工程は決算後に選べます。</p><small>現在の工程：{p.phase + 1} / 3</small></div> : p.phase < 3 ? <div className="development-choices">{p.choices.map(c => <article className="development-choice" key={c.id}><span className="eyebrow">PHASE {p.phase + 1} / PLAN</span><h4>{c.name}</h4><p>{c.description}</p><dl><div><dt>着工時の支払</dt><dd>{yen(c.cost)}</dd></div><div><dt>工期</dt><dd>{c.weeks} 週</dd></div><div><dt>完成後の追加維持費 / 週</dt><dd>{yen(c.weeklyUpkeep)}</dd></div><div><dt>地区内の自社店舗需要</dt><dd>{percent(c.cafeDemandBonus)}</dd></div><div><dt>地区内の保有物件賃貸収入</dt><dd>{percent(c.propertyYieldBonus)}</dd></div></dl><p className="development-note">{c.unlocked ? '着工条件を満たしています。' : c.reason}</p><button className="secondary" disabled={disabled || !c.unlocked} onClick={() => { setError(''); setSelected({ districtId: p.districtId, choiceId: c.id }); }}>計画と支払を確認</button></article>)}</div> : <p>3段階の開発が完成しました。店舗の運営と不動産の保有を見直し、街への投資を収益につなげましょう。</p>}
       <div className="development-effects"><span>{p.active ? '現在稼働中' : '現在停止中'}の予測反映効果</span><span>店舗需要 {percent(p.active ? p.effects.cafeDemandBonus : 0)}</span><span>賃貸収入 {percent(p.active ? p.effects.propertyYieldBonus : 0)}</span><span>維持費 {yen(p.active ? p.effects.weeklyUpkeep : 0)} / 週</span></div>
     </section>)}

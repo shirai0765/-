@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import type { GameState, OpeningRecord } from '../model';
 import StoreSettlementBreakdown from './StoreSettlementBreakdown';
 import GroupWeeklyResults from './GroupWeeklyResults';
+import { GameIcon } from './GameIcon';
+import { emitCityAudioCue } from '../audio/CityAudioCues';
 import './weekly-results.css';
 
 export interface WeeklyResultsProps {
@@ -35,41 +37,64 @@ export function recordedSettlement(state: GameState) {
   };
 }
 
-function useSettlementReveal(key: string, profit: number, cashChange: number, cash: number | null) {
+export const SETTLEMENT_REVEAL_MS = 1180;
+type RevealPhase = 'reveal' | 'count' | 'finish' | 'complete';
+type SettlementAmounts = { profit: number; cashChange: number; cash: number | null };
+
+/** Interpolates only the saved amounts; the ending cash is not current cash. */
+export function settlementRevealFrame(amounts: SettlementAmounts, elapsed: number): SettlementAmounts & { phase: RevealPhase } {
+  const progress = Math.max(0, Math.min(1, (elapsed - 140) / 820));
+  const eased = 1 - (1 - progress) ** 3;
+  const phase = elapsed < 140 ? 'reveal' : elapsed < 960 ? 'count' : elapsed < SETTLEMENT_REVEAL_MS ? 'finish' : 'complete';
+  return {
+    profit: progress === 1 ? amounts.profit : Math.round(amounts.profit * eased),
+    cashChange: progress === 1 ? amounts.cashChange : Math.round(amounts.cashChange * eased),
+    cash: amounts.cash === null ? null : progress === 1 ? amounts.cash : Math.round(amounts.cash - amounts.cashChange + amounts.cashChange * eased),
+    phase,
+  };
+}
+
+function useSettlementReveal(key: string, profit: number, cashChange: number, cash: number | null, gameOver: boolean) {
   const reduceMotion = () => typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const final = { profit, cashChange, cash };
-  const initial = { profit: 0, cashChange: 0, cash: cash === null ? null : cash - cashChange };
+  const final = { profit, cashChange, cash, phase: 'complete' as RevealPhase };
+  const initial = settlementRevealFrame({ profit, cashChange, cash }, 0);
   const [display, setDisplay] = useState(() => revealedReports.has(key) || reduceMotion() ? final : initial);
-  const decision = useRef<{ key: string; animate: boolean } | null>(null);
+  const decision = useRef<{ key: string; animate: boolean; cueSent: boolean } | null>(null);
+  const finishRef = useRef<(() => void) | null>(null);
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (decision.current?.key !== key) decision.current = { key, animate: !revealedReports.has(key) && !media.matches };
+    if (decision.current?.key !== key) {
+      const firstReveal = !revealedReports.has(key);
+      decision.current = { key, animate: firstReveal && !media.matches, cueSent: !firstReveal };
+    }
     revealedReports.add(key);
     if (revealedReports.size > 200) revealedReports.delete(revealedReports.values().next().value!);
-    if (!decision.current.animate || media.matches) { setDisplay({ profit, cashChange, cash }); return; }
+    if (!decision.current.cueSent) {
+      decision.current.cueSent = true;
+      emitCityAudioCue({ kind: 'weekly', reportKey: key, netProfit: profit, reducedMotion: media.matches, gameOver });
+    }
+    const finalDisplay = { profit, cashChange, cash, phase: 'complete' as const };
+    if (!decision.current.animate || media.matches) { setDisplay(finalDisplay); return; }
     let frame = 0;
     let started: number | null = null;
     let stopped = false;
-    setDisplay({ profit: 0, cashChange: 0, cash: cash === null ? null : cash - cashChange });
-    const finish = () => { stopped = true; cancelAnimationFrame(frame); setDisplay({ profit, cashChange, cash }); };
+    setDisplay(settlementRevealFrame({ profit, cashChange, cash }, 0));
+    const finish = () => { stopped = true; if (decision.current?.key === key) decision.current.animate = false; cancelAnimationFrame(frame); setDisplay(finalDisplay); };
+    finishRef.current = finish;
     const tick = (time: number) => {
       if (stopped) return;
       started ??= time;
-      const progress = Math.min(1, (time - started) / 800);
-      const eased = 1 - (1 - progress) ** 3;
-      setDisplay({
-        profit: Math.round(profit * eased),
-        cashChange: Math.round(cashChange * eased),
-        cash: cash === null ? null : Math.round(cash - cashChange + cashChange * eased),
-      });
-      if (progress < 1) frame = requestAnimationFrame(tick);
+      const next = settlementRevealFrame({ profit, cashChange, cash }, time - started);
+      setDisplay(next);
+      if (next.phase !== 'complete') frame = requestAnimationFrame(tick);
+      else if (decision.current?.key === key) decision.current.animate = false;
     };
     const onMotionChange = () => { if (media.matches) finish(); };
     frame = requestAnimationFrame(tick);
     media.addEventListener('change', onMotionChange);
-    return () => { stopped = true; cancelAnimationFrame(frame); media.removeEventListener('change', onMotionChange); };
-  }, [key, profit, cashChange, cash]);
-  return display;
+    return () => { stopped = true; cancelAnimationFrame(frame); media.removeEventListener('change', onMotionChange); if (finishRef.current === finish) finishRef.current = null; };
+  }, [key, profit, cashChange, cash, gameOver]);
+  return { display, complete: () => finishRef.current?.() };
 }
 
 /** All three amounts come from this settlement, even after later spending. */
@@ -77,29 +102,33 @@ export function WeeklySettlementSummary({ state }: { state: GameState }) {
   const report = state.lastReport;
   const recorded = recordedSettlement(state);
   if (!report || !recorded) return null;
-  return <SettlementSummary key={`${state.id}:${report.week}`} reportKey={`${state.id}:${report.week}`} report={report} recorded={recorded}/>;
+  return <SettlementSummary key={`${state.id}:${report.week}`} reportKey={`${state.id}:${report.week}`} report={report} recorded={recorded} gameOver={!!state.gameOver}/>;
 }
 
-function SettlementSummary({ reportKey, report, recorded }: {
+function SettlementSummary({ reportKey, report, recorded, gameOver }: {
   reportKey: string;
   report: NonNullable<GameState['lastReport']>;
   recorded: NonNullable<ReturnType<typeof recordedSettlement>>;
+  gameOver: boolean;
 }) {
-  const display = useSettlementReveal(reportKey, recorded.profit, recorded.cashChange, recorded.cash);
+  const { display, complete } = useSettlementReveal(reportKey, recorded.profit, recorded.cashChange, recorded.cash, gameOver);
   const outcome = report.netProfit > 0 ? '黒字で営業を終えました' : report.netProfit < 0 ? '赤字の決算です' : '収支は均衡しました';
-  return <div className="weekly-results-company">
-    <div className="weekly-results-profit">
-      <span>今週の全社純利益</span>
+  const positiveReward = report.netProfit > 0 && !gameOver;
+  return <div className="weekly-results-company" data-settlement-animation={display.phase} data-settlement-outcome={report.netProfit > 0 ? 'positive' : report.netProfit < 0 ? 'negative' : 'neutral'} data-settlement-ended={gameOver}>
+    <div className={'weekly-results-profit' + (positiveReward ? ' is-profitable' : report.netProfit < 0 ? ' is-loss' : ' is-neutral') + (yen(report.netProfit).length > 12 ? ' is-long-amount' : '')} onClick={complete}>
+      <span className="weekly-results-profit-label"><GameIcon name={positiveReward ? 'trend-up' : report.netProfit < 0 ? 'warning' : 'coins'} size={30}/>今週の全社純利益</span>
+      {positiveReward && <div className="weekly-results-reward-art" aria-hidden="true"><GameIcon name="coins" size={68}/>{Array.from({ length: 6 }, (_, i) => <i key={i}/>)}</div>}
       <strong className={outcomeClass(report.netProfit)} aria-label={`全社純利益 ${yen(report.netProfit)}`} data-profit-complete={display.profit === report.netProfit}>
         <span aria-hidden="true">{yen(display.profit)}</span>
       </strong>
-      <small>{outcome}{recorded.profitDifference !== null ? ` · 前週比 ${signedYen(recorded.profitDifference)}` : ''}</small>
+      <small><span className="weekly-results-outcome">{outcome}</span>{recorded.profitDifference !== null && <span className="weekly-results-previous">前週比 {signedYen(recorded.profitDifference)}</span>}</small>
+      {display.phase !== 'complete' && <button type="button" className="weekly-results-reveal-finish" onClick={event => { event.stopPropagation(); complete(); }}>結果をすぐ表示<GameIcon name="arrow-right" size={16}/></button>}
     </div>
-    <dl className="weekly-results-cash">
-      <div><dt>この決算の現金増減</dt><dd className={outcomeClass(report.cashChange)} aria-label={signedYen(report.cashChange)} data-cash-change-complete={display.cashChange === report.cashChange}><span aria-hidden="true">{signedYen(display.cashChange)}</span></dd></div>
-      <div><dt>決算後の手元資金</dt><dd aria-label={recorded.cash === null ? '記録なし' : yen(recorded.cash)} data-cash-complete={display.cash === recorded.cash}><span aria-hidden="true">{display.cash === null ? '記録なし' : yen(display.cash)}</span></dd></div>
+    <dl className={'weekly-results-cash' + (Math.max(signedYen(report.cashChange).length, recorded.cash === null ? 0 : yen(recorded.cash).length) > 12 ? ' is-long-amount' : '')}>
+      <div><GameIcon name={report.cashChange < 0 ? 'warning' : 'trend-up'} size={32} tone={report.cashChange < 0 ? 'red' : report.cashChange > 0 ? 'green' : 'navy'}/><dt>この決算の現金増減</dt><dd className={outcomeClass(report.cashChange)} aria-label={signedYen(report.cashChange)} data-cash-change-complete={display.cashChange === report.cashChange}><span aria-hidden="true">{signedYen(display.cashChange)}</span></dd></div>
+      <div><GameIcon name="wallet" size={32} tone="blue"/><dt>決算後の手元資金</dt><dd aria-label={recorded.cash === null ? '記録なし' : yen(recorded.cash)} data-cash-complete={display.cash === recorded.cash}><span aria-hidden="true">{display.cash === null ? '記録なし' : yen(display.cash)}</span></dd></div>
     </dl>
-    <p className="weekly-results-customers">今週は <strong>{report.customers.toLocaleString('ja-JP')}人</strong> が来店しました。</p>
+    <p className="weekly-results-customers"><GameIcon name="users" size={28}/>今週は <strong>{report.customers.toLocaleString('ja-JP')}人</strong> が来店しました。</p>
   </div>;
 }
 

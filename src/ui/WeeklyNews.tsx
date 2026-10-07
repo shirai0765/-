@@ -1,5 +1,6 @@
 import type { WeeklyReport } from '../model';
 import { STOCKS } from '../data/stocks';
+import { GameIcon } from './GameIcon';
 import './weekly-news.css';
 
 interface Props { report: WeeklyReport }
@@ -31,7 +32,7 @@ export default function WeeklyNews({ report }: Props) {
     <p className="weekly-news-source">ゲーム内 · 第{news.week}週に確定した街と市場の動き</p>
     <div className="weekly-news-cards">
       <article className="weekly-news-card" data-news-category="city" aria-label="街のニュース">
-        <span className="weekly-news-category">街</span><h4>{cityTitle}</h4>
+        <span className="weekly-news-category"><GameIcon name="building" size={25}/>街</span><h4>{cityTitle}</h4>
         {cityEvents.length > 0 && <p className="weekly-news-event">{cityEvents[0].text}</p>}
         <p>今週の街全体のカフェ需要{demandChange !== null ? <>は前週比 <strong>{percent(demandChange)}</strong>。</> : 'は開始時の水準でした。'}</p>
         <details className="weekly-news-details"><summary>この週の営業環境{cityEvents.length > 1 ? `・ほか${cityEvents.length - 1}件の完成` : ''}</summary>
@@ -42,12 +43,12 @@ export default function WeeklyNews({ report }: Props) {
       </article>
 
       <article className="weekly-news-card" data-news-category="market" aria-label="市場のニュース">
-        <span className="weekly-news-category">市場</span><h4>{marketTitle}</h4>
+        <span className="weekly-news-category"><GameIcon name="chart" size={25}/>市場</span><h4>{marketTitle}</h4>
         <p>週末のゲーム内株価は <strong>{news.market.advances}銘柄が上昇</strong>、{news.market.declines}銘柄が下落。{news.market.unchanged > 0 && `横ばいは${news.market.unchanged}銘柄。`}</p>
       </article>
 
       <article className="weekly-news-card" data-news-category="company" aria-label="他社のニュース">
-        <span className="weekly-news-category">他社</span><h4>他社の株価の動き</h4>
+        <span className="weekly-news-category"><GameIcon name="briefcase" size={25}/>他社</span><h4>他社の株価の動き</h4>
         {news.companies.length ? <ul className="weekly-news-companies">{news.companies.map(row => {
           const stock = STOCKS.find(stock => stock.id === row.stockId)!;
           return <li key={row.stockId} data-news-stock-id={row.stockId}>
@@ -58,7 +59,7 @@ export default function WeeklyNews({ report }: Props) {
         <p className="weekly-news-caption">週初から週末の価格変化。</p>
       </article>
       {groupEvents.length > 0 && <article className="weekly-news-card weekly-news-group-events" data-news-category="group" aria-label="グループ企業のニュース">
-        <span className="weekly-news-category">グループ</span><h4>グループ企業の進展</h4>
+        <span className="weekly-news-category"><GameIcon name="celebrate" size={25}/>グループ</span><h4>グループ企業の進展</h4>
         <p className="weekly-news-event">{groupEvents[0].text}</p>
         {groupEvents.length > 1 && <details className="weekly-news-details"><summary>ほか{groupEvents.length - 1}件の進展</summary><ul>{groupEvents.slice(1).map((event, i) => <li key={i}>{event.text}</li>)}</ul></details>}
       </article>}
