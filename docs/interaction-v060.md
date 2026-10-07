@@ -1,6 +1,6 @@
 # 0.6.0：街を見て出店し、営業して結果を知る
 
-0.6.0はローカルの実装・本番検証を終え、公開準備中です。現在の公開版は[0.5.0](https://shirai0765.github.io/-/?v=0.5.0)であり、この文書は0.6.0の公開完了を示しません。公開元・最終ビルド・配布・公開後検証は、下部の証拠欄へ確定後に追記します。
+[0.6.0を公開しました](https://shirai0765.github.io/-/?v=0.6.0)。478テスト、本番CSPの実Firefox9カテゴリ、Web/Windows梱包、Pagesと公開HTTPの照合まで成功しています。公開サイトでも実Firefoxで同じ9カテゴリを単一実行で完走しました。
 
 ## 判断材料と営業結果を分ける
 
@@ -77,15 +77,15 @@ native実行は担当を一つにまとめ、通常のrenderer・RAF・保存処
 
 ## リリース証拠の追記欄
 
-この欄は未確定の値を推測せず、担当が完了後に置き換えます。0.6.0公開までは冒頭の公開状態も維持します。
+公開元のソースと、公開後の検証文書を含む最終ソースは区別します。共有証拠は `/workspace/shared/shibuya-artifacts/` 以下です。
 
 | 項目 | 状態 |
 | --- | --- |
-| runtime公開元source commit | 未確定 |
+| runtime公開元source commit | `1eef6b2a41f00bad459e624b02e0e73a3abe939b`。`game-source`へpush済み。 |
 | 最終ビルドmanifest・index SHA・主JS/CSS | 上記build-04で確定。`build-verification-publish.json`を参照 |
 | 最終native DEV・本番CSP結果 | DEVの8カテゴリは別実行、最終production-01の9カテゴリは単一実行成功 |
-| Web/Windows ZIP・bytes・SHA・内容照合 | 未確定。確定後は[Web](web.md)・[Windows](windows.md)と照合 |
-| Pages commit / run / 公開先 | 未公開 |
-| 公開HTTP・資産SHA確認 | 未実行・未確定 |
-| 公開実操作・console/CSP/通信・後片付け | 未実行・未確定 |
-| 最終文書commit / source archive | runtime公開元と区別して確定後に追記 |
+| Web/Windows ZIP・bytes・SHA・内容照合 | `packaging-0.6.0.json`、[Web](web.md)・[Windows](windows.md)。全276ファイルのSHA・CRC・固定した配布入力が一致。旧2,622成果物はサイズ／更新時刻で保持。 |
+| Pages commit / run / 公開先 | `0ec51bf8d19285e984405cbbcbd0e735bac61725` / [37567470986](https://github.com/shirai0765/-/actions/runs/37567470986) success / 上記公開URL。 |
+| 公開HTTP・資産SHA確認 | `deploy-0.6.0/http-audit.json`：25/25 HTTP200、選択23資産のSHA一致。releaseの版・source・index、Pagesの対象commitも一致。全276資産の再取得とは区別。 |
+| 公開実操作・console/CSP/通信・後片付け | `deploy-0.6.0/public-playtest/results.json`：9カテゴリを単一実行で成功。78応答、HTTPエラー・失敗要求・consoleエラー／警告・観測CSP違反0。通常TLSで環境CAを一時profileへ信頼し、終了後にprofile・Xorg・認証ファイルを削除。公開サーバーへdesktop CSPを追加した検査ではありません。`verification-summary.json`参照。 |
+| ソース記録 | runtimeは上記commitに固定。公開検証文書は後続commit、次版の開発とは区別します。 |

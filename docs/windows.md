@@ -4,6 +4,14 @@
 
 0.6.0では、48か所から人通り・賃料を見て出店を選び、街の銀行・証券市場から資金調達できます。カフェの利益見込み表示を外し、営業後の実績を次の判断につなげます。週末の自動保存と旧会社の読込に対応します。仕様と検証範囲は [interaction-v060.md](interaction-v060.md) を参照してください。
 
+## 0.6.0の配布記録
+
+`/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.6.0-win32-x64.zip` は223,834,337 bytes、SHA256 `1944791df6e2b4020e86c6cdf55c6943d69d54bce72f0e770cc2530838d6487a`。最終build-04の276ファイル・94,358,262 bytesを再ビルドせず梱包し、CRC・全収録SHAが一致しました。既存2,622成果物はサイズ・更新時刻を照合して保持しました。この段落は梱包後の記録です。
+
+公式Electron44.5.1の既存キャッシュを公式チェックサム一覧と照合して使用しています。未署名で、Windows実機・Ryzen 5 PROでの動作確認は未実施です。
+
+[ブラウザー版0.6.0](https://shirai0765.github.io/-/?v=0.6.0) は公開済み。Pages run37567470986と公開HTTP25件／選択23資産SHAの照合が成功しました。実操作の最新結果は [interaction-v060.md](interaction-v060.md) を参照してください。
+
 ## 0.5.0の配布記録
 
 `/workspace/shared/shibuya-artifacts/windows/Shibuya-Capital-0.5.0-win32-x64.zip` は223,827,966 bytes、SHA256 `726a55d59e07848d5a20acfdea02a3b9b963d447e317f6500cc2b273d6d39edc`。同じ検証済みdistの276ファイルと全収録SHA・CRCが一致しています。公式Electron44.5.1の既存キャッシュをチェックサム一覧と照合して使用しました。実Windowsでの起動確認・コード署名・GitHub Releaseへのアップロードは行っていません。この段落はZIP作成後の記録です。

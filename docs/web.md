@@ -4,6 +4,12 @@
 
 0.6.0では、48か所から人通り・賃料を見て出店を選び、街の銀行・証券市場から資金調達できます。カフェの利益見込み表示を外し、営業後の実績を次の判断につなげます。週末の自動保存と旧会社の読込に対応します。仕様と検証範囲は [interaction-v060.md](interaction-v060.md) を参照してください。
 
+## 0.6.0の配布記録
+
+`/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.6.0-web.zip` は65,805,262 bytes、SHA256 `307077a158c58d70dacb2edc4dda98a8d908f30f0fe70b72e99eac317ff71627`。最終build-04の276ファイル・94,358,262 bytesを再ビルドせず梱包し、CRC・全収録SHAが一致しました。既存2,622成果物はサイズ・更新時刻を照合して保持しました。この段落は梱包後の記録です。
+
+[ブラウザー版0.6.0](https://shirai0765.github.io/-/?v=0.6.0) は公開済み。Pages run37567470986と公開HTTP25件／選択23資産SHAの照合が成功しました。実操作の最新結果は [interaction-v060.md](interaction-v060.md) を参照してください。
+
 ## 0.5.0の配布記録
 
 `/workspace/shared/shibuya-artifacts/Shibuya-Capital-0.5.0-web.zip` は65,798,726 bytes、SHA256 `4bc411b697473743d3e8e3930a6dfe5bc6fec45cfa435342b73930a01d7cb8ad`。最終dist276ファイル・94,340,876 bytesを再ビルドせず収録し、CRC・全収録SHA・凍結入力との一致を確認しました。ローカルのPages相対パスと、梱包直前の1,957成果物のサイズ/更新時刻も照合しました。これは梱包後の記録で、ZIP内文書には含まれません。公開検証は [interaction-v050.md](interaction-v050.md) で確認してください。
