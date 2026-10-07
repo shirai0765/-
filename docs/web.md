@@ -10,6 +10,10 @@
 
 配布ファイルは `Shibuya-Capital-0.9.0-web.zip`。展開後の使用方法は以下と共通です。
 
+## 0.9.0の梱包確認
+
+web ZIPは104,530,080 bytes、SHA256 `0d0dcc5e87dc53086b5890974359c16cd2443a7cbcca11b1286c4878f0738c78`。最終build-04の356 distファイルを再ビルドせず収録し、CRCと全収録SHAを照合しました。Windows実機確認・コード署名は未実施。公開結果は [release記録](release-v090.json) と [引継ぎ](RESUME.md) を参照してください。この段落は梱包後の追記です。
+
 ## 0.8.0の確定記録
 
 Web ZIPは65,826,270 bytes、SHA256 `0fb8108c5e5dddc92c2dfdf8be4596417d190d9fab924373addab32841e0f6b6`。同じ検証済み276 distファイルの全SHAとCRCを照合し、再ビルドせず収録しました。Pages `1724d6f`／run `37579278400`、公開HTTP25件と選択23資産SHA、公開WebKitでの開業・一週の実決算・保存再読込が成功しています。保存された証拠とsource archiveの全Git blob照合は [0.8.0の記録](interaction-v080.md) を参照してください。

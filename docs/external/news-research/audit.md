@@ -73,3 +73,13 @@ QA担当は完成した`pilot.json`のroot/reviewSummaryと全24件の短文・�
 親のサンプル証拠は `coordination/review-20261007-wave1/news-qa/`、別レビューは `/tmp/shibuya-news-pilot-parent-review.md` に保存。出典全34 URLの親による再取得、法的クリアランス、native動作、数百件の均質性を保証するレビューではない。
 
 追補後に開発親の別担当が1 CPUで `python3 scripts/external/news-research/validate.py --self-test`（正常/hold受理、8不利ケース拒否）と通常final検証（24候補・既存100銘柄一致）を実行し、両方PASS。変更4文書のdiff whitespace checkもPASS。原PRとの比較で全24短文・分類・runtime falseの保持を確認した。
+
+## 開発親による80件統合レビューと出典復元（2026-10-07 UTC）
+
+PR #11/#12の新28件ずつとPR #13のcatalog80件を指定headで取得し、親が新56件のfacts・短文・会社対応・保存文脈を全読した。各PRの添付validatorは1回ずつ試行し、11/12はPASS、13は初回ドトール価格改定1件のsourceLocation/supportingSources脱落（canonical/catalogの計4エラー）でHOLDとした。初回24件の親補強は原PRの基点12c375aより後であり、作者の元の監査を誤報へ書き換えない。
+
+親は代表的な新資料5件（アクシーズ決算、コパのTikTok販売提携、ラサール北柏冷凍冷蔵増築、アクセルスペースのシリーズD、JR東日本羽田アクセス線）を普通HTTPSで本文/PDF実読し、数値・主体・予定/実施を確認した。作者班の全80資料再読報告と、親の今回5資料サンプルを区別する。本文・画像は保存せず、URL/応答/SHA/自作所見は別証拠に残す。
+
+統合後、既存pilotから価格PDFのsupportingSourcesとsourceLocationをcompany40/catalog80へ復元した。現在は主80固有URL＋補助19固有URL、両区分間の重複1 URLを除きdistinct98 URL（補助参照箇所は21）。作者提出時の主80＋補助18・distinct97 URLという記録と元検査/hashは履歴として保持し、親補強後の集計/検査を追補として区別する。80件の短文・facts・分類・runtimeEligible false、既存100銘柄・経済・保存・株価は変更していない。
+
+初回判定、独立5資料の実読箇所、修正後の検査結果と最終判定は [news-wave2-v090.md](../internal-qa/news-wave2-v090.md) を参照。原資料全件を親が再取得した、法的権利審査やnative動作を完了した、今週の他社活動へ組み込んだという意味ではない。

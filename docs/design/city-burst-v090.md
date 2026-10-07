@@ -51,3 +51,5 @@ The first production native run found an actual defect: decorative icons were in
 ## Native follow-up, 2026-10-07
 
 The final build-03 production-CSP run (native02) loaded both real display fonts and corrected icon paths, with actual visible wallet/customer/check glyphs. The 390px weekly screen fits the settled profit, cash, visitors and main next action in one viewport. Property names, three real prices, shortage behavior and selected checks were checked at 360/390px. Root inspected actual screenshots against concept B. Native04 confirmed real loss presentation and bank contract/repayment, but root visual review found two bank night-theme text contrast defects (receipt and loan-list heading); those are not accepted yet. Historical failed runs remain preserved; a focused correction and recheck are pending.
+
+Final build04 follow-up: native07 confirmed bank/group/market/deals bare night text, settled receipt opacity1 and deep green. Root independently viewed the four final images and accepts the scoped correction. Earlier pending checks and failed runs above are historical evidence.

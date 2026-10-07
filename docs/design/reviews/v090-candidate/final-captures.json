@@ -1,0 +1,37 @@
+{
+  "copyMethod": "Unmodified native screenshot files",
+  "finalBuild": "build-04",
+  "finalIndexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae",
+  "entries": [
+    {
+      "evidence": "production-csp-07-night-final/bank-night-stable-receipt-and-loan-heading.png",
+      "file": "bank-night-390.png",
+      "run": "production-csp-07-night-final"
+    },
+    {
+      "evidence": "production-csp-07-night-final/group-night-count-policy-description.png",
+      "file": "group-night-390.png",
+      "run": "production-csp-07-night-final"
+    },
+    {
+      "evidence": "production-csp-07-night-final/market-night-acquisition-bare-intro.png",
+      "file": "market-night-390.png",
+      "run": "production-csp-07-night-final"
+    },
+    {
+      "evidence": "production-csp-07-night-final/deals-night-bare-contract-heading.png",
+      "file": "deals-night-390.png",
+      "run": "production-csp-07-night-final"
+    },
+    {
+      "evidence": "production-csp-06-tail/achievement-390-historical-natural-record.png",
+      "file": "achievement-390.png",
+      "run": "production-csp-06-tail"
+    },
+    {
+      "evidence": "production-csp-05-market-group/development-390-natural-project-status.png",
+      "file": "development-390.png",
+      "run": "production-csp-05-market-group"
+    }
+  ]
+}

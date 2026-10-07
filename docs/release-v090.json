@@ -1,0 +1,22 @@
+{
+  "version": "0.9.0",
+  "status": "verified-build-awaiting-publication",
+  "runtimeSourceCommit": "d1481614e1fe180426e59791806504495cbd6655",
+  "buildRun": "build-04",
+  "indexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae",
+  "distFiles": 356,
+  "distBytes": 139295575,
+  "liveUrl": "https://shirai0765.github.io/-/?v=0.8.0",
+  "nextAgentMode": "single-agent",
+  "gameComplete": false,
+  "humanThirtyHoursVerified": false,
+  "physicalWindowsAndSafariVerified": false,
+  "packages": {
+    "webArchiveSHA256": "0d0dcc5e87dc53086b5890974359c16cd2443a7cbcca11b1286c4878f0738c78",
+    "webArchiveBytes": 104530080,
+    "windowsArchiveSHA256": "3352daab1cca64bf02057868c49bb216da9aedcdd53700c5ff9c19ac9485c546",
+    "windowsArchiveBytes": 262565948,
+    "windowsRuntimeTested": false,
+    "windowsCodeSigned": false
+  }
+}

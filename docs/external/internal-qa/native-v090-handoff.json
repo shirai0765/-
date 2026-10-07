@@ -1,0 +1,384 @@
+{
+  "version": "0.9.0",
+  "at": "2026-10-07T07:15:11.156408+00:00",
+  "acceptanceMode": "Composite targeted native evidence; failed originals are not reclassified as passing. Successful unchanged categories inherited after exact source delta audit; final changed surfaces/models tested against build04.",
+  "technicalPassed": true,
+  "finalBuild": {
+    "manifest": "/workspace/shared/shibuya-artifacts/integration-v090/build-verification-04.json",
+    "indexSHA256": "8ae04c80dab206070995550b0fa2451e86745ad02ace148358b811eba96d39ae",
+    "distFiles": 356,
+    "distBytes": 139295575,
+    "manifestMatch": "/workspace/shared/shibuya-artifacts/completion-v090/native/manifest-match-final.json"
+  },
+  "integrationTests": {
+    "suite": "627 tests /71 files passed build03",
+    "build04": "typecheck/build passed;4 CSS plus1GLB changes only;13 targeted Dot/pool tests repassed",
+    "evidence": [
+      "/workspace/shared/shibuya-artifacts/integration-v090/unit-results-02.json",
+      "/workspace/shared/shibuya-artifacts/integration-v090/build-verification-04.json"
+    ]
+  },
+  "inheritance": {
+    "changed03to04": [
+      "public/models/external-v080/dogenzaka-mixed/dogenzaka-sakamichi-a.glb",
+      "src/ui/deals.css",
+      "src/ui/financial-services.css",
+      "src/ui/group-operations.css",
+      "src/ui/market.css"
+    ],
+    "allOtherSourcePublicConfigIdentical": true,
+    "rationale": "Weekly/property/icon/font/audio/game/economic/persistence sources unchanged; no wholepositivejourney/PCM/campaign rerun required. Finalnight07 testsall4 changedbusinessCSS surfaces and finalmodel03 testsnewSakamichi andfallback."
+  },
+  "coverage": [
+    {
+      "category": "Property/first store",
+      "evidenceRun": "production-csp-02",
+      "scope": "390/360/1280 property hero/three illustrated choices, exact costs and available funds, insufficient property funds, ordinary3m takeaway opening; view/style actions change no company state; first-store hint persists after toast8.1s and disappears by week2. Root visually accepted final property390/360 design."
+    },
+    {
+      "category": "Actual positive weekly/reveal/reduced-motion",
+      "evidenceRun": "production-csp-02",
+      "scope": "Genuine native fresh company week1 actual netProfit74725/cash9074725/state2; first390 summary visitors1449 and detail CTA both inside content; skip/reopen no new result cue; reduced-motion nextactualweek immediate/no cue. Root visually accepted390/1280 final weekly gold profit/title."
+    },
+    {
+      "category": "Actual loss/save/export/reload",
+      "evidenceRun": "production-csp-04-remainder",
+      "scope": "Import prior actualstate2; ordinary advertising500000 creates realweek2 netProfit−431258/cash8643467/state3; one restrained native loss cue293.66Hz, reward art absent. Exact payload/checksum through export/reload; no audio autoplay on reload."
+    },
+    {
+      "category": "Bank/capital",
+      "evidenceRun": "production-csp-04-remainder",
+      "scope": "Bank52week quote/approval/100000contract exactcash/no weekadvance then repayment exact; capital selection checked. All bare headings/receipt stable night readability superseded by07; previous bank assertions did not cover every heading/toast."
+    },
+    {
+      "category": "Market",
+      "evidenceRun": "production-csp-05-market-group",
+      "scope": "390 night search/no-match reset/filter/order10shares 星風産業64 total190yen; actualcash8643277/holding10/week3. Header photo-backed background visually accepted; changed bare notes/checkbox/acquisition intro superseded by07."
+    },
+    {
+      "category": "Group/development",
+      "evidenceRun": "production-csp-05-market-group",
+      "scope": "Imported labeled genuine CPU natural company week942; first sector5 eligible, actual quote upfront+26×weekly reserve equality, growth confirmation/back and view-only exact export; existing development phase/status displayed. Bare count/policy descriptions superseded by07."
+    },
+    {
+      "category": "Historic news/deals/achievement",
+      "evidenceRun": "production-csp-06-tail",
+      "scope": "Same genuine CPU natural fixture earned941/current942: existing report long amounts/news/offers/historical receipt shown and closed, exact export unchanged, no state advance or fabricated native completion."
+    },
+    {
+      "category": "Final night surfaces",
+      "evidenceRun": "production-csp-07-night-final",
+      "scope": "Build04 bank loan/no-loan heading, stable receipt opacity1 and ratio7.3484; market notes/checkbox/acquisition intro; group directnotes white and inner white-card note dark/ratio14.5232; bare deal contract heading white. All image-backed text measuredactualforeground rgb237/245/255 with ratio:null rather than an invented numeric ratio."
+    },
+    {
+      "category": "Fonts/icons/backgrounds/CSP",
+      "evidenceRuns": [
+        "production-csp-02",
+        "production-csp-06-tail",
+        "production-csp-07-night-final"
+      ],
+      "scope": "Dela and Barlow actual loaded faces, real hero/card imagery, decorative aria-hidden icon masks absolute/-/paths and glyphs visible, zero final assetHTTP/CSP failures. Root/deputy image review confirmed fixed icons; no production debug globals."
+    },
+    {
+      "category": "Actual bundled audio",
+      "evidenceRun": "production-csp-02",
+      "scope": "One opt-in original native AudioContext, cafeMP3HTTP/decode stereo44100 sampleRate looping0..45.714285714285715 with duration45.74040816326531; recorded music solo PCM peak.0913300067/rms.0286801205, mutepeak/rms0; original ambience and short synth cues remain; old composed BGM triangle nodes absent. Positive3tone frequencies523.25/659.25/783.99, reopen dedupe/reduced-motion;04 actual loss1tone. Human listening/physicaliPhone and native3loop joins are not claimed."
+    },
+    {
+      "category": "Final models/failed-file fallback",
+      "evidenceRuns": [
+        "production-csp-07-night-final",
+        "dev-models-final-03"
+      ],
+      "scope": "Build04 all4GLB200 under production CSP; DEV intentional Akari abort once, other3 loaded singleGLBclone/no fallback boxes/noeconomicidentifiers at exact source poses/unit scale. FailedAkari retains41instances original host, no retry; normalcameraFOV36/[-290,255,325] unchanged, trusted explicitpan/overview payload+checksum exact. FinalSakamichi PR17 SHA4b0dabe359f0005f91e35192263ea03bca9a820bb32b6270081d4e14770a4835."
+    }
+  ],
+  "runHistory": [
+    {
+      "run": "production-csp-01",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-01/results.json",
+      "overallPassed": false,
+      "checks": [
+        "One opt-in native AudioContext runs original ambience with nonzero real-time PCM; BGM independently set to zero for cue observations",
+        "Approved B property hero/three illustrated choices captured at390/1280;360prices/funds fit; styles and explicit view change no company state; night body contrast checked"
+      ],
+      "causeOrScope": "Build02 real product icon mask URLs resolved relative to bundled CSS and returned404 (424 recorded HTTP/console events, not424 unique files); root fixed absolute document URLs beforebuild03. Run stopped on a separate harness assertion that counted muted BGM oscillator scheduling as result cue replay; replaced by feedback-duration classification. Initial390 summary fit was also improved beforebuild03 after root image review.",
+      "errorCounts": {
+        "errors": 424,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 0,
+        "httpFailures": 424,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "production-csp-02",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-02/results.json",
+      "overallPassed": false,
+      "checks": [
+        "Four reviewed real GLB backgrounds load200 in unchanged production under /-/; default390/1280 city captured without diagnostic globals",
+        "One opt-in native AudioContext runs ambience and any enabled bundled music with nonzero real-time PCM; BGM independently set to zero for cue observations",
+        "Approved B property hero/three illustrated choices captured at390/1280;360prices/funds fit; styles and explicit view change no company state; night body contrast checked"
+      ],
+      "causeOrScope": "Harness exact button name omitted accessible detail in 広告・改装 集客・内装・設備. Property, first actual positive week, reopen/skip/reduced-motion, hint and native bundled audio observations completed before stop; browser errors0.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 0,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "production-csp-03-remainder",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-03-remainder/results.json",
+      "overallPassed": false,
+      "checks": [
+        "Four reviewed real GLB backgrounds load200 in unchanged production under /-/; default390/1280 city captured without diagnostic globals",
+        "Targeted remainder uses one opt-in ready native context for loss/replay cue observation; prior successful PCM is not repeated"
+      ],
+      "causeOrScope": "Harness exact draft input label became stale after entering editing state; switched to stable labeled field/input.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 0,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "production-csp-04-remainder",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-04-remainder/results.json",
+      "overallPassed": false,
+      "checks": [
+        "Four reviewed real GLB backgrounds load200 in unchanged production under /-/; default390/1280 city captured without diagnostic globals",
+        "Targeted remainder uses one opt-in ready native context for loss/replay cue observation; prior successful PCM is not repeated",
+        "Targeted continuation imports prior actual stateweek2 exactly, public advertising creates real loss and exactsave/export/reload; earlier positive/reduced-motion UI is not repeated"
+      ],
+      "causeOrScope": "Harness assumed an opaque numeric contrast background for market header, but actual background was a translucent gradient over a photo; now stores ratio:null and requires image review. Actual loss/exactsave/reload and bank borrow/repay completed. Root independently found bare bank night heading unreadable; fixed and rerun07.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 0,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "production-csp-05-market-group",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-05-market-group/results.json",
+      "overallPassed": false,
+      "checks": [
+        "Four reviewed real GLB backgrounds load200 in unchanged production under /-/; default390/1280 city captured without diagnostic globals",
+        "390px night market search/reset/order10 shares uses displayed exacttotal and currentfunds; actual image-backed heading captured for visual review"
+      ],
+      "causeOrScope": "Harness exact 営業・提案 menu name omitted its dynamic offer count. Stock10shares exactorder and group26week comparison/confirmation/view-only export completed. Root independently found bare group night notes unreadable; fixed and rerun07.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 0,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "production-csp-06-tail",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-06-tail/results.json",
+      "overallPassed": true,
+      "checks": [
+        "Four reviewed real GLB backgrounds load200 in unchanged production under /-/; default390/1280 city captured without diagnostic globals",
+        "Targeted tail shows saved news/offers, historical long amounts and earned receipt; closes custom dialogs and exactexports unchanged without weeks/actions",
+        "Actual bundled Dela/Barlow faces loaded, generated city/cafe/cards requested, decorative icon masks loaded without assetHTTP/CSP failures"
+      ],
+      "causeOrScope": "Passedtrue; remaining historical report/news/offers/earned receipt closed and exported exactly. Historical natural company is a CPU public-action fixture imported into native, not a941week native playthrough.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 0,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "production-csp-07-night-final",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/production-csp-07-night-final/results.json",
+      "overallPassed": true,
+      "checks": [
+        "Four reviewed real GLB backgrounds load200 in unchanged production under /-/; default390/1280 city captured without diagnostic globals",
+        "Final scoped night surfaces: loan/no-loan headings, fully settled receipt opacity1, market bare notes/checkbox/acquisition intro, group directwhite/nesteddark notes and deals heading read with measured contrast",
+        "Actual bundled Dela/Barlow faces loaded; relevant visible backgrounds and decorative icon masks load without assetHTTP/CSP failures"
+      ],
+      "causeOrScope": "Final build04 scoped bank/group/market/deals night text and stable bank receipt passed. Solid-card receipt contrast7.3484/opacity1; translucent image-backed bare text stores ratio:null and must be judged from actual screenshots.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 0,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "dev-models-final-01",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/dev-models-final-01/results.json",
+      "overallPassed": false,
+      "checks": [],
+      "causeOrScope": "Harness incorrectly treated Euler rotation.y as invariant yaw at π; equivalent XYZ=(π,0,π) represents the intended quaternion. Replaced with quaternion angle check. Three loaded/one fallback observed, source+cleanuptrue.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 1,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "dev-models-final-02",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/dev-models-final-02/results.json",
+      "overallPassed": false,
+      "checks": [],
+      "causeOrScope": "Harness compared full save envelopes including export timestamp savedAt. Only savedAt differed; payload/checksum independently exact. Replaced with format/schema/payload/checksum equality.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 1,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    },
+    {
+      "run": "dev-models-final-03",
+      "results": "/workspace/shared/shibuya-artifacts/completion-v090/native/dev-models-final-03/results.json",
+      "overallPassed": true,
+      "checks": [
+        "Three realGLB slots loaded with geometry and no fallback boxes; one intentionally failed slot retains procedural instances/original host, no economic identifiers",
+        "Normaldefaultcamera retained before trusted explicitpan; export payload/checksum exact through view-only actions; no repeated failed retry"
+      ],
+      "causeOrScope": "Final targeted model run passedtrue;3 realGLB loads/1 intentional failure retaining original procedural fallback, default camera, one trusted explicit pan/overview and exact export payload/checksum.",
+      "errorCounts": {
+        "errors": 0,
+        "consoleErrors": 0,
+        "warnings": 0,
+        "requestFailures": 1,
+        "httpFailures": 0,
+        "cspViolations": 0
+      },
+      "sourceStable": true,
+      "distStable": true,
+      "contextClosed": true,
+      "driverStopped": true,
+      "profileRemoved": true,
+      "cleanupError": null,
+      "originalResultPreserved": true
+    }
+  ],
+  "visualReview": {
+    "rootAccepted": [
+      "build03 final390 property hero/styles andweekly390/1280 close toapprovedB",
+      "build03 actualnegativeweekly andmarketheader",
+      "foundation deputy fixedclose/check/cup/etc glyphs actualimages"
+    ],
+    "finalBuild04NightImages": [
+      "production-csp-07-night-final/bank-night-stable-receipt-and-loan-heading.png",
+      "production-csp-07-night-final/group-night-count-policy-description.png",
+      "production-csp-07-night-final/market-night-acquisition-bare-intro.png",
+      "production-csp-07-night-final/deals-night-bare-contract-heading.png"
+    ],
+    "finalBuild04NightRootAcceptance": "Pending parent visual gate at handoff creation; no further browser run needed",
+    "finalModelImages": [
+      "dev-models-final-03/default-1280-one-fallback-three-loaded.png",
+      "dev-models-final-03/default-390-one-fallback-three-loaded.png",
+      "dev-models-final-03/native-explicit-west-pan-near-fallback.png"
+    ],
+    "finalBuild04NightQAVisualAcceptance": "QA owner actually viewed final bank stable receipt/loan heading, groupcount/policy, acquisitionintro and contractheading PNGs: text readable, stable receipt deepgreen/opacity1, innerwhitecards remain dark. Parent independent final visual acceptance pending.",
+    "finalModelQAVisualAcceptance": "QA owner actually viewed unchanged default1280 and trustedwestpan390 PNGs; expectedfallback remains visible cityfabric, roads/markerUI usable; node/geometry/pose claims come from native scene inspection, not screenshot inference."
+  },
+  "unresolvedProductIssuesObserved": [],
+  "limitations": [
+    "Native WebKit software WebGL; physicaliPhone/iOS Safari, physicalWindows portable launcher and physicalRyzen GPU performance not tested",
+    "Actual bundled BGM PCM/decode/loop observed; human listening and native full3loopjoin listening not claimed",
+    "Historic advancedcompany fixture was generated by public-action CPU gameplay, then imported into native; not a native941week playthrough",
+    "Translucent gradient/photo backgrounds rely on computed foreground plus actualimage review rather than an unsupported solidcolor contrast ratio"
+  ],
+  "cleanup": {
+    "at": "2026-10-07T07:15:11.156408+00:00",
+    "nativeProcesses": [],
+    "privateProfiles": [],
+    "gpuOwnerReleased": true,
+    "passed": true
+  },
+  "artifactsPauseAfterHandoff": true,
+  "artifactWritesFrozenAt": "2026-10-07T07:18:39.443034+00:00",
+  "technicalPackingGO": true
+}

@@ -4,7 +4,7 @@
 
 初回24件（[PR #7](https://github.com/shirai0765/-/pull/7)）＋新28件（[PR #11](https://github.com/shirai0765/-/pull/11)）＋新28件（[PR #12](https://github.com/shirai0765/-/pull/12)）。`catalog.json` は提出済み80件の索引で、新たな80件のbatchではない。N01 `candidates/company-news-wave1.json` は初回8＋新32、N02 `candidates/property-rail-capital-wave1.json` は初回16＋新24。`initialCandidateIds` を使い初回を二重計上しない。
 
-全件historical-reference/runtimeEligible:false。food25・retail-property27・rail-city10・capital-ma18件。主80＋補助18の全distinct97 URLを確認。追加56件はN03が作者とは独立して本文/PDFを再読し、作者も全編集短文を照合した。初回24のsource/factsと独立QA証拠を保持する。実在企業/事実と、既存100stockのゲーム名への対応、既存保存fieldに関連する参考文脈を分離し、現実の過去事例をゲーム内の今週活動として採用しない。
+全件historical-reference/runtimeEligible:false。food25・retail-property27・rail-city10・capital-ma18件。現在の集計は主80＋補助19、distinct98 URL。作者班による提出時の主80＋補助18・distinct97 URLの確認報告は当時の監査として保持する。開発親が初回pilotへ追加済みのドトール公式価格表PDFをcanonical/catalogにも復元したため、現在の補助出典は1件増えている。追加56件はN03が作者とは独立して本文/PDFを再読し、作者も全編集短文を照合した。開発親は全56件の短文・facts・保存文脈を読み、別に代表的な公式本文/PDF5件を確認した。このサンプル実読と作者班の全件再読報告を区別する。実在企業/事実と、既存100stockのゲーム名への対応、既存保存fieldに関連する参考文脈を分離し、現実の過去事例をゲーム内の今週活動として採用しない。
 
 ```sh
 python3 scripts/external/news-research/validate-wave.py --self-test
@@ -13,6 +13,8 @@ python3 scripts/external/news-research/validate-wave.py --batch docs/external/ne
 ```
 
 本索引PRは上の2追加PRと同じbatchファイルを含み、単独checkoutでも全体検証が可能。先にbatch PRを取り込めば差分はcanonical・catalog・本README・検証記録へ縮む。研究基点0f20987、初回基点12c375a、索引提出基点87915c2。`validation-wave.json` に実際のcommand、結果、hashを記録。原資料の実読・事実・意味上の重複や独自性は各auditの読取所見に基づき、自動schema合格とは区別する。掲載日/実施日不明、未実施計画、非開示数量は理由付きで残す。初回未知保存field10エラーの訂正履歴も保持。
+
+開発親の追加レビューと出典復元後の判定は [news-wave2-v090.md](../internal-qa/news-wave2-v090.md) を参照。`validation-wave.json` の元のchecks/hashesは作者提出時点の記録で、親の復元後検査・現在hashは追補として分けて記録する。
 
 [追加割当](https://github.com/shirai0765/-/pull/2#issuecomment-6031934250)に従う有限80件であり、src/runtime/経済/保存/依存/mainの変更は行わない。採用・merge・公開は開発親のレビュー待ち。
 

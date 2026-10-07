@@ -42,5 +42,39 @@
   },
   "sourceFactsEvidence": "Per-ID independent reads in initial audit.md and edited/batch-02/03/audit.md; structural checks do not replace those reads.",
   "selfTestEvidence": "Same validator self-test ran in the standalone batch-02 worktree: 8 adversarial cases rejected; see PR #11.",
-  "runtimeIntegration": false
+  "runtimeIntegration": false,
+  "originalSubmissionEvidenceNote": "元のverifiedAt/checks/hashesは作者提出時点の履歴。下記parentProvenanceRepairは現pilotの公式価格表PDF復元後の別検査/現在hashであり、元の記録を置き換えない。",
+  "parentProvenanceRepair": {
+    "verifiedAtUTC": "2026-10-07T07:09:22.251166+00:00",
+    "command": [
+      "python3",
+      "scripts/external/news-research/validate-wave.py",
+      "--batch",
+      "docs/external/news-research/edited/batch-02",
+      "--baseline",
+      "docs/external/news-research/pilot.json",
+      "--catalog",
+      "docs/external/news-research/catalog.json"
+    ],
+    "attemptCount": 1,
+    "exitCode": 0,
+    "stdout": "PASS: 28 batch/80 cumulative candidates; 100 STOCKS match market-universe; mode=final\nStructural pass does not establish source facts, copyright clearance or semantic uniqueness; see audit.md.\n",
+    "stderr": "",
+    "hashes": {
+      "docs/external/news-research/catalog.json": "2b0ed3ddf27173d48b9f87bdd9cbfd975004fc945cdaa889b3549a858ea7ff3e",
+      "docs/external/news-research/candidates/company-news-wave1.json": "598335f95362e0ecce730884985cefb1c3273247f5dfc841a22c392dc5114afe",
+      "docs/external/news-research/candidates/property-rail-capital-wave1.json": "da36125648ed955a374d3bca2f6b9499ed388a2b8c8ea16efd5bfd3c3e2b6aaa",
+      "docs/external/news-research/pilot.json": "141ebd89d56112e698674ca2392955d946d1518d80290ea28f788e815ea749f7",
+      "scripts/external/news-research/validate-wave.py": "95d17c743422ea4f839713202bae29ebda93030bddf5352f34348c4b208f494a"
+    },
+    "sourceCounts": {
+      "primaryUnique": 80,
+      "supplementalUnique": 19,
+      "allDistinct": 98,
+      "supplementalReferenceOccurrences": 21
+    },
+    "recordsUnchangedExceptDoutor2ProvenanceFields": true,
+    "runtimeIntegration": false,
+    "originalFailureEvidence": "validator-attempts.json (PR13 four provenance errors retained)"
+  }
 }
