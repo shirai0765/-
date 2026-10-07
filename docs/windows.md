@@ -10,6 +10,8 @@ Windows x64 ZIPは223,847,310 bytes、SHA256 `fa100e072696073340ccd154b16c031d1f
 
 公式Electron44.5.1の既存キャッシュを公式チェックサム一覧と照合しました。Windows実機の起動・性能・音声とコード署名は未確認です。
 
+[ブラウザー版0.6.1](https://shirai0765.github.io/-/?v=0.6.1) は公開済み。Pages run37570361019と公開HTTP25件／選択23資産SHAの照合が成功しました。詳細は [interaction-v061.md](interaction-v061.md)。
+
 ## 以前の0.6.0の配布記録
 
 配布ファイル名は `Shibuya-Capital-0.6.0-win32-x64.zip` です。ZIP全体を展開し、以下の手順で起動してください。
