@@ -1,0 +1,43 @@
+{
+  "status": "failed",
+  "seed": 1,
+  "startedAt": "2026-10-07T06:17:15.108Z",
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "version": "0.8.0",
+  "runtimeSourceTreeSha256": "d796d5f5fde85e2267d8516bb4393a094f51b7feeb68ad6ed3af52aa862a84bc",
+  "mode": "public-engine-actions",
+  "node": "v24.19.0",
+  "policy": "Copied six-store campaignV4; only trace hooks/import paths, selected-settings replay and removal of unrelated property-flip probe differ.",
+  "publicEntryPoints": [
+    "createGame",
+    "applyAction",
+    "advanceWeek",
+    "createEnvelope",
+    "decodeEnvelope"
+  ],
+  "humanPlaySeconds": null,
+  "humanPlayNote": "No timed human gameplay in this engine trace",
+  "humanThirtyHours": "unmeasured",
+  "maxWeeks": 1400,
+  "midWeek": 104,
+  "syntheticStateUsed": false,
+  "fundingInjectionUsed": false,
+  "futureOutcomeLookahead": false,
+  "selectionInputs": "Current public estimates, affordability/reputation and research ranges; speculative applyAction/previewWeek comparisons are selection calculations, not executed trace actions.",
+  "nativeBrowserEvidence": "Separate probe-01; no engine trace is counted as native UI evidence.",
+  "traces": {},
+  "saves": [],
+  "limits": [
+    "Seed-specific automated progress; no all-strategy or 30-hour enjoyment proof",
+    "Per-transition compact before/after state plus full-state hashes; full saves at boundaries and milestones enable action replay"
+  ],
+  "failure": {
+    "message": "SyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode",
+    "stack": "file:///workspace/shibuya-news-research-20261007T054410Z/src/persistence.ts:25\nexport class SaveError extends Error {\n  constructor(message: string, public readonly kind: SaveErrorKind = 'save', public readonly replacementToken?: DamagedPrimaryToken) { super(message); this.name = 'SaveError'; }\n                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n}\n\nSyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode\n    at parseTypeScript (node:internal/modules/typescript:68:40)\n    at processTypeScriptCode (node:internal/modules/typescript:146:42)\n    at stripTypeScriptModuleTypes (node:internal/modules/typescript:215:22)\n    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:680:29)\n    at #translate (node:internal/modules/esm/loader:434:20)\n    at afterLoad (node:internal/modules/esm/loader:502:29)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:507:12)\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:560:36)\n    at afterResolve (node:internal/modules/esm/loader:607:52)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:613:12)",
+    "transitionsPreserved": 0
+  },
+  "finishedAt": "2026-10-07T06:17:15.205Z",
+  "scriptElapsedSeconds": 0.0967661,
+  "gameWeeksSettled": 0,
+  "runtimeSourcesUnchanged": true
+}

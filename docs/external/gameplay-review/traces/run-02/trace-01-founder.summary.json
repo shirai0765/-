@@ -1,0 +1,230 @@
+{
+  "id": "trace-01-founder",
+  "mode": "public-engine-actions",
+  "version": "0.8.0",
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "seed": 1,
+  "oneContinuousNaturalCompany": true,
+  "stats": {
+    "fromWeek": 1,
+    "toStateWeek": 2,
+    "actions": 4,
+    "settlements": 1,
+    "idleSettlements": 0,
+    "positiveSettlements": 1,
+    "nonpositiveSettlements": 0,
+    "minCash": 8312000,
+    "minNetProfit": 310284,
+    "firstStateSHA256": "344e819d8636a5afaceccf79892f41b5fb55fdc6c4270b09ad23eb6ae69dbc98",
+    "finalStateSHA256": "8ff52d3ecaa574323e4f165ccb4ff00b6b21539d5ae8fa1350b01557307505d4"
+  },
+  "transitions": 6,
+  "firstBeforeState": null,
+  "firstAfterState": {
+    "id": "shibuya-1",
+    "week": 1,
+    "cash": 12000000,
+    "reputation": 10,
+    "stores": [],
+    "properties": [],
+    "loans": [],
+    "subsidiaries": [],
+    "listed": false,
+    "sharesOutstanding": 1000000,
+    "founderShares": 1000000,
+    "profitableWeeks": 0,
+    "totalCustomers": 0,
+    "gameOver": false,
+    "gameOverReason": null
+  },
+  "lastAfterState": {
+    "id": "shibuya-1",
+    "week": 2,
+    "cash": 8622284,
+    "reputation": 13.15,
+    "stores": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "lotId": "sakuragaoka-09",
+        "name": "桜丘南の住宅小路店",
+        "style": "standard",
+        "price": 850,
+        "quality": 100,
+        "staff": 4,
+        "manager": false,
+        "marketing": 0,
+        "level": 1,
+        "openedWeek": 1
+      }
+    ],
+    "properties": [],
+    "loans": [],
+    "subsidiaries": [],
+    "listed": false,
+    "sharesOutstanding": 1000000,
+    "founderShares": 1000000,
+    "profitableWeeks": 1,
+    "totalCustomers": 1068,
+    "gameOver": false,
+    "gameOverReason": null,
+    "lastReportWeek": 1,
+    "netProfit": 310284
+  },
+  "firstActualReport": {
+    "week": 1,
+    "revenue": 907800,
+    "operatingProfit": 310284,
+    "interest": 0,
+    "netProfit": 310284,
+    "loanRepayment": 0,
+    "dividendsReceived": 0,
+    "dividendsPaid": 0,
+    "cashChange": 310284,
+    "customers": 1068,
+    "headlines": [
+      "営業提案の今週効果 0円／継続費用 4,000円（営業利益に反映）。",
+      "桜丘南の住宅小路店：客足が普段より落ち着き、1,068人が来店しました。 運営に小さな遅れが出ました。",
+      "利益を確保しました。次の投資機会を検討しましょう。"
+    ],
+    "storeResults": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "revenue": 907800,
+        "profit": 314284,
+        "customers": 1068,
+        "satisfaction": 99
+      }
+    ],
+    "storeAccounts": [
+      {
+        "storeId": "store-sakuragaoka-09-1",
+        "costs": {
+          "ingredients": 197580,
+          "fulfilment": 108936,
+          "labor": 208000,
+          "rent": 51000,
+          "equipment": 28000,
+          "marketing": 0,
+          "manager": 0
+        },
+        "roundingAdjustment": 0
+      }
+    ],
+    "news": {
+      "week": 1,
+      "market": {
+        "advances": 34,
+        "declines": 66,
+        "unchanged": 0
+      },
+      "companies": [
+        {
+          "stockId": "jp-4597",
+          "previousPrice": 32,
+          "currentPrice": 36.61,
+          "percentChange": 14.406249999999998
+        },
+        {
+          "stockId": "jp-4564",
+          "previousPrice": 21,
+          "currentPrice": 18.79,
+          "percentChange": -10.523809523809524
+        }
+      ],
+      "city": {
+        "current": {
+          "demand": 1,
+          "wages": 1,
+          "rents": 1
+        }
+      },
+      "events": []
+    }
+  },
+  "lastActualReport": {
+    "week": 1,
+    "revenue": 907800,
+    "operatingProfit": 310284,
+    "interest": 0,
+    "netProfit": 310284,
+    "loanRepayment": 0,
+    "dividendsReceived": 0,
+    "dividendsPaid": 0,
+    "cashChange": 310284,
+    "customers": 1068,
+    "headlines": [
+      "営業提案の今週効果 0円／継続費用 4,000円（営業利益に反映）。",
+      "桜丘南の住宅小路店：客足が普段より落ち着き、1,068人が来店しました。 運営に小さな遅れが出ました。",
+      "利益を確保しました。次の投資機会を検討しましょう。"
+    ],
+    "storeResults": [
+      {
+        "id": "store-sakuragaoka-09-1",
+        "revenue": 907800,
+        "profit": 314284,
+        "customers": 1068,
+        "satisfaction": 99
+      }
+    ],
+    "storeAccounts": [
+      {
+        "storeId": "store-sakuragaoka-09-1",
+        "costs": {
+          "ingredients": 197580,
+          "fulfilment": 108936,
+          "labor": 208000,
+          "rent": 51000,
+          "equipment": 28000,
+          "marketing": 0,
+          "manager": 0
+        },
+        "roundingAdjustment": 0
+      }
+    ],
+    "news": {
+      "week": 1,
+      "market": {
+        "advances": 34,
+        "declines": 66,
+        "unchanged": 0
+      },
+      "companies": [
+        {
+          "stockId": "jp-4597",
+          "previousPrice": 32,
+          "currentPrice": 36.61,
+          "percentChange": 14.406249999999998
+        },
+        {
+          "stockId": "jp-4564",
+          "previousPrice": 21,
+          "currentPrice": 18.79,
+          "percentChange": -10.523809523809524
+        }
+      ],
+      "city": {
+        "current": {
+          "demand": 1,
+          "wages": 1,
+          "rents": 1
+        }
+      },
+      "events": []
+    }
+  },
+  "executedActionSpending": 3688000,
+  "executedActionFinancing": 0,
+  "milestones": [],
+  "evidence": {
+    "jsonl": "trace-01-founder.jsonl",
+    "sha256": "97f7bf87b49c6f974329a47455e8025d33a36593c2328fff5c44c4aa426080ec",
+    "replay": "replay-result.json",
+    "summary": "summary.json"
+  },
+  "time": {
+    "fullCampaignScriptSeconds": 17.060751929,
+    "phaseScriptSeconds": null,
+    "humanPlaySeconds": null,
+    "humanThirtyHours": "unmeasured"
+  }
+}

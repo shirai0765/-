@@ -1,0 +1,58 @@
+{
+  "status": "failed",
+  "startedAt": "2026-10-07T06:07:16.278Z",
+  "url": "https://shirai0765.github.io/-/?v=0.7.0",
+  "scenario": "probe",
+  "maxWeeks": 1200,
+  "browser": {
+    "executablePath": "/usr/bin/chromium",
+    "headless": true,
+    "chromiumSandbox": true,
+    "version": "151.0.7922.173"
+  },
+  "method": "Native browser trusted clicks/inputs; natural new companies; normal export/import only",
+  "limitations": [
+    "Automated play, not human 30-hour proof",
+    "Linux Chromium, not physical iPhone/Windows",
+    "No all-seed balance claim"
+  ],
+  "scenarios": {},
+  "actions": [],
+  "reports": [],
+  "exports": [],
+  "errors": [],
+  "warnings": [
+    {
+      "scope": "probe",
+      "message": "[.WebGL-0x21cc0211ac00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "scope": "probe",
+      "message": "[.WebGL-0x21cc0211ac00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "scope": "probe",
+      "message": "[.WebGL-0x21cc0211ac00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "scope": "probe",
+      "message": "[.WebGL-0x21cc0211ac00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    }
+  ],
+  "failedRequests": [],
+  "releaseBefore": {
+    "status": 200,
+    "version": "0.8.0",
+    "sourceCommit": "88192148884790ddf3325e7c76cc9cabace4f890",
+    "sourceBranch": "game-source",
+    "publishedAt": "2026-10-07T06:01:30.385737+00:00",
+    "verifiedFiles": 276,
+    "verifiedIndexSHA256": "3bcc942725b14b99c17f3fae4eabdfad494472a2a6ac339c11d0a1d891690fa6"
+  },
+  "failure": {
+    "scope": "probe",
+    "message": "TimeoutError: locator.click: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '経営', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"経営\" aria-label=\"経営\" class=\"hud-button\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n",
+    "stack": "locator.click: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '経営', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"経営\" aria-label=\"経営\" class=\"hud-button\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\n    at menu (/workspace/shibuya-news-research-20261007T054410Z/scripts/external/gameplay-review/run-ui.mjs:63:46)\n    at async newContext (/workspace/shibuya-news-research-20261007T054410Z/scripts/external/gameplay-review/run-ui.mjs:102:20)\n    at async file:///workspace/shibuya-news-research-20261007T054410Z/scripts/external/gameplay-review/run-ui.mjs:326:48"
+  },
+  "finishedAt": "2026-10-07T06:08:24.985Z"
+}

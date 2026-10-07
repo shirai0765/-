@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "trace": "01",
+  "method": "createGame matched natural initial save, then recorded public actions; full before/after SHA, actual reports and save round trips checked",
+  "provesNaturalCreationInThisReplay": true,
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "version": "0.8.0",
+  "seed": 1,
+  "provenanceNote": "Recorded provenance; transition hashes verify runtime behavior",
+  "transitions": 6,
+  "executedActions": 4,
+  "gameWeeksSettled": 1,
+  "initialStateWeek": 1,
+  "finalStateWeek": 2,
+  "finalCash": 8622284,
+  "achievement": null,
+  "checkedSaves": 2,
+  "checkedSaveFiles": [
+    "save-natural-new-company.json",
+    "save-founder-first-settlement.json"
+  ],
+  "checkedTraceFiles": [
+    "trace-01-founder.jsonl"
+  ],
+  "scriptElapsedSeconds": 0.032939377000000006,
+  "humanThirtyHours": "unmeasured"
+}

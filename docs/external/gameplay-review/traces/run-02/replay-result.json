@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "method": "createGame then recorded applyAction/advanceWeek; full before/after SHA and actual reports checked",
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "version": "0.8.0",
+  "seed": 1,
+  "transitions": 1741,
+  "gameWeeksSettled": 1400,
+  "finalStateWeek": 1401,
+  "finalCash": 15309512260,
+  "achievement": null,
+  "checkedSaves": 34,
+  "scriptElapsedSeconds": 12.247769488,
+  "humanThirtyHours": "unmeasured"
+}
