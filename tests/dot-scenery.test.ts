@@ -11,7 +11,7 @@ import { CITY_SERVICES } from '../src/data/cityServices';
 import office from '../docs/external/dot/validation/sakura-office/glb-report.json';
 import residential from '../docs/external/dot/validation/sakura-residential/glb-report.json';
 import akari from '../docs/external/dot/validation/dogenzaka-akari-b/glb-report.json';
-import sakamichi from '../docs/external/dot/validation/dogenzaka-sakamichi-a/glb-report.json';
+import sakamichi from '../docs/external/dot/validation/revisions/dogenzaka-sakamichi-a-4b0dabe359f0/glb-report.json';
 
 // These independent binary inspections measure complete meshes, including roof
 // equipment, pads and stairs. This is a geometry test, not native appearance QA.
@@ -20,7 +20,7 @@ const hashes = [
   '39ffc13b5843e8ffe9d535bb954ab41f4841b8a8bbe6f8833a93e964fad3ca08',
   'efe9c02f15c840f69c930153edc2165fddeadba1ce5efd98d9aa4e258899912b',
   '484c926c4cfb1a5de45c1826e7f46ccb655a7fb609342a9eead6e7b854550888',
-  '0af2d0da21b9868e7017a3625eaf152f3c565f43baad1ac84637b597e1078a20',
+  '4b0dabe359f0005f91e35192263ea03bca9a820bb32b6270081d4e14770a4835',
 ];
 const box = (x: number, z: number, w: number, d: number) => new THREE.Box3(
   new THREE.Vector3(x - w / 2, -1, z - d / 2),

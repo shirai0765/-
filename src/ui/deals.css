@@ -59,3 +59,6 @@
 .deal-modal .cost-list dd{color:var(--game-ink);font-family:var(--game-numeric);font-size:23px;font-style:italic;max-width:58%;overflow-wrap:anywhere}
 .deal-modal>.warning{border:2px solid #efb3bd;border-left:6px solid var(--game-red);border-radius:8px;background:#fff1f4;color:var(--game-ink)}
 @media(max-width:720px){.deals-panel .deals-intro{gap:12px;padding:19px 16px}.deals-panel .deals-intro-emblem{width:52px;height:58px}.deals-panel .deals-intro h3{font-size:18px}.deals-panel>.summary-strip{grid-template-columns:1fr;gap:10px}.deals-panel>.summary-strip .metric strong{font-size:28px}.deals-panel .deal-card{padding:17px}.deals-panel .deal-card h3{font-size:16px}.deals-panel .deal-terms>div{font-size:11px;gap:10px}.deals-panel .deal-contract{padding:16px}.deals-panel .deal-contract-heading{flex-wrap:wrap}.deals-panel .deal-buttons{gap:8px}.deals-panel .deal-buttons button{padding:11px 10px;font-size:12px}.deal-modal .cost-list dd{font-size:21px}}
+/* Contract section labels sit outside the white contract articles. */
+html[data-design='night'] .deals-panel>.deal-contracts>h3{color:#edf5ff}
+html[data-design='night'] .deals-panel>.deal-contracts>.eyebrow{color:#37dcff}

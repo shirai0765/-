@@ -42,3 +42,13 @@
 .investment-order input{font-size:16px;min-height:48px;border:2px solid #a4c6f4;border-radius:8px}
 .investment-order .cost-list dd{font-family:var(--game-numeric,'Manrope Variable',sans-serif);font-size:24px;font-style:italic;font-weight:800;overflow-wrap:anywhere;text-align:right}
 @media(max-width:760px){.market-service-header{padding:18px 15px;gap:13px;flex-wrap:wrap}.market-service-emblem{width:52px;height:60px}.market-service-header>div{flex-basis:calc(100% - 70px)}.market-service-header h3{font-size:20px}.market-service-header .market-total{font-size:35px;display:flex;align-items:baseline;gap:8px;margin-left:65px}.market-service-header .market-total small{margin:0}.investment-panel .summary-strip{grid-template-columns:1fr;gap:9px}.investment-panel .summary-strip>.metric{padding:13px 15px}.investment-panel .summary-strip .metric strong{font-size:30px}.investment-panel .market-section-tabs button{font-size:14px}.investment-panel .investment-filters{padding:10px;gap:8px}.investment-panel .investment-filters select{font-size:12px}.investment-panel .investment-filters input{font-size:16px}.investment-panel .table-wrap th,.investment-panel .table-wrap td{padding:12px}.investment-order .primary{font-size:12px}}
+/* Only transparent list regions follow the night shell, not white quote cards. */
+html[data-design='night'] .investment-panel>.market-note,
+html[data-design='night'] .investment-panel>.market-results,
+html[data-design='night'] .investment-panel>.market-results label,
+html[data-design='night'] .investment-panel .market-acquisitions>.market-note,
+html[data-design='night'] .investment-panel .market-acquisitions>.ma-intro h3,
+html[data-design='night'] .investment-panel .market-acquisitions>.ma-intro p,
+html[data-design='night'] .investment-panel .market-acquisitions>.ma-strategy-filters>label,
+html[data-design='night'] .investment-panel .market-acquisitions>.ma-pagination>span{color:#edf5ff}
+html[data-design='night'] .investment-panel .market-acquisitions>.ma-intro .eyebrow{color:#37dcff}

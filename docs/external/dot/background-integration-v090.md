@@ -26,10 +26,24 @@ disposal cannot dispose the main city's shared box geometry or materials.
 Pool teardown still precedes scene disposal, aborts requests and rejects late
 attachments. Loaded clone resources stay with the pool until final disposal.
 
-The four files total 2,097,108 bytes, 28,205 triangles and 38 primitives. Two
+The four files total 2,067,020 bytes, 27,733 triangles and 38 primitives. Two
 GLBs each embed a 1024×1024 sign atlas; identical atlases in separate files do
 not imply one GPU texture. These are asset counts, not measured frame rates
 or a promise of lower draw calls.
+
+Sakamichi A uses the PR17 correction (asset version 2), SHA256
+`4b0dabe359f0005f91e35192263ea03bca9a820bb32b6270081d4e14770a4835`.
+It adds five upper-floor tenant doors, turns five rear AC fans outward and
+ends the exterior stairs at the sixth-floor landing instead of the roof slab.
+Its full bounds, ground, front axis and sign atlas are unchanged, so the
+placement and fallback contract remain the same. The hash-specific
+[revision review](validation/revisions/dogenzaka-sakamichi-a-4b0dabe359f0/review.md)
+and [binary report](validation/revisions/dogenzaka-sakamichi-a-4b0dabe359f0/glb-report.json)
+are the current evidence. The predecessor reports remain historical evidence,
+with explicit notices describing the missed architectural details. Independent
+CPU checks of the actual old/new triangles matched the targeted correction
+expectations at 0/16 and 16/16 sample rays respectively; they do not certify
+interior circulation or replace native game acceptance.
 
 CPU acceptance checks the exact slot guards, measured complete envelopes,
 transport/lot/approach clearance, original fallback pose, exclusive fallback
