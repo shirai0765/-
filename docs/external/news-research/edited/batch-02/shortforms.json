@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "candidateId": "nr-capital-ma-jrc-ipo-20230809",
+      "authorWrittenBrief": "ＪＲＣは2023年8月9日、東証グロース市場への上場とIRサイトの公開を報告した。株式公開に合わせ、投資家が情報を確認する窓口を設けた事例である。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-liberaware-ipo-20240729",
+      "authorWrittenBrief": "産業用小型ドローンを開発するLiberawareは2024年7月29日、東証グロース市場への上場を報告した。同日にIRサイトを公開し、株主・投資家への情報提供を始めた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-nihon-knowledge-ipo-20230323",
+      "authorWrittenBrief": "日本ナレッジは2023年3月23日、東証グロース市場に上場した。上場の告知では、ソフトウェアの検証と開発を両輪にする事業方針を示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-digitalgrid-ipo-20250422",
+      "authorWrittenBrief": "デジタルグリッドは2025年4月22日に東証グロース市場へ上場したと、公式IRメッセージで報告している。情報開示と株主・投資家との対話を重視する方針も掲げた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "実施済み上場とIR方針を区別。調達額や上場後の利益は推定しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-axelspace-series-d-announcement-20231221",
+      "authorWrittenBrief": "アクセルスペースホールディングスは2023年12月、第三者割当によるシリーズDで約62.4億円を調達したと報告した。完全子会社で衛星数の増強や開発・運用サービスを進める方針を示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "調達報告月と払込日を区別。約143億円の累計を今回額にせず、資金使途は方針として記す。"
+    },
+    {
+      "candidateId": "nr-capital-ma-liberaware-funding-round-announcement-20230807",
+      "authorWrittenBrief": "Liberawareは2023年8月、6月に公表した分に追加して第三者割当増資を行ったと報告した。ラウンド全体では11.5億円となり、サービス拡充と研究開発に向けた株主との連携を進める方針だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "11.5億円は追加分単独でなく前回込み。報告日を個別払込日に移さず、サービス拡充を実現済み成果にしない。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-hakata-limited-shop-20230913",
+      "authorWrittenBrief": "スタジオアタオは2023年9月、ATAOの九州初の店舗を博多阪急で開く予定を案内した。期間限定の売場として、百貨店の1階に出店する計画だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "同日掲載でも予定形を保持。原表の面積/坪矛盾は候補も短文も採録しない。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-ilemer-gallery-plan-20230804",
+      "authorWrittenBrief": "スタジオアタオは2023年8月、神戸でILEMERの世界を体験する展示と限定商品の売場を合わせたギャラリーを開く計画を発表した。営業日は金・土・日だけとする予定だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "翌日開業予定を実施報告にしない。体験+限定物販と営業日制限を残し、集客効果は推定しない。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-ec-mall-renewal-20220519",
+      "authorWrittenBrief": "スタジオアタオは2022年5月、5ブランドを集めたECモールへ段階的に移行する計画を案内した。従来サイトのポイント終了を告知し、新モールでは条件付きで店頭と通販に共通のポイントを使える仕組みを示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "開始基準日と移行完了を区別。旧ポイントが新制度に自動移管されるとは書かない。"
+    },
+    {
+      "candidateId": "nr-retail-property-studioatao-kyoto-large-shop-plan-20220423",
+      "authorWrittenBrief": "スタジオアタオは2022年3月、駅に直結する約115㎡のATAO京都店を翌月に開く計画を発表した。ブランドの大型店として、姉妹ブランドIANNEの一部商品も並べる予定だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "開業予定と店舗設計を記す。神戸本店に次ぐ規模を全社最大にしない。"
+    },
+    {
+      "candidateId": "nr-food-ap-kinoko-umeda-first-fc-opening-20260521",
+      "authorWrittenBrief": "エー・ピーホールディングスは2026年5月、閉店した塚田農場の跡地に裏の山の木の子梅田店が開業したと報告した。同ブランド初のFC店で、運営をFOOLISHが担う形だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "更新本文の実施報告を根拠とする。FC運営者をHD直営/子会社としない。"
+    },
+    {
+      "candidateId": "nr-food-ap-oyadoriya-nakano-new-format-plan-20260428",
+      "authorWrittenBrief": "エー・ピーホールディングスは2026年4月、中野で親鶏を軸にする新業態の炭火酒場おやどりやを開く計画を発表した。食材の特徴を中心に、鶏料理の提供形態を変える出店計画だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "5/4更新後の本文も予定形。別サイトの予約表示から実施や売上を補完しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-tential-equity-debt-funding-announcement-20230301",
+      "authorWrittenBrief": "TENTIALは2023年3月、第三者割当増資と金融機関等からの借入を合わせ、10億円を調達したと発表した。製品開発や効果を裏付ける証拠の拡充、採用強化に取り組む方針だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "10億円を増資単独額にしない。健康効果の確定や入金日、開発成果は追加しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-tsukuruba-a-tech-alliance-announcement-20220228",
+      "authorWrittenBrief": "ツクルバは2022年2月、住宅リノベーションを手がけるa-techとの資本業務提携契約を結んだと発表した。出資と協業を通じ、買主・売主向けサービスや自社物件の企画開発を強化する方針だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "出資を完全買収/子会社化としない。品質や効率の向上は狙いとして記し実績化しない。"
+    },
+    {
+      "candidateId": "nr-food-ap-rouman-tavern-renewal-plan-20260120",
+      "authorWrittenBrief": "エー・ピーホールディングスは2026年1月、横浜ポルタのうなぎろ鰻を酒場としても使える店へ変える計画を案内した。従来の食事メニューを残し、串焼きやおでんを加える構成だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "開業1周年は実施済み、メニュー更新は予定形を保持。居酒屋化の売上効果を断定しない。"
+    },
+    {
+      "candidateId": "nr-food-ap-tsukada-plus-rice-producer-event-plan-20260311",
+      "authorWrittenBrief": "塚田農場プラスは2026年3月、弁当用の米を育てる生産者と客が交流する販売イベントを都内4店舗で開く予定を案内した。購入額の条件と数量上限を設け、米を贈る企画も組み合わせた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "主体は塚田農場プラスでHD本人ではない。イベント予定を実施済みとせず、特典による売上や費用を算出しない。"
+    },
+    {
+      "candidateId": "nr-retail-property-copa-suguderu-store-portal-announcement-20230213",
+      "authorWrittenBrief": "コパ・コーポレーションは2023年2月、販売店が在庫や出荷、納品予定を確認できる支援サイトを案内した。商品使用の動画もまとめ、取引先への情報提供を電話以外の経路に広げる仕組みだった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "掲載2/17と開始日記載2/13が逆順だが本文開始しますを実稼働確認へ補わない。利益拡大の宣伝は採用しない。"
+    },
+    {
+      "candidateId": "nr-retail-property-copa-rose-bath-product-launch-20231109",
+      "authorWrittenBrief": "コパ・コーポレーションは2023年11月、バラの形の泡を作れる入浴用商品を発売したと報告した。ノズルの構造と贈り物向けの小型缶を組み合わせ、商品の使う場面を示した。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "発売実施日11/9と掲載11/27を分離。広告上の推奨を実際の顧客評価や販売成果にしない。"
+    },
+    {
+      "candidateId": "nr-retail-property-copa-tiktok-shop-channel-announcement-20260417",
+      "authorWrittenBrief": "コパ・コーポレーションは2026年4月、ライブコマース社と組んでTikTok Shopの事業を進める方針を発表した。生活雑貨の実演配信をコパが担い、相手企業がショップ運用や販売管理などを支える分担だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "業務提携と販売チャネルの方針であり買収完了/配信実績ではない。相手のベクトル子会社と自社を混同しない。"
+    },
+    {
+      "candidateId": "nr-food-ap-tsukada-nagoya-miso-menu-plan-20260311",
+      "authorWrittenBrief": "エー・ピーホールディングスは2026年3月、名古屋市内の塚田農場3店舗で盛田の味噌を使う料理を提供する計画を案内した。既存メニューも地域の味付けに変え、店舗と期間を限定する構成だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "翌日開始予定と更新日を分離し実売断定なし。全店舗展開に拡張せず、盛田をHDの子会社としない。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-kinoko-meat-product-plan-20250218",
+      "authorWrittenBrief": "雪国まいたけは2025年2月、まいたけを主原料とする調理素材、ソース、炊き込みごはんの素の計5商品を同月18日から発売すると発表した。生鮮きのこに加えて、料理に使う加工食品を商品系列にする計画だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "PR TIMES本文冒頭L30–38、商品系列。商号対応の公式補助記事L89–99も再読。発売は予定、当時の主体は雪国まいたけ。初回の飲食商品事例とは主原料と加工食品系列の選択が異なる。健康訴求は効果実績にしない。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-mushroom-package-renewal-plan-20260630",
+      "authorWrittenBrief": "ユキグニファクトリーは2026年6月、ブラウンとホワイトの70gマッシュルームの包装を7月上旬に改める計画を発表した。トレーとラベルを変更し、ラベルには産地の岡山県牛窓の風景を取り入れる。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "公式本文L89–95、仕様L99–118を再読。7月上旬予定でeventDate=null。加工食品発売とは包装の変更という別判断。高級感などの広告表現を価格・利益実績に置き換えない。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-hakkaisan-cafeteria-event-result-20260705",
+      "authorWrittenBrief": "ユキグニファクトリーは2026年7月17日、同月5日に八海醸造の「八海山みんなの社員食堂」と共同イベントの第2弾を開催したと報告した。提供した全食数の完売も公表したが、食数と売上額は示していない。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "公式本文L89–96を再読。7/17掲載の7/5開催後報告。完売は企業報告、数量金額なし。商品発売・包装変更と異なり体験販売の実施報告である。"
+    },
+    {
+      "candidateId": "nr-food-yukiguni-corporate-brand-site-renewal-20250401",
+      "authorWrittenBrief": "雪国まいたけは2025年4月1日のユキグニファクトリーへの商号変更に合わせ、公式サイトを更新したと発表した。ロゴと企業色を反映し、サステナビリティ情報と英語サイトの内容を充実させた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "公式本文L89–99を再読。サイト刷新は実施済み記述、商号変更日4/1。食品発売の補助資料として同じURLを利用するが、この候補の主出来事は企業の発信・意匠更新であり二重採録ではない。"
+    },
+    {
+      "candidateId": "nr-retail-property-mitsui-kashiwanoha-grid-plan-20140424",
+      "authorWrittenBrief": "三井不動産は2014年4月、柏の葉で太陽光発電や蓄電池の電力を街区間で融通する仕組みを同年7月から段階的に動かす計画を発表した。平日と休日で商業施設とオフィス・ホテル街区の融通方向を切り替える設計だった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "公式本文L248–274を再読。7月より段階的運用の予定、許可取得は既遂。初回門真の施設複合とは電力の街区連携という別判断。26%や年1000万円は見込みなので採録短文から除外。"
+    },
+    {
+      "candidateId": "nr-retail-property-mec-otemachigate-completion-20260731",
+      "authorWrittenBrief": "三菱地所などは2026年7月31日、大手町ゲートビルディングの竣工と、人道橋・防災船着場の千代田区への引き渡しを報告した。建物の整備とともに、大手町の地域冷暖房網を日本橋川の下を通して神田側へ延ばした。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "公式L142–159、183–186を再読。竣工7/31、橋の開通式と区への移管、冷暖房網延伸は実施記述。MINORIWA8/31、商業9/7は予定として除外。初回常盤橋の竣工と別建物、接続・公共移管の判断を記す。"
+    },
+    {
+      "candidateId": "nr-retail-property-arealink-halloact-first-contract-20230630",
+      "authorWrittenBrief": "エリアリンクは2023年8月、トランクルームの所有権を小口化する「ハローAct」の提供開始と、初回の横須賀佐野町物件で6月30日に契約を終えたことを報告した。1口1,000万円の任意組合方式で不動産を共同保有し、同社が運営する仕組みだった。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "原URL2025/11はweb-open2回Internal Error。公式旧パス2023/08の同hash PDFを独立再読（1頁L0–23）、契約完了6/30と1口1000万円を確認。作者へ正常旧パス通知。初回2024年新規出店室数とは小口化という資産保有方法の別判断。"
+    },
+    {
+      "candidateId": "nr-retail-property-sanco-second-nagoya-office-opening-20240612",
+      "authorWrittenBrief": "三重交通グループの沿革は、賃貸オフィスの第2名古屋三交ビルが2024年6月12日に開業したと記している。三交不動産の事前資料では、オフィスにレストランと公開空地を組み合わせ、環境・ウェルネス認証を取得した構成を示していた。",
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "editorialNotes": "親沿革L709–722を再読し開業6/12を確認。子の5/30付PDF1頁と再掲5/8資料3〜4頁L45–92を独立再読。主体は三交不動産、親銘柄のsubsidiary。初回複合商業や鉄道変更と別、オフィス・公開空間・取得済認証に限定。"
+    }
+  ]
+}
