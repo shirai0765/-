@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "trace": "03",
+  "method": "Limited phase replay from the unmodified previous-phase natural save; recorded public actions, full before/after SHA, actual reports and boundary save round trips checked",
+  "provesNaturalCreationInThisReplay": false,
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "version": "0.8.0",
+  "seed": 1,
+  "provenanceNote": "Recorded provenance; transition hashes verify runtime behavior",
+  "transitions": 1524,
+  "executedActions": 227,
+  "gameWeeksSettled": 1297,
+  "initialStateWeek": 104,
+  "finalStateWeek": 1401,
+  "finalCash": 15309512260,
+  "achievement": null,
+  "checkedSaves": 2,
+  "checkedSaveFiles": [
+    "save-middle-boundary.json",
+    "save-final-natural-state.json"
+  ],
+  "checkedTraceFiles": [
+    "trace-03-late-growth.jsonl.gz"
+  ],
+  "scriptElapsedSeconds": 10.973844078,
+  "humanThirtyHours": "unmeasured"
+}

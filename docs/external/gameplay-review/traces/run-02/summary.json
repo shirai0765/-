@@ -1,0 +1,2892 @@
+{
+  "status": "incomplete-at-bound",
+  "seed": 1,
+  "startedAt": "2026-10-07T06:17:28.449Z",
+  "sourceSha": "0f20987d5e9961b8efe16c5f6aa5c6322120ec0b",
+  "version": "0.8.0",
+  "runtimeSourceTreeSha256": "d796d5f5fde85e2267d8516bb4393a094f51b7feeb68ad6ed3af52aa862a84bc",
+  "mode": "public-engine-actions",
+  "node": "v24.19.0",
+  "policy": "Copied six-store campaignV4; only trace hooks/import paths, selected-settings replay and removal of unrelated property-flip probe differ.",
+  "publicEntryPoints": [
+    "createGame",
+    "applyAction",
+    "advanceWeek",
+    "createEnvelope",
+    "decodeEnvelope"
+  ],
+  "humanPlaySeconds": null,
+  "humanPlayNote": "No timed human gameplay in this engine trace",
+  "humanThirtyHours": "unmeasured",
+  "maxWeeks": 1400,
+  "midWeek": 104,
+  "syntheticStateUsed": false,
+  "fundingInjectionUsed": false,
+  "futureOutcomeLookahead": false,
+  "selectionInputs": "Current public estimates, affordability/reputation and research ranges; speculative applyAction/previewWeek comparisons are selection calculations, not executed trace actions.",
+  "nativeBrowserEvidence": "Separate probe-01; no engine trace is counted as native UI evidence.",
+  "traces": {
+    "trace-01-founder": {
+      "fromWeek": 1,
+      "toStateWeek": 2,
+      "actions": 4,
+      "settlements": 1,
+      "idleSettlements": 0,
+      "positiveSettlements": 1,
+      "nonpositiveSettlements": 0,
+      "minCash": 8312000,
+      "minNetProfit": 310284,
+      "firstStateSHA256": "344e819d8636a5afaceccf79892f41b5fb55fdc6c4270b09ad23eb6ae69dbc98",
+      "finalStateSHA256": "8ff52d3ecaa574323e4f165ccb4ff00b6b21539d5ae8fa1350b01557307505d4"
+    },
+    "trace-02-ipo-investment": {
+      "fromWeek": 2,
+      "toStateWeek": 104,
+      "actions": 109,
+      "settlements": 102,
+      "idleSettlements": 76,
+      "positiveSettlements": 102,
+      "nonpositiveSettlements": 0,
+      "minCash": 2173883,
+      "minNetProfit": 751599,
+      "firstStateSHA256": "8ff52d3ecaa574323e4f165ccb4ff00b6b21539d5ae8fa1350b01557307505d4",
+      "finalStateSHA256": "67e5b2ec595a2bc9adb170002b0b4b64ecadb0f8c53fe46f609ced5a7ba8bf9d"
+    },
+    "trace-03-late-growth": {
+      "fromWeek": 104,
+      "toStateWeek": 1401,
+      "actions": 227,
+      "settlements": 1297,
+      "idleSettlements": 1154,
+      "positiveSettlements": 1297,
+      "nonpositiveSettlements": 0,
+      "minCash": 5263856,
+      "minNetProfit": 6395910,
+      "firstStateSHA256": "67e5b2ec595a2bc9adb170002b0b4b64ecadb0f8c53fe46f609ced5a7ba8bf9d",
+      "finalStateSHA256": "7bcf9924eb4c44aec3027b69a0c870f6ace62e65b682407a603fa19b6042618d"
+    }
+  },
+  "saves": [
+    {
+      "label": "natural-new-company",
+      "file": "save-natural-new-company.json",
+      "week": 1,
+      "checksum": "344e819d8636a5afaceccf79892f41b5fb55fdc6c4270b09ad23eb6ae69dbc98",
+      "payloadSHA256": "344e819d8636a5afaceccf79892f41b5fb55fdc6c4270b09ad23eb6ae69dbc98",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "founder-first-settlement",
+      "file": "save-founder-first-settlement.json",
+      "week": 2,
+      "checksum": "8ff52d3ecaa574323e4f165ccb4ff00b6b21539d5ae8fa1350b01557307505d4",
+      "payloadSHA256": "8ff52d3ecaa574323e4f165ccb4ff00b6b21539d5ae8fa1350b01557307505d4",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "ipo",
+      "file": "save-ipo.json",
+      "week": 17,
+      "checksum": "bef05a730e455044351bf24edc659caa85972ad20fe89fe60adace34fc0a0950",
+      "payloadSHA256": "bef05a730e455044351bf24edc659caa85972ad20fe89fe60adace34fc0a0950",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "first-direct-acquisition",
+      "file": "save-first-direct-acquisition.json",
+      "week": 29,
+      "checksum": "b7ff6efc58fc2344d5067c81e021092398ef563153155a599a59f5de33621f1e",
+      "payloadSHA256": "b7ff6efc58fc2344d5067c81e021092398ef563153155a599a59f5de33621f1e",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "first-market-acquisition",
+      "file": "save-first-market-acquisition.json",
+      "week": 41,
+      "checksum": "3b2087aca521a10d8c33b02fccadfda6cf8d43b2317ff7f40bd3638417f26f68",
+      "payloadSHA256": "3b2087aca521a10d8c33b02fccadfda6cf8d43b2317ff7f40bd3638417f26f68",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-1",
+      "file": "save-year-1.json",
+      "week": 53,
+      "checksum": "84a84dd975d1e62025c65a01ef0d0d383ca5743d51b604cb1c200b93c818ebd5",
+      "payloadSHA256": "84a84dd975d1e62025c65a01ef0d0d383ca5743d51b604cb1c200b93c818ebd5",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "middle-boundary",
+      "file": "save-middle-boundary.json",
+      "week": 104,
+      "checksum": "67e5b2ec595a2bc9adb170002b0b4b64ecadb0f8c53fe46f609ced5a7ba8bf9d",
+      "payloadSHA256": "67e5b2ec595a2bc9adb170002b0b4b64ecadb0f8c53fe46f609ced5a7ba8bf9d",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-2",
+      "file": "save-year-2.json",
+      "week": 105,
+      "checksum": "d902f276a62ca1281b675f821fd6f3fd96f5227e4524a30fa8848b29df35366f",
+      "payloadSHA256": "d902f276a62ca1281b675f821fd6f3fd96f5227e4524a30fa8848b29df35366f",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-3",
+      "file": "save-year-3.json",
+      "week": 157,
+      "checksum": "98b198806bc132475242d7fc8d4bf3ea3ef1710c393a67d82d3909efd1c8ec20",
+      "payloadSHA256": "98b198806bc132475242d7fc8d4bf3ea3ef1710c393a67d82d3909efd1c8ec20",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-4",
+      "file": "save-year-4.json",
+      "week": 209,
+      "checksum": "f16f9ee0e45ecca4185236a89bcd592dcb8b7d5e40b386a82fc44a9ad03c952d",
+      "payloadSHA256": "f16f9ee0e45ecca4185236a89bcd592dcb8b7d5e40b386a82fc44a9ad03c952d",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-5",
+      "file": "save-year-5.json",
+      "week": 261,
+      "checksum": "33bc9b3ca67cedffe753f20276aca39625ef4e2834cb59e201935cb6c49c2008",
+      "payloadSHA256": "33bc9b3ca67cedffe753f20276aca39625ef4e2834cb59e201935cb6c49c2008",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-6",
+      "file": "save-year-6.json",
+      "week": 313,
+      "checksum": "3f023ca8eb76a2c2002cb406c1f3a4b9f360e0e2f4a0b0d58e204ca280580ecd",
+      "payloadSHA256": "3f023ca8eb76a2c2002cb406c1f3a4b9f360e0e2f4a0b0d58e204ca280580ecd",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-7",
+      "file": "save-year-7.json",
+      "week": 365,
+      "checksum": "01bb9786fe0fcd4af55d496d43413be4f43d9bf45a6fbe4e10804b3136cc032c",
+      "payloadSHA256": "01bb9786fe0fcd4af55d496d43413be4f43d9bf45a6fbe4e10804b3136cc032c",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-8",
+      "file": "save-year-8.json",
+      "week": 417,
+      "checksum": "17f671d8f8619607b113e85cc16fc9a6bb6fd1d7e575ec383ed709962734a18f",
+      "payloadSHA256": "17f671d8f8619607b113e85cc16fc9a6bb6fd1d7e575ec383ed709962734a18f",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-9",
+      "file": "save-year-9.json",
+      "week": 469,
+      "checksum": "818d8df265a0d3592d1cfa8df28c572e2d649c72f23e6df672809b9b25822bb5",
+      "payloadSHA256": "818d8df265a0d3592d1cfa8df28c572e2d649c72f23e6df672809b9b25822bb5",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-10",
+      "file": "save-year-10.json",
+      "week": 521,
+      "checksum": "ad1fa761c831b9b6e331341dd40be033db27bc77f0fc9aa8b8f51da3b499b3fd",
+      "payloadSHA256": "ad1fa761c831b9b6e331341dd40be033db27bc77f0fc9aa8b8f51da3b499b3fd",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-11",
+      "file": "save-year-11.json",
+      "week": 573,
+      "checksum": "b211582fd5cf161778fc91d54829d07196a09c363b07a3fd361857c2596e36a5",
+      "payloadSHA256": "b211582fd5cf161778fc91d54829d07196a09c363b07a3fd361857c2596e36a5",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-12",
+      "file": "save-year-12.json",
+      "week": 625,
+      "checksum": "d019431eff740dda86b656f17ad9def9644d27df2a5452e3172ad764830048b7",
+      "payloadSHA256": "d019431eff740dda86b656f17ad9def9644d27df2a5452e3172ad764830048b7",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-13",
+      "file": "save-year-13.json",
+      "week": 677,
+      "checksum": "ae16cccf3b2e1d7a55a8c80e29329f1a00b399c00c5c4072969e22b5743022d0",
+      "payloadSHA256": "ae16cccf3b2e1d7a55a8c80e29329f1a00b399c00c5c4072969e22b5743022d0",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-14",
+      "file": "save-year-14.json",
+      "week": 729,
+      "checksum": "c0a88dc559e4b5826ff38c8797f981541bd7c825f33ae4a50e81de629d3d66ef",
+      "payloadSHA256": "c0a88dc559e4b5826ff38c8797f981541bd7c825f33ae4a50e81de629d3d66ef",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-15",
+      "file": "save-year-15.json",
+      "week": 781,
+      "checksum": "2af34dd285b09668f950afff7c474f39a8bb9f369780d0303d1146c853a52a87",
+      "payloadSHA256": "2af34dd285b09668f950afff7c474f39a8bb9f369780d0303d1146c853a52a87",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-16",
+      "file": "save-year-16.json",
+      "week": 833,
+      "checksum": "b396d6ad5ed6bff9c65294a98023cfc844b3b4cf3e41eb9a03ca8dae57735d56",
+      "payloadSHA256": "b396d6ad5ed6bff9c65294a98023cfc844b3b4cf3e41eb9a03ca8dae57735d56",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-17",
+      "file": "save-year-17.json",
+      "week": 885,
+      "checksum": "fb92c5856a0361070fa2e05c15ddba0853692afdcdb0d68b87808b454a197691",
+      "payloadSHA256": "fb92c5856a0361070fa2e05c15ddba0853692afdcdb0d68b87808b454a197691",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "all-market-acquired",
+      "file": "save-all-market-acquired.json",
+      "week": 901,
+      "checksum": "b45c1db8e471e1be499cf397095100892b2b43ed079257ee3504a4eb31d7c6ec",
+      "payloadSHA256": "b45c1db8e471e1be499cf397095100892b2b43ed079257ee3504a4eb31d7c6ec",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-18",
+      "file": "save-year-18.json",
+      "week": 937,
+      "checksum": "26108c1840f18c5284e08eb6bacf271af76e3465822a75fd05edc1b5a35ebcee",
+      "payloadSHA256": "26108c1840f18c5284e08eb6bacf271af76e3465822a75fd05edc1b5a35ebcee",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-19",
+      "file": "save-year-19.json",
+      "week": 989,
+      "checksum": "c50f17a539fced5257ba585938c6ed3ee46e8266aaa79db7e4f521c8ff0c5124",
+      "payloadSHA256": "c50f17a539fced5257ba585938c6ed3ee46e8266aaa79db7e4f521c8ff0c5124",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-20",
+      "file": "save-year-20.json",
+      "week": 1041,
+      "checksum": "06509c35ac2caa2412ca4e83d7492426500c6a4bd8c87fde16fae3e6351ff474",
+      "payloadSHA256": "06509c35ac2caa2412ca4e83d7492426500c6a4bd8c87fde16fae3e6351ff474",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-21",
+      "file": "save-year-21.json",
+      "week": 1093,
+      "checksum": "d1ca1213cf311b7bcc5e7babfb9727ff9e69984cf8bcdcdb82d6889d70a4b9ba",
+      "payloadSHA256": "d1ca1213cf311b7bcc5e7babfb9727ff9e69984cf8bcdcdb82d6889d70a4b9ba",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-22",
+      "file": "save-year-22.json",
+      "week": 1145,
+      "checksum": "95e3419f87edd9f95fc1240f4e0d53215627639ace99b6ae49bbcc26256f8961",
+      "payloadSHA256": "95e3419f87edd9f95fc1240f4e0d53215627639ace99b6ae49bbcc26256f8961",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-23",
+      "file": "save-year-23.json",
+      "week": 1197,
+      "checksum": "c9a3876585d8295342043aa892710bb92b12ad67d966be678f45a8269a367494",
+      "payloadSHA256": "c9a3876585d8295342043aa892710bb92b12ad67d966be678f45a8269a367494",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-24",
+      "file": "save-year-24.json",
+      "week": 1249,
+      "checksum": "86a5e59ed241f8b8100ace5f1f272237c0b21497b8b5b474f43a3fac5836e60e",
+      "payloadSHA256": "86a5e59ed241f8b8100ace5f1f272237c0b21497b8b5b474f43a3fac5836e60e",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-25",
+      "file": "save-year-25.json",
+      "week": 1301,
+      "checksum": "791feee468bbda76f6e8ed174b24fd95da82f1159d35f3e501b87b723fb56dcd",
+      "payloadSHA256": "791feee468bbda76f6e8ed174b24fd95da82f1159d35f3e501b87b723fb56dcd",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "year-26",
+      "file": "save-year-26.json",
+      "week": 1353,
+      "checksum": "3adaff9620cd1e5ca40cef093c186c6fb4ab7f2d41b4c8374203479861e9aec1",
+      "payloadSHA256": "3adaff9620cd1e5ca40cef093c186c6fb4ab7f2d41b4c8374203479861e9aec1",
+      "exactRoundTrip": true
+    },
+    {
+      "label": "final-natural-state",
+      "file": "save-final-natural-state.json",
+      "week": 1401,
+      "checksum": "7bcf9924eb4c44aec3027b69a0c870f6ace62e65b682407a603fa19b6042618d",
+      "payloadSHA256": "7bcf9924eb4c44aec3027b69a0c870f6ace62e65b682407a603fa19b6042618d",
+      "exactRoundTrip": true
+    }
+  ],
+  "limits": [
+    "Seed-specific automated progress; no all-strategy or 30-hour enjoyment proof",
+    "Per-transition compact before/after state plus full-state hashes; full saves at boundaries and milestones enable action replay"
+  ],
+  "campaign": {
+    "seed": 1,
+    "railRoute": "none",
+    "completion": {
+      "readyToSettle": false,
+      "lastReportProfitable": true,
+      "continuing": true,
+      "allMarketOperating": true,
+      "acquiredTargets": 7,
+      "activeCompletedDistricts": 4,
+      "complete": false,
+      "currentRequirementsMet": false
+    },
+    "railCompletion": null,
+    "railProjects": [],
+    "railFinancials": {
+      "weeklyUpkeep": 0,
+      "bookValue": 0
+    },
+    "salesContracts": [
+      {
+        "id": "contract-cafe-0-system-fit",
+        "context": null,
+        "status": "completed",
+        "cumulativeBenefit": 417264,
+        "cumulativeFees": 104000,
+        "upfront": 80000
+      },
+      {
+        "id": "contract-cafe-3-system-fit-v3-electricity-6-6-9141-0-36",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 9141,
+          "lossMakingStores": 0,
+          "reportWeek": 36
+        },
+        "status": "completed",
+        "cumulativeBenefit": 851400,
+        "cumulativeFees": 156000,
+        "upfront": 320000
+      },
+      {
+        "id": "contract-cafe-7-system-fit-v3-staffing-6-6-9540-0-84",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 9540,
+          "lossMakingStores": 0,
+          "reportWeek": 84
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1839880,
+        "cumulativeFees": 702000,
+        "upfront": 360000
+      },
+      {
+        "id": "contract-cafe-12-system-fit-v3-staffing-6-6-11989-0-144",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 11989,
+          "lossMakingStores": 0,
+          "reportWeek": 144
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1563695,
+        "cumulativeFees": 702000,
+        "upfront": 360000
+      },
+      {
+        "id": "contract-cafe-17-system-fit-v3-staffing-6-6-10720-0-204",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10720,
+          "lossMakingStores": 0,
+          "reportWeek": 204
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1270850,
+        "cumulativeFees": 702000,
+        "upfront": 360000
+      },
+      {
+        "id": "contract-cafe-21-system-fit-v3-pos-6-6-11468-0-252",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 11468,
+          "lossMakingStores": 0,
+          "reportWeek": 252
+        },
+        "status": "completed",
+        "cumulativeBenefit": 823078,
+        "cumulativeFees": 286000,
+        "upfront": 240000
+      },
+      {
+        "id": "contract-cafe-23-system-fit-v3-electricity-6-6-10241-0-276",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10241,
+          "lossMakingStores": 0,
+          "reportWeek": 276
+        },
+        "status": "completed",
+        "cumulativeBenefit": 672950,
+        "cumulativeFees": 156000,
+        "upfront": 320000
+      },
+      {
+        "id": "contract-cafe-32-system-fit-v3-staffing-6-6-10563-0-384",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10563,
+          "lossMakingStores": 0,
+          "reportWeek": 384
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1929025,
+        "cumulativeFees": 702000,
+        "upfront": 360000
+      },
+      {
+        "id": "contract-cafe-35-system-fit-v3-training-6-6-10962-0-420",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10962,
+          "lossMakingStores": 0,
+          "reportWeek": 420
+        },
+        "status": "completed",
+        "cumulativeBenefit": 3220920,
+        "cumulativeFees": 1664000,
+        "upfront": 800000
+      },
+      {
+        "id": "contract-cafe-43-system-fit-v3-electricity-6-6-10892-0-516",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10892,
+          "lossMakingStores": 0,
+          "reportWeek": 516
+        },
+        "status": "completed",
+        "cumulativeBenefit": 705600,
+        "cumulativeFees": 156000,
+        "upfront": 320000
+      },
+      {
+        "id": "contract-cafe-47-system-fit-v3-staffing-6-6-11421-0-564",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 11421,
+          "lossMakingStores": 0,
+          "reportWeek": 564
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1681610,
+        "cumulativeFees": 702000,
+        "upfront": 360000
+      },
+      {
+        "id": "contract-cafe-58-system-fit-v3-electricity-6-6-10375-0-696",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10375,
+          "lossMakingStores": 0,
+          "reportWeek": 696
+        },
+        "status": "completed",
+        "cumulativeBenefit": 773900,
+        "cumulativeFees": 156000,
+        "upfront": 320000
+      },
+      {
+        "id": "contract-cafe-67-system-fit-v3-staffing-6-6-10422-0-804",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10422,
+          "lossMakingStores": 0,
+          "reportWeek": 804
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1801450,
+        "cumulativeFees": 702000,
+        "upfront": 360000
+      },
+      {
+        "id": "contract-cafe-75-system-fit-v3-training-6-6-10459-0-900",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10459,
+          "lossMakingStores": 0,
+          "reportWeek": 900
+        },
+        "status": "completed",
+        "cumulativeBenefit": 3702356,
+        "cumulativeFees": 1664000,
+        "upfront": 800000
+      },
+      {
+        "id": "contract-cafe-79-system-fit-v3-inventory-6-6-11762-0-948",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 11762,
+          "lossMakingStores": 0,
+          "reportWeek": 948
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1721592,
+        "cumulativeFees": 858000,
+        "upfront": 480000
+      },
+      {
+        "id": "contract-cafe-83-system-fit-v3-electricity-6-6-10802-0-996",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10802,
+          "lossMakingStores": 0,
+          "reportWeek": 996
+        },
+        "status": "completed",
+        "cumulativeBenefit": 931300,
+        "cumulativeFees": 156000,
+        "upfront": 320000
+      },
+      {
+        "id": "contract-cafe-89-system-fit-v3-inventory-6-6-11831-0-1068",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 11831,
+          "lossMakingStores": 0,
+          "reportWeek": 1068
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1952064,
+        "cumulativeFees": 858000,
+        "upfront": 480000
+      },
+      {
+        "id": "contract-cafe-94-system-fit-v3-inventory-6-6-10536-0-1128",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10536,
+          "lossMakingStores": 0,
+          "reportWeek": 1128
+        },
+        "status": "completed",
+        "cumulativeBenefit": 2134296,
+        "cumulativeFees": 858000,
+        "upfront": 480000
+      },
+      {
+        "id": "contract-cafe-101-system-fit-v3-pos-6-6-10790-0-1212",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10790,
+          "lossMakingStores": 0,
+          "reportWeek": 1212
+        },
+        "status": "completed",
+        "cumulativeBenefit": 688114,
+        "cumulativeFees": 286000,
+        "upfront": 240000
+      },
+      {
+        "id": "contract-cafe-103-system-fit-v3-electricity-6-6-10306-0-1236",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 10306,
+          "lossMakingStores": 0,
+          "reportWeek": 1236
+        },
+        "status": "completed",
+        "cumulativeBenefit": 876300,
+        "cumulativeFees": 156000,
+        "upfront": 320000
+      },
+      {
+        "id": "contract-cafe-108-system-fit-v3-electricity-6-6-11558-0-1296",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 11558,
+          "lossMakingStores": 0,
+          "reportWeek": 1296
+        },
+        "status": "completed",
+        "cumulativeBenefit": 873250,
+        "cumulativeFees": 156000,
+        "upfront": 320000
+      },
+      {
+        "id": "contract-cafe-112-system-fit-v3-staffing-6-6-11021-0-1344",
+        "context": {
+          "stores": 6,
+          "observedStores": 6,
+          "customers": 11021,
+          "lossMakingStores": 0,
+          "reportWeek": 1344
+        },
+        "status": "completed",
+        "cumulativeBenefit": 1360275,
+        "cumulativeFees": 702000,
+        "upfront": 360000
+      }
+    ],
+    "milestone": {
+      "firstStore": 1,
+      "threeStores": 3,
+      "ipo": 17,
+      "property": 17,
+      "firstSubsidiary": 29,
+      "firstDevelopment": 33,
+      "firstMarketCompany": 41,
+      "allDistricts": 104,
+      "firstRail": 817,
+      "allMarketAcquired": 902,
+      "allMarketOperating": 907
+    },
+    "completed": false,
+    "marketCompanies": 100,
+    "marketOperating": 100,
+    "actionCounts": {
+      "openStore": 6,
+      "updateStore": 8,
+      "investigateOffer": 60,
+      "acceptOffer": 22,
+      "upgradeStore": 17,
+      "ipo": 1,
+      "buyProperty": 4,
+      "acquire": 7,
+      "startDevelopment": 12,
+      "researchMarketCompany": 100,
+      "acquireMarketCompany": 100,
+      "issueShares": 3
+    },
+    "executedActionCount": 340,
+    "development": [
+      {
+        "districtId": "center",
+        "phase": 3,
+        "active": true,
+        "status": "complete"
+      },
+      {
+        "districtId": "dogenzaka",
+        "phase": 3,
+        "active": true,
+        "status": "complete"
+      },
+      {
+        "districtId": "miyashita",
+        "phase": 3,
+        "active": true,
+        "status": "complete"
+      },
+      {
+        "districtId": "sakuragaoka",
+        "phase": 3,
+        "active": true,
+        "status": "complete"
+      }
+    ],
+    "finalWeek": 1401,
+    "finalCash": 15309512260,
+    "finalWorth": 21034597260,
+    "weeklyProfit": 30632282,
+    "reputation": 86.79661837775565,
+    "stores": 6,
+    "managers": 6,
+    "subsidiaries": [
+      "sakura-kitchen",
+      "hoshi-roasters",
+      "morning-bakery",
+      "sakura-estate",
+      "miyashita-development",
+      "tokyo-table",
+      "shuto-rail"
+    ],
+    "ruined": false,
+    "reason": null,
+    "maxDrawdown": 0.25611558333333334,
+    "maxIdleWeeks": 500,
+    "rejectedInvestments": 228,
+    "saveRoundTrip": true,
+    "propertyFlipProbe": null,
+    "events": [
+      {
+        "week": 1,
+        "event": "Open sakuragaoka-09 (standard)",
+        "cash": 8400000,
+        "profit": 112528,
+        "reputation": 10
+      },
+      {
+        "week": 2,
+        "event": "Open dogenzaka-09 (standard)",
+        "cash": 5022284,
+        "profit": 443191,
+        "reputation": 13.15
+      },
+      {
+        "week": 3,
+        "event": "Open sakuragaoka-13 (standard)",
+        "cash": 2173883,
+        "profit": 860192,
+        "reputation": 16.19
+      },
+      {
+        "week": 3,
+        "event": "Delegate sakuragaoka-09",
+        "cash": 2173883,
+        "profit": 789565,
+        "reputation": 16.19
+      },
+      {
+        "week": 3,
+        "event": "Delegate dogenzaka-09",
+        "cash": 2173883,
+        "profit": 718937,
+        "reputation": 16.19
+      },
+      {
+        "week": 3,
+        "event": "Delegate sakuragaoka-13",
+        "cash": 2173883,
+        "profit": 850889,
+        "reputation": 16.19
+      },
+      {
+        "week": 9,
+        "event": "Open center-16 (takeaway)",
+        "cash": 4306108,
+        "profit": 668517,
+        "reputation": 32.32
+      },
+      {
+        "week": 9,
+        "event": "Delegate center-16",
+        "cash": 4306108,
+        "profit": 1593384,
+        "reputation": 32.32
+      },
+      {
+        "week": 13,
+        "event": "Open center-02 (takeaway)",
+        "cash": 7781574,
+        "profit": 1357992,
+        "reputation": 41.12
+      },
+      {
+        "week": 13,
+        "event": "Delegate center-02",
+        "cash": 7781574,
+        "profit": 2264427,
+        "reputation": 41.12
+      },
+      {
+        "week": 13,
+        "event": "Upgrade center-16 level2",
+        "cash": 6581574,
+        "profit": 2333090,
+        "reputation": 41.12
+      },
+      {
+        "week": 17,
+        "event": "Open miyashita-11 (takeaway)",
+        "cash": 13131256,
+        "profit": 2016829,
+        "reputation": 47.83
+      },
+      {
+        "week": 17,
+        "event": "Delegate miyashita-11",
+        "cash": 13131256,
+        "profit": 2948553,
+        "reputation": 47.83
+      },
+      {
+        "week": 17,
+        "event": "IPO",
+        "cash": 95948948,
+        "profit": 2948553,
+        "reputation": 47.83
+      },
+      {
+        "week": 17,
+        "event": "Property dogenzaka-02",
+        "cash": 65948948,
+        "profit": 3002179,
+        "reputation": 47.83
+      },
+      {
+        "week": 17,
+        "event": "Upgrade center-02 level2",
+        "cash": 64748948,
+        "profit": 3217009,
+        "reputation": 47.83
+      },
+      {
+        "week": 21,
+        "event": "Upgrade miyashita-11 level2",
+        "cash": 76504219,
+        "profit": 3276666,
+        "reputation": 52.97
+      },
+      {
+        "week": 25,
+        "event": "Upgrade center-02 level3",
+        "cash": 87053903,
+        "profit": 3350609,
+        "reputation": 57.43
+      },
+      {
+        "week": 29,
+        "event": "Acquire sakura-kitchen",
+        "cash": 54302056,
+        "profit": 3567448,
+        "reputation": 61.33
+      },
+      {
+        "week": 33,
+        "event": "Acquire hoshi-roasters",
+        "cash": 49378663,
+        "profit": 3643777,
+        "reputation": 64.71
+      },
+      {
+        "week": 33,
+        "event": "Develop dogenzaka-0-commerce",
+        "cash": 46858663,
+        "profit": 3643777,
+        "reputation": 64.71
+      },
+      {
+        "week": 37,
+        "event": "Development complete: 1/12 phases",
+        "cash": 61336643,
+        "profit": 3649807,
+        "reputation": 67.64
+      },
+      {
+        "week": 37,
+        "event": "Acquire morning-bakery",
+        "cash": 53246643,
+        "profit": 3680882,
+        "reputation": 67.64
+      },
+      {
+        "week": 37,
+        "event": "Develop dogenzaka-1-commerce",
+        "cash": 46421643,
+        "profit": 3680882,
+        "reputation": 67.64
+      },
+      {
+        "week": 41,
+        "event": "Friendly jp-5858 (integrated)",
+        "cash": 47136442,
+        "profit": 3642897,
+        "reputation": 70.19
+      },
+      {
+        "week": 44,
+        "event": "Development complete: 2/12 phases",
+        "cash": 57882936,
+        "profit": 3589165,
+        "reputation": 71.88
+      },
+      {
+        "week": 45,
+        "event": "Upgrade dogenzaka-09 level2",
+        "cash": 60005449,
+        "profit": 3610295,
+        "reputation": 72.4
+      },
+      {
+        "week": 45,
+        "event": "Develop dogenzaka-2-commerce",
+        "cash": 41105449,
+        "profit": 3610295,
+        "reputation": 72.4
+      },
+      {
+        "week": 49,
+        "event": "Friendly jp-7806 (integrated)",
+        "cash": 12224365,
+        "profit": 3572933,
+        "reputation": 74.33
+      },
+      {
+        "week": 53,
+        "event": "Issue equity",
+        "cash": 155950495,
+        "profit": 3483043,
+        "reputation": 75.99
+      },
+      {
+        "week": 53,
+        "event": "Friendly jp-9204 (integrated)",
+        "cash": 140421217,
+        "profit": 3478283,
+        "reputation": 75.99
+      },
+      {
+        "week": 53,
+        "event": "District property center",
+        "cash": 102421217,
+        "profit": 3534374,
+        "reputation": 75.99
+      },
+      {
+        "week": 53,
+        "event": "Develop center-0-commerce",
+        "cash": 100021217,
+        "profit": 3534374,
+        "reputation": 75.99
+      },
+      {
+        "week": 53,
+        "event": "District property miyashita",
+        "cash": 66021217,
+        "profit": 3584369,
+        "reputation": 75.99
+      },
+      {
+        "week": 53,
+        "event": "Develop miyashita-0-commerce",
+        "cash": 63381217,
+        "profit": 3584369,
+        "reputation": 75.99
+      },
+      {
+        "week": 53,
+        "event": "District property sakuragaoka",
+        "cash": 36381217,
+        "profit": 3630208,
+        "reputation": 75.99
+      },
+      {
+        "week": 53,
+        "event": "Develop sakuragaoka-0-commerce",
+        "cash": 33621217,
+        "profit": 3630208,
+        "reputation": 75.99
+      },
+      {
+        "week": 56,
+        "event": "Development complete: 3/12 phases",
+        "cash": 44904197,
+        "profit": 4148677,
+        "reputation": 77.1
+      },
+      {
+        "week": 57,
+        "event": "Development complete: 6/12 phases",
+        "cash": 49103101,
+        "profit": 4125674,
+        "reputation": 77.44
+      },
+      {
+        "week": 57,
+        "event": "Friendly jp-1401 (integrated)",
+        "cash": 18791074,
+        "profit": 4118702,
+        "reputation": 77.44
+      },
+      {
+        "week": 65,
+        "event": "Friendly jp-5199 (autonomous)",
+        "cash": 5043196,
+        "profit": 4139675,
+        "reputation": 79.77
+      },
+      {
+        "week": 69,
+        "event": "Issue equity",
+        "cash": 201282259,
+        "profit": 4208074,
+        "reputation": 80.71
+      },
+      {
+        "week": 69,
+        "event": "Friendly jp-4564 (integrated)",
+        "cash": 141385459,
+        "profit": 4198299,
+        "reputation": 80.71
+      },
+      {
+        "week": 69,
+        "event": "Develop center-1-commerce",
+        "cash": 134885459,
+        "profit": 4198299,
+        "reputation": 80.71
+      },
+      {
+        "week": 69,
+        "event": "Develop miyashita-1-commerce",
+        "cash": 127735459,
+        "profit": 4198299,
+        "reputation": 80.71
+      },
+      {
+        "week": 69,
+        "event": "Develop sakuragaoka-1-commerce",
+        "cash": 120260459,
+        "profit": 4198299,
+        "reputation": 80.71
+      },
+      {
+        "week": 73,
+        "event": "Friendly jp-523A (integrated)",
+        "cash": 71075506,
+        "profit": 4150720,
+        "reputation": 81.53
+      },
+      {
+        "week": 76,
+        "event": "Development complete: 9/12 phases",
+        "cash": 84779910,
+        "profit": 4725584,
+        "reputation": 82.07
+      },
+      {
+        "week": 77,
+        "event": "Acquire sakura-estate",
+        "cash": 21164393,
+        "profit": 4887657,
+        "reputation": 82.23
+      },
+      {
+        "week": 85,
+        "event": "Friendly jp-402A (integrated)",
+        "cash": 21477266,
+        "profit": 5135855,
+        "reputation": 83.36
+      },
+      {
+        "week": 89,
+        "event": "Friendly jp-247A (integrated)",
+        "cash": 11984687,
+        "profit": 5184768,
+        "reputation": 83.82
+      },
+      {
+        "week": 93,
+        "event": "Issue equity",
+        "cash": 278139220,
+        "profit": 5388630,
+        "reputation": 84.2
+      },
+      {
+        "week": 93,
+        "event": "Acquire miyashita-development",
+        "cash": 102940820,
+        "profit": 5911544,
+        "reputation": 84.2
+      },
+      {
+        "week": 93,
+        "event": "Develop center-2-commerce",
+        "cash": 84940820,
+        "profit": 5911544,
+        "reputation": 84.2
+      },
+      {
+        "week": 93,
+        "event": "Develop miyashita-2-commerce",
+        "cash": 65140820,
+        "profit": 5911544,
+        "reputation": 84.2
+      },
+      {
+        "week": 93,
+        "event": "Develop sakuragaoka-2-commerce",
+        "cash": 44440820,
+        "profit": 5911544,
+        "reputation": 84.2
+      },
+      {
+        "week": 97,
+        "event": "Upgrade sakuragaoka-13 level2",
+        "cash": 66865017,
+        "profit": 6117173,
+        "reputation": 84.52
+      },
+      {
+        "week": 101,
+        "event": "Upgrade sakuragaoka-09 level2",
+        "cash": 89528057,
+        "profit": 6208798,
+        "reputation": 84.84
+      },
+      {
+        "week": 104,
+        "event": "Development complete: 12/12 phases",
+        "cash": 108496635,
+        "profit": 6380067,
+        "reputation": 84.99
+      },
+      {
+        "week": 105,
+        "event": "Upgrade center-16 level3",
+        "cash": 112255345,
+        "profit": 6581119,
+        "reputation": 85
+      },
+      {
+        "week": 109,
+        "event": "Upgrade miyashita-11 level3",
+        "cash": 135901894,
+        "profit": 6739269,
+        "reputation": 85.09
+      },
+      {
+        "week": 113,
+        "event": "Upgrade center-02 level4",
+        "cash": 159004563,
+        "profit": 6955601,
+        "reputation": 85.2
+      },
+      {
+        "week": 117,
+        "event": "Upgrade sakuragaoka-13 level3",
+        "cash": 183851923,
+        "profit": 6975848,
+        "reputation": 85.31
+      },
+      {
+        "week": 121,
+        "event": "Upgrade center-16 level4",
+        "cash": 207278344,
+        "profit": 7024990,
+        "reputation": 85.44
+      },
+      {
+        "week": 125,
+        "event": "Upgrade center-02 level5",
+        "cash": 230024072,
+        "profit": 7083863,
+        "reputation": 85.6
+      },
+      {
+        "week": 129,
+        "event": "Upgrade dogenzaka-09 level3",
+        "cash": 255823253,
+        "profit": 7079832,
+        "reputation": 85.77
+      },
+      {
+        "week": 133,
+        "event": "Upgrade sakuragaoka-09 level3",
+        "cash": 281136555,
+        "profit": 7082984,
+        "reputation": 85.91
+      },
+      {
+        "week": 137,
+        "event": "Friendly jp-4360 (integrated)",
+        "cash": 242119721,
+        "profit": 7019965,
+        "reputation": 86.03
+      },
+      {
+        "week": 141,
+        "event": "Friendly jp-9173 (integrated)",
+        "cash": 235068235,
+        "profit": 6953243,
+        "reputation": 86.11
+      },
+      {
+        "week": 145,
+        "event": "Friendly jp-9361 (integrated)",
+        "cash": 207329769,
+        "profit": 7130183,
+        "reputation": 86.21
+      },
+      {
+        "week": 149,
+        "event": "Friendly jp-9433 (integrated)",
+        "cash": 48304563,
+        "profit": 7138458,
+        "reputation": 86.3
+      },
+      {
+        "week": 153,
+        "event": "Friendly jp-2978 (integrated)",
+        "cash": 18468005,
+        "profit": 7253704,
+        "reputation": 86.37
+      },
+      {
+        "week": 157,
+        "event": "Friendly jp-325A (integrated)",
+        "cash": 11011114,
+        "profit": 7847521,
+        "reputation": 86.44
+      },
+      {
+        "week": 161,
+        "event": "Friendly jp-7689 (integrated)",
+        "cash": 6034474,
+        "profit": 7941656,
+        "reputation": 86.5
+      },
+      {
+        "week": 165,
+        "event": "Upgrade sakuragaoka-13 level4",
+        "cash": 32946685,
+        "profit": 7926271,
+        "reputation": 86.55
+      },
+      {
+        "week": 169,
+        "event": "Friendly jp-5609 (integrated)",
+        "cash": 19853064,
+        "profit": 7878964,
+        "reputation": 86.58
+      },
+      {
+        "week": 173,
+        "event": "Friendly jp-7713 (integrated)",
+        "cash": 21649695,
+        "profit": 7781688,
+        "reputation": 86.62
+      },
+      {
+        "week": 177,
+        "event": "Friendly jp-7161 (integrated)",
+        "cash": 9482429,
+        "profit": 7858978,
+        "reputation": 86.66
+      },
+      {
+        "week": 185,
+        "event": "Friendly jp-9639 (integrated)",
+        "cash": 11560507,
+        "profit": 7940309,
+        "reputation": 86.7
+      },
+      {
+        "week": 193,
+        "event": "Friendly jp-4597 (integrated)",
+        "cash": 28517889,
+        "profit": 8181854,
+        "reputation": 86.74
+      },
+      {
+        "week": 197,
+        "event": "Friendly jp-6731 (integrated)",
+        "cash": 8606830,
+        "profit": 8257195,
+        "reputation": 86.74
+      },
+      {
+        "week": 205,
+        "event": "Friendly jp-6993 (integrated)",
+        "cash": 12320002,
+        "profit": 8785799,
+        "reputation": 86.74
+      },
+      {
+        "week": 209,
+        "event": "Friendly jp-5252 (autonomous)",
+        "cash": 6502435,
+        "profit": 8942790,
+        "reputation": 86.72
+      },
+      {
+        "week": 213,
+        "event": "Upgrade sakuragaoka-13 level5",
+        "cash": 39370361,
+        "profit": 9611124,
+        "reputation": 86.72
+      },
+      {
+        "week": 217,
+        "event": "Friendly jp-350A (integrated)",
+        "cash": 27256501,
+        "profit": 9733322,
+        "reputation": 86.73
+      },
+      {
+        "week": 221,
+        "event": "Friendly jp-9326 (integrated)",
+        "cash": 6971420,
+        "profit": 9838500,
+        "reputation": 86.74
+      },
+      {
+        "week": 225,
+        "event": "Friendly jp-218A (integrated)",
+        "cash": 12894876,
+        "profit": 10122039,
+        "reputation": 86.75
+      },
+      {
+        "week": 229,
+        "event": "Friendly jp-7320 (integrated)",
+        "cash": 7679801,
+        "profit": 10314849,
+        "reputation": 86.76
+      },
+      {
+        "week": 237,
+        "event": "Friendly jp-3529 (integrated)",
+        "cash": 11569614,
+        "profit": 10504445,
+        "reputation": 86.74
+      },
+      {
+        "week": 245,
+        "event": "Friendly jp-1921 (integrated)",
+        "cash": 16818170,
+        "profit": 10561921,
+        "reputation": 86.72
+      },
+      {
+        "week": 249,
+        "event": "Friendly jp-3550 (autonomous)",
+        "cash": 5559872,
+        "profit": 10442783,
+        "reputation": 86.72
+      },
+      {
+        "week": 257,
+        "event": "Friendly jp-6521 (autonomous)",
+        "cash": 7520410,
+        "profit": 10458123,
+        "reputation": 86.74
+      },
+      {
+        "week": 265,
+        "event": "Friendly jp-5010 (integrated)",
+        "cash": 20226528,
+        "profit": 10242090,
+        "reputation": 86.77
+      },
+      {
+        "week": 269,
+        "event": "Friendly jp-7264 (integrated)",
+        "cash": 8647333,
+        "profit": 10064429,
+        "reputation": 86.78
+      },
+      {
+        "week": 277,
+        "event": "Friendly jp-7897 (integrated)",
+        "cash": 33597244,
+        "profit": 10018483,
+        "reputation": 86.81
+      },
+      {
+        "week": 281,
+        "event": "Friendly jp-6224 (integrated)",
+        "cash": 13224725,
+        "profit": 9904767,
+        "reputation": 86.82
+      },
+      {
+        "week": 289,
+        "event": "Friendly jp-1514 (integrated)",
+        "cash": 8260296,
+        "profit": 10049082,
+        "reputation": 86.83
+      },
+      {
+        "week": 297,
+        "event": "Friendly jp-8704 (integrated)",
+        "cash": 15586188,
+        "profit": 10373574,
+        "reputation": 86.85
+      },
+      {
+        "week": 305,
+        "event": "Friendly jp-5279 (integrated)",
+        "cash": 19818286,
+        "profit": 10778447,
+        "reputation": 86.86
+      },
+      {
+        "week": 313,
+        "event": "Friendly jp-4889 (integrated)",
+        "cash": 29318579,
+        "profit": 11396504,
+        "reputation": 86.86
+      },
+      {
+        "week": 317,
+        "event": "Friendly jp-5842 (autonomous)",
+        "cash": 6240905,
+        "profit": 11558606,
+        "reputation": 86.87
+      },
+      {
+        "week": 325,
+        "event": "Friendly jp-3175 (integrated)",
+        "cash": 10527195,
+        "profit": 12132596,
+        "reputation": 86.87
+      },
+      {
+        "week": 333,
+        "event": "Friendly jp-2936 (integrated)",
+        "cash": 6804179,
+        "profit": 12425070,
+        "reputation": 86.82
+      },
+      {
+        "week": 341,
+        "event": "Friendly jp-3951 (integrated)",
+        "cash": 28921613,
+        "profit": 12520737,
+        "reputation": 86.78
+      },
+      {
+        "week": 345,
+        "event": "Friendly jp-9158 (integrated)",
+        "cash": 9110301,
+        "profit": 12421139,
+        "reputation": 86.76
+      },
+      {
+        "week": 353,
+        "event": "Friendly jp-1381 (integrated)",
+        "cash": 8931147,
+        "profit": 12380474,
+        "reputation": 86.77
+      },
+      {
+        "week": 357,
+        "event": "Friendly jp-7343 (autonomous)",
+        "cash": 6421354,
+        "profit": 12198306,
+        "reputation": 86.79
+      },
+      {
+        "week": 365,
+        "event": "Friendly jp-4346 (integrated)",
+        "cash": 44161851,
+        "profit": 12087501,
+        "reputation": 86.81
+      },
+      {
+        "week": 369,
+        "event": "Friendly jp-4524 (integrated)",
+        "cash": 18526388,
+        "profit": 11906887,
+        "reputation": 86.82
+      },
+      {
+        "week": 377,
+        "event": "Friendly jp-6408 (integrated)",
+        "cash": 8205651,
+        "profit": 11811664,
+        "reputation": 86.84
+      },
+      {
+        "week": 389,
+        "event": "Friendly jp-3036 (integrated)",
+        "cash": 5263856,
+        "profit": 11911780,
+        "reputation": 86.85
+      },
+      {
+        "week": 401,
+        "event": "Friendly jp-8306 (integrated)",
+        "cash": 6218287,
+        "profit": 12535933,
+        "reputation": 86.86
+      },
+      {
+        "week": 413,
+        "event": "Friendly jp-7715 (integrated)",
+        "cash": 25113756,
+        "profit": 13286935,
+        "reputation": 86.87
+      },
+      {
+        "week": 421,
+        "event": "Friendly jp-8914 (integrated)",
+        "cash": 22595834,
+        "profit": 13955548,
+        "reputation": 86.87
+      },
+      {
+        "week": 429,
+        "event": "Friendly jp-9206 (integrated)",
+        "cash": 42015148,
+        "profit": 14252320,
+        "reputation": 86.88
+      },
+      {
+        "week": 433,
+        "event": "Friendly jp-8316 (autonomous)",
+        "cash": 5927940,
+        "profit": 14360612,
+        "reputation": 86.84
+      },
+      {
+        "week": 441,
+        "event": "Friendly jp-8107 (integrated)",
+        "cash": 7198714,
+        "profit": 14595823,
+        "reputation": 86.81
+      },
+      {
+        "week": 453,
+        "event": "Friendly jp-7203 (integrated)",
+        "cash": 53940175,
+        "profit": 14527292,
+        "reputation": 86.77
+      },
+      {
+        "week": 461,
+        "event": "Friendly jp-3387 (autonomous)",
+        "cash": 7848191,
+        "profit": 14776263,
+        "reputation": 86.78
+      },
+      {
+        "week": 469,
+        "event": "Friendly jp-3880 (integrated)",
+        "cash": 8357993,
+        "profit": 14809524,
+        "reputation": 86.8
+      },
+      {
+        "week": 477,
+        "event": "Friendly jp-3933 (integrated)",
+        "cash": 20282108,
+        "profit": 14823901,
+        "reputation": 86.82
+      },
+      {
+        "week": 485,
+        "event": "Friendly jp-3087 (integrated)",
+        "cash": 22526340,
+        "profit": 14867982,
+        "reputation": 86.84
+      },
+      {
+        "week": 493,
+        "event": "Friendly jp-8591 (integrated)",
+        "cash": 19944653,
+        "profit": 15100478,
+        "reputation": 86.85
+      },
+      {
+        "week": 501,
+        "event": "Friendly jp-5922 (integrated)",
+        "cash": 26287321,
+        "profit": 15434857,
+        "reputation": 86.86
+      },
+      {
+        "week": 509,
+        "event": "Friendly jp-9432 (integrated)",
+        "cash": 28212959,
+        "profit": 15749205,
+        "reputation": 86.86
+      },
+      {
+        "week": 517,
+        "event": "Friendly jp-5020 (integrated)",
+        "cash": 16490538,
+        "profit": 16250702,
+        "reputation": 86.87
+      },
+      {
+        "week": 525,
+        "event": "Friendly jp-3466 (integrated)",
+        "cash": 35909401,
+        "profit": 16894494,
+        "reputation": 86.87
+      },
+      {
+        "week": 533,
+        "event": "Friendly jp-6310 (integrated)",
+        "cash": 16054121,
+        "profit": 17386587,
+        "reputation": 86.87
+      },
+      {
+        "week": 541,
+        "event": "Friendly jp-9984 (integrated)",
+        "cash": 36198251,
+        "profit": 17952085,
+        "reputation": 86.85
+      },
+      {
+        "week": 549,
+        "event": "Friendly jp-8972 (integrated)",
+        "cash": 24503926,
+        "profit": 18209425,
+        "reputation": 86.83
+      },
+      {
+        "week": 557,
+        "event": "Friendly jp-8076 (integrated)",
+        "cash": 66109945,
+        "profit": 18349764,
+        "reputation": 86.81
+      },
+      {
+        "week": 561,
+        "event": "Friendly jp-8951 (integrated)",
+        "cash": 9408797,
+        "profit": 18171569,
+        "reputation": 86.79
+      },
+      {
+        "week": 569,
+        "event": "Friendly jp-4554 (autonomous)",
+        "cash": 7658390,
+        "profit": 18110384,
+        "reputation": 86.82
+      },
+      {
+        "week": 581,
+        "event": "Friendly jp-7974 (integrated)",
+        "cash": 21666346,
+        "profit": 17569576,
+        "reputation": 86.84
+      },
+      {
+        "week": 589,
+        "event": "Friendly jp-3232 (integrated)",
+        "cash": 5885254,
+        "profit": 17993528,
+        "reputation": 86.85
+      },
+      {
+        "week": 601,
+        "event": "Friendly jp-8801 (integrated)",
+        "cash": 33624268,
+        "profit": 18282577,
+        "reputation": 86.86
+      },
+      {
+        "week": 609,
+        "event": "Friendly jp-4481 (integrated)",
+        "cash": 47875670,
+        "profit": 18856935,
+        "reputation": 86.87
+      },
+      {
+        "week": 617,
+        "event": "Friendly jp-8802 (integrated)",
+        "cash": 52285220,
+        "profit": 19576619,
+        "reputation": 86.87
+      },
+      {
+        "week": 625,
+        "event": "Friendly jp-5331 (integrated)",
+        "cash": 5499546,
+        "profit": 20302682,
+        "reputation": 86.87
+      },
+      {
+        "week": 633,
+        "event": "Friendly jp-8952 (integrated)",
+        "cash": 15177741,
+        "profit": 21198385,
+        "reputation": 86.86
+      },
+      {
+        "week": 645,
+        "event": "Friendly jp-7388 (integrated)",
+        "cash": 6831223,
+        "profit": 21691741,
+        "reputation": 86.82
+      },
+      {
+        "week": 657,
+        "event": "Friendly jp-8793 (integrated)",
+        "cash": 45460331,
+        "profit": 21869357,
+        "reputation": 86.76
+      },
+      {
+        "week": 669,
+        "event": "Acquire tokyo-table",
+        "cash": 15258516,
+        "profit": 22540314,
+        "reputation": 86.77
+      },
+      {
+        "week": 681,
+        "event": "Friendly jp-9319 (autonomous)",
+        "cash": 12946377,
+        "profit": 21678831,
+        "reputation": 86.81
+      },
+      {
+        "week": 693,
+        "event": "Friendly jp-6758 (integrated)",
+        "cash": 45671572,
+        "profit": 21760636,
+        "reputation": 86.84
+      },
+      {
+        "week": 705,
+        "event": "Friendly jp-7944 (integrated)",
+        "cash": 20073651,
+        "profit": 22042155,
+        "reputation": 86.85
+      },
+      {
+        "week": 717,
+        "event": "Friendly jp-5185 (integrated)",
+        "cash": 58250799,
+        "profit": 23213316,
+        "reputation": 86.86
+      },
+      {
+        "week": 729,
+        "event": "Friendly jp-2502 (integrated)",
+        "cash": 42529495,
+        "profit": 24334180,
+        "reputation": 86.87
+      },
+      {
+        "week": 741,
+        "event": "Friendly jp-8411 (integrated)",
+        "cash": 9598657,
+        "profit": 25224616,
+        "reputation": 86.87
+      },
+      {
+        "week": 753,
+        "event": "Friendly jp-1833 (integrated)",
+        "cash": 34840974,
+        "profit": 25782279,
+        "reputation": 86.8
+      },
+      {
+        "week": 765,
+        "event": "Friendly jp-4968 (integrated)",
+        "cash": 26246526,
+        "profit": 25987718,
+        "reputation": 86.77
+      },
+      {
+        "week": 777,
+        "event": "Friendly jp-1375 (integrated)",
+        "cash": 77286966,
+        "profit": 25916420,
+        "reputation": 86.77
+      },
+      {
+        "week": 789,
+        "event": "Friendly jp-5011 (integrated)",
+        "cash": 67186743,
+        "profit": 25765489,
+        "reputation": 86.81
+      },
+      {
+        "week": 801,
+        "event": "Friendly jp-2802 (integrated)",
+        "cash": 18916752,
+        "profit": 25815202,
+        "reputation": 86.84
+      },
+      {
+        "week": 817,
+        "event": "Acquire shuto-rail",
+        "cash": 14963609,
+        "profit": 27414323,
+        "reputation": 86.86
+      },
+      {
+        "week": 829,
+        "event": "Friendly jp-9336 (autonomous)",
+        "cash": 14602000,
+        "profit": 27687261,
+        "reputation": 86.87
+      },
+      {
+        "week": 841,
+        "event": "Friendly jp-9119 (autonomous)",
+        "cash": 15583508,
+        "profit": 28651563,
+        "reputation": 86.86
+      },
+      {
+        "week": 853,
+        "event": "Friendly jp-3281 (integrated)",
+        "cash": 40938772,
+        "profit": 29592680,
+        "reputation": 86.84
+      },
+      {
+        "week": 865,
+        "event": "Friendly jp-3543 (integrated)",
+        "cash": 21681222,
+        "profit": 30017509,
+        "reputation": 86.78
+      },
+      {
+        "week": 877,
+        "event": "Friendly jp-9020 (autonomous)",
+        "cash": 6137536,
+        "profit": 30286624,
+        "reputation": 86.75
+      },
+      {
+        "week": 889,
+        "event": "Friendly jp-9005 (autonomous)",
+        "cash": 7419135,
+        "profit": 29904801,
+        "reputation": 86.79
+      },
+      {
+        "week": 901,
+        "event": "Friendly jp-9501 (integrated)",
+        "cash": 6331796,
+        "profit": 29357028,
+        "reputation": 86.82
+      }
+    ],
+    "checkpoints": [
+      {
+        "week": 53,
+        "cash": 26098072,
+        "netWorth": 184510572,
+        "weeklyProfit": 3483043,
+        "reputation": 76,
+        "stores": 6,
+        "subsidiaries": 3
+      },
+      {
+        "week": 105,
+        "cash": 114892545,
+        "netWorth": 761417545,
+        "weeklyProfit": 6385038,
+        "reputation": 85,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 157,
+        "cash": 48794562,
+        "netWorth": 884719562,
+        "weeklyProfit": 7858289,
+        "reputation": 86,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 209,
+        "cash": 46902080,
+        "netWorth": 1037667080,
+        "weeklyProfit": 8951000,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 261,
+        "cash": 49552440,
+        "netWorth": 1224877440,
+        "weeklyProfit": 10439206,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 313,
+        "cash": 107170033,
+        "netWorth": 1429615033,
+        "weeklyProfit": 11421810,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 365,
+        "cash": 103362316,
+        "netWorth": 1608807316,
+        "weeklyProfit": 12110566,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 417,
+        "cash": 78008324,
+        "netWorth": 1802973324,
+        "weeklyProfit": 13440126,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 469,
+        "cash": 128181487,
+        "netWorth": 2110186487,
+        "weeklyProfit": 14872625,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 521,
+        "cash": 81495620,
+        "netWorth": 2442060620,
+        "weeklyProfit": 16429389,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 573,
+        "cash": 79672452,
+        "netWorth": 2811277452,
+        "weeklyProfit": 18084209,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 625,
+        "cash": 212147490,
+        "netWorth": 3337152490,
+        "weeklyProfit": 20375275,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 5
+      },
+      {
+        "week": 677,
+        "cash": 195322889,
+        "netWorth": 3885807889,
+        "weeklyProfit": 21974581,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 6
+      },
+      {
+        "week": 729,
+        "cash": 343817782,
+        "netWorth": 4340982782,
+        "weeklyProfit": 24428092,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 6
+      },
+      {
+        "week": 781,
+        "cash": 180106073,
+        "netWorth": 4629311073,
+        "weeklyProfit": 25763221,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 6
+      },
+      {
+        "week": 833,
+        "cash": 127523993,
+        "netWorth": 5267608993,
+        "weeklyProfit": 28326585,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 885,
+        "cash": 249869725,
+        "netWorth": 5797554725,
+        "weeklyProfit": 30262919,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 937,
+        "cash": 1076945001,
+        "netWorth": 6802030001,
+        "weeklyProfit": 30797867,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 989,
+        "cash": 2708369696,
+        "netWorth": 8433454696,
+        "weeklyProfit": 30225486,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 1041,
+        "cash": 4268879668,
+        "netWorth": 9993964668,
+        "weeklyProfit": 30995464,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 1093,
+        "cash": 5886810245,
+        "netWorth": 11611895245,
+        "weeklyProfit": 30540397,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 1145,
+        "cash": 7452206371,
+        "netWorth": 13177291371,
+        "weeklyProfit": 30467150,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 1197,
+        "cash": 9074222236,
+        "netWorth": 14799307236,
+        "weeklyProfit": 30740495,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 1249,
+        "cash": 10627439322,
+        "netWorth": 16352524322,
+        "weeklyProfit": 30753584,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 1301,
+        "cash": 12255003992,
+        "netWorth": 17980088992,
+        "weeklyProfit": 30206298,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      },
+      {
+        "week": 1353,
+        "cash": 13814771855,
+        "netWorth": 19539856855,
+        "weeklyProfit": 30996680,
+        "reputation": 87,
+        "stores": 6,
+        "subsidiaries": 7
+      }
+    ]
+  },
+  "managerComparison": {
+    "baselineWeek": 1,
+    "baselineSeed": 1,
+    "baselineSHA256": "1ddf6ecd1eb15ca49b04eaafdb92c6d845078fb63c7699d674421e88389fb338",
+    "separation": "Branch-only comparison; outcomes excluded from main campaign funds/reputation/achievements",
+    "branches": {
+      "manual": {
+        "action": {
+          "type": "updateStore",
+          "storeId": "store-sakuragaoka-09-1",
+          "changes": {
+            "manager": false
+          }
+        },
+        "beforeState": {
+          "id": "shibuya-1",
+          "week": 1,
+          "cash": 8312000,
+          "reputation": 10,
+          "stores": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "lotId": "sakuragaoka-09",
+              "name": "桜丘南の住宅小路店",
+              "style": "standard",
+              "price": 850,
+              "quality": 100,
+              "staff": 4,
+              "manager": false,
+              "marketing": 0,
+              "level": 1,
+              "openedWeek": 1
+            }
+          ],
+          "properties": [],
+          "loans": [],
+          "subsidiaries": [],
+          "listed": false,
+          "sharesOutstanding": 1000000,
+          "founderShares": 1000000,
+          "profitableWeeks": 0,
+          "totalCustomers": 0,
+          "gameOver": false,
+          "gameOverReason": null
+        },
+        "configuredState": {
+          "id": "shibuya-1",
+          "week": 1,
+          "cash": 8312000,
+          "reputation": 10,
+          "stores": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "lotId": "sakuragaoka-09",
+              "name": "桜丘南の住宅小路店",
+              "style": "standard",
+              "price": 850,
+              "quality": 100,
+              "staff": 4,
+              "manager": false,
+              "marketing": 0,
+              "level": 1,
+              "openedWeek": 1
+            }
+          ],
+          "properties": [],
+          "loans": [],
+          "subsidiaries": [],
+          "listed": false,
+          "sharesOutstanding": 1000000,
+          "founderShares": 1000000,
+          "profitableWeeks": 0,
+          "totalCustomers": 0,
+          "gameOver": false,
+          "gameOverReason": null
+        },
+        "afterState": {
+          "id": "shibuya-1",
+          "week": 2,
+          "cash": 8622284,
+          "reputation": 13.15,
+          "stores": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "lotId": "sakuragaoka-09",
+              "name": "桜丘南の住宅小路店",
+              "style": "standard",
+              "price": 850,
+              "quality": 100,
+              "staff": 4,
+              "manager": false,
+              "marketing": 0,
+              "level": 1,
+              "openedWeek": 1
+            }
+          ],
+          "properties": [],
+          "loans": [],
+          "subsidiaries": [],
+          "listed": false,
+          "sharesOutstanding": 1000000,
+          "founderShares": 1000000,
+          "profitableWeeks": 1,
+          "totalCustomers": 1068,
+          "gameOver": false,
+          "gameOverReason": null,
+          "lastReportWeek": 1,
+          "netProfit": 310284
+        },
+        "actualReport": {
+          "week": 1,
+          "revenue": 907800,
+          "operatingProfit": 310284,
+          "interest": 0,
+          "netProfit": 310284,
+          "loanRepayment": 0,
+          "dividendsReceived": 0,
+          "dividendsPaid": 0,
+          "cashChange": 310284,
+          "customers": 1068,
+          "headlines": [
+            "営業提案の今週効果 0円／継続費用 4,000円（営業利益に反映）。",
+            "桜丘南の住宅小路店：客足が普段より落ち着き、1,068人が来店しました。 運営に小さな遅れが出ました。",
+            "利益を確保しました。次の投資機会を検討しましょう。"
+          ],
+          "storeResults": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "revenue": 907800,
+              "profit": 314284,
+              "customers": 1068,
+              "satisfaction": 99
+            }
+          ],
+          "storeAccounts": [
+            {
+              "storeId": "store-sakuragaoka-09-1",
+              "costs": {
+                "ingredients": 197580,
+                "fulfilment": 108936,
+                "labor": 208000,
+                "rent": 51000,
+                "equipment": 28000,
+                "marketing": 0,
+                "manager": 0
+              },
+              "roundingAdjustment": 0
+            }
+          ],
+          "news": {
+            "week": 1,
+            "market": {
+              "advances": 34,
+              "declines": 66,
+              "unchanged": 0
+            },
+            "companies": [
+              {
+                "stockId": "jp-4597",
+                "previousPrice": 32,
+                "currentPrice": 36.61,
+                "percentChange": 14.406249999999998
+              },
+              {
+                "stockId": "jp-4564",
+                "previousPrice": 21,
+                "currentPrice": 18.79,
+                "percentChange": -10.523809523809524
+              }
+            ],
+            "city": {
+              "current": {
+                "demand": 1,
+                "wages": 1,
+                "rents": 1
+              }
+            },
+            "events": []
+          }
+        },
+        "actualSettings": [
+          {
+            "id": "store-sakuragaoka-09-1",
+            "lotId": "sakuragaoka-09",
+            "name": "桜丘南の住宅小路店",
+            "style": "standard",
+            "price": 850,
+            "quality": 100,
+            "staff": 4,
+            "manager": false,
+            "marketing": 0,
+            "level": 1,
+            "openedWeek": 1,
+            "revenue": 907800,
+            "profit": 314284,
+            "customers": 1068,
+            "satisfaction": 99
+          }
+        ],
+        "cashDelta": 310284
+      },
+      "delegated": {
+        "action": {
+          "type": "updateStore",
+          "storeId": "store-sakuragaoka-09-1",
+          "changes": {
+            "manager": true
+          }
+        },
+        "beforeState": {
+          "id": "shibuya-1",
+          "week": 1,
+          "cash": 8312000,
+          "reputation": 10,
+          "stores": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "lotId": "sakuragaoka-09",
+              "name": "桜丘南の住宅小路店",
+              "style": "standard",
+              "price": 850,
+              "quality": 100,
+              "staff": 4,
+              "manager": false,
+              "marketing": 0,
+              "level": 1,
+              "openedWeek": 1
+            }
+          ],
+          "properties": [],
+          "loans": [],
+          "subsidiaries": [],
+          "listed": false,
+          "sharesOutstanding": 1000000,
+          "founderShares": 1000000,
+          "profitableWeeks": 0,
+          "totalCustomers": 0,
+          "gameOver": false,
+          "gameOverReason": null
+        },
+        "configuredState": {
+          "id": "shibuya-1",
+          "week": 1,
+          "cash": 8312000,
+          "reputation": 10,
+          "stores": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "lotId": "sakuragaoka-09",
+              "name": "桜丘南の住宅小路店",
+              "style": "standard",
+              "price": 850,
+              "quality": 100,
+              "staff": 4,
+              "manager": true,
+              "marketing": 0,
+              "level": 1,
+              "openedWeek": 1
+            }
+          ],
+          "properties": [],
+          "loans": [],
+          "subsidiaries": [],
+          "listed": false,
+          "sharesOutstanding": 1000000,
+          "founderShares": 1000000,
+          "profitableWeeks": 0,
+          "totalCustomers": 0,
+          "gameOver": false,
+          "gameOverReason": null
+        },
+        "afterState": {
+          "id": "shibuya-1",
+          "week": 2,
+          "cash": 8550284,
+          "reputation": 13.15,
+          "stores": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "lotId": "sakuragaoka-09",
+              "name": "桜丘南の住宅小路店",
+              "style": "standard",
+              "price": 850,
+              "quality": 100,
+              "staff": 4,
+              "manager": true,
+              "marketing": 0,
+              "level": 1,
+              "openedWeek": 1
+            }
+          ],
+          "properties": [],
+          "loans": [],
+          "subsidiaries": [],
+          "listed": false,
+          "sharesOutstanding": 1000000,
+          "founderShares": 1000000,
+          "profitableWeeks": 1,
+          "totalCustomers": 1068,
+          "gameOver": false,
+          "gameOverReason": null,
+          "lastReportWeek": 1,
+          "netProfit": 238284
+        },
+        "actualReport": {
+          "week": 1,
+          "revenue": 907800,
+          "operatingProfit": 238284,
+          "interest": 0,
+          "netProfit": 238284,
+          "loanRepayment": 0,
+          "dividendsReceived": 0,
+          "dividendsPaid": 0,
+          "cashChange": 238284,
+          "customers": 1068,
+          "headlines": [
+            "営業提案の今週効果 0円／継続費用 4,000円（営業利益に反映）。",
+            "桜丘南の住宅小路店：客足が普段より落ち着き、1,068人が来店しました。",
+            "利益を確保しました。次の投資機会を検討しましょう。"
+          ],
+          "storeResults": [
+            {
+              "id": "store-sakuragaoka-09-1",
+              "revenue": 907800,
+              "profit": 242284,
+              "customers": 1068,
+              "satisfaction": 100
+            }
+          ],
+          "storeAccounts": [
+            {
+              "storeId": "store-sakuragaoka-09-1",
+              "costs": {
+                "ingredients": 197580,
+                "fulfilment": 108936,
+                "labor": 208000,
+                "rent": 51000,
+                "equipment": 28000,
+                "marketing": 0,
+                "manager": 72000
+              },
+              "roundingAdjustment": 0
+            }
+          ],
+          "news": {
+            "week": 1,
+            "market": {
+              "advances": 34,
+              "declines": 66,
+              "unchanged": 0
+            },
+            "companies": [
+              {
+                "stockId": "jp-4597",
+                "previousPrice": 32,
+                "currentPrice": 36.61,
+                "percentChange": 14.406249999999998
+              },
+              {
+                "stockId": "jp-4564",
+                "previousPrice": 21,
+                "currentPrice": 18.79,
+                "percentChange": -10.523809523809524
+              }
+            ],
+            "city": {
+              "current": {
+                "demand": 1,
+                "wages": 1,
+                "rents": 1
+              }
+            },
+            "events": []
+          }
+        },
+        "actualSettings": [
+          {
+            "id": "store-sakuragaoka-09-1",
+            "lotId": "sakuragaoka-09",
+            "name": "桜丘南の住宅小路店",
+            "style": "standard",
+            "price": 850,
+            "quality": 100,
+            "staff": 4,
+            "manager": true,
+            "marketing": 0,
+            "level": 1,
+            "openedWeek": 1,
+            "revenue": 907800,
+            "profit": 242284,
+            "customers": 1068,
+            "satisfaction": 100
+          }
+        ],
+        "cashDelta": 238284
+      }
+    }
+  },
+  "founderLoanBranch": {
+    "mode": "public-engine-actions; does not cover native bank screening UI",
+    "action": {
+      "type": "borrow",
+      "amount": 1000000,
+      "weeks": 52
+    },
+    "separation": "Natural initial-company branch only; no outcome merged into campaign",
+    "beforeState": {
+      "id": "shibuya-1",
+      "week": 1,
+      "cash": 8312000,
+      "reputation": 10,
+      "stores": [
+        {
+          "id": "store-sakuragaoka-09-1",
+          "lotId": "sakuragaoka-09",
+          "name": "桜丘南の住宅小路店",
+          "style": "standard",
+          "price": 850,
+          "quality": 100,
+          "staff": 4,
+          "manager": false,
+          "marketing": 0,
+          "level": 1,
+          "openedWeek": 1
+        }
+      ],
+      "properties": [],
+      "loans": [],
+      "subsidiaries": [],
+      "listed": false,
+      "sharesOutstanding": 1000000,
+      "founderShares": 1000000,
+      "profitableWeeks": 0,
+      "totalCustomers": 0,
+      "gameOver": false,
+      "gameOverReason": null
+    },
+    "borrowedState": {
+      "id": "shibuya-1",
+      "week": 1,
+      "cash": 9312000,
+      "reputation": 10,
+      "stores": [
+        {
+          "id": "store-sakuragaoka-09-1",
+          "lotId": "sakuragaoka-09",
+          "name": "桜丘南の住宅小路店",
+          "style": "standard",
+          "price": 850,
+          "quality": 100,
+          "staff": 4,
+          "manager": false,
+          "marketing": 0,
+          "level": 1,
+          "openedWeek": 1
+        }
+      ],
+      "properties": [],
+      "loans": [
+        {
+          "id": "loan-1-0-8312000",
+          "principal": 1000000,
+          "remaining": 1000000,
+          "annualRate": 0.045,
+          "weeksLeft": 52,
+          "weeklyPayment": 19230.76923076923
+        }
+      ],
+      "subsidiaries": [],
+      "listed": false,
+      "sharesOutstanding": 1000000,
+      "founderShares": 1000000,
+      "profitableWeeks": 0,
+      "totalCustomers": 0,
+      "gameOver": false,
+      "gameOverReason": null
+    },
+    "afterState": {
+      "id": "shibuya-1",
+      "week": 2,
+      "cash": 9602188,
+      "reputation": 13.15,
+      "stores": [
+        {
+          "id": "store-sakuragaoka-09-1",
+          "lotId": "sakuragaoka-09",
+          "name": "桜丘南の住宅小路店",
+          "style": "standard",
+          "price": 850,
+          "quality": 100,
+          "staff": 4,
+          "manager": false,
+          "marketing": 0,
+          "level": 1,
+          "openedWeek": 1
+        }
+      ],
+      "properties": [],
+      "loans": [
+        {
+          "id": "loan-1-0-8312000",
+          "principal": 1000000,
+          "remaining": 980769.2307692308,
+          "annualRate": 0.045,
+          "weeksLeft": 51,
+          "weeklyPayment": 19230.76923076923
+        }
+      ],
+      "subsidiaries": [],
+      "listed": false,
+      "sharesOutstanding": 1000000,
+      "founderShares": 1000000,
+      "profitableWeeks": 1,
+      "totalCustomers": 1068,
+      "gameOver": false,
+      "gameOverReason": null,
+      "lastReportWeek": 1,
+      "netProfit": 309419
+    },
+    "actualReport": {
+      "week": 1,
+      "revenue": 907800,
+      "operatingProfit": 310284,
+      "interest": 865,
+      "netProfit": 309419,
+      "loanRepayment": 19231,
+      "dividendsReceived": 0,
+      "dividendsPaid": 0,
+      "cashChange": 290188,
+      "customers": 1068,
+      "headlines": [
+        "営業提案の今週効果 0円／継続費用 4,000円（営業利益に反映）。",
+        "桜丘南の住宅小路店：客足が普段より落ち着き、1,068人が来店しました。 運営に小さな遅れが出ました。",
+        "利益を確保しました。次の投資機会を検討しましょう。"
+      ],
+      "storeResults": [
+        {
+          "id": "store-sakuragaoka-09-1",
+          "revenue": 907800,
+          "profit": 314284,
+          "customers": 1068,
+          "satisfaction": 99
+        }
+      ],
+      "storeAccounts": [
+        {
+          "storeId": "store-sakuragaoka-09-1",
+          "costs": {
+            "ingredients": 197580,
+            "fulfilment": 108936,
+            "labor": 208000,
+            "rent": 51000,
+            "equipment": 28000,
+            "marketing": 0,
+            "manager": 0
+          },
+          "roundingAdjustment": 0
+        }
+      ],
+      "news": {
+        "week": 1,
+        "market": {
+          "advances": 34,
+          "declines": 66,
+          "unchanged": 0
+        },
+        "companies": [
+          {
+            "stockId": "jp-4597",
+            "previousPrice": 32,
+            "currentPrice": 36.61,
+            "percentChange": 14.406249999999998
+          },
+          {
+            "stockId": "jp-4564",
+            "previousPrice": 21,
+            "currentPrice": 18.79,
+            "percentChange": -10.523809523809524
+          }
+        ],
+        "city": {
+          "current": {
+            "demand": 1,
+            "wages": 1,
+            "rents": 1
+          }
+        },
+        "events": []
+      }
+    },
+    "saveExactRoundTrip": true
+  },
+  "longestIdleGameWeeks": 56,
+  "finalActual": {
+    "stateWeek": 1401,
+    "cash": 15309512260,
+    "report": {
+      "week": 1400,
+      "revenue": 42790558,
+      "operatingProfit": 30395728,
+      "interest": 0,
+      "netProfit": 30395728,
+      "loanRepayment": 0,
+      "dividendsReceived": 0,
+      "dividendsPaid": 0,
+      "cashChange": 30395728,
+      "customers": 11077,
+      "headlines": [
+        "市場企業グループ：稼働100社・準備0社、営業利益 23,127,761円／週。",
+        "地区開発の維持費 112,000円／週を営業利益に反映。",
+        "本部・グループ運営費 619,931円／週。店長なし店舗の運営能力 100%。",
+        "センター街入口店：客足が普段より落ち着き、2,304人が来店しました。",
+        "北の通勤広場前店：客足が普段より落ち着き、2,080人が来店しました。",
+        "桜丘南の住宅小路店：客足が普段より落ち着き、1,396人が来店しました。",
+        "利益を確保しました。次の投資機会を検討しましょう。"
+      ],
+      "storeResults": [
+        {
+          "id": "store-sakuragaoka-09-1",
+          "revenue": 1186600,
+          "profit": 369698,
+          "customers": 1396,
+          "satisfaction": 100
+        },
+        {
+          "id": "store-dogenzaka-09-2",
+          "revenue": 1509600,
+          "profit": 458912,
+          "customers": 1776,
+          "satisfaction": 100
+        },
+        {
+          "id": "store-sakuragaoka-13-3",
+          "revenue": 1082744,
+          "profit": 250288,
+          "customers": 1436,
+          "satisfaction": 95
+        },
+        {
+          "id": "store-center-16-9",
+          "revenue": 2392000,
+          "profit": 1131463,
+          "customers": 2080,
+          "satisfaction": 67
+        },
+        {
+          "id": "store-center-02-13",
+          "revenue": 2649600,
+          "profit": 1279536,
+          "customers": 2304,
+          "satisfaction": 72
+        },
+        {
+          "id": "store-miyashita-11-17",
+          "revenue": 2397750,
+          "profit": 1157209,
+          "customers": 2085,
+          "satisfaction": 65
+        }
+      ],
+      "storeAccounts": [
+        {
+          "storeId": "store-sakuragaoka-09-1",
+          "costs": {
+            "ingredients": 258260,
+            "fulfilment": 142392,
+            "labor": 246815,
+            "rent": 0,
+            "equipment": 84000,
+            "marketing": 0,
+            "manager": 85436
+          },
+          "roundingAdjustment": -1
+        },
+        {
+          "storeId": "store-dogenzaka-09-2",
+          "costs": {
+            "ingredients": 328560,
+            "fulfilment": 181152,
+            "labor": 308518,
+            "rent": 63022,
+            "equipment": 84000,
+            "marketing": 0,
+            "manager": 85436
+          },
+          "roundingAdjustment": 0
+        },
+        {
+          "storeId": "store-sakuragaoka-13-3",
+          "costs": {
+            "ingredients": 224375,
+            "fulfilment": 129929,
+            "labor": 185111,
+            "rent": 67605,
+            "equipment": 140000,
+            "marketing": 0,
+            "manager": 85436
+          },
+          "roundingAdjustment": 0
+        },
+        {
+          "storeId": "store-center-16-9",
+          "costs": {
+            "ingredients": 277160,
+            "fulfilment": 287040,
+            "labor": 246815,
+            "rent": 252087,
+            "equipment": 112000,
+            "marketing": 0,
+            "manager": 85436
+          },
+          "roundingAdjustment": -1
+        },
+        {
+          "storeId": "store-center-02-13",
+          "costs": {
+            "ingredients": 333504,
+            "fulfilment": 317952,
+            "labor": 246815,
+            "rent": 246357,
+            "equipment": 140000,
+            "marketing": 0,
+            "manager": 85436
+          },
+          "roundingAdjustment": 0
+        },
+        {
+          "storeId": "store-miyashita-11-17",
+          "costs": {
+            "ingredients": 253849,
+            "fulfilment": 287730,
+            "labor": 246815,
+            "rent": 272712,
+            "equipment": 84000,
+            "marketing": 10000,
+            "manager": 85436
+          },
+          "roundingAdjustment": -1
+        }
+      ],
+      "news": {
+        "week": 1400,
+        "market": {
+          "advances": 76,
+          "declines": 24,
+          "unchanged": 0
+        },
+        "companies": [],
+        "city": {
+          "current": {
+            "demand": 1.0208252137698641,
+            "wages": 1.1866088061597708,
+            "rents": 1.1458485577378434
+          },
+          "previous": {
+            "demand": 1.0248223420929776,
+            "wages": 1.1880331582739898,
+            "rents": 1.1458378993553409
+          }
+        },
+        "events": []
+      }
+    },
+    "achievement": null
+  },
+  "finishedAt": "2026-10-07T06:17:45.509Z",
+  "scriptElapsedSeconds": 17.060751929,
+  "gameWeeksSettled": 1400,
+  "runtimeSourcesUnchanged": true
+}
