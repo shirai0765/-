@@ -1,0 +1,2183 @@
+{
+  "schemaVersion": 1,
+  "task": "N01",
+  "initialCandidateIds": [
+    "nr-food-doutor-price-revision-20241212",
+    "nr-food-doutor-coffee-lineup-20250725",
+    "nr-food-basefood-yakisoba-launch-20250116",
+    "nr-food-komeda-is-higashiginza-20200715",
+    "nr-food-komeda-tokyobay-opening-20251030",
+    "nr-food-komeda-fy2025-results-20250409",
+    "nr-retail-property-muji-ginza-complex-20190228",
+    "nr-retail-property-uniqlo-maebashi-energy-20230419"
+  ],
+  "candidates": [
+    {
+      "id": "nr-food-doutor-price-revision-20241212",
+      "eventKey": "doutor-dcs-price-revision-20241212",
+      "category": "food",
+      "realEntities": [
+        "株式会社ドトールコーヒー",
+        "ドトールコーヒーショップ"
+      ],
+      "eventDate": "2024-12-12",
+      "eventDateNote": "価格改定概要の実施日。2024年11月27日の発表に記載された予定であり、この資料だけで各店舗の実施を確認したものではない。",
+      "sourceURL": "https://www.doutor.co.jp/news/newsrelease/detail/20241127100901.html",
+      "publisher": "株式会社ドトールコーヒー",
+      "publishedDate": "2024-11-27",
+      "publishedDateNote": "ニュース本文上部の2024.11.27 NEWS表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭、価格改定概要、主な価格改定表。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事を開き、発表日、実施予定日、対象商品、税込新旧価格を読んだ。ドトール・日レスHD公式の関係会社一覧 https://www.dnh.co.jp/company/group/ も開き、発表主体が連結子会社であることを確認した。"
+      },
+      "facts": [
+        "ドトールコーヒーは2024年11月27日、全国のドトールコーヒーショップで一部の飲料、フード、コーヒー豆の価格を12月12日から改定すると発表した。",
+        "発表時の税込価格表では、ブレンドコーヒーSを250円から280円、カフェ・ラテSを340円から380円とする予定を示した。",
+        "同社は原材料、人件費、物流費、為替変動などによるコスト増を改定理由として説明した。"
+      ],
+      "managementChoice": "運営効率化による吸収と、品質・労務環境を保つための一部商品の価格改定を比較する。",
+      "authorWrittenBrief": "ドトールコーヒーは2024年11月、原材料や人件費などの上昇を理由に、翌月から一部商品の価格を改定すると発表した。ブレンドコーヒーSは税込250円から280円にする予定を示した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3087",
+          "gameName": "ドートル・日食",
+          "realName": "ドトール・日レスホールディングス",
+          "relationship": "subsidiary",
+          "note": "既存STOCKSの3087は持株会社。発表主体の株式会社ドトールコーヒーはHD公式関係会社一覧の連結子会社であり、持株会社自身による商品価格発表と混同しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "pricing-operation",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.price; Store.quality; Store.staff; WeeklyReport.storeResults; WeeklyReport.storeAccounts",
+          "rationale": "価格と品質・人員の設定を比較し、その後の自社店舗の確定売上・費用を読む参考。",
+          "limitation": "Storeは現在の設定で価格変更の日時・理由を保存しない。storeAccountsは確定決算の費用内訳で、欠落行に記録はない。独立他社の改定実施やコスト増の因果は立証しない。"
+        },
+        {
+          "tag": "settled-store-costs",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "applyAction updateStore; calculateWeek actual; WeeklyReport.netProfit; WeeklyReport.storeAccounts",
+          "rationale": "ゲームで設定を変えた後、週末の実績から支払費用と利益を確認する場面に関連。",
+          "limitation": "updateStoreの操作型は保存済み変更履歴ではない。値上げが利益を増やすと事前確約せず、他社株価から価格改定の理由を推定しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.dnh.co.jp/company/group/",
+          "publisher": "株式会社ドトール・日レスホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "関係会社一覧の本文に掲載日・更新日の明記を確認できないため不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "連結子会社の一覧、株式会社ドトールコーヒーの行。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "関係会社一覧を開き、ドトールコーヒーが連結子会社に掲載されることを実読した。商品発表のfactsは主出典に基づき、このページは現時点の企業対応を補足する。"
+          }
+        }
+      ],
+      "editorialNotes": "発表主体は持株会社でなくドトールコーヒー。会社が説明した理由と予定価格を記し、値上げ後の販売・利益は主張しない。",
+      "contextNotes": "価格改定という運営選択の参考。現実の予定価格をゲームのStore.priceへ設定する提案や今週活動への対応ではない。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-food-doutor-price-revision-20241212"
+      }
+    },
+    {
+      "id": "nr-food-doutor-coffee-lineup-20250725",
+      "eventKey": "doutor-kenya-guatemala-launch-20250725",
+      "category": "food",
+      "realEntities": [
+        "株式会社ドトールコーヒー",
+        "ドトールコーヒーショップ"
+      ],
+      "eventDate": "2025-07-25",
+      "eventDateNote": "本文冒頭に記されたコーヒー豆2商品の発売予定日。発表資料のため、各店舗での実売開始の確認とは区別する。",
+      "sourceURL": "https://www.doutor.co.jp/news/newsrelease/detail/20250709171732.html",
+      "publisher": "株式会社ドトールコーヒー",
+      "publishedDate": "2025-07-11",
+      "publishedDateNote": "本文上部の2025.07.11 NEWS表記。URL中の20250709からは推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭、ケニアとグアテマラの商品紹介、既存商品の販売終了に関する注記。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事の掲載日、発売予定日、深煎りという商品設計、既存商品の在庫終了条件を本文で確認した。HD公式関係会社一覧 https://www.dnh.co.jp/company/group/ の連結子会社欄も読んだ。"
+      },
+      "facts": [
+        "ドトールコーヒーは2025年7月11日、コーヒー豆のケニアとグアテマラを7月25日から発売すると発表した。",
+        "両商品は深煎りで、ストレートコーヒーの品ぞろえを更新する位置付けとした。",
+        "導入に伴い既存のブラジルとコロンビアは、各店の在庫がなくなった時点で販売終了すると案内した。"
+      ],
+      "managementChoice": "産地別商品の追加と既存商品の段階的終了を組み合わせ、品ぞろえを更新する。",
+      "authorWrittenBrief": "ドトールコーヒーは2025年7月、深煎りのケニアとグアテマラをコーヒー豆の品ぞろえに加えると発表した。従来のブラジルとコロンビアは、店ごとの在庫終了に合わせて販売を終える計画だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3087",
+          "gameName": "ドートル・日食",
+          "realName": "ドトール・日レスホールディングス",
+          "relationship": "subsidiary",
+          "note": "STOCKSの3087はHD、ニュースの主体は公式関係会社一覧で連結子会社とされるドトールコーヒー。商品ブランドと持株会社を別に扱う。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "店の提供価値と価格・業態の組み合わせを考える際の品ぞろえ更新の参考。",
+          "limitation": "商品SKU、産地、在庫、発売・販売終了日を保存するfieldはない。quality/styleはカフェの設定でこの商品入替を記録せず、決算や株価から発売実績を補えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.dnh.co.jp/company/group/",
+          "publisher": "株式会社ドトール・日レスホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "関係会社一覧の本文に掲載日・更新日の明記を確認できないため不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "連結子会社の一覧、株式会社ドトールコーヒーの行。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "関係会社一覧を開き、ドトールコーヒーが連結子会社に掲載されることを実読した。商品発表のfactsは主出典に基づき、このページは現時点の企業対応を補足する。"
+          }
+        }
+      ],
+      "editorialNotes": "産地別の商品更新と旧商品の段階的終了を示す。発売予定を実売の確認へ広げず、ドトール・日レスHD自身の商品と書き換えない。",
+      "contextNotes": "現在の設定と現実の品ぞろえ変更は別。商品追加の効果を未来のカフェ利益に換算しない。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-food-doutor-coffee-lineup-20250725"
+      }
+    },
+    {
+      "id": "nr-food-basefood-yakisoba-launch-20250116",
+      "eventKey": "basefood-yakisoba-relaunch-20250116",
+      "category": "food",
+      "realEntities": [
+        "ベースフード株式会社",
+        "BASE YAKISOBA"
+      ],
+      "eventDate": "2025-01-16",
+      "eventDateNote": "本文冒頭と商品概要にある国内の順次発売予定日。香港の発売予定日は別日の2025年1月23日であり、同日の発売とは扱わない。",
+      "sourceURL": "https://basefood.co.jp/news/2120",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2025-01-09",
+      "publishedDateNote": "NEWS本文上部の2025/1/9表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "記事冒頭、即席麺シリーズの説明、購入単位の変更、香港展開の節。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "企業公式記事を開き、国内と香港の異なる発売予定日、旧シリーズ終売の記述、商品改善、EC購入単位の変更を実読した。健康効果を独自に実証したものではない。"
+      },
+      "facts": [
+        "ベースフードは2025年1月9日、BASE YAKISOBAのソース焼きそばと旨辛まぜそばを国内で1月16日から順次発売すると発表した。",
+        "記事は旧BASE PASTA即席麺シリーズが2024年12月に終売したことと、新シリーズで穀物原料の配合や麺の形状を調整したことを説明している。",
+        "ECでの購入単位を旧商品の12個から新商品の4個に変更すると説明した。",
+        "香港の公式オンラインショップでは1月23日から発売する予定を示した。"
+      ],
+      "managementChoice": "商品設計の改良と小口の購入単位を組み合わせ、国内販売と海外展開の日程を分ける。",
+      "authorWrittenBrief": "ベースフードは2025年1月、麺の配合や形状を調整したBASE YAKISOBAを国内で順次発売する計画を発表した。ECの購入単位を12個から4個へ小さくし、香港では国内より後の日程で販売する予定も示した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "STOCKSとmarket-universeの2936はベースフード。発表主体は同社であり、商品名を企業名やゲーム名に置換しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.style; Store.price; WeeklyReport.storeResults",
+          "rationale": "提供価値と販売形態を比較し、選択後の確定収益を読む場面の参考。",
+          "limitation": "現行Storeには即席麺の商品配合・包装単位・EC・海外展開の保存fieldがない。quality/styleの変更を新商品の発売証拠にせず、株価・決算から販売開始を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "editorialNotes": "商品改良・購入単位・市場別日程を主眼にする。旧即席麺シリーズと新シリーズを分け、香港を国内と同日発売としない。",
+      "contextNotes": "商品の改善と販売単位を同時に変える参考事例。国内・海外発売の予定が将来のゲーム利益を立証するものではない。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-food-basefood-yakisoba-launch-20250116"
+      }
+    },
+    {
+      "id": "nr-food-komeda-is-higashiginza-20200715",
+      "eventKey": "komeda-is-higashiginza-opening-20200715",
+      "category": "food",
+      "realEntities": [
+        "株式会社コメダ",
+        "KOMEDA is □東銀座店"
+      ],
+      "eventDate": "2020-07-15",
+      "eventDateNote": "会社発信プレスリリースの本文冒頭に示された開業予定日。発表当時の計画として記録し、この資料から当日の実施を断定しない。",
+      "sourceURL": "https://www.atpress.ne.jp/news/218193",
+      "publisher": "株式会社コメダ（配信：アットプレス）",
+      "publishedDate": "2020-07-09",
+      "publishedDateNote": "記事タイトル直下の2020年7月9日15:00表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "発信企業・日時、本文冒頭、提供メニュー、店舗概要。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "株式会社コメダを発信主体とする配信原稿を開き、日付、新業態、開業予定、メニュー説明を読んだ。HD公式会社概要 https://komeda-holdings.co.jp/company-profile/ も開き、コメダHDが株式会社コメダの持株会社であることを確認した。"
+      },
+      "facts": [
+        "株式会社コメダは2020年7月9日、植物由来の原材料を用いる新業態KOMEDA is □の東銀座店を7月15日に開く予定を発表した。",
+        "原稿ではフード34種、デザート8種をべっぴんプラスと共同開発し、アルコールを含む飲料にも植物由来のものをそろえると説明した。"
+      ],
+      "managementChoice": "既存の喫茶体験を維持しつつ、原材料とメニューを特徴とする別業態で出店する。",
+      "authorWrittenBrief": "コメダは2020年7月、東銀座で植物由来の原材料を使う新業態KOMEDA is □を開く計画を発表した。既存の喫茶店とは違う食材とメニューを軸にした出店計画だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3543",
+          "gameName": "コモレビ珈琲",
+          "realName": "コメダホールディングス",
+          "relationship": "subsidiary",
+          "note": "STOCKSの3543はHD。公式会社概要はHDを株式会社コメダの持株会社と説明している。リリース主体の株式会社コメダと、上場HDを区別する。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.storeId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.openingCost; OpeningRecord.result",
+          "rationale": "standard/premium/takeawayの出店形態と、別の特徴を持つ現実の新業態を比較する参考。",
+          "limitation": "記録するのは自社カフェの判断と初回確定決算。植物由来原料・メニュー・第三者店舗の開業日は保存しない。判断時のinitialStoreProfitは見込みで、結果がない時に将来利益を実績扱いできない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://komeda-holdings.co.jp/company-profile/",
+          "publisher": "株式会社コメダホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "ページ見出し下に複数の日付表示があるが、本文表示では公開日と更新日の区別を確定できず、再取得時にも表示日が異なったため掲載日は不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "会社概要の冒頭説明および事業内容欄。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "HDが喫茶店チェーンを運営する株式会社コメダの持株会社だという説明を実読した。現時点の企業対応の裏付けであり、個店の開業日やFCオーナーの所有関係の裏付けではない。"
+          }
+        }
+      ],
+      "editorialNotes": "発表主体は株式会社コメダで持株会社ではない。計画発表に限定し、植物由来原材料の採用を環境効果や利益の証拠へ広げない。",
+      "contextNotes": "既存STOCKSのコメダHD対応は主体の識別候補にすぎず、ゲーム会社の今週の出店へ差し替えない。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-food-komeda-is-higashiginza-20200715"
+      }
+    },
+    {
+      "id": "nr-food-komeda-tokyobay-opening-20251030",
+      "eventKey": "komeda-tokyobay-store-opening-20251030",
+      "category": "food",
+      "realEntities": [
+        "株式会社コメダ",
+        "コメダ珈琲店 ららぽーとTOKYO-BAY店"
+      ],
+      "eventDate": "2025-10-30",
+      "eventDateNote": "公式記事の本文で2025年10月30日に開業したと報告されている。予定ではなく開業報告。",
+      "sourceURL": "https://fc.komeda.co.jp/information/461/",
+      "publisher": "株式会社コメダ（フランチャイズ加盟募集サイト）",
+      "publishedDate": "2025-10-30",
+      "publishedDateNote": "記事タイトル直上の2025.10.30表記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭、商業施設入口横の立地説明、新規加盟オーナーの記述、店舗情報。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "コメダ公式FC募集サイトの記事を開き、開業日、施設内立地、新規加盟オーナーの初出店という説明を確認した。加盟オーナーの法人名や店舗利益は掲載されていない。HD公式会社概要 https://komeda-holdings.co.jp/company-profile/ による持株会社と事業会社の関係も実読した。"
+      },
+      "facts": [
+        "公式FC募集サイトは、コメダ珈琲店ららぽーとTOKYO-BAY店が2025年10月30日に開業したと報告した。",
+        "店舗は千葉県船橋市のららぽーとTOKYO-BAY北館1階、施設の入口横に位置すると説明している。",
+        "新規加盟オーナーによる初めての出店と説明されている。"
+      ],
+      "managementChoice": "商業施設の入口に近い区画へ、加盟オーナーのFC店舗として出店する。",
+      "authorWrittenBrief": "コメダの公式FC募集サイトは、ららぽーとTOKYO-BAY店が2025年10月30日に開業したと報告した。施設入口横の区画で、新規加盟オーナーが初めて出店した事例である。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3543",
+          "gameName": "コモレビ珈琲",
+          "realName": "コメダホールディングス",
+          "relationship": "parent-group",
+          "note": "既存3543への対応はグループが展開するコメダ珈琲店ブランドとしての対応。原資料は新規FCオーナーによる開業で、オーナー名は不明。加盟店をHD直営店またはHDの連結子会社とみなさない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "franchise-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.storeId; OpeningRecord.lotId; OpeningRecord.decisionWeek; OpeningRecord.result; GameState.stores",
+          "rationale": "出店先の区画を選び、開業後の初回決算を確認する場面の立地参考。",
+          "limitation": "OpeningRecordとstoresは自社カフェで、第三者FC加盟店・加盟契約・ロイヤルティは保存しない。商業施設の入口横という現実立地を、ゲームの同名店舗や利益へ置き換えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://komeda-holdings.co.jp/company-profile/",
+          "publisher": "株式会社コメダホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "ページ見出し下に複数の日付表示があるが、本文表示では公開日と更新日の区別を確定できず、再取得時にも表示日が異なったため掲載日は不明。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "会社概要の冒頭説明および事業内容欄。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "HDが喫茶店チェーンを運営する株式会社コメダの持株会社だという説明を実読した。現時点の企業対応の裏付けであり、個店の開業日やFCオーナーの所有関係の裏付けではない。"
+          }
+        }
+      ],
+      "editorialNotes": "開業済みのFC店舗として記し、コメダHDやコメダの直営店としない。入口立地を集客・収益が増えた証拠にしない。",
+      "contextNotes": "FCオーナーの店舗と持株会社の連結実績を分ける。次の決算事例の店舗網に重ねて別のグループ収益を計上しない。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-food-komeda-tokyobay-opening-20251030"
+      }
+    },
+    {
+      "id": "nr-food-komeda-fy2025-results-20250409",
+      "eventKey": "komeda-fy2025-results-20250409",
+      "category": "food",
+      "realEntities": [
+        "株式会社コメダホールディングス"
+      ],
+      "eventDate": "2025-04-09",
+      "eventDateNote": "会社が2025年2月期の連結決算を発表した日。業績の対象期間は2024年3月1日から2025年2月28日で、発表日の営業成績ではない。",
+      "sourceURL": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20250409/20250408510776.pdf",
+      "publisher": "株式会社コメダホールディングス（Yahoo!ファイナンス適時開示配信PDF）",
+      "publishedDate": "2025-04-09",
+      "publishedDateNote": "原PDF1ページ目の発表日2025年4月9日。URLや検索結果の経過期間から推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページ目の連結経営成績と対象期間、PDF4ページ目（資料内2ページ）の当期経営成績概況。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "会社名・証券コード・発表日が明記された13ページの会社作成決算短信PDFを配信先で開いた。1ページ目の確定連結業績と4ページ目の価格改定・店舗数・業績説明を実読した。翌期予想を確定実績として採録していない。Daiwa IR配信の同日要約PDF https://www.daiwair.co.jp/td_download.cgi?c=3543&i=2963606 も開いて数値を照合した。"
+      },
+      "facts": [
+        "2025年4月9日に公表された2025年2月期の連結決算で、売上収益は47,057百万円、前期比8.8%増だった。",
+        "同期間の営業利益は8,820百万円で前期比1.2%増、親会社所有者に帰属する当期利益は5,814百万円で前期比2.6%減だった。",
+        "経営成績概況では店頭メニューを4月、FC加盟店向け卸売価格を9月に改定したと説明した。",
+        "期末のグループ店舗網は1,083店で、同じ表の直営店内数は60店。全店舗数を自社直営店舗数とは扱わない。"
+      ],
+      "managementChoice": "店頭とFC卸売の価格改定時期を分けながら、店舗網拡大と連結の売上・利益の伸びを別々に評価する。",
+      "authorWrittenBrief": "コメダホールディングスの2025年2月期連結決算は、売上収益と営業利益が増えた一方、親会社所有者に帰属する当期利益は減った。期末の店舗網1,083店には直営以外の店舗も含まれ、直営店の内数は60店だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3543",
+          "gameName": "コモレビ珈琲",
+          "realName": "コメダホールディングス",
+          "relationship": "direct",
+          "note": "原PDFの発行主体・証券コード3543が既存STOCKSおよびmarket-universeのコメダホールディングスと一致する。数値は持株会社の連結決算で、個店の決算やFC加盟店全体の売上ではない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "settled-financial-report",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "WeeklyReport.week; WeeklyReport.revenue; WeeklyReport.operatingProfit; WeeklyReport.interest; WeeklyReport.netProfit; WeeklyReport.storeResults",
+          "rationale": "売上・営業利益・純利益を区別して確定決算を読む参考。",
+          "limitation": "WeeklyReportは自社の一週決算で、年度連結・IFRS指標・親会社所有者帰属利益やFC加盟店数を保存しない。現実の当期利益をゲームのnetProfitと同一指標にせず、年度値を週次へ割り振らない。"
+        },
+        {
+          "tag": "group-accounting-boundary",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "calculateWeek; GameState.subsidiaries; GameState.marketAcquisitions; WeeklyReport.operatingProfit",
+          "rationale": "自社店舗と傘下事業を含む決算範囲を区別して読む参考。",
+          "limitation": "subsidiariesと市場企業グループの利益は既にoperatingProfitに含まれる。現実の店舗網を自社storesの数や独立他社活動に差し替えず、FC店の開業素材・連結数値を再加算しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.daiwair.co.jp/td_download.cgi?c=3543&i=2963606",
+          "publisher": "株式会社コメダホールディングス（Daiwa IR配信の会社作成PDF）",
+          "publishedDate": "2025-04-09",
+          "publishedDateNote": "PDF1ページ目の会社名の直前に示された2025年4月9日。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "2ページの要約PDFの1ページ目、連結経営成績と対象期間。",
+          "sourceRead": {
+            "method": "web-open/pdf-text",
+            "status": "verified",
+            "notes": "2ページの要約版を開き、発行会社・コード3543・発表日・対象期間・売上収益47,057百万円・営業利益8,820百万円・親会社所有者帰属当期利益5,814百万円を主出典と照合した。店舗や価格改定の説明は13ページ版の主出典に基づく。"
+          }
+        }
+      ],
+      "editorialNotes": "年度連結の複数指標と店舗主体を保持。対象期間2024/3/1〜2025/2/28を発表日の営業実績や今週決算へ移さず、価格改定だけを増益の原因としない。",
+      "contextNotes": "グループ店舗網と直営店舗数、売上と各利益指標の違いを明示する年度資料。将来の利益や価格改定の単独因果は断定しない。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-food-komeda-fy2025-results-20250409"
+      }
+    },
+    {
+      "id": "nr-retail-property-muji-ginza-complex-20190228",
+      "eventKey": "muji-ginza-retail-hotel-announcement-20190228",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社良品計画",
+        "無印良品 銀座",
+        "MUJI HOTEL GINZA",
+        "UDS株式会社"
+      ],
+      "eventDate": "2019-04-04",
+      "eventDateNote": "冒頭本文と施設・ホテル概要にある同時開業予定日。2019年2月28日の発表資料であり、実施済みとは扱わない。",
+      "sourceURL": "https://assets.ryohin-keikaku.jp/news/2019_0228.html",
+      "publisher": "株式会社良品計画",
+      "publishedDate": "2019-02-28",
+      "publishedDateNote": "原資料の発表日表示を確認。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭発表日・本文、無印良品 銀座 概要、フロア構成、MUJI HOTEL GINZA 概要。web-open行4〜7・59〜100。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "良品計画の公式アーカイブ本文を実読。物販・飲食・ホテルの同時開業予定と、ホテルの企画・内装設計・運営主体がUDSであることを確認。"
+      },
+      "facts": [
+        "良品計画は無印良品 銀座、MUJI Diner、MUJI HOTEL GINZAを2019年4月4日に同時開業する予定と発表した。",
+        "フロア構成では地下1階がMUJI Diner、1〜5階が商品・サービス売場、6階がATELIER MUJIとホテルフロント、7〜10階がホテル客室。",
+        "ホテルの企画・内装設計・運営はUDS株式会社と記載された。"
+      ],
+      "managementChoice": "旗艦店に物販、飲食、宿泊を組み合わせ、宿泊運営を専門会社に委ねる。",
+      "authorWrittenBrief": "良品計画は2019年2月、銀座で物販・飲食・宿泊を同年4月に同時開業する計画を示した。ホテルの企画・内装設計・運営をUDSが担い、買い物以外の利用も同じ建物に組み合わせる計画だった。",
+      "parodyEntities": [],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.openingRecords; OpeningRecord.storeId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.openingCost; OpeningRecord.result",
+          "rationale": "出店時の業態・提供する利用場面を比較する参考として、物販・飲食・宿泊の複合計画を見る。",
+          "limitation": "OpeningRecordは自社カフェの開業判断を最大40件残す。resultがない時点のnetProfitBefore/After・initialStoreProfitは計画見込みで、ホテル開業・第三者運営契約・実際の利益を立証しない。"
+        },
+        {
+          "tag": "first-settled-store-result",
+          "sourceFile": "src/sim/openingJournal.ts; src/model.ts",
+          "existingFieldOrEvent": "settleOpeningRecords; OpeningRecord.result.week; OpeningRecord.result.storeProfit; WeeklyReport.storeResults",
+          "rationale": "ゲームの開業後の実績を読む場合は、該当storeIdの初回確定決算が一度だけresultへ付く場面を確認する。",
+          "limitation": "現実の複合施設の売上やホテル収益に換算できない。閉店済み・旧保存の欠落記録を過去資料で補完せず、参考文を今週の開業実績へ変えない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "editorialNotes": "複合用途と運営主体の分担が主眼。発表資料だけで実際の開業・運営収益を立証せず、既存100stockに良品計画の対応がない点も保つ。",
+      "contextNotes": "ホテル運営をUDSが担う事実を維持する。ゲームに宿泊・物販の保存契約はなく、対応銘柄もないため過去の比較資料に限定。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-retail-property-muji-ginza-complex-20190228"
+      }
+    },
+    {
+      "id": "nr-retail-property-uniqlo-maebashi-energy-20230419",
+      "eventKey": "uniqlo-maebashi-minami-store-energy-announcement-20230419",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社ユニクロ",
+        "ユニクロ 前橋南インター店"
+      ],
+      "eventDate": "2023-04-21",
+      "eventDateNote": "冒頭および店舗概要に記載された開業予定日。2023年4月19日の資料時点で開業実施を確認したものではない。",
+      "sourceURL": "https://www.uniqlo.com/jp/ja/contents/corp/press-release/2023/04/23041913_store.html",
+      "publisher": "株式会社ユニクロ",
+      "publishedDate": "2023-04-19",
+      "publishedDateNote": "原資料冒頭の発表日を確認。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭の発表日・本文、認証の説明、設備表、店舗概要。web-open行4〜42。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文を実読し、開業予定と省エネ設備・認証を確認。電力削減・太陽光の寄与率は設計想定/試算であり実測と区別。太陽光の比率に異なる表現があるため数値は採用しない。"
+      },
+      "facts": [
+        "ユニクロは前橋南インター店を2023年4月21日に開業すると発表した。",
+        "天窓、明るさセンサー、エアカーテン、服のリサイクル素材を使う断熱材、太陽光パネルなどを店舗に採用したと説明した。",
+        "資料は2023年3月17日付のBELS最高ランク星5つとZEB Readyの認定を記載している。"
+      ],
+      "managementChoice": "ロードサイド店を省エネ設備と自然採光を組み込んだ建物として設計する。",
+      "authorWrittenBrief": "ユニクロは2023年4月、前橋の新店に自然採光、照明制御、太陽光パネルなどを採用したと発表した。開業を前にBELSの星5つとZEB Readyの認定を受けた店舗設計の事例である。",
+      "parodyEntities": [],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-capital-investment",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.openingCost; WeeklyReport.storeAccounts; StoreAccount.costs.equipment",
+          "rationale": "出店時の初期投資と営業後の設備費負担を区別して考える参考。",
+          "limitation": "openingCostはカフェの開業費で、costs.equipmentは確定決算のゲーム費用。設備仕様・電力量・認証・削減率を記録しないため、この費用から省エネ効果や将来利益を推定できない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "editorialNotes": "設備採用・認定を記す一方、開業実施と実際の省エネ量は主張しない。現行100stockに対応銘柄がない点を維持。",
+      "contextNotes": "省エネを店舗設計へ組み込むという選択の資料。ゲームの設備費と現実の認証・電力実績を同一視しない。",
+      "qaReview": {
+        "status": "independently-read",
+        "auditReference": "docs/external/news-research/audit.md",
+        "candidateId": "nr-retail-property-uniqlo-maebashi-energy-20230419"
+      }
+    },
+    {
+      "id": "nr-retail-property-studioatao-hakata-limited-shop-20230913",
+      "eventKey": "studioatao-hakata-limited-shop-20230913",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社スタジオアタオ",
+        "ATAO博多店"
+      ],
+      "eventDate": "2023-09-13",
+      "eventDateNote": "本文と店舗情報に記載された開業予定日。同日掲載でも開業済み報告とは断定しない。",
+      "sourceURL": "https://www.studioatao.jp/news/hakata/",
+      "publisher": "株式会社スタジオアタオ",
+      "publishedDate": "2023-09-13",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "掲載日、新規出店の説明、店舗情報。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事を開き、九州初の期間限定店、博多阪急1階、開業予定日を実読した。面積28㎡と約5坪の併記は整合しないため面積数値を採録しない。"
+      },
+      "facts": [
+        "スタジオアタオは2023年9月13日、同日を開業予定日とするATAO博多店を案内した。",
+        "場所は博多阪急1階で、同ブランドの九州初の店舗として期間限定で展開すると説明した。"
+      ],
+      "managementChoice": "初進出地域へ百貨店内の期間限定店で出店する。",
+      "authorWrittenBrief": "スタジオアタオは2023年9月、九州初のATAO店舗を博多阪急に開く計画を案内した。期間限定の形を選び、新しい地域でブランドを紹介する出店事例である。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3550",
+          "gameName": "月丘技研50",
+          "realName": "スタジオアタオ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード3550の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-studioatao-ilemer-gallery-plan-20230804",
+      "eventKey": "studioatao-ilemer-gallery-plan-20230804",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社スタジオアタオ",
+        "イルメールギャラリー"
+      ],
+      "eventDate": "2023-08-04",
+      "eventDateNote": "本文とギャラリー概要の開業予定日。翌日の計画を発表した原資料。",
+      "sourceURL": "https://www.studioatao.jp/news/%E3%80%90%E6%96%B0%E5%BA%97%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B%E3%80%91ilemer/",
+      "publisher": "株式会社スタジオアタオ",
+      "publishedDate": "2023-08-03",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "記事冒頭、体験・物販スペースの説明、ギャラリー概要。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文を開き、開業予定日、神戸国際会館11階、展示と物販を組み合わせる内容、金土日のみの営業予定を読んだ。"
+      },
+      "facts": [
+        "スタジオアタオは2023年8月3日、神戸国際会館11階でイルメールギャラリーを8月4日に開く予定を発表した。",
+        "体験・展示スペースと限定グッズの物販スペースで構成すると説明した。",
+        "概要では金・土・日のみ営業する予定を示した。"
+      ],
+      "managementChoice": "キャラクターブランドの体験展示と限定商品販売を同じ場所に組み合わせる。",
+      "authorWrittenBrief": "スタジオアタオは2023年夏、展示を楽しむ空間と限定商品の販売を備えたイルメールギャラリーを開く計画を示した。営業日を週末に絞り、買い物とブランド体験を組み合わせる構成だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3550",
+          "gameName": "月丘技研50",
+          "realName": "スタジオアタオ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード3550の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-studioatao-ec-mall-renewal-20220519",
+      "eventKey": "studioatao-ec-mall-renewal-20220519",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社スタジオアタオ",
+        "ATAOLAND+"
+      ],
+      "eventDate": "2022-05-19",
+      "eventDateNote": "本文でこの日以降に段階的に開く予定とされた開始基準日。全ブランドの移行完了日ではない。",
+      "sourceURL": "https://www.studioatao.jp/news/online-renewal/",
+      "publisher": "株式会社スタジオアタオ",
+      "publishedDate": "2022-05-19",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "モール型ECサイトの説明、旧サイト閉店、ポイント利用条件。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文を開き、5ブランドを集積するECモールの段階的開業予定と旧サイトのポイント利用終了、新モールの店頭共通ポイント条件を読んだ。"
+      },
+      "facts": [
+        "スタジオアタオは2022年5月19日、5ブランドをまとめたATAOLAND+を同日以降に段階的に開く予定を案内した。",
+        "新モール開始に伴いATAOとIANNEの従来公式通販を閉じ、従来サイトのポイントは使えなくなると説明した。",
+        "新モールのポイントは会員登録などの条件を満たせば店頭と通販で利用できると案内した。"
+      ],
+      "managementChoice": "ブランド別通販から共通ECモールへ移行し、店頭と通販のポイントをつなぐ。",
+      "authorWrittenBrief": "スタジオアタオは2022年、複数ブランドをまとめるECモールへの段階的な移行を案内した。旧通販の閉店とポイント利用終了を伝え、新しい仕組みでは店頭と通販の共通利用を用意する計画だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3550",
+          "gameName": "月丘技研50",
+          "realName": "スタジオアタオ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード3550の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-studioatao-kyoto-large-shop-plan-20220423",
+      "eventKey": "studioatao-kyoto-large-shop-plan-20220423",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社スタジオアタオ",
+        "ATAO京都店"
+      ],
+      "eventDate": "2022-04-23",
+      "eventDateNote": "店舗情報欄の日付で示された開業予定日。発表日は2022年3月10日。",
+      "sourceURL": "https://www.studioatao.jp/news/%E6%96%B0%E5%BA%97%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B%E3%80%90atao%E3%80%91/",
+      "publisher": "株式会社スタジオアタオ",
+      "publishedDate": "2022-03-10",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "京都店コンセプト、店舗情報、駅直結のアクセス案内。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事本文を開き、京都エリア初の店舗、約115㎡の大型店舗、駅直結の立地、IANNE一部展開予定、開業予定日を実読した。"
+      },
+      "facts": [
+        "スタジオアタオは2022年3月10日、京都エリア初のATAO京都店を4月23日に開く予定を案内した。",
+        "店舗はラクエ四条烏丸1階で、面積約115㎡、神戸本店に次ぐ大型店舗と説明した。",
+        "姉妹ブランドIANNEを一部コーナーで展開する予定を示した。"
+      ],
+      "managementChoice": "駅直結の大型店で主力ブランドと姉妹ブランドの一部を組み合わせる。",
+      "authorWrittenBrief": "スタジオアタオは2022年春、駅直結の施設に約115㎡のATAO京都店を開く計画を示した。神戸本店に次ぐ大きさの店内に、姉妹ブランドの商品も一部配置する予定だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3550",
+          "gameName": "月丘技研50",
+          "realName": "スタジオアタオ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード3550の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-ap-kinoko-umeda-first-fc-opening-20260521",
+      "eventKey": "ap-kinoko-umeda-first-fc-opening-20260521",
+      "category": "food",
+      "realEntities": [
+        "株式会社エー・ピーホールディングス",
+        "株式会社FOOLISH",
+        "裏の山の木の子 梅田店"
+      ],
+      "eventDate": "2026-05-21",
+      "eventDateNote": "本文の開業済み報告の日付。更新本文は2026年5月28日更新と明示。",
+      "sourceURL": "https://ap-holdings.jp/news-and-action/%E3%80%90fc%E3%80%91new-open%E3%80%8C%E8%A3%8F%E3%81%AE%E5%B1%B1%E3%81%AE%E6%9C%A8%E3%81%AE%E5%AD%90-%E6%A2%85%E7%94%B0%E3%80%8D5-21%E6%9C%A8%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3/",
+      "publisher": "株式会社エー・ピーホールディングス",
+      "publishedDate": "2026-05-21",
+      "publishedDateNote": "記事の投稿日2026.05.21。最終更新日2026.05.28とは区別。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "投稿日・更新日、本文の開業報告と運営主体。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事を開き、閉店した塚田農場の跡地での開業済み報告、ブランド初のFC、FOOLISHによる運営を読んだ。"
+      },
+      "facts": [
+        "APHDは裏の山の木の子梅田店が2026年5月21日に開業したと報告した。",
+        "店舗は2026年3月に閉店した塚田農場梅田ギャザ阪急店の跡地を使う。",
+        "同ブランド初のFC店で、店舗運営は株式会社FOOLISHが担うと説明した。"
+      ],
+      "managementChoice": "既存店跡地を別ブランドの初FC店へ転換し、外部企業が店舗を運営する。",
+      "authorWrittenBrief": "APHDは2026年5月、閉店した塚田農場の跡地に裏の山の木の子の初FC店が開業したと報告した。梅田店の運営をFOOLISHが担う形で、直営の増設とは異なる展開を選んだ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3175",
+          "gameName": "虹橋グループ75",
+          "realName": "エー・ピーホールディングス",
+          "relationship": "parent-group",
+          "note": "APHD公式が扱うブランドの展開として既存3175に対応する。実際のFC店運営者FOOLISHをHDの子会社・直営とみなさない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-ap-oyadoriya-nakano-new-format-plan-20260428",
+      "eventKey": "ap-oyadoriya-nakano-new-format-plan-20260428",
+      "category": "food",
+      "realEntities": [
+        "株式会社エー・ピーホールディングス",
+        "炭火酒場 おやどりや"
+      ],
+      "eventDate": "2026-04-28",
+      "eventDateNote": "本文で示された開業予定日。更新後も予定形の本文であり実施済みとは断定しない。",
+      "sourceURL": "https://ap-holdings.jp/news-and-action/%E3%80%90new-open%E3%80%914-28%E7%81%AB-%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%EF%BC%81%E7%82%AD%E7%81%AB%E9%85%92%E5%A0%B4-%E3%81%8A%E3%82%84%E3%81%A9%E3%82%8A%E3%82%84/",
+      "publisher": "株式会社エー・ピーホールディングス",
+      "publishedDate": "2026-04-20",
+      "publishedDateNote": "記事の投稿日2026.04.20。最終更新日2026.05.04は掲載日へ転用しない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "日付と本文の新業態説明。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文を開き、発表主体APHD、新業態の開業予定、親鶏に焦点を当てる商品方針を確認した。外部予約サイト埋込みの駅距離は採録していない。"
+      },
+      "facts": [
+        "APHDは2026年4月20日、東京中野に新業態の炭火酒場おやどりやを4月28日に開く予定を発表した。",
+        "同社は親鶏に焦点を当て、鶏の新しい価値を提案する業態と説明した。"
+      ],
+      "managementChoice": "親鶏を主題とする別業態を作り、既存ブランドとは異なる商品価値で出店する。",
+      "authorWrittenBrief": "APHDは2026年春、中野に親鶏を主題とする炭火酒場を開く計画を発表した。新たな業態として、鶏の選び方を店舗の特徴に据えた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3175",
+          "gameName": "虹橋グループ75",
+          "realName": "エー・ピーホールディングス",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード3175の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-ap-rouman-tavern-renewal-plan-20260120",
+      "eventKey": "ap-rouman-tavern-renewal-plan-20260120",
+      "category": "food",
+      "realEntities": [
+        "株式会社エー・ピーホールディングス",
+        "うなぎ ろ鰻",
+        "江戸前横丁 横浜ポルタ店"
+      ],
+      "eventDate": "2026-01-20",
+      "eventDateNote": "記事の見出し下に記されたリニューアル開始予定日。本文はリニューアルすると説明するため実施済みと断定しない。",
+      "sourceURL": "https://ap-holdings.jp/news-and-action/%E3%80%90%E6%B1%9F%E6%88%B8%E5%89%8D%E6%A8%AA%E4%B8%81-%E3%81%86%E3%81%AA%E3%81%8E-%E3%82%8D%E9%B0%BB%E3%80%911%E5%91%A8%E5%B9%B4%E3%82%92%E7%B5%8C%E3%81%A6%E3%80%8C%E3%81%86%E3%81%AA%E4%B8%B2/",
+      "publisher": "株式会社エー・ピーホールディングス",
+      "publishedDate": "2026-01-20",
+      "publishedDateNote": "記事の投稿日2026.01.20。更新日2026.01.29と区別。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "記事日付、開始日見出し、横丁内うなぎ店の変更説明。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文を開き、開業1周年、既存食事メニューを残しながら串焼き・おでんなどを増やす変更方針を読んだ。"
+      },
+      "facts": [
+        "APHD公式は横浜ポルタの江戸前横丁が2026年1月20日に開業1周年を迎えたと説明した。",
+        "同施設のうなぎろ鰻で従来の食事メニューを生かしつつ、串焼きやおでんなど酒場向けメニューを増やすリニューアルを案内した。"
+      ],
+      "managementChoice": "既存料理店の食事を残し、飲酒時の小皿需要へメニューを広げる。",
+      "authorWrittenBrief": "APHDは2026年、横浜のうなぎ店で食事メニューに串焼きやおでんを加える変更を案内した。新店を増やす形ではなく、既存店を酒場としても利用しやすくする計画だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3175",
+          "gameName": "虹橋グループ75",
+          "realName": "エー・ピーホールディングス",
+          "relationship": "parent-group",
+          "note": "主資料はAPHD公式が扱うブランドの店舗変更。既存3175のグループブランドとして対応し、記事に明記のない個別運営法人を推定しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-ap-tsukada-plus-rice-producer-event-plan-20260311",
+      "eventKey": "ap-tsukada-plus-rice-producer-event-plan-20260311",
+      "category": "food",
+      "realEntities": [
+        "株式会社塚田農場プラス",
+        "エキュート上野",
+        "グランスタ東京"
+      ],
+      "eventDate": "2026-03-11",
+      "eventDateNote": "記事の見出しにある都内4店舗の販売イベント開催予定日。実施報告ではない。",
+      "sourceURL": "https://ap-holdings.jp/news-and-action/%E3%80%90%E5%A1%9A%E7%94%B0%E8%BE%B2%E5%A0%B4%E3%83%97%E3%83%A9%E3%82%B9%E3%80%91%E3%80%8C%E5%A1%9A%E7%94%B0%E8%BE%B2%E5%A0%B4%E3%80%8D%E3%81%AE%E3%81%8A%E5%BC%81%E5%BD%93%E3%82%92%E6%94%AF%E3%81%88/",
+      "publisher": "株式会社エー・ピーホールディングス（グループ企業の発表掲載）",
+      "publishedDate": "2026-03-06",
+      "publishedDateNote": "記事の投稿日2026.03.06。最終更新日2026.03.09と区別。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "記事の日付、開催予定と生産者交流、購入特典の説明。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事を開き、主体が塚田農場プラスであること、米の生産者を招く4店舗のイベント予定、税込2,000円以上の購入特典と数量終了条件を確認した。"
+      },
+      "facts": [
+        "塚田農場プラスは2026年3月11日に都内4店舗で、弁当用の米を育てる秋田県大潟村の生産者との交流販売イベントを開催すると案内した。",
+        "弁当・惣菜を税込2,000円以上購入した人に約2合の米を贈り、予定数量で終了する計画を示した。"
+      ],
+      "managementChoice": "原料の生産者と消費者を店頭でつなぎ、条件付き購入特典を併用する。",
+      "authorWrittenBrief": "塚田農場プラスは2026年春、弁当の米を育てる生産者を招く販売イベントを都内4店舗で計画した。購入額に応じた数量限定の米の特典も用意し、商品の背景を店頭で伝える方式を選んだ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3175",
+          "gameName": "虹橋グループ75",
+          "realName": "エー・ピーホールディングス",
+          "relationship": "parent-group",
+          "note": "補助のAPHD公式会社概要は塚田農場プラスをグループ企業と掲載。既存3175のグループ対応であり、発表主体を持株会社へ置換しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://ap-holdings.jp/about/company/",
+          "publisher": "株式会社エー・ピーホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "会社概要に情報の基準日2025年3月31日はあるが、公開日は明記されていない。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "証券コード・社名、グループ企業欄。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "会社概要本文を開き、証券コード3175と塚田農場プラスがグループ企業であることを確認した。イベントの実施日はこの補助資料から判断しない。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-retail-property-copa-suguderu-store-portal-announcement-20230213",
+      "eventKey": "copa-suguderu-store-portal-announcement-20230213",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社コパ・コーポレーション",
+        "スグデル"
+      ],
+      "eventDate": "2023-02-13",
+      "eventDateNote": "本文がサービス開始日として記す日付。掲載日は後日の2月17日だが本文は開始しますの表現で、稼働完了を独自に確認したものではない。",
+      "sourceURL": "https://www.copa.co.jp/news/news308/",
+      "publisher": "株式会社コパ・コーポレーション",
+      "publishedDate": "2023-02-17",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文のサービス開始日と販売店向け情報内容。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "企業公式のプレスリリース本文を開き、開始日の表現、在庫・出荷・納品予定・使用方法動画を販売店向けにまとめる内容を読んだ。"
+      },
+      "facts": [
+        "コパは販売店舗向け支援サイトのスグデルを案内し、2023年2月13日をサービス開始日として記した。",
+        "在庫状況、出荷日、納品までの予定日数、商品の使用方法動画を店側が確認できる仕組みと説明した。"
+      ],
+      "managementChoice": "販売店からの電話照会に依存する情報提供を、店舗向けポータルへまとめる。",
+      "authorWrittenBrief": "コパ・コーポレーションは2023年、販売店が在庫や出荷予定を確認できる支援サイトを案内した。使い方の動画もまとめ、遠方の店が商品情報を得やすくする仕組みを用意する内容だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-7689",
+          "gameName": "星風技研89",
+          "realName": "コパ・コーポレーション",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード7689の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-copa-rose-bath-product-launch-20231109",
+      "eventKey": "copa-rose-bath-product-launch-20231109",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社コパ・コーポレーション",
+        "ちょっとバラ摘んでくるわ 秘密のバラ風呂"
+      ],
+      "eventDate": "2023-11-09",
+      "eventDateNote": "本文で2023年11月9日から発売したと報告している実施日。後日の掲載。",
+      "sourceURL": "https://www.copa.co.jp/news/news338/",
+      "publisher": "株式会社コパ・コーポレーション",
+      "publishedDate": "2023-11-27",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "掲載日、発売報告、ノズル構造と小型缶の説明。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "企業公式本文を開き、発売済み報告の日付、花の形の泡を作るノズル設計、税込価格1,089円を確認した。"
+      },
+      "facts": [
+        "コパは2023年11月27日の記事で、バラ型の泡を作る入浴用商品を11月9日から発売したと報告した。",
+        "花の形を作るノズル構造と、小型缶で贈り物にも適する商品設計を説明した。",
+        "発表時の税込価格は1本1,089円だった。"
+      ],
+      "managementChoice": "機能だけでなく使用時の体験と贈答用途を商品設計に取り込む。",
+      "authorWrittenBrief": "コパ・コーポレーションは2023年11月、花の形の泡を作る入浴用商品の発売を報告した。小さな缶と専用ノズルを組み合わせ、家庭での体験や贈り物の用途を提示した事例である。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-7689",
+          "gameName": "星風技研89",
+          "realName": "コパ・コーポレーション",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード7689の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-copa-tiktok-shop-channel-announcement-20260417",
+      "eventKey": "copa-tiktok-shop-channel-announcement-20260417",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社コパ・コーポレーション",
+        "株式会社ライブコマース"
+      ],
+      "eventDate": "2026-04-17",
+      "eventDateNote": "提携による販売チャネル展開を公表した日。契約締結の正確な日付や初回配信・売上発生日は本文にない。",
+      "sourceURL": "https://www.copa.co.jp/news/370/",
+      "publisher": "株式会社コパ・コーポレーション",
+      "publishedDate": "2026-04-17",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "記事日付、共同事業の発表、提携内容の節。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "企業公式の原稿を開き、TikTok Shopで生活雑貨のライブ販売を共同で開始する方針と役割分担を読んだ。業務提携の発表として採録し、資本取得・売上達成は主張しない。"
+      },
+      "facts": [
+        "コパは2026年4月17日、ライブコマース社との提携でTikTok Shopの共同事業を始める方針を発表した。",
+        "生活雑貨に対象を絞り、コパ所属の実演販売士が配信を担当すると説明した。",
+        "相手企業はショップ開設、動画制作、配信、販売管理などを支援すると説明した。"
+      ],
+      "managementChoice": "店頭で蓄積した実演販売をオンラインのライブ販売経路へ広げ、運用は専門企業と分担する。",
+      "authorWrittenBrief": "コパ・コーポレーションは2026年、生活雑貨を対象に実演販売士がライブ配信する販売経路を広げる方針を発表した。ショップ運用を専門企業と分担し、商品の使い方を伝える強みを別の売り場へ展開する計画だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-7689",
+          "gameName": "星風技研89",
+          "realName": "コパ・コーポレーション",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード7689の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-ap-tsukada-nagoya-miso-menu-plan-20260311",
+      "eventKey": "ap-tsukada-nagoya-miso-menu-plan-20260311",
+      "category": "food",
+      "realEntities": [
+        "株式会社エー・ピーホールディングス",
+        "盛田株式会社",
+        "塚田農場"
+      ],
+      "eventDate": "2026-03-11",
+      "eventDateNote": "本文見出しの提供開始予定日。対象を名古屋3店舗に限定した発表で、実施後の販売を確認した資料ではない。",
+      "sourceURL": "https://ap-holdings.jp/news-and-action/%E3%80%90%E5%A1%9A%E7%94%B0%E8%BE%B2%E5%A0%B4%E3%80%91%E5%90%8D%E5%8F%A4%E5%B1%8B3%E5%BA%97%E8%88%97%E9%99%90%E5%AE%9A%EF%BC%81%E5%89%B5%E6%A5%AD360%E5%B9%B4%E3%81%AE%E8%80%81%E8%88%97%E3%80%8C/",
+      "publisher": "株式会社エー・ピーホールディングス",
+      "publishedDate": "2026-03-10",
+      "publishedDateNote": "記事の投稿日2026.03.10。最終更新日2026.04.20とは区別。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "投稿日、開始予定日見出し、名古屋3店と味噌商品の説明。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事を開き、3店舗の対象、盛田の味噌を使う料理、店舗・期間限定の提供計画を読んだ。"
+      },
+      "facts": [
+        "APHD公式は2026年3月10日、名古屋市内の塚田農場3店で盛田の味噌を使う料理を3月11日から提供する予定を案内した。",
+        "どて煮や味噌煮込み風の炊き餃子などを店舗・期間限定とする説明だった。"
+      ],
+      "managementChoice": "全国共通商品とは別に、地域の醸造メーカーと限られた店舗向けの商品を組む。",
+      "authorWrittenBrief": "APHDは2026年春、名古屋の塚田農場3店で地元メーカーの味噌を使う限定料理を提供する計画を示した。地域の食材を既存メニューに組み合わせ、販売店舗を絞る方法を選んだ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3175",
+          "gameName": "虹橋グループ75",
+          "realName": "エー・ピーホールディングス",
+          "relationship": "parent-group",
+          "note": "APHD公式のグループブランド展開として既存3175へ対応する。発表にない各店運営法人や盛田の資本関係を推定しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-yukiguni-kinoko-meat-product-plan-20250218",
+      "eventKey": "yukiguni-kinoko-meat-product-plan-20250218",
+      "category": "food",
+      "realEntities": [
+        "株式会社雪国まいたけ",
+        "ユキグニファクトリー株式会社"
+      ],
+      "eventDate": "2025-02-18",
+      "eventDateNote": "本文が発売予定日を2025年2月18日と示す。主資料は2月5日の事前発表で販売実施の報告ではない。",
+      "sourceURL": "https://prtimes.jp/main/html/rd/p/000000045.000078522.html",
+      "publisher": "株式会社雪国まいたけ（現ユキグニファクトリー株式会社、PR TIMES配信）",
+      "publishedDate": "2025-02-05",
+      "publishedDateNote": "PR TIMES本文冒頭の2025年2月5日15時30分。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "本文冒頭・商品ラインナップ",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "企業配信本文で発売予定日、主原料、5品種を実読。現社名との対応は補助公式資料で確認し、会社の健康訴求は独立した効果の事実にしない。"
+      },
+      "facts": [
+        "株式会社雪国まいたけは2025年2月18日からキノコのお肉シリーズを発売すると発表した。",
+        "雪国まいたけ極を主原料とし、素材単品、食べるソース3種、炊き込みごはんの素の計5種類を用意した。"
+      ],
+      "managementChoice": "生鮮きのこに加えて調理素材・ソースの加工食品を商品系列にする。",
+      "authorWrittenBrief": "雪国まいたけは2025年2月、まいたけを使った調理素材とソースなど5商品を同月18日に発売する計画を発表した。生鮮素材に加え、日々の料理に使える加工食品を展開する選択だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-1375",
+          "gameName": "銀河企画75",
+          "realName": "ユキグニファクトリー",
+          "relationship": "direct",
+          "note": "主発表時の旧社名は株式会社雪国まいたけ。補助公式記事が2025年4月1日のユキグニファクトリーへの商号変更を確認するため、既存1375へdirect対応する。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.yukiguni-factory.co.jp/2025/04/%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%AA%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%A2%E3%83%AB%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/",
+          "publisher": "ユキグニファクトリー株式会社",
+          "publishedDate": "2025-04-01",
+          "publishedDateNote": "記事冒頭の掲載日。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "本文の商号変更・ホームページ刷新の説明",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "2025年4月1日への商号変更とサイト更新の本文を実読。旧社名の主発表と既存1375の対応関係に用いる。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-food-yukiguni-mushroom-package-renewal-plan-20260630",
+      "eventKey": "yukiguni-mushroom-package-renewal-plan-20260630",
+      "category": "food",
+      "realEntities": [
+        "ユキグニファクトリー株式会社"
+      ],
+      "eventDate": null,
+      "eventDateNote": "発売は2026年7月上旬予定。本文に日単位の発売日はなく、月初を便宜的に日付へ変換しない。",
+      "sourceURL": "https://www.yukiguni-factory.co.jp/2026/06/%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%92%E5%88%B7%E6%96%B0%EF%BC%81%E3%83%9E%E3%83%83%E3%82%B7%E3%83%A5%E3%83%AB%E3%83%BC%E3%83%A0%E5%95%86%E5%93%81/",
+      "publisher": "ユキグニファクトリー株式会社",
+      "publishedDate": "2026-06-30",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "商品リニューアルの本文とブラウン・ホワイト各70gの商品仕様",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文の7月上旬発売予定、トレーとラベル変更、産地の意匠を実読。具体的な発売日や発売後の売上は記載なし。"
+      },
+      "facts": [
+        "ブラウンとホワイトの70gマッシュルームについて7月上旬から包装を変更した商品を発売すると発表した。",
+        "トレーサイズとラベルを変更し、岡山県牛窓の風景をラベルに取り入れた。"
+      ],
+      "managementChoice": "主力商品の量を明示しつつ包装と産地の見せ方を更新する。",
+      "authorWrittenBrief": "ユキグニファクトリーは2026年6月、70gのマッシュルーム2種類の包装を7月上旬に更新する計画を示した。トレーとラベルを変え、産地の風景で商品の印象を伝える方針だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-1375",
+          "gameName": "銀河企画75",
+          "realName": "ユキグニファクトリー",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード1375の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-yukiguni-hakkaisan-cafeteria-event-result-20260705",
+      "eventKey": "yukiguni-hakkaisan-cafeteria-event-result-20260705",
+      "category": "food",
+      "realEntities": [
+        "ユキグニファクトリー株式会社",
+        "八海醸造株式会社",
+        "八海山みんなの社員食堂"
+      ],
+      "eventDate": "2026-07-05",
+      "eventDateNote": "7月17日公開の本文が7月5日に開催した第2弾と実施を報告する。",
+      "sourceURL": "https://www.yukiguni-factory.co.jp/2026/07/%E5%85%AB%E6%B5%B7%E5%B1%B1%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E7%A4%BE%E5%93%A1%E9%A3%9F%E5%A0%82%E3%82%B3%E3%83%A9%E3%83%9C%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E7%AC%AC2%E5%BC%BE%E3%80%80%E5%AE%8C/",
+      "publisher": "ユキグニファクトリー株式会社",
+      "publishedDate": "2026-07-17",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "第2弾の開催日と食数完売を報告する本文",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式の開催後報告を実読。開催7月5日と全食数完売は会社報告として確認したが、客数・食数・売上金額は記載なし。"
+      },
+      "facts": [
+        "八海醸造の八海山みんなの社員食堂と第2弾のコラボイベントを2026年7月5日に開催したと報告した。",
+        "同社は提供した全食数を完売したと報告した。数量や売上額は掲載していない。"
+      ],
+      "managementChoice": "食堂との共同イベントで食を体験する販売機会を作り、実施結果を公開する。",
+      "authorWrittenBrief": "ユキグニファクトリーは2026年7月、八海山みんなの社員食堂との共同イベントの第2弾を実施したと報告した。全食数の完売を公表したが、数量や売上額は示していない。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-1375",
+          "gameName": "銀河企画75",
+          "realName": "ユキグニファクトリー",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード1375の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-yukiguni-corporate-brand-site-renewal-20250401",
+      "eventKey": "yukiguni-corporate-brand-site-renewal-20250401",
+      "category": "food",
+      "realEntities": [
+        "株式会社雪国まいたけ",
+        "ユキグニファクトリー株式会社"
+      ],
+      "eventDate": "2025-04-01",
+      "eventDateNote": "本文が4月1日の商号変更と、それに伴いサイトを更新したことを記す。",
+      "sourceURL": "https://www.yukiguni-factory.co.jp/2025/04/%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%AA%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%A2%E3%83%AB%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/",
+      "publisher": "ユキグニファクトリー株式会社",
+      "publishedDate": "2025-04-01",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "商号変更・コーポレートアイデンティティ・サイト更新の本文",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文のホームページ更新済み記述、日本語と英語の情報拡充を実読。買収や商品発売は背景記述にとどめ、この候補の主出来事へ混在させない。"
+      },
+      "facts": [
+        "2025年4月1日のユキグニファクトリーへの商号変更に伴いホームページを更新したと発表した。",
+        "ロゴや色など企業の意匠を反映し、サステナビリティ情報と英語サイトの情報を拡充した。"
+      ],
+      "managementChoice": "企業名と発信媒体を更新し、食品メーカーとしての幅広い事業を伝える。",
+      "authorWrittenBrief": "雪国まいたけは2025年4月にユキグニファクトリーへ商号を変え、公式サイトも更新したと発表した。商品紹介に加え、企業活動や英語での情報発信を充実させる選択だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-1375",
+          "gameName": "銀河企画75",
+          "realName": "ユキグニファクトリー",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード1375の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-basefood-office-sampling-service-plan-20250716",
+      "eventKey": "basefood-office-sampling-service-plan-20250716",
+      "category": "food",
+      "realEntities": [
+        "ベースフード株式会社"
+      ],
+      "eventDate": "2025-07-16",
+      "eventDateNote": "7月16日からの提供と表題にあるが、脚注は9月末本サービス開始予定とし、先行無料サンプリングを区別する。ここでは7月16日の先行提供発表を扱う。",
+      "sourceURL": "https://basefood.co.jp/news/2324",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2025-07-16",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭と開始日脚注・サービス特徴",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "本文と脚注を実読。タイトルの提供開始だけで本サービスが開始したと解釈せず、会員限定サンプリングと本開始予定を分けた。"
+      },
+      "facts": [
+        "BASE FOOD for Officeの提供発表では本サービスを2025年9月末開始予定とし、それに先立つ継続コース会員限定の無料サンプリングを案内した。",
+        "商品代金以外の固定費不要、15%割引、1注文1万円以上で送料負担、管理画面で商品の数量や配送日時を変更できる条件を示した。"
+      ],
+      "managementChoice": "職場向けまとめ買いの販売経路を先行試用から導入する。",
+      "authorWrittenBrief": "ベースフードは2025年7月、職場向けサービスに先立つ会員限定の無料サンプリングを案内した。本サービスは9月末開始予定とし、まとめ買いと管理画面での在庫調整を組み合わせる計画だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード2936の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-basefood-ramen-two-flavours-plan-20251022",
+      "eventKey": "basefood-ramen-two-flavours-plan-20251022",
+      "category": "food",
+      "realEntities": [
+        "ベースフード株式会社"
+      ],
+      "eventDate": "2025-10-22",
+      "eventDateNote": "10月14日の本文が10月22日から順次販売すると予告する。実施済み報告ではない。",
+      "sourceURL": "https://basefood.co.jp/news/2397",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2025-10-14",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭の発売予告・汁あり型の説明・専用麺の開発説明",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "本文で2種類、販売予定日と経路、汁あり用専用麺の設計を実読。初回YAKISOBA発売とは別の商品系列。会社の栄養・健康訴求を健康効果の実証として採用しない。"
+      },
+      "facts": [
+        "BASE RAMENの鶏ガラ醤油と味噌を2025年10月22日から公式オンラインショップ、他EC、取扱店で順次販売すると発表した。",
+        "従来の汁なしBASE YAKISOBAと異なる汁ありカップ麺として展開し、ラーメン用に専用のノンフライ麺を開発したと説明した。"
+      ],
+      "managementChoice": "既存カップ麺に汁あり型を加え、専用麺を設計する。",
+      "authorWrittenBrief": "ベースフードは2025年10月、汁ありカップ麺2種類を同月22日から順次販売する計画を発表した。既存の焼きそばに続く商品系列として、ラーメン専用の麺を用意した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード2936の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-basefood-pound-cake-earlgrey-plan-20251112",
+      "eventKey": "basefood-pound-cake-earlgrey-plan-20251112",
+      "category": "food",
+      "realEntities": [
+        "ベースフード株式会社"
+      ],
+      "eventDate": "2025-11-12",
+      "eventDateNote": "11月5日の本文が11月12日からの順次販売を予告する。",
+      "sourceURL": "https://basefood.co.jp/news/2340",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2025-11-05",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭の新シリーズ発売予告・完全栄養食の区別",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "発売予定、EC経路、栄養基準とカロリーによる同社の完全栄養食の区別を実読。会社の表現を医学的効果として扱わない。"
+      },
+      "facts": [
+        "BASE Pound Cakeの新シリーズ第1弾アールグレイを2025年11月12日から公式オンラインショップと他ECで順次販売すると発表した。",
+        "同社はこのデザートを完全栄養食とは区別し、栄養バランスのよい食品として位置付けた。"
+      ],
+      "managementChoice": "主食シリーズの栄養基準と区別しながらスイーツを追加する。",
+      "authorWrittenBrief": "ベースフードは2025年11月、アールグレイ味のパウンドケーキを同月12日から販売する計画を発表した。同社はデザートの新シリーズを、従来の完全栄養食とは区別して位置付けた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード2936の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-basefood-posa-card-channel-plan-20250721",
+      "eventKey": "basefood-posa-card-channel-plan-20250721",
+      "category": "retail-property",
+      "realEntities": [
+        "ベースフード株式会社",
+        "インコム・ジャパン株式会社",
+        "ミニストップ",
+        "ファミリーマート"
+      ],
+      "eventDate": "2025-07-21",
+      "eventDateNote": "事前発表の商品概要はミニストップ7月21日、ファミリーマート7月22日から順次発売予定と分けて示す。先の開始予定日を主日付に採る。",
+      "sourceURL": "https://basefood.co.jp/news/2322",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2025-07-14",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭と商品概要①②の発売日・内容・販売店注記",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "本文と商品表を実読。2チェーンの開始予定日は同日ではなく、取扱のない店舗もある。食品そのものの店頭配荷数と混同しない。"
+      },
+      "facts": [
+        "インコム・ジャパンと連携して、継続コース初回用カードと2回目以降の決済などに使えるチャージカードを展開すると発表した。",
+        "商品概要ではミニストップ7月21日、ファミリーマート7月22日から順次発売予定とし、店舗により取扱のない場合があると注記した。"
+      ],
+      "managementChoice": "店頭でのカード販売から自社ECでの食品購入へつなぐ経路を増やす。",
+      "authorWrittenBrief": "ベースフードは2025年7月、継続購入用のカードをコンビニ2社で順次販売する計画を発表した。ミニストップは21日、ファミリーマートは22日を開始予定とし、店頭から自社ECへつなぐ販売経路を加えた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード2936の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-basefood-china-local-product-channel-announcement-20260910",
+      "eventKey": "basefood-china-local-product-channel-announcement-20260910",
+      "category": "food",
+      "realEntities": [
+        "ベースフード株式会社",
+        "盼盼食品グループ",
+        "盒馬鮮生"
+      ],
+      "eventDate": "2026-09-10",
+      "eventDateNote": "同日付発表の本文が9月10日より販売開始すると示す。現地製造・販売の開始案内であり販売実績数量の報告ではない。",
+      "sourceURL": "https://basefood.co.jp/news/4310",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2026-09-10",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭の業務提携・現地製造説明と商品概要",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文で中国向け仕様、現地製造、3味、配荷網約600店計画を実読。国内の完全栄養パンと異なる仕様と明記され、600店配荷済みと解釈しない。"
+      },
+      "facts": [
+        "盼盼食品グループとの業務提携を通じ、中国向け多栄養面包シリーズを現地製造し9月10日から盒馬鮮生で販売開始すると発表した。",
+        "3種類の味を用意し、日本国内のBASE BREADとは仕様が異なると説明した。配荷店舗網約600店は計画と記載した。"
+      ],
+      "managementChoice": "海外の製造先・小売先と組み、現地仕様の商品を展開する。",
+      "authorWrittenBrief": "ベースフードは2026年9月、中国の提携先による現地製造とスーパーでの販売開始を案内した。国内品とは異なる仕様のパン3種類を展開し、配荷網は約600店を計画した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード2936の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-basefood-selection-lineup-closure-plan-20260914",
+      "eventKey": "basefood-selection-lineup-closure-plan-20260914",
+      "category": "food",
+      "realEntities": [
+        "ベースフード株式会社"
+      ],
+      "eventDate": null,
+      "eventDateNote": "9月14日発表は10月下旬の販売終了予定を示すが日付はない。在庫終了時には前倒しの可能性もあり、アクセス日現在の実施済み終了を示さない。",
+      "sourceURL": "https://basefood.co.jp/news/4318",
+      "publisher": "ベースフード株式会社",
+      "publishedDate": "2026-09-14",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "1.対象商品と予定時期・2.セット割引と継続コース自動移行",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文の対象他社商品、10月下旬予定と在庫条件、セット解消・割引終了・継続注文変更を実読。予定を完了とせず、商品の製造元自身による終売とは区別する。"
+      },
+      "facts": [
+        "商品構成の見直しに伴いBASE FOOD Selectionのジャム、飲料など一部商品について10月下旬を目安に同社での販売終了を予定すると案内した。",
+        "対象セットの追加5%割引を終了し、継続コースの対象セットをBASE BREADミニ食パン・プレーン単体2袋へ自動的に切り替える予定を示した。"
+      ],
+      "managementChoice": "取扱商品を絞り、継続注文とセット割引も変更する。",
+      "authorWrittenBrief": "ベースフードは2026年9月、取扱商品の一部を10月下旬に販売終了する予定を案内した。対象セットの追加割引も終え、継続注文をパン単体へ切り替える計画だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-2936",
+          "gameName": "虹橋企画36",
+          "realName": "ベースフード",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード2936の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-axes-fy2025-consolidated-results-20250808",
+      "eventKey": "axes-fy2025-consolidated-results-20250808",
+      "category": "food",
+      "realEntities": [
+        "株式会社アクシーズ"
+      ],
+      "eventDate": "2025-08-08",
+      "eventDateNote": "決算短信の開示日。対象期は2024年7月1日から2025年6月30日であり発表日と期末を区別する。",
+      "sourceURL": "https://www2.jpx.co.jp/disc/13810/140120250807535495.pdf",
+      "publisher": "株式会社アクシーズ（JPX適時開示配信）",
+      "publishedDate": "2025-08-08",
+      "publishedDateNote": "PDF表紙の2025年8月8日。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1頁連結経営成績・4頁当期の概況とセグメント業績",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "会社作成PDFの表紙連結数値と概況をweb-openで実読。公式サイトPDF取得はtimeoutのためJPX配信原本を採用。個別業績、翌期予想、連結実績を区別した。"
+      },
+      "facts": [
+        "2025年6月期連結売上高は264億26百万円、営業利益21億21百万円、親会社株主に帰属する当期純利益17億20百万円と開示した。",
+        "食品セグメント利益は前期比62.3%増、外食セグメント利益は16.5%減と開示した。外食は新店出店で増収、人件費などの増加で減益と説明した。"
+      ],
+      "managementChoice": "食品製造と外食を営む企業の売上・利益と事業別の収支を分けて読む。",
+      "authorWrittenBrief": "アクシーズの2025年6月期は連結で増収増益だったが、食品と外食の利益の動きは異なった。食品のセグメント利益が伸びる一方、外食は増収でも人件費などにより減益と説明した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-1381",
+          "gameName": "陽光グループ81",
+          "realName": "アクシーズ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード1381の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "settled-results-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "WeeklyReport.week; WeeklyReport.revenue; WeeklyReport.operatingProfit; WeeklyReport.netProfit",
+          "rationale": "売上・営業利益・純利益の違いを自社の確定決算で読む際の参考。",
+          "limitation": "ゲームの週次自社決算と現実の年度・四半期連結決算は期間・範囲が異なる。過去の数値をゲーム決算や株価に移さず、現実企業の収益を自社グループへ二重計上しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-create-restaurants-fy2026-consolidated-results-20260414",
+      "eventKey": "create-restaurants-fy2026-consolidated-results-20260414",
+      "category": "food",
+      "realEntities": [
+        "株式会社クリエイト・レストランツ・ホールディングス"
+      ],
+      "eventDate": "2026-04-14",
+      "eventDateNote": "決算短信の開示日。対象期2025年3月1日から2026年2月28日で期末とは区別する。",
+      "sourceURL": "https://ssl4.eir-parts.net/doc/3387/tdnet/2790795/00.pdf",
+      "publisher": "株式会社クリエイト・レストランツ・ホールディングス（公式IR配信PDF）",
+      "publishedDate": "2026-04-14",
+      "publishedDateNote": "PDF表紙の2026年4月14日。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1頁連結経営成績・4頁当連結会計年度の経営成績",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式IRリンクから会社作成PDFの連結実績と説明を実読。営業利益、当期利益、親会社所有者帰属利益、翌期予想を区別。"
+      },
+      "facts": [
+        "2026年2月期連結売上収益は1654億49百万円で前年比5.8%増、営業利益79億44百万円で6.6%減、親会社所有者に帰属する当期利益46億77百万円で16.3%減と開示した。",
+        "同社は既存店売上や新業態などの寄与による増収と、SFPカテゴリーの客数減少や原価率上昇による減益を説明した。"
+      ],
+      "managementChoice": "複数ブランドの成績を売上増と利益減の両面から読む。",
+      "authorWrittenBrief": "クリエイト・レストランツ・ホールディングスの2026年2月期は売上収益が伸び、営業利益は減った。ブランド群で成績が異なり、同社はSFPカテゴリーの客数や原価率の悪化を減益要因として説明した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3387",
+          "gameName": "青葉企画87",
+          "realName": "クリエイト・レストランツ・ホールディングス",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード3387の企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "settled-results-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "WeeklyReport.week; WeeklyReport.revenue; WeeklyReport.operatingProfit; WeeklyReport.netProfit",
+          "rationale": "売上・営業利益・純利益の違いを自社の確定決算で読む際の参考。",
+          "limitation": "ゲームの週次自社決算と現実の年度・四半期連結決算は期間・範囲が異なる。過去の数値をゲーム決算や株価に移さず、現実企業の収益を自社グループへ二重計上しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-tential-summer-popup-three-locations-plan-20250611",
+      "eventKey": "tential-summer-popup-three-locations-plan-20250611",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社TENTIAL",
+        "伊勢丹新宿店",
+        "渋谷スクランブルスクエア",
+        "京都髙島屋S.C."
+      ],
+      "eventDate": "2025-06-11",
+      "eventDateNote": "6月10日の事前発表の3店のうち最初の予定開始日。渋谷6月28日、京都7月2日と別日を保持する。",
+      "sourceURL": "https://corp.tential.jp/wp-content/uploads/2025/06/20250610_release.pdf",
+      "publisher": "株式会社TENTIAL",
+      "publishedDate": "2025-06-10",
+      "publishedDateNote": "PDF1頁のRelease 2025.06.10。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1頁出店発表・2頁POPUP STORE概要",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "PDF本文で期間限定3店舗、店別予定期間、商品例を実読。店舗を3別ニュースへ水増しせず、ひとつの出店施策としてまとめる。"
+      },
+      "facts": [
+        "伊勢丹新宿、渋谷スクランブルスクエア、京都髙島屋S.C.へ期間限定POPUPを出すと発表した。",
+        "予定開始日は順に2025年6月11日、6月28日、7月2日。BAKUNEやMIGARU、サンダルなどを展示販売する計画を示した。"
+      ],
+      "managementChoice": "常設店に加えて期間限定店で製品に触れる販売接点を作る。",
+      "authorWrittenBrief": "TENTIALは2025年6月、東京2か所と京都に期間限定店を順次開く計画を発表した。既存店に加え、ウェアやサンダルに触れて選べる機会を増やす施策だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-325A",
+          "gameName": "若葉技研5A",
+          "realName": "ＴＥＮＴＩＡＬ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード325Aの企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-tential-corporate-dorm-product-supply-plan-20250724",
+      "eventKey": "tential-corporate-dorm-product-supply-plan-20250724",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社TENTIAL",
+        "TRIAL HOUSE TAMESU",
+        "豊洲セイルパーク"
+      ],
+      "eventDate": "2025-07-24",
+      "eventDateNote": "7月22日発表は7月24日開業予定の寮への導入予定を記す。主資料だけで開業や納入の完了を立証しない。",
+      "sourceURL": "https://tential.jp/news/b20250722001",
+      "publisher": "株式会社TENTIAL",
+      "publishedDate": "2025-07-22",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "日付と本文冒頭の企業寮39室への製品導入",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式オンラインストアニュースの本文を実読。寮の運営企業を推定せず、全39室・4種製品の導入計画だけを扱う。"
+      },
+      "facts": [
+        "豊洲セイルパーク内で7月24日開業予定のシェア型企業寮TRIAL HOUSE TAMESU全39室へ製品を導入すると発表した。",
+        "BAKUNEを含む4種類のTENTIAL製品を導入するとした。"
+      ],
+      "managementChoice": "店頭販売に加え、法人施設へ商品を供給する。",
+      "authorWrittenBrief": "TENTIALは2025年7月、開業予定の企業寮39室へウェアなど4種類の製品を導入する計画を発表した。法人施設で商品を使う機会を設ける選択だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-325A",
+          "gameName": "若葉技研5A",
+          "realName": "ＴＥＮＴＩＡＬ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード325Aの企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-tential-baby-line-gift-service-announcement-20240123",
+      "eventKey": "tential-baby-line-gift-service-announcement-20240123",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社TENTIAL"
+      ],
+      "eventDate": "2024-01-23",
+      "eventDateNote": "当日付公式記事が1月23日より発売開始と案内する。完了後の販売実績ではない。",
+      "sourceURL": "https://corp.tential.jp/news/24012301/",
+      "publisher": "株式会社TENTIAL",
+      "publishedDate": "2024-01-23",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "日付とベビーライン2商品・名入れの本文",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式記事本文の新ベビーライン、スリーパーとブランケット、名入れオプションを実読。睡眠や負担軽減の効果は会社の訴求であり事実候補に入れない。"
+      },
+      "facts": [
+        "BAKUNEシリーズ初のベビーラインとしてスリーパーとブランケットの2種を1月23日より販売開始と案内した。",
+        "追加オプションの名入れ刺繍に対応し、出産祝いの贈り物にも使えると説明した。"
+      ],
+      "managementChoice": "子ども向け商品系列と個別名入れの贈答サービスを加える。",
+      "authorWrittenBrief": "TENTIALは2024年1月、ベビー向けのスリーパーとブランケットの販売開始を案内した。名入れ刺繍も追加できるようにし、贈り物として選ぶ用途を設けた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-325A",
+          "gameName": "若葉技研5A",
+          "realName": "ＴＥＮＴＩＡＬ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード325Aの企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-tential-summer-bedding-two-products-announcement-20260401",
+      "eventKey": "tential-summer-bedding-two-products-announcement-20260401",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社TENTIAL"
+      ],
+      "eventDate": "2026-04-01",
+      "eventDateNote": "同日付本文が4月1日より発売開始と案内する。売上や納入の実績は示していない。",
+      "sourceURL": "https://corp.tential.jp/news/20260401001/",
+      "publisher": "株式会社TENTIAL",
+      "publishedDate": "2026-04-01",
+      "publishedDateNote": "記事冒頭の掲載日表示。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "掲載日と掛け布団2種類の販売開始本文",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式ニュース本文で掛け布団クール/オーガニックコットン2種とオンライン・実店舗経路を実読。リンク先未読の仕様や健康効果を補っていない。"
+      },
+      "facts": [
+        "BAKUNE掛け布団クールとBAKUNE掛け布団オーガニックコットンを2026年4月1日より発売開始と案内した。",
+        "販売先はTENTIAL公式オンラインストアとオフィシャルストアとした。"
+      ],
+      "managementChoice": "季節に合わせた寝具をオンラインと実店舗で展開する。",
+      "authorWrittenBrief": "TENTIALは2026年4月、春夏向けの掛け布団2種類の販売開始を案内した。公式オンラインストアと実店舗で扱う商品を季節に合わせて加えた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-325A",
+          "gameName": "若葉技研5A",
+          "realName": "ＴＥＮＴＩＡＬ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード325Aの企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "商品価値と販売形態を選び、その後の自社店舗の確定決算を読むための参考事例。",
+          "limitation": "保存値は自社の店舗設定と確定営業結果だけを立証する。商品SKU、発売日、販売地域、独立他社の開発・発売活動のログはなく、株価から商品発売や将来利益を推測しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-create-restaurants-kr-nagano-food-partnership-20251016",
+      "eventKey": "create-restaurants-kr-nagano-food-partnership-20251016",
+      "category": "food",
+      "realEntities": [
+        "株式会社クリエイト・レストランツ・ホールディングス",
+        "株式会社ＫＲフードサービス",
+        "長野県",
+        "上高地 あずさ珈琲"
+      ],
+      "eventDate": "2025-10-16",
+      "eventDateNote": "会社作成PDFが本日締結したと完了形で示す。",
+      "sourceURL": "https://www.daiwair.co.jp/td_download.cgi?c=3387&i=3084861",
+      "publisher": "株式会社クリエイト・レストランツ・ホールディングス（大和IR適時開示配信ミラー）",
+      "publishedDate": "2025-10-16",
+      "publishedDateNote": "会社作成PDF1頁冒頭の2025年10月16日。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1頁の締結報告・連携目的・協定の骨子",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "会社作成の適時開示PDFを配信ミラーから実読。同日締結、連結子会社関係、県産食材・地域ブランドの発信方針を確認した。経済効果や新店の開業を推測しない。"
+      },
+      "facts": [
+        "連結子会社ＫＲフードサービスが長野県と食を通じた地域活性化の連携協定を2025年10月16日に締結したと報告した。",
+        "上高地あずさ珈琲の従来の県産食材メニューやPRイベントの関係を踏まえ、県産農畜産物と地域ブランドの認知向上などを骨子にした。"
+      ],
+      "managementChoice": "産地の自治体と正式な協定を結び、料理と地域の発信を進める。",
+      "authorWrittenBrief": "クリエイト・レストランツ傘下のＫＲフードサービスは2025年10月、長野県との食に関する連携協定を結んだ。県産食材や地域ブランドの発信を、あずさ珈琲の活動と結び付ける選択だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3387",
+          "gameName": "青葉企画87",
+          "realName": "クリエイト・レストランツ・ホールディングス",
+          "relationship": "subsidiary",
+          "note": "主PDFはＫＲフードサービスを3387の連結子会社と明記。協定の当事者は子会社と長野県であり、ゲーム名や親の単独店舗事業へ主体を置き換えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-create-restaurants-zennoh-nine-restaurants-operation-report-20251104",
+      "eventKey": "create-restaurants-zennoh-nine-restaurants-operation-report-20251104",
+      "category": "food",
+      "realEntities": [
+        "株式会社クリエイト・レストランツ・ホールディングス",
+        "ＪＡ全農",
+        "焼肉レストランぴゅあ",
+        "焼肉本舗ぴゅあ",
+        "焼肉・すき焼き純",
+        "新鮮ほるもん弐日市亭"
+      ],
+      "eventDate": "2025-11-04",
+      "eventDateNote": "11月4日は受託開始済みの報告と優待利用拡充の発表日。個々の受託開始日は掲載されず11月4日と断定しない。",
+      "sourceURL": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20251104/20251104585770.pdf",
+      "publisher": "株式会社クリエイト・レストランツ・ホールディングス（Yahoo適時開示配信ミラー）",
+      "publishedDate": "2025-11-04",
+      "publishedDateNote": "会社作成PDF冒頭の2025年11月4日。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1頁冒頭の受託済み報告・対象9店舗・利用上の注意",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "会社作成開示PDF本文を実読。9店舗は新設開業ではなく既存焼肉業態の運営受託。受託実施報告と優待利用可能予定表の留保を分けた。"
+      },
+      "facts": [
+        "ＪＡ全農との既存包括業務提携に基づき9店舗の焼肉業態の運営受託を新たに開始したと報告した。",
+        "同日から対象店舗で株主優待券を利用できるよう拡充すると発表した。表の利用可能予定は状況により変更があると注記した。"
+      ],
+      "managementChoice": "新設出店に加えて既存店を受託運営し、利用制度を合わせる。",
+      "authorWrittenBrief": "クリエイト・レストランツ・ホールディングスは2025年11月、ＪＡ全農との提携に基づく焼肉店9店の運営受託開始を報告した。新店の建設とは異なる形で運営先を増やし、株主優待券の利用対象も広げるとした。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3387",
+          "gameName": "青葉企画87",
+          "realName": "クリエイト・レストランツ・ホールディングス",
+          "relationship": "parent-group",
+          "note": "発表主体3387が当社の運営受託と記すが個店の運営子会社名は主資料にないため、グループの活動としてparent-group対応する。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.staff; Store.manager; Store.marketing; WeeklyReport.storeResults",
+          "rationale": "販売経路、販促、運営体制の選択を考え、自社の確定決算を見る際の参考事例。",
+          "limitation": "現行保存は自社店舗設定と実営業結果で、独立他社の販売経路変更やサービス開始の証拠ではない。現実の運営施策の効果を今週利益や株価へ移せない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-tential-shibuya-parco-direct-store-plan-20221101",
+      "eventKey": "tential-shibuya-parco-direct-store-plan-20221101",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社TENTIAL",
+        "TENTIAL 渋谷パルコ",
+        "渋谷PARCO"
+      ],
+      "eventDate": "2022-11-01",
+      "eventDateNote": "10月27日公表の会社配信資料が11月1日の開店予定を示す。開業後の実施報告ではない。",
+      "sourceURL": "https://prtimes.jp/main/html/rd/p/000000148.000032370.html",
+      "publisher": "株式会社TENTIAL（PR TIMES配信）",
+      "publishedDate": "2022-10-27",
+      "publishedDateNote": "企業配信本文冒頭の2022年10月27日10時00分。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭・店舗概要・開店記念キャンペーン",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "企業配信の本文で直営2号店、PARCO5階、出店理由、割引除外条件を実読。売上約8割オンラインは当時の同社説明であり現時点の比率に転用しない。"
+      },
+      "facts": [
+        "直営2号店TENTIAL渋谷パルコを2022年11月1日から渋谷PARCO5階に開くと発表した。",
+        "当時売上約8割がオンラインである一方、実物を見たい需要に対応して店舗販売を強化すると説明した。",
+        "11月1日から20日の開店記念15%割引は季節製品を除くとした。"
+      ],
+      "managementChoice": "オンライン販売中心の会社が実物確認を担う常設店を増やす。",
+      "authorWrittenBrief": "TENTIALは2022年10月、渋谷PARCOに直営2号店を翌月1日に開く計画を発表した。実物を確認したい需要に応え、期間を限った開店記念の割引も用意する施策だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-325A",
+          "gameName": "若葉技研5A",
+          "realName": "ＴＥＮＴＩＡＬ",
+          "relationship": "direct",
+          "note": "発表主体が既存STOCKS/market-universeの証券コード325Aの企業に対応する。現実の事実主体とゲーム名は別に保つ。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-food-create-restaurants-ikedayama-gotanda-second-store-announcement-20240624",
+      "eventKey": "create-restaurants-ikedayama-gotanda-second-store-announcement-20240624",
+      "category": "food",
+      "realEntities": [
+        "株式会社グルメブランズカンパニー",
+        "Bread&Coffee IKEDAYAMA 五反田駅前店"
+      ],
+      "eventDate": "2024-06-24",
+      "eventDateNote": "店舗記事の開業日は6月24日。本文は同日付でオープンしますと案内し、6月25日の営業時間追記もあるが、事後の開業完了報告とは区別する。",
+      "sourceURL": "https://bc-ikedayama.com/blog/news/684/",
+      "publisher": "Bread&Coffee IKEDAYAMA（株式会社グルメブランズカンパニー）",
+      "publishedDate": "2024-06-24",
+      "publishedDateNote": "店舗記事見出し直下の2024年06月24日。グループ一覧の案内日6月17日とは別。営業時間注記は6月25日追記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "店舗記事の日付・2号店案内・店舗概要・営業時間追記",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "ブランド公式記事本文の五反田駅前2号店、限定パン、自家焙煎コーヒーと営業時間追記を実読。親子対応は公式グループ紹介の会社名・出資比率・ブランド記事リンクを補助実読した。"
+      },
+      "facts": [
+        "Bread&Coffee IKEDAYAMAの2号店を五反田駅前に2024年6月24日オープンと案内した。",
+        "本店のパンに加えて駅前店の限定パンと本店で焙煎したコーヒーを展開すると案内した。営業時間は当面18時までとの6月25日追記がある。"
+      ],
+      "managementChoice": "駅近くに2号店を設け、本店商品と店別商品を組み合わせる。",
+      "authorWrittenBrief": "グルメブランズカンパニーのBread&Coffee IKEDAYAMAは2024年6月、五反田駅前の2号店を案内した。本店のパンと焙煎コーヒーに駅前店限定の商品を組み合わせる出店だった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-3387",
+          "gameName": "青葉企画87",
+          "realName": "クリエイト・レストランツ・ホールディングス",
+          "relationship": "subsidiary",
+          "note": "補助公式グループ紹介にグルメブランズカンパニーの出資比率100%とIKEDAYAMAの2号店への公式リンクがある。既存3387の子会社活動として対応し、親自身の直接運営としない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.lotId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.result",
+          "rationale": "自社の出店先や業態を選び、出店後の初回確定決算を読む際の過去事例。",
+          "limitation": "OpeningRecordは自社の判断と初回決算を記録する。現実企業や独立他社の出店日・運営主体・商品構成を保存するものではなく、現実の開業をゲームの今週実績に置き換えられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.createrestaurants.com/business/group/gourmet_brands_company/",
+          "publisher": "株式会社クリエイト・レストランツ・ホールディングス",
+          "publishedDate": null,
+          "publishedDateNote": "会社紹介ページ自体の公開日・更新日表示がない。列挙されたニュースの日付を会社紹介の掲載日へ流用しない。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "Top Message・最新情報のIKEDAYAMAリンク・会社概要の出資比率",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "会社名、グループ一員との説明、出資比率100%、2024年6月の2号店記事へのリンクを実読。対応関係の補助資料で、主記事の掲載日を上書きしない。"
+          }
+        }
+      ]
+    }
+  ]
+}

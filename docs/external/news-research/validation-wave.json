@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-07T06:35:47.206423+00:00",
+  "deliveryBaseSha": "87915c2f09f1889662825e90965ea9def9f627ca",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/external/news-research/validate-wave.py",
+        "--batch",
+        "docs/external/news-research/edited/batch-02",
+        "--baseline",
+        "docs/external/news-research/pilot.json",
+        "--catalog",
+        "docs/external/news-research/catalog.json"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS: 28 batch/80 cumulative candidates; 100 STOCKS match market-universe; mode=final\nStructural pass does not establish source facts, copyright clearance or semantic uniqueness; see audit.md.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/external/news-research/validate-wave.py",
+        "--batch",
+        "docs/external/news-research/edited/batch-03",
+        "--baseline",
+        "docs/external/news-research/pilot.json",
+        "--catalog",
+        "docs/external/news-research/catalog.json"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS: 28 batch/80 cumulative candidates; 100 STOCKS match market-universe; mode=final\nStructural pass does not establish source facts, copyright clearance or semantic uniqueness; see audit.md.\n",
+      "stderr": ""
+    }
+  ],
+  "hashes": {
+    "docs/external/news-research/catalog.json": "6e2d59235f4ff0570a0b5b7027c18676bb940b2bf8aeb0c6af82e055e101a762",
+    "docs/external/news-research/candidates/company-news-wave1.json": "c246318007f24a8710213198181e844eae20ad2214890f44b4ce5ea77167b3f6",
+    "docs/external/news-research/candidates/property-rail-capital-wave1.json": "da36125648ed955a374d3bca2f6b9499ed388a2b8c8ea16efd5bfd3c3e2b6aaa",
+    "scripts/external/news-research/validate-wave.py": "95d17c743422ea4f839713202bae29ebda93030bddf5352f34348c4b208f494a"
+  },
+  "sourceFactsEvidence": "Per-ID independent reads in initial audit.md and edited/batch-02/03/audit.md; structural checks do not replace those reads.",
+  "selfTestEvidence": "Same validator self-test ran in the standalone batch-02 worktree: 8 adversarial cases rejected; see PR #11.",
+  "runtimeIntegration": false
+}
