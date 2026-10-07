@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "candidateId": "nr-capital-ma-basefood-ipo-20221115",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "ipo",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "applyAction ipo; GameState.listed; GameState.sharesOutstanding; GameState.founderShares; GameState.milestones",
+          "rationale": "自社で上場と新株発行を選び、資金と創業者持分の関係を見る際の過去事例。",
+          "limitation": "ipo操作はlisted・発行株数・現金・IPO達成を更新するが、上場週の専用保存journalはない。listedやIPO達成単独で今週上場したとは言えず、GameActionの型定義も保存イベントではない。"
+        }
+      ],
+      "contextNotes": "食品事業の株式公開という参考。ツクルバIPOとは出来事・事業が異なるが、IPO選択の参考というテーマは共通し、その2件を別の資本手段とは数えない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-tsukuruba-ipo-20190731",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "ipo",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "applyAction ipo; GameState.listed; GameState.sharesOutstanding; GameState.founderShares; GameState.milestones",
+          "rationale": "自社で上場と新株発行を選び、資金と創業者持分の関係を見る際の過去事例。",
+          "limitation": "ipo操作はlisted・発行株数・現金・IPO達成を更新するが、上場週の専用保存journalはない。listedやIPO達成単独で今週上場したとは言えず、GameActionの型定義も保存イベントではない。"
+        },
+        {
+          "tag": "property-business-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.properties; PropertyAsset.lotId; PropertyAsset.purchasePrice; PropertyAsset.weeklyIncome",
+          "rationale": "物件を直接保有する判断と住宅流通サービスの事業を比較する参考。",
+          "limitation": "propertiesは自社が直接保有する区画で、cowcamoの仲介・流通事業や独立他社の取得を記録しない。物件保有状態も取得週を保存せず、上場を物件購入として扱わない。"
+        }
+      ],
+      "contextNotes": "住宅流通会社のIPOは現実の過去事例。GameState.propertiesや株価を独立他社の活動の証拠へ転用しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-basefood-equity-loan-20220223",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "capital-raising",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "applyAction borrow; applyAction issueShares; GameState.loans; GameState.sharesOutstanding; GameState.founderShares",
+          "rationale": "返済を伴う借入と創業者持分が薄まる新株発行を比較する参考。",
+          "limitation": "Loanは現在の返済契約で調達日journalを持たない。issueSharesは上場後に限られ、株式数・現金を更新するが第三者割当の相手・使途・実施日を保存しない。現実の上場前調達と同一条件にはできない。"
+        }
+      ],
+      "contextNotes": "自社の資金手段の比較に限定。調達で将来のカフェ利益が増えると予測せず、現在のcashを調達イベントの証拠にしない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-softbank-bond-decision-20240301",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "debt-refinancing",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.loans; Loan.remaining; Loan.weeksLeft; Loan.weeklyPayment; WeeklyReport.interest; WeeklyReport.loanRepayment",
+          "rationale": "返済の残額・期間と手元資金を見て借入・返済を決める参考。",
+          "limitation": "現行Loanは週次返済する借入で、個人向け社債募集・発行決定・払込日・満期一括償還のログはない。WeeklyReportの支払実績もソフトバンクグループの社債発行を立証しない。"
+        }
+      ],
+      "contextNotes": "負債の償還に備える資金計画としてのみ読む。社債をゲームの銀行借入と同一の商品に扱わず、上場状態や株価から発行を推定しない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-sony-bungie-completion-20220715",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "acquisition-completion",
+          "sourceFile": "src/sim/marketAcquisitions.ts; src/model.ts",
+          "existingFieldOrEvent": "MarketAcquisitionState.companies.stockId; MarketAcquisitionState.companies.mode; MarketAcquisitionState.companies.acquiredWeek; MarketAcquisitionState.companies.readyWeek; applyMarketAcquisitionAction",
+          "rationale": "自社で市場事業を取得し、独立運営維持かグループ統合かを選ぶ参考。",
+          "limitation": "companiesは自社傘下のゲーム事業で、SIEによるBungie取得や対価の内訳を記録しない。acquiredWeekとreadyWeekは取得判断と運営準備の別時点で、readyWeekを現実の株式取得完了日と同一視しない。"
+        },
+        {
+          "tag": "group-revenue-boundary",
+          "sourceFile": "src/sim/marketBusinessMath.ts; src/model.ts",
+          "existingFieldOrEvent": "calculateMarketGroupFinancials; MarketAcquisitionState.companies; WeeklyReport.operatingProfit",
+          "rationale": "取得済み市場事業の収益・準備費がグループ決算に含まれる範囲を確認する参考。",
+          "limitation": "市場事業収益は既にengineの営業利益に含まれる。現実の買収額・従業員インセンティブ・効果を追加計上せず、株価から独立他社の買収活動を推定しない。"
+        }
+      ],
+      "contextNotes": "主体はソニーグループ自身でなく完全子会社SIE。ゲームのソニー対応銘柄は主体識別候補で、今週の自社傘下活動への差替えではない。"
+    },
+    {
+      "candidateId": "nr-capital-ma-nintendo-nlg-contract-20210105",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "acquisition-contract-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameAction; MarketAcquisitionAction; MarketAcquisitionState.research; MarketAcquisitionState.companies.acquiredWeek; MarketAcquisitionState.companies.readyWeek",
+          "rationale": "経営調査の後に取得方針を選び、取得と準備期間を区別する際の契約段階の参考。",
+          "limitation": "GameActionは操作の型で保存ログではない。現行marketAcquisitionsに株式譲渡契約・当局承認・条件付き実行予定のfieldはなく、researchは契約締結の証拠ではない。readyWeekも承認・取得完了を意味しない。"
+        }
+      ],
+      "contextNotes": "Sony/Bungieの取得完了と比べ、契約締結と条件付き実行予定の段階差を明確にする。現実の条件付き取得をゲームで起きた買収としない。"
+    },
+    {
+      "candidateId": "nr-food-doutor-price-revision-20241212",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "pricing-operation",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.price; Store.quality; Store.staff; WeeklyReport.storeResults; WeeklyReport.storeAccounts",
+          "rationale": "価格と品質・人員の設定を比較し、その後の自社店舗の確定売上・費用を読む参考。",
+          "limitation": "Storeは現在の設定で価格変更の日時・理由を保存しない。storeAccountsは確定決算の費用内訳で、欠落行に記録はない。独立他社の改定実施やコスト増の因果は立証しない。"
+        },
+        {
+          "tag": "settled-store-costs",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "applyAction updateStore; calculateWeek actual; WeeklyReport.netProfit; WeeklyReport.storeAccounts",
+          "rationale": "ゲームで設定を変えた後、週末の実績から支払費用と利益を確認する場面に関連。",
+          "limitation": "updateStoreの操作型は保存済み変更履歴ではない。値上げが利益を増やすと事前確約せず、他社株価から価格改定の理由を推定しない。"
+        }
+      ],
+      "contextNotes": "価格改定という運営選択の参考。現実の予定価格をゲームのStore.priceへ設定する提案や今週活動への対応ではない。"
+    },
+    {
+      "candidateId": "nr-food-doutor-coffee-lineup-20250725",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.price; Store.style; WeeklyReport.storeResults",
+          "rationale": "店の提供価値と価格・業態の組み合わせを考える際の品ぞろえ更新の参考。",
+          "limitation": "商品SKU、産地、在庫、発売・販売終了日を保存するfieldはない。quality/styleはカフェの設定でこの商品入替を記録せず、決算や株価から発売実績を補えない。"
+        }
+      ],
+      "contextNotes": "現在の設定と現実の品ぞろえ変更は別。商品追加の効果を未来のカフェ利益に換算しない。"
+    },
+    {
+      "candidateId": "nr-food-basefood-yakisoba-launch-20250116",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "product-strategy",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "Store.quality; Store.style; Store.price; WeeklyReport.storeResults",
+          "rationale": "提供価値と販売形態を比較し、選択後の確定収益を読む場面の参考。",
+          "limitation": "現行Storeには即席麺の商品配合・包装単位・EC・海外展開の保存fieldがない。quality/styleの変更を新商品の発売証拠にせず、株価・決算から販売開始を推測しない。"
+        }
+      ],
+      "contextNotes": "商品の改善と販売単位を同時に変える参考事例。国内・海外発売の予定が将来のゲーム利益を立証するものではない。"
+    },
+    {
+      "candidateId": "nr-food-komeda-is-higashiginza-20200715",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.storeId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.openingCost; OpeningRecord.result",
+          "rationale": "standard/premium/takeawayの出店形態と、別の特徴を持つ現実の新業態を比較する参考。",
+          "limitation": "記録するのは自社カフェの判断と初回確定決算。植物由来原料・メニュー・第三者店舗の開業日は保存しない。判断時のinitialStoreProfitは見込みで、結果がない時に将来利益を実績扱いできない。"
+        }
+      ],
+      "contextNotes": "既存STOCKSのコメダHD対応は主体の識別候補にすぎず、ゲーム会社の今週の出店へ差し替えない。"
+    },
+    {
+      "candidateId": "nr-food-komeda-tokyobay-opening-20251030",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "franchise-opening-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.storeId; OpeningRecord.lotId; OpeningRecord.decisionWeek; OpeningRecord.result; GameState.stores",
+          "rationale": "出店先の区画を選び、開業後の初回決算を確認する場面の立地参考。",
+          "limitation": "OpeningRecordとstoresは自社カフェで、第三者FC加盟店・加盟契約・ロイヤルティは保存しない。商業施設の入口横という現実立地を、ゲームの同名店舗や利益へ置き換えない。"
+        }
+      ],
+      "contextNotes": "FCオーナーの店舗と持株会社の連結実績を分ける。次の決算事例の店舗網に重ねて別のグループ収益を計上しない。"
+    },
+    {
+      "candidateId": "nr-food-komeda-fy2025-results-20250409",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "settled-financial-report",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "WeeklyReport.week; WeeklyReport.revenue; WeeklyReport.operatingProfit; WeeklyReport.interest; WeeklyReport.netProfit; WeeklyReport.storeResults",
+          "rationale": "売上・営業利益・純利益を区別して確定決算を読む参考。",
+          "limitation": "WeeklyReportは自社の一週決算で、年度連結・IFRS指標・親会社所有者帰属利益やFC加盟店数を保存しない。現実の当期利益をゲームのnetProfitと同一指標にせず、年度値を週次へ割り振らない。"
+        },
+        {
+          "tag": "group-accounting-boundary",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "calculateWeek; GameState.subsidiaries; GameState.marketAcquisitions; WeeklyReport.operatingProfit",
+          "rationale": "自社店舗と傘下事業を含む決算範囲を区別して読む参考。",
+          "limitation": "subsidiariesと市場企業グループの利益は既にoperatingProfitに含まれる。現実の店舗網を自社storesの数や独立他社活動に差し替えず、FC店の開業素材・連結数値を再加算しない。"
+        }
+      ],
+      "contextNotes": "グループ店舗網と直営店舗数、売上と各利益指標の違いを明示する年度資料。将来の利益や価格改定の単独因果は断定しない。"
+    },
+    {
+      "candidateId": "nr-rail-city-setagaya-renewable-operation-20190325",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-operation-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.railProjects; RailProject.choiceId; GameState.marketOperations; MarketOperationProject.sector; MarketOperationProject.policy",
+          "rationale": "新規の沿線整備と既存事業の運営方法を変える判断の違いを考える参考。",
+          "limitation": "railProjectsのcommerce/rentalは駅前回遊・駅近賃貸で、電源構成や環境施策を記録しない。marketOperationsのgrowth/stabilityにも電力調達のfieldはなく、保存されたsectorやpolicyで再エネ運行を立証できない。"
+        },
+        {
+          "tag": "settled-group-operation",
+          "sourceFile": "src/sim/weeklyNews.ts; src/model.ts",
+          "existingFieldOrEvent": "marketOperationNews; WeeklyReport.marketOperation.week; WeeklyReport.marketOperation.profitDelta",
+          "rationale": "自社グループの運営変更について語る際は、該当週の保存済み比較結果だけを確認する。",
+          "limitation": "週次profitDeltaは同条件の通常運営比・週次費用込み・初回費用別で、現実の電力切替の費用・環境効果ではない。独立他社の活動に転用せず、グループ利益へ追加計上しない。"
+        }
+      ],
+      "contextNotes": "発電源変更は現行ゲームに直接対応するイベントがないため過去参考。railProjects完成文へ環境施策を置換しない。"
+    },
+    {
+      "candidateId": "nr-rail-city-shinyokohama-line-opening-20230318",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-project-completion",
+          "sourceFile": "src/sim/railProjects.ts; src/model.ts",
+          "existingFieldOrEvent": "GameState.railProjects.projects; RailProject.startWeek; RailProject.completeWeek; railProjectHeadlines; WeeklyReport.headlines",
+          "rationale": "工期のある共同開発を選び、完了週の決算で完成を確認する場面の背景資料。",
+          "limitation": "railProjectHeadlinesはcompleteWeek===state.weekの時に完成文を作る。現行choiceIdはcommerce/rentalだけで新線・相互直通・距離を記録しない。プロジェクトの現在保有だけで今週完成を立証しない。"
+        },
+        {
+          "tag": "saved-rail-completion",
+          "sourceFile": "src/sim/weeklyNews.ts; src/model.ts",
+          "existingFieldOrEvent": "createWeeklyNews cityEvents; WeeklyReport.week; WeeklyReport.news.events",
+          "rationale": "完成ニュースは完了週のrailProjectHeadlinesと同じ文がreport.headlinesに含まれ、保存される場合を確認する。",
+          "limitation": "ゲーム内の完成は独立他社の現実の開業とは別。現実の開業日から旧セーブのニュースを補完せず、接続による未来のカフェ利益を計算しない。"
+        }
+      ],
+      "contextNotes": "新線開業は既存ゲームの駅前回遊・賃貸整備と規模も記録項目も異なる。直接のruntime条件対応を提案しない。"
+    },
+    {
+      "candidateId": "nr-rail-city-shibuya-saikyo-plan-announcement-20200218",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-construction-plan",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.railProjects.projects; RailProject.choiceId; RailProject.startWeek; RailProject.completeWeek",
+          "rationale": "駅と店舗の動線整備を選ぶ際に、工事期間と既存サービスへの影響を比較する参考。",
+          "limitation": "現行choiceIdのcommerce/rentalは駅前回遊・賃貸共同設備で、線路切換・運休・延期条件・改札移動を記録しない。completeWeekはゲームの予定工期で現実の実施日を立証しない。"
+        },
+        {
+          "tag": "saved-rail-completion",
+          "sourceFile": "src/sim/weeklyNews.ts; src/model.ts",
+          "existingFieldOrEvent": "createWeeklyNews; WeeklyReport.week; WeeklyReport.headlines; WeeklyReport.news.events",
+          "rationale": "ゲームの今週完成を語るには、railProjectHeadlinesの完了週文が確定reportに入り保存された場面を確認する。",
+          "limitation": "計画発表の歴史資料だけで完成ニュースを生成できない。旧セーブのニュースを補完せず、ホーム移動によるカフェ需要や株価変化を推定しない。"
+        }
+      ],
+      "contextNotes": "計画公表を2023年の山手線同一ホーム化実施と分け、同じ渋谷駅でも工程・時点・内容を混同しない。"
+    },
+    {
+      "candidateId": "nr-rail-city-shibuya-yamanote-platform-unification-20230109",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-project-completion",
+          "sourceFile": "src/sim/railProjects.ts; src/model.ts",
+          "existingFieldOrEvent": "RailProject.completeWeek; railProjectHeadlines; GameState.properties",
+          "rationale": "営業中の交通拠点を工期を設けて改良する現実例として、共同開発の完成場面を考える参考。",
+          "limitation": "ゲームの完成文はcompleteWeek===state.weekで作る。地区に直接保有物件がなければ運営休止と記すが、線路・ホーム構造や運休の実績は保存しない。現実の完成をゲームの完成条件に代用できない。"
+        }
+      ],
+      "contextNotes": "埼京線の計画発表とは異なるホーム集約の実施事例。現在のrailProjects保有だけで今週完成とせず、現実の日付から旧保存へニュースを付けない。"
+    },
+    {
+      "candidateId": "nr-rail-city-takanawa-stage-opening-20250327",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "district-development",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development.programs; DevelopmentProgram.completedChoiceIds; DevelopmentProgram.construction.choiceId; DevelopmentProgram.construction.startWeek; DevelopmentProgram.construction.completeWeek",
+          "rationale": "地区計画を段階ごとに選び、先の工事が終わってから次の段階へ進む場面の比較資料。",
+          "limitation": "保存fieldは自社の地区・段階の工程で、TAKANAWAの各棟・ホテル・商業施設や現実の開業日を記録しない。ある段階の完了を全体完成と読まず、現在のcompletedChoiceIdsだけで今週完成としない。"
+        },
+        {
+          "tag": "saved-development-completion",
+          "sourceFile": "src/sim/development.ts; src/sim/weeklyNews.ts; src/model.ts",
+          "existingFieldOrEvent": "developmentHeadlines; createWeeklyNews; WeeklyReport.week; WeeklyReport.headlines; WeeklyReport.news.events",
+          "rationale": "ゲーム内で該当constructionのcompleteWeekが決算週と一致し、完成文が保存reportに含まれた場面を確認する。",
+          "limitation": "保有物件がなく運営休止の完成も区別する。現実の段階開業をゲームの完了週へ置換せず、カフェ需要や不動産利益の見通しを付け加えない。"
+        }
+      ],
+      "contextNotes": "門真の業態併設や常盤橋の共用部設計とは違い、駅直結の複合街区を段階開業する工程の参考。"
+    },
+    {
+      "candidateId": "nr-rail-city-minamimachida-station-service-change-20191001",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "station-access-reference",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.railProjects.projects; RailProject.choiceId; RailProject.startWeek; RailProject.completeWeek",
+          "rationale": "駅から店へ歩く動線のcommerceと駅近賃貸のrentalを比較し、商業開業に先立つアクセス整備を考える参考。",
+          "limitation": "現行railProjectsは駅前回遊・賃貸共同設備で、駅名・列車停車設定・ダイヤ・施設開業日を保存しない。改称や急行停車をゲーム内の新駅開業や完成ニュースと扱えない。"
+        },
+        {
+          "tag": "rail-effect-limitation",
+          "sourceFile": "src/sim/railProjects.ts; src/model.ts",
+          "existingFieldOrEvent": "getRailProjectEffects; GameState.properties; RailProject.choiceId; RailProject.completeWeek",
+          "rationale": "共同開発効果が開始する条件と、商業/賃貸の相互に異なる対象を読む参考。",
+          "limitation": "ゲームの効果は完了週と地区の直接物件保有が前提で、commerceは需要・rentalは外部賃貸の対象。現実の急行停車だけから需要・賃料・カフェ利益や株価因果を算出しない。"
+        }
+      ],
+      "contextNotes": "電源変更・新線接続・ホーム組替えと異なる、既存駅のサービス変更の実施事例。ゲームとの条件対応は参考に限りruntimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-mitsui-kadoma-hybrid-20230208",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "district-development",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development; DevelopmentProgram.construction.choiceId; DevelopmentProgram.construction.startWeek; DevelopmentProgram.construction.completeWeek; DevelopmentProgram.completedChoiceIds",
+          "rationale": "商業の用途を組み合わせる現実の計画を、ゲームで地区のcommerce/propertyを選ぶ際の比較資料にする。",
+          "limitation": "保存fieldが持つのはプレイヤーが選んだ地区計画と工程で、門真の施設構成・店舗数や三井不動産の活動ではない。completedChoiceIdsだけでは今週完成した証拠にならない。"
+        },
+        {
+          "tag": "saved-development-completion",
+          "sourceFile": "src/sim/weeklyNews.ts; src/model.ts",
+          "existingFieldOrEvent": "createWeeklyNews cityEvents; WeeklyReport.week; WeeklyReport.headlines; WeeklyReport.news.events",
+          "rationale": "ゲーム内の完成を語るなら、developmentHeadlinesが完了週の決算に含まれ保存された場面を別途確認する。",
+          "limitation": "cityEventsは決算前stateから作る完成文とreport.headlinesの一致を確認する。現実の開業計画をそのイベントへ置換できず、過去資料からカフェ利益や株価因果を付け足さない。"
+        }
+      ],
+      "contextNotes": "複合商業の設計参考に限定。ゲーム内の完成条件と現実の開業予定を分離し、runtimeEligible=false。"
+    },
+    {
+      "candidateId": "nr-retail-property-muji-ginza-complex-20190228",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.openingRecords; OpeningRecord.storeId; OpeningRecord.style; OpeningRecord.decisionWeek; OpeningRecord.openingCost; OpeningRecord.result",
+          "rationale": "出店時の業態・提供する利用場面を比較する参考として、物販・飲食・宿泊の複合計画を見る。",
+          "limitation": "OpeningRecordは自社カフェの開業判断を最大40件残す。resultがない時点のnetProfitBefore/After・initialStoreProfitは計画見込みで、ホテル開業・第三者運営契約・実際の利益を立証しない。"
+        },
+        {
+          "tag": "first-settled-store-result",
+          "sourceFile": "src/sim/openingJournal.ts; src/model.ts",
+          "existingFieldOrEvent": "settleOpeningRecords; OpeningRecord.result.week; OpeningRecord.result.storeProfit; WeeklyReport.storeResults",
+          "rationale": "ゲームの開業後の実績を読む場合は、該当storeIdの初回確定決算が一度だけresultへ付く場面を確認する。",
+          "limitation": "現実の複合施設の売上やホテル収益に換算できない。閉店済み・旧保存の欠落記録を過去資料で補完せず、参考文を今週の開業実績へ変えない。"
+        }
+      ],
+      "contextNotes": "ホテル運営をUDSが担う事実を維持する。ゲームに宿泊・物販の保存契約はなく、対応銘柄もないため過去の比較資料に限定。"
+    },
+    {
+      "candidateId": "nr-retail-property-uniqlo-maebashi-energy-20230419",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-capital-investment",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.openingCost; WeeklyReport.storeAccounts; StoreAccount.costs.equipment",
+          "rationale": "出店時の初期投資と営業後の設備費負担を区別して考える参考。",
+          "limitation": "openingCostはカフェの開業費で、costs.equipmentは確定決算のゲーム費用。設備仕様・電力量・認証・削減率を記録しないため、この費用から省エネ効果や将来利益を推定できない。"
+        }
+      ],
+      "contextNotes": "省エネを店舗設計へ組み込むという選択の資料。ゲームの設備費と現実の認証・電力実績を同一視しない。"
+    },
+    {
+      "candidateId": "nr-retail-property-mec-tokiwabashi-office-20210719",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "property-operation",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.properties; PropertyAsset.level; PropertyAsset.occupancy; PropertyAsset.weeklyIncome",
+          "rationale": "賃貸物件の整備水準と利用者向け設備の選択を比較する参考。",
+          "limitation": "保存値は自社の区画・整備水準・稼働率・週収入で、フロア用途やテナント契約を保存しない。現実の入居テナント決定割合をoccupancyや実際の賃料収入と同一視しない。"
+        },
+        {
+          "tag": "rental-use-limitation",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "calculateWeek propertyGross; Store.lotId; PropertyAsset.lotId",
+          "rationale": "自社で使う物件と外部賃貸物件を区別し、追加賃料が生まれる範囲を読む参考。",
+          "limitation": "同じlotIdの自社店舗がある物件にはpropertyGrossの追加賃料がない。現実の共用カフェを自社カフェの利益や物件収益へ重ねて加算しない。"
+        }
+      ],
+      "contextNotes": "オフィス竣工・共用部設計の参考。ゲームの物件購入履歴や完成ニュースとして表示できる記録はこの資料から得られない。"
+    },
+    {
+      "candidateId": "nr-retail-property-nbf-toranomon-land-retention-20240712",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "property-disposition",
+          "sourceFile": "src/sim/engine.ts; src/model.ts",
+          "existingFieldOrEvent": "applyAction sellProperty; GameState.properties; PropertyAsset.purchasePrice",
+          "rationale": "物件を売るか継続保有するか、整備に資金を投じるかを比較する参考。",
+          "limitation": "sellPropertyは区画全体の保有を除き、売却週のjournalを残さない。土地・建物の分割、信託受益権、定期借地・優先交渉権は保存しないため、現実の選択をゲームの売却と同一取引に扱えない。"
+        },
+        {
+          "tag": "reit-ownership-boundary",
+          "sourceFile": "src/sim/marketAcquisitions.ts; src/model.ts",
+          "existingFieldOrEvent": "MarketAcquisitionState.companies.stockId; applyMarketAcquisitionAction; GameState.positions",
+          "rationale": "REITへの株式投資とゲーム内での資産運用取得を区別して読む参考。",
+          "limitation": "REITの取得はゲーム上の保有資産運用を単純化した取引で実在REITの買収ではない。取得時にpositionsを除き、グループ収益と配当を重ねない。この現実の建物譲渡を自社傘下の今週活動にしない。"
+        }
+      ],
+      "contextNotes": "建物と土地の保有を分ける現実の資産運営。現行モデルの範囲外をタグで明示し、保存やモデルを拡張しない。"
+    },
+    {
+      "candidateId": "nr-retail-property-arealink-storage-expansion-20250304",
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rental-property-expansion",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.properties; PropertyAsset.lotId; PropertyAsset.occupancy; PropertyAsset.weeklyIncome",
+          "rationale": "立地と賃貸用途を比較し、保有資産を増やす判断の参考。",
+          "limitation": "現行propertiesは自社の区画単位で収納室数・コンテナ形式・年間出店集計を持たない。現在の物件数・株価を独立他社の出店実績に読み替えず、年間合計を今週実績として掲載しない。"
+        }
+      ],
+      "contextNotes": "収納賃貸の立地・施設形式と年間展開という参考。株式対応はエリアリンクだが、ゲームの物件保有やグループ収益へ二重計上しない。"
+    }
+  ]
+}

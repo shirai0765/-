@@ -1,0 +1,531 @@
+{
+  "schemaVersion": 1,
+  "category": "rail-city",
+  "candidates": [
+    {
+      "id": "nr-rail-city-setagaya-renewable-operation-20190325",
+      "eventKey": "tokyu-setagaya-renewable-operation-20190325",
+      "category": "rail-city",
+      "realEntities": [
+        "東京急行電鉄株式会社（当時、現・東急株式会社）",
+        "東北電力株式会社",
+        "株式会社東急パワーサプライ",
+        "世田谷線"
+      ],
+      "eventDate": "2019-03-25",
+      "eventDateNote": "当日発表PDFは開始の発表。後年の東急電鉄公式環境ページでも2019年3月25日から運行を開始したことを確認。",
+      "sourceURL": "https://www.tokyu.co.jp/image/news/pdf/20190325-1-1.pdf",
+      "publisher": "東京急行電鉄株式会社・東北電力株式会社・株式会社東急パワーサプライ",
+      "publishedDate": "2019-03-25",
+      "publishedDateNote": "PDF1ページ冒頭の発表日。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページ：発表日、開始日、電源構成、通年・全列車対象。補助確認：東急電鉄公式環境ページ「全路線・全駅で再生可能エネルギー由来の電力100％で運営」。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "3ページPDFをweb openで実読。1ページで当日の開始発表と水力・地熱の供給構成を確認。https://www.tokyu.co.jp/railway/company/environment/consumer/ も本文実読し、後年の開始実績の記述を確認。後年の全路線への拡大や削減量はこの候補の事実に混ぜていない。"
+      },
+      "facts": [
+        "2019年3月25日の共同発表は、東北電力と東急パワーサプライの協力により、世田谷線の運行に水力と地熱のみで発電した電力を用いるとした。",
+        "対象は世田谷線の通年・全列車の運行であり、駅舎を含む全東急線の電力切替とは別の施策。",
+        "東急電鉄の後年の公式環境ページは、2019年3月25日から世田谷線で再生可能エネルギー100％電力による運行を開始したと記録している。"
+      ],
+      "managementChoice": "既存路線の運行を続けながら、電力の調達先と発電源を変更する環境投資。",
+      "authorWrittenBrief": "東急は2019年、世田谷線の列車を動かす電力を水力・地熱由来へ切り替えた。線路を新設する投資とは別に、既存の交通サービスの運営方法を変えた事例だ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9005",
+          "gameName": "東都電鉄",
+          "realName": "東急",
+          "relationship": "direct",
+          "note": "2019年の東京急行電鉄は現・東急株式会社。既存STOCKSのjp-9005への歴史上の同一法人対応候補であり、現実の実績をゲーム社の実績へ付け替えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-city-saved-structure",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development/railProjects; DevelopmentProgram.completedChoiceIds/construction; RailProject.choiceId/startWeek/completeWeek; WeeklyReport.headlines/news",
+          "rationale": "着工・工期・完成と確定週ニュースを別々に保存する既存構造に関連する歴史資料。",
+          "limitation": "現実の鉄道会社の発表や実施はゲーム内週・地区・会社の保存済み実績を立証しない。"
+        },
+        {
+          "tag": "rail-project-context-only",
+          "sourceFile": "src/sim/railProjects.ts",
+          "existingFieldOrEvent": "RAIL_PROJECT_CHOICES; railProjectHeadlines; project.choiceId/startWeek/completeWeek",
+          "rationale": "駅前回遊と駅近賃貸という既存の共同開発選択を比較する背景。",
+          "limitation": "commerce/rentalは新路線、線路移設、ダイヤ変更、電源構成を記録しない。史実の選択や費用をゲーム内選択と同一視しない。"
+        },
+        {
+          "tag": "development-context-only",
+          "sourceFile": "src/sim/development.ts",
+          "existingFieldOrEvent": "DEVELOPMENT_CHOICES; developmentHeadlines; DevelopmentProgram.completedChoiceIds/construction",
+          "rationale": "回遊整備と生活・賃貸設備、段階開発の違いを考える参考。",
+          "limitation": "現実の駅・街区とゲームの地区は対応していない。史実から需要、賃料、維持費の効果を補完しない。"
+        },
+        {
+          "tag": "saved-headline-required",
+          "sourceFile": "src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "createWeeklyNews; cityEvents; report.headlines.includes(text); events",
+          "rationale": "現行ニュースはdevelopmentHeadlinesとrailProjectHeadlinesのうち決算headlinesにも保存されたものを対象にする。",
+          "limitation": "本資料はhistorical-reference。保存済みheadlinesなしに今週の実績へ混ぜず、過去ニュースや株価を改変しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.tokyu.co.jp/railway/company/environment/consumer/",
+          "publisher": "東急電鉄株式会社",
+          "publishedDate": null,
+          "publishedDateNote": "現行の環境施策ページ本文に公開日表示を確認できない。開始日・年度から公開日を推測しない。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "「全路線・全駅で再生可能エネルギー由来の電力100％で運営」の2019年3月25日開始の記述。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "公式HTML本文を実読。世田谷線で2019年3月25日から再エネ100％電力による運行を開始したと過去実績形で記録。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-rail-city-shinyokohama-line-opening-20230318",
+      "eventKey": "tokyu-shinyokohama-line-opening-20230318",
+      "category": "rail-city",
+      "realEntities": [
+        "東急株式会社",
+        "東急電鉄株式会社",
+        "東急新横浜線"
+      ],
+      "eventDate": "2023-03-18",
+      "eventDateNote": "決算説明資料のPDF21ページ「概要」に開業日2023年3月18日を記載。後年公式路線史にも開業済みと記録。",
+      "sourceURL": "https://ir.tokyu.co.jp/ja/ir/news/auto_20230511566472/pdfFile.pdf",
+      "publisher": "東急株式会社",
+      "publishedDate": "2023-05-12",
+      "publishedDateNote": "PDF1ページ表紙は2023年5月12日。URLの20230511から日付を推測していない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページ表紙、PDF21ページ（印刷頁21）「鉄道事業の取り組み／東急新横浜線開業」の概要。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "89ページPDFをweb openで実読し、表紙の日付と21ページの開業日・区間・営業キロを確認。https://www.tokyu.co.jp/railway/train-history/sh/ も本文実読し、相鉄線との直通と2023年3月18日の開業実績を確認。IRの輸送人員・運賃収入の将来見込みは実績として採用していない。"
+      },
+      "facts": [
+        "東急の2023年3月期決算説明資料は東急新横浜線の開業日を2023年3月18日と記載した。",
+        "区間は新横浜駅から日吉駅で、営業キロは5.8km。",
+        "東急電鉄の公式路線史は、新横浜駅で相鉄新横浜線に接続して相鉄線と東急線の相互直通運転が可能になったと記録している。"
+      ],
+      "managementChoice": "既存路線の新幹線駅への接続と他社直通によって、沿線の移動ネットワークを拡張する。",
+      "authorWrittenBrief": "東急新横浜線は2023年に開業し、日吉から新横浜への新しい経路が加わった。相鉄線との接続を通じ、単独の駅整備より広い範囲の移動をつなぐ選択となった。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9005",
+          "gameName": "東都電鉄",
+          "realName": "東急",
+          "relationship": "subsidiary",
+          "note": "路線運営の主体は東急電鉄。既存STOCKSは親の東急株式会社jp-9005なので子会社関係として対応する。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-city-saved-structure",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development/railProjects; DevelopmentProgram.completedChoiceIds/construction; RailProject.choiceId/startWeek/completeWeek; WeeklyReport.headlines/news",
+          "rationale": "着工・工期・完成と確定週ニュースを別々に保存する既存構造に関連する歴史資料。",
+          "limitation": "現実の鉄道会社の発表や実施はゲーム内週・地区・会社の保存済み実績を立証しない。"
+        },
+        {
+          "tag": "rail-project-context-only",
+          "sourceFile": "src/sim/railProjects.ts",
+          "existingFieldOrEvent": "RAIL_PROJECT_CHOICES; railProjectHeadlines; project.choiceId/startWeek/completeWeek",
+          "rationale": "駅前回遊と駅近賃貸という既存の共同開発選択を比較する背景。",
+          "limitation": "commerce/rentalは新路線、線路移設、ダイヤ変更、電源構成を記録しない。史実の選択や費用をゲーム内選択と同一視しない。"
+        },
+        {
+          "tag": "development-context-only",
+          "sourceFile": "src/sim/development.ts",
+          "existingFieldOrEvent": "DEVELOPMENT_CHOICES; developmentHeadlines; DevelopmentProgram.completedChoiceIds/construction",
+          "rationale": "回遊整備と生活・賃貸設備、段階開発の違いを考える参考。",
+          "limitation": "現実の駅・街区とゲームの地区は対応していない。史実から需要、賃料、維持費の効果を補完しない。"
+        },
+        {
+          "tag": "saved-headline-required",
+          "sourceFile": "src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "createWeeklyNews; cityEvents; report.headlines.includes(text); events",
+          "rationale": "現行ニュースはdevelopmentHeadlinesとrailProjectHeadlinesのうち決算headlinesにも保存されたものを対象にする。",
+          "limitation": "本資料はhistorical-reference。保存済みheadlinesなしに今週の実績へ混ぜず、過去ニュースや株価を改変しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null,
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.tokyu.co.jp/railway/train-history/sh/",
+          "publisher": "東急電鉄株式会社",
+          "publishedDate": null,
+          "publishedDateNote": "公式路線史本文に公開日を確認できない。開業日を公開日と取り違えない。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "「東急新横浜線の歴史」冒頭2段落。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "公式HTML本文を実読。2023年3月18日開業と相鉄新横浜線への接続・相鉄線との相互直通を確認。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nr-rail-city-shibuya-saikyo-plan-announcement-20200218",
+      "eventKey": "jreast-shibuya-saikyo-platform-plan-announcement-20200218",
+      "category": "rail-city",
+      "realEntities": [
+        "東日本旅客鉄道株式会社",
+        "JR渋谷駅",
+        "埼京線"
+      ],
+      "eventDate": "2020-02-18",
+      "eventDateNote": "この候補の出来事は2020年2月18日の工事・供用計画の発表。5月29日～6月1日は発表時の予定工期であり、実施日と同一視しない。",
+      "sourceURL": "https://www.jreast.co.jp/press/2019/tokyo/20200218_to04.pdf",
+      "publisher": "東日本旅客鉄道株式会社 東京支社",
+      "publishedDate": "2020-02-18",
+      "publishedDateNote": "PDF1ページ冒頭の発表日。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページ「1 工事の概要について」と運休説明、PDF3ページ「別紙1」主な工事内容。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "5ページPDFをweb openで実読。発表日、予定工期、約350m北側へのホーム移設計画、南・ハチ公改札直結計画、悪天候時の延期条件を確認。供用実施の完了報告ではない。"
+      },
+      "supportingSources": [],
+      "facts": [
+        "JR東日本は2020年2月18日、渋谷駅の埼京線下り線路の切換工事と新ホーム供用の計画を発表した。",
+        "発表時の工期は5月29日22時頃から6月1日4時頃までで、悪天候時には7月に延期する条件を示した。",
+        "計画は埼京線ホームを約350m北側へ移して山手線ホームと並列にし、南改札・ハチ公改札へ直結させる内容。",
+        "5月30日・31日に埼京線・湘南新宿ライン等の大幅な運休や始終着駅の変更を予定していた。"
+      ],
+      "managementChoice": "ホーム配置と改札動線を変えるため、短期集中の運休と迂回対応を織り込んで既存駅を更新する計画。",
+      "authorWrittenBrief": "JR東日本は2020年、渋谷駅の埼京線ホームを北へ移し、山手線と横並びにする工事計画を公表した。乗り換え動線の改善に向け、工事中の運休と延期条件もあわせて示した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9020",
+          "gameName": "東日本レール",
+          "realName": "東日本旅客鉄道",
+          "relationship": "direct",
+          "note": "既存STOCKSのjp-9020と発表主体は同一企業。工事発表の史実であり、ゲーム社の今週の工事を証明しない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-city-saved-structure",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development/railProjects; DevelopmentProgram.completedChoiceIds/construction; RailProject.choiceId/startWeek/completeWeek; WeeklyReport.headlines/news",
+          "rationale": "着工・工期・完成と確定週ニュースを別々に保存する既存構造に関連する歴史資料。",
+          "limitation": "現実の鉄道会社の発表や実施はゲーム内週・地区・会社の保存済み実績を立証しない。"
+        },
+        {
+          "tag": "rail-project-context-only",
+          "sourceFile": "src/sim/railProjects.ts",
+          "existingFieldOrEvent": "RAIL_PROJECT_CHOICES; railProjectHeadlines; project.choiceId/startWeek/completeWeek",
+          "rationale": "駅前回遊と駅近賃貸という既存の共同開発選択を比較する背景。",
+          "limitation": "commerce/rentalは新路線、線路移設、ダイヤ変更、電源構成を記録しない。史実の選択や費用をゲーム内選択と同一視しない。"
+        },
+        {
+          "tag": "development-context-only",
+          "sourceFile": "src/sim/development.ts",
+          "existingFieldOrEvent": "DEVELOPMENT_CHOICES; developmentHeadlines; DevelopmentProgram.completedChoiceIds/construction",
+          "rationale": "回遊整備と生活・賃貸設備、段階開発の違いを考える参考。",
+          "limitation": "現実の駅・街区とゲームの地区は対応していない。史実から需要、賃料、維持費の効果を補完しない。"
+        },
+        {
+          "tag": "saved-headline-required",
+          "sourceFile": "src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "createWeeklyNews; cityEvents; report.headlines.includes(text); events",
+          "rationale": "現行ニュースはdevelopmentHeadlinesとrailProjectHeadlinesのうち決算headlinesにも保存されたものを対象にする。",
+          "limitation": "本資料はhistorical-reference。保存済みheadlinesなしに今週の実績へ混ぜず、過去ニュースや株価を改変しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-rail-city-shibuya-yamanote-platform-unification-20230109",
+      "eventKey": "jreast-shibuya-yamanote-platform-unification-20230109",
+      "category": "rail-city",
+      "realEntities": [
+        "東日本旅客鉄道株式会社",
+        "JR渋谷駅",
+        "山手線"
+      ],
+      "eventDate": "2023-01-09",
+      "eventDateNote": "公式建設部門冊子7/16ページの渋谷駅改良図にホーム拡幅の日付2023/1/9。事前PDFの第4段階の同一ホーム化計画と、後年公式事例の第3・4回実施記述を併読した。",
+      "sourceURL": "https://www.jreast.co.jp/recruit/ebook/creating/pageindices/index7.html",
+      "publisher": "東日本旅客鉄道株式会社",
+      "publishedDate": null,
+      "publishedDateNote": "公式建設部門冊子の当該HTMLページに公開日を確認できない。ホーム工事の日付を出版日として扱わない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冊子7/16ページ「渋谷駅改良」図中の2023/1/9ホーム拡幅表示。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式冊子HTML本文をweb openで実読。日付付き図中文字を確認。以下supportingSourcesの公式事前計画と後年実施事例を実読して、単なる2021年内回り拡幅とは分けた。"
+      },
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.jreast.co.jp/press/2022/tokyo/20221018_to02.pdf",
+          "publisher": "東日本旅客鉄道株式会社 首都圏本部ほか",
+          "publishedDate": "2022-10-18",
+          "publishedDateNote": "PDF1ページ冒頭の発表日。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "PDF1ページ 工事概要・内外回り同一ホーム化・第4段階と運休の説明。",
+          "sourceRead": {
+            "method": "web-open/pdf-text",
+            "status": "verified",
+            "notes": "6ページPDFを本文実読。2023年1月の第4段階工事の予定、同一化の内容、悪天候時の延期条件を確認。事前発表を実施報告として使っていない。"
+          }
+        },
+        {
+          "sourceURL": "https://www.jreast.co.jp/esio/our-works/project02.html",
+          "publisher": "東日本旅客鉄道株式会社",
+          "publishedDate": null,
+          "publishedDateNote": "公式改良事例本文に公開日を確認できない。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "「計5回の大規模線路切換工事」の第3・4回の記述。",
+          "sourceRead": {
+            "method": "web-open",
+            "status": "verified",
+            "notes": "公式HTML本文実読。第3・4回で山手線ホームを同一化した実績記述を確認。"
+          }
+        }
+      ],
+      "facts": [
+        "JR東日本の公式建設部門冊子は、渋谷駅の山手線ホーム拡幅に2023年1月9日の日付を付している。",
+        "2022年10月18日の事前発表は、外回り線路切換により内・外回りホームを一つにする第4段階の工事とし、2023年1月7日・8日の外回り運休を予定した。",
+        "JR東日本の後年公式改良事例は、第3・4回の線路切換で山手線ホームを同一化したことを実施形で記録している。"
+      ],
+      "managementChoice": "既存駅の内・外回りを一つのホームに集約し、段階工事で駅空間を組み替える。",
+      "authorWrittenBrief": "JR東日本は2023年、渋谷駅の山手線ホームを内・外回りで共用する形に改めた。別の場所に駅を増やすのではなく、営業中の駅を段階的に組み替えた事例だ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9020",
+          "gameName": "東日本レール",
+          "realName": "東日本旅客鉄道",
+          "relationship": "direct",
+          "note": "既存STOCKSのjp-9020と主体は同一企業。2020年埼京線移設とは別の路線・別工程としてeventKeyを分ける。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-city-saved-structure",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development/railProjects; DevelopmentProgram.completedChoiceIds/construction; RailProject.choiceId/startWeek/completeWeek; WeeklyReport.headlines/news",
+          "rationale": "着工・工期・完成と確定週ニュースを別々に保存する既存構造に関連する歴史資料。",
+          "limitation": "現実の鉄道会社の発表や実施はゲーム内週・地区・会社の保存済み実績を立証しない。"
+        },
+        {
+          "tag": "rail-project-context-only",
+          "sourceFile": "src/sim/railProjects.ts",
+          "existingFieldOrEvent": "RAIL_PROJECT_CHOICES; railProjectHeadlines; project.choiceId/startWeek/completeWeek",
+          "rationale": "駅前回遊と駅近賃貸という既存の共同開発選択を比較する背景。",
+          "limitation": "commerce/rentalは新路線、線路移設、ダイヤ変更、電源構成を記録しない。史実の選択や費用をゲーム内選択と同一視しない。"
+        },
+        {
+          "tag": "development-context-only",
+          "sourceFile": "src/sim/development.ts",
+          "existingFieldOrEvent": "DEVELOPMENT_CHOICES; developmentHeadlines; DevelopmentProgram.completedChoiceIds/construction",
+          "rationale": "回遊整備と生活・賃貸設備、段階開発の違いを考える参考。",
+          "limitation": "現実の駅・街区とゲームの地区は対応していない。史実から需要、賃料、維持費の効果を補完しない。"
+        },
+        {
+          "tag": "saved-headline-required",
+          "sourceFile": "src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "createWeeklyNews; cityEvents; report.headlines.includes(text); events",
+          "rationale": "現行ニュースはdevelopmentHeadlinesとrailProjectHeadlinesのうち決算headlinesにも保存されたものを対象にする。",
+          "limitation": "本資料はhistorical-reference。保存済みheadlinesなしに今週の実績へ混ぜず、過去ニュースや株価を改変しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-rail-city-takanawa-stage-opening-20250327",
+      "eventKey": "jreast-takanawa-gateway-city-stage-opening-20250327",
+      "category": "rail-city",
+      "realEntities": [
+        "東日本旅客鉄道株式会社",
+        "TAKANAWA GATEWAY CITY",
+        "THE LINKPILLAR 1",
+        "高輪ゲートウェイ駅"
+      ],
+      "eventDate": "2025-03-27",
+      "eventDateNote": "2025年4月30日の決算・経営戦略説明資料PDF66ページに、THE LINKPILLAR 1が2025年3月27日にまちびらきを迎えたと実施形で記載。他の棟や商業・ホテルの予定を同日開業と扱わない。",
+      "sourceURL": "https://www.jreast.co.jp/investor/guide/pdf/202503guide3.pdf",
+      "publisher": "東日本旅客鉄道株式会社",
+      "publishedDate": "2025-04-30",
+      "publishedDateNote": "PDF1ページ表紙の資料日付。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページ表紙、PDF66ページ（印刷頁64）「TAKANAWA GATEWAY CITY」の説明と各棟の開業予定。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "78ページPDFをweb openで実読。表紙日付と66ページ本文のTHE LINKPILLAR 1の実施済みまちびらきを確認。商業・ホテルの段階開業、他棟の2026年春予定は資料公表時の計画。想定事業費・営業収益は成果実績として採用しない。"
+      },
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.jreast.co.jp/press/2024/20241030_ho02.pdf",
+          "publisher": "東日本旅客鉄道株式会社",
+          "publishedDate": "2024-10-30",
+          "publishedDateNote": "PDF1ページ冒頭の発表日。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "PDF1ページ「1.まちびらき概要」冒頭と箇条書き。",
+          "sourceRead": {
+            "method": "web-open/pdf-text",
+            "status": "verified",
+            "notes": "17ページPDFを本文実読。品川車両基地跡地と駅直結の開発主体・立地を確認。2025年3月27日開業や2026年春予定は事前計画であり、実施済み判定は主出典の2025年4月資料で行う。"
+          }
+        }
+      ],
+      "facts": [
+        "JR東日本は2025年4月30日の説明資料で、THE LINKPILLAR 1が2025年3月27日にまちびらきを迎えたと報告した。",
+        "同資料は商業施設・ホテル等を今後段階的に開業するとし、THE LINKPILLAR 2、MoN Takanawa、住宅棟の開業を2026年春の予定としていた。",
+        "2024年10月30日の事前公式発表は、品川車両基地跡地を活用し、高輪ゲートウェイ駅に直結する街をつくる計画として説明していた。"
+      ],
+      "managementChoice": "車両基地跡地を駅直結の複合街区へ転換し、全棟を一度に開くのではなく開業を段階分けする。",
+      "authorWrittenBrief": "JR東日本の高輪の街づくりは2025年、THE LINKPILLAR 1のまちびらきから利用を始めた。残る棟や施設は別の時期に開く計画で、大きな街区を段階的に立ち上げた事例となる。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9020",
+          "gameName": "東日本レール",
+          "realName": "東日本旅客鉄道",
+          "relationship": "direct",
+          "note": "既存STOCKSのjp-9020と開発主体は同一企業。建物のまちびらき、駅の開業、各テナントの開業日は別の出来事であり、全施設の一斉開業に置き換えない。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-city-saved-structure",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development/railProjects; DevelopmentProgram.completedChoiceIds/construction; RailProject.choiceId/startWeek/completeWeek; WeeklyReport.headlines/news",
+          "rationale": "着工・工期・完成と確定週ニュースを別々に保存する既存構造に関連する歴史資料。",
+          "limitation": "現実の鉄道会社の発表や実施はゲーム内週・地区・会社の保存済み実績を立証しない。"
+        },
+        {
+          "tag": "rail-project-context-only",
+          "sourceFile": "src/sim/railProjects.ts",
+          "existingFieldOrEvent": "RAIL_PROJECT_CHOICES; railProjectHeadlines; project.choiceId/startWeek/completeWeek",
+          "rationale": "駅前回遊と駅近賃貸という既存の共同開発選択を比較する背景。",
+          "limitation": "commerce/rentalは新路線、線路移設、ダイヤ変更、電源構成を記録しない。史実の選択や費用をゲーム内選択と同一視しない。"
+        },
+        {
+          "tag": "development-context-only",
+          "sourceFile": "src/sim/development.ts",
+          "existingFieldOrEvent": "DEVELOPMENT_CHOICES; developmentHeadlines; DevelopmentProgram.completedChoiceIds/construction",
+          "rationale": "回遊整備と生活・賃貸設備、段階開発の違いを考える参考。",
+          "limitation": "現実の駅・街区とゲームの地区は対応していない。史実から需要、賃料、維持費の効果を補完しない。"
+        },
+        {
+          "tag": "saved-headline-required",
+          "sourceFile": "src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "createWeeklyNews; cityEvents; report.headlines.includes(text); events",
+          "rationale": "現行ニュースはdevelopmentHeadlinesとrailProjectHeadlinesのうち決算headlinesにも保存されたものを対象にする。",
+          "limitation": "本資料はhistorical-reference。保存済みheadlinesなしに今週の実績へ混ぜず、過去ニュースや株価を改変しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-rail-city-minamimachida-station-service-change-20191001",
+      "eventKey": "tokyu-minamimachida-station-service-change-20191001",
+      "category": "rail-city",
+      "realEntities": [
+        "東急株式会社",
+        "南町田グランベリーパーク駅",
+        "田園都市線",
+        "大井町線"
+      ],
+      "eventDate": "2019-10-01",
+      "eventDateNote": "東急公式100年史の9-3-1-4節は2019年10月1日に駅名改称・ダイヤ改正を実施したと記載。商業施設の2019年11月13日まちびらきや新駅舎供用日とは分ける。",
+      "sourceURL": "https://www.tokyu.co.jp/history/chapter09_3_1/",
+      "publisher": "東急株式会社",
+      "publishedDate": null,
+      "publishedDateNote": "公式100年史の当該章本文に公開日を確認できない。年史の対象年や施策実施日から公開日を推測しない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "9-3-1-4「町田市『南町田拠点創出まちづくりプロジェクト』の推進」中、「商業施設『グランベリーパーク』の開業」末尾の駅名・ダイヤ改正の段落。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式社史HTML本文をweb openで実読。2019年10月1日の実施と全日にわたる全急行停車を確認。駅舎リニューアルの具体的供用日を、この改称日と同一視していない。"
+      },
+      "supportingSources": [
+        {
+          "sourceURL": "https://www.tokyu.co.jp/image/news/pdf/20190807-3-1.pdf",
+          "publisher": "東京急行電鉄株式会社（当時、現・東急株式会社）",
+          "publishedDate": "2019-08-07",
+          "publishedDateNote": "PDF1ページ冒頭の発表日。",
+          "accessedDate": "2026-10-07",
+          "sourceLocation": "PDF1ページ冒頭と「ダイヤ改正のポイント」、PDF2ページ「ダイヤ改正日」。",
+          "sourceRead": {
+            "method": "web-open/pdf-text",
+            "status": "verified",
+            "notes": "3ページPDFを本文実読。10月1日改称・ダイヤ変更と11月13日まちびらきへ向けたアクセス改善の計画を確認。実施済み判定と全日の停車実績は主出典の後年公式社史で確認。"
+          }
+        }
+      ],
+      "facts": [
+        "東急の公式100年史は2019年10月1日に南町田駅を南町田グランベリーパーク駅へ改称し、田園都市線・大井町線のダイヤ改正を実施したと記録している。",
+        "同史は改正後、平日・土休日を問わず田園都市線の全急行列車が同駅に停車するようになったと記載している。",
+        "事前の2019年8月7日発表は、11月13日の街のまちびらきへ向けたアクセス改善を目的とし、改称とダイヤ変更を10月1日に実施する計画を示していた。"
+      ],
+      "managementChoice": "施設開業に先行して駅の名称と列車の停車設定を変え、沿線からのアクセスを整える。",
+      "authorWrittenBrief": "東急の南町田駅は2019年、街のまちびらきに先んじて名称とダイヤを変更した。平日にも全急行が停まる設定へ改め、来街者の到着経路を先に整えた。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-9005",
+          "gameName": "東都電鉄",
+          "realName": "東急",
+          "relationship": "parent-group",
+          "note": "東急株式会社の公式社史に掲載されたグループ鉄道事業の対応候補。既存STOCKSの親会社jp-9005との対応であり、現実の鉄道運営とゲーム社の実績は別に扱う。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rail-city-saved-structure",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.development/railProjects; DevelopmentProgram.completedChoiceIds/construction; RailProject.choiceId/startWeek/completeWeek; WeeklyReport.headlines/news",
+          "rationale": "着工・工期・完成と確定週ニュースを別々に保存する既存構造に関連する歴史資料。",
+          "limitation": "現実の鉄道会社の発表や実施はゲーム内週・地区・会社の保存済み実績を立証しない。"
+        },
+        {
+          "tag": "rail-project-context-only",
+          "sourceFile": "src/sim/railProjects.ts",
+          "existingFieldOrEvent": "RAIL_PROJECT_CHOICES; railProjectHeadlines; project.choiceId/startWeek/completeWeek",
+          "rationale": "駅前回遊と駅近賃貸という既存の共同開発選択を比較する背景。",
+          "limitation": "commerce/rentalは新路線、線路移設、ダイヤ変更、電源構成を記録しない。史実の選択や費用をゲーム内選択と同一視しない。"
+        },
+        {
+          "tag": "development-context-only",
+          "sourceFile": "src/sim/development.ts",
+          "existingFieldOrEvent": "DEVELOPMENT_CHOICES; developmentHeadlines; DevelopmentProgram.completedChoiceIds/construction",
+          "rationale": "回遊整備と生活・賃貸設備、段階開発の違いを考える参考。",
+          "limitation": "現実の駅・街区とゲームの地区は対応していない。史実から需要、賃料、維持費の効果を補完しない。"
+        },
+        {
+          "tag": "saved-headline-required",
+          "sourceFile": "src/sim/weeklyNews.ts",
+          "existingFieldOrEvent": "createWeeklyNews; cityEvents; report.headlines.includes(text); events",
+          "rationale": "現行ニュースはdevelopmentHeadlinesとrailProjectHeadlinesのうち決算headlinesにも保存されたものを対象にする。",
+          "limitation": "本資料はhistorical-reference。保存済みheadlinesなしに今週の実績へ混ぜず、過去ニュースや株価を改変しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    }
+  ]
+}

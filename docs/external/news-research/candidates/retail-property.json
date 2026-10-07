@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "category": "retail-property",
+  "candidates": [
+    {
+      "id": "nr-retail-property-mitsui-kadoma-hybrid-20230208",
+      "eventKey": "mitsui-kadoma-lalaport-outlet-announcement-20230208",
+      "category": "retail-property",
+      "realEntities": [
+        "三井不動産株式会社",
+        "三井ショッピングパーク ららぽーと門真",
+        "三井アウトレットパーク 大阪門真"
+      ],
+      "eventDate": "2023-04-17",
+      "eventDateNote": "2023年2月8日の発表本文・施設概要に記載された開業予定日。資料時点で開業実施を立証するものではない。",
+      "sourceURL": "https://www.mitsuifudosan.co.jp/corporate/news/2023/0208/",
+      "publisher": "三井不動産株式会社",
+      "publishedDate": "2023-02-08",
+      "publishedDateNote": "原資料の発表日表示を確認。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭の発表日と本文、本リリースのポイント1・3、当施設の特長1・2、施設概要。web-open行239〜294・378〜408。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式リリース本文を実読。発表日、開業予定、2業態の階別配置と合計店舗数を確認。初出店数の訂正注記があるため、この候補には初出店数を採用しない。"
+      },
+      "facts": [
+        "三井不動産は、ららぽーと門真と三井アウトレットパーク 大阪門真を2023年4月17日に開業する予定と発表した。",
+        "ららぽーととアウトレットを同一施設に組み合わせる同社初の形式で、1階・3階がららぽーと、2階がアウトレットとなる計画。",
+        "発表時点の店舗数はららぽーと153、アウトレット98、合計251だった。"
+      ],
+      "managementChoice": "日常の買い物を担う商業施設とアウトレットを一つの建物に組み合わせる。",
+      "authorWrittenBrief": "三井不動産は2023年、門真で普段使いの店とアウトレットを一つの施設にまとめる開業計画を発表した。買い物の目的が異なる来訪者を同じ場所へ迎える構成を選んだ。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-8801",
+          "gameName": "三井の街不動産",
+          "realName": "三井不動産",
+          "relationship": "direct",
+          "note": "src/data/stocks.ts の8801とdocs/market-universe.jsonの実在名を照合。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "district-development",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "DevelopmentProgram.completedChoiceIds; DevelopmentProgram.construction",
+          "rationale": "商業施設の構成を決める街区開発の参考事例。",
+          "limitation": "保存fieldは自社ゲーム内の工程と工期だけを示す。現実の門真の開業や三井不動産の今週実績、店舗数を示さず、保存済みWeeklyReport.headlinesも別途確認が必要。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-muji-ginza-complex-20190228",
+      "eventKey": "muji-ginza-retail-hotel-announcement-20190228",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社良品計画",
+        "無印良品 銀座",
+        "MUJI HOTEL GINZA",
+        "UDS株式会社"
+      ],
+      "eventDate": "2019-04-04",
+      "eventDateNote": "冒頭本文と施設・ホテル概要にある同時開業予定日。2019年2月28日の発表資料であり、実施済みとは扱わない。",
+      "sourceURL": "https://assets.ryohin-keikaku.jp/news/2019_0228.html",
+      "publisher": "株式会社良品計画",
+      "publishedDate": "2019-02-28",
+      "publishedDateNote": "原資料の発表日表示を確認。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭発表日・本文、無印良品 銀座 概要、フロア構成、MUJI HOTEL GINZA 概要。web-open行4〜7・59〜100。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "良品計画の公式アーカイブ本文を実読。物販・飲食・ホテルの同時開業予定と、ホテルの企画・内装設計・運営主体がUDSであることを確認。"
+      },
+      "facts": [
+        "良品計画は無印良品 銀座、MUJI Diner、MUJI HOTEL GINZAを2019年4月4日に同時開業する予定と発表した。",
+        "フロア構成では地下1階がMUJI Diner、1〜5階が商品・サービス売場、6階がATELIER MUJIとホテルフロント、7〜10階がホテル客室。",
+        "ホテルの企画・内装設計・運営はUDS株式会社と記載された。"
+      ],
+      "managementChoice": "旗艦店に物販、飲食、宿泊を組み合わせ、宿泊運営を専門会社に委ねる。",
+      "authorWrittenBrief": "良品計画は2019年、銀座の旗艦店を買い物・食事・宿泊が重なる施設として開く計画を示した。UDSにホテル運営を委ね、複数の利用場面を一つの建物に集める計画だった。",
+      "parodyEntities": [],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-opening",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.decisionWeek; OpeningRecord.openingCost; OpeningRecord.result",
+          "rationale": "出店時に提供するサービスや業態の組み合わせを考える参考。",
+          "limitation": "OpeningRecordはプレイヤーのカフェ開業判断と初回決算を記録する。ホテル・物販売場・第三者運営契約は保存しないため、現実の複合施設がゲーム内に開業したとは書けない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-uniqlo-maebashi-energy-20230419",
+      "eventKey": "uniqlo-maebashi-minami-store-energy-announcement-20230419",
+      "category": "retail-property",
+      "realEntities": [
+        "株式会社ユニクロ",
+        "ユニクロ 前橋南インター店"
+      ],
+      "eventDate": "2023-04-21",
+      "eventDateNote": "冒頭および店舗概要に記載された開業予定日。2023年4月19日の資料時点で開業実施を確認したものではない。",
+      "sourceURL": "https://www.uniqlo.com/jp/ja/contents/corp/press-release/2023/04/23041913_store.html",
+      "publisher": "株式会社ユニクロ",
+      "publishedDate": "2023-04-19",
+      "publishedDateNote": "原資料冒頭の発表日を確認。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "冒頭の発表日・本文、認証の説明、設備表、店舗概要。web-open行4〜42。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "公式本文を実読し、開業予定と省エネ設備・認証を確認。電力削減・太陽光の寄与率は設計想定/試算であり実測と区別。太陽光の比率に異なる表現があるため数値は採用しない。"
+      },
+      "facts": [
+        "ユニクロは前橋南インター店を2023年4月21日に開業すると発表した。",
+        "天窓、明るさセンサー、エアカーテン、服のリサイクル素材を使う断熱材、太陽光パネルなどを店舗に採用したと説明した。",
+        "資料は2023年3月17日付のBELS最高ランク星5つとZEB Readyの認定を記載している。"
+      ],
+      "managementChoice": "ロードサイド店を省エネ設備と自然採光を組み込んだ建物として設計する。",
+      "authorWrittenBrief": "ユニクロは2023年、前橋の新店で自然採光や照明制御、太陽光発電を組み合わせる設計を公表した。省エネを店づくりに組み込んだ事例だが、発表時の試算を営業後の削減実績とは扱わない。",
+      "parodyEntities": [],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "store-capital-investment",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "OpeningRecord.openingCost; StoreAccount.costs.equipment",
+          "rationale": "出店時に建物・設備へ投資する選択の参考。",
+          "limitation": "保存される開業費や決算済み設備費は自社店舗のゲーム内支出。省エネ認証、電力量、現実の削減率を記録しないため、設備投資から環境効果を推定できない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-mec-tokiwabashi-office-20210719",
+      "eventKey": "mec-tokiwabashi-tower-completion-20210630",
+      "category": "retail-property",
+      "realEntities": [
+        "三菱地所株式会社",
+        "常盤橋タワー",
+        "TOKYO TORCH"
+      ],
+      "eventDate": "2021-06-30",
+      "eventDateNote": "2021年7月19日リリース1ページの本文が6月30日の竣工を過去形で報告。商業ゾーンやカフェの開業予定日とは別。",
+      "sourceURL": "https://www.mec.co.jp/news/archives/mec210719_tokiwabashitower.pdf",
+      "publisher": "三菱地所株式会社",
+      "publishedDate": "2021-07-19",
+      "publishedDateNote": "原資料冒頭の発表日を確認。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページの発表日・竣工本文、2ページのテナント決定状況、3〜4ページの共用空間。web-open行34〜40・54〜69・93〜131。",
+      "sourceRead": {
+        "method": "web-open",
+        "status": "verified",
+        "notes": "11ページの公式PDFの本文を実読。竣工済みの日付と、入居テナント決定の割合を確認。カフェ等には後日の開業予定があるため、全サービス稼働済みとはしない。"
+      },
+      "facts": [
+        "三菱地所は常盤橋タワーが2021年6月30日に竣工したと発表した。",
+        "発表では9割のオフィス入居テナントが決定済みと説明された。",
+        "オフィスフロアのうち2フロアを共用空間として整備し、3階のカフェテリアと8階のラウンジ・貸会議室・サービスオフィス等を案内した。カフェテリアは2021年8月中旬以降に順次開業する予定だった。"
+      ],
+      "managementChoice": "賃貸オフィスに共用の食事・会議・仕事場所を設け、入居者向けサービスを充実する。",
+      "authorWrittenBrief": "三菱地所は2021年に竣工した常盤橋タワーで、オフィスの一部を共用の食事・会議スペースなどに振り向けた。貸室に加えて働く人の居場所を用意する不動産運営の選択が見える。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-8802",
+          "gameName": "三菱の街地所",
+          "realName": "三菱地所",
+          "relationship": "direct",
+          "note": "src/data/stocks.ts の8802とdocs/market-universe.jsonを照合。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "property-operation",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "PropertyAsset.level; PropertyAsset.occupancy; PropertyAsset.weeklyIncome",
+          "rationale": "物件の整備水準と賃貸運営の参考。",
+          "limitation": "PropertyAssetはゲーム内の所有物件と現時点の稼働率・週収入だけを示す。常盤橋のテナント契約や共用設備は保存されず、テナント決定割合とゲームのoccupancyを同一視できない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-nbf-toranomon-land-retention-20240712",
+      "eventKey": "nbf-toranomon-building-sale-land-retention-decision-20240712",
+      "category": "retail-property",
+      "realEntities": [
+        "日本ビルファンド投資法人",
+        "日本ビルファンドマネジメント株式会社",
+        "三井不動産株式会社",
+        "NBF虎ノ門ビル"
+      ],
+      "eventDate": "2024-07-12",
+      "eventDateNote": "PDF1ページの決定日・契約締結日の記載。建物譲渡予定日2025年1月6日や再開発後建物の取得実績とは区別する。",
+      "sourceURL": "https://www.nbf-m.com/file/news-40d139d382779b83439448be7e4540aa2a81b681.pdf",
+      "publisher": "日本ビルファンド投資法人",
+      "publishedDate": "2024-07-12",
+      "publishedDateNote": "PDF1ページ冒頭に2024年7月12日と明記。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページの譲渡概要、2〜3ページの理由と4選択肢、4ページの一般定期借地権・優先交渉権。web-open行1〜36・43〜79・123〜162。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "8ページの公式PDFを実読。建物のみ譲渡し土地は保有する決定、検討した4選択肢、将来の再開発後建物の優先交渉権を確認。再開発後の取得や予測利益を実績にしない。"
+      },
+      "facts": [
+        "日本ビルファンドは2024年7月12日、NBF虎ノ門ビルの建物部分の信託受益権を三井不動産へ譲渡し、土地を継続保有する取組みを決定した。",
+        "築61年の物件について継続運用、売却と代替物件取得、自らの建替え、建物譲渡と土地継続保有の4案を比較したと説明した。",
+        "土地には三井不動産を借地権者とする50年間の一般定期借地権を設定する契約とし、再開発後建物を取得する優先交渉権を確保した。建物の譲渡予定日は2025年1月6日とされた。"
+      ],
+      "managementChoice": "築古物件を全面売却・自前建替えする選択肢と比較し、建物を売り土地を貸す方式を選ぶ。",
+      "authorWrittenBrief": "日本ビルファンドは2024年、虎ノ門の築古ビルで建物を譲り、土地を保有して貸す方針を決めた。自ら建替える案も比較し、再開発後の建物を取得する交渉の余地を残した。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-8951",
+          "gameName": "星都ビル投資",
+          "realName": "日本ビルファンド投資法人",
+          "relationship": "direct",
+          "note": "src/data/stocks.ts の8951とdocs/market-universe.jsonを照合。既存のREIT区分を維持。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "property-disposition",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "PropertyAsset.purchasePrice; GameAction.sellProperty",
+          "rationale": "保有資産を売るか継続保有するかを比較する参考。",
+          "limitation": "現行PropertyAssetには土地/建物の分割、借地権、優先交渉権、物件売却の時系列journalがない。sellPropertyは操作の型で保存済み売却証拠ではなく、REITの譲渡を今週の自社実績と結び付けられない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    },
+    {
+      "id": "nr-retail-property-arealink-storage-expansion-20250304",
+      "eventKey": "arealink-hello-storage-2024-expansion-results-20250304",
+      "category": "retail-property",
+      "realEntities": [
+        "エリアリンク株式会社",
+        "ハローストレージ"
+      ],
+      "eventDate": null,
+      "eventDateNote": "資料は2024年1月1日〜12月31日の年間出店実績を集計しており、一つの開業日には特定できない。発表日は2025年3月4日。",
+      "sourceURL": "https://www.arealink.co.jp/wp-content/uploads/2025/11/03d312a5ebd19ba5884ac522f5d79e52.pdf",
+      "publisher": "エリアリンク株式会社",
+      "publishedDate": "2025-03-04",
+      "publishedDateNote": "PDF1ページ冒頭の発表日と、公式リンク元https://www.arealink.co.jp/news/pr/p14290/の投稿日2025.03.04が一致。URLの2025/11は発表日として扱わない。",
+      "accessedDate": "2026-10-07",
+      "sourceLocation": "PDF1ページの2024年出店実績、1〜2ページの地域・種別割合、2ページの今後の出店計画。web-open行0〜23。",
+      "sourceRead": {
+        "method": "web-open/pdf-text",
+        "status": "verified",
+        "notes": "公式ニュースページからPDF版へ進み、3ページの原資料を実読。年間の新規室数・地域/種別割合を確認し、2025年以降の計画を実績から分離。リンク元には最終更新日2025.12.23もあり、発表日と区別した。"
+      },
+      "facts": [
+        "エリアリンクは2024年にハローストレージを10,545室新規出店し、同年の総室数が110,442室になったと公表した。",
+        "年間新規出店の地域構成は一都三県39.7%、関西19.5%、中部15.2%と報告された。",
+        "新規出店の種別構成はコンテナ型82.6%、ビルイントランク型11.1%、建築型6.3%と報告された。"
+      ],
+      "managementChoice": "地域別需要を見ながら都市圏と地方に展開し、主にコンテナ型の収納賃貸を増やす。",
+      "authorWrittenBrief": "エリアリンクは2024年の収納賃貸の拡大で、コンテナ型を中心に一都三県と関西・中部などへ出店した。地域と施設形式を選びながら規模を増やす不動産サービスの事例である。",
+      "parodyEntities": [
+        {
+          "stockId": "jp-8914",
+          "gameName": "山桜開発14",
+          "realName": "エリアリンク",
+          "relationship": "direct",
+          "note": "src/data/stocks.ts の8914とdocs/market-universe.jsonの実在名を照合。"
+        }
+      ],
+      "relevantExistingSavedEventContext": [
+        {
+          "tag": "rental-property-expansion",
+          "sourceFile": "src/model.ts",
+          "existingFieldOrEvent": "GameState.properties; PropertyAsset.lotId; PropertyAsset.occupancy; PropertyAsset.weeklyIncome",
+          "rationale": "賃貸用途と立地を選び、保有資産を増やす場面の参考。",
+          "limitation": "現行保存は自社所有のゲーム内物件と稼働率・週収入だけで、収納室数、コンテナ種別、独立他社の年間新規出店を記録しない。株価・物件数からエリアリンクの活動を推定しない。"
+        }
+      ],
+      "displayClassification": "historical-reference",
+      "runtimeEligible": false,
+      "unverifiedReason": null
+    }
+  ]
+}
